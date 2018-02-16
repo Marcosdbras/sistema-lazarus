@@ -1,0 +1,34 @@
+object frmpedidos: Tfrmpedidos
+  Left = 27
+  Height = 638
+  Top = 36
+  Width = 1291
+  Caption = 'Pedidos'
+  ClientHeight = 638
+  ClientWidth = 1291
+  LCLVersion = '1.8.0.6'
+  object pnlsuperior: TPanel
+    Left = 0
+    Height = 88
+    Top = 0
+    Width = 1291
+    Align = alTop
+    TabOrder = 0
+  end
+  object pnlinferior: TPanel
+    Left = 0
+    Height = 50
+    Top = 588
+    Width = 1291
+    Align = alBottom
+    TabOrder = 1
+  end
+  object pnlcentral: TPanel
+    Left = 0
+    Height = 500
+    Top = 88
+    Width = 1291
+    Align = alClient
+    TabOrder = 2
+  end
+end

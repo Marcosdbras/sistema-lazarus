@@ -1,0 +1,19 @@
+object frmpedido_modulo: Tfrmpedido_modulo
+  OldCreateOrder = False
+  Height = 367
+  HorizontalOffset = 256
+  VerticalOffset = 210
+  Width = 921
+  PPI = 96
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
+    TransactIsolationLevel = tiReadCommitted
+    Port = 3050
+    Database = 'C:\SGBR\Master\BASESGMASTER.FDB'
+    Password = 'masterkey'
+    Protocol = 'firebirdd-2.5'
+    left = 66
+    top = 66
+  end
+end
