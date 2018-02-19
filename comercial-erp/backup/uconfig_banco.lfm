@@ -1,0 +1,8 @@
+object frmconfig_banco: Tfrmconfig_banco
+  Left = 260
+  Height = 467
+  Top = 168
+  Width = 907
+  Caption = 'Configuração do  Banco de Dados'
+  LCLVersion = '1.8.0.6'
+end

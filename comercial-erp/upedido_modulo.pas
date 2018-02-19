@@ -5,14 +5,14 @@ unit upedido_modulo;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ZConnection;
+  Classes, SysUtils, FileUtil, ZConnection, ZDataset;
 
 type
 
   { Tfrmpedido_modulo }
 
   Tfrmpedido_modulo = class(TDataModule)
-    ZConnection1: TZConnection;
+    ZQuery1: TZQuery;
   private
 
   public
@@ -23,7 +23,7 @@ var
   frmpedido_modulo: Tfrmpedido_modulo;
 
 implementation
-
+       uses uprincipal_conexao;
 {$R *.lfm}
 
 end.

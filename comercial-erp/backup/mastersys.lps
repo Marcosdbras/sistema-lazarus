@@ -4,15 +4,15 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="3">
+    <Units Count="8">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <CursorPos X="56" Y="19"/>
+        <UsageCount Value="38"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="upedido_pesquisa.pas"/>
@@ -20,20 +20,99 @@
         <ComponentName Value="frmpedidos"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
         <CursorPos X="14" Y="10"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="38"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="upedido_modulo.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmpedido_modulo"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="6"/>
+        <CursorPos X="43" Y="14"/>
+        <UsageCount Value="38"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="uprincipal_conexao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmprincipal_conexao"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <TopLine Value="15"/>
+        <CursorPos X="54" Y="24"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="upedido_modulo.lfm"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="16"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="ufuncao_cria_ini.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="18"/>
+        <CursorPos X="11" Y="28"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="uconfig_banco.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmconfig_banco"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="35" Y="3"/>
+        <UsageCount Value="25"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="uprincipal_tela.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmprincipal"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="7"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit7>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="7" HistoryIndex="6">
+      <Position1>
+        <Filename Value="upedido_modulo.pas"/>
+      </Position1>
+      <Position2>
+        <Filename Value="uprincipal_conexao.pas"/>
+      </Position2>
+      <Position3>
+        <Filename Value="upedido_modulo.pas"/>
+        <Caret Line="25" Column="32" TopLine="6"/>
+      </Position3>
+      <Position4>
+        <Filename Value="uprincipal_conexao.pas"/>
+        <Caret Line="27" Column="6" TopLine="7"/>
+      </Position4>
+      <Position5>
+        <Filename Value="uprincipal_conexao.pas"/>
+        <Caret Line="34" Column="3" TopLine="15"/>
+      </Position5>
+      <Position6>
+        <Filename Value="uconfig_banco.pas"/>
+        <Caret Line="3" Column="50"/>
+      </Position6>
+      <Position7>
+        <Filename Value="uprincipal_tela.pas"/>
+      </Position7>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>

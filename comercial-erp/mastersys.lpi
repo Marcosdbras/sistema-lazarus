@@ -11,9 +11,6 @@
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
     </General>
-    <VersionInfo>
-      <StringTable ProductVersion=""/>
-    </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
     </BuildModes>
@@ -33,7 +30,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="7">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -49,8 +46,31 @@
         <Filename Value="upedido_modulo.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmpedido_modulo"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="uprincipal_conexao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmprincipal_conexao"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="ufuncao_cria_ini.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="uconfig_banco.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmconfig_banco"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="uprincipal_tela.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmprincipal"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

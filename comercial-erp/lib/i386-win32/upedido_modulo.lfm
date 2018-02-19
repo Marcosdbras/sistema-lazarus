@@ -5,15 +5,13 @@ object frmpedido_modulo: Tfrmpedido_modulo
   VerticalOffset = 210
   Width = 921
   PPI = 96
-  object ZConnection1: TZConnection
-    ControlsCodePage = cCP_UTF8
-    AutoEncodeStrings = False
-    TransactIsolationLevel = tiReadCommitted
-    Port = 3050
-    Database = 'C:\SGBR\Master\BASESGMASTER.FDB'
-    Password = 'masterkey'
-    Protocol = 'firebirdd-2.5'
-    left = 66
-    top = 66
+  object ZQuery1: TZQuery
+    Connection = frmprincipal_conexao.conexaodb
+    SQL.Strings = (
+      'select * from temitente'
+    )
+    Params = <>
+    left = 90
+    top = 48
   end
 end

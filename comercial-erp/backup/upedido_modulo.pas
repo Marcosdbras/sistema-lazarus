@@ -12,7 +12,6 @@ type
   { Tfrmpedido_modulo }
 
   Tfrmpedido_modulo = class(TDataModule)
-    ZConnection1: TZConnection;
   private
 
   public
@@ -23,7 +22,7 @@ var
   frmpedido_modulo: Tfrmpedido_modulo;
 
 implementation
-
+       uses uprincipal_conexao;
 {$R *.lfm}
 
 end.
