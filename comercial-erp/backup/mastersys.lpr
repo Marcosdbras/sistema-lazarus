@@ -16,12 +16,12 @@ uses
 begin
   RequireDerivedFormResource:=True;
   Application.Initialize;
-
+   Application.CreateForm(Tfrmprincipal, frmprincipal);
    Application.CreateForm(Tfrmconfig_banco, frmconfig_banco);
   Application.CreateForm(Tfrmpedidos, frmpedidos);
   Application.CreateForm(Tfrmpedido_modulo, frmpedido_modulo);
   Application.CreateForm(Tfrmprincipal_conexao, frmprincipal_conexao);
-  Application.CreateForm(Tfrmprincipal, frmprincipal);
+
   Application.Run;
 end.
 

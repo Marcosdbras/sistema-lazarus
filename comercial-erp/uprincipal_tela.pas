@@ -18,6 +18,7 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
     pnlsuperior: TPanel;
     pnlsuperior1: TPanel;
     pnlsuperior2: TPanel;
@@ -25,6 +26,7 @@ type
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
+    procedure MenuItem5Click(Sender: TObject);
   private
 
   public
@@ -35,7 +37,7 @@ var
   frmprincipal: Tfrmprincipal;
 
 implementation
-
+         uses uconfig_banco;
 {$R *.lfm}
 
 { Tfrmprincipal }
@@ -53,6 +55,13 @@ end;
 procedure Tfrmprincipal.MenuItem4Click(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmprincipal.MenuItem5Click(Sender: TObject);
+begin
+  frmconfig_banco := tfrmconfig_banco.create(self);
+  frmconfig_banco.showmodal;
+  frmconfig_banco.free;
 end;
 
 end.
