@@ -30,7 +30,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="8">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -43,16 +43,17 @@
         <ResourceBaseClass Value="Form"/>
       </Unit1>
       <Unit2>
-        <Filename Value="upedido_modulo.pas"/>
+        <Filename Value="umodulo_pedido.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmpedido_modulo"/>
+        <ComponentName Value="modulo_pedido"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit2>
       <Unit3>
-        <Filename Value="uprincipal_conexao.pas"/>
+        <Filename Value="umodulo_conexaodb.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmprincipal_conexao"/>
+        <ComponentName Value="modulo_conexaodb"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit3>
       <Unit4>
@@ -63,14 +64,20 @@
         <Filename Value="uconfig_banco.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmconfig_banco"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit5>
       <Unit6>
-        <Filename Value="uprincipal_tela.pas"/>
+        <Filename Value="utela_principal.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmprincipal"/>
+        <ComponentName Value="frmprincipal_tela"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="ufuncao_conexaodb.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit7>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

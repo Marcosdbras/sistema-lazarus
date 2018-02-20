@@ -24,7 +24,7 @@ var
   frmprincipal_conexao: Tfrmprincipal_conexao;
 
 implementation
-       uses ufuncaocriaini;
+       uses ufuncao_cria_ini;
 {$R *.lfm}
 
 { Tfrmprincipal_conexao }

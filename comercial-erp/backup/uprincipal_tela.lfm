@@ -1,4 +1,4 @@
-object frmprincipal: Tfrmprincipal
+object frmprincipal_tela: Tfrmprincipal_tela
   Left = 10
   Height = 546
   Top = 126
@@ -7,7 +7,9 @@ object frmprincipal: Tfrmprincipal
   ClientHeight = 526
   ClientWidth = 1320
   Menu = MainMenu1
+  OnCreate = FormCreate
   LCLVersion = '1.8.0.6'
+  Visible = True
   WindowState = wsMaximized
   object pnlsuperior: TPanel
     Left = 0
@@ -34,11 +36,10 @@ object frmprincipal: Tfrmprincipal
     TabOrder = 2
   end
   object pnlsuperior3: TPanel
-    Left = 168
+    Left = 1104
     Height = 356
     Top = 88
-    Width = 1152
-    Align = alClient
+    Width = 192
     TabOrder = 3
   end
   object MainMenu1: TMainMenu

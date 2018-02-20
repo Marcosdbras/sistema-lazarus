@@ -7,8 +7,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, upedido_pesquisa, upedido_modulo, zcomponent, uprincipal_conexao,
-  ufuncao_cria_ini, uconfig_banco, uprincipal_tela
+  Forms, upedido_pesquisa, umodulo_pedido, zcomponent, umodulo_conexaodb,
+  ufuncao_cria_ini, uconfig_banco, utela_principal, ufuncao_conexaodb
   { you can add units after this };
 
 {$R *.res}
@@ -16,11 +16,11 @@ uses
 begin
   RequireDerivedFormResource:=True;
   Application.Initialize;
-   Application.CreateForm(Tfrmprincipal, frmprincipal);
-   //Application.CreateForm(Tfrmconfig_banco, frmconfig_banco);
+  Application.CreateForm(Tfrmprincipal_tela, frmprincipal_tela);
+
   Application.CreateForm(Tfrmpedidos, frmpedidos);
-  Application.CreateForm(Tfrmpedido_modulo, frmpedido_modulo);
-  Application.CreateForm(Tfrmprincipal_conexao, frmprincipal_conexao);
+  Application.CreateForm(Tmodulo_pedido, modulo_pedido);
+  Application.CreateForm(Tmodulo_conexaodb, modulo_conexaodb);
 
   Application.Run;
 end.

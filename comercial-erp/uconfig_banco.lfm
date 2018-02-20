@@ -3,9 +3,12 @@ object frmconfig_banco: Tfrmconfig_banco
   Height = 338
   Top = 224
   Width = 704
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
   Caption = 'Configuração do  Banco de Dados'
   ClientHeight = 338
   ClientWidth = 704
+  OnClose = FormClose
   Position = poDesktopCenter
   LCLVersion = '1.8.0.6'
   object StaticText1: TStaticText
@@ -48,7 +51,7 @@ object frmconfig_banco: Tfrmconfig_banco
     Caption = 'Senha'
     TabOrder = 4
   end
-  object ComboBox1: TComboBox
+  object cbxhostname: TComboBox
     Left = 192
     Height = 23
     Top = 40
@@ -61,7 +64,7 @@ object frmconfig_banco: Tfrmconfig_banco
     TabOrder = 5
     Text = 'localhost'
   end
-  object Edit1: TEdit
+  object edibancodados: TEdit
     Left = 192
     Height = 23
     Top = 80
@@ -69,7 +72,7 @@ object frmconfig_banco: Tfrmconfig_banco
     TabOrder = 6
     Text = 'C:\SGBR\Master\BASESGMASTER.FDB'
   end
-  object Edit2: TEdit
+  object ediporta: TEdit
     Left = 192
     Height = 23
     Top = 120
@@ -77,7 +80,7 @@ object frmconfig_banco: Tfrmconfig_banco
     TabOrder = 7
     Text = '3050'
   end
-  object Edit3: TEdit
+  object ediusuario: TEdit
     Left = 192
     Height = 23
     Top = 160
@@ -85,7 +88,7 @@ object frmconfig_banco: Tfrmconfig_banco
     TabOrder = 8
     Text = 'SYSDBA'
   end
-  object Edit4: TEdit
+  object edisenha: TEdit
     Left = 192
     Height = 23
     Top = 200
@@ -99,11 +102,11 @@ object frmconfig_banco: Tfrmconfig_banco
     Left = 16
     Height = 15
     Top = 248
-    Width = 123
-    Caption = 'Tipo e versão do banco'
+    Width = 119
+    Caption = 'Tipo e versão do SGDB'
     ParentColor = False
   end
-  object ComboBox2: TComboBox
+  object cbxversaosgdb: TComboBox
     Left = 192
     Height = 23
     Top = 240
@@ -116,20 +119,22 @@ object frmconfig_banco: Tfrmconfig_banco
     TabOrder = 10
     Text = 'firebirdd-2.5'
   end
-  object Button1: TButton
-    Left = 517
+  object btnfechar: TButton
+    Left = 613
     Height = 25
     Top = 297
     Width = 75
-    Caption = 'Cancelar'
-    TabOrder = 11
+    Caption = 'Fechar'
+    OnClick = btnfecharClick
+    TabOrder = 12
   end
   object Button2: TButton
-    Left = 613
+    Left = 528
     Height = 25
-    Top = 296
+    Top = 297
     Width = 75
     Caption = 'Salvar '
-    TabOrder = 12
+    OnClick = Button2Click
+    TabOrder = 11
   end
 end

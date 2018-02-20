@@ -10,9 +10,9 @@ uses
 
 type
 
-  { Tfrmprincipal }
+  { Tfrmprincipal_tela }
 
-  Tfrmprincipal = class(TForm)
+  Tfrmprincipal_tela = class(TForm)
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -23,6 +23,7 @@ type
     pnlsuperior1: TPanel;
     pnlsuperior2: TPanel;
     pnlsuperior3: TPanel;
+    procedure FormCreate(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -34,34 +35,45 @@ type
   end;
 
 var
-  frmprincipal: Tfrmprincipal;
+  frmprincipal_tela: Tfrmprincipal_tela;
 
 implementation
-         uses config_banco;
+         uses uconfig_banco;
 {$R *.lfm}
 
-{ Tfrmprincipal }
+{ Tfrmprincipal_tela }
 
-procedure Tfrmprincipal.MenuItem1Click(Sender: TObject);
+procedure Tfrmprincipal_tela.MenuItem1Click(Sender: TObject);
 begin
 
 end;
 
-procedure Tfrmprincipal.MenuItem3Click(Sender: TObject);
+procedure Tfrmprincipal_tela.FormCreate(Sender: TObject);
 begin
 
 end;
 
-procedure Tfrmprincipal.MenuItem4Click(Sender: TObject);
+procedure Tfrmprincipal_tela.MenuItem3Click(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmprincipal_tela.MenuItem4Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tfrmprincipal.MenuItem5Click(Sender: TObject);
+procedure Tfrmprincipal_tela.MenuItem5Click(Sender: TObject);
 begin
-  frmconfig_banco := tfrmconfig_banco.create(self);
-  frmconfig_banco.showmodal;
-  frmconfig_banco.free;
+
+//if frmconfig_banco=nil then
+//  frmconfig_banco:=Tfrmconfig_banco.Create(application)
+//else
+//  frmconfig_banco.Show;
+
+frmconfig_banco := tfrmconfig_banco.create(self);
+frmconfig_banco.showmodal;
+frmconfig_banco.free;
 end;
 
 end.
