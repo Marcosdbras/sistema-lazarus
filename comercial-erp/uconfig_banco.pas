@@ -5,7 +5,7 @@ unit uconfig_banco;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, LCLType;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, LCLType, IniFiles;
 
 type
 
@@ -13,6 +13,7 @@ type
 
   Tfrmconfig_banco = class(TForm)
     btnfechar: TButton;
+    btncaminhodb: TButton;
     Button2: TButton;
     cbxhostname: TComboBox;
     cbxversaosgdb: TComboBox;
@@ -21,14 +22,17 @@ type
     ediusuario: TEdit;
     edisenha: TEdit;
     Label1: TLabel;
+    opeCaminhodb: TOpenDialog;
     StaticText1: TStaticText;
     StaticText2: TStaticText;
     StaticText3: TStaticText;
     StaticText4: TStaticText;
     StaticText5: TStaticText;
+    procedure btncaminhodbClick(Sender: TObject);
     procedure btnfecharClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -39,21 +43,31 @@ var
   frmconfig_banco: Tfrmconfig_banco;
 
 implementation
-   uses ufuncao_cria_ini;
+   uses ufuncao_geral,  ufuncao_arq_ini, ufuncao_conexaodb;
 {$R *.lfm}
 
 { Tfrmconfig_banco }
 
 procedure Tfrmconfig_banco.Button2Click(Sender: TObject);
 var smensagem:String;
-
+  bgravou, bconectou:boolean;
 begin
-  if (GravarINIBD(cbxhostname.Text,
+
+
+
+
+
+  if ( (GravarINIBD(cbxhostname.Text,
                   edibancodados.Text,
                   ediporta.Text,
                   edisenha.Text,
                   ediusuario.Text,
                   cbxversaosgdb.Text))
+
+        and (conectarBanco)
+
+
+     )
   then
      begin
         smensagem := 'Configuração realizada com sucesso!';
@@ -78,9 +92,46 @@ begin
   //frmconfig_banco:=nil;
 end;
 
+procedure Tfrmconfig_banco.FormCreate(Sender: TObject);
+begin
+
+   //Carrega dados de conexão do banco na variáveis globais
+   LerINIBD;
+
+   // Carrega Variáveis globais nos textbox
+   cbxhostname.Text := sHostName;
+   ediporta.Text := sPort;
+   cbxversaosgdb.Text := sProtocol;
+   ediusuario.Text := sUser;
+   edisenha.Text := sPassword;
+   edibancodados.Text := sDatabase;
+
+   //Localização da clientdll e informação da Codepage
+   //sLibraryLocation;
+   //sClientCodepage;
+
+
+
+
+
+
+end;
+
 procedure Tfrmconfig_banco.btnfecharClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmconfig_banco.btncaminhodbClick(Sender: TObject);
+begin
+
+
+  if opeCaminhodb.Execute then
+     begin
+       edibancodados.Text:= opeCaminhodb.FileName;
+
+
+     end;
 end;
 
 end.

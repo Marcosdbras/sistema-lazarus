@@ -4,14 +4,14 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="9">
+    <Units Count="10">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos X="58" Y="9"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="76"/>
       </Unit0>
       <Unit1>
         <Filename Value="upedido_pesquisa.pas"/>
@@ -21,7 +21,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="14" Y="10"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="76"/>
       </Unit1>
       <Unit2>
         <Filename Value="umodulo_pedido.pas"/>
@@ -29,12 +29,10 @@
         <ComponentName Value="modulo_pedido"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="59" Y="14"/>
-        <UsageCount Value="53"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="76"/>
       </Unit2>
       <Unit3>
         <Filename Value="umodulo_conexaodb.pas"/>
@@ -42,21 +40,17 @@
         <ComponentName Value="modulo_conexaodb"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="51" Y="9"/>
-        <UsageCount Value="46"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="69"/>
       </Unit3>
       <Unit4>
-        <Filename Value="ufuncao_cria_ini.pas"/>
+        <Filename Value="ufuncao_arq_ini.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="40"/>
-        <CursorPos X="9" Y="50"/>
-        <UsageCount Value="46"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="14"/>
+        <CursorPos X="53" Y="27"/>
+        <UsageCount Value="69"/>
       </Unit4>
       <Unit5>
         <Filename Value="uconfig_banco.pas"/>
@@ -64,48 +58,51 @@
         <ComponentName Value="frmconfig_banco"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <CursorPos X="126" Y="6"/>
-        <UsageCount Value="40"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="113"/>
+        <CursorPos X="36" Y="128"/>
+        <UsageCount Value="63"/>
       </Unit5>
       <Unit6>
         <Filename Value="utela_principal.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmprincipal_tela"/>
+        <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="61"/>
-        <CursorPos X="95" Y="62"/>
-        <UsageCount Value="36"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="43"/>
+        <CursorPos X="3" Y="58"/>
+        <UsageCount Value="59"/>
       </Unit6>
       <Unit7>
-        <Filename Value="upedido_modulo.lfm"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="16"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit7>
-      <Unit8>
         <Filename Value="ufuncao_conexaodb.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="40"/>
-        <CursorPos X="14" Y="48"/>
-        <UsageCount Value="25"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8"/>
+        <CursorPos X="45" Y="15"/>
+        <UsageCount Value="48"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="ufuncao_geral.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="2"/>
+        <CursorPos X="23" Y="3"/>
+        <UsageCount Value="38"/>
       </Unit8>
+      <Unit9>
+        <Filename Value="upedido_modulo.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="14"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit9>
     </Units>
-    <JumpHistory Count="2" HistoryIndex="1">
-      <Position1>
-        <Filename Value="umodulo_conexaodb.pas"/>
-        <Caret Line="8" Column="43"/>
-      </Position1>
-      <Position2>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="59" Column="27" TopLine="47"/>
-      </Position2>
-    </JumpHistory>
+    <General>
+      <ActiveWindowIndexAtStart Value="-1"/>
+    </General>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>

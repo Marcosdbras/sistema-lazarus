@@ -1,0 +1,143 @@
+object Form1: TForm1
+  Left = 82
+  Height = 333
+  Top = 173
+  Width = 1022
+  Caption = 'Form1'
+  ClientHeight = 333
+  ClientWidth = 1022
+  OnCreate = FormCreate
+  LCLVersion = '1.8.0.6'
+  object Button1: TButton
+    Left = 544
+    Height = 25
+    Top = 248
+    Width = 75
+    Caption = 'UpLoad'
+    OnClick = Button1Click
+    TabOrder = 5
+  end
+  object edthostname: TEdit
+    Left = 143
+    Height = 23
+    Top = 88
+    Width = 476
+    TabOrder = 0
+    Text = 'edthostname'
+  end
+  object edtusername: TEdit
+    Left = 144
+    Height = 23
+    Top = 120
+    Width = 474
+    TabOrder = 1
+    Text = 'edtusername'
+  end
+  object edtpassword: TEdit
+    Left = 144
+    Height = 23
+    Top = 152
+    Width = 475
+    TabOrder = 2
+    Text = 'edtpassword'
+  end
+  object edtport: TEdit
+    Left = 144
+    Height = 23
+    Top = 184
+    Width = 475
+    TabOrder = 3
+    Text = 'edtport'
+  end
+  object Label1: TLabel
+    Left = 40
+    Height = 15
+    Top = 96
+    Width = 57
+    Caption = 'HostName'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 40
+    Height = 15
+    Top = 128
+    Width = 55
+    Caption = 'UserName'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 40
+    Height = 15
+    Top = 160
+    Width = 52
+    Caption = 'PassWord'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 40
+    Height = 15
+    Top = 192
+    Width = 22
+    Caption = 'Port'
+    ParentColor = False
+  end
+  object Edit5: TEdit
+    Left = 40
+    Height = 23
+    Top = 250
+    Width = 496
+    TabOrder = 4
+    Text = 'Edit5'
+  end
+  object Edit6: TEdit
+    Left = 40
+    Height = 23
+    Top = 282
+    Width = 496
+    TabOrder = 6
+    Text = 'Edit6'
+  end
+  object Button2: TButton
+    Left = 544
+    Height = 25
+    Top = 280
+    Width = 75
+    Caption = 'DownLoad'
+    TabOrder = 7
+  end
+  object Button3: TButton
+    Left = 647
+    Height = 25
+    Top = 280
+    Width = 365
+    Caption = 'Listar'
+    TabOrder = 9
+  end
+  object ListBox1: TListBox
+    Left = 648
+    Height = 223
+    Top = 56
+    Width = 364
+    ItemHeight = 0
+    TabOrder = 8
+  end
+  object Label5: TLabel
+    Left = 40
+    Height = 15
+    Top = 56
+    Width = 106
+    Caption = 'Dados para conexão'
+    ParentColor = False
+  end
+  object idftp: TIdFTP
+    IPVersion = Id_IPv4
+    ConnectTimeout = 0
+    NATKeepAlive.UseKeepAlive = False
+    NATKeepAlive.IdleTimeMS = 0
+    NATKeepAlive.IntervalMS = 0
+    ProxySettings.ProxyType = fpcmNone
+    ProxySettings.Port = 0
+    left = 832
+    top = 8
+  end
+end

@@ -1,0 +1,78 @@
+object frmtela_principal: Tfrmtela_principal
+  Left = 114
+  Height = 546
+  Top = 104
+  Width = 1320
+  Caption = 'Master Plus'
+  ClientHeight = 526
+  ClientWidth = 1320
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  LCLVersion = '1.8.0.6'
+  Visible = True
+  WindowState = wsMaximized
+  object pnlsuperior: TPanel
+    Left = 0
+    Height = 88
+    Top = 0
+    Width = 1320
+    Align = alTop
+    TabOrder = 0
+  end
+  object pnlsuperior1: TPanel
+    Left = 0
+    Height = 356
+    Top = 88
+    Width = 168
+    Align = alLeft
+    TabOrder = 1
+  end
+  object pnlsuperior2: TPanel
+    Left = 0
+    Height = 82
+    Top = 444
+    Width = 1320
+    Align = alBottom
+    ClientHeight = 82
+    ClientWidth = 1320
+    TabOrder = 2
+    object StatusBar1: TStatusBar
+      Left = 1
+      Height = 23
+      Top = 58
+      Width = 1318
+      Panels = <>
+    end
+  end
+  object pnlsuperior3: TPanel
+    Left = 168
+    Height = 356
+    Top = 88
+    Width = 1152
+    Align = alClient
+    TabOrder = 3
+  end
+  object MainMenu1: TMainMenu
+    left = 315
+    top = 102
+    object MenuItem1: TMenuItem
+      Caption = '&Principal'
+      OnClick = MenuItem1Click
+      object MenuItem2: TMenuItem
+        Caption = 'Configurações'
+        object MenuItem5: TMenuItem
+          Caption = 'Banco de Dados'
+          OnClick = MenuItem5Click
+        end
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Emitente'
+        OnClick = MenuItem3Click
+      end
+    end
+    object MenuItem4: TMenuItem
+      Caption = '&Sair'
+      OnClick = MenuItem4Click
+    end
+  end
+end

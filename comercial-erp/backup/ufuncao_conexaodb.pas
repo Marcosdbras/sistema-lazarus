@@ -8,17 +8,13 @@ interface
       Classes, SysUtils, IniFiles, Dialogs, StdCtrls, LCLType;
 
  function conectarBanco:boolean;
- function DataDirectory: string;
+
 
 
 implementation
-    uses umodulo_conexaodb;
+    uses ufuncao_geral, umodulo_conexaodb;
 
-    function DataDirectory: string;
-      begin
-           Result := ExtractFilePath(ParamStr(0));
-           Result := ExpandFileName(Result );
-      end;
+
 
 
 
@@ -28,10 +24,15 @@ implementation
        Ini: TIniFile;
        NovoNome: string;
      begin
+
+       result := false;
+
        NovoNome := DataDirectory + 'ConexaoBanco.ini';
 
        Ini := TIniFile.Create(NovoNome);
        try
+
+
 
            with modulo_conexaodb do
            begin
@@ -45,8 +46,9 @@ implementation
              Conexaodb.Password        := Ini.ReadString('ConexaoBanco', 'Password', '');
              Conexaodb.Database        := Ini.ReadString('ConexaoBanco', 'Database', '');
              Conexaodb.ClientCodepage  := Ini.ReadString('ConexaoBanco', 'Charset', '');
+             Conexaodb.Connected       := True;
 
-              result := true;
+             result := true;
 
 
 
@@ -56,7 +58,7 @@ implementation
        except
            on E:Exception do
            MessageDlg('Erro ao conectar!'#13'Erro: ' + e.Message, mtError, [mbOK], 0);
-           result := true;
+
        end;
 
 

@@ -47,7 +47,7 @@ begin
         Arq.WriteString('ConexaoBanco', 'User', Userx);
         Arq.WriteString('ConexaoBanco', 'Protocol', Protoc);
         Arq.ReadString('ConexaoBanco', 'LibraryLocation', 'fbclient.dll');
-
+        Arq.ReadString('ConexaoBanco', 'Charset', 'cCP_UTF8');
 
 
         //Autor: Adriano

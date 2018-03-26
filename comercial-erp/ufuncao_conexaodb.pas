@@ -8,19 +8,11 @@ interface
       Classes, SysUtils, IniFiles, Dialogs, StdCtrls, LCLType;
 
  function conectarBanco:boolean;
- function DataDirectory: string;
+
 
 
 implementation
-    uses umodulo_conexaodb;
-
-    function DataDirectory: string;
-      begin
-           Result := ExtractFilePath(ParamStr(0));
-           Result := ExpandFileName(Result );
-      end;
-
-
+    uses ufuncao_geral, umodulo_conexaodb;
 
 
     function conectarBanco:boolean;
@@ -50,6 +42,7 @@ implementation
              Conexaodb.Password        := Ini.ReadString('ConexaoBanco', 'Password', '');
              Conexaodb.Database        := Ini.ReadString('ConexaoBanco', 'Database', '');
              Conexaodb.ClientCodepage  := Ini.ReadString('ConexaoBanco', 'Charset', '');
+             Conexaodb.Connected       := True;
 
              result := true;
 

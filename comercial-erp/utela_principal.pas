@@ -6,13 +6,13 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus;
+  Menus, ComCtrls, XMLRead, XMLWrite, DOM;
 
 type
 
-  { Tfrmprincipal_tela }
+  { Tfrmtela_principal }
 
-  Tfrmprincipal_tela = class(TForm)
+  Tfrmtela_principal = class(TForm)
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -23,6 +23,7 @@ type
     pnlsuperior1: TPanel;
     pnlsuperior2: TPanel;
     pnlsuperior3: TPanel;
+    StatusBar1: TStatusBar;
     procedure FormCreate(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
@@ -35,35 +36,39 @@ type
   end;
 
 var
-  frmprincipal_tela: Tfrmprincipal_tela;
+  frmtela_principal: Tfrmtela_principal;
 
 implementation
          uses uconfig_banco;
 {$R *.lfm}
 
-{ Tfrmprincipal_tela }
+{ Tfrmtela_principal }
 
-procedure Tfrmprincipal_tela.MenuItem1Click(Sender: TObject);
+procedure Tfrmtela_principal.MenuItem1Click(Sender: TObject);
 begin
 
 end;
 
-procedure Tfrmprincipal_tela.FormCreate(Sender: TObject);
+procedure Tfrmtela_principal.FormCreate(Sender: TObject);
+var
+   Documento: TXMLDocument;
+   Child: TDOMNode;
+
 begin
 
 end;
 
-procedure Tfrmprincipal_tela.MenuItem3Click(Sender: TObject);
+procedure Tfrmtela_principal.MenuItem3Click(Sender: TObject);
 begin
 
 end;
 
-procedure Tfrmprincipal_tela.MenuItem4Click(Sender: TObject);
+procedure Tfrmtela_principal.MenuItem4Click(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tfrmprincipal_tela.MenuItem5Click(Sender: TObject);
+procedure Tfrmtela_principal.MenuItem5Click(Sender: TObject);
 begin
 
 //if frmconfig_banco=nil then

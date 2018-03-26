@@ -30,7 +30,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="8">
+    <Units Count="9">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -57,7 +57,7 @@
         <ResourceBaseClass Value="DataModule"/>
       </Unit3>
       <Unit4>
-        <Filename Value="ufuncao_cria_ini.pas"/>
+        <Filename Value="ufuncao_arq_ini.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit4>
       <Unit5>
@@ -70,7 +70,7 @@
       <Unit6>
         <Filename Value="utela_principal.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmprincipal_tela"/>
+        <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit6>
@@ -78,6 +78,10 @@
         <Filename Value="ufuncao_conexaodb.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit7>
+      <Unit8>
+        <Filename Value="ufuncao_geral.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit8>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

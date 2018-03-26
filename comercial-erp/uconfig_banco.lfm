@@ -9,6 +9,7 @@ object frmconfig_banco: Tfrmconfig_banco
   ClientHeight = 338
   ClientWidth = 704
   OnClose = FormClose
+  OnCreate = FormCreate
   Position = poDesktopCenter
   LCLVersion = '1.8.0.6'
   object StaticText1: TStaticText
@@ -68,7 +69,7 @@ object frmconfig_banco: Tfrmconfig_banco
     Left = 192
     Height = 23
     Top = 80
-    Width = 496
+    Width = 432
     TabOrder = 6
     Text = 'C:\SGBR\Master\BASESGMASTER.FDB'
   end
@@ -136,5 +137,19 @@ object frmconfig_banco: Tfrmconfig_banco
     Caption = 'Salvar '
     OnClick = Button2Click
     TabOrder = 11
+  end
+  object btncaminhodb: TButton
+    Left = 624
+    Height = 25
+    Top = 78
+    Width = 35
+    Caption = '...'
+    OnClick = btncaminhodbClick
+    TabOrder = 13
+  end
+  object opeCaminhodb: TOpenDialog
+    Filter = 'Firebird|*.FDB'
+    left = 599
+    top = 31
   end
 end
