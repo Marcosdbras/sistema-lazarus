@@ -28,7 +28,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    ListBox1: TListBox;
+    Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -133,8 +133,11 @@ begin
 
   carregaDadosftp;
 
-
   idftp.Connect();
+
+  idftp.ChangeDir('/');
+
+  //idftp.List(memo1.Lines);
 
   if idftp.Connected then
     form1.Caption:= 'Conectado...';

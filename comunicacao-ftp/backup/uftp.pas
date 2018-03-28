@@ -28,8 +28,9 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    ListBox1: TListBox;
+    Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -39,6 +40,7 @@ type
    sUserName:string;
    sPort:string;
 
+   procedure carregaDadosftp;
     procedure gravaDadosConexao;
      procedure recuperaDadosConexao;
      function DataDirectory: string;
@@ -63,6 +65,14 @@ function tform1.dataDirectory: string;
            Result := ExtractFilePath(ParamStr(0));
            Result := ExpandFileName(Result );
       end;
+
+procedure tform1.carregaDadosftp;
+begin
+    idftp.Host:=edthostname.Text;
+  idftp.Username:=edtusername.Text;
+  idftp.Password:=edtpassword.Text;
+  idftp.Port:= strtoint( edtport.Text );
+end;
 
 procedure tform1.gravaDadosConexao;
 var
@@ -101,10 +111,7 @@ procedure TForm1.Button1Click(Sender: TObject);
 begin
   gravaDadosConexao;
 
-  idftp.Host:=edthostname.Text;
-  idftp.Username:=edtusername.Text;
-  idftp.Password:=edtpassword.Text;
-  idftp.Port:= strtoint( edtport.Text );
+   carregaDadosftp;
 
 
   idftp.Connect();
@@ -118,6 +125,25 @@ begin
 
 
 
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+  gravaDadosConexao;
+
+  carregaDadosftp;
+
+  idftp.Connect();
+
+  idftp.ChangeDir('public_html/');
+
+  //idftp.List(memo1.Lines);
+
+  if idftp.Connected then
+    form1.Caption:= 'Conectado...';
+
+
+  recuperaDadosConexao;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
