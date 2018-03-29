@@ -81,21 +81,21 @@ object Form1: TForm1
     Caption = 'Port'
     ParentColor = False
   end
-  object Edit5: TEdit
+  object edtcaminhoupload: TEdit
     Left = 40
     Height = 23
     Top = 250
-    Width = 496
+    Width = 416
     TabOrder = 4
-    Text = 'Edit5'
+    Text = 'edtcaminhoupload'
   end
-  object Edit6: TEdit
+  object edtcaminhodownload: TEdit
     Left = 40
     Height = 23
     Top = 282
-    Width = 496
+    Width = 416
     TabOrder = 6
-    Text = 'Edit6'
+    Text = 'edtcaminhodownload'
   end
   object Button2: TButton
     Left = 544
@@ -132,6 +132,24 @@ object Form1: TForm1
     )
     TabOrder = 9
   end
+  object Button4: TButton
+    Left = 464
+    Height = 25
+    Top = 248
+    Width = 75
+    Caption = 'Arquivo...'
+    OnClick = Button4Click
+    TabOrder = 10
+  end
+  object Button5: TButton
+    Left = 464
+    Height = 25
+    Top = 280
+    Width = 75
+    Caption = 'Limpar'
+    OnClick = Button5Click
+    TabOrder = 11
+  end
   object idftp: TIdFTP
     IPVersion = Id_IPv4
     ConnectTimeout = 0
@@ -142,5 +160,9 @@ object Form1: TForm1
     ProxySettings.Port = 0
     left = 832
     top = 8
+  end
+  object OpenDialog1: TOpenDialog
+    left = 572
+    top = 27
   end
 end

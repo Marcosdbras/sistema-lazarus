@@ -16,12 +16,14 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
     edthostname: TEdit;
     edtusername: TEdit;
     edtpassword: TEdit;
     edtport: TEdit;
-    Edit5: TEdit;
-    Edit6: TEdit;
+    edtcaminhoupload: TEdit;
+    edtcaminhodownload: TEdit;
     idftp: TIdFTP;
     Label1: TLabel;
     Label2: TLabel;
@@ -29,8 +31,12 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Memo1: TMemo;
+    OpenDialog1: TOpenDialog;
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -109,19 +115,44 @@ end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  gravaDadosConexao;
 
-   carregaDadosftp;
+    gravaDadosConexao;
 
+  carregaDadosftp;
 
   idftp.Connect();
 
-  if idftp.Connected then
-    form1.Caption:= 'Conectado...';
+  idftp.ChangeDir('../../');
+
+
+
 
 
   recuperaDadosConexao;
 
+
+
+  if   (fileexists(  edtcaminhoupload.Text  )) and (idftp.Connected) then
+     begin
+
+       form1.Caption:= 'Enviando...';
+
+       idftp.Put(edtcaminhoupload.Text, extractfilename(edtcaminhoupload.Text),true);
+
+
+
+     end;
+
+
+
+  if (idftp.Connected) then
+     begin
+
+       idftp.Disconnect;
+
+       form1.Caption:= 'Desconectado';
+
+     end;
 
 
 
@@ -129,21 +160,27 @@ end;
 
 procedure TForm1.Button3Click(Sender: TObject);
 begin
-  gravaDadosConexao;
+  idftp.List(memo1.Lines);
+end;
 
-  carregaDadosftp;
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+   if OpenDialog1.Execute then
+      begin
 
-  idftp.Connect();
-
-  idftp.ChangeDir('public_html/');
-
-  //idftp.List(memo1.Lines);
-
-  if idftp.Connected then
-    form1.Caption:= 'Conectado...';
+        edtcaminhoupload.Text:= OPenDialog1.FileName;
 
 
-  recuperaDadosConexao;
+      end;
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Button7Click(Sender: TObject);
+begin
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
