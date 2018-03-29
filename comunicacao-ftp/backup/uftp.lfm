@@ -137,7 +137,7 @@ object Form1: TForm1
     Height = 25
     Top = 248
     Width = 75
-    Caption = 'Arquivo...'
+    Caption = 'Localizar...'
     OnClick = Button4Click
     TabOrder = 10
   end

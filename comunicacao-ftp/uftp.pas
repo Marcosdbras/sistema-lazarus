@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  IdTrivialFTP, IdFTP, INIFiles;
+  IdTrivialFTP, IdFTP, INIFiles, zlib, process;
 
 type
 
@@ -46,6 +46,8 @@ type
    sUserName:string;
    sPort:string;
 
+   scaminhoupload:string;
+
    procedure carregaDadosftp;
     procedure gravaDadosConexao;
      procedure recuperaDadosConexao;
@@ -74,10 +76,12 @@ function tform1.dataDirectory: string;
 
 procedure tform1.carregaDadosftp;
 begin
-    idftp.Host:=edthostname.Text;
+  idftp.Host:=edthostname.Text;
   idftp.Username:=edtusername.Text;
   idftp.Password:=edtpassword.Text;
   idftp.Port:= strtoint( edtport.Text );
+
+
 end;
 
 procedure tform1.gravaDadosConexao;
@@ -91,6 +95,8 @@ begin
   Ini.WriteString('conexaoftp','username',edtusername.Text);
   Ini.WriteString('conexaoftp','password',edtpassword.Text);
   Ini.WriteString('conexaoftp','port',edtport.Text);
+
+  Ini.WriteString('conexaoftp','caminhoupload',edtcaminhoupload.Text);
 
 
 
@@ -108,6 +114,7 @@ begin
   sUserName := Ini.ReadString('conexaoftp','username','');
   sPassWord := Ini.ReadString('conexaoftp','password','');
   sPort     := Ini.ReadString('conexaoftp','port','');
+  scaminhoupload := Ini.ReadString('conexaoftp','caminhoupload','');
 
 
 
@@ -116,7 +123,12 @@ end;
 procedure TForm1.Button1Click(Sender: TObject);
 begin
 
-    gravaDadosConexao;
+
+
+
+
+
+  gravaDadosConexao;
 
   carregaDadosftp;
 
@@ -134,7 +146,7 @@ begin
 
        form1.Caption:= 'Enviando...';
 
-       idftp.Put(edtcaminhoupload.Text, extractfilename(edtcaminhoupload.Text),true);
+       idftp.Put(edtcaminhoupload.Text, extractfilename(edtcaminhoupload.Text), true);
 
 
 
@@ -188,6 +200,7 @@ begin
   edtusername.Text:='';
   edtpassword.Text:='';
   edtport.Text:='';
+  edtcaminhoupload.Text:='';
 
   if fileexists(sArquivo) then
      begin
@@ -197,7 +210,7 @@ begin
        edtusername.Text:=sUserName;
        edtpassword.Text:=sPassWord;
        edtport.Text:= sport;
-
+       edtcaminhoupload.Text:=scaminhoupload;
 
      end;
 
