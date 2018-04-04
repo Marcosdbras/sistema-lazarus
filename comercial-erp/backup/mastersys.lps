@@ -8,7 +8,6 @@
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="14"/>
         <CursorPos X="64" Y="22"/>
@@ -76,8 +75,9 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="65"/>
+        <TopLine Value="102"/>
         <CursorPos X="20" Y="80"/>
         <UsageCount Value="67"/>
         <Loaded Value="True"/>

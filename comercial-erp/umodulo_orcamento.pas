@@ -14,6 +14,8 @@ type
   Tmodulo_orcamento = class(TDataModule)
     dsorcamento: TDataSource;
     qrorcamento: TZQuery;
+    ZQuery1: TZQuery;
+    ZQuery2: TZQuery;
   private
 
   public

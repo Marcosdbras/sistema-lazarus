@@ -20,8 +20,8 @@
         <ComponentName Value="frmorcamentos"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="57"/>
-        <CursorPos Y="70"/>
+        <TopLine Value="61"/>
+        <CursorPos X="7" Y="67"/>
         <UsageCount Value="84"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -32,6 +32,7 @@
         <ComponentName Value="modulo_orcamento"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
         <CursorPos X="58" Y="8"/>
         <UsageCount Value="84"/>
@@ -75,10 +76,9 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <TopLine Value="102"/>
-        <CursorPos X="20" Y="80"/>
+        <CursorPos X="59" Y="108"/>
         <UsageCount Value="67"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -108,7 +108,7 @@
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit9>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="uorcamento_pesquisa.pas"/>
         <Caret Line="3" Column="23"/>
@@ -225,6 +225,10 @@
         <Filename Value="uorcamento_pesquisa.pas"/>
         <Caret Line="63" Column="24" TopLine="57"/>
       </Position29>
+      <Position30>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="8" Column="58"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

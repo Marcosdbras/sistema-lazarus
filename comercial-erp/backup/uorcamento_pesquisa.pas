@@ -19,8 +19,8 @@ type
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
-    DateEdit1: TDateEdit;
-    DateEdit2: TDateEdit;
+    edtdatainicio: TDateEdit;
+    edtdatafim: TDateEdit;
     DBGrid1: TDBGrid;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
@@ -33,6 +33,7 @@ type
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
+    procedure FormCreate(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
   private
@@ -52,6 +53,28 @@ implementation
 
 procedure Tfrmorcamentos.Label1Click(Sender: TObject);
 begin
+
+end;
+
+procedure Tfrmorcamentos.FormCreate(Sender: TObject);
+begin
+
+  edtdatainicio.Date:= date;
+  edtdatafim.Date:=date;
+
+  with modulo_orcamento do
+    begin
+
+
+
+      qrorcamento.Active:= false;
+      qrorcamento.SQL.Clear;
+      qrorcamento.SQL.Add('select * from torcamento');
+      qrorcamento.Active:=true;
+    end;
+
+
+
 
 end;
 

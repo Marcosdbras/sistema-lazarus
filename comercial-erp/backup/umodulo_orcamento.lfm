@@ -3,7 +3,7 @@ object modulo_orcamento: Tmodulo_orcamento
   Height = 181
   HorizontalOffset = 256
   VerticalOffset = 210
-  Width = 204
+  Width = 265
   PPI = 96
   object qrorcamento: TZQuery
     Connection = modulo_conexaodb.conexaodb

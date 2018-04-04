@@ -19,4 +19,16 @@ object modulo_orcamento: Tmodulo_orcamento
     left = 40
     top = 104
   end
+  object ZQuery1: TZQuery
+    Connection = modulo_conexaodb.conexaodb
+    Params = <>
+    left = 144
+    top = 32
+  end
+  object ZQuery2: TZQuery
+    Connection = modulo_conexaodb.conexaodb
+    Params = <>
+    left = 136
+    top = 104
+  end
 end

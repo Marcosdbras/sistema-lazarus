@@ -6,6 +6,7 @@ object frmorcamentos: Tfrmorcamentos
   Caption = 'Orçamentos'
   ClientHeight = 638
   ClientWidth = 1156
+  OnCreate = FormCreate
   LCLVersion = '1.8.0.6'
   object pnlsuperior: TPanel
     Left = 0
@@ -50,7 +51,7 @@ object frmorcamentos: Tfrmorcamentos
       ParentColor = False
       ParentFont = False
     end
-    object DateEdit1: TDateEdit
+    object edtdatainicio: TDateEdit
       Left = 784
       Height = 23
       Top = 40
@@ -61,7 +62,7 @@ object frmorcamentos: Tfrmorcamentos
       NumGlyphs = 1
       MaxLength = 0
       TabOrder = 0
-      Text = 'DateEdit1'
+      Text = 'edtdatainicio'
     end
     object Label3: TLabel
       Left = 784
@@ -79,7 +80,7 @@ object frmorcamentos: Tfrmorcamentos
       ParentColor = False
       ParentFont = False
     end
-    object DateEdit2: TDateEdit
+    object edtdatafim: TDateEdit
       Left = 928
       Height = 23
       Top = 38
@@ -90,7 +91,7 @@ object frmorcamentos: Tfrmorcamentos
       NumGlyphs = 1
       MaxLength = 0
       TabOrder = 1
-      Text = 'DateEdit2'
+      Text = 'edtdatafim'
     end
     object Label4: TLabel
       Left = 928
