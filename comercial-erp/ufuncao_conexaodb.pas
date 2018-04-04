@@ -12,7 +12,7 @@ interface
 
 
 implementation
-    uses ufuncao_geral, umodulo_conexaodb;
+    uses    ufuncao_geral, umodulo_conexaodb;
 
 
     function conectarBanco:boolean;

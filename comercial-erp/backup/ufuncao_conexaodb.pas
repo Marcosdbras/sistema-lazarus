@@ -15,10 +15,6 @@ implementation
     uses ufuncao_geral, umodulo_conexaodb;
 
 
-
-
-
-
     function conectarBanco:boolean;
      var
        Ini: TIniFile;

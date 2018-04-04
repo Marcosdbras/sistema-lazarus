@@ -8,6 +8,7 @@ object frmtela_principal: Tfrmtela_principal
   ClientWidth = 1320
   Menu = MainMenu1
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '1.8.0.6'
   Visible = True
   WindowState = wsMaximized

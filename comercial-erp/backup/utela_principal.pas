@@ -25,6 +25,7 @@ type
     pnlsuperior3: TPanel;
     StatusBar1: TStatusBar;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -39,7 +40,9 @@ var
   frmtela_principal: Tfrmtela_principal;
 
 implementation
-         uses uconfig_banco;
+
+
+         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -50,14 +53,38 @@ begin
 end;
 
 procedure Tfrmtela_principal.FormCreate(Sender: TObject);
-//var
-//xml : TXmlDocument;
-
 var
    Documento: TXMLDocument;
    Child: TDOMNode;
 
 begin
+
+end;
+
+procedure Tfrmtela_principal.FormShow(Sender: TObject);
+begin
+
+   //Carrega dados de conexão do banco na variáveis globais
+   LerINIBD;
+
+   // Carrega Variáveis globais nos textbox
+   //cbxhostname.Text := sHostName;
+   //ediporta.Text := sPort;
+   //cbxversaosgdb.Text := sProtocol;
+   //ediusuario.Text := sUser;
+   //edisenha.Text := sPassword;
+   //edibancodados.Text := sDatabase;
+
+  if not conectarBanco then
+     begin
+
+       //erro ao conectar banco, encerra sistema
+       Application.Terminate;
+
+     end;
+
+
+
 
 end;
 

@@ -1,0 +1,22 @@
+object modulo_orcamento: Tmodulo_orcamento
+  OldCreateOrder = False
+  Height = 181
+  HorizontalOffset = 256
+  VerticalOffset = 210
+  Width = 204
+  PPI = 96
+  object qrorcamento: TZQuery
+    Connection = modulo_conexaodb.conexaodb
+    SQL.Strings = (
+      'select * from temitente'
+    )
+    Params = <>
+    left = 32
+    top = 32
+  end
+  object dsorcamento: TDataSource
+    DataSet = qrorcamento
+    left = 40
+    top = 104
+  end
+end
