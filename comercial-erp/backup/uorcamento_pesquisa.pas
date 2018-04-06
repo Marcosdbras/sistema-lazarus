@@ -6,19 +6,20 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids;
+  ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids, ZDataset, db;
 
 type
 
-  { Tfrmorcamentos }
+  { Tfrmorcamento_pesquisa }
 
-  Tfrmorcamentos = class(TForm)
+  Tfrmorcamento_pesquisa = class(TForm)
     btnfiltrar: TButton;
     btnlimpar: TButton;
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
+    Button5: TButton;
     edtdatainicio: TDateEdit;
     edtdatafim: TDateEdit;
     DBGrid1: TDBGrid;
@@ -30,12 +31,20 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
+    procedure btnfiltrarClick(Sender: TObject);
+    procedure btnlimparClick(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
     procedure FormCreate(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
+    procedure filtrar;
+    procedure limpar;
   private
 
   public
@@ -43,43 +52,85 @@ type
   end;
 
 var
-  frmorcamentos: Tfrmorcamentos;
+  frmorcamento_pesquisa: Tfrmorcamento_pesquisa;
 
 implementation
      uses ufuncao_geral,  umodulo_orcamento;
 {$R *.lfm}
 
-{ Tfrmorcamentos }
+{ Tfrmorcamento_pesquisa }
 
-procedure Tfrmorcamentos.Label1Click(Sender: TObject);
+procedure Tfrmorcamento_pesquisa.Label1Click(Sender: TObject);
 begin
 
 end;
 
-procedure Tfrmorcamentos.FormCreate(Sender: TObject);
+procedure Tfrmorcamento_pesquisa.FormCreate(Sender: TObject);
 begin
 
+
+  limpar;
+
+  filtrar;
+
+
+
+
+
+
+end;
+
+procedure Tfrmorcamento_pesquisa.btnfiltrarClick(Sender: TObject);
+begin
+  filtrar;
+end;
+
+procedure Tfrmorcamento_pesquisa.btnlimparClick(Sender: TObject);
+begin
+  limpar;
+end;
+
+procedure Tfrmorcamento_pesquisa.Button5Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure Tfrmorcamento_pesquisa.dsorcamentoDataChange(Sender: TObject;
+  Field: TField);
+begin
+
+end;
+
+procedure Tfrmorcamento_pesquisa.pnlinferiorClick(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmorcamento_pesquisa.limpar;
+begin
   edtdatainicio.Date:= date;
   edtdatafim.Date:=date;
+end;
 
-  with modulo_orcamento do
+procedure Tfrmorcamento_pesquisa.filtrar;
+var sdti,sdtf:string;
+
+begin
+  sdti := formatdatetime('dd.mm.yyyy', edtdatainicio.date);
+  sdtf := formatdatetime('dd.mm.yyyy',edtdatafim.Date);
+
+   with modulo_orcamento do
     begin
-
-
 
       qrorcamento.Active:= false;
       qrorcamento.SQL.Clear;
-      qrorcamento.SQL.Add('select * from torcamento');
+      qrorcamento.SQL.Add('select * from torcamento where data >= :dti and data <= :dtf');
+      qrorcamento.ParamByName('dti').AsDate:= edtdatainicio.date;
+      qrorcamento.ParamByName('dtf').AsDate:= edtdatafim.Date;
       qrorcamento.Active:=true;
+
     end;
 
-
-
-
-end;
-
-procedure Tfrmorcamentos.pnlinferiorClick(Sender: TObject);
-begin
 
 end;
 

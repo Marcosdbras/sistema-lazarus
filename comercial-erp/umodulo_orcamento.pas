@@ -5,7 +5,7 @@ unit umodulo_orcamento;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ZConnection, ZDataset, db;
+  Classes, SysUtils, FileUtil, ZConnection, ZDataset, db, sqldb;
 
 type
 
@@ -13,9 +13,8 @@ type
 
   Tmodulo_orcamento = class(TDataModule)
     dsorcamento: TDataSource;
-    qrorcamento: TZQuery;
-    ZQuery1: TZQuery;
-    ZQuery2: TZQuery;
+    qrorcamento: TSQLQuery;
+    procedure DataModuleCreate(Sender: TObject);
   private
 
   public
@@ -28,6 +27,13 @@ var
 implementation
        uses umodulo_conexaodb;
 {$R *.lfm}
+
+       { Tmodulo_orcamento }
+
+       procedure Tmodulo_orcamento.DataModuleCreate(Sender: TObject);
+       begin
+
+       end;
 
 end.
 

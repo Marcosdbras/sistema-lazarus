@@ -42,7 +42,7 @@ var
 implementation
 
 
-         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb;
+         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb, uorcamento_pesquisa, umodulo_conexaodb;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -73,11 +73,12 @@ begin
   if not conectarBanco then
      begin
 
-       //erro ao conectar banco, encerra sistema
-       Application.Terminate;
+        frmconfig_banco := tfrmconfig_banco.create(self);
+        frmconfig_banco.showmodal;
+        frmconfig_banco.free;
+
 
      end;
-
 
 
 end;
@@ -93,7 +94,9 @@ end;
 
 procedure Tfrmtela_principal.MenuItem3Click(Sender: TObject);
 begin
-
+  frmorcamento_pesquisa := tfrmorcamento_pesquisa.create(self);
+  frmorcamento_pesquisa.showmodal;
+  frmorcamento_pesquisa.free;
 end;
 
 procedure Tfrmtela_principal.MenuItem4Click(Sender: TObject);

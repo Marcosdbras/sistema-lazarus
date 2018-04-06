@@ -42,7 +42,7 @@ var
 implementation
 
 
-         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb;
+         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb, uorcamento_pesquisa, umodulo_conexaodb;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -57,11 +57,6 @@ var
    Documento: TXMLDocument;
    Child: TDOMNode;
 
-begin
-
-end;
-
-procedure Tfrmtela_principal.FormShow(Sender: TObject);
 begin
 
    //Carrega dados de conexão do banco na variáveis globais
@@ -84,13 +79,22 @@ begin
      end;
 
 
+end;
+
+procedure Tfrmtela_principal.FormShow(Sender: TObject);
+begin
+
+
+
 
 
 end;
 
 procedure Tfrmtela_principal.MenuItem3Click(Sender: TObject);
 begin
-
+  frmorcamento_pesquisa := tfrmorcamento_pesquisa.create(self);
+  frmorcamento_pesquisa.showmodal;
+  frmorcamento_pesquisa.free;
 end;
 
 procedure Tfrmtela_principal.MenuItem4Click(Sender: TObject);

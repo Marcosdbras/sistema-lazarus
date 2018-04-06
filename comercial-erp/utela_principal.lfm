@@ -1,5 +1,5 @@
 object frmtela_principal: Tfrmtela_principal
-  Left = 114
+  Left = 30
   Height = 546
   Top = 104
   Width = 1320
@@ -67,7 +67,7 @@ object frmtela_principal: Tfrmtela_principal
         end
       end
       object MenuItem3: TMenuItem
-        Caption = 'Emitente'
+        Caption = 'Orçamentos'
         OnClick = MenuItem3Click
       end
     end

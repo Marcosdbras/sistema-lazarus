@@ -4,25 +4,26 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="10">
+    <Units Count="12">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="14"/>
-        <CursorPos X="64" Y="22"/>
-        <UsageCount Value="84"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="18"/>
+        <CursorPos X="67" Y="26"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="uorcamento_pesquisa.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmorcamentos"/>
+        <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="57"/>
-        <CursorPos Y="70"/>
-        <UsageCount Value="84"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="120"/>
+        <CursorPos X="68" Y="128"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -32,9 +33,10 @@
         <ComponentName Value="modulo_orcamento"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="5"/>
-        <CursorPos X="58" Y="8"/>
-        <UsageCount Value="84"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="23"/>
+        <CursorPos X="43" Y="30"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -44,17 +46,21 @@
         <ComponentName Value="modulo_conexaodb"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="51" Y="9"/>
-        <UsageCount Value="77"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="7"/>
+        <CursorPos X="3" Y="37"/>
+        <UsageCount Value="134"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="ufuncao_arq_ini.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="51"/>
-        <CursorPos X="10" Y="10"/>
-        <UsageCount Value="77"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="67"/>
+        <CursorPos X="70" Y="77"/>
+        <UsageCount Value="134"/>
+        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="uconfig_banco.pas"/>
@@ -62,10 +68,10 @@
         <ComponentName Value="frmconfig_banco"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="37"/>
         <CursorPos X="25" Y="46"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="128"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -75,21 +81,20 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="102"/>
-        <CursorPos X="20" Y="80"/>
-        <UsageCount Value="67"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="66"/>
+        <CursorPos X="32" Y="73"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="ufuncao_conexaodb.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="10"/>
-        <CursorPos X="57" Y="26"/>
-        <UsageCount Value="56"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="13"/>
+        <CursorPos X="46" Y="15"/>
+        <UsageCount Value="113"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -99,132 +104,153 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos Y="20"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="103"/>
       </Unit8>
       <Unit9>
         <Filename Value="upedido_modulo.lfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit9>
+      <Unit10>
+        <Filename Value="C:\componentes\zeos\src\dbc\ZDbcUtils.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="331"/>
+        <CursorPos X="32" Y="338"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="C:\componentes\zeos\src\component\ZAbstractRODataset.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="862"/>
+        <CursorPos Y="869"/>
+        <UsageCount Value="12"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit11>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="3" Column="23"/>
+        <Filename Value="umodulo_conexaodb.pas"/>
+        <Caret Line="38" Column="3" TopLine="30"/>
       </Position1>
       <Position2>
-        <Filename Value="uconfig_banco.pas"/>
-        <Caret Line="128" Column="36" TopLine="55"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="16" Column="31" TopLine="11"/>
       </Position2>
       <Position3>
         <Filename Value="umodulo_orcamento.pas"/>
-        <Caret Line="14" Column="42"/>
+        <Caret Line="17" Column="49" TopLine="11"/>
       </Position3>
       <Position4>
-        <Filename Value="utela_principal.pas"/>
-        <Caret Line="60" Column="8" TopLine="47"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="141" Column="43" TopLine="123"/>
       </Position4>
       <Position5>
-        <Filename Value="utela_principal.pas"/>
-        <Caret Line="46" Column="25" TopLine="35"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="140" Column="43" TopLine="125"/>
       </Position5>
       <Position6>
-        <Filename Value="utela_principal.pas"/>
-        <Caret Line="61" Column="2" TopLine="54"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="139" Column="43" TopLine="124"/>
       </Position6>
       <Position7>
-        <Filename Value="utela_principal.pas"/>
-        <Caret Line="72" Column="11" TopLine="64"/>
+        <Filename Value="umodulo_conexaodb.pas"/>
+        <Caret Line="37" Column="3" TopLine="7"/>
       </Position7>
       <Position8>
-        <Filename Value="uconfig_banco.pas"/>
-        <Caret Line="46" Column="4" TopLine="36"/>
+        <Filename Value="ufuncao_conexaodb.pas"/>
+        <Caret Line="38" Column="16" TopLine="30"/>
       </Position8>
       <Position9>
-        <Filename Value="utela_principal.pas"/>
-        <Caret Line="48" Column="25" TopLine="73"/>
+        <Filename Value="ufuncao_conexaodb.pas"/>
+        <Caret Line="39" Column="16" TopLine="31"/>
       </Position9>
       <Position10>
         <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="24" TopLine="12"/>
+        <Caret Line="40" Column="16" TopLine="32"/>
       </Position10>
       <Position11>
         <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="26" TopLine="12"/>
+        <Caret Line="41" Column="32" TopLine="33"/>
       </Position11>
       <Position12>
         <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="28" TopLine="14"/>
+        <Caret Line="44" Column="31" TopLine="35"/>
       </Position12>
       <Position13>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="29" TopLine="15"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="76" Column="8" TopLine="70"/>
       </Position13>
       <Position14>
-        <Filename Value="mastersys.lpr"/>
-        <Caret Line="27" Column="65" TopLine="13"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="78" Column="9" TopLine="66"/>
       </Position14>
       <Position15>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="24" TopLine="16"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="125" Column="25" TopLine="116"/>
       </Position15>
       <Position16>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="26" TopLine="16"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="56" Column="44" TopLine="42"/>
       </Position16>
       <Position17>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="28" TopLine="16"/>
+        <Filename Value="mastersys.lpr"/>
+        <Caret Line="26" Column="67" TopLine="18"/>
       </Position17>
       <Position18>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="29" TopLine="16"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="133" Column="7" TopLine="122"/>
       </Position18>
       <Position19>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="36" TopLine="29"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="129" TopLine="122"/>
       </Position19>
       <Position20>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="37" TopLine="29"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="130" Column="9" TopLine="122"/>
       </Position20>
       <Position21>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="38" TopLine="29"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="120" Column="66" TopLine="116"/>
       </Position21>
       <Position22>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="39" TopLine="29"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="133" Column="63" TopLine="128"/>
       </Position22>
       <Position23>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="40" TopLine="29"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="127" Column="64" TopLine="121"/>
       </Position23>
       <Position24>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="41" TopLine="29"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="126" Column="64" TopLine="120"/>
       </Position24>
       <Position25>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="42" TopLine="29"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="127" Column="64" TopLine="121"/>
       </Position25>
       <Position26>
-        <Filename Value="ufuncao_conexaodb.pas"/>
-        <Caret Line="43" TopLine="30"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="128" Column="64" TopLine="122"/>
       </Position26>
       <Position27>
-        <Filename Value="utela_principal.pas"/>
-        <Caret Line="80" Column="20" TopLine="65"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="127" Column="64" TopLine="121"/>
       </Position27>
       <Position28>
         <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="49" Column="47" TopLine="33"/>
+        <Caret Line="126" Column="64" TopLine="120"/>
       </Position28>
       <Position29>
         <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="63" Column="24" TopLine="57"/>
+        <Caret Line="127" Column="64" TopLine="121"/>
       </Position29>
+      <Position30>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="129" Column="64" TopLine="123"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

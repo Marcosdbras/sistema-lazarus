@@ -12,7 +12,7 @@ interface
 
 
 implementation
-    uses ufuncao_geral, umodulo_conexaodb;
+    uses    ufuncao_geral, umodulo_conexaodb;
 
 
     function conectarBanco:boolean;
@@ -35,10 +35,10 @@ implementation
 
              Conexaodb.Connected       := False;
              Conexaodb.HostName        := Ini.ReadString('ConexaoBanco', 'Hostname', '');
-             Conexaodb.Port            := Ini.ReadInteger('ConexaoBanco', 'Port', 0);
-             Conexaodb.Protocol        := Ini.ReadString('ConexaoBanco', 'Protocol', '');
-             Conexaodb.LibraryLocation := Ini.ReadString('ConexaoBanco', 'LibraryLocation', '');
-             Conexaodb.User            := Ini.ReadString('ConexaoBanco', 'User', '');
+             //Conexaodb.Port            := Ini.ReadInteger('ConexaoBanco', 'Port', 0);
+             //Conexaodb.Protocol        := Ini.ReadString('ConexaoBanco', 'Protocol', '');
+             //Conexaodb.LibraryLocation := Ini.ReadString('ConexaoBanco', 'LibraryLocation', '');
+             Conexaodb.UserName            := Ini.ReadString('ConexaoBanco', 'User', '');
              Conexaodb.Password        := Ini.ReadString('ConexaoBanco', 'Password', '');
              Conexaodb.Database        := Ini.ReadString('ConexaoBanco', 'Database', '');
              Conexaodb.ClientCodepage  := Ini.ReadString('ConexaoBanco', 'Charset', '');

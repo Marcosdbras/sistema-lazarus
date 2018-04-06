@@ -20,9 +20,16 @@ begin
 
 
   Application.CreateForm(Tmodulo_conexaodb, modulo_conexaodb);
-   Application.CreateForm(Tfrmtela_principal, frmtela_principal);
-    Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
-   Application.CreateForm(Tfrmorcamentos, frmorcamentos);
+  Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
+
+
+  Application.CreateForm(Tfrmtela_principal, frmtela_principal);
+
+
+
+
+
+  //Application.CreateForm(Tfrmorcamento_pesquisa, frmorcamento_pesquisa);
 
 
   Application.Run;

@@ -41,7 +41,7 @@
       <Unit1>
         <Filename Value="uorcamento_pesquisa.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmorcamentos"/>
+        <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>

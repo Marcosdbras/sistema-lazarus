@@ -5,14 +5,17 @@ unit umodulo_conexaodb;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ZConnection;
+  Classes, SysUtils, FileUtil, ZConnection, ZDataset, sqldb, IBConnection, db;
 
 type
 
   { Tmodulo_conexaodb }
 
   Tmodulo_conexaodb = class(TDataModule)
-    conexaodb: TZConnection;
+    conexaodb: TIBConnection;
+    qrorcamento1CONTROLE: TLongintField;
+    tzcontrole: TSQLTransaction;
+    procedure conexaodbStartTransaction(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private
 
@@ -30,6 +33,11 @@ implementation
 { Tmodulo_conexaodb }
 
 procedure Tmodulo_conexaodb.DataModuleCreate(Sender: TObject);
+begin
+
+end;
+
+procedure Tmodulo_conexaodb.conexaodbStartTransaction(Sender: TObject);
 begin
 
 end;

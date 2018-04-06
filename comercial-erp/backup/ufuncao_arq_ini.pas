@@ -15,7 +15,7 @@ procedure LerINIBD;
 
 
 implementation
-       uses ufuncao_conexaodb, ufuncao_geral;
+       uses ufuncao_geral, ufuncao_conexaodb;
 
 procedure LerINIBD;
 var
