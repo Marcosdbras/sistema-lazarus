@@ -4,7 +4,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
   Top = 27
   Width = 1249
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
-  Caption = 'Pesquisa de Orçamentos'
+  Caption = 'Master Plus - Pesquisa de Orçamentos'
   ClientHeight = 638
   ClientWidth = 1249
   OnCreate = FormCreate

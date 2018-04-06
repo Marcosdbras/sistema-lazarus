@@ -73,8 +73,10 @@ begin
   if not conectarBanco then
      begin
 
-       //erro ao conectar banco, encerra sistema
-       Application.Terminate;
+        frmconfig_banco := tfrmconfig_banco.create(self);
+        frmconfig_banco.showmodal;
+        frmconfig_banco.free;
+
 
      end;
 
