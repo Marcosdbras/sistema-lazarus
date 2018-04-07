@@ -1,0 +1,33 @@
+object frmsplash: Tfrmsplash
+  Left = 197
+  Height = 438
+  Top = 188
+  Width = 911
+  BorderStyle = bsNone
+  ClientHeight = 438
+  ClientWidth = 911
+  FormStyle = fsSplash
+  LCLVersion = '1.8.0.6'
+  object Shape1: TShape
+    Left = 16
+    Height = 416
+    Top = 8
+    Width = 208
+    Brush.Color = clBlue
+  end
+  object Label1: TLabel
+    Left = 456
+    Height = 42
+    Top = 192
+    Width = 192
+    Caption = 'Master Plus'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -37
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+end

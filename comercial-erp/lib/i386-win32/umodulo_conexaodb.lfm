@@ -26,4 +26,41 @@ object modulo_conexaodb: Tmodulo_conexaodb
     left = 257
     top = 219
   end
+  object Script: TSQLScript
+    DataBase = conexaodb
+    Transaction = tzcontrole
+    UseDollarString = False
+    Directives.Strings = (
+      'SET TERM'
+      'COMMIT WORK'
+      'COMMIT RETAIN'
+      'COMMIT'
+      '#IFDEF'
+      '#IFNDEF'
+      '#ELSE'
+      '#ENDIF'
+      '#DEFINE'
+      '#UNDEF'
+      '#UNDEFINE'
+    )
+    Script.Strings = (
+      'CREATE GENERATOR GEN_MUSUARIO_ID;'
+      'commit;'
+    )
+    Terminator = ';'
+    CommentsinSQL = True
+    UseSetTerm = True
+    UseCommit = True
+    UseDefines = True
+    left = 303
+    top = 117
+  end
+  object qrconsulta_base: TSQLQuery
+    FieldDefs = <>
+    Database = conexaodb
+    Transaction = tzcontrole
+    Params = <>
+    left = 192
+    top = 96
+  end
 end

@@ -18,6 +18,8 @@ object frmtela_principal: Tfrmtela_principal
     Top = 0
     Width = 1320
     Align = alTop
+    Color = 16744448
+    ParentColor = False
     TabOrder = 0
   end
   object pnlsuperior1: TPanel
@@ -26,6 +28,8 @@ object frmtela_principal: Tfrmtela_principal
     Top = 88
     Width = 168
     Align = alLeft
+    Color = 16744448
+    ParentColor = False
     TabOrder = 1
   end
   object pnlsuperior2: TPanel
@@ -36,6 +40,8 @@ object frmtela_principal: Tfrmtela_principal
     Align = alBottom
     ClientHeight = 82
     ClientWidth = 1320
+    Color = 16744448
+    ParentColor = False
     TabOrder = 2
     object StatusBar1: TStatusBar
       Left = 1

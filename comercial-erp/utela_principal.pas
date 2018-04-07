@@ -6,13 +6,15 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus, ComCtrls, XMLRead, XMLWrite, DOM;
+  Menus, ComCtrls, DBGrids, XMLRead, XMLWrite, DOM, db;
 
 type
 
   { Tfrmtela_principal }
 
   Tfrmtela_principal = class(TForm)
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -80,6 +82,10 @@ begin
 
      end;
 
+
+  //showmessage(inttostr(existe_tabela('TUSUARIO')));
+
+  mostrar_inf_campo('TUSUARIO','LOGIN');
 
 end;
 

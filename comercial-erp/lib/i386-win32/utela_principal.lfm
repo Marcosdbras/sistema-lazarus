@@ -57,7 +57,19 @@ object frmtela_principal: Tfrmtela_principal
     Top = 88
     Width = 1152
     Align = alClient
+    ClientHeight = 356
+    ClientWidth = 1152
     TabOrder = 3
+    object DBGrid1: TDBGrid
+      Left = 16
+      Height = 300
+      Top = 22
+      Width = 1072
+      Color = clWindow
+      Columns = <>
+      DataSource = DataSource1
+      TabOrder = 0
+    end
   end
   object MainMenu1: TMainMenu
     left = 315
@@ -81,5 +93,10 @@ object frmtela_principal: Tfrmtela_principal
       Caption = '&Sair'
       OnClick = MenuItem4Click
     end
+  end
+  object DataSource1: TDataSource
+    DataSet = modulo_conexaodb.qrconsulta_base
+    left = 435
+    top = 211
   end
 end
