@@ -85,7 +85,7 @@ begin
 
   //showmessage(inttostr(existe_tabela('TUSUARIO')));
 
-  existe_tabela('TUSUARIO');
+  mostrar_inf_campo('TUSUARIO','LOGIN');
 
 end;
 

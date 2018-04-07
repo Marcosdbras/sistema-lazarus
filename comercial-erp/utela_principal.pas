@@ -87,6 +87,9 @@ begin
 
   mostrar_inf_campo('TUSUARIO','LOGIN');
 
+
+  execscript;
+
 end;
 
 procedure Tfrmtela_principal.FormShow(Sender: TObject);

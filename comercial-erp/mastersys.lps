@@ -79,9 +79,10 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
-        <TopLine Value="82"/>
-        <CursorPos X="38" Y="88"/>
+        <TopLine Value="79"/>
+        <CursorPos X="14" Y="91"/>
         <UsageCount Value="172"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -97,10 +98,9 @@
       <Unit8>
         <Filename Value="ufuncao_geral.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="10"/>
-        <TopLine Value="151"/>
-        <CursorPos X="73" Y="154"/>
+        <TopLine Value="25"/>
+        <CursorPos X="11" Y="30"/>
         <UsageCount Value="151"/>
         <Loaded Value="True"/>
       </Unit8>
@@ -115,7 +115,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="331"/>
         <CursorPos X="32" Y="338"/>
-        <UsageCount Value="37"/>
+        <UsageCount Value="38"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit10>
