@@ -44,7 +44,7 @@ var
 implementation
 
 
-         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb, uorcamento_pesquisa, umodulo_conexaodb;
+         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb, uorcamento_pesquisa, umodulo_conexaodb, ulogin;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -61,34 +61,41 @@ var
 
 begin
 
-   //Carrega dados de conexão do banco na variáveis globais
-   LerINIBD;
-
-   // Carrega Variáveis globais nos textbox
-   //cbxhostname.Text := sHostName;
-   //ediporta.Text := sPort;
-   //cbxversaosgdb.Text := sProtocol;
-   //ediusuario.Text := sUser;
-   //edisenha.Text := sPassword;
-   //edibancodados.Text := sDatabase;
-
-  if not conectarBanco then
-     begin
-
-        frmconfig_banco := tfrmconfig_banco.create(self);
-        frmconfig_banco.showmodal;
-        frmconfig_banco.free;
+//Carrega dados de conexão do banco na variáveis globais
+LerINIBD;
 
 
-     end;
+//Se não consegue conectar banco abre tela config banco
+if not conectarBanco then
+   begin
+
+           frmconfig_banco := tfrmconfig_banco.create(self);
+           frmconfig_banco.showmodal;
+           frmconfig_banco.free;
+
+
+
+
+   end;
+
+ atualiza_base;
+
+ frmlogin := tfrmlogin.Create(self);
+ frmlogin.ShowModal;
+ frmlogin.Free;
+
+
 
 
   //showmessage(inttostr(existe_tabela('TUSUARIO')));
 
-  mostrar_inf_campo('TUSUARIO','LOGIN');
+  //mostrar_inf_campo('TUSUARIO','LOGIN');
 
 
-  execscript;
+  //execscript;
+
+
+  //atualiza_base;
 
 end;
 

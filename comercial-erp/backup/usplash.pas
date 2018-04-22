@@ -10,9 +10,9 @@ uses
 
 type
 
-  { TForm1 }
+  { Tfrmsplash }
 
-  TForm1 = class(TForm)
+  Tfrmsplash = class(TForm)
     Label1: TLabel;
     Shape1: TShape;
   private
@@ -22,7 +22,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmsplash: Tfrmsplash;
 
 implementation
 

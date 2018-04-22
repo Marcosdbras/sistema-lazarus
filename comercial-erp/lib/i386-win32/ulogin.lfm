@@ -1,0 +1,98 @@
+object frmlogin: Tfrmlogin
+  Left = 287
+  Height = 264
+  Top = 251
+  Width = 756
+  BorderStyle = bsDialog
+  Caption = 'Acesso ao Master Plus'
+  ClientHeight = 264
+  ClientWidth = 756
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '1.8.0.6'
+  object Shape1: TShape
+    Left = 8
+    Height = 250
+    Top = 6
+    Width = 208
+    Brush.Color = clBlue
+  end
+  object Label1: TLabel
+    Left = 248
+    Height = 22
+    Top = 64
+    Width = 72
+    Caption = 'Usuário'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 248
+    Height = 22
+    Top = 158
+    Width = 59
+    Caption = 'Senha'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object edtusuario: TEdit
+    Left = 336
+    Height = 26
+    Top = 64
+    Width = 256
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    TabOrder = 0
+    Text = 'edtusuario'
+  end
+  object edtsenha: TEdit
+    Left = 336
+    Height = 26
+    Top = 158
+    Width = 176
+    EchoMode = emPassword
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    PasswordChar = '*'
+    TabOrder = 1
+    Text = 'edtsenha'
+  end
+  object btnlogin: TButton
+    Left = 616
+    Height = 73
+    Top = 41
+    Width = 125
+    Caption = 'Logar'
+    OnClick = btnloginClick
+    TabOrder = 2
+  end
+  object btncancelar: TButton
+    Left = 616
+    Height = 75
+    Top = 135
+    Width = 125
+    Caption = 'Cancelar'
+    OnClick = btncancelarClick
+    TabOrder = 3
+  end
+end
