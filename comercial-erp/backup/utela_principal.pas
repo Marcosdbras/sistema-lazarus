@@ -44,7 +44,7 @@ var
 implementation
 
 
-         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb, uorcamento_pesquisa, umodulo_conexaodb;
+         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb, uorcamento_pesquisa, umodulo_conexaodb, ulogin;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -80,8 +80,16 @@ if not conectarBanco then
 
  atualiza_base;
 
+ frmlogin := tfrmlogin.Create(self);
+ frmlogin.ShowModal;
+ frmlogin.Free;
 
+ if frmlogin.ModalResult = mrCancel then
+    begin
 
+      Application.Terminate;
+
+    end;
 
 
 

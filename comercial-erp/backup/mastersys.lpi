@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="12">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -96,8 +96,16 @@
         <Filename Value="ulogin.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmlogin"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="ucadastrar_senha.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmcadastrar_senha"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit11>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

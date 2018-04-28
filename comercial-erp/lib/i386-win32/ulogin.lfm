@@ -8,6 +8,7 @@ object frmlogin: Tfrmlogin
   ClientHeight = 264
   ClientWidth = 756
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poDesktopCenter
   LCLVersion = '1.8.0.6'
   object Shape1: TShape
@@ -83,6 +84,7 @@ object frmlogin: Tfrmlogin
     Top = 41
     Width = 125
     Caption = 'Logar'
+    ModalResult = 1
     OnClick = btnloginClick
     TabOrder = 2
   end
@@ -92,6 +94,7 @@ object frmlogin: Tfrmlogin
     Top = 135
     Width = 125
     Caption = 'Cancelar'
+    ModalResult = 2
     OnClick = btncancelarClick
     TabOrder = 3
   end
