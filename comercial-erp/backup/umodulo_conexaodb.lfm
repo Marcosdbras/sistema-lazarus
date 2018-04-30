@@ -7,7 +7,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
   Width = 613
   PPI = 96
   object conexaodb: TIBConnection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'C:\SGBR\Master\BASESGMASTER.FDB'
     KeepConnection = False
@@ -21,10 +21,11 @@ object modulo_conexaodb: Tmodulo_conexaodb
     top = 192
   end
   object tzcontrole: TSQLTransaction
-    Active = False
+    Active = True
+    Action = caCommit
     Database = conexaodb
-    left = 257
-    top = 219
+    left = 232
+    top = 240
   end
   object Script: TSQLScript
     DataBase = conexaodb
@@ -52,8 +53,8 @@ object modulo_conexaodb: Tmodulo_conexaodb
     UseSetTerm = True
     UseCommit = True
     UseDefines = True
-    left = 303
-    top = 117
+    left = 304
+    top = 168
   end
   object qrconsulta_base: TSQLQuery
     FieldDefs = <>
@@ -61,6 +62,14 @@ object modulo_conexaodb: Tmodulo_conexaodb
     Transaction = tzcontrole
     Params = <>
     left = 192
+    top = 96
+  end
+  object qrexec_base: TSQLQuery
+    FieldDefs = <>
+    Database = conexaodb
+    Transaction = tzcontrole
+    Params = <>
+    left = 424
     top = 96
   end
 end

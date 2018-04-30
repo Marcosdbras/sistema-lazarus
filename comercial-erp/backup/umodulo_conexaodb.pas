@@ -5,7 +5,8 @@ unit umodulo_conexaodb;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ZConnection, ZDataset, sqldb, IBConnection, db;
+  Classes, SysUtils, FileUtil, ZConnection, ZDataset, sqldb, sqldblib,
+  IBConnection, db;
 
 type
 
@@ -16,6 +17,7 @@ type
     qrorcamento1CONTROLE: TLongintField;
     Script: TSQLScript;
     qrconsulta_base: TSQLQuery;
+    qrexec_base: TSQLQuery;
     tzcontrole: TSQLTransaction;
     procedure conexaodbStartTransaction(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
@@ -35,27 +37,9 @@ implementation
 { Tmodulo_conexaodb }
 
 procedure Tmodulo_conexaodb.DataModuleCreate(Sender: TObject);
-  var sarquivo:string;
 begin
 
 
-try
-
-  //compilação windows
-  sarquivo := DataDirectory+'\atualizacao\' + versao + '.sql';
-
-  if fileexists(sarquivo) then
-     begin
-
-       Script.Script.LoadFromFile(sarquivo);
-       Script.Execute;
-
-
-     end;
-
-except
-
-end;
 
 end;
 

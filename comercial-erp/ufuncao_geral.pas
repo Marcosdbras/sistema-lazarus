@@ -15,6 +15,12 @@ var
          sHostName, sPort, sProtocol, sLibraryLocation, sUser,   sPassword,
          sDatabase,   sClientCodepage: string;
 
+         //Variáveil global
+         icontrole: integer;
+
+         //Variável global
+         susuario, ssenha:string;
+
 
 
 procedure arq_execscript;

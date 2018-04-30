@@ -84,7 +84,7 @@ if not conectarBanco then
  frmlogin.ShowModal;
  frmlogin.Free;
 
- if frmlogin.ModalResult = mrCancel then
+ if frmlogin.ModalResult <> mrOK then
     begin
 
       Application.Terminate;

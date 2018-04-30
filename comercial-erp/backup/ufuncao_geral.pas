@@ -73,6 +73,7 @@ if existe_tabela('MASTER_USUARIO') = 0 then
    end;
 //endif
 
+//Campo SENHA existe?
 if existe_campo('MASTER_USUARIO','SENHA') = 0 then
    begin
 
@@ -90,6 +91,23 @@ if existe_campo('MASTER_USUARIO','SENHA') = 0 then
   end;
 //endi
 
+//Campo CONTROLE_TUSUARIO existe?
+if existe_campo('MASTER_USUARIO','CONTROLE_TUSUARIO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_USUARIO  ADD CONTROLE_TUSUARIO INTEGER;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
 
 
 
