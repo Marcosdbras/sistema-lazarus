@@ -161,10 +161,6 @@ begin
 
           end;
 
-
-
-
-
         end;
 
       end
@@ -174,23 +170,20 @@ begin
         //if qrconsulta_base.FieldByName('senha').AsString <> edtsenha.Text then
         //begin
 
-          //Usuário existe porém a senha não confere, caso o usuário tenha esquecido a senha pode-se regravar a senha.
-          //Application.MessageBox(
-          //  'Senha incorreta, por favor entre em contato com o administrador. O programa será encerrado!',
-          //  'Atenção', MB_OK);
-          //Application.Terminate;
+        //Usuário existe porém a senha não confere, caso o usuário tenha esquecido a senha pode-se regravar a senha.
+        //Application.MessageBox(
+        //  'Senha incorreta, por favor entre em contato com o administrador. O programa será encerrado!',
+        //  'Atenção', MB_OK);
+        //Application.Terminate;
 
         //end;
         //endi
 
-      susuario := qrconsulta_base.FieldByName('login').AsString;
-      icontrole := qrconsulta_base.FieldByName('controle').AsInteger;
-
+        susuario := qrconsulta_base.FieldByName('login').AsString;
+        icontrole := qrconsulta_base.FieldByName('controle').AsInteger;
 
       end;
       //endi
-
-
 
 
     end;

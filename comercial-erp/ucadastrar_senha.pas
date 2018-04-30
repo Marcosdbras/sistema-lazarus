@@ -43,7 +43,7 @@ uses ufuncao_arq_ini, ufuncao_geral, ufuncao_conexaodb, umodulo_conexaodb;
 procedure Tfrmcadastrar_senha.btnsalvarClick(Sender: TObject);
 begin
 
-  if edtconfirma_senha.Text = edtsenha.Text then
+  if (edtsenha.Text <> '') and  (edtconfirma_senha.Text = edtsenha.Text) then
   begin
 
     with modulo_conexaodb do
@@ -73,7 +73,7 @@ begin
   begin
 
     Application.MessageBox(
-      'Senha não confere, por gentiliza abra-o novamente e tenta cadastrar a senha novamente',
+      'O programa será encerrado, pois a senha não confere ou está em branco, por gentiliza abra-o novamente e tenta cadastrar a senha novamente',
       'Atenção', MB_OK);
   end;
   //endi
