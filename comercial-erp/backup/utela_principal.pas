@@ -6,13 +6,14 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus, ComCtrls, DBGrids, XMLRead, XMLWrite, DOM, db;
+  Menus, ComCtrls, DBGrids, StdCtrls, XMLRead, XMLWrite, DOM, db;
 
 type
 
   { Tfrmtela_principal }
 
   Tfrmtela_principal = class(TForm)
+    Button2: TButton;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     MainMenu1: TMainMenu;
@@ -21,6 +22,7 @@ type
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
+    Panel1: TPanel;
     pnlsuperior: TPanel;
     pnlsuperior1: TPanel;
     pnlsuperior2: TPanel;

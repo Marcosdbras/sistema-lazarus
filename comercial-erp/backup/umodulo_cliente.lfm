@@ -1,0 +1,19 @@
+object modulo_cliente: Tmodulo_cliente
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 447
+  VerticalOffset = 301
+  Width = 150
+  PPI = 96
+  object qrcliente: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    left = 37
+    top = 19
+  end
+  object dscliente: TDataSource
+    DataSet = qrcliente
+    left = 37
+    top = 88
+  end
+end

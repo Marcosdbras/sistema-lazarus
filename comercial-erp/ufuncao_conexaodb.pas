@@ -41,7 +41,7 @@ implementation
              Conexaodb.UserName            := Ini.ReadString('ConexaoBanco', 'User', '');
              Conexaodb.Password        := Ini.ReadString('ConexaoBanco', 'Password', '');
              Conexaodb.DatabaseName        := Ini.ReadString('ConexaoBanco', 'Database', '');
-             Conexaodb.CharSet  := Ini.ReadString('ConexaoBanco', 'Charset', '');
+             Conexaodb.CharSet  := Ini.ReadString('ConexaoBanco', 'Charset', 'UTF8');
              Conexaodb.Connected       := True;
 
              result := true;

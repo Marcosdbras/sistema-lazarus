@@ -12,8 +12,10 @@ type
   { Tmodulo_orcamento }
 
   Tmodulo_orcamento = class(TDataModule)
-    DataSource1: TDataSource;
-    SQLQuery1: TSQLQuery;
+    dsorcamento_itemproduto: TDataSource;
+    dsorcamento: TDataSource;
+    qrorcamento: TSQLQuery;
+    qrorcamento_itemproduto: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
 

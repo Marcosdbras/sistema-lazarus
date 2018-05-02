@@ -1,0 +1,24 @@
+object modulo_funcionario: Tmodulo_funcionario
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 447
+  VerticalOffset = 301
+  Width = 150
+  PPI = 96
+  object qrfuncionario: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tfuncionario'
+    )
+    Params = <>
+    left = 37
+    top = 33
+  end
+  object dsfuncionario: TDataSource
+    DataSet = qrfuncionario
+    left = 39
+    top = 94
+  end
+end

@@ -4,10 +4,9 @@ object modulo_orcamento: Tmodulo_orcamento
   Height = 181
   HorizontalOffset = 256
   VerticalOffset = 210
-  Width = 265
+  Width = 336
   PPI = 96
   object qrorcamento: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -306,6 +305,22 @@ object modulo_orcamento: Tmodulo_orcamento
   object dsorcamento: TDataSource
     DataSet = qrorcamento
     left = 32
+    top = 96
+  end
+  object qrorcamento_itemproduto: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from TITENSORCAMENTO'
+    )
+    Params = <>
+    left = 184
+    top = 24
+  end
+  object dsorcamento_itemproduto: TDataSource
+    DataSet = qrorcamento_itemproduto
+    left = 184
     top = 96
   end
 end

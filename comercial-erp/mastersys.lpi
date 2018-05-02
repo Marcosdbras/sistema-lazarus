@@ -33,15 +33,15 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="12">
+    <Units Count="15">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmorcamento_pesquisa"/>
+        <ComponentName Value="frmorcamento_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>
@@ -106,6 +106,25 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmorcamento_pesquisa"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="umodulo_cliente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_cliente"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="umodulo_funcionario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_funcionario"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit14>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

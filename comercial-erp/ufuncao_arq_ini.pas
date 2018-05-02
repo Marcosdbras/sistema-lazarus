@@ -72,9 +72,9 @@ begin
         Arq.WriteString('ConexaoBanco', 'User', Userx);
         //Arq.WriteString('ConexaoBanco', 'Protocol', Protoc);
         //Arq.WriteString('ConexaoBanco', 'LibraryLocation', 'fbclient.dll');
-        Arq.WriteString('ConexaoBanco', 'Charset', 'cCP_UTF8');
+        Arq.WriteString('ConexaoBanco', 'Charset', 'UTF8'); //ISO8859_1
 
-        Arq.WriteString('ConexaoBanco', 'Charset', 'ISO8859_1');
+
 
 
 

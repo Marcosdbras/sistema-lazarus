@@ -20,9 +20,10 @@ type
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
+    DBGrid1: TDBGrid;
+    DBText1: TDBText;
     edtdatainicio: TDateEdit;
     edtdatafim: TDateEdit;
-    DBGrid1: TDBGrid;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
     DBLookupComboBox3: TDBLookupComboBox;
@@ -31,6 +32,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     pnlsuperior: TPanel;
@@ -38,7 +40,9 @@ type
     pnlcentral: TPanel;
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
     procedure FormCreate(Sender: TObject);
     procedure Label1Click(Sender: TObject);
@@ -48,14 +52,14 @@ type
   private
 
   public
-
+      opcao:string;
   end;
 
 var
   frmorcamento_pesquisa: Tfrmorcamento_pesquisa;
 
 implementation
-     uses ufuncao_geral,  umodulo_orcamento;
+     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro;
 {$R *.lfm}
 
 { Tfrmorcamento_pesquisa }
@@ -90,9 +94,25 @@ begin
   limpar;
 end;
 
+procedure Tfrmorcamento_pesquisa.Button1Click(Sender: TObject);
+begin
+  opcao := 'I';
+
+  frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
+  frmorcamento_cadastro.ShowModal;
+  frmorcamento_cadastro.Free;
+
+
+end;
+
 procedure Tfrmorcamento_pesquisa.Button5Click(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmorcamento_pesquisa.DBText2Click(Sender: TObject);
+begin
+
 end;
 
 procedure Tfrmorcamento_pesquisa.dsorcamentoDataChange(Sender: TObject;
@@ -110,6 +130,8 @@ procedure Tfrmorcamento_pesquisa.limpar;
 begin
   edtdatainicio.Date:= date;
   edtdatafim.Date:=date;
+
+  filtrar;
 end;
 
 procedure Tfrmorcamento_pesquisa.filtrar;

@@ -6,13 +6,14 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus, ComCtrls, DBGrids, XMLRead, XMLWrite, DOM, db;
+  Menus, ComCtrls, DBGrids, StdCtrls, XMLRead, XMLWrite, DOM, db;
 
 type
 
   { Tfrmtela_principal }
 
   Tfrmtela_principal = class(TForm)
+    Button2: TButton;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     MainMenu1: TMainMenu;
@@ -21,11 +22,13 @@ type
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
+    Panel1: TPanel;
     pnlsuperior: TPanel;
     pnlsuperior1: TPanel;
     pnlsuperior2: TPanel;
     pnlsuperior3: TPanel;
     StatusBar1: TStatusBar;
+    procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
@@ -103,6 +106,11 @@ if not conectarBanco then
 
   //atualiza_base;
 
+end;
+
+procedure Tfrmtela_principal.Button2Click(Sender: TObject);
+begin
+  close;
 end;
 
 procedure Tfrmtela_principal.FormShow(Sender: TObject);

@@ -1,0 +1,408 @@
+object frmorcamento_cadastro: Tfrmorcamento_cadastro
+  Left = 84
+  Height = 634
+  Top = 28
+  Width = 1190
+  BorderIcons = [biMinimize, biMaximize]
+  BorderStyle = bsSingle
+  Caption = 'Master Plus - Orçamento'
+  ClientHeight = 634
+  ClientWidth = 1190
+  OnCreate = FormCreate
+  LCLVersion = '1.8.0.6'
+  WindowState = wsMaximized
+  object pnlsuperior: TPanel
+    Left = 0
+    Height = 32
+    Top = 0
+    Width = 1190
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 32
+    ClientWidth = 1190
+    Color = 16744448
+    ParentColor = False
+    TabOrder = 0
+    object Label5: TLabel
+      Left = 7
+      Height = 18
+      Top = 6
+      Width = 175
+      Caption = '* Cadastro de orçamento'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clYellow
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Panel2: TPanel
+      Left = 1099
+      Height = 32
+      Top = 0
+      Width = 91
+      Align = alRight
+      BevelOuter = bvNone
+      TabOrder = 0
+    end
+  end
+  object pnlinferior: TPanel
+    Left = 0
+    Height = 50
+    Top = 584
+    Width = 1190
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 50
+    ClientWidth = 1190
+    Color = 16744448
+    ParentColor = False
+    TabOrder = 1
+    OnClick = pnlinferiorClick
+    object Button1: TButton
+      Left = 8
+      Height = 42
+      Top = 6
+      Width = 75
+      Caption = 'Salvar'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      OnClick = Button1Click
+      ParentFont = False
+      TabOrder = 0
+    end
+    object Panel1: TPanel
+      Left = 1099
+      Height = 50
+      Top = 0
+      Width = 91
+      Align = alRight
+      BevelOuter = bvNone
+      ClientHeight = 50
+      ClientWidth = 91
+      TabOrder = 1
+      object Button2: TButton
+        Left = 8
+        Height = 42
+        Top = 6
+        Width = 75
+        Caption = 'Fechar'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clNavy
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Button2Click
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+  end
+  object pnlcentral: TPanel
+    Left = 0
+    Height = 552
+    Top = 32
+    Width = 1190
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 552
+    ClientWidth = 1190
+    Color = 16744576
+    ParentColor = False
+    TabOrder = 2
+    object ScrollBox1: TScrollBox
+      Left = 0
+      Height = 552
+      Top = 0
+      Width = 1190
+      HorzScrollBar.Page = 1052
+      VertScrollBar.Page = 467
+      Align = alClient
+      BorderStyle = bsNone
+      ClientHeight = 552
+      ClientWidth = 1190
+      TabOrder = 0
+      OnClick = ScrollBox1Click
+      object GroupBox1: TGroupBox
+        Left = 0
+        Height = 85
+        Top = 0
+        Width = 1190
+        Align = alTop
+        Caption = ' Identificação '
+        ClientHeight = 65
+        ClientWidth = 1186
+        TabOrder = 0
+        object lblcliente: TLabel
+          Left = 4
+          Height = 18
+          Top = 3
+          Width = 150
+          Caption = 'Razão Social (Nome):'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object DBLookupComboBox1: TDBLookupComboBox
+          Left = 4
+          Height = 23
+          Top = 27
+          Width = 536
+          ListFieldIndex = 0
+          LookupCache = False
+          TabOrder = 0
+        end
+        object DBLookupComboBox2: TDBLookupComboBox
+          Left = 560
+          Height = 23
+          Top = 27
+          Width = 256
+          ListFieldIndex = 0
+          LookupCache = False
+          TabOrder = 1
+        end
+        object lblcliente1: TLabel
+          Left = 560
+          Height = 18
+          Top = 3
+          Width = 72
+          Caption = 'Vendedor:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lblcliente2: TLabel
+          Left = 824
+          Height = 18
+          Top = 3
+          Width = 88
+          Caption = 'Funcionário:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object DBLookupComboBox3: TDBLookupComboBox
+          Left = 824
+          Height = 23
+          Top = 27
+          Width = 224
+          ListFieldIndex = 0
+          LookupCache = False
+          TabOrder = 2
+        end
+      end
+      object GroupBox2: TGroupBox
+        Left = 0
+        Height = 363
+        Top = 85
+        Width = 1190
+        Align = alTop
+        Caption = ' Produtos '
+        ClientHeight = 343
+        ClientWidth = 1186
+        TabOrder = 1
+        OnClick = GroupBox2Click
+        object Edit1: TEdit
+          Left = 4
+          Height = 23
+          Top = 24
+          Width = 504
+          TabOrder = 0
+          Text = 'Edit1'
+        end
+        object lblcliente3: TLabel
+          Left = 4
+          Height = 18
+          Top = 3
+          Width = 71
+          Caption = 'Descrição'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object FloatSpinEdit1: TFloatSpinEdit
+          Left = 520
+          Height = 23
+          Top = 24
+          Width = 120
+          Alignment = taRightJustify
+          DecimalPlaces = 3
+          Increment = 1
+          MaxValue = 100
+          MinValue = 0
+          OnChange = FloatSpinEdit1Change
+          TabOrder = 1
+          Value = 0
+        end
+        object lblcliente4: TLabel
+          Left = 560
+          Height = 18
+          Top = 3
+          Width = 82
+          Caption = 'Quantidade'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object FloatSpinEdit2: TFloatSpinEdit
+          Left = 712
+          Height = 23
+          Top = 24
+          Width = 128
+          Alignment = taRightJustify
+          Increment = 1
+          MaxValue = 100
+          MinValue = 0
+          TabOrder = 3
+          Value = 0
+        end
+        object lblcliente5: TLabel
+          Left = 757
+          Height = 18
+          Top = 3
+          Width = 82
+          Caption = 'Vlr. Unitário'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object FloatSpinEdit3: TFloatSpinEdit
+          Left = 850
+          Height = 23
+          Top = 24
+          Width = 122
+          Alignment = taRightJustify
+          Enabled = False
+          Increment = 1
+          MaxValue = 100
+          MinValue = 0
+          TabOrder = 4
+          Value = 0
+        end
+        object lblcliente6: TLabel
+          Left = 937
+          Height = 18
+          Top = 3
+          Width = 35
+          Caption = 'Total'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clYellow
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object DBGrid1: TDBGrid
+          Left = 0
+          Height = 280
+          Top = 63
+          Width = 1186
+          Align = alBottom
+          Color = clWindow
+          Columns = <          
+            item
+              Title.Caption = 'Title'
+              Width = 500
+              FieldName = 'PRODUTO'
+            end          
+            item
+              Title.Caption = 'QTDE'
+              Width = 130
+              FieldName = 'QTDE'
+            end          
+            item
+              Title.Caption = 'UN'
+              FieldName = 'UN'
+            end          
+            item
+              Title.Caption = 'VALORUNITARIO'
+              Width = 135
+              FieldName = 'VALORUNITARIO'
+            end          
+            item
+              Title.Caption = 'TOTALLIQUIDO'
+              Width = 134
+              FieldName = 'TOTALLIQUIDO'
+            end>
+          DataSource = modulo_orcamento.dsorcamento_itemproduto
+          FixedCols = 0
+          Options = [dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgDisableDelete]
+          TabOrder = 6
+        end
+        object btnlancar: TButton
+          Left = 984
+          Height = 49
+          Top = 0
+          Width = 64
+          Caption = 'Lançar'
+          TabOrder = 5
+        end
+        object DBLookupComboBox4: TDBLookupComboBox
+          Left = 650
+          Height = 23
+          Top = 24
+          Width = 52
+          ListFieldIndex = 0
+          LookupCache = False
+          TabOrder = 2
+        end
+      end
+      object GroupBox3: TGroupBox
+        Left = 0
+        Height = 104
+        Top = 448
+        Width = 633
+        Align = alLeft
+        Caption = ' Observação '
+        TabOrder = 2
+      end
+    end
+  end
+end

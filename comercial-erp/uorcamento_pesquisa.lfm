@@ -17,6 +17,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Top = 0
     Width = 1249
     Align = alTop
+    BevelOuter = bvNone
     ClientHeight = 88
     ClientWidth = 1249
     Color = 16744448
@@ -25,11 +26,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object Label1: TLabel
       Left = 320
       Height = 18
-      Top = 14
-      Width = 84
-      Caption = 'Funcionário'
+      Top = 19
+      Width = 105
+      Caption = 'FUNCIONÁRIO'
       Font.CharSet = ANSI_CHARSET
-      Font.Color = clLime
+      Font.Color = clYellow
       Font.Height = -15
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
@@ -41,11 +42,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object Label2: TLabel
       Left = 552
       Height = 18
-      Top = 16
-      Width = 68
-      Caption = 'Vendedor'
+      Top = 19
+      Width = 85
+      Caption = 'VENDEDOR'
       Font.CharSet = ANSI_CHARSET
-      Font.Color = clLime
+      Font.Color = clYellow
       Font.Height = -15
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
@@ -57,7 +58,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object edtdatainicio: TDateEdit
       Left = 784
       Height = 23
-      Top = 40
+      Top = 43
       Width = 136
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       DateOrder = doNone
@@ -70,11 +71,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object Label3: TLabel
       Left = 784
       Height = 18
-      Top = 16
-      Width = 77
-      Caption = 'Data Inicial'
+      Top = 19
+      Width = 92
+      Caption = 'DATA INICIAL'
       Font.CharSet = ANSI_CHARSET
-      Font.Color = clLime
+      Font.Color = clYellow
       Font.Height = -15
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
@@ -86,7 +87,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object edtdatafim: TDateEdit
       Left = 928
       Height = 23
-      Top = 38
+      Top = 43
       Width = 136
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       DateOrder = doNone
@@ -99,11 +100,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object Label4: TLabel
       Left = 928
       Height = 18
-      Top = 14
-      Width = 70
-      Caption = 'Data Final'
+      Top = 19
+      Width = 82
+      Caption = 'DATA FINAL'
       Font.CharSet = ANSI_CHARSET
-      Font.Color = clLime
+      Font.Color = clYellow
       Font.Height = -15
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
@@ -115,11 +116,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object Label5: TLabel
       Left = 8
       Height = 18
-      Top = 14
-      Width = 51
-      Caption = 'Cliente'
+      Top = 19
+      Width = 65
+      Caption = 'CLIENTE'
       Font.CharSet = ANSI_CHARSET
-      Font.Color = clLime
+      Font.Color = clYellow
       Font.Height = -15
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
@@ -131,7 +132,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 8
       Height = 23
-      Top = 38
+      Top = 43
       Width = 304
       ListFieldIndex = 0
       LookupCache = False
@@ -140,7 +141,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object DBLookupComboBox2: TDBLookupComboBox
       Left = 320
       Height = 23
-      Top = 38
+      Top = 43
       Width = 224
       ListFieldIndex = 0
       LookupCache = False
@@ -149,20 +150,20 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     object DBLookupComboBox3: TDBLookupComboBox
       Left = 552
       Height = 23
-      Top = 40
+      Top = 43
       Width = 224
       ListFieldIndex = 0
       LookupCache = False
       TabOrder = 4
     end
     object Panel2: TPanel
-      Left = 1157
-      Height = 86
-      Top = 1
+      Left = 1158
+      Height = 88
+      Top = 0
       Width = 91
       Align = alRight
       BevelOuter = bvNone
-      ClientHeight = 86
+      ClientHeight = 88
       ClientWidth = 91
       TabOrder = 5
       object btnfiltrar: TButton
@@ -191,6 +192,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Top = 588
     Width = 1249
     Align = alBottom
+    BevelOuter = bvNone
     ClientHeight = 50
     ClientWidth = 1249
     Color = 16744448
@@ -209,6 +211,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
+      OnClick = Button1Click
       ParentFont = False
       TabOrder = 0
     end
@@ -224,6 +227,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
+      OnClick = Button2Click
       ParentFont = False
       TabOrder = 1
     end
@@ -258,14 +262,14 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 3
     end
     object Panel1: TPanel
-      Left = 1157
-      Height = 48
-      Top = 1
+      Left = 1158
+      Height = 50
+      Top = 0
       Width = 91
       Align = alRight
       BevelOuter = bvNone
       Caption = 'Panel1'
-      ClientHeight = 48
+      ClientHeight = 50
       ClientWidth = 91
       TabOrder = 4
       object Button5: TButton
@@ -288,34 +292,94 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
   end
   object pnlcentral: TPanel
     Left = 0
-    Height = 500
+    Height = 52
+    Top = 536
+    Width = 1249
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 52
+    ClientWidth = 1249
+    Color = 16744448
+    ParentColor = False
+    TabOrder = 2
+    object Label6: TLabel
+      Left = 8
+      Height = 16
+      Top = 8
+      Width = 75
+      Caption = 'VENDEDOR:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clYellow
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object DBText1: TDBText
+      Left = 111
+      Height = 16
+      Top = 8
+      Width = 52
+      DataField = 'VENDEDOR'
+      DataSource = modulo_orcamento.dsorcamento
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clYellow
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 448
     Top = 88
     Width = 1249
     Align = alClient
-    ClientHeight = 500
-    ClientWidth = 1249
-    TabOrder = 2
-    object DBGrid1: TDBGrid
-      Left = 1
-      Height = 498
-      Top = 1
-      Width = 1247
-      Align = alClient
-      AutoEdit = False
-      Color = clWindow
-      Columns = <      
-        item
-          Font.CharSet = ANSI_CHARSET
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Pitch = fpVariable
-          Font.Quality = fqDraft
-          Title.Caption = 'CONTROLE'
-          Width = 100
-          FieldName = 'CONTROLE'
-        end>
-      DataSource = modulo_orcamento.dsorcamento
-      TabOrder = 0
-    end
+    AutoEdit = False
+    Color = clWindow
+    Columns = <    
+      item
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Title.Caption = 'ID'
+        Width = 100
+        FieldName = 'CONTROLE'
+      end    
+      item
+        Title.Caption = 'DATA'
+        Width = 120
+        FieldName = 'DATA'
+      end    
+      item
+        Title.Caption = 'NOME CLIENTE'
+        Width = 500
+        FieldName = 'NOMECLIENTE'
+      end    
+      item
+        Title.Caption = 'COD. CLI.'
+        FieldName = 'CODCLIENTE'
+      end    
+      item
+        Title.Caption = 'FUNCIONÁRIO'
+        Width = 300
+        FieldName = 'FUNCIONARIO'
+      end    
+      item
+        Title.Caption = 'VALORTOTAL'
+        FieldName = 'VALORTOTAL'
+      end>
+    DataSource = modulo_orcamento.dsorcamento
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
+    TabOrder = 3
   end
 end

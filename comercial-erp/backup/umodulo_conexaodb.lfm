@@ -21,8 +21,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
     top = 192
   end
   object tzcontrole: TSQLTransaction
-    Active = True
-    Action = caCommit
+    Active = False
     Database = conexaodb
     left = 232
     top = 240

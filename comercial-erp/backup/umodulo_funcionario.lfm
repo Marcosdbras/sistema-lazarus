@@ -1,0 +1,18 @@
+object modulo_funcionario: Tmodulo_funcionario
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 447
+  VerticalOffset = 301
+  Width = 150
+  PPI = 96
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    left = 37
+    top = 33
+  end
+  object DataSource1: TDataSource
+    left = 39
+    top = 94
+  end
+end

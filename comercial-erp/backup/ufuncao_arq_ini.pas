@@ -67,12 +67,15 @@ begin
       try
         Arq.WriteString('ConexaoBanco', 'HostName', IP);
         Arq.WriteString('ConexaoBanco', 'Database', CaminhoDB);
-        Arq.WriteString('ConexaoBanco', 'Port', Porta);
+        //Arq.WriteString('ConexaoBanco', 'Port', Porta);
         Arq.WriteString('ConexaoBanco', 'Password', Pass);
         Arq.WriteString('ConexaoBanco', 'User', Userx);
-        Arq.WriteString('ConexaoBanco', 'Protocol', Protoc);
-        Arq.WriteString('ConexaoBanco', 'LibraryLocation', 'fbclient.dll');
+        //Arq.WriteString('ConexaoBanco', 'Protocol', Protoc);
+        //Arq.WriteString('ConexaoBanco', 'LibraryLocation', 'fbclient.dll');
         Arq.WriteString('ConexaoBanco', 'Charset', 'cCP_UTF8');
+
+        //Arq.WriteString('ConexaoBanco', 'Charset', 'ISO8859_1');
+
 
 
 
