@@ -17,6 +17,8 @@ type
     qrtemp: TBufDataset;
     conexaodb: TIBConnection;
     qrorcamento1CONTROLE: TLongintField;
+    qrtempccli: TLongintField;
+    qrtempcontrole: TAutoIncField;
     Script: TSQLScript;
     qrconsulta_base: TSQLQuery;
     qrexec_base: TSQLQuery;
@@ -44,7 +46,8 @@ begin
     begin
       Add('controle', ftAutoInc, 0, True);
       Add('ccli', ftInteger, 0, True);
-
+      Add('cfun', ftInteger, 0, True);
+      Add('cven', ftInteger, 0, True);
 
 
 
@@ -56,8 +59,9 @@ begin
 
   qrtemp.Append;
 
-  qrtemp.FieldByName('ccli').AsInteger:=12;
-
+  qrtemp.FieldByName('ccli').AsInteger:=0;
+  qrtemp.FieldByName('cfun').AsInteger:=0;
+  qrtemp.FieldByName('cven').AsInteger:=0;
 
 
 

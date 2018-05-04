@@ -71,7 +71,7 @@ var
 
 implementation
 
-uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario;
+uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb;
 
 {$R *.lfm}
 
@@ -90,7 +90,7 @@ begin
     begin
        qrcliente.Close;
        qrcliente.SQL.Clear;
-       qrcliente.SQL.Add('select * from tcliente');
+       qrcliente.SQL.Add('select * from tcliente order by cliente');
        qrcliente.Open;
 
     end;
@@ -101,7 +101,7 @@ begin
     begin
       qrfuncionario.Close;
       qrfuncionario.SQL.Clear;
-      qrfuncionario.SQL.Add('select * from tfuncionario where ativo = :ativo');
+      qrfuncionario.SQL.Add('select * from tfuncionario where ativo = :ativo order by funcionario');
       qrfuncionario.ParamByName('ativo').AsString:='SIM';
       qrfuncionario.Open;
 
@@ -135,6 +135,10 @@ begin
   cbxnomecliente.ListSource := modulo_cliente.dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
+  //cbxnomecliente.DataSource := modulo_conexaodb.dstemp;
+  //cbxnomecliente.DataField:='ccli';
+
+
 
 
 
@@ -162,6 +166,8 @@ end;
 
 procedure Tfrmorcamento_cadastro.Button2Click(Sender: TObject);
 begin
+  showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
+
   Close;
 end;
 

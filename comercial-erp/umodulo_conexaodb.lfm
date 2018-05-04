@@ -75,6 +75,42 @@ object modulo_conexaodb: Tmodulo_conexaodb
     FieldDefs = <>
     left = 32
     top = 16
+    object qrtempcontrole: TAutoIncField
+      FieldKind = fkData
+      FieldName = 'controle'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrtempccli: TLongintField
+      FieldKind = fkData
+      FieldName = 'ccli'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrtempcfun: TLongintField
+      FieldKind = fkData
+      FieldName = 'cfun'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrtempcven: TLongintField
+      FieldKind = fkData
+      FieldName = 'cven'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object dstemp: TDataSource
     DataSet = qrtemp

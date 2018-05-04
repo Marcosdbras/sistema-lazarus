@@ -71,7 +71,7 @@ var
 
 implementation
 
-uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario;
+uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb;
 
 {$R *.lfm}
 
@@ -135,6 +135,10 @@ begin
   cbxnomecliente.ListSource := modulo_cliente.dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
+  //cbxnomecliente.DataSource := modulo_conexaodb.dstemp;
+  //cbxnomecliente.DataField:='ccli';
+
+
 
 
 
@@ -162,6 +166,8 @@ end;
 
 procedure Tfrmorcamento_cadastro.Button2Click(Sender: TObject);
 begin
+  //showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
+
   Close;
 end;
 

@@ -64,7 +64,7 @@ var
 
 begin
 
-//showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
+
 
 //Carrega dados de conexão do banco na variáveis globais
 LerINIBD;

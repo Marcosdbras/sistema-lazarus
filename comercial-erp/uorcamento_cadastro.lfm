@@ -164,6 +164,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Height = 23
           Top = 27
           Width = 536
+          DataField = 'ccli'
+          DataSource = modulo_conexaodb.dstemp
           ListFieldIndex = 0
           LookupCache = False
           TabOrder = 0
