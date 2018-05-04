@@ -75,6 +75,7 @@ object frmtela_principal: Tfrmtela_principal
         Font.Name = 'Arial'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
+        OnClick = Button2Click
         ParentFont = False
         TabOrder = 0
       end

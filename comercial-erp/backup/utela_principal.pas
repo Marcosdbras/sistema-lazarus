@@ -28,6 +28,7 @@ type
     pnlsuperior2: TPanel;
     pnlsuperior3: TPanel;
     StatusBar1: TStatusBar;
+    procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
@@ -62,6 +63,8 @@ var
    Child: TDOMNode;
 
 begin
+
+showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
 
 //Carrega dados de conexão do banco na variáveis globais
 LerINIBD;
@@ -105,6 +108,11 @@ if not conectarBanco then
 
   //atualiza_base;
 
+end;
+
+procedure Tfrmtela_principal.Button2Click(Sender: TObject);
+begin
+  close;
 end;
 
 procedure Tfrmtela_principal.FormShow(Sender: TObject);

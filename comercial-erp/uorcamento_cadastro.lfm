@@ -1,12 +1,12 @@
 object frmorcamento_cadastro: Tfrmorcamento_cadastro
   Left = 84
-  Height = 634
-  Top = 28
+  Height = 659
+  Top = 26
   Width = 1190
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
   Caption = 'Master Plus - Orçamento'
-  ClientHeight = 634
+  ClientHeight = 659
   ClientWidth = 1190
   OnCreate = FormCreate
   LCLVersion = '1.8.0.6'
@@ -52,7 +52,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   object pnlinferior: TPanel
     Left = 0
     Height = 50
-    Top = 584
+    Top = 609
     Width = 1190
     Align = alBottom
     BevelOuter = bvNone
@@ -108,26 +108,26 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   end
   object pnlcentral: TPanel
     Left = 0
-    Height = 552
+    Height = 577
     Top = 32
     Width = 1190
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 552
+    ClientHeight = 577
     ClientWidth = 1190
     Color = 16744576
     ParentColor = False
     TabOrder = 2
     object ScrollBox1: TScrollBox
       Left = 0
-      Height = 552
+      Height = 577
       Top = 0
       Width = 1190
       HorzScrollBar.Page = 1052
-      VertScrollBar.Page = 507
+      VertScrollBar.Page = 515
       Align = alClient
       BorderStyle = bsNone
-      ClientHeight = 552
+      ClientHeight = 577
       ClientWidth = 1190
       Color = clForm
       ParentColor = False
@@ -159,7 +159,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentColor = False
           ParentFont = False
         end
-        object DBLookupComboBox1: TDBLookupComboBox
+        object cbxnomecliente: TDBLookupComboBox
           Left = 4
           Height = 23
           Top = 27
@@ -168,7 +168,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           LookupCache = False
           TabOrder = 0
         end
-        object DBLookupComboBox2: TDBLookupComboBox
+        object cbxnomeven: TDBLookupComboBox
           Left = 560
           Height = 23
           Top = 27
@@ -209,7 +209,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentColor = False
           ParentFont = False
         end
-        object DBLookupComboBox3: TDBLookupComboBox
+        object cbxnomefun: TDBLookupComboBox
           Left = 824
           Height = 23
           Top = 27
@@ -221,22 +221,22 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       end
       object GroupBox2: TGroupBox
         Left = 0
-        Height = 403
+        Height = 411
         Top = 85
         Width = 1190
         Align = alTop
         Caption = ' Produtos '
-        ClientHeight = 383
+        ClientHeight = 391
         ClientWidth = 1186
         TabOrder = 1
         OnClick = GroupBox2Click
-        object Edit1: TEdit
+        object edtdescricao: TEdit
           Left = 4
           Height = 23
           Top = 24
           Width = 504
           TabOrder = 0
-          Text = 'Edit1'
+          Text = 'edtdescricao'
         end
         object lblcliente3: TLabel
           Left = 4
@@ -254,7 +254,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentColor = False
           ParentFont = False
         end
-        object FloatSpinEdit1: TFloatSpinEdit
+        object edtqtde: TFloatSpinEdit
           Left = 520
           Height = 23
           Top = 24
@@ -264,7 +264,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Increment = 1
           MaxValue = 100
           MinValue = 0
-          OnChange = FloatSpinEdit1Change
+          OnChange = edtqtdeChange
           TabOrder = 1
           Value = 0
         end
@@ -284,7 +284,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentColor = False
           ParentFont = False
         end
-        object FloatSpinEdit2: TFloatSpinEdit
+        object edtvlrunitario: TFloatSpinEdit
           Left = 712
           Height = 23
           Top = 24
@@ -312,7 +312,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentColor = False
           ParentFont = False
         end
-        object FloatSpinEdit3: TFloatSpinEdit
+        object edtvlrsubtotal: TFloatSpinEdit
           Left = 850
           Height = 23
           Top = 24
@@ -343,7 +343,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         end
         object DBGrid1: TDBGrid
           Left = 0
-          Height = 327
+          Height = 335
           Top = 56
           Width = 1186
           Align = alBottom
@@ -386,7 +386,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Caption = 'Lançar'
           TabOrder = 5
         end
-        object DBLookupComboBox4: TDBLookupComboBox
+        object cbxunidade: TDBLookupComboBox
           Left = 650
           Height = 23
           Top = 24
@@ -398,9 +398,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       end
       object GroupBox3: TGroupBox
         Left = 0
-        Height = 64
-        Top = 488
-        Width = 633
+        Height = 81
+        Top = 496
+        Width = 569
         Align = alLeft
         Caption = ' Observação '
         TabOrder = 2

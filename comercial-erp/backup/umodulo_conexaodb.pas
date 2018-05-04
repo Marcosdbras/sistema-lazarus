@@ -6,13 +6,15 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, ZConnection, ZDataset, sqldb, sqldblib,
-  IBConnection, db;
+  IBConnection, db, BufDataset, Dbf, Dbf_Common;
 
 type
 
   { Tmodulo_conexaodb }
 
   Tmodulo_conexaodb = class(TDataModule)
+    dstemp: TDataSource;
+    qrtemp: TBufDataset;
     conexaodb: TIBConnection;
     qrorcamento1CONTROLE: TLongintField;
     Script: TSQLScript;
@@ -38,6 +40,24 @@ implementation
 
 procedure Tmodulo_conexaodb.DataModuleCreate(Sender: TObject);
 begin
+  with qrtemp.fieldDefs do
+    begin
+      Add('controle', ftAutoInc, 0, True);
+      Add('ccli', ftInteger, 0, True);
+
+
+
+
+    end;
+
+  qrtemp.CreateDataset;
+
+  qrtemp.Open;
+
+  qrtemp.Append;
+
+  qrtemp.FieldByName('ccli').AsInteger:=12;
+
 
 
 

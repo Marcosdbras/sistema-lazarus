@@ -117,12 +117,14 @@
         <Filename Value="umodulo_cliente.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_cliente"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit13>
       <Unit14>
         <Filename Value="umodulo_funcionario.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_funcionario"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit14>
     </Units>

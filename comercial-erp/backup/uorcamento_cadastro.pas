@@ -18,14 +18,14 @@ type
     btnlancar: TButton;
     Button2: TButton;
     DBGrid1: TDBGrid;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
-    DBLookupComboBox3: TDBLookupComboBox;
-    DBLookupComboBox4: TDBLookupComboBox;
-    Edit1: TEdit;
-    FloatSpinEdit1: TFloatSpinEdit;
-    FloatSpinEdit2: TFloatSpinEdit;
-    FloatSpinEdit3: TFloatSpinEdit;
+    cbxnomecliente: TDBLookupComboBox;
+    cbxnomeven: TDBLookupComboBox;
+    cbxnomefun: TDBLookupComboBox;
+    cbxunidade: TDBLookupComboBox;
+    edtdescricao: TEdit;
+    edtqtde: TFloatSpinEdit;
+    edtvlrunitario: TFloatSpinEdit;
+    edtvlrsubtotal: TFloatSpinEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
@@ -50,7 +50,7 @@ type
     procedure Button5Click(Sender: TObject);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
-    procedure FloatSpinEdit1Change(Sender: TObject);
+    procedure edtqtdeChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
@@ -71,7 +71,7 @@ var
 
 implementation
 
-uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa;
+uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario;
 
 {$R *.lfm}
 
@@ -83,19 +83,58 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.FormCreate(Sender: TObject);
+  var
+    icodigo_controle:integer;
 begin
-  //frmorcamento_pesquisa.opcao ;
+  with modulo_cliente do
+    begin
+       qrcliente.Close;
+       qrcliente.SQL.Clear;
+       qrcliente.SQL.Add('select * from tcliente');
+       qrcliente.Open;
+
+    end;
+  //endth
+
+
+  with modulo_funcionario do
+    begin
+      qrfuncionario.Close;
+      qrfuncionario.SQL.Clear;
+      qrfuncionario.SQL.Add('select * from tfuncionario where ativo = :ativo');
+      qrfuncionario.ParamByName('ativo').AsString:='SIM';
+      qrfuncionario.Open;
+
+    end;
+  //endth
 
   with modulo_orcamento do
     begin
+      if frmorcamento_pesquisa.opcao <> 'I' then
+         begin
+           icodigo_controle := qrorcamento.FieldByName('controle').AsInteger;
+         end
+      else
+         begin
+           icodigo_controle := 0;
+         end;
+      //endi
+
       qrorcamento_itemproduto.Close;
       qrorcamento_itemproduto.SQL.Clear;
       qrorcamento_itemproduto.SQL.Add('select * from TITENSORCAMENTO where codorcamento = :codorcamento');
-      qrorcamento_itemproduto.ParamByName('codorcamento').AsInteger:=qrorcamento.FieldByName('controle').AsInteger;
+      qrorcamento_itemproduto.ParamByName('codorcamento').AsInteger:=icodigo_controle;
       qrorcamento_itemproduto.Open;
 
 
     end;
+  //endth
+
+
+
+  cbxnomecliente.ListSource := modulo_cliente.dscliente;
+  cbxnomecliente.ListField:='cliente';
+  cbxnomecliente.KeyField:='controle';
 
 
 
@@ -141,7 +180,7 @@ begin
 
 end;
 
-procedure Tfrmorcamento_cadastro.FloatSpinEdit1Change(Sender: TObject);
+procedure Tfrmorcamento_cadastro.edtqtdeChange(Sender: TObject);
 begin
 
 end;

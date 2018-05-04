@@ -17,14 +17,14 @@ object modulo_conexaodb: Tmodulo_conexaodb
     CharSet = 'ISO8859_1'
     HostName = 'localhost'
     CheckTransactionParams = False
-    left = 90
-    top = 192
+    left = 176
+    top = 16
   end
   object tzcontrole: TSQLTransaction
     Active = False
     Database = conexaodb
-    left = 232
-    top = 240
+    left = 32
+    top = 152
   end
   object Script: TSQLScript
     DataBase = conexaodb
@@ -52,23 +52,33 @@ object modulo_conexaodb: Tmodulo_conexaodb
     UseSetTerm = True
     UseCommit = True
     UseDefines = True
-    left = 304
-    top = 168
+    left = 120
+    top = 152
   end
   object qrconsulta_base: TSQLQuery
     FieldDefs = <>
     Database = conexaodb
     Transaction = tzcontrole
     Params = <>
-    left = 192
-    top = 96
+    left = 32
+    top = 80
   end
   object qrexec_base: TSQLQuery
     FieldDefs = <>
     Database = conexaodb
     Transaction = tzcontrole
     Params = <>
-    left = 424
-    top = 96
+    left = 120
+    top = 104
+  end
+  object qrtemp: TBufDataset
+    FieldDefs = <>
+    left = 32
+    top = 16
+  end
+  object dstemp: TDataSource
+    DataSet = qrtemp
+    left = 104
+    top = 16
   end
 end
