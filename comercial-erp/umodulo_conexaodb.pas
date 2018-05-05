@@ -13,8 +13,6 @@ type
   { Tmodulo_conexaodb }
 
   Tmodulo_conexaodb = class(TDataModule)
-    dstemp: TDataSource;
-    qrtemp: TBufDataset;
     conexaodb: TIBConnection;
     qrorcamento1CONTROLE: TLongintField;
     qrtempccli: TLongintField;
@@ -44,26 +42,7 @@ implementation
 
 procedure Tmodulo_conexaodb.DataModuleCreate(Sender: TObject);
 begin
-  with qrtemp.fieldDefs do
-    begin
-      Add('controle', ftAutoInc, 0, True);
-      Add('ccli', ftInteger, 0, True);
-      Add('cfun', ftInteger, 0, True);
-      Add('cven', ftInteger, 0, True);
 
-
-
-    end;
-
-  qrtemp.CreateDataset;
-
-  qrtemp.Open;
-
-  qrtemp.Append;
-
-  qrtemp.FieldByName('ccli').AsInteger:=0;
-  qrtemp.FieldByName('cfun').AsInteger:=0;
-  qrtemp.FieldByName('cven').AsInteger:=0;
 
 
 

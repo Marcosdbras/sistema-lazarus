@@ -19,9 +19,10 @@
         <ComponentName Value="frmorcamento_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="167"/>
-        <CursorPos X="5" Y="169"/>
+        <TopLine Value="153"/>
+        <CursorPos X="43" Y="162"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -43,10 +44,9 @@
         <ComponentName Value="modulo_conexaodb"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="54"/>
-        <CursorPos X="45" Y="64"/>
+        <TopLine Value="35"/>
+        <CursorPos X="3" Y="45"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -137,7 +137,7 @@
         <EditorIndex Value="6"/>
         <TopLine Value="100"/>
         <CursorPos X="31" Y="115"/>
-        <UsageCount Value="132"/>
+        <UsageCount Value="179"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -149,7 +149,7 @@
         <EditorIndex Value="4"/>
         <TopLine Value="11"/>
         <CursorPos X="31" Y="27"/>
-        <UsageCount Value="119"/>
+        <UsageCount Value="166"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -160,7 +160,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="5"/>
         <CursorPos X="33" Y="27"/>
-        <UsageCount Value="119"/>
+        <UsageCount Value="166"/>
         <Loaded Value="True"/>
       </Unit14>
       <Unit15>
@@ -168,7 +168,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="331"/>
         <CursorPos X="32" Y="338"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit15>
       <Unit16>
@@ -176,10 +176,10 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="412"/>
         <CursorPos Y="419"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="5"/>
       </Unit16>
     </Units>
-    <JumpHistory Count="13" HistoryIndex="12">
+    <JumpHistory Count="18" HistoryIndex="17">
       <Position1>
         <Filename Value="umodulo_conexaodb.pas"/>
         <Caret Line="9" Column="40" TopLine="3"/>
@@ -232,6 +232,26 @@
         <Filename Value="umodulo_conexaodb.pas"/>
         <Caret Line="63" Column="45" TopLine="53"/>
       </Position13>
+      <Position14>
+        <Filename Value="umodulo_conexaodb.pas"/>
+        <Caret Line="64" Column="47" TopLine="41"/>
+      </Position14>
+      <Position15>
+        <Filename Value="umodulo_conexaodb.pas"/>
+        <Caret Line="63" Column="47" TopLine="48"/>
+      </Position15>
+      <Position16>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="169" Column="5" TopLine="167"/>
+      </Position16>
+      <Position17>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="175" Column="5" TopLine="173"/>
+      </Position17>
+      <Position18>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="101" Column="40" TopLine="151"/>
+      </Position18>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

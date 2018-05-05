@@ -13,12 +13,12 @@ type
   { Tmodulo_conexaodb }
 
   Tmodulo_conexaodb = class(TDataModule)
-    dstemp: TDataSource;
-    qrtemp: TBufDataset;
     conexaodb: TIBConnection;
     qrorcamento1CONTROLE: TLongintField;
     qrtempccli: TLongintField;
+    qrtempcfun: TLongintField;
     qrtempcontrole: TAutoIncField;
+    qrtempcven: TLongintField;
     Script: TSQLScript;
     qrconsulta_base: TSQLQuery;
     qrexec_base: TSQLQuery;

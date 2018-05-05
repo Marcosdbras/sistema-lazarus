@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, ExtDlgs, EditBtn, DBCtrls, DBGrids, ComCtrls, Spin, ZDataset, DB,
-  Types;
+  BufDataset, Types;
 
 type
 
@@ -22,6 +22,7 @@ type
     cbxnomeven: TDBLookupComboBox;
     cbxnomefun: TDBLookupComboBox;
     cbxunidade: TDBLookupComboBox;
+    dstemp: TDataSource;
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
     edtvlrunitario: TFloatSpinEdit;
@@ -42,6 +43,11 @@ type
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
+    qrtemp: TBufDataset;
+    qrtempccli: TLongintField;
+    qrtempcfun: TLongintField;
+    qrtempcontrole: TAutoIncField;
+    qrtempcven: TLongintField;
     ScrollBox1: TScrollBox;
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
@@ -86,6 +92,26 @@ procedure Tfrmorcamento_cadastro.FormCreate(Sender: TObject);
   var
     icodigo_controle:integer;
 begin
+
+  with qrtemp.fieldDefs do
+    begin
+      Add('controle', ftAutoInc, 0, True);
+      Add('ccli', ftInteger, 0, True);
+      Add('cfun', ftInteger, 0, True);
+      Add('cven', ftInteger, 0, True);
+    end;
+
+  qrtemp.CreateDataset;
+
+  qrtemp.Open;
+
+  qrtemp.Append;
+
+  qrtemp.FieldByName('ccli').AsInteger:=0;
+  qrtemp.FieldByName('cfun').AsInteger:=0;
+  qrtemp.FieldByName('cven').AsInteger:=0;
+
+
   with modulo_cliente do
     begin
        qrcliente.Close;
@@ -132,11 +158,10 @@ begin
 
 
 
-  cbxnomecliente.ListSource := modulo_cliente.dscliente;
+  cbxnomecliente.ListSource := dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
-  //cbxnomecliente.DataSource := modulo_conexaodb.dstemp;
-  //cbxnomecliente.DataField:='ccli';
+
 
 
 
@@ -166,7 +191,7 @@ end;
 
 procedure Tfrmorcamento_cadastro.Button2Click(Sender: TObject);
 begin
-  showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
+  //showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
 
   Close;
 end;
