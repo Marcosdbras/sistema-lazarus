@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids, ZDataset, db;
+  ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids, ZDataset, db, BufDataset;
 
 type
 
@@ -22,11 +22,12 @@ type
     Button5: TButton;
     DBGrid1: TDBGrid;
     DBText1: TDBText;
+    dstemp: TDataSource;
     edtdatainicio: TDateEdit;
     edtdatafim: TDateEdit;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
-    DBLookupComboBox3: TDBLookupComboBox;
+    cbxnomecliente: TDBLookupComboBox;
+    cbxnomefun: TDBLookupComboBox;
+    cbxnomeven: TDBLookupComboBox;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -38,9 +39,15 @@ type
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
+    qrtemp: TBufDataset;
+    qrtempccli: TLongintField;
+    qrtempcfun: TLongintField;
+    qrtempcontrole: TAutoIncField;
+    qrtempcven: TLongintField;
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
@@ -59,7 +66,7 @@ var
   frmorcamento_pesquisa: Tfrmorcamento_pesquisa;
 
 implementation
-     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro;
+     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario;
 {$R *.lfm}
 
 { Tfrmorcamento_pesquisa }
@@ -72,12 +79,55 @@ end;
 procedure Tfrmorcamento_pesquisa.FormCreate(Sender: TObject);
 begin
 
+  with qrtemp.fieldDefs do
+    begin
+      Add('controle', ftAutoInc, 0, True);
+      Add('ccli', ftInteger, 0, True);
+      Add('cfun', ftInteger, 0, True);
+      Add('cven', ftInteger, 0, True);
+    end;
+
+  qrtemp.CreateDataset;
+
+  qrtemp.Open;
+
+  qrtemp.Append;
+
+
+  with modulo_cliente do
+    begin
+       qrcliente.Close;
+       qrcliente.SQL.Clear;
+       qrcliente.SQL.Add('select * from tcliente order by cliente');
+       qrcliente.Open;
+
+    end;
+  //endth
+
+  with modulo_funcionario do
+    begin
+      qrfuncionario.Close;
+      qrfuncionario.SQL.Clear;
+      qrfuncionario.SQL.Add('select * from tfuncionario where ativo = :ativo order by funcionario');
+      qrfuncionario.ParamByName('ativo').AsString:='SIM';
+      qrfuncionario.Open;
+
+    end;
+  //endth
+
+  cbxnomecliente.ListSource := modulo_cliente.dscliente;
+  cbxnomecliente.ListField:='cliente';
+  cbxnomecliente.KeyField:='controle';
+
+  cbxnomefun.ListSource := modulo_funcionario.dsfuncionario;
+  cbxnomefun.ListField:='funcionario';
+  cbxnomefun.KeyField:='controle';
+
+  //cbxnomeven.ListSource := modulo_funcionario.dsfuncionario;
+  //cbxnomeven.ListField:='funcionario';
+  //cbxnomeven.KeyField:='controle';
 
   limpar;
-
-  filtrar;
-
-
 
 
 
@@ -102,6 +152,16 @@ begin
   frmorcamento_cadastro.ShowModal;
   frmorcamento_cadastro.Free;
 
+
+end;
+
+procedure Tfrmorcamento_pesquisa.Button2Click(Sender: TObject);
+begin
+    opcao := 'A';
+
+  frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
+  frmorcamento_cadastro.ShowModal;
+  frmorcamento_cadastro.Free;
 
 end;
 
@@ -131,28 +191,55 @@ begin
   edtdatainicio.Date:= date;
   edtdatafim.Date:=date;
 
+  qrtemp.FieldByName('ccli').AsInteger:=0;
+  qrtemp.FieldByName('cfun').AsInteger:=0;
+  qrtemp.FieldByName('cven').AsInteger:=0;
+
+
   filtrar;
 end;
 
 procedure Tfrmorcamento_pesquisa.filtrar;
-var sdti,sdtf:string;
+var sdti,sdtf,filtro:string;
+
 
 begin
   sdti := formatdatetime('dd.mm.yyyy', edtdatainicio.date);
   sdtf := formatdatetime('dd.mm.yyyy',edtdatafim.Date);
 
-   with modulo_orcamento do
+  filtro := '';
+
+  if qrtemp.FieldByName('ccli').AsInteger > 0 then
+     begin
+       filtro := filtro +' and (codcliente = ' +  inttostr(qrtemp.FieldByName('ccli').AsInteger)  +')';
+     end;
+  //endi
+
+
+  if qrtemp.FieldByName('cfun').AsInteger > 0 then
+     begin
+       filtro := filtro + ' and (codfuncionario = '+ inttostr( qrtemp.FieldByName('cfun').AsInteger ) +')';
+     end;
+  //endi
+
+
+  showmessage(filtro);
+
+
+
+
+  with modulo_orcamento do
     begin
 
       qrorcamento.Active:= false;
       qrorcamento.SQL.Clear;
-      qrorcamento.SQL.Add('select * from torcamento where data >= :dti and data <= :dtf');
+      qrorcamento.SQL.Add('select * from torcamento where (data >= :dti and data <= :dtf )');
       qrorcamento.ParamByName('dti').AsDate:= edtdatainicio.date;
       qrorcamento.ParamByName('dtf').AsDate:= edtdatafim.Date;
       qrorcamento.Active:=true;
 
     end;
-
+  //endth
 
 end;
 

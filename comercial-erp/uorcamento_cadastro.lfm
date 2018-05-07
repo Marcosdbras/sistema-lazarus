@@ -175,6 +175,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Height = 23
           Top = 27
           Width = 256
+          DataField = 'cven'
+          DataSource = dstemp
           ListFieldIndex = 0
           LookupCache = False
           TabOrder = 1
@@ -216,6 +218,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Height = 23
           Top = 27
           Width = 224
+          DataField = 'cfun'
+          DataSource = dstemp
           ListFieldIndex = 0
           LookupCache = False
           TabOrder = 2

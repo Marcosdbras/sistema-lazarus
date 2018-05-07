@@ -107,11 +107,6 @@ begin
 
   qrtemp.Append;
 
-  qrtemp.FieldByName('ccli').AsInteger:=0;
-  qrtemp.FieldByName('cfun').AsInteger:=0;
-  qrtemp.FieldByName('cven').AsInteger:=0;
-
-
   with modulo_cliente do
     begin
        qrcliente.Close;
@@ -121,6 +116,17 @@ begin
 
     end;
   //endth
+
+  with modulo_funcionario do
+    begin
+       qrfuncionario.Close;
+       qrfuncionario.SQL.Clear;
+       qrfuncionario.SQL.Add('select * from tfuncionario order by funcionario');
+       qrfuncionario.Open;
+
+    end;
+  //endth
+
 
 
   with modulo_funcionario do
@@ -139,10 +145,22 @@ begin
       if frmorcamento_pesquisa.opcao <> 'I' then
          begin
            icodigo_controle := qrorcamento.FieldByName('controle').AsInteger;
+
+           qrtemp.FieldByName('ccli').AsInteger:= qrorcamento.FieldByName('codcliente').AsInteger;
+           qrtemp.FieldByName('cfun').AsInteger:= qrorcamento.FieldByName('codfuncionario').AsInteger;
+           qrtemp.FieldByName('cven').AsInteger:= qrorcamento.FieldByName('codvendedor').AsInteger;
+
+
+
          end
       else
          begin
            icodigo_controle := 0;
+
+           qrtemp.FieldByName('ccli').AsInteger:=0;
+           qrtemp.FieldByName('cfun').AsInteger:=0;
+           qrtemp.FieldByName('cven').AsInteger:=0;
+
          end;
       //endi
 
@@ -156,11 +174,19 @@ begin
     end;
   //endth
 
-
-
-  cbxnomecliente.ListSource := dscliente;
+  cbxnomecliente.ListSource := modulo_cliente.dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
+
+  cbxnomefun.ListSource := modulo_funcionario.dsfuncionario;
+  cbxnomefun.ListField:='funcionario';
+  cbxnomefun.KeyField:='controle';
+
+  cbxnomeven.ListSource := modulo_funcionario.dsfuncionario;
+  cbxnomeven.ListField:='funcionario';
+  cbxnomeven.KeyField:='controle';
+
+
 
 
 

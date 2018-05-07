@@ -129,29 +129,35 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ParentColor = False
       ParentFont = False
     end
-    object DBLookupComboBox1: TDBLookupComboBox
+    object cbxnomecliente: TDBLookupComboBox
       Left = 8
       Height = 23
       Top = 43
       Width = 304
+      DataField = 'ccli'
+      DataSource = dstemp
       ListFieldIndex = 0
       LookupCache = False
       TabOrder = 2
     end
-    object DBLookupComboBox2: TDBLookupComboBox
+    object cbxnomefun: TDBLookupComboBox
       Left = 320
       Height = 23
       Top = 43
       Width = 224
+      DataField = 'cfun'
+      DataSource = dstemp
       ListFieldIndex = 0
       LookupCache = False
       TabOrder = 3
     end
-    object DBLookupComboBox3: TDBLookupComboBox
+    object cbxnomeven: TDBLookupComboBox
       Left = 552
       Height = 23
       Top = 43
       Width = 224
+      DataField = 'cven'
+      DataSource = dstemp
       ListFieldIndex = 0
       LookupCache = False
       TabOrder = 4
@@ -381,5 +387,51 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     DataSource = modulo_orcamento.dsorcamento
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
     TabOrder = 3
+  end
+  object qrtemp: TBufDataset
+    FieldDefs = <>
+    left = 584
+    top = 280
+    object qrtempcontrole: TAutoIncField
+      FieldKind = fkData
+      FieldName = 'controle'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrtempccli: TLongintField
+      FieldKind = fkData
+      FieldName = 'ccli'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrtempcfun: TLongintField
+      FieldKind = fkData
+      FieldName = 'cfun'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrtempcven: TLongintField
+      FieldKind = fkData
+      FieldName = 'cven'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstemp: TDataSource
+    DataSet = qrtemp
+    left = 656
+    top = 280
   end
 end
