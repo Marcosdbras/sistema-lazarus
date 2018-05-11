@@ -5,7 +5,7 @@ unit umodulo_orcamento;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ZConnection, ZDataset, db, sqldb;
+  Classes, SysUtils, FileUtil, ZConnection, ZDataset, db, BufDataset, sqldb;
 
 type
 
@@ -16,7 +16,12 @@ type
     dsorcamento: TDataSource;
     qrorcamento: TSQLQuery;
     qrorcamento_itemproduto: TSQLQuery;
+    qrtempccli: TLongintField;
+    qrtempcfun: TLongintField;
+    qrtempcontrole: TAutoIncField;
+    qrtempcven: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure qrorcamentoAfterScroll(DataSet: TDataSet);
   private
 
   public
@@ -35,7 +40,17 @@ implementation
        procedure Tmodulo_orcamento.DataModuleCreate(Sender: TObject);
        begin
 
+
+
+
        end;
+
+procedure Tmodulo_orcamento.qrorcamentoAfterScroll(DataSet: TDataSet);
+begin
+
+
+
+end;
 
 end.
 

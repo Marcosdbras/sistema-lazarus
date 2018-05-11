@@ -1,9 +1,10 @@
 object modulo_cliente: Tmodulo_cliente
+  OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 150
+  Height = 219
   HorizontalOffset = 447
   VerticalOffset = 301
-  Width = 150
+  Width = 323
   PPI = 96
   object qrcliente: TSQLQuery
     FieldDefs = <>
@@ -18,7 +19,26 @@ object modulo_cliente: Tmodulo_cliente
   end
   object dscliente: TDataSource
     DataSet = qrcliente
+    left = 144
+    top = 19
+  end
+  object qrtemp: TBufDataset
+    FieldDefs = <>
     left = 37
-    top = 88
+    top = 112
+    object qrtempccli: TLongintField
+      FieldKind = fkData
+      FieldName = 'ccli'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstemp: TDataSource
+    DataSet = qrtemp
+    left = 144
+    top = 112
   end
 end

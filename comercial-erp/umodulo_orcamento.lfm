@@ -1,10 +1,10 @@
 object modulo_orcamento: Tmodulo_orcamento
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 181
-  HorizontalOffset = 256
-  VerticalOffset = 210
-  Width = 336
+  Height = 184
+  HorizontalOffset = 282
+  VerticalOffset = 236
+  Width = 332
   PPI = 96
   object qrorcamento: TSQLQuery
     FieldDefs = <    
@@ -293,19 +293,20 @@ object modulo_orcamento: Tmodulo_orcamento
         DataType = ftDate
         Precision = -1
       end>
+    AfterScroll = qrorcamentoAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
       'select * from torcamento'
     )
     Params = <>
-    left = 32
+    left = 64
     top = 24
   end
   object dsorcamento: TDataSource
     DataSet = qrorcamento
-    left = 32
-    top = 96
+    left = 224
+    top = 24
   end
   object qrorcamento_itemproduto: TSQLQuery
     FieldDefs = <>
@@ -315,12 +316,12 @@ object modulo_orcamento: Tmodulo_orcamento
       'select * from TITENSORCAMENTO'
     )
     Params = <>
-    left = 184
-    top = 24
+    left = 64
+    top = 104
   end
   object dsorcamento_itemproduto: TDataSource
     DataSet = qrorcamento_itemproduto
-    left = 184
-    top = 96
+    left = 224
+    top = 104
   end
 end

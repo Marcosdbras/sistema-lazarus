@@ -24,15 +24,15 @@ begin
 
   Application.CreateForm(Tmodulo_conexaodb, modulo_conexaodb);
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
-
+  Application.CreateForm(Tmodulo_cliente, modulo_cliente);
+  Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
 
 
   Application.CreateForm(Tfrmtela_principal, frmtela_principal);
 
   frmsplash.Hide;
   frmsplash.Free;
-  Application.CreateForm(Tmodulo_cliente, modulo_cliente);
-  Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
+
   Application.Run;
 end.
 
