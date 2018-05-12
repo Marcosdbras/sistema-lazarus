@@ -17,9 +17,6 @@ type
     qrcliente: TSQLQuery;
     qrtemp: TBufDataset;
     qrtempccli: TLongintField;
-    qrtempcfun: TLongintField;
-    qrtempcontrole: TAutoIncField;
-    qrtempcven: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
   private
 

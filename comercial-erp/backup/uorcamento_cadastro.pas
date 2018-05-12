@@ -22,7 +22,6 @@ type
     cbxnomeven: TDBLookupComboBox;
     cbxnomefun: TDBLookupComboBox;
     cbxunidade: TDBLookupComboBox;
-    dstemp: TDataSource;
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
     edtvlrunitario: TFloatSpinEdit;
@@ -43,11 +42,6 @@ type
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
-    qrtemp: TBufDataset;
-    qrtempccli: TLongintField;
-    qrtempcfun: TLongintField;
-    qrtempcontrole: TAutoIncField;
-    qrtempcven: TLongintField;
     ScrollBox1: TScrollBox;
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
@@ -93,49 +87,39 @@ procedure Tfrmorcamento_cadastro.FormCreate(Sender: TObject);
     icodigo_controle:integer;
 begin
 
-  with qrtemp.fieldDefs do
-    begin
-      Add('controle', ftAutoInc, 0, True);
-      Add('ccli', ftInteger, 0, True);
-      Add('cfun', ftInteger, 0, True);
-      Add('cven', ftInteger, 0, True);
-    end;
 
-  qrtemp.CreateDataset;
 
-  qrtemp.Open;
+  //with qrtemp.fieldDefs do
+  //  begin
+  //    Add('controle', ftAutoInc, 0, True);
+  //    Add('ccli', ftInteger, 0, True);
+  //    Add('cfun', ftInteger, 0, True);
+  //    Add('cven', ftInteger, 0, True);
+  //  end;
 
-  qrtemp.Append;
+  //qrtemp.CreateDataset;
+
+  //qrtemp.Open;
+
+  //qrtemp.Append;
 
   with modulo_cliente do
     begin
-       qrcliente.Close;
-       qrcliente.SQL.Clear;
-       qrcliente.SQL.Add('select * from tcliente order by cliente');
-       qrcliente.Open;
+       //qrcliente.Close;
+       //qrcliente.SQL.Clear;
+       //qrcliente.SQL.Add('select * from tcliente order by cliente');
+       //qrcliente.Open;
 
     end;
   //endth
 
   with modulo_funcionario do
     begin
-       qrfuncionario.Close;
-       qrfuncionario.SQL.Clear;
-       qrfuncionario.SQL.Add('select * from tfuncionario order by funcionario');
-       qrfuncionario.Open;
-
-    end;
-  //endth
-
-
-
-  with modulo_funcionario do
-    begin
-      qrfuncionario.Close;
-      qrfuncionario.SQL.Clear;
-      qrfuncionario.SQL.Add('select * from tfuncionario where ativo = :ativo order by funcionario');
-      qrfuncionario.ParamByName('ativo').AsString:='SIM';
-      qrfuncionario.Open;
+      //qrfuncionario.Close;
+      //qrfuncionario.SQL.Clear;
+      //qrfuncionario.SQL.Add('select * from tfuncionario where ativo = :ativo order by funcionario');
+      //qrfuncionario.ParamByName('ativo').AsString:='SIM';
+      //qrfuncionario.Open;
 
     end;
   //endth
@@ -146,9 +130,9 @@ begin
          begin
            icodigo_controle := qrorcamento.FieldByName('controle').AsInteger;
 
-           qrtemp.FieldByName('ccli').AsInteger:= qrorcamento.FieldByName('codcliente').AsInteger;
-           qrtemp.FieldByName('cfun').AsInteger:= qrorcamento.FieldByName('codfuncionario').AsInteger;
-           qrtemp.FieldByName('cven').AsInteger:= qrorcamento.FieldByName('codvendedor').AsInteger;
+           qrtempCliente.FieldByName('ccli').AsInteger:= qrorcamento.FieldByName('codcliente').AsInteger;
+           qrtempFuncionario.FieldByName('cfun').AsInteger:= qrorcamento.FieldByName('codfuncionario').AsInteger;
+           qrtempVendedor.FieldByName('cven').AsInteger:= qrorcamento.FieldByName('codvendedor').AsInteger;
 
 
 
@@ -157,9 +141,9 @@ begin
          begin
            icodigo_controle := 0;
 
-           qrtemp.FieldByName('ccli').AsInteger:=0;
-           qrtemp.FieldByName('cfun').AsInteger:=0;
-           qrtemp.FieldByName('cven').AsInteger:=0;
+           qrtempCliente.FieldByName('ccli').AsInteger:=0;
+           qrtempFuncionario.FieldByName('cfun').AsInteger:=0;
+           qrtempVendedor.FieldByName('cven').AsInteger:=0;
 
          end;
       //endi
@@ -177,18 +161,26 @@ begin
   cbxnomecliente.ListSource := modulo_cliente.dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
+  cbxnomecliente.DataSource := modulo_orcamento.dstempCliente;
+  cbxnomecliente.DataField:='ccli';
+  cbxnomecliente.ScrollListDataset:=true;
+
+  //cbxnomecliente.Style:=csDropDownList;
+
 
   cbxnomefun.ListSource := modulo_funcionario.dsfuncionario;
   cbxnomefun.ListField:='funcionario';
   cbxnomefun.KeyField:='controle';
+  cbxnomefun.DataSource:=modulo_orcamento.dstempFuncionario;
+  cbxnomefun.DataField:='cfun';
+  cbxnomefun.ScrollListDataset:=true;
 
   cbxnomeven.ListSource := modulo_funcionario.dsfuncionario;
   cbxnomeven.ListField:='funcionario';
   cbxnomeven.KeyField:='controle';
-
-
-
-
+  cbxnomeven.DataSource:=modulo_orcamento.dstempVendedor;
+  cbxnomeven.DataField:='cven';
+  cbxnomeven.ScrollListDataset:=true;
 
 
 

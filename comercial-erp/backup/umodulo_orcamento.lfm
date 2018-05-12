@@ -1,7 +1,7 @@
 object modulo_orcamento: Tmodulo_orcamento
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 291
+  Height = 184
   HorizontalOffset = 282
   VerticalOffset = 236
   Width = 332

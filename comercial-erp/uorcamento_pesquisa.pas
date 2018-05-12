@@ -99,7 +99,7 @@ begin
   cbxnomecliente.ListSource := modulo_cliente.dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
-  cbxnomecliente.DataSource := modulo_cliente.dstemp;
+  cbxnomecliente.DataSource := modulo_cliente.dstempCliente;
   cbxnomecliente.DataField:='ccli';
   cbxnomecliente.ScrollListDataset:=true;
 
@@ -109,14 +109,14 @@ begin
   cbxnomefun.ListSource := modulo_funcionario.dsfuncionario;
   cbxnomefun.ListField:='funcionario';
   cbxnomefun.KeyField:='controle';
-  cbxnomefun.DataSource:=modulo_funcionario.dstemp;
+  cbxnomefun.DataSource:=modulo_funcionario.dstempFuncionario;
   cbxnomefun.DataField:='cfun';
   cbxnomefun.ScrollListDataset:=true;
 
   cbxnomeven.ListSource := modulo_funcionario.dsfuncionario;
   cbxnomeven.ListField:='funcionario';
   cbxnomeven.KeyField:='controle';
-  cbxnomeven.DataSource:=modulo_funcionario.dstemp;
+  cbxnomeven.DataSource:=modulo_funcionario.dstempVendedor;
   cbxnomeven.DataField:='cven';
   cbxnomeven.ScrollListDataset:=true;
 
@@ -186,9 +186,9 @@ begin
   edtdatafim.Date:=date;
 
 
-   modulo_cliente.qrtemp.FieldByName('ccli').AsInteger:=0;
-   modulo_funcionario.qrtemp.FieldByName('cfun').AsInteger:=0;
-   modulo_funcionario.qrtemp.FieldByName('cven').AsInteger:=0;
+   modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger:=0;
+   modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger:=0;
+   modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger:=0;
 
 
 
@@ -206,40 +206,34 @@ begin
 
   filtro := '';
 
-  if modulo_cliente.qrtemp.FieldByName('ccli').AsInteger  > 0 then
+  if modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger  > 0 then
      begin
-       filtro := filtro +' and (codcliente = ' +  inttostr(modulo_cliente.qrtemp.FieldByName('ccli').AsInteger)  +')';
+       filtro := filtro +' and (codcliente = ' +  inttostr(modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger)  +')';
      end;
   //endi
 
 
-  if modulo_funcionario.qrtemp.FieldByName('cfun').AsInteger > 0 then
+  if modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger > 0 then
      begin
-       filtro := filtro + ' and (codfuncionario = '+ inttostr(modulo_funcionario.qrtemp.FieldByName('cfun').AsInteger ) +')';
+       filtro := filtro + ' and (codfuncionario = '+ inttostr(modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger ) +')';
      end;
   //endi
 
 
-  if modulo_funcionario.qrtemp.FieldByName('cven').AsInteger > 0 then
+  if modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger > 0 then
      begin
-       filtro := filtro + ' and (codvendedor = '+ inttostr(modulo_funcionario.qrtemp.FieldByName('cven').AsInteger ) +')';
+       filtro := filtro + ' and (codvendedor = '+ inttostr(modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger ) +')';
      end;
   //endi
 
-
-   //showmessage( inttostr( qrtemp.FieldByName('cven').AsInteger ));
-
-  showmessage(filtro);
-
-
-
+  //showmessage(filtro);
 
   with modulo_orcamento do
     begin
 
       qrorcamento.Active:= false;
       qrorcamento.SQL.Clear;
-      qrorcamento.SQL.Add('select * from torcamento where (data >= :dti and data <= :dtf )');
+      qrorcamento.SQL.Add('select * from torcamento where (data >= :dti and data <= :dtf) ' +filtro);
       qrorcamento.ParamByName('dti').AsDate:= edtdatainicio.date;
       qrorcamento.ParamByName('dtf').AsDate:= edtdatafim.Date;
       qrorcamento.Active:=true;

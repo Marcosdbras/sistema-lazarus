@@ -13,11 +13,13 @@ type
 
   Tmodulo_funcionario = class(TDataModule)
     dsfuncionario: TDataSource;
-    dstemp: TDataSource;
+    dstempFuncionario: TDataSource;
+    dstempVendedor: TDataSource;
     qrfuncionario: TSQLQuery;
-    qrtemp: TBufDataset;
-    qrtempcfun: TLongintField;
-    qrtempcven: TLongintField;
+    qrtempFuncionario: TBufDataset;
+    qrtempVendedor: TBufDataset;
+    qrtempFuncionariocfun: TLongintField;
+    qrtempcven1: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
   private
 
@@ -37,17 +39,30 @@ implementation
         procedure Tmodulo_funcionario.DataModuleCreate(Sender: TObject);
         begin
 
-          with qrtemp.fieldDefs do
+          with qrtempFuncionario.fieldDefs do
              begin
                    Add('cfun', ftInteger, 0, True);
+
+             end;
+
+          qrtempFuncionario.CreateDataset;
+
+          qrtempFuncionario.Open;
+
+          qrtempFuncionario.Append;
+
+
+
+          with qrtempVendedor.fieldDefs do
+             begin
                    Add('cven', ftInteger, 0, True);
              end;
 
-          qrtemp.CreateDataset;
+          qrtempVendedor.CreateDataset;
 
-          qrtemp.Open;
+          qrtempVendedor.Open;
 
-          qrtemp.Append;
+          qrtempVendedor.Append;
 
 
 

@@ -165,7 +165,6 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Top = 27
           Width = 536
           DataField = 'ccli'
-          DataSource = dstemp
           ListFieldIndex = 0
           LookupCache = False
           TabOrder = 0
@@ -176,7 +175,6 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Top = 27
           Width = 256
           DataField = 'cven'
-          DataSource = dstemp
           ListFieldIndex = 0
           LookupCache = False
           TabOrder = 1
@@ -219,7 +217,6 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Top = 27
           Width = 224
           DataField = 'cfun'
-          DataSource = dstemp
           ListFieldIndex = 0
           LookupCache = False
           TabOrder = 2
@@ -412,51 +409,5 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         TabOrder = 2
       end
     end
-  end
-  object qrtemp: TBufDataset
-    FieldDefs = <>
-    left = 440
-    top = 336
-    object qrtempcontrole: TAutoIncField
-      FieldKind = fkData
-      FieldName = 'controle'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object qrtempccli: TLongintField
-      FieldKind = fkData
-      FieldName = 'ccli'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object qrtempcfun: TLongintField
-      FieldKind = fkData
-      FieldName = 'cfun'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object qrtempcven: TLongintField
-      FieldKind = fkData
-      FieldName = 'cven'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object dstemp: TDataSource
-    DataSet = qrtemp
-    left = 512
-    top = 336
   end
 end

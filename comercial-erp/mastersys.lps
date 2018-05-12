@@ -19,10 +19,12 @@
         <ComponentName Value="frmorcamento_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="171"/>
-        <CursorPos Y="187"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="116"/>
+        <CursorPos X="7" Y="122"/>
         <UsageCount Value="202"/>
+        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="umodulo_orcamento.pas"/>
@@ -30,8 +32,9 @@
         <ComponentName Value="modulo_orcamento"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <TopLine Value="19"/>
-        <CursorPos X="84" Y="35"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="44"/>
+        <CursorPos Y="88"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -128,13 +131,11 @@
         <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="218"/>
-        <CursorPos X="35" Y="230"/>
+        <TopLine Value="111"/>
+        <CursorPos X="11" Y="124"/>
         <UsageCount Value="271"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="umodulo_cliente.pas"/>
@@ -142,9 +143,9 @@
         <ComponentName Value="modulo_cliente"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="36"/>
-        <CursorPos Y="42"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="30"/>
+        <CursorPos X="25" Y="50"/>
         <UsageCount Value="258"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -155,87 +156,90 @@
         <ComponentName Value="modulo_funcionario"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="37"/>
-        <CursorPos Y="42"/>
+        <TopLine Value="57"/>
+        <CursorPos Y="73"/>
         <UsageCount Value="258"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="18" HistoryIndex="17">
+    <JumpHistory Count="19" HistoryIndex="18">
       <Position1>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Column="28"/>
+        <Filename Value="umodulo_funcionario.pas"/>
+        <Caret Line="42" TopLine="37"/>
       </Position1>
       <Position2>
-        <Filename Value="umodulo_cliente.pas"/>
-        <Caret Line="34" Column="31" TopLine="18"/>
+        <Filename Value="umodulo_funcionario.pas"/>
+        <Caret Line="46" TopLine="41"/>
       </Position2>
       <Position3>
-        <Filename Value="umodulo_orcamento.pas"/>
-        <Caret Line="37" Column="84" TopLine="14"/>
+        <Filename Value="umodulo_funcionario.pas"/>
+        <Caret Line="45" TopLine="40"/>
       </Position3>
       <Position4>
-        <Filename Value="umodulo_orcamento.pas"/>
-        <Caret Line="36" Column="84" TopLine="20"/>
+        <Filename Value="umodulo_funcionario.pas"/>
+        <Caret Line="65" Column="25" TopLine="53"/>
       </Position4>
       <Position5>
-        <Filename Value="umodulo_funcionario.pas"/>
-        <Caret Line="44" TopLine="39"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="119" Column="59" TopLine="105"/>
       </Position5>
       <Position6>
-        <Filename Value="umodulo_funcionario.pas"/>
-        <Caret Line="43" TopLine="38"/>
+        <Filename Value="umodulo_cliente.pas"/>
+        <Caret Line="42" TopLine="36"/>
       </Position6>
       <Position7>
-        <Filename Value="umodulo_cliente.pas"/>
-        <Caret Line="45" TopLine="39"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="102" Column="60" TopLine="95"/>
       </Position7>
       <Position8>
-        <Filename Value="umodulo_cliente.pas"/>
-        <Caret Line="44" TopLine="38"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="189" Column="32" TopLine="181"/>
       </Position8>
       <Position9>
-        <Filename Value="umodulo_cliente.pas"/>
-        <Caret Line="43" TopLine="37"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="35" Column="84" TopLine="19"/>
       </Position9>
       <Position10>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Column="28"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="41" Column="84" TopLine="25"/>
       </Position10>
       <Position11>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="103" Column="43" TopLine="89"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="44" Column="84" TopLine="28"/>
       </Position11>
       <Position12>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="113" Column="45" TopLine="99"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="187" TopLine="171"/>
       </Position12>
       <Position13>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="119" Column="51" TopLine="106"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="186" TopLine="170"/>
       </Position13>
       <Position14>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="191" Column="29" TopLine="183"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="185" TopLine="169"/>
       </Position14>
       <Position15>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="207" Column="58" TopLine="204"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="184" TopLine="168"/>
       </Position15>
       <Position16>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="209" Column="27" TopLine="204"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="183" TopLine="167"/>
       </Position16>
       <Position17>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="211" Column="81" TopLine="204"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="182" TopLine="166"/>
       </Position17>
       <Position18>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="225" Column="85" TopLine="218"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="181" TopLine="165"/>
       </Position18>
+      <Position19>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="135" Column="26" TopLine="127"/>
+      </Position19>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

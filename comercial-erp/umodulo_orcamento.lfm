@@ -1,9 +1,9 @@
 object modulo_orcamento: Tmodulo_orcamento
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 184
-  HorizontalOffset = 282
-  VerticalOffset = 236
+  Height = 445
+  HorizontalOffset = 849
+  VerticalOffset = 145
   Width = 332
   PPI = 96
   object qrorcamento: TSQLQuery
@@ -323,5 +323,62 @@ object modulo_orcamento: Tmodulo_orcamento
     DataSet = qrorcamento_itemproduto
     left = 224
     top = 104
+  end
+  object qrtempFuncionario: TBufDataset
+    FieldDefs = <>
+    left = 64
+    top = 192
+    object qrtempFuncionariocfun: TLongintField
+      FieldKind = fkData
+      FieldName = 'cfun'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempFuncionario: TDataSource
+    DataSet = qrtempFuncionario
+    left = 224
+    top = 192
+  end
+  object dstempVendedor: TDataSource
+    DataSet = qrtempVendedor
+    left = 224
+    top = 272
+  end
+  object qrtempVendedor: TBufDataset
+    FieldDefs = <>
+    left = 67
+    top = 272
+    object qrtempcven1: TLongintField
+      FieldKind = fkData
+      FieldName = 'cven'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object qrtempCliente: TBufDataset
+    FieldDefs = <>
+    left = 67
+    top = 360
+    object qrtempClienteccli: TLongintField
+      FieldKind = fkData
+      FieldName = 'ccli'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCliente: TDataSource
+    DataSet = qrtempCliente
+    left = 224
+    top = 360
   end
 end

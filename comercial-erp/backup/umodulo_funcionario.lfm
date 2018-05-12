@@ -14,58 +14,68 @@ object modulo_funcionario: Tmodulo_funcionario
       'select * from tfuncionario'
     )
     Params = <>
-    left = 37
-    top = 33
+    left = 64
+    top = 32
   end
   object dsfuncionario: TDataSource
     DataSet = qrfuncionario
-    left = 144
-    top = 33
+    left = 187
+    top = 32
   end
-  object qrtemp: TBufDataset
+  object qrtempFuncionario: TBufDataset
     FieldDefs = <>
-    left = 37
-    top = 128
-    object qrtempcontrole: TAutoIncField
+    left = 64
+    top = 127
+    object qrtempFuncionariocfun: TLongintField
       FieldKind = fkData
-      FieldName = 'controle'
+      FieldName = 'cfun'
       Index = 0
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object qrtempccli: TLongintField
+    object qrtempFuncionariocven: TLongintField
       FieldKind = fkData
-      FieldName = 'ccli'
+      FieldName = 'cven'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object qrtempcfun: TLongintField
+  end
+  object dstempFuncionario: TDataSource
+    DataSet = qrtempFuncionario
+    left = 187
+    top = 127
+  end
+  object qrtempVendedor: TBufDataset
+    FieldDefs = <>
+    left = 67
+    top = 207
+    object qrtempcfun1: TLongintField
       FieldKind = fkData
       FieldName = 'cfun'
-      Index = 2
+      Index = 0
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object qrtempcven: TLongintField
+    object qrtempcven1: TLongintField
       FieldKind = fkData
       FieldName = 'cven'
-      Index = 3
+      Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
   end
-  object dstemp: TDataSource
-    DataSet = qrtemp
-    left = 144
-    top = 128
+  object dstempVendedor: TDataSource
+    DataSet = qrtempVendedor
+    left = 187
+    top = 207
   end
 end

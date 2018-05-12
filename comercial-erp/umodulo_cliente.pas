@@ -13,10 +13,10 @@ type
 
   Tmodulo_cliente = class(TDataModule)
     dscliente: TDataSource;
-    dstemp: TDataSource;
+    dstempCliente: TDataSource;
     qrcliente: TSQLQuery;
-    qrtemp: TBufDataset;
-    qrtempccli: TLongintField;
+    qrtempCliente: TBufDataset;
+    qrtempClienteccli: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
   private
 
@@ -36,16 +36,16 @@ implementation
       procedure Tmodulo_cliente.DataModuleCreate(Sender: TObject);
       begin
 
-        with qrtemp.fieldDefs do
+        with qrtempCliente.fieldDefs do
            begin
                  Add('ccli', ftInteger, 0, True);
            end;
 
-        qrtemp.CreateDataset;
+        qrtempCliente.CreateDataset;
 
-        qrtemp.Open;
+        qrtempCliente.Open;
 
-        qrtemp.Append;
+        qrtempCliente.Append;
 
 
 
