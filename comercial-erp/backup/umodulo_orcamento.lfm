@@ -1,9 +1,9 @@
 object modulo_orcamento: Tmodulo_orcamento
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 184
-  HorizontalOffset = 282
-  VerticalOffset = 236
+  Height = 445
+  HorizontalOffset = 849
+  VerticalOffset = 145
   Width = 332
   PPI = 96
   object qrorcamento: TSQLQuery
@@ -302,6 +302,500 @@ object modulo_orcamento: Tmodulo_orcamento
     Params = <>
     left = 64
     top = 24
+    object qrorcamentoCONTROLE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONTROLE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrorcamentoCODCLIENTE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODCLIENTE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrorcamentoNOMECLIENTE: TStringField
+      FieldKind = fkData
+      FieldName = 'NOMECLIENTE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object qrorcamentoENDERECO: TStringField
+      FieldKind = fkData
+      FieldName = 'ENDERECO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 150
+    end
+    object qrorcamentoNUMERO: TStringField
+      FieldKind = fkData
+      FieldName = 'NUMERO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoBAIRRO: TStringField
+      FieldKind = fkData
+      FieldName = 'BAIRRO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamentoCIDADE: TStringField
+      FieldKind = fkData
+      FieldName = 'CIDADE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamentoCEP: TStringField
+      FieldKind = fkData
+      FieldName = 'CEP'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoUF: TStringField
+      FieldKind = fkData
+      FieldName = 'UF'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qrorcamentoCOMPLEMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'COMPLEMENTO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamentoTELEFONE: TStringField
+      FieldKind = fkData
+      FieldName = 'TELEFONE'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object qrorcamentoCELULAR: TStringField
+      FieldKind = fkData
+      FieldName = 'CELULAR'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object qrorcamentoEMAIL: TStringField
+      FieldKind = fkData
+      FieldName = 'EMAIL'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamentoRG: TStringField
+      FieldKind = fkData
+      FieldName = 'RG'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object qrorcamentoCODFUNCIONARIO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODFUNCIONARIO'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrorcamentoFUNCIONARIO: TStringField
+      FieldKind = fkData
+      FieldName = 'FUNCIONARIO'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object qrorcamentoDATA: TDateField
+      FieldKind = fkData
+      FieldName = 'DATA'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoHORA: TTimeField
+      FieldKind = fkData
+      FieldName = 'HORA'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoDATAHORACADASTRO: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'DATAHORACADASTRO'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoCONDICAOPAGAMENTO: TMemoField
+      FieldKind = fkData
+      FieldName = 'CONDICAOPAGAMENTO'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object qrorcamentoOBSERVACAO: TMemoField
+      FieldKind = fkData
+      FieldName = 'OBSERVACAO'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object qrorcamentoVALOR: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALOR'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrorcamentoDESCONTO: TBCDField
+      FieldKind = fkData
+      FieldName = 'DESCONTO'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrorcamentoVALORTOTAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORTOTAL'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrorcamentoTIPODESCONTO: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPODESCONTO'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrorcamentoACRESCIMO: TBCDField
+      FieldKind = fkData
+      FieldName = 'ACRESCIMO'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrorcamentoSERIEECF: TStringField
+      FieldKind = fkData
+      FieldName = 'SERIEECF'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 21
+    end
+    object qrorcamentoTIPOECF: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPOECF'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 7
+    end
+    object qrorcamentoMARCAECF: TStringField
+      FieldKind = fkData
+      FieldName = 'MARCAECF'
+      Index = 28
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoMODELOECF: TStringField
+      FieldKind = fkData
+      FieldName = 'MODELOECF'
+      Index = 29
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoCOO: TLongintField
+      FieldKind = fkData
+      FieldName = 'COO'
+      Index = 30
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoTITULODAV: TStringField
+      FieldKind = fkData
+      FieldName = 'TITULODAV'
+      Index = 31
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qrorcamentoCOOVINCULADO: TLongintField
+      FieldKind = fkData
+      FieldName = 'COOVINCULADO'
+      Index = 32
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoNUMEROECF: TLongintField
+      FieldKind = fkData
+      FieldName = 'NUMEROECF'
+      Index = 33
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoDATAVENCIMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'DATAVENCIMENTO'
+      Index = 34
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoDIASVENCIMENTO: TLongintField
+      FieldKind = fkData
+      FieldName = 'DIASVENCIMENTO'
+      Index = 35
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoCONTROLEVARCHAR: TStringField
+      FieldKind = fkData
+      FieldName = 'CONTROLEVARCHAR'
+      Index = 36
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 13
+    end
+    object qrorcamentoCODSEQUENCIA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODSEQUENCIA'
+      Index = 37
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoCANCELADO: TStringField
+      FieldKind = fkData
+      FieldName = 'CANCELADO'
+      Index = 38
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrorcamentoSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 39
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object qrorcamentoTIPOCLIENTE: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPOCLIENTE'
+      Index = 40
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoMESCLAR: TStringField
+      FieldKind = fkData
+      FieldName = 'MESCLAR'
+      Index = 41
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrorcamentoCPF: TStringField
+      FieldKind = fkData
+      FieldName = 'CPF'
+      Index = 42
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoCNPJ: TStringField
+      FieldKind = fkData
+      FieldName = 'CNPJ'
+      Index = 43
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoMD5DAV: TStringField
+      FieldKind = fkData
+      FieldName = 'MD5DAV'
+      Index = 44
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamentoCODNFE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODNFE'
+      Index = 45
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoINDICADOR: TStringField
+      FieldKind = fkData
+      FieldName = 'INDICADOR'
+      Index = 46
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamentoCODVENDEDOR: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODVENDEDOR'
+      Index = 47
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamentoVENDEDOR: TStringField
+      FieldKind = fkData
+      FieldName = 'VENDEDOR'
+      Index = 48
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamentoDATAFATURADA: TDateField
+      FieldKind = fkData
+      FieldName = 'DATAFATURADA'
+      Index = 49
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object dsorcamento: TDataSource
     DataSet = qrorcamento
@@ -309,7 +803,202 @@ object modulo_orcamento: Tmodulo_orcamento
     top = 24
   end
   object qrorcamento_itemproduto: TSQLQuery
-    FieldDefs = <>
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODORCAMENTO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODPRODUTO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PRODUTO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'DATAHORACADASTRO'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'CODITEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'UN'
+        DataType = ftString
+        Precision = -1
+        Size = 6
+      end    
+      item
+        Name = 'VALORDESCONTOUNITARIO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCDESCONTOUNITARIO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'VALORACRESCIMOUNITARIO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCACRESCIMOUNITARIO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'INDICADORCANCELAMENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 1
+      end    
+      item
+        Name = 'DECIMAISQTDE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DECIMAISVALORUNITARIO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SITUACAOTRIBUTARIA'
+        DataType = ftString
+        Precision = -1
+        Size = 1
+      end    
+      item
+        Name = 'ALIQUOTA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'TOTALLIQUIDO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'TOTALDESCONTO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'CONTROLEORIGEMMESCLAGEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NUMERODAV'
+        DataType = ftString
+        Precision = -1
+        Size = 13
+      end    
+      item
+        Name = 'MD5DAV'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'MESCLAR'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'STATUS'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'CFOP'
+        DataType = ftString
+        Precision = -1
+        Size = 4
+      end    
+      item
+        Name = 'TOTALACRESCIMO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'REFERENCIA'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'DESCRICAOCOMPLEMENTAR'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'QTDECONVERTIDA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'UNCONVERTIDA'
+        DataType = ftString
+        Precision = -1
+        Size = 6
+      end    
+      item
+        Name = 'CODAPLICACAOPRODUTO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'QTDE2'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'VALORUNITARIO2'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'QTDE'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'VALORUNITARIO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end>
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
@@ -318,10 +1007,447 @@ object modulo_orcamento: Tmodulo_orcamento
     Params = <>
     left = 64
     top = 104
+    object qrorcamento_itemprodutoCONTROLE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONTROLE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrorcamento_itemprodutoCODORCAMENTO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODORCAMENTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrorcamento_itemprodutoCODPRODUTO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODPRODUTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrorcamento_itemprodutoPRODUTO: TStringField
+      FieldKind = fkData
+      FieldName = 'PRODUTO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamento_itemprodutoDATAHORACADASTRO: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'DATAHORACADASTRO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamento_itemprodutoCODITEM: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODITEM'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamento_itemprodutoUN: TStringField
+      FieldKind = fkData
+      FieldName = 'UN'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qrorcamento_itemprodutoVALORDESCONTOUNITARIO: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORDESCONTOUNITARIO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoPERCDESCONTOUNITARIO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCDESCONTOUNITARIO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoVALORACRESCIMOUNITARIO: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORACRESCIMOUNITARIO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoPERCACRESCIMOUNITARIO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCACRESCIMOUNITARIO'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoINDICADORCANCELAMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'INDICADORCANCELAMENTO'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qrorcamento_itemprodutoDECIMAISQTDE: TLongintField
+      FieldKind = fkData
+      FieldName = 'DECIMAISQTDE'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamento_itemprodutoDECIMAISVALORUNITARIO: TLongintField
+      FieldKind = fkData
+      FieldName = 'DECIMAISVALORUNITARIO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamento_itemprodutoSITUACAOTRIBUTARIA: TStringField
+      FieldKind = fkData
+      FieldName = 'SITUACAOTRIBUTARIA'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qrorcamento_itemprodutoALIQUOTA: TBCDField
+      FieldKind = fkData
+      FieldName = 'ALIQUOTA'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoTOTALLIQUIDO: TBCDField
+      FieldKind = fkData
+      FieldName = 'TOTALLIQUIDO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoTOTALDESCONTO: TBCDField
+      FieldKind = fkData
+      FieldName = 'TOTALDESCONTO'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoCONTROLEORIGEMMESCLAGEM: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONTROLEORIGEMMESCLAGEM'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamento_itemprodutoNUMERODAV: TStringField
+      FieldKind = fkData
+      FieldName = 'NUMERODAV'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 13
+    end
+    object qrorcamento_itemprodutoMD5DAV: TStringField
+      FieldKind = fkData
+      FieldName = 'MD5DAV'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrorcamento_itemprodutoMESCLAR: TStringField
+      FieldKind = fkData
+      FieldName = 'MESCLAR'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrorcamento_itemprodutoSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamento_itemprodutoCFOP: TStringField
+      FieldKind = fkData
+      FieldName = 'CFOP'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qrorcamento_itemprodutoTOTALACRESCIMO: TBCDField
+      FieldKind = fkData
+      FieldName = 'TOTALACRESCIMO'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoREFERENCIA: TStringField
+      FieldKind = fkData
+      FieldName = 'REFERENCIA'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object qrorcamento_itemprodutoDESCRICAOCOMPLEMENTAR: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAOCOMPLEMENTAR'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object qrorcamento_itemprodutoQTDECONVERTIDA: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDECONVERTIDA'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrorcamento_itemprodutoUNCONVERTIDA: TStringField
+      FieldKind = fkData
+      FieldName = 'UNCONVERTIDA'
+      Index = 28
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qrorcamento_itemprodutoCODAPLICACAOPRODUTO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODAPLICACAOPRODUTO'
+      Index = 29
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrorcamento_itemprodutoQTDE2: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDE2'
+      Index = 30
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoVALORUNITARIO2: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORUNITARIO2'
+      Index = 31
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrorcamento_itemprodutoQTDE: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDE'
+      Index = 32
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '0.00'
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrorcamento_itemprodutoVALORUNITARIO: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORUNITARIO'
+      Index = 33
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
   end
   object dsorcamento_itemproduto: TDataSource
     DataSet = qrorcamento_itemproduto
     left = 224
     top = 104
+  end
+  object qrtempFuncionario: TBufDataset
+    FieldDefs = <>
+    left = 64
+    top = 192
+    object qrtempFuncionariocfun: TLongintField
+      FieldKind = fkData
+      FieldName = 'cfun'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempFuncionario: TDataSource
+    DataSet = qrtempFuncionario
+    left = 224
+    top = 192
+  end
+  object dstempVendedor: TDataSource
+    DataSet = qrtempVendedor
+    left = 224
+    top = 272
+  end
+  object qrtempVendedor: TBufDataset
+    FieldDefs = <>
+    left = 67
+    top = 272
+    object qrtempcven1: TLongintField
+      FieldKind = fkData
+      FieldName = 'cven'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object qrtempCliente: TBufDataset
+    FieldDefs = <>
+    left = 67
+    top = 360
+    object qrtempClienteccli: TLongintField
+      FieldKind = fkData
+      FieldName = 'ccli'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCliente: TDataSource
+    DataSet = qrtempCliente
+    left = 224
+    top = 360
   end
 end

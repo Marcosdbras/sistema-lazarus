@@ -19,12 +19,11 @@
         <ComponentName Value="frmorcamento_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="177"/>
-        <CursorPos X="26" Y="146"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="116"/>
+        <CursorPos X="7" Y="122"/>
         <UsageCount Value="202"/>
-        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="umodulo_orcamento.pas"/>
@@ -32,9 +31,10 @@
         <ComponentName Value="modulo_orcamento"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="44"/>
-        <CursorPos Y="88"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="157"/>
+        <CursorPos Y="172"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -131,9 +131,8 @@
         <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="111"/>
-        <CursorPos X="11" Y="124"/>
+        <TopLine Value="224"/>
+        <CursorPos X="3" Y="229"/>
         <UsageCount Value="271"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -143,12 +142,10 @@
         <ComponentName Value="modulo_cliente"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="30"/>
         <CursorPos X="25" Y="50"/>
         <UsageCount Value="258"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="umodulo_funcionario.pas"/>
@@ -156,90 +153,133 @@
         <ComponentName Value="modulo_funcionario"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="57"/>
         <CursorPos Y="73"/>
         <UsageCount Value="258"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="19" HistoryIndex="18">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="umodulo_funcionario.pas"/>
-        <Caret Line="42" TopLine="37"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="142" TopLine="127"/>
       </Position1>
       <Position2>
-        <Filename Value="umodulo_funcionario.pas"/>
-        <Caret Line="46" TopLine="41"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="143" TopLine="128"/>
       </Position2>
       <Position3>
-        <Filename Value="umodulo_funcionario.pas"/>
-        <Caret Line="45" TopLine="40"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="144" TopLine="129"/>
       </Position3>
       <Position4>
-        <Filename Value="umodulo_funcionario.pas"/>
-        <Caret Line="65" Column="25" TopLine="53"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="145" TopLine="130"/>
       </Position4>
       <Position5>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="119" Column="59" TopLine="105"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="146" TopLine="131"/>
       </Position5>
       <Position6>
-        <Filename Value="umodulo_cliente.pas"/>
-        <Caret Line="42" TopLine="36"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="147" TopLine="132"/>
       </Position6>
       <Position7>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="102" Column="60" TopLine="95"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="148" TopLine="133"/>
       </Position7>
       <Position8>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="189" Column="32" TopLine="181"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="149" TopLine="134"/>
       </Position8>
       <Position9>
         <Filename Value="umodulo_orcamento.pas"/>
-        <Caret Line="35" Column="84" TopLine="19"/>
+        <Caret Line="150" TopLine="135"/>
       </Position9>
       <Position10>
         <Filename Value="umodulo_orcamento.pas"/>
-        <Caret Line="41" Column="84" TopLine="25"/>
+        <Caret Line="151" TopLine="136"/>
       </Position10>
       <Position11>
         <Filename Value="umodulo_orcamento.pas"/>
-        <Caret Line="44" Column="84" TopLine="28"/>
+        <Caret Line="152" TopLine="137"/>
       </Position11>
       <Position12>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="187" TopLine="171"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="153" TopLine="138"/>
       </Position12>
       <Position13>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="186" TopLine="170"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="154" TopLine="139"/>
       </Position13>
       <Position14>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="185" TopLine="169"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="155" TopLine="140"/>
       </Position14>
       <Position15>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="184" TopLine="168"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="156" TopLine="141"/>
       </Position15>
       <Position16>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="183" TopLine="167"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="157" TopLine="142"/>
       </Position16>
       <Position17>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="182" TopLine="166"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="158" TopLine="143"/>
       </Position17>
       <Position18>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="181" TopLine="165"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="159" TopLine="144"/>
       </Position18>
       <Position19>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="135" Column="26" TopLine="127"/>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="160" TopLine="145"/>
       </Position19>
+      <Position20>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="161" TopLine="146"/>
+      </Position20>
+      <Position21>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="162" TopLine="147"/>
+      </Position21>
+      <Position22>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="163" TopLine="148"/>
+      </Position22>
+      <Position23>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="164" TopLine="149"/>
+      </Position23>
+      <Position24>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="165" TopLine="150"/>
+      </Position24>
+      <Position25>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="166" TopLine="151"/>
+      </Position25>
+      <Position26>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="167" TopLine="152"/>
+      </Position26>
+      <Position27>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="168" TopLine="153"/>
+      </Position27>
+      <Position28>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="169" TopLine="154"/>
+      </Position28>
+      <Position29>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="170" TopLine="155"/>
+      </Position29>
+      <Position30>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <Caret Line="171" TopLine="156"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

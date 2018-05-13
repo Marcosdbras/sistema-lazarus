@@ -226,13 +226,7 @@ begin
      end;
   //endi
 
-
-  //showmessage( inttostr( qrtemp.FieldByName('cven').AsInteger ));
-
-  //showmessage(filtro);
-
-
-
+  showmessage(filtro);
 
   with modulo_orcamento do
     begin
