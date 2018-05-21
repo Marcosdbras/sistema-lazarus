@@ -14,7 +14,20 @@ type
 
   Tmodulo_conexaodb = class(TDataModule)
     conexaodb: TIBConnection;
+    dssequencia: TDataSource;
     qrorcamento1CONTROLE: TLongintField;
+    qrsequencia: TSQLQuery;
+    qrsequenciaCODIGOCLIENTE: TLongintField;
+    qrsequenciaCONTROLE: TLongintField;
+    qrsequenciaCONTROLEVARCHAR: TLargeintField;
+    qrsequenciaIDDFE: TLongintField;
+    qrsequenciaNSUMANIFESTO: TLongintField;
+    qrsequenciaNUMEROLOTE: TLongintField;
+    qrsequenciaNUMERONOTAMANUAL: TLongintField;
+    qrsequenciaNUMEROOS: TLongintField;
+    qrsequenciaPREVENDA: TStringField;
+    qrsequenciaRPS: TLongintField;
+    qrsequenciaSENHACOMANDA: TLongintField;
     qrtempccli: TLongintField;
     qrtempcfun: TLongintField;
     qrtempcontrole: TAutoIncField;
