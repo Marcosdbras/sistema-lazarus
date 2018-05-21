@@ -203,7 +203,103 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.Button1Click(Sender: TObject);
+var
+  nomecliente, nomefuncionario, nomevendedor:string;
 begin
+  if frmorcamento_pesquisa.opcao = 'I' then
+     begin
+
+        //Atualiza tabelas auxiliares do sistema
+        with modulo_conexaodb do
+          begin
+
+            qrsequencia.Close;
+            qrsequencia.SQL.Clear;
+            qrsequencia.SQL.Add('update tsequencia set controlevarchar = controlevarchar + 1');
+            qrsequencia.ExecSQL;
+
+            atualizaBanco;
+
+            qrsequencia.Close;
+            qrsequencia.SQL.Clear;
+            qrsequencia.SQL.Add('select * from tsequencia');
+            qrsequencia.Open;
+
+            qrconsulta_base.Close;
+            qrconsulta_base.SQL.Clear;
+            qrconsulta_base.SQL.Add('select * from tcliente where controle = :controle');
+            qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempCliente.FieldByName('ccli').AsInteger;
+            qrconsulta_base.Open;
+
+            nomecliente := qrconsulta_base.FieldByName('cliente').AsString;
+
+            qrconsulta_base.Close;
+            qrconsulta_base.SQL.Clear;
+            qrconsulta_base.SQL.Add('select * from tfuncionario where controle = :controle');
+            qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempfuncionario.FieldByName('cfun').AsInteger;
+            qrconsulta_base.Open;
+
+            nomefuncionario := qrconsulta_base.FieldByName('funcionario').AsString;
+
+            qrconsulta_base.Close;
+            qrconsulta_base.SQL.Clear;
+            qrconsulta_base.SQL.Add('select * from tfuncionario where controle = :controle');
+            qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
+            qrconsulta_base.Open;
+
+            nomevendedor := qrconsulta_base.FieldByName('funcionario').AsString;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into torcamento( codcliente,  nomecliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  data, controlevarchar,   hora,  datahoracadastro, tipodesconto,   titulodav,  cancelado,  status  ) ');
+            qrexec_base.SQL.Add('                values(:codcliente, :nomecliente, :codfuncionario, :funcionario, :codvendedor, :vendedor, :data, :controlevarchar, :hora, :datahoracadastro, :tipodesconto, :titulodav, :cancelado, :status  )');
+
+            qrexec_base.ParamByName('codcliente').AsInteger := modulo_orcamento.qrtempCliente.FieldByName('ccli').AsInteger;
+            qrexec_base.ParamByName('nomecliente').AsString:= nomecliente;
+            qrexec_base.ParamByName('codfuncionario').AsInteger := modulo_orcamento.qrtempfuncionario.FieldByName('cfun').AsInteger;
+            qrexec_base.ParamByName('funcionario').AsString:=  nomefuncionario;
+            qrexec_base.ParamByName('codvendedor').AsInteger := modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
+            qrexec_base.ParamByName('vendedor').AsString:= nomevendedor;
+            qrexec_base.ParamByName('data').AsDate:=date;
+            qrexec_base.ParamByName('controlevarchar').AsString:=formatfloat('0000000000',qrsequencia.FieldByName('controlevarchar').AsInteger);
+            qrexec_base.ParamByName('hora').AsString := formatdatetime('HH:mm:ss',time);
+            qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
+            qrexec_base.ParamByName('tipodesconto').AsString:='R$';
+            qrexec_base.ParamByName('titulodav').AsString:='ORÇAMENTOS';
+            qrexec_base.ParamByName('cancelado').AsString:='NÃO';
+            qrexec_base.ParamByName('status').AsString:='ABERTO';
+            qrexec_base.ExecSQL;
+
+          end;
+
+
+        //modulo_orcamento.qrorcamento.Append;
+     end
+  else if frmorcamento_pesquisa.opcao = 'A' then
+     begin
+        //modulo_orcamento.qrorcamento.Edit;
+     end;
+
+
+  if (frmorcamento_pesquisa.opcao = 'I') or (frmorcamento_pesquisa.opcao = 'A') then
+     begin
+
+
+
+     end;
+
+
+  modulo_conexaodb.atualizaBanco;
+
+  //modulo_orcamento.qrorcamento.Refresh;
+
+
+
+
+
+
+
+
 
 end;
 

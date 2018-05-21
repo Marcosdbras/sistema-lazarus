@@ -226,7 +226,7 @@ begin
      end;
   //endi
 
-  showmessage(filtro);
+  //showmessage(filtro);
 
   with modulo_orcamento do
     begin

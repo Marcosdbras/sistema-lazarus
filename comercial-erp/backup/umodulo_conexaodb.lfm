@@ -1,13 +1,13 @@
 object modulo_conexaodb: Tmodulo_conexaodb
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 306
+  Height = 386
   HorizontalOffset = 256
   VerticalOffset = 210
   Width = 613
   PPI = 96
   object conexaodb: TIBConnection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'C:\SGBR\Master\BASESGMASTER.FDB'
     KeepConnection = False
@@ -17,14 +17,14 @@ object modulo_conexaodb: Tmodulo_conexaodb
     CharSet = 'ISO8859_1'
     HostName = 'localhost'
     CheckTransactionParams = False
-    left = 176
+    left = 48
     top = 16
   end
   object tzcontrole: TSQLTransaction
-    Active = False
+    Active = True
     Database = conexaodb
-    left = 32
-    top = 152
+    left = 48
+    top = 224
   end
   object Script: TSQLScript
     DataBase = conexaodb
@@ -52,15 +52,15 @@ object modulo_conexaodb: Tmodulo_conexaodb
     UseSetTerm = True
     UseCommit = True
     UseDefines = True
-    left = 120
-    top = 152
+    left = 144
+    top = 224
   end
   object qrconsulta_base: TSQLQuery
     FieldDefs = <>
     Database = conexaodb
     Transaction = tzcontrole
     Params = <>
-    left = 32
+    left = 48
     top = 80
   end
   object qrexec_base: TSQLQuery
@@ -68,7 +68,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
     Database = conexaodb
     Transaction = tzcontrole
     Params = <>
-    left = 120
-    top = 104
+    left = 144
+    top = 80
   end
 end

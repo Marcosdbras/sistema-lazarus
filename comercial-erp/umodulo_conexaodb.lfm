@@ -1,13 +1,13 @@
 object modulo_conexaodb: Tmodulo_conexaodb
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 306
-  HorizontalOffset = 256
-  VerticalOffset = 210
-  Width = 613
+  Height = 624
+  HorizontalOffset = 840
+  VerticalOffset = 48
+  Width = 273
   PPI = 96
   object conexaodb: TIBConnection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'C:\SGBR\Master\BASESGMASTER.FDB'
     KeepConnection = False
@@ -17,14 +17,14 @@ object modulo_conexaodb: Tmodulo_conexaodb
     CharSet = 'ISO8859_1'
     HostName = 'localhost'
     CheckTransactionParams = False
-    left = 176
+    left = 48
     top = 16
   end
   object tzcontrole: TSQLTransaction
-    Active = False
+    Active = True
     Database = conexaodb
-    left = 32
-    top = 152
+    left = 48
+    top = 192
   end
   object Script: TSQLScript
     DataBase = conexaodb
@@ -52,23 +52,196 @@ object modulo_conexaodb: Tmodulo_conexaodb
     UseSetTerm = True
     UseCommit = True
     UseDefines = True
-    left = 120
-    top = 152
+    left = 144
+    top = 192
   end
   object qrconsulta_base: TSQLQuery
     FieldDefs = <>
     Database = conexaodb
     Transaction = tzcontrole
     Params = <>
-    left = 32
-    top = 80
+    left = 48
+    top = 144
   end
   object qrexec_base: TSQLQuery
     FieldDefs = <>
     Database = conexaodb
     Transaction = tzcontrole
     Params = <>
-    left = 120
-    top = 104
+    left = 144
+    top = 144
+  end
+  object qrsequencia: TSQLQuery
+    PacketRecords = 1
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PREVENDA'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'RPS'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NUMEROOS'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NUMEROLOTE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SENHACOMANDA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NUMERONOTAMANUAL'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOCLIENTE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CONTROLEVARCHAR'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'NSUMANIFESTO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'IDDFE'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Database = conexaodb
+    Transaction = tzcontrole
+    SQL.Strings = (
+      'select * from tsequencia'
+    )
+    Params = <>
+    left = 48
+    top = 80
+    object qrsequenciaCONTROLE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONTROLE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrsequenciaPREVENDA: TStringField
+      FieldKind = fkData
+      FieldName = 'PREVENDA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrsequenciaRPS: TLongintField
+      FieldKind = fkData
+      FieldName = 'RPS'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaNUMEROOS: TLongintField
+      FieldKind = fkData
+      FieldName = 'NUMEROOS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaNUMEROLOTE: TLongintField
+      FieldKind = fkData
+      FieldName = 'NUMEROLOTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaSENHACOMANDA: TLongintField
+      FieldKind = fkData
+      FieldName = 'SENHACOMANDA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaNUMERONOTAMANUAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'NUMERONOTAMANUAL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaCODIGOCLIENTE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOCLIENTE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaCONTROLEVARCHAR: TLargeintField
+      FieldKind = fkData
+      FieldName = 'CONTROLEVARCHAR'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaNSUMANIFESTO: TLongintField
+      FieldKind = fkData
+      FieldName = 'NSUMANIFESTO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaIDDFE: TLongintField
+      FieldKind = fkData
+      FieldName = 'IDDFE'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dssequencia: TDataSource
+    DataSet = qrsequencia
+    left = 144
+    top = 80
   end
 end

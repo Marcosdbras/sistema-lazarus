@@ -14,7 +14,20 @@ type
 
   Tmodulo_conexaodb = class(TDataModule)
     conexaodb: TIBConnection;
+    dssequencia: TDataSource;
     qrorcamento1CONTROLE: TLongintField;
+    qrsequencia: TSQLQuery;
+    qrsequenciaCODIGOCLIENTE: TLongintField;
+    qrsequenciaCONTROLE: TLongintField;
+    qrsequenciaCONTROLEVARCHAR: TLargeintField;
+    qrsequenciaIDDFE: TLongintField;
+    qrsequenciaNSUMANIFESTO: TLongintField;
+    qrsequenciaNUMEROLOTE: TLongintField;
+    qrsequenciaNUMERONOTAMANUAL: TLongintField;
+    qrsequenciaNUMEROOS: TLongintField;
+    qrsequenciaPREVENDA: TStringField;
+    qrsequenciaRPS: TLongintField;
+    qrsequenciaSENHACOMANDA: TLongintField;
     qrtempccli: TLongintField;
     qrtempcfun: TLongintField;
     qrtempcontrole: TAutoIncField;
@@ -28,6 +41,7 @@ type
   private
 
   public
+    procedure atualizaBanco;
 
   end;
 
@@ -39,6 +53,12 @@ implementation
 {$R *.lfm}
 
 { Tmodulo_conexaodb }
+
+
+procedure Tmodulo_conexaodb.atualizaBanco;
+begin
+   tzcontrole.Commit;
+end;
 
 procedure Tmodulo_conexaodb.DataModuleCreate(Sender: TObject);
 begin

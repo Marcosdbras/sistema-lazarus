@@ -42,6 +42,8 @@ type
     procedure btnlimparClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
@@ -157,6 +159,16 @@ begin
   frmorcamento_cadastro.ShowModal;
   frmorcamento_cadastro.Free;
 
+end;
+
+procedure Tfrmorcamento_pesquisa.Button3Click(Sender: TObject);
+begin
+  opcao := 'E';
+end;
+
+procedure Tfrmorcamento_pesquisa.Button4Click(Sender: TObject);
+begin
+  opcao := 'C';
 end;
 
 procedure Tfrmorcamento_pesquisa.Button5Click(Sender: TObject);

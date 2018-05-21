@@ -249,6 +249,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
+      OnClick = Button3Click
       ParentFont = False
       TabOrder = 2
     end
@@ -264,6 +265,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
+      OnClick = Button4Click
       ParentFont = False
       TabOrder = 3
     end

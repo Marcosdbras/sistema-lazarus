@@ -103,6 +103,17 @@ type
     qrorcamento_itemprodutoVALORDESCONTOUNITARIO: TBCDField;
     qrorcamento_itemprodutoVALORUNITARIO: TBCDField;
     qrorcamento_itemprodutoVALORUNITARIO2: TBCDField;
+    qrsequenciaCODIGOCLIENTE: TLongintField;
+    qrsequenciaCONTROLE: TLongintField;
+    qrsequenciaCONTROLEVARCHAR: TLargeintField;
+    qrsequenciaIDDFE: TLongintField;
+    qrsequenciaNSUMANIFESTO: TLongintField;
+    qrsequenciaNUMEROLOTE: TLongintField;
+    qrsequenciaNUMERONOTAMANUAL: TLongintField;
+    qrsequenciaNUMEROOS: TLongintField;
+    qrsequenciaPREVENDA: TStringField;
+    qrsequenciaRPS: TLongintField;
+    qrsequenciaSENHACOMANDA: TLongintField;
     qrtempccli: TLongintField;
     qrtempcfun: TLongintField;
     qrtempCliente: TBufDataset;
@@ -115,6 +126,8 @@ type
     qrtempVendedor: TBufDataset;
     procedure DataModuleCreate(Sender: TObject);
     procedure qrorcamentoAfterScroll(DataSet: TDataSet);
+    procedure qrsequenciaAfterDelete(DataSet: TDataSet);
+    procedure qrsequenciaAfterPost(DataSet: TDataSet);
   private
 
   public
@@ -133,6 +146,7 @@ implementation
        procedure Tmodulo_orcamento.DataModuleCreate(Sender: TObject);
        begin
 
+        //Abre tabelas temp
          with qrtempCliente.fieldDefs do
             begin
                   Add('ccli', ftInteger, 0, True);
@@ -182,6 +196,17 @@ begin
 
 
 
+end;
+
+procedure Tmodulo_orcamento.qrsequenciaAfterDelete(DataSet: TDataSet);
+begin
+  if qrsequencia.ChangeCount <> 0 then
+     qrsequencia.ApplyUpdates(0);
+
+end;
+
+procedure Tmodulo_orcamento.qrsequenciaAfterPost(DataSet: TDataSet);
+begin
 end;
 
 end.

@@ -1,12 +1,13 @@
 object modulo_orcamento: Tmodulo_orcamento
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 445
+  Height = 601
   HorizontalOffset = 849
-  VerticalOffset = 145
+  VerticalOffset = 79
   Width = 332
   PPI = 96
   object qrorcamento: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -542,6 +543,7 @@ object modulo_orcamento: Tmodulo_orcamento
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Currency = False
       MaxValue = 0
@@ -1188,6 +1190,7 @@ object modulo_orcamento: Tmodulo_orcamento
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Currency = False
       MaxValue = 0
@@ -1368,7 +1371,7 @@ object modulo_orcamento: Tmodulo_orcamento
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      DisplayFormat = '0.00'
+      DisplayFormat = '###,###,##0.000'
       Precision = 18
       Currency = False
       MaxValue = 0
@@ -1382,6 +1385,7 @@ object modulo_orcamento: Tmodulo_orcamento
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Currency = False
       MaxValue = 0
@@ -1395,8 +1399,8 @@ object modulo_orcamento: Tmodulo_orcamento
   end
   object qrtempFuncionario: TBufDataset
     FieldDefs = <>
-    left = 64
-    top = 192
+    left = 72
+    top = 264
     object qrtempFuncionariocfun: TLongintField
       FieldKind = fkData
       FieldName = 'cfun'
@@ -1409,18 +1413,18 @@ object modulo_orcamento: Tmodulo_orcamento
   end
   object dstempFuncionario: TDataSource
     DataSet = qrtempFuncionario
-    left = 224
-    top = 192
+    left = 232
+    top = 264
   end
   object dstempVendedor: TDataSource
     DataSet = qrtempVendedor
-    left = 224
-    top = 272
+    left = 232
+    top = 344
   end
   object qrtempVendedor: TBufDataset
     FieldDefs = <>
-    left = 67
-    top = 272
+    left = 75
+    top = 344
     object qrtempcven1: TLongintField
       FieldKind = fkData
       FieldName = 'cven'
@@ -1433,8 +1437,8 @@ object modulo_orcamento: Tmodulo_orcamento
   end
   object qrtempCliente: TBufDataset
     FieldDefs = <>
-    left = 67
-    top = 360
+    left = 75
+    top = 432
     object qrtempClienteccli: TLongintField
       FieldKind = fkData
       FieldName = 'ccli'
@@ -1447,7 +1451,7 @@ object modulo_orcamento: Tmodulo_orcamento
   end
   object dstempCliente: TDataSource
     DataSet = qrtempCliente
-    left = 224
-    top = 360
+    left = 232
+    top = 432
   end
 end
