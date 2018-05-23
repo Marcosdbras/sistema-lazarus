@@ -280,18 +280,21 @@ begin
         //modulo_orcamento.qrorcamento.Edit;
      end;
 
+  modulo_conexaodb.atualizaBanco;
 
-  if (frmorcamento_pesquisa.opcao = 'I') or (frmorcamento_pesquisa.opcao = 'A') then
+  modulo_orcamento.qrorcamento.Refresh;
+
+  if (frmorcamento_pesquisa.opcao = 'I')  then
      begin
 
-
+        modulo_orcamento.qrorcamento.Last;
 
      end;
 
 
-  modulo_conexaodb.atualizaBanco;
 
-  //modulo_orcamento.qrorcamento.Refresh;
+
+
 
 
 

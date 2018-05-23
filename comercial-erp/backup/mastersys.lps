@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
-        <TopLine Value="197"/>
-        <CursorPos X="53" Y="207"/>
+        <TopLine Value="279"/>
+        <CursorPos X="43" Y="291"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -48,7 +48,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="2"/>
         <TopLine Value="51"/>
-        <CursorPos X="22" Y="60"/>
+        <CursorPos X="79" Y="54"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -143,7 +143,6 @@
         <CursorPos X="14" Y="171"/>
         <UsageCount Value="271"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="umodulo_cliente.pas"/>
