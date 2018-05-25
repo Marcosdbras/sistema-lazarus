@@ -163,29 +163,29 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 4
     end
     object Panel2: TPanel
-      Left = 1158
+      Left = 1118
       Height = 88
       Top = 0
-      Width = 91
+      Width = 131
       Align = alRight
       BevelOuter = bvNone
       ClientHeight = 88
-      ClientWidth = 91
+      ClientWidth = 131
       TabOrder = 5
       object btnfiltrar: TButton
         Left = 8
-        Height = 25
-        Top = 16
-        Width = 75
+        Height = 40
+        Top = 6
+        Width = 123
         Caption = 'Filtrar'
         OnClick = btnfiltrarClick
         TabOrder = 0
       end
       object btnlimpar: TButton
         Left = 8
-        Height = 25
-        Top = 48
-        Width = 75
+        Height = 40
+        Top = 46
+        Width = 123
         Caption = 'Limpar'
         OnClick = btnlimparClick
         TabOrder = 1
@@ -207,9 +207,9 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     OnClick = pnlinferiorClick
     object Button1: TButton
       Left = 8
-      Height = 42
-      Top = 6
-      Width = 75
+      Height = 40
+      Top = 7
+      Width = 123
       Caption = 'Incluir'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clNavy
@@ -222,10 +222,10 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 0
     end
     object Button2: TButton
-      Left = 88
-      Height = 42
-      Top = 6
-      Width = 75
+      Left = 136
+      Height = 40
+      Top = 7
+      Width = 123
       Caption = 'Alterar'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clNavy
@@ -238,10 +238,10 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 1
     end
     object Button3: TButton
-      Left = 168
-      Height = 42
-      Top = 6
-      Width = 75
+      Left = 264
+      Height = 40
+      Top = 7
+      Width = 123
       Caption = 'Excluir'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clNavy
@@ -254,10 +254,10 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 2
     end
     object Button4: TButton
-      Left = 248
-      Height = 42
-      Top = 6
-      Width = 75
+      Left = 392
+      Height = 40
+      Top = 7
+      Width = 123
       Caption = 'Consulta'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clNavy
@@ -270,21 +270,21 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 3
     end
     object Panel1: TPanel
-      Left = 1158
+      Left = 1096
       Height = 50
       Top = 0
-      Width = 91
+      Width = 153
       Align = alRight
       BevelOuter = bvNone
       Caption = 'Panel1'
       ClientHeight = 50
-      ClientWidth = 91
+      ClientWidth = 153
       TabOrder = 4
       object Button5: TButton
-        Left = 8
-        Height = 42
-        Top = 4
-        Width = 75
+        Left = 30
+        Height = 40
+        Top = 7
+        Width = 123
         Caption = 'Fechar'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clNavy

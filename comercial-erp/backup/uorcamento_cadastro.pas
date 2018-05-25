@@ -14,18 +14,20 @@ type
   { Tfrmorcamento_cadastro }
 
   Tfrmorcamento_cadastro = class(TForm)
-    Button1: TButton;
     btnlancar: TButton;
+    Button1: TButton;
     Button2: TButton;
-    DBGrid1: TDBGrid;
+    Button3: TButton;
+    Button4: TButton;
+    cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
     cbxnomefun: TDBLookupComboBox;
-    cbxunidade: TDBLookupComboBox;
+    DBGrid1: TDBGrid;
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
-    edtvlrunitario: TFloatSpinEdit;
     edtvlrsubtotal: TFloatSpinEdit;
+    edtvlrunitario: TFloatSpinEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
@@ -39,6 +41,10 @@ type
     lblcliente6: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
@@ -54,6 +60,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
+    procedure Panel6Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
     procedure filtrar;
     procedure limpar;
@@ -81,6 +88,11 @@ uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umo
 { Tfrmorcamento_cadastro }
 
 procedure Tfrmorcamento_cadastro.Label1Click(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.Panel6Click(Sender: TObject);
 begin
 
 end;
@@ -388,7 +400,7 @@ begin
 
         modulo_orcamento.qrorcamento.Last;
 
-        Application.MessageBox(pchar('Registro inserido com sucesso!'),'Atenção',MB_OK);
+        Application.MessageBox(pchar('Registro inserido com sucesso!'),'Processo bem sucedido',MB_OK);
 
      end
   else if (frmorcamento_pesquisa.opcao = 'A') then
@@ -403,7 +415,7 @@ begin
         else
            begin
 
-             Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Atenção',MB_OK);
+             Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Processo bem sucedido',MB_OK);
 
            end;
         //endi
