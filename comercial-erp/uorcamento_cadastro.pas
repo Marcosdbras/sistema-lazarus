@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, ExtDlgs, EditBtn, DBCtrls, DBGrids, ComCtrls, Spin, ZDataset, DB,
-  BufDataset, Types;
+  BufDataset, Types, LCLType;
 
 type
 
@@ -61,6 +61,7 @@ type
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: boolean);
   private
+      icodigo_controle:integer;
 
   public
 
@@ -83,8 +84,6 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.FormCreate(Sender: TObject);
-  var
-    icodigo_controle:integer;
 begin
 
 
@@ -102,6 +101,9 @@ begin
   //qrtemp.Open;
 
   //qrtemp.Append;
+
+
+
 
   with modulo_cliente do
     begin
@@ -133,8 +135,6 @@ begin
            qrtempCliente.FieldByName('ccli').AsInteger:= qrorcamento.FieldByName('codcliente').AsInteger;
            qrtempFuncionario.FieldByName('cfun').AsInteger:= qrorcamento.FieldByName('codfuncionario').AsInteger;
            qrtempVendedor.FieldByName('cven').AsInteger:= qrorcamento.FieldByName('codvendedor').AsInteger;
-
-
 
          end
       else
@@ -206,6 +206,37 @@ procedure Tfrmorcamento_cadastro.Button1Click(Sender: TObject);
 var
   nomecliente, nomefuncionario, nomevendedor:string;
 begin
+  with modulo_conexaodb do
+    begin
+
+      qrconsulta_base.Close;
+      qrconsulta_base.SQL.Clear;
+      qrconsulta_base.SQL.Add('select * from tcliente where controle = :controle');
+      qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempCliente.FieldByName('ccli').AsInteger;
+      qrconsulta_base.Open;
+
+      nomecliente := qrconsulta_base.FieldByName('cliente').AsString;
+
+      qrconsulta_base.Close;
+      qrconsulta_base.SQL.Clear;
+      qrconsulta_base.SQL.Add('select * from tfuncionario where controle = :controle');
+      qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempfuncionario.FieldByName('cfun').AsInteger;
+      qrconsulta_base.Open;
+
+      nomefuncionario := qrconsulta_base.FieldByName('funcionario').AsString;
+
+      qrconsulta_base.Close;
+      qrconsulta_base.SQL.Clear;
+      qrconsulta_base.SQL.Add('select * from tfuncionario where controle = :controle');
+      qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
+      qrconsulta_base.Open;
+
+      nomevendedor := qrconsulta_base.FieldByName('funcionario').AsString;
+
+
+    end;
+  //endth
+
   if frmorcamento_pesquisa.opcao = 'I' then
      begin
 
@@ -225,41 +256,12 @@ begin
             qrsequencia.SQL.Add('select * from tsequencia');
             qrsequencia.Open;
 
-            qrconsulta_base.Close;
-            qrconsulta_base.SQL.Clear;
-            qrconsulta_base.SQL.Add('select * from tcliente where controle = :controle');
-            qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempCliente.FieldByName('ccli').AsInteger;
-            qrconsulta_base.Open;
-
-            nomecliente := qrconsulta_base.FieldByName('cliente').AsString;
-
-            qrconsulta_base.Close;
-            qrconsulta_base.SQL.Clear;
-            qrconsulta_base.SQL.Add('select * from tfuncionario where controle = :controle');
-            qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempfuncionario.FieldByName('cfun').AsInteger;
-            qrconsulta_base.Open;
-
-            nomefuncionario := qrconsulta_base.FieldByName('funcionario').AsString;
-
-            qrconsulta_base.Close;
-            qrconsulta_base.SQL.Clear;
-            qrconsulta_base.SQL.Add('select * from tfuncionario where controle = :controle');
-            qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
-            qrconsulta_base.Open;
-
-            nomevendedor := qrconsulta_base.FieldByName('funcionario').AsString;
-
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
             qrexec_base.SQL.Add('insert into torcamento( codcliente,  nomecliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  data, controlevarchar,   hora,  datahoracadastro, tipodesconto,   titulodav,  cancelado,  status  ) ');
             qrexec_base.SQL.Add('                values(:codcliente, :nomecliente, :codfuncionario, :funcionario, :codvendedor, :vendedor, :data, :controlevarchar, :hora, :datahoracadastro, :tipodesconto, :titulodav, :cancelado, :status  )');
 
-            qrexec_base.ParamByName('codcliente').AsInteger := modulo_orcamento.qrtempCliente.FieldByName('ccli').AsInteger;
-            qrexec_base.ParamByName('nomecliente').AsString:= nomecliente;
-            qrexec_base.ParamByName('codfuncionario').AsInteger := modulo_orcamento.qrtempfuncionario.FieldByName('cfun').AsInteger;
-            qrexec_base.ParamByName('funcionario').AsString:=  nomefuncionario;
-            qrexec_base.ParamByName('codvendedor').AsInteger := modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
-            qrexec_base.ParamByName('vendedor').AsString:= nomevendedor;
+
             qrexec_base.ParamByName('data').AsDate:=date;
             qrexec_base.ParamByName('controlevarchar').AsString:=formatfloat('0000000000',qrsequencia.FieldByName('controlevarchar').AsInteger);
             qrexec_base.ParamByName('hora').AsString := formatdatetime('HH:mm:ss',time);
@@ -268,41 +270,75 @@ begin
             qrexec_base.ParamByName('titulodav').AsString:='ORÇAMENTOS';
             qrexec_base.ParamByName('cancelado').AsString:='NÃO';
             qrexec_base.ParamByName('status').AsString:='ABERTO';
-            qrexec_base.ExecSQL;
+
 
           end;
-
-
-        //modulo_orcamento.qrorcamento.Append;
+        //endth
      end
   else if frmorcamento_pesquisa.opcao = 'A' then
      begin
-        //modulo_orcamento.qrorcamento.Edit;
+        with modulo_conexaodb do
+          begin
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('update torcamento set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor where controle = :controle');
+
+            qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
+
+
+          end;
+        //endth
+
      end;
+  //endif
 
-  modulo_conexaodb.atualizaBanco;
+  if (frmorcamento_pesquisa.opcao = 'I') or (frmorcamento_pesquisa.opcao = 'A') then
+     begin
+        with modulo_conexaodb do
+          begin
 
-  modulo_orcamento.qrorcamento.Refresh;
+
+            qrexec_base.ParamByName('codcliente').AsInteger := modulo_orcamento.qrtempCliente.FieldByName('ccli').AsInteger;
+            qrexec_base.ParamByName('nomecliente').AsString:= nomecliente;
+            qrexec_base.ParamByName('codfuncionario').AsInteger := modulo_orcamento.qrtempfuncionario.FieldByName('cfun').AsInteger;
+            qrexec_base.ParamByName('funcionario').AsString:=  nomefuncionario;
+            qrexec_base.ParamByName('codvendedor').AsInteger := modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
+            qrexec_base.ParamByName('vendedor').AsString:= nomevendedor;
+            qrexec_base.ExecSQL;
+
+            atualizaBanco;
+
+          end;
+        //endth
+
+
+       modulo_orcamento.qrorcamento.Refresh;
+
+     end;
+  //endi
 
   if (frmorcamento_pesquisa.opcao = 'I')  then
      begin
 
         modulo_orcamento.qrorcamento.Last;
 
+     end
+  else if (frmorcamento_pesquisa.opcao = 'A') then
+     begin
+
+        if not modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]) then
+           begin
+
+             Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
+
+           end;
+        //endi
+
+        close;
+
      end;
-
-
-
-
-
-
-
-
-
-
-
-
-
+  //endi
 
 end;
 
