@@ -20,8 +20,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="329"/>
-        <CursorPos X="16" Y="335"/>
+        <TopLine Value="385"/>
+        <CursorPos X="94" Y="391"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -166,7 +166,7 @@
         <UsageCount Value="258"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="17" HistoryIndex="16">
+    <JumpHistory Count="22" HistoryIndex="21">
       <Position1>
         <Filename Value="uorcamento_cadastro.pas"/>
         <Caret Column="29"/>
@@ -235,6 +235,26 @@
         <Filename Value="uorcamento_cadastro.pas"/>
         <Caret Line="333" Column="163" TopLine="324"/>
       </Position17>
+      <Position18>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="407" Column="3" TopLine="394"/>
+      </Position18>
+      <Position19>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="404" TopLine="399"/>
+      </Position19>
+      <Position20>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Column="28"/>
+      </Position20>
+      <Position21>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="60" Column="29" TopLine="45"/>
+      </Position21>
+      <Position22>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="209" Column="17" TopLine="193"/>
+      </Position22>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

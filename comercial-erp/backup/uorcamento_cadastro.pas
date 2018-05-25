@@ -57,6 +57,8 @@ type
     procedure pnlinferiorClick(Sender: TObject);
     procedure filtrar;
     procedure limpar;
+    procedure salvarCadastro;
+
     procedure ScrollBox1Click(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: boolean);
@@ -203,9 +205,72 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.Button1Click(Sender: TObject);
+begin
+  salvarCadastro;
+
+  close;
+
+end;
+
+procedure Tfrmorcamento_cadastro.Button2Click(Sender: TObject);
+begin
+  //showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
+
+  Close;
+end;
+
+procedure Tfrmorcamento_cadastro.Button5Click(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.DBText2Click(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.dsorcamentoDataChange(Sender: TObject; Field: TField);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.edtqtdeChange(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.pnlinferiorClick(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.limpar;
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.ScrollBox1Click(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.TabSheet1ContextPopup(Sender: TObject;
+  MousePos: TPoint; var Handled: boolean);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.filtrar;
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.salvarCadastro;
 var
   nomecliente, nomefuncionario, nomevendedor:string;
+
 begin
+
   with modulo_conexaodb do
     begin
 
@@ -323,6 +388,8 @@ begin
 
         modulo_orcamento.qrorcamento.Last;
 
+        Application.MessageBox(pchar('Registro inserido com sucesso!'),'Atenção',MB_OK);
+
      end
   else if (frmorcamento_pesquisa.opcao = 'A') then
      begin
@@ -333,66 +400,19 @@ begin
              Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
 
            end
+        else
+           begin
+
+             Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Atenção',MB_OK);
+
+           end;
         //endi
 
-        close;
+
 
      end;
   //endi
 
-end;
-
-procedure Tfrmorcamento_cadastro.Button2Click(Sender: TObject);
-begin
-  //showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
-
-  Close;
-end;
-
-procedure Tfrmorcamento_cadastro.Button5Click(Sender: TObject);
-begin
-
-end;
-
-procedure Tfrmorcamento_cadastro.DBText2Click(Sender: TObject);
-begin
-
-end;
-
-procedure Tfrmorcamento_cadastro.dsorcamentoDataChange(Sender: TObject; Field: TField);
-begin
-
-end;
-
-procedure Tfrmorcamento_cadastro.edtqtdeChange(Sender: TObject);
-begin
-
-end;
-
-procedure Tfrmorcamento_cadastro.pnlinferiorClick(Sender: TObject);
-begin
-
-end;
-
-procedure Tfrmorcamento_cadastro.limpar;
-begin
-
-end;
-
-procedure Tfrmorcamento_cadastro.ScrollBox1Click(Sender: TObject);
-begin
-
-end;
-
-procedure Tfrmorcamento_cadastro.TabSheet1ContextPopup(Sender: TObject;
-  MousePos: TPoint; var Handled: boolean);
-begin
-
-end;
-
-procedure Tfrmorcamento_cadastro.filtrar;
-
-begin
 
 end;
 
