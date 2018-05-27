@@ -22,12 +22,18 @@ begin
   frmsplash.Show;
   frmsplash.Update;
 
+  // 1-Realiza conexao com base de dados
   Application.CreateForm(Tmodulo_conexaodb, modulo_conexaodb);
+
+  // 2-Cria tela principal para atualizar base de dados
+  Application.CreateForm(Tfrmtela_principal, frmtela_principal);
+
+  // 3-Cria módulos de conexao com as tabelas
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
   Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
 
-  Application.CreateForm(Tfrmtela_principal, frmtela_principal);
+
 
   frmsplash.Hide;
   frmsplash.Free;

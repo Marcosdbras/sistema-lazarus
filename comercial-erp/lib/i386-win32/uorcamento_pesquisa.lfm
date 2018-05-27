@@ -369,13 +369,13 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
         FieldName = 'DATA'
       end    
       item
+        Title.Caption = 'COD. CLI.'
+        FieldName = 'CODCLIENTE'
+      end    
+      item
         Title.Caption = 'NOME CLIENTE'
         Width = 500
         FieldName = 'NOMECLIENTE'
-      end    
-      item
-        Title.Caption = 'COD. CLI.'
-        FieldName = 'CODCLIENTE'
       end    
       item
         Title.Caption = 'FUNCIONÁRIO'

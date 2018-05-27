@@ -65,6 +65,7 @@ type
     procedure filtrar;
     procedure limpar;
     procedure salvarCadastro;
+    procedure limparProduto;
 
     procedure ScrollBox1Click(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -425,6 +426,16 @@ begin
      end;
   //endi
 
+
+end;
+
+
+procedure tfrmorcamento_cadastro.limparProduto;
+begin
+  edtdescricao.Text:='';
+  edtqtde.Value:=0;
+  edtvlrunitario.Value:=0;
+  edtvlrsubtotal.Value:=0;
 
 end;
 
