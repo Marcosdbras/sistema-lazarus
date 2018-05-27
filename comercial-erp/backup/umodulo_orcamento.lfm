@@ -7,7 +7,6 @@ object modulo_orcamento: Tmodulo_orcamento
   Width = 332
   PPI = 96
   object qrorcamento: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -1399,8 +1398,8 @@ object modulo_orcamento: Tmodulo_orcamento
   end
   object qrtempFuncionario: TBufDataset
     FieldDefs = <>
-    left = 72
-    top = 264
+    left = 64
+    top = 208
     object qrtempFuncionariocfun: TLongintField
       FieldKind = fkData
       FieldName = 'cfun'
@@ -1413,18 +1412,18 @@ object modulo_orcamento: Tmodulo_orcamento
   end
   object dstempFuncionario: TDataSource
     DataSet = qrtempFuncionario
-    left = 232
-    top = 264
+    left = 224
+    top = 208
   end
   object dstempVendedor: TDataSource
     DataSet = qrtempVendedor
-    left = 232
-    top = 344
+    left = 224
+    top = 288
   end
   object qrtempVendedor: TBufDataset
     FieldDefs = <>
-    left = 75
-    top = 344
+    left = 67
+    top = 288
     object qrtempcven1: TLongintField
       FieldKind = fkData
       FieldName = 'cven'
@@ -1437,8 +1436,8 @@ object modulo_orcamento: Tmodulo_orcamento
   end
   object qrtempCliente: TBufDataset
     FieldDefs = <>
-    left = 75
-    top = 432
+    left = 67
+    top = 376
     object qrtempClienteccli: TLongintField
       FieldKind = fkData
       FieldName = 'ccli'
@@ -1451,7 +1450,26 @@ object modulo_orcamento: Tmodulo_orcamento
   end
   object dstempCliente: TDataSource
     DataSet = qrtempCliente
-    left = 232
-    top = 432
+    left = 224
+    top = 376
+  end
+  object qrtempUnidade: TBufDataset
+    FieldDefs = <>
+    left = 72
+    top = 456
+    object qrtempUnidadecund: TLongintField
+      FieldKind = fkData
+      FieldName = 'cund'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempUnidade: TDataSource
+    DataSet = qrtempUnidade
+    left = 224
+    top = 456
   end
 end

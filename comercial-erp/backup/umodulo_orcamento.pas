@@ -16,6 +16,7 @@ type
     dsorcamento: TDataSource;
     dstempCliente: TDataSource;
     dstempFuncionario: TDataSource;
+    dstempUnidade: TDataSource;
     dstempVendedor: TDataSource;
     qrorcamento: TSQLQuery;
     qrorcamentoACRESCIMO: TBCDField;
@@ -123,6 +124,8 @@ type
     qrtempcven1: TLongintField;
     qrtempFuncionario: TBufDataset;
     qrtempFuncionariocfun: TLongintField;
+    qrtempUnidade: TBufDataset;
+    qrtempUnidadecund: TLongintField;
     qrtempVendedor: TBufDataset;
     procedure DataModuleCreate(Sender: TObject);
     procedure qrorcamentoAfterScroll(DataSet: TDataSet);
@@ -200,8 +203,7 @@ end;
 
 procedure Tmodulo_orcamento.qrsequenciaAfterDelete(DataSet: TDataSet);
 begin
-  if qrsequencia.ChangeCount <> 0 then
-     qrsequencia.ApplyUpdates(0);
+
 
 end;
 

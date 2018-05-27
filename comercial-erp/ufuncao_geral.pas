@@ -41,6 +41,86 @@ begin
 
 try
 
+//Tabela MASTER_UNIDADE existe?
+if existe_tabela('MASTER_UNIDADE') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE MASTER_UNIDADE (CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_UNIDADE_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_UNIDADE ADD CONSTRAINT PK_MASTER_UNIDADE  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger master_unidade_bi for master_unidade');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_master_unidade_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
+
+
+//Campo DESCRICAO existe?
+if existe_campo('MASTER_UNIDADE','DESCRICAO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD DESCRICAO VARCHAR(40);   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo SIGLA existe?
+if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD SIGLA VARCHAR(6);   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
 
 
 //Tabela MASTER_USUARIO existe?
@@ -50,17 +130,20 @@ if existe_tabela('MASTER_USUARIO') = 0 then
      with modulo_conexaodb do
      begin
 
-       Script.Script.Clear;
-
        Script.Terminator:=';';
 
+       Script.Script.Clear;
        Script.Script.Add('CREATE TABLE MASTER_USUARIO (CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('ALTER TABLE MASTER_USUARIO ADD CONSTRAINT PK_MASTER_USUARIO  PRIMARY KEY (CODIGO);');
        Script.Script.Add('CREATE SEQUENCE GEN_MASTER_USUARIO_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_USUARIO ADD CONSTRAINT PK_MASTER_USUARIO  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
 
+       Script.Script.Clear;
        Script.Terminator:='^';
        Script.Script.Add('create trigger master_usuario_bi for master_usuario');
        Script.Script.Add('active before insert position 0');
@@ -127,16 +210,19 @@ if existe_tabela('MASTER_OS') = 0 then
      begin
 
 
-        Script.Script.Clear;
-
+       Script.Script.Clear;
        Script.Terminator:=';';
-
        Script.Script.Add('CREATE TABLE MASTER_OS (CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('ALTER TABLE MASTER_OS ADD CONSTRAINT PK_MASTER_OS  PRIMARY KEY (CODIGO);');
        Script.Script.Add('CREATE SEQUENCE GEN_MASTER_OS_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_OS ADD CONSTRAINT PK_MASTER_OS  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
        Script.Terminator:='^';
        Script.Script.Add('create trigger MASTER_OS_bi for MASTER_OS');
        Script.Script.Add('active before insert position 0');

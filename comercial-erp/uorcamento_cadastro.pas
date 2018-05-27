@@ -27,11 +27,24 @@ type
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
     edtvlrsubtotal: TFloatSpinEdit;
+    edtvlrsubtotal1: TFloatSpinEdit;
     edtvlrunitario: TFloatSpinEdit;
+    edtvlrunitario1: TFloatSpinEdit;
+    edtvlrunitario2: TFloatSpinEdit;
+    edtvlrunitario3: TFloatSpinEdit;
+    edtvlrunitario4: TFloatSpinEdit;
+    edtvlrunitario5: TFloatSpinEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
+    lblstatus: TLabel;
     lblcliente: TLabel;
     lblcliente1: TLabel;
     lblcliente2: TLabel;
@@ -39,12 +52,17 @@ type
     lblcliente4: TLabel;
     lblcliente5: TLabel;
     lblcliente6: TLabel;
+    Memo1: TMemo;
     Panel1: TPanel;
+    Panel10: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;
     Panel6: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Panel9: TPanel;
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
@@ -82,7 +100,7 @@ var
 
 implementation
 
-uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb;
+uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb, umodulo_unidade;
 
 {$R *.lfm}
 
@@ -118,7 +136,15 @@ begin
   //qrtemp.Append;
 
 
+  with modulo_unidade do
+    begin
+       qrunidade.Close;
+       qrunidade.SQL.Clear;
+       qrunidade.SQL.Add('select * from master_unidade order by descricao');
+       qrunidade.Open;
 
+    end;
+  //endth
 
   with modulo_cliente do
     begin
@@ -196,6 +222,14 @@ begin
   cbxnomeven.DataSource:=modulo_orcamento.dstempVendedor;
   cbxnomeven.DataField:='cven';
   cbxnomeven.ScrollListDataset:=true;
+
+  cbxunidade.ListSource := modulo_unidade.dsunidade;
+  cbxunidade.ListField:='sigla';
+  cbxunidade.KeyField:='codigo';
+  cbxunidade.DataSource:=modulo_orcamento.dstempUnidade;
+  cbxunidade.DataField:='cund';
+  cbxunidade.ScrollListDataset:=true;
+
 
 
   limparProduto;
@@ -433,10 +467,13 @@ end;
 
 procedure tfrmorcamento_cadastro.limparProduto;
 begin
+
   edtdescricao.Text:='';
   edtqtde.Value:=0;
   edtvlrunitario.Value:=0;
   edtvlrsubtotal.Value:=0;
+
+  modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger:=0;
 
 end;
 

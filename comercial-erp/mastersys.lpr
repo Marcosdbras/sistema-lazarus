@@ -9,7 +9,8 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, uorcamento_pesquisa, umodulo_orcamento, zcomponent, umodulo_conexaodb,
   ufuncao_arq_ini, uconfig_banco, utela_principal, ufuncao_conexaodb,
-  ufuncao_geral, usplash, ulogin, ucadastrar_senha, umodulo_cliente, umodulo_funcionario
+  ufuncao_geral, usplash, ulogin, ucadastrar_senha, umodulo_cliente,
+  umodulo_funcionario, umodulo_unidade
   { you can add units after this };
 
 {$R *.res}
@@ -32,7 +33,7 @@ begin
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
   Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
-
+  Application.CreateForm(Tmodulo_unidade, modulo_unidade);
 
 
   frmsplash.Hide;

@@ -1,0 +1,44 @@
+object modulo_unidade: Tmodulo_unidade
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 352
+  HorizontalOffset = 842
+  VerticalOffset = 214
+  Width = 244
+  PPI = 96
+  object qrunidade: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from master_unidade'
+    )
+    Params = <>
+    left = 40
+    top = 16
+  end
+  object dsunidade: TDataSource
+    DataSet = qrunidade
+    left = 163
+    top = 16
+  end
+  object qrtempUnidade: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 111
+    object qrtempUnidadecund: TLongintField
+      FieldKind = fkData
+      FieldName = 'cund'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempUnidade: TDataSource
+    DataSet = qrtempUnidade
+    left = 163
+    top = 111
+  end
+end

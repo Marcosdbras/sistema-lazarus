@@ -16,6 +16,7 @@ type
     dsorcamento: TDataSource;
     dstempCliente: TDataSource;
     dstempFuncionario: TDataSource;
+    dstempUnidade: TDataSource;
     dstempVendedor: TDataSource;
     qrorcamento: TSQLQuery;
     qrorcamentoACRESCIMO: TBCDField;
@@ -123,6 +124,8 @@ type
     qrtempcven1: TLongintField;
     qrtempFuncionario: TBufDataset;
     qrtempFuncionariocfun: TLongintField;
+    qrtempUnidade: TBufDataset;
+    qrtempUnidadecund: TLongintField;
     qrtempVendedor: TBufDataset;
     procedure DataModuleCreate(Sender: TObject);
     procedure qrorcamentoAfterScroll(DataSet: TDataSet);
@@ -185,6 +188,18 @@ implementation
          qrtempVendedor.Append;
 
 
+
+
+         with qrtempUnidade.fieldDefs do
+            begin
+                  Add('cund', ftInteger, 0, True);
+            end;
+
+         qrtempUnidade.CreateDataset;
+
+         qrtempUnidade.Open;
+
+         qrtempUnidade.Append;
 
 
 
