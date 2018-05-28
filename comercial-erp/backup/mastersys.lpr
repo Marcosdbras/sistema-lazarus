@@ -10,7 +10,7 @@ uses
   Forms, uorcamento_pesquisa, umodulo_orcamento, zcomponent, umodulo_conexaodb,
   ufuncao_arq_ini, uconfig_banco, utela_principal, ufuncao_conexaodb,
   ufuncao_geral, usplash, ulogin, ucadastrar_senha, umodulo_cliente,
-  umodulo_funcionario, umodulo_unidade
+  umodulo_funcionario, umodulo_unidade, umodulo_produto, uproduto_consulta
   { you can add units after this };
 
 {$R *.res}
@@ -33,12 +33,13 @@ begin
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
   Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
-
+  Application.CreateForm(Tmodulo_unidade, modulo_unidade);
+  Application.CreateForm(Tmodulo_produto, modulo_produto);
 
 
   frmsplash.Hide;
   frmsplash.Free;
-  Application.CreateForm(Tmodulo_unidade, modulo_unidade);
+  Application.CreateForm(Tfrmproduto_consulta, frmproduto_consulta);
   Application.Run;
 end.
 

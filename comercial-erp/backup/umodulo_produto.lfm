@@ -1,0 +1,60 @@
+object modulo_produto: Tmodulo_produto
+  OldCreateOrder = False
+  Height = 378
+  HorizontalOffset = 1127
+  VerticalOffset = 88
+  Width = 195
+  PPI = 96
+  object qrproduto: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CODIGO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'SIGLA'
+        DataType = ftString
+        Precision = -1
+        Size = 6
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from master_unidade'
+    )
+    Params = <>
+    left = 16
+    top = 16
+  end
+  object dsproduto: TDataSource
+    DataSet = qrproduto
+    left = 104
+    top = 16
+  end
+  object qrtempProduto: TBufDataset
+    FieldDefs = <>
+    left = 16
+    top = 111
+    object qrtempProdutocund: TLongintField
+      FieldKind = fkData
+      FieldName = 'cund'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempProduto: TDataSource
+    DataSet = qrtempProduto
+    left = 104
+    top = 111
+  end
+end

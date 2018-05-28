@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="16">
+    <Units Count="18">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -131,8 +131,21 @@
         <Filename Value="umodulo_unidade.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_unidade"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit15>
+      <Unit16>
+        <Filename Value="umodulo_produto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_produto"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="uproduto_consulta.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmproduto_consulta"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit17>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

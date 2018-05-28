@@ -19,11 +19,13 @@ type
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
+    btngerar: TButton;
     cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
     cbxnomefun: TDBLookupComboBox;
     DBGrid1: TDBGrid;
+    DBGrid2: TDBGrid;
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
     edtvlrsubtotal: TFloatSpinEdit;
@@ -53,8 +55,9 @@ type
     lblcliente5: TLabel;
     lblcliente6: TLabel;
     Memo1: TMemo;
+    PageControl1: TPageControl;
     Panel1: TPanel;
-    Panel10: TPanel;
+    pnlparcelar: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -67,6 +70,8 @@ type
     pnlinferior: TPanel;
     pnlcentral: TPanel;
     ScrollBox1: TScrollBox;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -74,11 +79,13 @@ type
     procedure Button5Click(Sender: TObject);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
+    procedure edtdescricaoExit(Sender: TObject);
     procedure edtqtdeChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure Panel6Click(Sender: TObject);
+    procedure Panel9Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
     procedure filtrar;
     procedure limpar;
@@ -100,7 +107,7 @@ var
 
 implementation
 
-uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb, umodulo_unidade;
+uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta;
 
 {$R *.lfm}
 
@@ -112,6 +119,11 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.Panel6Click(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.Panel9Click(Sender: TObject);
 begin
 
 end;
@@ -140,7 +152,7 @@ begin
     begin
        qrunidade.Close;
        qrunidade.SQL.Clear;
-       qrunidade.SQL.Add('select * from master_unidade order by descricao');
+       qrunidade.SQL.Add('select * from master_unidade order by sigla');
        qrunidade.Open;
 
     end;
@@ -278,6 +290,11 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.dsorcamentoDataChange(Sender: TObject; Field: TField);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.edtdescricaoExit(Sender: TObject);
 begin
 
 end;
