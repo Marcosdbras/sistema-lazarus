@@ -79,6 +79,7 @@ type
     procedure Button5Click(Sender: TObject);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
+    procedure edtdescricaoExit(Sender: TObject);
     procedure edtqtdeChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
@@ -106,7 +107,7 @@ var
 
 implementation
 
-uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb, umodulo_unidade;
+uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta;
 
 {$R *.lfm}
 
@@ -293,6 +294,11 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.edtdescricaoExit(Sender: TObject);
+begin
+
+end;
+
 procedure Tfrmorcamento_cadastro.edtqtdeChange(Sender: TObject);
 begin
 
@@ -327,6 +333,7 @@ end;
 procedure Tfrmorcamento_cadastro.salvarCadastro;
 var
   nomecliente, nomefuncionario, nomevendedor:string;
+
 
 begin
 
@@ -382,10 +389,18 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('insert into torcamento( codcliente,  nomecliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  data, controlevarchar,   hora,  datahoracadastro, tipodesconto,   titulodav,  cancelado,  status  ) ');
-            qrexec_base.SQL.Add('                values(:codcliente, :nomecliente, :codfuncionario, :funcionario, :codvendedor, :vendedor, :data, :controlevarchar, :hora, :datahoracadastro, :tipodesconto, :titulodav, :cancelado, :status  )');
+            qrexec_base.SQL.Add('select GEN_ID(GEN_TORCAMENTO_ID,1) as prox_codigo FROM RDB$DATABASE;');
+            qrexec_base.Open;
+
+            icodigo_controle := qrexec_base.FieldByName('prox_codigo').AsInteger;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into torcamento(controle, codcliente,  nomecliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  data, controlevarchar,   hora,  datahoracadastro, tipodesconto,   titulodav,  cancelado,  status  ) ');
+            qrexec_base.SQL.Add('                values(:controle, :codcliente, :nomecliente, :codfuncionario, :funcionario, :codvendedor, :vendedor, :data, :controlevarchar, :hora, :datahoracadastro, :tipodesconto, :titulodav, :cancelado, :status  )');
 
 
+            qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
             qrexec_base.ParamByName('data').AsDate:=date;
             qrexec_base.ParamByName('controlevarchar').AsString:=formatfloat('0000000000',qrsequencia.FieldByName('controlevarchar').AsInteger);
             qrexec_base.ParamByName('hora').AsString := formatdatetime('HH:mm:ss',time);
@@ -445,7 +460,7 @@ begin
   if (frmorcamento_pesquisa.opcao = 'I')  then
      begin
 
-        modulo_orcamento.qrorcamento.Last;
+        modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
 
         Application.MessageBox(pchar('Registro inserido com sucesso!'),'Processo bem sucedido',MB_OK);
 

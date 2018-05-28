@@ -265,6 +265,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Height = 23
             Top = 24
             Width = 507
+            OnExit = edtdescricaoExit
             TabOrder = 0
             Text = 'edtdescricao'
           end
