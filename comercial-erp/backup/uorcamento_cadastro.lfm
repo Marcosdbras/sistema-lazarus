@@ -387,6 +387,15 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
               TabOrder = 0
             end
           end
+          object lblcontroleprod: TLabel
+            Left = 104
+            Height = 15
+            Top = 3
+            Width = 82
+            Caption = 'lblcontroleprod'
+            ParentColor = False
+            Visible = False
+          end
         end
         object Panel4: TPanel
           Left = 1022

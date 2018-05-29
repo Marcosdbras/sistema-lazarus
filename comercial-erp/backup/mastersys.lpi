@@ -138,12 +138,14 @@
         <Filename Value="umodulo_produto.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_produto"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit16>
       <Unit17>
         <Filename Value="uproduto_consulta.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmproduto_consulta"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit17>
     </Units>

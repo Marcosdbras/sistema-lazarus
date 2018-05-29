@@ -1,7 +1,7 @@
 object frmproduto_consulta: Tfrmproduto_consulta
-  Left = 181
+  Left = 218
   Height = 425
-  Top = 197
+  Top = 165
   Width = 906
   BorderIcons = []
   BorderStyle = bsDialog
@@ -54,6 +54,8 @@ object frmproduto_consulta: Tfrmproduto_consulta
       Align = alClient
       Color = clWindow
       Columns = <>
+      DataSource = modulo_produto.dsproduto
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
       TabOrder = 0
     end
   end

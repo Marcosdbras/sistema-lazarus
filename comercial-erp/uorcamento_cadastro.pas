@@ -46,6 +46,7 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    lblcontroleprod: TLabel;
     lblstatus: TLabel;
     lblcliente: TLabel;
     lblcliente1: TLabel;
@@ -91,6 +92,8 @@ type
     procedure limpar;
     procedure salvarCadastro;
     procedure limparProduto;
+    function localizaControle:integer;
+    function localizaDescricao:integer;
 
     procedure ScrollBox1Click(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -295,7 +298,51 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.edtdescricaoExit(Sender: TObject);
+var reglocalizado:integer;
+
 begin
+ if  localizaControle = 0 then
+     begin
+
+       reglocalizado := localizaDescricao;
+       if reglocalizado = 0 then
+          begin
+
+
+
+          end
+       else
+          begin
+
+            if reglocalizado > 1 then
+               begin
+
+                  //Apresenta formulário  consulta produto
+
+               end
+            else
+               begin
+
+                 lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
+                 edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
+
+
+               end;
+
+
+          end;
+
+
+     end
+ else
+    begin
+
+      lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
+      edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
+
+    end;
+
+
 
 end;
 
@@ -501,6 +548,70 @@ begin
   modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger:=0;
 
 end;
+
+
+function tfrmorcamento_cadastro.localizaControle:integer;
+var
+  Num   :String;
+  Code  :byte;
+  Valor :real;
+
+begin
+
+  with modulo_produto do
+    begin
+
+      Num := edtdescricao.Text;
+
+      val(Num,Valor,Code);
+
+      if Code <> 0 then
+         begin
+           result := 0;
+           exit;
+         end;
+      //endi
+
+      qrproduto.Close;
+      qrproduto.SQL.Clear;
+      qrproduto.SQL.Add('select * from testoque where controle = :controle');
+      qrproduto.ParamByName('controle').AsInteger:=strtoint(edtdescricao.Text);
+      qrproduto.Open;
+
+      result:= qrproduto.recordcount;
+
+
+    end;
+
+
+end;
+
+
+
+function tfrmorcamento_cadastro.localizaDescricao:integer;
+begin
+
+  with modulo_produto do
+    begin
+
+
+      qrproduto.Close;
+      qrproduto.SQL.Clear;
+      qrproduto.SQL.Add('select * from testoque where produto like :produto');
+      qrproduto.ParamByName('produto').AsString:='%'+edtdescricao.Text+'%';
+      qrproduto.Open;
+
+      result:= qrproduto.recordcount;
+
+
+    end;
+
+
+end;
+
+
+
+
 
 end.
 

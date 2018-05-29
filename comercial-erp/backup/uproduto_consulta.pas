@@ -32,7 +32,7 @@ var
   frmproduto_consulta: Tfrmproduto_consulta;
 
 implementation
-
+      uses umodulo_produto;
 {$R *.lfm}
 
 { Tfrmproduto_consulta }

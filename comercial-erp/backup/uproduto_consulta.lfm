@@ -1,7 +1,7 @@
 object frmproduto_consulta: Tfrmproduto_consulta
-  Left = 181
+  Left = 218
   Height = 425
-  Top = 197
+  Top = 165
   Width = 906
   BorderIcons = []
   BorderStyle = bsDialog
@@ -30,7 +30,7 @@ object frmproduto_consulta: Tfrmproduto_consulta
     object edtlocalizar: TEdit
       Left = 72
       Height = 23
-      Top = 12
+      Top = 13
       Width = 528
       TabOrder = 0
       Text = 'edtlocalizar'
