@@ -8,6 +8,8 @@ object frmproduto_consulta: Tfrmproduto_consulta
   Caption = 'Consulta Produto'
   ClientHeight = 425
   ClientWidth = 906
+  OnClose = FormClose
+  OnCreate = FormCreate
   Position = poDesktopCenter
   LCLVersion = '1.8.0.6'
   object Panel1: TPanel
@@ -57,6 +59,7 @@ object frmproduto_consulta: Tfrmproduto_consulta
       DataSource = modulo_produto.dsproduto
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
       TabOrder = 0
+      OnDblClick = DBGrid1DblClick
     end
   end
   object Panel3: TPanel
@@ -75,6 +78,7 @@ object frmproduto_consulta: Tfrmproduto_consulta
       Top = 5
       Width = 123
       Caption = 'Cancelar'
+      OnClick = btncancelarClick
       TabOrder = 0
     end
     object btnconfirma: TButton
@@ -83,6 +87,7 @@ object frmproduto_consulta: Tfrmproduto_consulta
       Top = 5
       Width = 123
       Caption = 'Confirmar'
+      OnClick = btnconfirmaClick
       TabOrder = 1
     end
   end

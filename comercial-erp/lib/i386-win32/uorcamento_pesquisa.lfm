@@ -8,6 +8,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
   Caption = 'Master Plus - Pesquisa de Orçamentos'
   ClientHeight = 638
   ClientWidth = 1249
+  OnClose = FormClose
   OnCreate = FormCreate
   LCLVersion = '1.8.0.6'
   WindowState = wsMaximized

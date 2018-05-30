@@ -47,6 +47,7 @@ type
     procedure Button5Click(Sender: TObject);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
@@ -185,6 +186,14 @@ procedure Tfrmorcamento_pesquisa.dsorcamentoDataChange(Sender: TObject;
   Field: TField);
 begin
 
+end;
+
+procedure Tfrmorcamento_pesquisa.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  FreeAndNil(frmorcamento_pesquisa);
+  //Action:= caFree;
+  //frmorcamento_pesquisa := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.pnlinferiorClick(Sender: TObject);

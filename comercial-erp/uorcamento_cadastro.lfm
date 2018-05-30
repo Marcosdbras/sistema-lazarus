@@ -8,6 +8,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   Caption = 'Master Plus - Orçamento'
   ClientHeight = 684
   ClientWidth = 1164
+  OnClose = FormClose
   OnCreate = FormCreate
   LCLVersion = '1.8.0.6'
   WindowState = wsMaximized
