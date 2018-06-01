@@ -11,7 +11,7 @@ object modulo_unidade: Tmodulo_unidade
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
-      'select * from master_unidade'
+      'select * from tunidademedida order by descricao'
     )
     Params = <>
     left = 40

@@ -22,6 +22,7 @@ type
     Shape1: TShape;
     procedure btncancelarClick(Sender: TObject);
     procedure btnloginClick(Sender: TObject);
+    procedure edtusuarioKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -186,18 +187,22 @@ begin
       //endi
 
 
-
-
-
-
-
-
-
     end;
     //endw
 
   end;
 
+end;
+
+procedure Tfrmlogin.edtusuarioKeyPress(Sender: TObject; var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
 end;
 
 end.

@@ -81,8 +81,8 @@ if existe_tabela('MASTER_UNIDADE') = 0 then
 //endif
 
 
-//Campo DESCRICAO existe?
-if existe_campo('MASTER_UNIDADE','DESCRICAO') = 0 then
+//Campo DESCRICAOCOMPLETA existe?
+if existe_campo('MASTER_UNIDADE','DESCRICAOCOMPLETA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -90,7 +90,7 @@ if existe_campo('MASTER_UNIDADE','DESCRICAO') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD DESCRICAO VARCHAR(40);   ');
+              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD DESCRICAOCOMPLETA VARCHAR(120);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -118,6 +118,25 @@ if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
   end;
 //endi
 
+
+
+//Campo CONTROLE_TUNIDADEMEDIDA existe?
+if existe_campo('MASTER_UNIDADE','CONTROLE_TUNIDADEMEDIDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD CONTROLE_TUNIDADEMEDIDA integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
 
 
 

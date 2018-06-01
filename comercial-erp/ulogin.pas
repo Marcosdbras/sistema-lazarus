@@ -22,6 +22,8 @@ type
     Shape1: TShape;
     procedure btncancelarClick(Sender: TObject);
     procedure btnloginClick(Sender: TObject);
+    procedure edtsenhaKeyPress(Sender: TObject; var Key: char);
+    procedure edtusuarioKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -191,6 +193,28 @@ begin
 
   end;
 
+end;
+
+procedure Tfrmlogin.edtsenhaKeyPress(Sender: TObject; var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmlogin.edtusuarioKeyPress(Sender: TObject; var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
 end;
 
 end.

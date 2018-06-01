@@ -168,6 +168,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           DataField = 'ccli'
           ListFieldIndex = 0
           LookupCache = False
+          OnExit = cbxnomeclienteExit
+          OnKeyPress = cbxnomeclienteKeyPress
           TabOrder = 0
         end
         object cbxnomeven: TDBLookupComboBox
@@ -178,6 +180,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           DataField = 'cven'
           ListFieldIndex = 0
           LookupCache = False
+          OnExit = cbxnomevenExit
+          OnKeyPress = cbxnomevenKeyPress
           TabOrder = 1
         end
         object lblcliente1: TLabel
@@ -220,6 +224,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           DataField = 'cfun'
           ListFieldIndex = 0
           LookupCache = False
+          OnExit = cbxnomefunExit
+          OnKeyPress = cbxnomefunKeyPress
           TabOrder = 2
         end
       end
@@ -267,6 +273,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Top = 24
             Width = 507
             OnExit = edtdescricaoExit
+            OnKeyPress = edtdescricaoKeyPress
             TabOrder = 0
             Text = 'edtdescricao'
           end
@@ -294,9 +301,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Alignment = taRightJustify
             DecimalPlaces = 3
             Increment = 1
-            MaxValue = 100
+            MaxValue = 0
             MinValue = 0
             OnChange = edtqtdeChange
+            OnExit = edtqtdeExit
+            OnKeyPress = edtqtdeKeyPress
             TabOrder = 1
             Value = 0
           end
@@ -309,6 +318,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             DataSource = modulo_orcamento.dstempUnidade
             ListFieldIndex = 0
             LookupCache = False
+            OnKeyPress = cbxunidadeKeyPress
             TabOrder = 2
           end
           object edtvlrunitario: TFloatSpinEdit
@@ -318,8 +328,10 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Width = 128
             Alignment = taRightJustify
             Increment = 1
-            MaxValue = 100
+            MaxValue = 0
             MinValue = 0
+            OnExit = edtvlrunitarioExit
+            OnKeyPress = edtvlrunitarioKeyPress
             TabOrder = 3
             Value = 0
           end
@@ -347,8 +359,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Alignment = taRightJustify
             Enabled = False
             Increment = 1
-            MaxValue = 100
+            MaxValue = 0
             MinValue = 0
+            OnKeyPress = edtvlrsubtotalKeyPress
             TabOrder = 4
             Value = 0
           end
@@ -472,6 +485,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             FixedCols = 0
             Options = [dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgDisableDelete]
             TabOrder = 0
+            OnKeyDown = DBGrid1KeyDown
+            OnKeyPress = DBGrid1KeyPress
           end
           object Panel7: TPanel
             Left = 0
@@ -509,8 +524,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Alignment = taRightJustify
                 Enabled = False
                 Increment = 1
-                MaxValue = 100
+                MaxValue = 0
                 MinValue = 0
+                OnKeyPress = edtvlrsubtotal1KeyPress
                 TabOrder = 0
                 Value = 0
               end
@@ -529,8 +545,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Width = 76
                 Alignment = taRightJustify
                 Increment = 1
-                MaxValue = 100
+                MaxValue = 0
                 MinValue = 0
+                OnKeyPress = edtvlrunitario1KeyPress
                 TabOrder = 1
                 Value = 0
               end
@@ -549,8 +566,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Width = 76
                 Alignment = taRightJustify
                 Increment = 1
-                MaxValue = 100
+                MaxValue = 0
                 MinValue = 0
+                OnKeyPress = edtvlrunitario2KeyPress
                 TabOrder = 2
                 Value = 0
               end
@@ -569,8 +587,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Width = 188
                 Alignment = taRightJustify
                 Increment = 1
-                MaxValue = 100
+                MaxValue = 0
                 MinValue = 0
+                OnKeyPress = edtvlrunitario3KeyPress
                 TabOrder = 3
                 Value = 0
               end
@@ -594,6 +613,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Lines.Strings = (
                   'Memo1'
                 )
+                OnKeyPress = Memo1KeyPress
                 TabOrder = 0
               end
             end
@@ -636,8 +656,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Width = 85
             Alignment = taRightJustify
             Increment = 1
-            MaxValue = 100
+            MaxValue = 0
             MinValue = 0
+            OnKeyPress = edtvlrunitario4KeyPress
             TabOrder = 0
             Value = 0
           end
@@ -659,6 +680,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Increment = 1
             MaxValue = 100
             MinValue = 0
+            OnKeyPress = edtvlrunitario5KeyPress
             TabOrder = 1
             Value = 0
           end
@@ -704,6 +726,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Color = clWindow
                 Columns = <>
                 TabOrder = 0
+                OnKeyDown = DBGrid2KeyDown
+                OnKeyPress = DBGrid2KeyPress
               end
             end
             object TabSheet2: TTabSheet

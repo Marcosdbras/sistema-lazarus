@@ -45,8 +45,16 @@ type
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure cbxnomeclienteKeyPress(Sender: TObject; var Key: char);
+    procedure cbxnomefunKeyPress(Sender: TObject; var Key: char);
+    procedure cbxnomevenKeyPress(Sender: TObject; var Key: char);
+    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
+    procedure DBGrid1KeyPress(Sender: TObject; var Key: char);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
+    procedure edtdatafimKeyPress(Sender: TObject; var Key: char);
+    procedure edtdatainicioKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Label1Click(Sender: TObject);
@@ -177,6 +185,71 @@ begin
   close;
 end;
 
+procedure Tfrmorcamento_pesquisa.cbxnomeclienteKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_pesquisa.cbxnomefunKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_pesquisa.cbxnomevenKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_pesquisa.DBGrid1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+   if key = 13 then
+   begin
+     key := 0;
+
+     exit;
+   end;
+   //endi
+
+   if key = 9 then
+   begin
+     key := 0;
+
+     exit;
+   end;
+   //endi
+
+
+
+end;
+
+procedure Tfrmorcamento_pesquisa.DBGrid1KeyPress(Sender: TObject; var Key: char
+  );
+begin
+
+end;
+
 procedure Tfrmorcamento_pesquisa.DBText2Click(Sender: TObject);
 begin
 
@@ -188,12 +261,36 @@ begin
 
 end;
 
+procedure Tfrmorcamento_pesquisa.edtdatafimKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_pesquisa.edtdatainicioKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
 procedure Tfrmorcamento_pesquisa.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
-  FreeAndNil(frmorcamento_pesquisa);
-  //Action:= caFree;
-  //frmorcamento_pesquisa := nil;
+
+  //FreeAndNil(frmorcamento_pesquisa);  //Action:= caFree;  //frmorcamento_pesquisa := nil;
+
 end;
 
 procedure Tfrmorcamento_pesquisa.pnlinferiorClick(Sender: TObject);

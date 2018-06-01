@@ -78,14 +78,40 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure cbxnomeclienteExit(Sender: TObject);
+    procedure cbxnomeclienteKeyPress(Sender: TObject; var Key: char);
+    procedure cbxnomefunExit(Sender: TObject);
+    procedure cbxnomefunKeyPress(Sender: TObject; var Key: char);
+    procedure cbxnomevenExit(Sender: TObject);
+    procedure cbxnomevenKeyPress(Sender: TObject; var Key: char);
+    procedure cbxunidadeKeyPress(Sender: TObject; var Key: char);
+    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
+    procedure DBGrid1KeyPress(Sender: TObject; var Key: char);
+    procedure DBGrid2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
+    procedure DBGrid2KeyPress(Sender: TObject; var Key: char);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
     procedure edtdescricaoExit(Sender: TObject);
+    procedure edtdescricaoKeyPress(Sender: TObject; var Key: char);
     procedure edtqtdeChange(Sender: TObject);
+    procedure edtqtdeExit(Sender: TObject);
+    procedure edtqtdeKeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrsubtotal1KeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrsubtotalKeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrunitario1KeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrunitario2KeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrunitario3KeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrunitario4KeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrunitario5KeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrunitarioExit(Sender: TObject);
+    procedure edtvlrunitarioKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
+    procedure Memo1KeyPress(Sender: TObject; var Key: char);
     procedure Panel6Click(Sender: TObject);
     procedure Panel9Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
@@ -93,10 +119,6 @@ type
     procedure limpar;
     procedure salvarCadastro;
     procedure limparProduto;
-    function localizaControle:integer;
-    function localizaDescricao:integer;
-    function localizaCodBarra:integer;
-    function localizaCampo:integer;
 
     procedure ScrollBox1Click(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -122,6 +144,17 @@ uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umo
 procedure Tfrmorcamento_cadastro.Label1Click(Sender: TObject);
 begin
 
+end;
+
+procedure Tfrmorcamento_cadastro.Memo1KeyPress(Sender: TObject; var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
 end;
 
 procedure Tfrmorcamento_cadastro.Panel6Click(Sender: TObject);
@@ -158,7 +191,7 @@ begin
     begin
        qrunidade.Close;
        qrunidade.SQL.Clear;
-       qrunidade.SQL.Add('select * from master_unidade order by sigla');
+       qrunidade.SQL.Add('select * from tunidademedida order by descricao');
        qrunidade.Open;
 
     end;
@@ -242,8 +275,8 @@ begin
   cbxnomeven.ScrollListDataset:=true;
 
   cbxunidade.ListSource := modulo_unidade.dsunidade;
-  cbxunidade.ListField:='sigla';
-  cbxunidade.KeyField:='codigo';
+  cbxunidade.ListField:='descricao';
+  cbxunidade.KeyField:='controle';
   cbxunidade.DataSource:=modulo_orcamento.dstempUnidade;
   cbxunidade.DataField:='cund';
   cbxunidade.ScrollListDataset:=true;
@@ -290,6 +323,121 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.cbxnomeclienteExit(Sender: TObject);
+begin
+end;
+
+procedure Tfrmorcamento_cadastro.cbxnomeclienteKeyPress(Sender: TObject;
+  var Key: char);
+begin
+    if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+
+end;
+
+procedure Tfrmorcamento_cadastro.cbxnomefunExit(Sender: TObject);
+begin
+end;
+
+procedure Tfrmorcamento_cadastro.cbxnomefunKeyPress(Sender: TObject;
+  var Key: char);
+begin
+    if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+
+end;
+
+procedure Tfrmorcamento_cadastro.cbxnomevenExit(Sender: TObject);
+begin
+end;
+
+procedure Tfrmorcamento_cadastro.cbxnomevenKeyPress(Sender: TObject;
+  var Key: char);
+begin
+    if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+
+end;
+
+procedure Tfrmorcamento_cadastro.cbxunidadeKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.DBGrid1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+     if key = 13 then
+   begin
+     key := 0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+   //endi
+
+   if key = 9 then
+   begin
+     key := 0;
+
+     exit;
+   end;
+   //endi
+
+end;
+
+procedure Tfrmorcamento_cadastro.DBGrid1KeyPress(Sender: TObject; var Key: char
+  );
+begin
+end;
+
+procedure Tfrmorcamento_cadastro.DBGrid2KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+     if key = 13 then
+   begin
+     key := 0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+   //endi
+
+   if key = 9 then
+   begin
+     key := 0;
+
+     exit;
+   end;
+   //endi
+
+end;
+
+procedure Tfrmorcamento_cadastro.DBGrid2KeyPress(Sender: TObject; var Key: char
+  );
+begin
+end;
+
 procedure Tfrmorcamento_cadastro.DBText2Click(Sender: TObject);
 begin
 
@@ -304,18 +452,19 @@ procedure Tfrmorcamento_cadastro.edtdescricaoExit(Sender: TObject);
 var reglocalizado:integer;
 
 begin
- if  localizaControle = 0 then
+
+  if modulo_produto.localizaControle(edtdescricao.Text) = 0 then
      begin
 
-       reglocalizado := localizaDescricao;
+       reglocalizado := modulo_produto.localizaDescricao(edtdescricao.Text);
        if reglocalizado = 0 then
           begin
 
-            reglocalizado := localizaCodBarra;
+            reglocalizado := modulo_produto.localizaCodBarra(edtdescricao.Text);
             if reglocalizado = 0 then
                begin
 
-                  reglocalizado := localizaCampo;
+                  reglocalizado := modulo_produto.localizaCampo(edtdescricao.Text);
                   if reglocalizado = 0 then
                      begin
 
@@ -338,6 +487,7 @@ begin
 
                             lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
                             edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
+                            edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
 
                           end;
@@ -367,6 +517,7 @@ begin
 
                        lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
                        edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
+                       edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
 
                      end;
@@ -393,6 +544,7 @@ begin
 
                  lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
                  edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
+                 edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
 
                end;
@@ -407,6 +559,7 @@ begin
 
       lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
       edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
+      edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
     end;
  //endi
@@ -414,16 +567,146 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.edtdescricaoKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
 procedure Tfrmorcamento_cadastro.edtqtdeChange(Sender: TObject);
 begin
 
+end;
+
+procedure Tfrmorcamento_cadastro.edtqtdeExit(Sender: TObject);
+begin
+  edtvlrsubtotal.Value:=edtqtde.Value*edtvlrunitario.Value;
+end;
+
+procedure Tfrmorcamento_cadastro.edtqtdeKeyPress(Sender: TObject; var Key: char
+  );
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrsubtotal1KeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrsubtotalKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrunitario1KeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrunitario2KeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrunitario3KeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrunitario4KeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrunitario5KeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrunitarioExit(Sender: TObject);
+begin
+  edtvlrsubtotal.Value:=edtqtde.Value*edtvlrunitario.Value;
+end;
+
+procedure Tfrmorcamento_cadastro.edtvlrunitarioKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
 end;
 
 procedure Tfrmorcamento_cadastro.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
 
-  FreeAndNil(frmorcamento_cadastro);  //Action:= caFree;   // frmorcamento_cadastro := nil;
+  //FreeAndNil(frmorcamento_cadastro);  //Action:= caFree;   // frmorcamento_cadastro := nil;
 
 end;
 
@@ -624,112 +907,6 @@ begin
   modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger:=0;
 
 end;
-
-
-function tfrmorcamento_cadastro.localizaControle:integer;
-var
-  Num   :String;
-  Code  :byte;
-  Valor :real;
-
-begin
-
-  with modulo_produto do
-    begin
-
-      Num := edtdescricao.Text;
-
-      val(Num,Valor,Code);
-
-      if Code <> 0 then
-         begin
-           result := 0;
-           exit;
-         end;
-      //endi
-
-      qrproduto.Close;
-      qrproduto.SQL.Clear;
-      qrproduto.SQL.Add('select * from testoque where controle = :controle');
-      qrproduto.ParamByName('controle').AsInteger:=strtoint(edtdescricao.Text);
-      qrproduto.Open;
-
-      result:= qrproduto.recordcount;
-
-
-    end;
-
-
-end;
-
-
-
-function tfrmorcamento_cadastro.localizaDescricao:integer;
-begin
-
-  with modulo_produto do
-    begin
-
-
-      qrproduto.Close;
-      qrproduto.SQL.Clear;
-      qrproduto.SQL.Add('select * from testoque where produto like :produto');
-      qrproduto.ParamByName('produto').AsString:='%'+edtdescricao.Text+'%';
-      qrproduto.Open;
-
-      result:= qrproduto.recordcount;
-
-
-    end;
-
-
-end;
-
-
-function tfrmorcamento_cadastro.localizaCodBarra:integer;
-begin
-
-  with modulo_produto do
-    begin
-
-      qrproduto.Close;
-      qrproduto.SQL.Clear;
-      qrproduto.SQL.Add('select * from testoque where codbarras = :codbarras');
-      qrproduto.ParamByName('codbarras').AsString:=edtdescricao.Text;
-      qrproduto.Open;
-
-      result:= qrproduto.recordcount;
-
-
-    end;
-
-
-
-  function tfrmorcamento_cadastro.localizaCampo:integer;
-  begin
-
-    with modulo_produto do
-      begin
-
-
-        qrproduto.Close;
-        qrproduto.SQL.Clear;
-        qrproduto.SQL.Add('select * from testoque where campo1 like :campo');
-        qrproduto.ParamByName('campo').AsString:='%'+edtdescricao.Text+'%';
-        qrproduto.Open;
-
-        result:= qrproduto.recordcount;
-
-
-      end;
-
-
-  end;
-
-
-
-end;
-
 
 
 

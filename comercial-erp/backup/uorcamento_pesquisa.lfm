@@ -66,6 +66,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ButtonWidth = 23
       NumGlyphs = 1
       MaxLength = 0
+      OnKeyPress = edtdatainicioKeyPress
       TabOrder = 0
       Text = 'edtdatainicio'
     end
@@ -95,6 +96,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ButtonWidth = 23
       NumGlyphs = 1
       MaxLength = 0
+      OnKeyPress = edtdatafimKeyPress
       TabOrder = 1
       Text = 'edtdatafim'
     end
@@ -139,6 +141,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ListFieldIndex = 0
       LookupCache = False
       NullValueKey = 46
+      OnKeyPress = cbxnomeclienteKeyPress
       TabOrder = 2
     end
     object cbxnomefun: TDBLookupComboBox
@@ -150,6 +153,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ListFieldIndex = 0
       LookupCache = False
       NullValueKey = 46
+      OnKeyPress = cbxnomefunKeyPress
       TabOrder = 3
     end
     object cbxnomeven: TDBLookupComboBox
@@ -161,6 +165,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ListFieldIndex = 0
       LookupCache = False
       NullValueKey = 46
+      OnKeyPress = cbxnomevenKeyPress
       TabOrder = 4
     end
     object Panel2: TPanel
@@ -390,5 +395,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     DataSource = modulo_orcamento.dsorcamento
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
     TabOrder = 3
+    OnKeyDown = DBGrid1KeyDown
+    OnKeyPress = DBGrid1KeyPress
   end
 end

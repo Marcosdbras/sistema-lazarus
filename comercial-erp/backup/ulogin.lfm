@@ -58,6 +58,7 @@ object frmlogin: Tfrmlogin
     Font.Name = 'Arial'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
+    OnKeyPress = edtusuarioKeyPress
     ParentFont = False
     TabOrder = 0
     Text = 'edtusuario'

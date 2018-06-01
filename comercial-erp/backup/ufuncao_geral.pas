@@ -81,8 +81,8 @@ if existe_tabela('MASTER_UNIDADE') = 0 then
 //endif
 
 
-//Campo DESCRICAO existe?
-if existe_campo('MASTER_UNIDADE','DESCRICAO') = 0 then
+//Campo DESCRICAOCOMPLETA existe?
+if existe_campo('MASTER_UNIDADE','DESCRICAOCOMPLETA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -90,7 +90,7 @@ if existe_campo('MASTER_UNIDADE','DESCRICAO') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD DESCRICAO VARCHAR(40);   ');
+              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD DESCRICAOCOMPLETA VARCHAR(120);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -109,7 +109,7 @@ if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD SIGLA VARCHAR(4);   ');
+              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD SIGLA VARCHAR(6);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
