@@ -55,7 +55,7 @@ type
     lblcliente4: TLabel;
     lblcliente5: TLabel;
     lblcliente6: TLabel;
-    Memo1: TMemo;
+    memoobs: TMemo;
     PageControl1: TPageControl;
     Panel1: TPanel;
     pnlparcelar: TPanel;
@@ -111,7 +111,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
-    procedure Memo1KeyPress(Sender: TObject; var Key: char);
+    procedure memoobsKeyPress(Sender: TObject; var Key: char);
     procedure Panel6Click(Sender: TObject);
     procedure Panel9Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
@@ -146,7 +146,7 @@ begin
 
 end;
 
-procedure Tfrmorcamento_cadastro.Memo1KeyPress(Sender: TObject; var Key: char);
+procedure Tfrmorcamento_cadastro.memoobsKeyPress(Sender: TObject; var Key: char);
 begin
   if key = #13 then
    begin
@@ -218,6 +218,9 @@ begin
     end;
   //endth
 
+  memoobs.Lines.Clear;
+
+
   with modulo_orcamento do
     begin
       if frmorcamento_pesquisa.opcao <> 'I' then
@@ -227,6 +230,9 @@ begin
            qrtempCliente.FieldByName('ccli').AsInteger:= qrorcamento.FieldByName('codcliente').AsInteger;
            qrtempFuncionario.FieldByName('cfun').AsInteger:= qrorcamento.FieldByName('codfuncionario').AsInteger;
            qrtempVendedor.FieldByName('cven').AsInteger:= qrorcamento.FieldByName('codvendedor').AsInteger;
+
+
+           memoobs.Lines.Add(qrorcamento.FieldByName('observacao').AsString);
 
          end
       else
@@ -802,8 +808,8 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('insert into torcamento(controle, codcliente,  nomecliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  data, controlevarchar,   hora,  datahoracadastro, tipodesconto,   titulodav,  cancelado,  status  ) ');
-            qrexec_base.SQL.Add('                values(:controle, :codcliente, :nomecliente, :codfuncionario, :funcionario, :codvendedor, :vendedor, :data, :controlevarchar, :hora, :datahoracadastro, :tipodesconto, :titulodav, :cancelado, :status  )');
+            qrexec_base.SQL.Add('insert into torcamento(controle, codcliente,  nomecliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  data, controlevarchar,   hora,  datahoracadastro, tipodesconto,   titulodav,  cancelado,  status, observacao  ) ');
+            qrexec_base.SQL.Add('                values(:controle, :codcliente, :nomecliente, :codfuncionario, :funcionario, :codvendedor, :vendedor, :data, :controlevarchar, :hora, :datahoracadastro, :tipodesconto, :titulodav, :cancelado, :status, :observacao  )');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
             qrexec_base.ParamByName('data').AsDate:=date;
@@ -826,7 +832,7 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('update torcamento set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor where controle = :controle');
+            qrexec_base.SQL.Add('update torcamento set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor, observacao = :observacao where controle = :controle');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
 
@@ -849,6 +855,8 @@ begin
             qrexec_base.ParamByName('funcionario').AsString:=  nomefuncionario;
             qrexec_base.ParamByName('codvendedor').AsInteger := modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
             qrexec_base.ParamByName('vendedor').AsString:= nomevendedor;
+            qrexec_base.ParamByName('observacao').AsString:=memoobs.Text;
+
             qrexec_base.ExecSQL;
 
             atualizaBanco;

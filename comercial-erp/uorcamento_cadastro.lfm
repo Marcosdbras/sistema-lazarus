@@ -604,7 +604,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
               ClientHeight = 73
               ClientWidth = 723
               TabOrder = 1
-              object Memo1: TMemo
+              object memoobs: TMemo
                 Left = 0
                 Height = 73
                 Top = 0
@@ -613,7 +613,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Lines.Strings = (
                   'Memo1'
                 )
-                OnKeyPress = Memo1KeyPress
+                OnKeyPress = memoobsKeyPress
                 TabOrder = 0
               end
             end
