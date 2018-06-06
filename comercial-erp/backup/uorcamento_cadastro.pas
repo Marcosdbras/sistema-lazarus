@@ -119,6 +119,7 @@ type
     procedure limpar;
     procedure salvarCadastro;
     procedure limparProduto;
+    procedure salvarProduto;
 
     procedure ScrollBox1Click(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -832,7 +833,7 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('update torcamento set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor where controle = :controle, observacao = :observacao');
+            qrexec_base.SQL.Add('update torcamento set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor, observacao = :observacao where controle = :controle');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
 
@@ -902,6 +903,171 @@ begin
 
 
 end;
+
+
+
+procedure Tfrmorcamento_cadastro.salvarProduto;
+var
+  descricaoun, nomeprod:string;
+  sequencia, icodigo_controle_item:integer;
+
+begin
+
+  with modulo_conexaodb do
+    begin
+
+      qrconsulta_base.Close;
+      qrconsulta_base.SQL.Clear;
+      qrconsulta_base.SQL.Add('select * from tunidademedida where controle = :controle');
+      qrconsulta_base.ParamByName('controle').AsInteger:=modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger;
+      qrconsulta_base.Open;
+
+      descricaoun := qrconsulta_base.FieldByName('descricao').AsString;
+
+      qrconsulta_base.Close;
+      qrconsulta_base.SQL.Clear;
+      qrconsulta_base.SQL.Add('select * from testoque where controle = :controle');
+      qrconsulta_base.ParamByName('controle').AsInteger:= strtoint(lblcontroleprod.Caption);
+      qrconsulta_base.Open;
+
+      nomeprod := qrconsulta_base.FieldByName('produto').AsString;
+
+
+
+    end;
+  //endth
+
+  if frmorcamento_pesquisa.opcao = 'I' then
+     begin
+
+        //Atualiza tabelas auxiliares do sistema
+        with modulo_conexaodb do
+          begin
+
+            qrsequencia.Close;
+            qrsequencia.SQL.Clear;
+            qrsequencia.SQL.Add('select MAX(CODITEM) as sequencia from TITENSORCAMENTO where CODORCAMENTO = :CODORCAMENTO');
+            qrsequencia.ParamByName('codorcamento').AsInteger:=icodigo_controle;
+            qrsequencia.Open;
+
+            sequencia := qrsequencia.FieldByName(sequencia).AsInteger + 1;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('select GEN_ID(GEN_TITENSORCAMENTO_ID,1) as prox_codigo FROM RDB$DATABASE;');
+            qrexec_base.Open;
+
+            icodigo_controle_item := qrexec_base.FieldByName('prox_codigo').AsInteger;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into TITENSORCAMENTO(controle, codorcamento,  codproduto,  produto,  datahoracadastro, coditem, un,   valordescontounitario,  percdescontounitario, valoracrescimounitario,   percacrescimounitario,   indicadorcancelamento,   decimaisqtde,  decimaisvalorunitario,  status, observacao  ) ');
+            qrexec_base.SQL.Add('                values(:controle, :codorcamento, :codproduto, :produto, :datahoracadastro, :coditem, :un,   :valordescontounitario, :percdescontounitario, :valoracrescimounitario, :percacrescimounitario,  :indicadorcancelamento, :decimaisqtde, :decimaisvalorunitario, :status, :observacao  )');
+
+            qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
+            qrexec_base.ParamByName('codorcamento').AsInteger := icodigo_controle;
+            qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
+            qrexec_base.ParamByName('coditem').AsInteger:=sequencia;
+
+
+
+
+          end;
+        //endth
+     end
+  else if frmorcamento_pesquisa.opcao = 'A' then
+     begin
+        with modulo_conexaodb do
+          begin
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('update TITENSORCAMENTO set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor, observacao = :observacao where controle = :controle');
+
+            qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
+
+
+          end;
+        //endth
+
+     end;
+  //endif
+
+  if (frmorcamento_pesquisa.opcao = 'I') or (frmorcamento_pesquisa.opcao = 'A') then
+     begin
+        with modulo_conexaodb do
+          begin
+
+
+
+
+            qrexec_base.ParamByName('codproduto').AsInteger := strtoint(lblcontroleprod.Caption);
+            qrexec_base.ParamByName('produto').AsString:=  edtdescricao.Text;
+            qrexec_base.ParamByName('un').AsString:= descricaoun;
+            qrexec_base.ParamByName('valordescontounitario').Asfloat:= 0;
+            qrexec_base.ParamByName('percdescontounitario').Asfloat:= 0;
+            qrexec_base.ParamByName('valoracrescimounitario').Asfloat:= 0;
+            qrexec_base.ParamByName('percacrescimounitario').Asfloat:= 0;
+            qrexec_base.ParamByName('indicadorcancelamento').AsString:= 'N';
+            qrexec_base.ParamByName('decimaisqtde').Asfloat:= 0;
+
+
+
+
+
+
+
+            qrexec_base.ParamByName('codvendedor').AsInteger := modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
+
+            qrexec_base.ParamByName('observacao').AsString:=memoobs.Text;
+
+            qrexec_base.ExecSQL;
+
+            atualizaBanco;
+
+          end;
+        //endth
+
+
+       modulo_orcamento.qrorcamento.Refresh;
+
+     end;
+  //endi
+
+  if (frmorcamento_pesquisa.opcao = 'I')  then
+     begin
+
+        modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
+
+        Application.MessageBox(pchar('Registro inserido com sucesso!'),'Processo bem sucedido',MB_OK);
+
+     end
+  else if (frmorcamento_pesquisa.opcao = 'A') then
+     begin
+
+        if not modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]) then
+           begin
+
+             Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
+
+           end
+        else
+           begin
+
+             Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Processo bem sucedido',MB_OK);
+
+           end;
+        //endi
+
+
+
+     end;
+  //endi
+
+
+end;
+
+
 
 
 procedure tfrmorcamento_cadastro.limparProduto;
