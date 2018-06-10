@@ -1010,10 +1010,7 @@ begin
             qrexec_base.ParamByName('percacrescimounitario').Asfloat:= 0;
             qrexec_base.ParamByName('indicadorcancelamento').AsString:= 'N';
             qrexec_base.ParamByName('decimaisqtde').Asfloat:= 0;
-
-
-
-
+            qrexec_base.ParamByName('decimaisvalorunitario').Asfloat:= 0;
 
 
 

@@ -950,7 +950,7 @@ begin
             qrsequencia.ParamByName('codorcamento').AsInteger:=icodigo_controle;
             qrsequencia.Open;
 
-            sequencia := qrsequencia.FieldByName(sequencia).AsInteger + 1;
+            sequencia := qrsequencia.FieldByName('sequencia').AsInteger + 1;
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
