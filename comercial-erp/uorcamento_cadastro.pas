@@ -29,11 +29,11 @@ type
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
     edtvlrsubtotal: TFloatSpinEdit;
-    edtvlrsubtotal1: TFloatSpinEdit;
+    edttotal: TFloatSpinEdit;
     edtvlrunitario: TFloatSpinEdit;
-    edtvlrunitario1: TFloatSpinEdit;
-    edtvlrunitario2: TFloatSpinEdit;
-    edtvlrunitario3: TFloatSpinEdit;
+    edtpercdesc: TFloatSpinEdit;
+    edtvlrdesc: TFloatSpinEdit;
+    edtliquido: TFloatSpinEdit;
     edtvlrunitario4: TFloatSpinEdit;
     edtvlrunitario5: TFloatSpinEdit;
     GroupBox1: TGroupBox;
@@ -74,9 +74,11 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     procedure btnfiltrarClick(Sender: TObject);
+    procedure btnlancarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure cbxnomeclienteExit(Sender: TObject);
     procedure cbxnomeclienteKeyPress(Sender: TObject; var Key: char);
@@ -98,11 +100,11 @@ type
     procedure edtqtdeChange(Sender: TObject);
     procedure edtqtdeExit(Sender: TObject);
     procedure edtqtdeKeyPress(Sender: TObject; var Key: char);
-    procedure edtvlrsubtotal1KeyPress(Sender: TObject; var Key: char);
+    procedure edttotalKeyPress(Sender: TObject; var Key: char);
     procedure edtvlrsubtotalKeyPress(Sender: TObject; var Key: char);
-    procedure edtvlrunitario1KeyPress(Sender: TObject; var Key: char);
-    procedure edtvlrunitario2KeyPress(Sender: TObject; var Key: char);
-    procedure edtvlrunitario3KeyPress(Sender: TObject; var Key: char);
+    procedure edtpercdescKeyPress(Sender: TObject; var Key: char);
+    procedure edtvlrdescKeyPress(Sender: TObject; var Key: char);
+    procedure edtliquidoKeyPress(Sender: TObject; var Key: char);
     procedure edtvlrunitario4KeyPress(Sender: TObject; var Key: char);
     procedure edtvlrunitario5KeyPress(Sender: TObject; var Key: char);
     procedure edtvlrunitarioExit(Sender: TObject);
@@ -126,6 +128,7 @@ type
       var Handled: boolean);
   private
       icodigo_controle:integer;
+      opcao_item:string;
 
   public
 
@@ -186,6 +189,7 @@ begin
   //qrtemp.Open;
 
   //qrtemp.Append;
+
 
 
   with modulo_unidade do
@@ -293,6 +297,8 @@ begin
   limparProduto;
 
 
+
+
 end;
 
 procedure Tfrmorcamento_cadastro.GroupBox2Click(Sender: TObject);
@@ -302,6 +308,17 @@ end;
 
 procedure Tfrmorcamento_cadastro.btnfiltrarClick(Sender: TObject);
 begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.btnlancarClick(Sender: TObject);
+begin
+
+  salvarProduto;
+
+  limparproduto;
+
+  edtdescricao.SetFocus;
 
 end;
 
@@ -323,6 +340,11 @@ begin
   //showmessage(modulo_conexaodb.qrtemp.FieldByName('ccli').AsString);
 
   Close;
+end;
+
+procedure Tfrmorcamento_cadastro.Button3Click(Sender: TObject);
+begin
+  opcao_item := 'A';
 end;
 
 procedure Tfrmorcamento_cadastro.Button5Click(Sender: TObject);
@@ -608,7 +630,7 @@ begin
 //endi
 end;
 
-procedure Tfrmorcamento_cadastro.edtvlrsubtotal1KeyPress(Sender: TObject;
+procedure Tfrmorcamento_cadastro.edttotalKeyPress(Sender: TObject;
   var Key: char);
 begin
   if key = #13 then
@@ -632,7 +654,7 @@ begin
 //endi
 end;
 
-procedure Tfrmorcamento_cadastro.edtvlrunitario1KeyPress(Sender: TObject;
+procedure Tfrmorcamento_cadastro.edtpercdescKeyPress(Sender: TObject;
   var Key: char);
 begin
   if key = #13 then
@@ -644,7 +666,7 @@ begin
 //endi
 end;
 
-procedure Tfrmorcamento_cadastro.edtvlrunitario2KeyPress(Sender: TObject;
+procedure Tfrmorcamento_cadastro.edtvlrdescKeyPress(Sender: TObject;
   var Key: char);
 begin
   if key = #13 then
@@ -656,7 +678,7 @@ begin
 //endi
 end;
 
-procedure Tfrmorcamento_cadastro.edtvlrunitario3KeyPress(Sender: TObject;
+procedure Tfrmorcamento_cadastro.edtliquidoKeyPress(Sender: TObject;
   var Key: char);
 begin
   if key = #13 then
@@ -937,20 +959,20 @@ begin
     end;
   //endth
 
-  if frmorcamento_pesquisa.opcao = 'I' then
+  if opcao_item = 'I' then
      begin
 
         //Atualiza tabelas auxiliares do sistema
         with modulo_conexaodb do
           begin
 
-            qrsequencia.Close;
-            qrsequencia.SQL.Clear;
-            qrsequencia.SQL.Add('select MAX(CODITEM) as sequencia from TITENSORCAMENTO where CODORCAMENTO = :CODORCAMENTO');
-            qrsequencia.ParamByName('codorcamento').AsInteger:=icodigo_controle;
-            qrsequencia.Open;
+            qrconsulta_base.Close;
+            qrconsulta_base.SQL.Clear;
+            qrconsulta_base.SQL.Add('select count(*)+1 as sequencia from TITENSORCAMENTO where CODORCAMENTO = :CODORCAMENTO');
+            qrconsulta_base.ParamByName('codorcamento').AsInteger:=icodigo_controle;
+            qrconsulta_base.Open;
 
-            sequencia := qrsequencia.FieldByName('sequencia').AsInteger + 1;
+            sequencia := qrconsulta_base.FieldByName('sequencia').AsInteger;
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
@@ -961,21 +983,18 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('insert into TITENSORCAMENTO(controle, codorcamento,  codproduto,  produto,  datahoracadastro, coditem, un,   valordescontounitario,  percdescontounitario, valoracrescimounitario,   percacrescimounitario,   indicadorcancelamento,   decimaisqtde,  decimaisvalorunitario,  status, observacao  ) ');
-            qrexec_base.SQL.Add('                values(:controle, :codorcamento, :codproduto, :produto, :datahoracadastro, :coditem, :un,   :valordescontounitario, :percdescontounitario, :valoracrescimounitario, :percacrescimounitario,  :indicadorcancelamento, :decimaisqtde, :decimaisvalorunitario, :status, :observacao  )');
+            qrexec_base.SQL.Add('insert into TITENSORCAMENTO( controle,  codorcamento,  codproduto,  produto,  datahoracadastro,  coditem,  un,    valordescontounitario,  percdescontounitario,  valoracrescimounitario,  percacrescimounitario,   indicadorcancelamento,  decimaisqtde,  decimaisvalorunitario, totaldesconto,  numerodav,  cfop,   totalacrescimo,  referencia,  qtdeconvertida,  unconvertida,  codaplicacaoproduto,   qtde,   valorunitario ) ');
+            qrexec_base.SQL.Add('                     values(:controle, :codorcamento, :codproduto, :produto, :datahoracadastro, :coditem, :un,   :valordescontounitario, :percdescontounitario, :valoracrescimounitario, :percacrescimounitario,  :indicadorcancelamento, :decimaisqtde, :decimaisvalorunitario,  :totaldesconto, :numerodav, :cfop,  :totalacrescimo, :referencia, :qtdeconvertida, :unconvertida, :codaplicacaoproduto,  :qtde,  :valorunitario ) ');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
             qrexec_base.ParamByName('codorcamento').AsInteger := icodigo_controle;
             qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
             qrexec_base.ParamByName('coditem').AsInteger:=sequencia;
 
-
-
-
           end;
         //endth
      end
-  else if frmorcamento_pesquisa.opcao = 'A' then
+  else if opcao_item = 'A' then
      begin
         with modulo_conexaodb do
           begin
@@ -993,15 +1012,12 @@ begin
      end;
   //endif
 
-  if (frmorcamento_pesquisa.opcao = 'I') or (frmorcamento_pesquisa.opcao = 'A') then
+  if (opcao_item = 'I') or (opcao_item = 'A') then
      begin
         with modulo_conexaodb do
           begin
 
-
-
-
-            qrexec_base.ParamByName('codproduto').AsInteger := strtoint(lblcontroleprod.Caption);
+            qrexec_base.Params.ParamByName('codproduto').AsInteger := strtoint(lblcontroleprod.Caption);
             qrexec_base.ParamByName('produto').AsString:=  edtdescricao.Text;
             qrexec_base.ParamByName('un').AsString:= descricaoun;
             qrexec_base.ParamByName('valordescontounitario').Asfloat:= 0;
@@ -1009,14 +1025,12 @@ begin
             qrexec_base.ParamByName('valoracrescimounitario').Asfloat:= 0;
             qrexec_base.ParamByName('percacrescimounitario').Asfloat:= 0;
             qrexec_base.ParamByName('indicadorcancelamento').AsString:= 'N';
-            qrexec_base.ParamByName('decimaisqtde').Asfloat:= 0;
-            qrexec_base.ParamByName('decimaisvalorunitario').Asfloat:= 0;
+            qrexec_base.ParamByName('decimaisqtde').AsInteger:= 2;
+            qrexec_base.ParamByName('decimaisvalorunitario').AsInteger:= 2;
 
 
-
-            qrexec_base.ParamByName('codvendedor').AsInteger := modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
-
-            qrexec_base.ParamByName('observacao').AsString:=memoobs.Text;
+            qrexec_base.ParamByName('qtde').Asfloat := edtqtde.Value;
+            qrexec_base.ParamByName('valorunitario').Asfloat := edtvlrunitario.Value;
 
             qrexec_base.ExecSQL;
 
@@ -1026,32 +1040,32 @@ begin
         //endth
 
 
-       modulo_orcamento.qrorcamento.Refresh;
+       modulo_orcamento.qrorcamento_itemproduto.Refresh;
 
      end;
   //endi
 
-  if (frmorcamento_pesquisa.opcao = 'I')  then
+  if (opcao_item = 'I')  then
      begin
 
-        modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
+        modulo_orcamento.qrorcamento_itemproduto.Locate('controle',icodigo_controle_item,[]);
 
-        Application.MessageBox(pchar('Registro inserido com sucesso!'),'Processo bem sucedido',MB_OK);
+        //Application.MessageBox(pchar('Registro inserido com sucesso!'),'Processo bem sucedido',MB_OK);
 
      end
-  else if (frmorcamento_pesquisa.opcao = 'A') then
+  else if (opcao_item = 'A') then
      begin
 
-        if not modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]) then
+        if not modulo_orcamento.qrorcamento_itemproduto.Locate('controle',icodigo_controle_item,[]) then
            begin
 
-             Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
+             //Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
 
            end
         else
            begin
 
-             Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Processo bem sucedido',MB_OK);
+             //Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Processo bem sucedido',MB_OK);
 
            end;
         //endi
@@ -1076,6 +1090,8 @@ begin
   edtvlrsubtotal.Value:=0;
 
   modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger:=0;
+
+  opcao_item := 'I';
 
 end;
 

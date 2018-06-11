@@ -227,7 +227,7 @@ begin
    if key = 13 then
    begin
      key := 0;
-
+     SelectNext(ActiveControl,True,True);
      exit;
    end;
    //endi

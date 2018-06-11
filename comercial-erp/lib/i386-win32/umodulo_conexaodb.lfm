@@ -2,7 +2,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 624
-  HorizontalOffset = 840
+  HorizontalOffset = 701
   VerticalOffset = 48
   Width = 273
   PPI = 96

@@ -57,7 +57,7 @@ implementation
 
 procedure Tmodulo_conexaodb.atualizaBanco;
 begin
-   tzcontrole.Commit;
+   tzcontrole.CommitRetaining;
 end;
 
 procedure Tmodulo_conexaodb.DataModuleCreate(Sender: TObject);

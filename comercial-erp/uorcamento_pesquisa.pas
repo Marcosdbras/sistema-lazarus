@@ -61,6 +61,7 @@ type
     procedure pnlinferiorClick(Sender: TObject);
     procedure filtrar;
     procedure limpar;
+    procedure pnlsuperiorClick(Sender: TObject);
   private
 
   public
@@ -312,6 +313,11 @@ begin
 
 
   filtrar;
+end;
+
+procedure Tfrmorcamento_pesquisa.pnlsuperiorClick(Sender: TObject);
+begin
+
 end;
 
 procedure Tfrmorcamento_pesquisa.filtrar;
