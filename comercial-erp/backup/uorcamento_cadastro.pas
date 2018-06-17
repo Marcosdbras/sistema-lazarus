@@ -19,33 +19,21 @@ type
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
-    btngerar: TButton;
     cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
     cbxnomefun: TDBLookupComboBox;
     DBGrid1: TDBGrid;
-    DBGrid2: TDBGrid;
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
     edtvlrsubtotal: TFloatSpinEdit;
     edttotal: TFloatSpinEdit;
     edtvlrunitario: TFloatSpinEdit;
-    edtpercdesc: TFloatSpinEdit;
-    edtvlrdesc: TFloatSpinEdit;
-    edtliquido: TFloatSpinEdit;
-    edtvlrunitario4: TFloatSpinEdit;
-    edtvlrunitario5: TFloatSpinEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
     GroupBox4: TGroupBox;
-    Label1: TLabel;
     Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
     lblcontroleprod: TLabel;
     lblstatus: TLabel;
     lblcliente: TLabel;
@@ -56,7 +44,6 @@ type
     lblcliente5: TLabel;
     lblcliente6: TLabel;
     memoobs: TMemo;
-    PageControl1: TPageControl;
     Panel1: TPanel;
     pnlparcelar: TPanel;
     Panel2: TPanel;
@@ -66,13 +53,10 @@ type
     Panel6: TPanel;
     Panel7: TPanel;
     Panel8: TPanel;
-    Panel9: TPanel;
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
     ScrollBox1: TScrollBox;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnlancarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
@@ -122,6 +106,7 @@ type
     procedure salvarCadastro;
     procedure limparProduto;
     procedure salvarProduto;
+    procedure mostrarItemProduto;
 
     procedure ScrollBox1Click(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -251,11 +236,9 @@ begin
          end;
       //endi
 
-      qrorcamento_itemproduto.Close;
-      qrorcamento_itemproduto.SQL.Clear;
-      qrorcamento_itemproduto.SQL.Add('select * from TITENSORCAMENTO where codorcamento = :codorcamento');
-      qrorcamento_itemproduto.ParamByName('codorcamento').AsInteger:=icodigo_controle;
-      qrorcamento_itemproduto.Open;
+
+      mostrarItemProduto;
+
 
 
     end;
@@ -313,8 +296,25 @@ end;
 
 procedure Tfrmorcamento_cadastro.btnlancarClick(Sender: TObject);
 begin
+  if frmorcamento_pesquisa.opcao = 'I' then
+     begin
+
+       salvarCadastro;
+
+     end;
+  //endi
+
 
   salvarProduto;
+
+  if frmorcamento_pesquisa.opcao = 'I' then
+     begin
+
+       mostrarItemProduto;
+
+     end;
+  //endi
+
 
   limparproduto;
 
@@ -329,7 +329,39 @@ end;
 
 procedure Tfrmorcamento_cadastro.Button1Click(Sender: TObject);
 begin
+
   salvarCadastro;
+
+
+  if (frmorcamento_pesquisa.opcao = 'I')  then
+           begin
+
+              modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
+
+              Application.MessageBox(pchar('Registro inserido com sucesso!'),'Processo bem sucedido',MB_OK);
+
+           end
+        else if (frmorcamento_pesquisa.opcao = 'A') then
+           begin
+
+              if not modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]) then
+                 begin
+
+                   Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
+
+                 end
+              else
+                 begin
+
+                   Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Processo bem sucedido',MB_OK);
+
+                 end;
+              //endi
+
+           end;
+        //endi
+
+
 
   close;
 
@@ -890,38 +922,15 @@ begin
 
        modulo_orcamento.qrorcamento.Refresh;
 
-     end;
-  //endi
-
-  if (frmorcamento_pesquisa.opcao = 'I')  then
-     begin
-
-        modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
-
-        Application.MessageBox(pchar('Registro inserido com sucesso!'),'Processo bem sucedido',MB_OK);
-
-     end
-  else if (frmorcamento_pesquisa.opcao = 'A') then
-     begin
-
-        if not modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]) then
-           begin
-
-             Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
-
-           end
-        else
-           begin
-
-             Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Processo bem sucedido',MB_OK);
-
-           end;
-        //endi
-
-
+       modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
 
      end;
   //endi
+
+
+
+
+
 
 
 end;
@@ -983,8 +992,8 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('insert into TITENSORCAMENTO( totalliquido,  controle,  codorcamento,  codproduto,  produto,  datahoracadastro,  coditem,  un,    valordescontounitario,  percdescontounitario,  valoracrescimounitario,  percacrescimounitario,   indicadorcancelamento,  decimaisqtde,  decimaisvalorunitario, totaldesconto,  numerodav,  cfop,   totalacrescimo,  referencia,  qtdeconvertida,  unconvertida,  codaplicacaoproduto,   qtde,   valorunitario ) ');
-            qrexec_base.SQL.Add('values(:totalliquido, :controle, :codorcamento, :codproduto, :produto, :datahoracadastro, :coditem, :un,   :valordescontounitario, :percdescontounitario, :valoracrescimounitario, :percacrescimounitario,  :indicadorcancelamento, :decimaisqtde, :decimaisvalorunitario,  :totaldesconto, :numerodav, :cfop,  :totalacrescimo, :referencia, :qtdeconvertida, :unconvertida, :codaplicacaoproduto,  :qtde,  :valorunitario ) ');
+            qrexec_base.SQL.Add('insert into TITENSORCAMENTO( controle,  codorcamento,  codproduto,  produto,  datahoracadastro,  coditem,  un,    valordescontounitario,  percdescontounitario,  valoracrescimounitario,  percacrescimounitario,   indicadorcancelamento,  decimaisqtde,  decimaisvalorunitario, totaldesconto,  numerodav,  cfop,   totalacrescimo,  referencia,  qtdeconvertida,  unconvertida,  codaplicacaoproduto,   qtde,   valorunitario ) ');
+            qrexec_base.SQL.Add('                     values(:controle, :codorcamento, :codproduto, :produto, :datahoracadastro, :coditem, :un,   :valordescontounitario, :percdescontounitario, :valoracrescimounitario, :percacrescimounitario,  :indicadorcancelamento, :decimaisqtde, :decimaisvalorunitario,  :totaldesconto, :numerodav, :cfop,  :totalacrescimo, :referencia, :qtdeconvertida, :unconvertida, :codaplicacaoproduto,  :qtde,  :valorunitario ) ');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
             qrexec_base.ParamByName('codorcamento').AsInteger := icodigo_controle;
@@ -1001,7 +1010,7 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('update TITENSORCAMENTO set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor, observacao = :observacao where controle = :controle');
+            qrexec_base.SQL.Add('update TITENSORCAMENTO set controle = :controle,  codorcamento = :codorcamento,  codproduto = :codproduto,  produto = :produto,  datahoracadastro = :datahoracadastro,  coditem = :coditem,  un = :un,    valordescontounitario = :valordescontounitario,  percdescontounitario = :percdescontounitario,  valoracrescimounitario = :valoracrescimounitario,  percacrescimounitario = :percacrescimounitario,   indicadorcancelamento = :indicadorcancelamento,  decimaisqtde = :decimaisqtde,  decimaisvalorunitario = :decimaisvalorunitario, totaldesconto = :totaldesconto,  numerodav = :numerodav,  cfop = :cfop,   totalacrescimo = :totalacrescimo,  referencia = :referencia,  qtdeconvertida = :qtdeconvertida,  unconvertida = :unconvertida,  codaplicacaoproduto = :codaplicacaoproduto,   qtde = :qtde,   valorunitario = :valorunitario where controle = :controle');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
 
@@ -1059,18 +1068,10 @@ begin
         if not modulo_orcamento.qrorcamento_itemproduto.Locate('controle',icodigo_controle_item,[]) then
            begin
 
-             //Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
-
-           end
-        else
-           begin
-
-             //Application.MessageBox(pchar('Registro '+ formatfloat('00000',icodigo_controle) +' atualizado com sucesso!'),'Processo bem sucedido',MB_OK);
+             Application.MessageBox(pchar('Registro não foi atualizado, pois '+ formatfloat('00000',icodigo_controle_item) +' não se encontra mais na base de dados'),'Atenção',MB_OK);
 
            end;
         //endi
-
-
 
      end;
   //endi
@@ -1096,8 +1097,25 @@ begin
 end;
 
 
+procedure tfrmorcamento_cadastro.mostrarItemProduto;
+begin
+
+  with modulo_orcamento do
+    begin
+
+      qrorcamento_itemproduto.Close;
+      qrorcamento_itemproduto.SQL.Clear;
+      qrorcamento_itemproduto.SQL.Add('select * from TITENSORCAMENTO where codorcamento = :codorcamento');
+      qrorcamento_itemproduto.ParamByName('codorcamento').AsInteger:=icodigo_controle;
+      qrorcamento_itemproduto.Open;
 
 
+
+    end;
+
+
+
+end;
 
 end.
 

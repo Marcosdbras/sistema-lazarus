@@ -1,7 +1,7 @@
 object frmlogin: Tfrmlogin
-  Left = 287
+  Left = 95
   Height = 264
-  Top = 251
+  Top = 247
   Width = 756
   BorderStyle = bsDialog
   Caption = 'Acesso ao Master Plus'
@@ -10,7 +10,7 @@ object frmlogin: Tfrmlogin
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.4.0'
   object Shape1: TShape
     Left = 8
     Height = 250

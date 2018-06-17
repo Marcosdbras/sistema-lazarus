@@ -74,6 +74,7 @@ object frmlogin: Tfrmlogin
     Font.Name = 'Arial'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
+    OnKeyPress = edtsenhaKeyPress
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 1
