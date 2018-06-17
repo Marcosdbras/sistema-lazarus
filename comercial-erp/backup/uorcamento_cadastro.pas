@@ -44,8 +44,9 @@ type
     lblcliente5: TLabel;
     lblcliente6: TLabel;
     memoobs: TMemo;
+    memoformapgto: TMemo;
     Panel1: TPanel;
-    pnlparcelar: TPanel;
+    pnlobservacao: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -63,6 +64,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure cbxnomeclienteExit(Sender: TObject);
     procedure cbxnomeclienteKeyPress(Sender: TObject; var Key: char);
@@ -84,7 +86,7 @@ type
     procedure edtqtdeChange(Sender: TObject);
     procedure edtqtdeExit(Sender: TObject);
     procedure edtqtdeKeyPress(Sender: TObject; var Key: char);
-    procedure edttotalKeyPress(Sender: TObject; var Key: char);
+    procedure edtKeyPress(Sender: TObject; var Key: char);
     procedure edtvlrsubtotalKeyPress(Sender: TObject; var Key: char);
     procedure edtpercdescKeyPress(Sender: TObject; var Key: char);
     procedure edtvlrdescKeyPress(Sender: TObject; var Key: char);
@@ -97,7 +99,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
-    procedure memoobsKeyPress(Sender: TObject; var Key: char);
+    procedure memoformapgtoKeyPress(Sender: TObject; var Key: char);
     procedure Panel6Click(Sender: TObject);
     procedure Panel9Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
@@ -135,7 +137,7 @@ begin
 
 end;
 
-procedure Tfrmorcamento_cadastro.memoobsKeyPress(Sender: TObject; var Key: char);
+procedure Tfrmorcamento_cadastro.memoformapgtoKeyPress(Sender: TObject; var Key: char);
 begin
   if key = #13 then
    begin
@@ -208,6 +210,7 @@ begin
     end;
   //endth
 
+  memoformapgto.Lines.Clear;
   memoobs.Lines.Clear;
 
 
@@ -222,7 +225,10 @@ begin
            qrtempVendedor.FieldByName('cven').AsInteger:= qrorcamento.FieldByName('codvendedor').AsInteger;
 
 
+           memoformapgto.Lines.Add(qrorcamento.FieldByName('condicaopagamento').AsString);
            memoobs.Lines.Add(qrorcamento.FieldByName('observacao').AsString);
+
+           edttotal.Value:= qrorcamento.FieldByName('valortotal').Asfloat;
 
          end
       else
@@ -232,6 +238,8 @@ begin
            qrtempCliente.FieldByName('ccli').AsInteger:=0;
            qrtempFuncionario.FieldByName('cfun').AsInteger:=0;
            qrtempVendedor.FieldByName('cven').AsInteger:=0;
+
+           edttotal.Value := 0;
 
          end;
       //endi
@@ -304,7 +312,6 @@ begin
      end;
   //endi
 
-
   salvarProduto;
 
   if frmorcamento_pesquisa.opcao = 'I' then
@@ -312,13 +319,18 @@ begin
 
        mostrarItemProduto;
 
+       frmorcamento_pesquisa.opcao:='A';
+
      end;
   //endi
 
+  salvarCadastro;
 
   limparproduto;
 
   edtdescricao.SetFocus;
+
+
 
 end;
 
@@ -330,10 +342,10 @@ end;
 procedure Tfrmorcamento_cadastro.Button1Click(Sender: TObject);
 begin
 
-  salvarCadastro;
+        salvarCadastro;
 
 
-  if (frmorcamento_pesquisa.opcao = 'I')  then
+        if (frmorcamento_pesquisa.opcao = 'I')  then
            begin
 
               modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
@@ -361,9 +373,7 @@ begin
            end;
         //endi
 
-
-
-  close;
+        close;
 
 end;
 
@@ -377,6 +387,13 @@ end;
 procedure Tfrmorcamento_cadastro.Button3Click(Sender: TObject);
 begin
   opcao_item := 'A';
+end;
+
+procedure Tfrmorcamento_cadastro.Button4Click(Sender: TObject);
+begin
+
+
+  edttotal.Value:= modulo_orcamento.qrorcamento.FieldByName('valortotal').Asfloat;
 end;
 
 procedure Tfrmorcamento_cadastro.Button5Click(Sender: TObject);
@@ -662,7 +679,7 @@ begin
 //endi
 end;
 
-procedure Tfrmorcamento_cadastro.edttotalKeyPress(Sender: TObject;
+procedure Tfrmorcamento_cadastro.edtKeyPress(Sender: TObject;
   var Key: char);
 begin
   if key = #13 then
@@ -863,8 +880,8 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('insert into torcamento(controle, codcliente,  nomecliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  data, controlevarchar,   hora,  datahoracadastro, tipodesconto,   titulodav,  cancelado,  status, observacao  ) ');
-            qrexec_base.SQL.Add('                values(:controle, :codcliente, :nomecliente, :codfuncionario, :funcionario, :codvendedor, :vendedor, :data, :controlevarchar, :hora, :datahoracadastro, :tipodesconto, :titulodav, :cancelado, :status, :observacao  )');
+            qrexec_base.SQL.Add('insert into torcamento(controle, codcliente,  nomecliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  data, controlevarchar,   hora,  datahoracadastro, tipodesconto,   titulodav,  cancelado,  status, observacao, condicaopagamento  ) ');
+            qrexec_base.SQL.Add('                values(:controle, :codcliente, :nomecliente, :codfuncionario, :funcionario, :codvendedor, :vendedor, :data, :controlevarchar, :hora, :datahoracadastro, :tipodesconto, :titulodav, :cancelado, :status, :observacao, :condicaopagamento  )');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
             qrexec_base.ParamByName('data').AsDate:=date;
@@ -887,7 +904,7 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('update torcamento set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor, observacao = :observacao where controle = :controle');
+            qrexec_base.SQL.Add('update torcamento set codcliente = :codcliente,  nomecliente = :nomecliente,  codfuncionario = :codfuncionario,  funcionario = :funcionario,  codvendedor = :codvendedor, vendedor = :vendedor, observacao = :observacao, condicaopagamento = :condicaopagamento where controle = :controle');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
 
@@ -910,6 +927,7 @@ begin
             qrexec_base.ParamByName('funcionario').AsString:=  nomefuncionario;
             qrexec_base.ParamByName('codvendedor').AsInteger := modulo_orcamento.qrtempvendedor.FieldByName('cven').AsInteger;
             qrexec_base.ParamByName('vendedor').AsString:= nomevendedor;
+            qrexec_base.ParamByName('condicaopagamento').AsString:=memoformapgto.Text;
             qrexec_base.ParamByName('observacao').AsString:=memoobs.Text;
 
             qrexec_base.ExecSQL;
@@ -1076,6 +1094,8 @@ begin
      end;
   //endi
 
+
+  edttotal.Value:= modulo_orcamento.qrorcamento.FieldByName('valortotal').Asfloat;
 
 end;
 

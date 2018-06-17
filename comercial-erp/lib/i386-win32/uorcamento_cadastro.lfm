@@ -125,7 +125,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       Top = 0
       Width = 1020
       HorzScrollBar.Page = 976
-      VertScrollBar.Page = 515
+      VertScrollBar.Page = 613
       Align = alClient
       BorderStyle = bsNone
       ClientHeight = 624
@@ -435,6 +435,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Top = 48
             Width = 123
             Caption = 'Excluir'
+            OnClick = Button4Click
             TabOrder = 1
           end
         end
@@ -499,17 +500,17 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             ClientWidth = 720
             TabOrder = 1
             object Panel8: TPanel
-              Left = 425
+              Left = 504
               Height = 93
               Top = 0
-              Width = 295
+              Width = 216
               Align = alRight
               BevelOuter = bvNone
               ClientHeight = 93
-              ClientWidth = 295
+              ClientWidth = 216
               TabOrder = 0
               object Label2: TLabel
-                Left = 90
+                Left = 8
                 Height = 15
                 Top = 16
                 Width = 27
@@ -517,16 +518,16 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 ParentColor = False
               end
               object edttotal: TFloatSpinEdit
-                Left = 148
+                Left = 72
                 Height = 23
                 Top = 8
-                Width = 148
+                Width = 138
                 Alignment = taRightJustify
                 Enabled = False
                 Increment = 1
                 MaxValue = 0
                 MinValue = 0
-                OnKeyPress = edttotalKeyPress
+                OnKeyPress = edtvlrsubtotalKeyPress
                 TabOrder = 0
                 Value = 0
               end
@@ -535,22 +536,22 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
               Left = 0
               Height = 93
               Top = 0
-              Width = 425
+              Width = 504
               Align = alClient
-              Caption = ' Observação '
+              Caption = 'Forma de Pagamento'
               ClientHeight = 73
-              ClientWidth = 421
+              ClientWidth = 500
               TabOrder = 1
-              object memoobs: TMemo
+              object memoformapgto: TMemo
                 Left = 0
                 Height = 73
                 Top = 0
-                Width = 421
+                Width = 500
                 Align = alClient
                 Lines.Strings = (
-                  'Memo1'
+                  'memoformapgto'
                 )
-                OnKeyPress = memoobsKeyPress
+                OnKeyPress = memoformapgtoKeyPress
                 TabOrder = 0
               end
             end
@@ -563,18 +564,30 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Top = 496
         Width = 1020
         Align = alClient
-        Caption = 'Forma de Pagamento'
+        Caption = 'Observação'
         ClientHeight = 108
         ClientWidth = 1016
         TabOrder = 2
-        object pnlparcelar: TPanel
+        object pnlobservacao: TPanel
           Left = 0
           Height = 108
           Top = 0
           Width = 1016
           Align = alClient
           BevelOuter = bvNone
+          ClientHeight = 108
+          ClientWidth = 1016
           TabOrder = 0
+          object memoobs: TMemo
+            Left = 0
+            Height = 98
+            Top = -1
+            Width = 720
+            Lines.Strings = (
+              'memoobs'
+            )
+            TabOrder = 0
+          end
         end
       end
     end
