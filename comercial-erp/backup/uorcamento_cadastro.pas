@@ -14,26 +14,27 @@ type
   { Tfrmorcamento_cadastro }
 
   Tfrmorcamento_cadastro = class(TForm)
+    btnAlterarproduto: TButton;
+    btnExcluirProduto: TButton;
     btnlancar: TButton;
     Button1: TButton;
     Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
     cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
     cbxnomefun: TDBLookupComboBox;
-    DBGrid1: TDBGrid;
+    dbgproduto: TDBGrid;
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
-    edtvlrsubtotal: TFloatSpinEdit;
     edttotal: TFloatSpinEdit;
+    edtvlrsubtotal: TFloatSpinEdit;
     edtvlrunitario: TFloatSpinEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
     GroupBox4: TGroupBox;
     Label2: TLabel;
+    lblcliente7: TLabel;
     lblcontroleprod: TLabel;
     lblstatus: TLabel;
     lblcliente: TLabel;
@@ -42,18 +43,14 @@ type
     lblcliente3: TLabel;
     lblcliente4: TLabel;
     lblcliente5: TLabel;
-    lblcliente6: TLabel;
     memoobs: TMemo;
     memoformapgto: TMemo;
     Panel1: TPanel;
     pnlobservacao: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
-    Panel4: TPanel;
     Panel5: TPanel;
-    Panel6: TPanel;
     Panel7: TPanel;
-    Panel8: TPanel;
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
@@ -63,8 +60,8 @@ type
     procedure btnlimparClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
+    procedure btnAlterarprodutoClick(Sender: TObject);
+    procedure btnExcluirProdutoClick(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure cbxnomeclienteExit(Sender: TObject);
     procedure cbxnomeclienteKeyPress(Sender: TObject; var Key: char);
@@ -73,9 +70,9 @@ type
     procedure cbxnomevenExit(Sender: TObject);
     procedure cbxnomevenKeyPress(Sender: TObject; var Key: char);
     procedure cbxunidadeKeyPress(Sender: TObject; var Key: char);
-    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+    procedure dbgprodutoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
       );
-    procedure DBGrid1KeyPress(Sender: TObject; var Key: char);
+    procedure dbgprodutoKeyPress(Sender: TObject; var Key: char);
     procedure DBGrid2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
       );
     procedure DBGrid2KeyPress(Sender: TObject; var Key: char);
@@ -109,12 +106,16 @@ type
     procedure limparProduto;
     procedure salvarProduto;
     procedure mostrarItemProduto;
+    procedure mostrarProduto;
+    procedure bloqueiaProdutoAlt;
+    procedure desbloqueiaProdutoAlt;
+
 
     procedure ScrollBox1Click(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: boolean);
   private
-      icodigo_controle:integer;
+      icodigo_controle, icodigo_controle_item:integer;
       opcao_item:string;
 
   public
@@ -324,11 +325,16 @@ begin
      end;
   //endi
 
+
   salvarCadastro;
 
   limparproduto;
 
+  desbloqueiaProdutoAlt;
+
   edtdescricao.SetFocus;
+
+
 
 
 
@@ -384,12 +390,20 @@ begin
   Close;
 end;
 
-procedure Tfrmorcamento_cadastro.Button3Click(Sender: TObject);
+procedure Tfrmorcamento_cadastro.btnAlterarprodutoClick(Sender: TObject);
 begin
   opcao_item := 'A';
+
+  mostrarProduto;
+
+  bloqueiaProdutoAlt;
+
+  edtqtde.SetFocus;
+
+
 end;
 
-procedure Tfrmorcamento_cadastro.Button4Click(Sender: TObject);
+procedure Tfrmorcamento_cadastro.btnExcluirProdutoClick(Sender: TObject);
 begin
 
 
@@ -464,7 +478,7 @@ begin
 //endi
 end;
 
-procedure Tfrmorcamento_cadastro.DBGrid1KeyDown(Sender: TObject; var Key: Word;
+procedure Tfrmorcamento_cadastro.dbgprodutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
      if key = 13 then
@@ -485,7 +499,7 @@ begin
 
 end;
 
-procedure Tfrmorcamento_cadastro.DBGrid1KeyPress(Sender: TObject; var Key: char
+procedure Tfrmorcamento_cadastro.dbgprodutoKeyPress(Sender: TObject; var Key: char
   );
 begin
 end;
@@ -530,6 +544,11 @@ procedure Tfrmorcamento_cadastro.edtdescricaoExit(Sender: TObject);
 var reglocalizado:integer;
 
 begin
+
+  if edtdescricao.Text = '' then
+     exit;
+  //endi
+
 
   if modulo_produto.localizaControle(edtdescricao.Text) = 0 then
      begin
@@ -942,6 +961,8 @@ begin
 
        modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
 
+       edttotal.Value:= modulo_orcamento.qrorcamento.FieldByName('valortotal').Asfloat;
+
      end;
   //endi
 
@@ -958,7 +979,7 @@ end;
 procedure Tfrmorcamento_cadastro.salvarProduto;
 var
   descricaoun, nomeprod:string;
-  sequencia, icodigo_controle_item:integer;
+  sequencia:integer;
 
 begin
 
@@ -1013,8 +1034,7 @@ begin
             qrexec_base.SQL.Add('insert into TITENSORCAMENTO( controle,  codorcamento,  codproduto,  produto,  datahoracadastro,  coditem,  un,    valordescontounitario,  percdescontounitario,  valoracrescimounitario,  percacrescimounitario,   indicadorcancelamento,  decimaisqtde,  decimaisvalorunitario, totaldesconto,  numerodav,  cfop,   totalacrescimo,  referencia,  qtdeconvertida,  unconvertida,  codaplicacaoproduto,   qtde,   valorunitario ) ');
             qrexec_base.SQL.Add('                     values(:controle, :codorcamento, :codproduto, :produto, :datahoracadastro, :coditem, :un,   :valordescontounitario, :percdescontounitario, :valoracrescimounitario, :percacrescimounitario,  :indicadorcancelamento, :decimaisqtde, :decimaisvalorunitario,  :totaldesconto, :numerodav, :cfop,  :totalacrescimo, :referencia, :qtdeconvertida, :unconvertida, :codaplicacaoproduto,  :qtde,  :valorunitario ) ');
 
-            qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
-            qrexec_base.ParamByName('codorcamento').AsInteger := icodigo_controle;
+
             qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
             qrexec_base.ParamByName('coditem').AsInteger:=sequencia;
 
@@ -1059,6 +1079,9 @@ begin
             qrexec_base.ParamByName('qtde').Asfloat := edtqtde.Value;
             qrexec_base.ParamByName('valorunitario').Asfloat := edtvlrunitario.Value;
 
+            qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
+            qrexec_base.ParamByName('codorcamento').AsInteger := icodigo_controle;
+
             qrexec_base.ExecSQL;
 
             atualizaBanco;
@@ -1095,7 +1118,7 @@ begin
   //endi
 
 
-  edttotal.Value:= modulo_orcamento.qrorcamento.FieldByName('valortotal').Asfloat;
+
 
 end;
 
@@ -1136,6 +1159,82 @@ begin
 
 
 end;
+
+
+procedure  tfrmorcamento_cadastro.mostrarProduto;
+begin
+
+  //with modulo_conexaodb do
+  //  begin
+
+  //    qrconsulta_base.Close;
+  //    qrconsulta_base.SQL.Clear;
+  //    qrconsulta_base.SQL.Add('select * from tunidademedida where descricao = :descricao');
+  //    qrconsulta_base.ParamByName('descricao').AsString:= ;
+  //    qrconsulta_base.Open;
+
+
+  //  end;
+  //endi
+
+  with modulo_unidade do
+    begin
+
+      if qrunidade.Locate('descricao',modulo_orcamento.qrorcamento_itemproduto.FieldByName('un').AsString,[])then
+         begin
+           modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger := qrunidade.FieldByName('controle').AsInteger;
+         end
+      else
+         begin
+           modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger := 0;
+         end;
+      //endi
+
+
+    end;
+ //endi
+
+  with modulo_orcamento do
+    begin
+
+      edtdescricao.text := qrorcamento_itemproduto.FieldByName('produto').AsString;
+      edtqtde.value := qrorcamento_itemproduto.FieldByName('qtde').Asfloat;
+      edtvlrunitario.Value:=qrorcamento_itemproduto.FieldByName('valorunitario').Asfloat;
+      edtvlrsubtotal.Value:= qrorcamento_itemproduto.FieldByName('totalliquido').Asfloat;
+      lblcontroleprod.Caption:=  inttostr( qrorcamento_itemproduto.FieldByName('codproduto').AsInteger );
+      icodigo_controle_item := qrorcamento_itemproduto.FieldByName('controle').AsInteger;
+
+
+    end;
+
+
+end;
+
+
+procedure tfrmorcamento_cadastro.bloqueiaProdutoAlt;
+begin
+
+  edtdescricao.Enabled:=false;
+  dbgproduto.Enabled:=false;
+  btnAlterarProduto.Enabled:=false;
+  btnExcluirProduto.Enabled:=false;
+
+
+end;
+
+
+
+procedure tfrmorcamento_cadastro.desbloqueiaProdutoAlt;
+begin
+
+  edtdescricao.Enabled:=true;
+  dbgproduto.Enabled:=true;
+  btnAlterarProduto.Enabled:=true;
+  btnExcluirProduto.Enabled:=true;
+
+
+end;
+
 
 end.
 

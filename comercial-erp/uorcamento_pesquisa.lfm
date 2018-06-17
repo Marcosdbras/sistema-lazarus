@@ -1,13 +1,13 @@
 object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
-  Left = -8
+  Left = -40
   Height = 706
-  Top = -8
-  Width = 1024
+  Top = 0
+  Width = 1028
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
   Caption = 'Master Plus - Pesquisa de Orçamentos'
   ClientHeight = 706
-  ClientWidth = 1024
+  ClientWidth = 1028
   OnClose = FormClose
   OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
@@ -16,17 +16,17 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Left = 0
     Height = 88
     Top = 0
-    Width = 1024
+    Width = 1028
     Align = alTop
     BevelOuter = bvNone
     ClientHeight = 88
-    ClientWidth = 1024
+    ClientWidth = 1028
     Color = 16744448
     ParentColor = False
     TabOrder = 0
     OnClick = pnlsuperiorClick
     object Label1: TLabel
-      Left = 320
+      Left = 240
       Height = 18
       Top = 19
       Width = 105
@@ -42,7 +42,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 552
+      Left = 408
       Height = 18
       Top = 19
       Width = 85
@@ -58,7 +58,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ParentFont = False
     end
     object edtdatainicio: TDateEdit
-      Left = 784
+      Left = 576
       Height = 23
       Top = 43
       Width = 96
@@ -72,9 +72,9 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       Text = 'edtdatainicio'
     end
     object Label3: TLabel
-      Left = 784
+      Left = 576
       Height = 18
-      Top = 19
+      Top = 16
       Width = 92
       Caption = 'DATA INICIAL'
       Font.CharSet = ANSI_CHARSET
@@ -88,7 +88,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ParentFont = False
     end
     object edtdatafim: TDateEdit
-      Left = 928
+      Left = 680
       Height = 23
       Top = 43
       Width = 136
@@ -102,9 +102,9 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       Text = 'edtdatafim'
     end
     object Label4: TLabel
-      Left = 928
+      Left = 680
       Height = 18
-      Top = 19
+      Top = 16
       Width = 82
       Caption = 'DATA FINAL'
       Font.CharSet = ANSI_CHARSET
@@ -137,7 +137,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       Left = 8
       Height = 23
       Top = 43
-      Width = 304
+      Width = 224
       DataField = 'ccli'
       ListFieldIndex = 0
       LookupCache = False
@@ -146,10 +146,10 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 2
     end
     object cbxnomefun: TDBLookupComboBox
-      Left = 320
+      Left = 240
       Height = 23
       Top = 43
-      Width = 224
+      Width = 160
       DataField = 'cfun'
       ListFieldIndex = 0
       LookupCache = False
@@ -158,10 +158,10 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 3
     end
     object cbxnomeven: TDBLookupComboBox
-      Left = 552
+      Left = 408
       Height = 23
       Top = 43
-      Width = 224
+      Width = 160
       DataField = 'cven'
       ListFieldIndex = 0
       LookupCache = False
@@ -170,29 +170,29 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 4
     end
     object Panel2: TPanel
-      Left = 893
+      Left = 922
       Height = 88
       Top = 0
-      Width = 131
+      Width = 106
       Align = alRight
       BevelOuter = bvNone
       ClientHeight = 88
-      ClientWidth = 131
+      ClientWidth = 106
       TabOrder = 5
       object btnfiltrar: TButton
-        Left = 0
+        Left = 8
         Height = 40
-        Top = 6
-        Width = 123
+        Top = 4
+        Width = 91
         Caption = 'Filtrar'
         OnClick = btnfiltrarClick
         TabOrder = 0
       end
       object btnlimpar: TButton
-        Left = 0
+        Left = 8
         Height = 40
-        Top = 46
-        Width = 123
+        Top = 44
+        Width = 91
         Caption = 'Limpar'
         OnClick = btnlimparClick
         TabOrder = 1
@@ -203,11 +203,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Left = 0
     Height = 50
     Top = 656
-    Width = 1024
+    Width = 1028
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 50
-    ClientWidth = 1024
+    ClientWidth = 1028
     Color = 16744448
     ParentColor = False
     TabOrder = 1
@@ -277,21 +277,20 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 3
     end
     object Panel1: TPanel
-      Left = 871
+      Left = 922
       Height = 50
       Top = 0
-      Width = 153
+      Width = 106
       Align = alRight
       BevelOuter = bvNone
-      Caption = 'Panel1'
       ClientHeight = 50
-      ClientWidth = 153
+      ClientWidth = 106
       TabOrder = 4
       object Button5: TButton
-        Left = 22
+        Left = 8
         Height = 40
         Top = 7
-        Width = 123
+        Width = 91
         Caption = 'Fechar'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clNavy
@@ -309,11 +308,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Left = 0
     Height = 52
     Top = 604
-    Width = 1024
+    Width = 1028
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 52
-    ClientWidth = 1024
+    ClientWidth = 1028
     Color = 16744448
     ParentColor = False
     TabOrder = 2
@@ -355,7 +354,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Left = 0
     Height = 516
     Top = 88
-    Width = 1024
+    Width = 1028
     Align = alClient
     AutoEdit = False
     Color = clWindow
