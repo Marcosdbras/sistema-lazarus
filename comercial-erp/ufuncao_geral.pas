@@ -39,6 +39,7 @@ procedure atualiza_base;
 begin
 
 
+
 try
 
 //Tabela MASTER_UNIDADE existe?
@@ -47,6 +48,17 @@ if existe_tabela('MASTER_UNIDADE') = 0 then
 
      with modulo_conexaodb do
      begin
+
+
+        //Script.Terminator:=';';
+        //Script.Script.Clear;
+        //Script.Script.Add('execute procedure sptotalizaorcamento(10);');
+        //Script.Script.Add('commit work;');
+        //Script.Script.Add('SET AUTODDL ON;');
+        //Script.Execute;
+
+
+
 
        Script.Terminator:=';';
 

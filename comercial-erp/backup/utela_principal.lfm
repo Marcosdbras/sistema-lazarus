@@ -54,20 +54,20 @@ object frmtela_principal: Tfrmtela_principal
       Panels = <>
     end
     object Panel1: TPanel
-      Left = 1229
+      Left = 1184
       Height = 59
       Top = 0
-      Width = 91
+      Width = 136
       Align = alRight
       BevelOuter = bvNone
       ClientHeight = 59
-      ClientWidth = 91
+      ClientWidth = 136
       TabOrder = 1
       object Button2: TButton
         Left = 8
-        Height = 42
-        Top = 6
-        Width = 75
+        Height = 40
+        Top = 8
+        Width = 123
         Caption = 'Sair'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clNavy

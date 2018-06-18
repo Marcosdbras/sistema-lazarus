@@ -39,6 +39,7 @@ procedure atualiza_base;
 begin
 
 
+
 try
 
 //Tabela MASTER_UNIDADE existe?
@@ -47,6 +48,15 @@ if existe_tabela('MASTER_UNIDADE') = 0 then
 
      with modulo_conexaodb do
      begin
+
+
+        //Script.Terminator:=';';
+        //Script.Script.Clear;
+        //Script.Script.Add('execute procedure sptotalizaorcamento(10);');
+        //Script.Script.Add('commit work;');
+        //Script.Script.Add('SET AUTODDL ON;');
+        //Script.Execute;
+
 
        Script.Terminator:=';';
 
@@ -118,6 +128,25 @@ if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
   end;
 //endi
 
+
+
+//Campo CONTROLE_TUNIDADEMEDIDA existe?
+if existe_campo('MASTER_UNIDADE','CONTROLE_TUNIDADEMEDIDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD CONTROLE_TUNIDADEMEDIDA integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
 
 
 

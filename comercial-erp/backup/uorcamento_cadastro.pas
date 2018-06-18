@@ -405,9 +405,36 @@ end;
 
 procedure Tfrmorcamento_cadastro.btnExcluirProdutoClick(Sender: TObject);
 begin
+  if Application.MessageBox('Tem certeza que deseja excluir o produto selecionado?','Atenção',MB_YESNO) = 6  then
+     begin
+
+       with modulo_conexaodb do
+         begin
+
+           icodigo_controle_item := modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
+
+           qrexec_base.Close;
+           qrexec_base.SQL.Clear;
+           qrexec_base.SQL.Add('delete from titensorcamento where controle = :controle');
+           qrexec_base.ParamByName('controle').AsInteger:= icodigo_controle_item;
+           qrexec_base.ExecSQL;
+
+           atualizaBanco;
+
+           modulo_orcamento.qrorcamento_itemproduto.Refresh;
 
 
-  edttotal.Value:= modulo_orcamento.qrorcamento.FieldByName('valortotal').Asfloat;
+           modulo_orcamento.qrorcamento_itemproduto.Locate('controle',icodigo_controle_item+1,[]);
+
+
+         end;
+
+
+        edttotal.Value:= modulo_orcamento.qrorcamento.FieldByName('valortotal').Asfloat;
+     end;
+
+
+
 end;
 
 procedure Tfrmorcamento_cadastro.Button5Click(Sender: TObject);
