@@ -10,6 +10,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   ClientWidth = 894
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '1.8.4.0'
   WindowState = wsMaximized
   object pnlsuperior: TPanel
@@ -309,7 +310,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Value = 0
           end
           object cbxunidade: TDBLookupComboBox
-            Left = 488
+            Left = 483
             Height = 23
             Top = 24
             Width = 52
@@ -321,10 +322,10 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             TabOrder = 2
           end
           object edtvlrunitario: TFloatSpinEdit
-            Left = 552
+            Left = 538
             Height = 23
             Top = 24
-            Width = 82
+            Width = 96
             Alignment = taRightJustify
             Increment = 1
             MaxValue = 0
@@ -419,30 +420,32 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Columns = <            
               item
                 Title.Caption = 'ITEM'
+                Width = 32
                 FieldName = 'CODITEM'
               end            
               item
                 Title.Caption = 'Title'
-                Width = 500
+                Width = 325
                 FieldName = 'PRODUTO'
               end            
               item
                 Title.Caption = 'QTDE'
-                Width = 130
+                Width = 125
                 FieldName = 'QTDE'
               end            
               item
                 Title.Caption = 'UN'
+                Width = 52
                 FieldName = 'UN'
               end            
               item
                 Title.Caption = 'VALORUNITARIO'
-                Width = 135
+                Width = 92
                 FieldName = 'VALORUNITARIO'
               end            
               item
                 Title.Caption = 'TOTALLIQUIDO'
-                Width = 134
+                Width = 92
                 FieldName = 'TOTALLIQUIDO'
               end>
             DataSource = modulo_orcamento.dsorcamento_itemproduto
@@ -519,7 +522,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object btnExcluirProduto: TButton
             Left = 811
             Height = 40
-            Top = 42
+            Top = 82
             Width = 72
             Caption = 'Excluir'
             OnClick = btnExcluirProdutoClick
@@ -528,11 +531,20 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object btnClassItem: TButton
             Left = 811
             Height = 40
-            Top = 82
+            Top = 122
             Width = 72
             Caption = 'Class. Item'
             OnClick = btnClassItemClick
             TabOrder = 4
+          end
+          object btnCancelarAltprod: TButton
+            Left = 811
+            Height = 40
+            Top = 42
+            Width = 72
+            Caption = 'Cancelar'
+            OnClick = btnCancelarAltprodClick
+            TabOrder = 5
           end
         end
       end

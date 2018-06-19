@@ -15,6 +15,7 @@ type
 
   Tfrmorcamento_cadastro = class(TForm)
     btnAlterarproduto: TButton;
+    btnCancelarAltprod: TButton;
     btnExcluirProduto: TButton;
     btnClassItem: TButton;
     btnlancar: TButton;
@@ -56,6 +57,7 @@ type
     pnlinferior: TPanel;
     pnlcentral: TPanel;
     ScrollBox1: TScrollBox;
+    procedure btnCancelarAltprodClick(Sender: TObject);
     procedure btnClassItemClick(Sender: TObject);
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnlancarClick(Sender: TObject);
@@ -96,6 +98,7 @@ type
     procedure edtvlrunitarioKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure memoformapgtoKeyPress(Sender: TObject; var Key: char);
@@ -233,6 +236,8 @@ begin
 
            edttotal.Value:= qrorcamento.FieldByName('valortotal').Asfloat;
 
+
+
          end
       else
          begin
@@ -243,6 +248,8 @@ begin
            qrtempVendedor.FieldByName('cven').AsInteger:=0;
 
            edttotal.Value := 0;
+
+
 
          end;
       //endi
@@ -290,9 +297,22 @@ begin
 
   limparProduto;
 
+  btnCancelarAltprod.Enabled:=false;
 
 
 
+
+
+end;
+
+procedure Tfrmorcamento_cadastro.FormShow(Sender: TObject);
+begin
+  if (frmorcamento_pesquisa.opcao = 'I') or (frmorcamento_pesquisa.opcao = 'A') then
+    begin
+
+      cbxnomecliente.SetFocus;
+
+    end;
 end;
 
 procedure Tfrmorcamento_cadastro.GroupBox2Click(Sender: TObject);
@@ -358,8 +378,23 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.btnCancelarAltprodClick(Sender: TObject);
+begin
+  limparProduto;
+  desbloqueiaProdutoAlt;
+  edtdescricao.SetFocus;
+end;
+
 procedure Tfrmorcamento_cadastro.btnlancarClick(Sender: TObject);
 begin
+  if edtdescricao.Text = '' then
+    begin
+      Application.MessageBox('Aviso','Nenhum produto selecionado!',MB_OK);
+      exit;
+    end;
+ //endi
+
+
   if frmorcamento_pesquisa.opcao = 'I' then
      begin
 
@@ -1324,6 +1359,9 @@ begin
   dbgproduto.Enabled:=false;
   btnAlterarProduto.Enabled:=false;
   btnExcluirProduto.Enabled:=false;
+  btnclassitem.Enabled:=false;
+
+  btnCancelarAltprod.Enabled:=true;
 
 
 end;
@@ -1337,6 +1375,9 @@ begin
   dbgproduto.Enabled:=true;
   btnAlterarProduto.Enabled:=true;
   btnExcluirProduto.Enabled:=true;
+  btnclassitem.Enabled:=true;
+
+  btnCancelarAltprod.Enabled:=false;
 
 
 end;
