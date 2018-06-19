@@ -2,7 +2,7 @@ object modulo_orcamento: Tmodulo_orcamento
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 601
-  HorizontalOffset = 849
+  HorizontalOffset = 642
   VerticalOffset = 79
   Width = 332
   PPI = 96
@@ -1000,6 +1000,7 @@ object modulo_orcamento: Tmodulo_orcamento
         Precision = 18
         Size = 4
       end>
+    AfterPost = qrorcamento_itemprodutoAfterPost
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (

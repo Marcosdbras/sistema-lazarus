@@ -418,6 +418,10 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Color = clWindow
             Columns = <            
               item
+                Title.Caption = 'ITEM'
+                FieldName = 'CODITEM'
+              end            
+              item
                 Title.Caption = 'Title'
                 Width = 500
                 FieldName = 'PRODUTO'
@@ -520,6 +524,15 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Caption = 'Excluir'
             OnClick = btnExcluirProdutoClick
             TabOrder = 3
+          end
+          object btnClassItem: TButton
+            Left = 811
+            Height = 40
+            Top = 82
+            Width = 72
+            Caption = 'Class. Item'
+            OnClick = btnClassItemClick
+            TabOrder = 4
           end
         end
       end

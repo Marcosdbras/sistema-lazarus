@@ -16,6 +16,7 @@ type
   Tfrmorcamento_cadastro = class(TForm)
     btnAlterarproduto: TButton;
     btnExcluirProduto: TButton;
+    btnClassItem: TButton;
     btnlancar: TButton;
     Button1: TButton;
     Button2: TButton;
@@ -55,6 +56,7 @@ type
     pnlinferior: TPanel;
     pnlcentral: TPanel;
     ScrollBox1: TScrollBox;
+    procedure btnClassItemClick(Sender: TObject);
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnlancarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
@@ -303,6 +305,59 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.btnClassItemClick(Sender: TObject);
+var
+  novoNumero:integer;
+
+
+begin
+  with modulo_orcamento do
+    begin
+
+
+      novoNumero := 1;
+      qrorcamento_itemproduto.First;
+
+      while not qrorcamento_itemproduto.EOF do
+        begin
+
+          with modulo_conexaodb do
+            begin
+              qrexec_base.Close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('update titensorcamento set coditem = :coditem where controle = :controle');
+              qrexec_base.ParamByName('coditem').AsInteger:=novoNumero;
+              qrexec_base.ParamByName('controle').AsInteger:=qrorcamento_itemproduto.FieldByName('controle').AsInteger;
+              qrexec_base.ExecSQL;
+            end;
+
+          qrorcamento_itemproduto.Next;
+
+           novoNumero := novoNumero + 1;
+        end;
+
+    end;
+  //endth
+
+  with modulo_conexaodb do
+    begin
+
+      atualizaBanco;
+
+    end;
+  //endth
+
+
+  with modulo_orcamento do
+    begin
+      qrorcamento_itemproduto.Refresh;
+
+      qrorcamento_itemproduto.Last;
+    end;
+
+
+end;
+
 procedure Tfrmorcamento_cadastro.btnlancarClick(Sender: TObject);
 begin
   if frmorcamento_pesquisa.opcao = 'I' then
@@ -407,6 +462,7 @@ procedure Tfrmorcamento_cadastro.btnExcluirProdutoClick(Sender: TObject);
 var subtotal:real;
     aSQLText: string;
     aSQLCommand: string;
+    coditem:integer;
 
 begin
   if Application.MessageBox('Tem certeza que deseja excluir o produto selecionado?','Atenção',MB_YESNO) = 6  then
@@ -417,6 +473,7 @@ begin
 
            icodigo_controle_item := modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
            subtotal := modulo_orcamento.qrorcamento_itemproduto.FieldByName('totalliquido').Asfloat;
+           coditem := modulo_orcamento.qrorcamento_itemproduto.FieldByName('coditem').AsInteger;
 
            qrexec_base.Close;
            qrexec_base.SQL.Clear;
@@ -438,7 +495,11 @@ begin
 
            modulo_orcamento.qrorcamento_itemproduto.Refresh;
 
-           modulo_orcamento.qrorcamento_itemproduto.Locate('controle',icodigo_controle_item+1,[]);
+           if not modulo_orcamento.qrorcamento_itemproduto.Locate('coditem',coditem+1,[]) then
+              begin
+                modulo_orcamento.qrorcamento_itemproduto.Last;
+              end;
+           //endi
 
 
 
@@ -1079,6 +1140,9 @@ begin
 
             qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
             qrexec_base.ParamByName('coditem').AsInteger:=sequencia;
+            qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
+            qrexec_base.ParamByName('codorcamento').AsInteger := icodigo_controle;
+
 
           end;
         //endth
@@ -1090,7 +1154,7 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('update TITENSORCAMENTO set controle = :controle,  codorcamento = :codorcamento,  codproduto = :codproduto,  produto = :produto,  datahoracadastro = :datahoracadastro,  coditem = :coditem,  un = :un,    valordescontounitario = :valordescontounitario,  percdescontounitario = :percdescontounitario,  valoracrescimounitario = :valoracrescimounitario,  percacrescimounitario = :percacrescimounitario,   indicadorcancelamento = :indicadorcancelamento,  decimaisqtde = :decimaisqtde,  decimaisvalorunitario = :decimaisvalorunitario, totaldesconto = :totaldesconto,  numerodav = :numerodav,  cfop = :cfop,   totalacrescimo = :totalacrescimo,  referencia = :referencia,  qtdeconvertida = :qtdeconvertida,  unconvertida = :unconvertida,  codaplicacaoproduto = :codaplicacaoproduto,   qtde = :qtde,   valorunitario = :valorunitario where controle = :controle');
+            qrexec_base.SQL.Add('update TITENSORCAMENTO set  codproduto = :codproduto,  produto = :produto,   un = :un,    valordescontounitario = :valordescontounitario,  percdescontounitario = :percdescontounitario,  valoracrescimounitario = :valoracrescimounitario,  percacrescimounitario = :percacrescimounitario,   indicadorcancelamento = :indicadorcancelamento,  decimaisqtde = :decimaisqtde,  decimaisvalorunitario = :decimaisvalorunitario, totaldesconto = :totaldesconto,  numerodav = :numerodav,  cfop = :cfop,   totalacrescimo = :totalacrescimo,  referencia = :referencia,  qtdeconvertida = :qtdeconvertida,  unconvertida = :unconvertida,  codaplicacaoproduto = :codaplicacaoproduto,   qtde = :qtde,   valorunitario = :valorunitario where controle = :controle');
 
             qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
 
@@ -1121,8 +1185,7 @@ begin
             qrexec_base.ParamByName('qtde').Asfloat := edtqtde.Value;
             qrexec_base.ParamByName('valorunitario').Asfloat := edtvlrunitario.Value;
 
-            qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
-            qrexec_base.ParamByName('codorcamento').AsInteger := icodigo_controle;
+
 
             qrexec_base.ExecSQL;
 
@@ -1140,9 +1203,11 @@ begin
   if (opcao_item = 'I')  then
      begin
 
-        modulo_orcamento.qrorcamento_itemproduto.Locate('controle',icodigo_controle_item,[]);
+        //modulo_orcamento.qrorcamento_itemproduto.Locate('controle',icodigo_controle_item,[]);
 
         //Application.MessageBox(pchar('Registro inserido com sucesso!'),'Processo bem sucedido',MB_OK);
+
+        modulo_orcamento.qrorcamento_itemproduto.Last;
 
      end
   else if (opcao_item = 'A') then
@@ -1190,7 +1255,7 @@ begin
 
       qrorcamento_itemproduto.Close;
       qrorcamento_itemproduto.SQL.Clear;
-      qrorcamento_itemproduto.SQL.Add('select * from TITENSORCAMENTO where codorcamento = :codorcamento');
+      qrorcamento_itemproduto.SQL.Add('select * from TITENSORCAMENTO where codorcamento = :codorcamento order by coditem');
       qrorcamento_itemproduto.ParamByName('codorcamento').AsInteger:=icodigo_controle;
       qrorcamento_itemproduto.Open;
 

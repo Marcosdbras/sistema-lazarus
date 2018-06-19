@@ -129,6 +129,7 @@ type
     qrtempVendedor: TBufDataset;
     procedure DataModuleCreate(Sender: TObject);
     procedure qrorcamentoAfterScroll(DataSet: TDataSet);
+    procedure qrorcamento_itemprodutoAfterPost(DataSet: TDataSet);
     procedure qrsequenciaAfterDelete(DataSet: TDataSet);
     procedure qrsequenciaAfterPost(DataSet: TDataSet);
   private
@@ -190,6 +191,18 @@ implementation
 
 
 
+         with qrtempUnidade.fieldDefs do
+            begin
+                  Add('cund', ftInteger, 0, True);
+            end;
+
+         qrtempUnidade.CreateDataset;
+
+         qrtempUnidade.Open;
+
+         qrtempUnidade.Append;
+
+
 
 
        end;
@@ -199,6 +212,11 @@ begin
 
 
 
+end;
+
+procedure Tmodulo_orcamento.qrorcamento_itemprodutoAfterPost(DataSet: TDataSet);
+begin
+  //qrorcamento_itemproduto.ApplyUpdates(0);
 end;
 
 procedure Tmodulo_orcamento.qrsequenciaAfterDelete(DataSet: TDataSet);
