@@ -669,6 +669,7 @@ begin
                      begin
 
                         Application.MessageBox('Informação não localizada!','Atenção',MB_OK);
+                        edtdescricao.SetFocus;
 
                      end
                   else
@@ -1259,8 +1260,6 @@ begin
       qrorcamento_itemproduto.ParamByName('codorcamento').AsInteger:=icodigo_controle;
       qrorcamento_itemproduto.Open;
 
-
-
     end;
 
 
@@ -1325,6 +1324,7 @@ begin
   dbgproduto.Enabled:=false;
   btnAlterarProduto.Enabled:=false;
   btnExcluirProduto.Enabled:=false;
+  btnclassitem.Enabled:=false;
 
 
 end;
@@ -1338,6 +1338,7 @@ begin
   dbgproduto.Enabled:=true;
   btnAlterarProduto.Enabled:=true;
   btnExcluirProduto.Enabled:=true;
+  btnclassitem.Enabled:=true;
 
 
 end;
