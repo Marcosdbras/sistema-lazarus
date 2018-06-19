@@ -405,6 +405,9 @@ end;
 
 procedure Tfrmorcamento_cadastro.btnExcluirProdutoClick(Sender: TObject);
 var subtotal:real;
+    aSQLText: string;
+    aSQLCommand: string;
+
 begin
   if Application.MessageBox('Tem certeza que deseja excluir o produto selecionado?','Atenção',MB_YESNO) = 6  then
      begin
@@ -424,12 +427,19 @@ begin
            atualizaBanco;
 
 
+           aSQLText:= 'execute procedure sptotalizaorcamento(%d)';
+           aSQLCommand:= Format(aSQLText, [icodigo_controle]);
+           conexaodb.ExecuteDirect(aSQLCommand);
+           atualizaBanco;
 
+           modulo_orcamento.qrorcamento.Refresh;
+
+           modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
 
            modulo_orcamento.qrorcamento_itemproduto.Refresh;
 
-
            modulo_orcamento.qrorcamento_itemproduto.Locate('controle',icodigo_controle_item+1,[]);
+
 
 
          end;
