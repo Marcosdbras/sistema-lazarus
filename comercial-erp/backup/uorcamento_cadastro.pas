@@ -325,7 +325,7 @@ begin
             begin
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('udate titensorcamento set coditem = :coditem where controle = :controle');
+              qrexec_base.SQL.Add('update titensorcamento set coditem = :coditem where controle = :controle');
               qrexec_base.ParamByName('coditem').AsInteger:=novoNumero;
               qrexec_base.ParamByName('controle').AsInteger:=qrorcamento_itemproduto.FieldByName('controle').AsInteger;
               qrexec_base.ExecSQL;

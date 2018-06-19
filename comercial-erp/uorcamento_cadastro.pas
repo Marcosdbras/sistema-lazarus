@@ -1119,7 +1119,7 @@ begin
 
             qrconsulta_base.Close;
             qrconsulta_base.SQL.Clear;
-            qrconsulta_base.SQL.Add('select count(*)+1 as sequencia from TITENSORCAMENTO where CODORCAMENTO = :CODORCAMENTO');
+            qrconsulta_base.SQL.Add('select max(coditem)+1 as sequencia from TITENSORCAMENTO where CODORCAMENTO = :CODORCAMENTO');
             qrconsulta_base.ParamByName('codorcamento').AsInteger:=icodigo_controle;
             qrconsulta_base.Open;
 
