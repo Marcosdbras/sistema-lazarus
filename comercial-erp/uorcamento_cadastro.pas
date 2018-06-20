@@ -114,6 +114,7 @@ type
     procedure mostrarProduto;
     procedure bloqueiaProdutoAlt;
     procedure desbloqueiaProdutoAlt;
+    procedure classificarItem;
 
 
     procedure ScrollBox1Click(Sender: TObject);
@@ -326,47 +327,10 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.btnClassItemClick(Sender: TObject);
-var
-  novoNumero:integer;
-
 
 begin
-  with modulo_orcamento do
-    begin
 
-
-      novoNumero := 1;
-      qrorcamento_itemproduto.First;
-
-      while not qrorcamento_itemproduto.EOF do
-        begin
-
-          with modulo_conexaodb do
-            begin
-              qrexec_base.Close;
-              qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('update titensorcamento set coditem = :coditem where controle = :controle');
-              qrexec_base.ParamByName('coditem').AsInteger:=novoNumero;
-              qrexec_base.ParamByName('controle').AsInteger:=qrorcamento_itemproduto.FieldByName('controle').AsInteger;
-              qrexec_base.ExecSQL;
-            end;
-
-          qrorcamento_itemproduto.Next;
-
-           novoNumero := novoNumero + 1;
-        end;
-
-    end;
-  //endth
-
-  with modulo_conexaodb do
-    begin
-
-      atualizaBanco;
-
-    end;
-  //endth
-
+  classificarItem;
 
   with modulo_orcamento do
     begin
@@ -389,8 +353,12 @@ procedure Tfrmorcamento_cadastro.btnlancarClick(Sender: TObject);
 begin
   if edtdescricao.Text = '' then
     begin
-      Application.MessageBox('Aviso','Nenhum produto selecionado!',MB_OK);
-
+      Application.MessageBox('Não há nenhum produto no campo descrição para lançamento!','Atenção',MB_OK);
+      if opcao_item = 'I' then
+         begin
+            edtdescricao.SetFocus;
+         end;
+      //endi
       exit;
     end;
  //endi
@@ -483,6 +451,13 @@ end;
 
 procedure Tfrmorcamento_cadastro.btnAlterarprodutoClick(Sender: TObject);
 begin
+  if modulo_orcamento.qrorcamento_itemproduto.RecordCount = 0 then
+     begin
+       Application.MessageBox('Não há nennhum produto para ser alterado!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
   opcao_item := 'A';
 
   mostrarProduto;
@@ -501,6 +476,15 @@ var subtotal:real;
     coditem:integer;
 
 begin
+  if modulo_orcamento.qrorcamento_itemproduto.RecordCount = 0 then
+     begin
+       Application.MessageBox('Não há nennhum produto para ser excluido!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
+
+
   if Application.MessageBox('Tem certeza que deseja excluir o produto selecionado?','Atenção',MB_YESNO) = 6  then
      begin
 
@@ -519,7 +503,6 @@ begin
 
            atualizaBanco;
 
-
            aSQLText:= 'execute procedure sptotalizaorcamento(%d)';
            aSQLCommand:= Format(aSQLText, [icodigo_controle]);
            conexaodb.ExecuteDirect(aSQLCommand);
@@ -536,8 +519,6 @@ begin
                 modulo_orcamento.qrorcamento_itemproduto.Last;
               end;
            //endi
-
-
 
          end;
 
@@ -1156,7 +1137,7 @@ begin
 
             qrconsulta_base.Close;
             qrconsulta_base.SQL.Clear;
-            qrconsulta_base.SQL.Add('select max(coditem)+1 as sequencia from TITENSORCAMENTO where CODORCAMENTO = :CODORCAMENTO');
+            qrconsulta_base.SQL.Add('select COALESCE(max(coditem),0)+1 as sequencia from TITENSORCAMENTO where CODORCAMENTO = :CODORCAMENTO');
             qrconsulta_base.ParamByName('codorcamento').AsInteger:=icodigo_controle;
             qrconsulta_base.Open;
 
@@ -1379,6 +1360,54 @@ begin
   btnclassitem.Enabled:=true;
 
   btnCancelarAltprod.Enabled:=false;
+
+
+end;
+
+
+procedure tfrmorcamento_cadastro.classificarItem;
+var
+  novoNumero:integer;
+
+
+begin
+  with modulo_orcamento do
+    begin
+
+
+      novoNumero := 1;
+      qrorcamento_itemproduto.First;
+
+      while not qrorcamento_itemproduto.EOF do
+        begin
+
+          with modulo_conexaodb do
+            begin
+              qrexec_base.Close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('update titensorcamento set coditem = :coditem where controle = :controle');
+              qrexec_base.ParamByName('coditem').AsInteger:=novoNumero;
+              qrexec_base.ParamByName('controle').AsInteger:=qrorcamento_itemproduto.FieldByName('controle').AsInteger;
+              qrexec_base.ExecSQL;
+            end;
+
+          qrorcamento_itemproduto.Next;
+
+           novoNumero := novoNumero + 1;
+        end;
+
+    end;
+  //endth
+
+  with modulo_conexaodb do
+    begin
+
+      atualizaBanco;
+
+    end;
+  //endth
+
+
 
 
 end;
