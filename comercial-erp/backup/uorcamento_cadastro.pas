@@ -514,16 +514,11 @@ begin
 
            modulo_orcamento.qrorcamento_itemproduto.Refresh;
 
-           classificarItem;
-
-
            if not modulo_orcamento.qrorcamento_itemproduto.Locate('coditem',coditem+1,[]) then
               begin
                 modulo_orcamento.qrorcamento_itemproduto.Last;
               end;
            //endi
-
-
 
          end;
 
