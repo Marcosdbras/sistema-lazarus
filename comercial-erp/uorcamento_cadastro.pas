@@ -21,6 +21,7 @@ type
     btnlancar: TButton;
     Button1: TButton;
     Button2: TButton;
+    btnimprimir: TButton;
     cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
@@ -60,6 +61,7 @@ type
     procedure btnCancelarAltprodClick(Sender: TObject);
     procedure btnClassItemClick(Sender: TObject);
     procedure btnfiltrarClick(Sender: TObject);
+    procedure btnimprimirClick(Sender: TObject);
     procedure btnlancarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -115,14 +117,16 @@ type
     procedure bloqueiaProdutoAlt;
     procedure desbloqueiaProdutoAlt;
     procedure classificarItem;
+    procedure localizaUn;
 
 
     procedure ScrollBox1Click(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: boolean);
   private
-      icodigo_controle, icodigo_controle_item:integer;
-      opcao_item:string;
+      icodigo_controle, icodigo_controle_item, codaplicacaoproduto:integer;
+      opcao_item, cfop, referencia, fatorconversao, codbarras, descricaoun, nomeprod:string;
+      qtdeconvertida, valorconversao:real;
 
   public
 
@@ -133,7 +137,8 @@ var
 
 implementation
 
-uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario, umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta;
+uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario,
+      umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta, uimporc;
 
 {$R *.lfm}
 
@@ -324,6 +329,13 @@ end;
 procedure Tfrmorcamento_cadastro.btnfiltrarClick(Sender: TObject);
 begin
 
+end;
+
+procedure Tfrmorcamento_cadastro.btnimprimirClick(Sender: TObject);
+begin
+  frmimporc := tfrmimporc.Create(self);
+  frmimporc.rlimporc.preview;
+  frmimporc.free;
 end;
 
 procedure Tfrmorcamento_cadastro.btnClassItemClick(Sender: TObject);
@@ -707,7 +719,16 @@ begin
                             edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
                             edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
+                            referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
+                            cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
+                            codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
+                            fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
+                            valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
 
+                            descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
+                            codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+
+                            localizaUn;
                           end;
                        //endi
 
@@ -737,7 +758,16 @@ begin
                        edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
                        edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
+                       referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
+                       cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
+                       codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
+                       fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
+                       valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
 
+                       descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
+                       codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+
+                       localizaUn;
                      end;
                   //endi
 
@@ -765,6 +795,16 @@ begin
                  edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
 
+                 referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
+                 cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
+                 codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
+                 fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
+                 valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
+
+                 descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
+                 codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+
+                 localizaUn;
                end;
             //endi
 
@@ -779,6 +819,16 @@ begin
       edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
       edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
+      referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
+      cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
+      codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
+      fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
+      valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
+
+      descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
+      codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+
+      localizaUn;
     end;
  //endi
 
@@ -1099,7 +1149,6 @@ end;
 
 procedure Tfrmorcamento_cadastro.salvarProduto;
 var
-  descricaoun, nomeprod:string;
   sequencia:integer;
 
 begin
@@ -1198,10 +1247,15 @@ begin
             qrexec_base.ParamByName('indicadorcancelamento').AsString:= 'N';
             qrexec_base.ParamByName('decimaisqtde').AsInteger:= 2;
             qrexec_base.ParamByName('decimaisvalorunitario').AsInteger:= 2;
-
-
             qrexec_base.ParamByName('qtde').Asfloat := edtqtde.Value;
             qrexec_base.ParamByName('valorunitario').Asfloat := edtvlrunitario.Value;
+            qrexec_base.ParamByName('numerodav').AsString := modulo_orcamento.qrorcamento.FieldByName('controlevarchar').AsString;
+            qrexec_base.ParamByName('referencia').AsString := referencia;
+            qrexec_base.ParamByName('cfop').AsString := cfop;
+            qrexec_base.ParamByName('codaplicacaoproduto').AsInteger := codaplicacaoproduto;
+            //Analisar no SGBr como esta informação é persistida
+            qrexec_base.ParamByName('qtdeconvertida').Asfloat := 1; //fatorconversao;  //valorconversao;
+
 
 
 
@@ -1412,6 +1466,22 @@ begin
 
 end;
 
+
+procedure tfrmorcamento_cadastro.localizaUn;
+begin
+  with modulo_conexaodb do
+    begin
+      qrconsulta_base.Close;
+      qrconsulta_base.SQL.Clear;
+      qrconsulta_base.SQL.Add('select * from tunidademedida where descricao = :descricao');
+      qrconsulta_base.ParamByName('descricao').AsString := descricaoun;
+      qrconsulta_base.Open;
+
+      modulo_orcamento.qrtempUnidade.Edit;
+      modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger  :=  qrconsulta_base.FieldByName('controle').AsInteger;
+
+    end;
+end;
 
 end.
 

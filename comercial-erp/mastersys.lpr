@@ -10,7 +10,8 @@ uses
   Forms, uorcamento_pesquisa, umodulo_orcamento, zcomponent, umodulo_conexaodb,
   ufuncao_arq_ini, uconfig_banco, utela_principal, ufuncao_conexaodb,
   ufuncao_geral, usplash, ulogin, ucadastrar_senha, umodulo_cliente,
-  umodulo_funcionario, umodulo_unidade, umodulo_produto, uproduto_consulta
+  umodulo_funcionario, umodulo_unidade, umodulo_produto, uproduto_consulta,
+  uimporc
   { you can add units after this };
 
 {$R *.res}

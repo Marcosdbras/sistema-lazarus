@@ -1,7 +1,7 @@
 object frmorcamento_cadastro: Tfrmorcamento_cadastro
   Left = 6
   Height = 706
-  Top = 9
+  Top = 0
   Width = 900
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
@@ -106,6 +106,22 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         ParentFont = False
         TabOrder = 0
       end
+    end
+    object btnimprimir: TButton
+      Left = 96
+      Height = 40
+      Top = 10
+      Width = 91
+      Caption = 'Imprimir'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      OnClick = btnimprimirClick
+      ParentFont = False
+      TabOrder = 2
     end
   end
   object pnlcentral: TPanel
