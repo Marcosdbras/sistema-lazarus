@@ -12,9 +12,11 @@ type
   { Tmodulo_vendaorc }
 
   Tmodulo_vendaorc = class(TDataModule)
-    dsvendaorc: TDataSource;
+    dsvenda: TDataSource;
+    dsorc: TDataSource;
     dsvendaorc_itemproduto: TDataSource;
-    qrvendaorc: TSQLQuery;
+    qrvenda: TSQLQuery;
+    qrorc: TSQLQuery;
     qrvendaorc_itemproduto: TSQLQuery;
   private
 

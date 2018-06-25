@@ -51,10 +51,10 @@ begin
    with modulo_vendaorc do
      begin
 
-       qrvendaorc.close;
-       qrvendaorc.SQL.Clear;
-       qrvendaorc.SQL.Add('select * from svenda');
-       qrvendaorc.Open;
+       qrvenda.close;
+       qrvenda.SQL.Clear;
+       qrvenda.SQL.Add('select v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo where coalesce(v.nped, 0) > 0');
+       qrvenda.Open;
 
      end;
    //end

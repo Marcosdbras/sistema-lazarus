@@ -166,7 +166,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="8"/>
         <CursorPos X="41" Y="14"/>
-        <UsageCount Value="140"/>
+        <UsageCount Value="142"/>
       </Unit15>
       <Unit16>
         <Filename Value="umodulo_produto.pas"/>
@@ -177,7 +177,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="162"/>
         <CursorPos X="56" Y="277"/>
-        <UsageCount Value="127"/>
+        <UsageCount Value="129"/>
       </Unit16>
       <Unit17>
         <Filename Value="uproduto_consulta.pas"/>
@@ -188,7 +188,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="81"/>
         <CursorPos X="26" Y="85"/>
-        <UsageCount Value="125"/>
+        <UsageCount Value="127"/>
       </Unit17>
       <Unit18>
         <Filename Value="uimporc.pas"/>
@@ -199,85 +199,22 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="42" Y="22"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="43"/>
       </Unit18>
       <Unit19>
-        <Filename Value="C:\lazarus32bits\lcl\include\dblookup.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="410"/>
-        <CursorPos Y="419"/>
-        <UsageCount Value="3"/>
-      </Unit19>
-      <Unit20>
-        <Filename Value="C:\lazarus32bits\lcl\include\control.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2241"/>
-        <CursorPos Y="2250"/>
-        <UsageCount Value="1"/>
-      </Unit20>
-      <Unit21>
-        <Filename Value="C:\lazarus32bits\lcl\include\buttoncontrol.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="13"/>
-        <CursorPos Y="22"/>
-        <UsageCount Value="1"/>
-      </Unit21>
-      <Unit22>
-        <Filename Value="C:\lazarus32bits\lcl\include\buttons.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="162"/>
-        <CursorPos Y="170"/>
-        <UsageCount Value="1"/>
-      </Unit22>
-      <Unit23>
-        <Filename Value="C:\lazarus32bits\lcl\include\wincontrol.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="5388"/>
-        <CursorPos Y="5397"/>
-        <UsageCount Value="1"/>
-      </Unit23>
-      <Unit24>
-        <Filename Value="C:\lazarus32bits\lcl\lclmessageglue.pas"/>
-        <UnitName Value="LCLMessageGlue"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="111"/>
-        <CursorPos Y="123"/>
-        <UsageCount Value="1"/>
-      </Unit24>
-      <Unit25>
-        <Filename Value="C:\lazarus32bits\lcl\lclclasses.pp"/>
-        <UnitName Value="LCLClasses"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="144"/>
-        <CursorPos Y="154"/>
-        <UsageCount Value="1"/>
-      </Unit25>
-      <Unit26>
-        <Filename Value="C:\lazarus32bits\lcl\interfaces\win32\win32callback.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2494"/>
-        <CursorPos Y="2502"/>
-        <UsageCount Value="1"/>
-      </Unit26>
-      <Unit27>
-        <Filename Value="C:\lazarus32bits\lcl\grids.pas"/>
-        <UnitName Value="Grids"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="7782"/>
-        <CursorPos Y="7791"/>
-        <UsageCount Value="3"/>
-      </Unit27>
-      <Unit28>
         <Filename Value="umodulo_vendaorc.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_vendaorc"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="1"/>
-        <UsageCount Value="24"/>
+        <TopLine Value="17"/>
+        <CursorPos X="13" Y="23"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
-      </Unit28>
-      <Unit29>
+      </Unit19>
+      <Unit20>
         <Filename Value="uvendaorc.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmvendaorc"/>
@@ -286,13 +223,79 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="49"/>
-        <CursorPos X="36" Y="56"/>
-        <UsageCount Value="22"/>
+        <CursorPos X="149" Y="56"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="C:\lazarus32bits\lcl\include\dblookup.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="410"/>
+        <CursorPos Y="419"/>
+        <UsageCount Value="3"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="C:\lazarus32bits\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2241"/>
+        <CursorPos Y="2250"/>
+        <UsageCount Value="1"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="C:\lazarus32bits\lcl\include\buttoncontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos Y="22"/>
+        <UsageCount Value="1"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="C:\lazarus32bits\lcl\include\buttons.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="162"/>
+        <CursorPos Y="170"/>
+        <UsageCount Value="1"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="C:\lazarus32bits\lcl\include\wincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5388"/>
+        <CursorPos Y="5397"/>
+        <UsageCount Value="1"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="C:\lazarus32bits\lcl\lclmessageglue.pas"/>
+        <UnitName Value="LCLMessageGlue"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="111"/>
+        <CursorPos Y="123"/>
+        <UsageCount Value="1"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="C:\lazarus32bits\lcl\lclclasses.pp"/>
+        <UnitName Value="LCLClasses"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="144"/>
+        <CursorPos Y="154"/>
+        <UsageCount Value="1"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="C:\lazarus32bits\lcl\interfaces\win32\win32callback.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2494"/>
+        <CursorPos Y="2502"/>
+        <UsageCount Value="1"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="C:\lazarus32bits\lcl\grids.pas"/>
+        <UnitName Value="Grids"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="7782"/>
+        <CursorPos Y="7791"/>
+        <UsageCount Value="3"/>
       </Unit29>
     </Units>
-    <JumpHistory Count="13" HistoryIndex="12">
+    <JumpHistory Count="21" HistoryIndex="20">
       <Position1>
         <Filename Value="umodulo_vendaorc.pas"/>
       </Position1>
@@ -343,6 +346,38 @@
         <Filename Value="uvendaorc.pas"/>
         <Caret Line="54" Column="25" TopLine="42"/>
       </Position13>
+      <Position14>
+        <Filename Value="umodulo_vendaorc.pas"/>
+        <Caret Line="8" Column="44" TopLine="16"/>
+      </Position14>
+      <Position15>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="56" Column="149" TopLine="49"/>
+      </Position15>
+      <Position16>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="57" Column="149" TopLine="50"/>
+      </Position16>
+      <Position17>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="58" Column="149" TopLine="51"/>
+      </Position17>
+      <Position18>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="59" Column="149" TopLine="52"/>
+      </Position18>
+      <Position19>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="58" Column="149" TopLine="51"/>
+      </Position19>
+      <Position20>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="57" Column="149" TopLine="50"/>
+      </Position20>
+      <Position21>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="56" Column="149" TopLine="49"/>
+      </Position21>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

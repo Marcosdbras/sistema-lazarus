@@ -5,8 +5,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
   VerticalOffset = 181
   Width = 487
   PPI = 96
-  object qrvendaorc: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
+  object qrvenda: TSQLQuery
     FieldDefs = <    
       item
         Name = 'CODIGO'
@@ -1287,23 +1286,21 @@ object modulo_vendaorc: Tmodulo_vendaorc
         DataType = ftInteger
         Precision = -1
       end>
-    Active = True
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
       'select v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo'
     )
     Params = <>
-    left = 92
-    top = 52
+    left = 64
+    top = 48
   end
-  object dsvendaorc: TDataSource
-    DataSet = qrvendaorc
-    left = 252
-    top = 52
+  object dsvenda: TDataSource
+    DataSet = qrvenda
+    left = 208
+    top = 48
   end
-  object qrvendaorc_itemproduto: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
+  object qrvenda_itemproduto: TSQLQuery
     FieldDefs = <    
       item
         Name = 'CODIGO'
@@ -1701,19 +1698,18 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Precision = -1
         Size = 40
       end>
-    Active = True
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
       'select * from dvenda'
     )
     Params = <>
-    left = 92
-    top = 132
+    left = 64
+    top = 152
   end
-  object dsvendaorc_itemproduto: TDataSource
-    DataSet = qrvendaorc_itemproduto
-    left = 252
-    top = 132
+  object dsvenda_itemproduto: TDataSource
+    DataSet = qrvenda_itemproduto
+    left = 208
+    top = 152
   end
 end

@@ -162,6 +162,7 @@
         <Filename Value="umodulo_vendaorc.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_vendaorc"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit19>
       <Unit20>

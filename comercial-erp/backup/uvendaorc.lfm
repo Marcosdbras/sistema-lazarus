@@ -20,14 +20,21 @@ object frmvendaorc: Tfrmvendaorc
     Color = clWindow
     Columns = <    
       item
-        Title.Caption = 'CCLI'
+        Title.Caption = 'CLIENTE'
+        Width = 350
+        FieldName = 'NOME'
+      end    
+      item
+        Title.Caption = 'COD. CLI'
+        Width = 100
         FieldName = 'CCLI'
       end    
       item
         Title.Caption = 'TOTAL'
+        Width = 100
         FieldName = 'TOTAL'
       end>
-    DataSource = modulo_vendaorc.dsvendaorc
+    DataSource = modulo_vendaorc.dsvenda
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
     TabOrder = 0
   end
