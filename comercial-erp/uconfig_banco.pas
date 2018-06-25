@@ -12,12 +12,14 @@ type
   { Tfrmconfig_banco }
 
   Tfrmconfig_banco = class(TForm)
+    btncaminhodb1: TButton;
     btnfechar: TButton;
     btncaminhodb: TButton;
     Button2: TButton;
     cbxhostname: TComboBox;
     cbxversaosgdb: TComboBox;
     edibancodados: TEdit;
+    edibancodados2: TEdit;
     ediporta: TEdit;
     ediusuario: TEdit;
     edisenha: TEdit;
@@ -28,6 +30,8 @@ type
     StaticText3: TStaticText;
     StaticText4: TStaticText;
     StaticText5: TStaticText;
+    StaticText6: TStaticText;
+    procedure btncaminhodb1Click(Sender: TObject);
     procedure btncaminhodbClick(Sender: TObject);
     procedure btnfecharClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -53,16 +57,14 @@ var smensagem:String;
   bgravou, bconectou:boolean;
 begin
 
-
-
-
-
   if ( (GravarINIBD(cbxhostname.Text,
                   edibancodados.Text,
                   ediporta.Text,
                   edisenha.Text,
                   ediusuario.Text,
-                  cbxversaosgdb.Text))
+                  cbxversaosgdb.Text,
+                  'UTF8',
+                  edibancodados2.Text))
 
         and (conectarBanco)
 
@@ -105,6 +107,7 @@ begin
    ediusuario.Text := sUser;
    edisenha.Text := sPassword;
    edibancodados.Text := sDatabase;
+   edibancodados2.Text:=sCaminhoDb2;
 
    //Localização da clientdll e informação da Codepage
    //sLibraryLocation;
@@ -129,6 +132,18 @@ begin
   if opeCaminhodb.Execute then
      begin
        edibancodados.Text:= opeCaminhodb.FileName;
+
+
+     end;
+end;
+
+procedure Tfrmconfig_banco.btncaminhodb1Click(Sender: TObject);
+begin
+  
+
+  if opeCaminhodb.Execute then
+     begin
+       edibancodados2.Text:= opeCaminhodb.FileName;
 
 
      end;

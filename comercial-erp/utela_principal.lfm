@@ -1,11 +1,11 @@
 object frmtela_principal: Tfrmtela_principal
-  Left = -41
+  Left = 5
   Height = 546
-  Top = 102
-  Width = 1028
+  Top = 97
+  Width = 1020
   Caption = 'Master Plus'
   ClientHeight = 526
-  ClientWidth = 1028
+  ClientWidth = 1020
   Menu = MainMenu1
   OnCreate = FormCreate
   OnShow = FormShow
@@ -16,7 +16,7 @@ object frmtela_principal: Tfrmtela_principal
     Left = 0
     Height = 88
     Top = 0
-    Width = 1028
+    Width = 1020
     Align = alTop
     BevelOuter = bvNone
     Color = 16744448
@@ -38,11 +38,11 @@ object frmtela_principal: Tfrmtela_principal
     Left = 0
     Height = 82
     Top = 444
-    Width = 1028
+    Width = 1020
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 82
-    ClientWidth = 1028
+    ClientWidth = 1020
     Color = 16744448
     ParentColor = False
     TabOrder = 2
@@ -50,11 +50,11 @@ object frmtela_principal: Tfrmtela_principal
       Left = 0
       Height = 23
       Top = 59
-      Width = 1028
+      Width = 1020
       Panels = <>
     end
     object Panel1: TPanel
-      Left = 892
+      Left = 884
       Height = 59
       Top = 0
       Width = 136
@@ -85,10 +85,10 @@ object frmtela_principal: Tfrmtela_principal
     Left = 168
     Height = 356
     Top = 88
-    Width = 860
+    Width = 852
     Align = alClient
     ClientHeight = 356
-    ClientWidth = 860
+    ClientWidth = 852
     TabOrder = 3
     object DBGrid1: TDBGrid
       Left = 16
@@ -118,6 +118,10 @@ object frmtela_principal: Tfrmtela_principal
       object MenuItem3: TMenuItem
         Caption = 'Orçamentos'
         OnClick = MenuItem3Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'Exportar para NF-e'
+        OnClick = MenuItem6Click
       end
     end
     object MenuItem4: TMenuItem

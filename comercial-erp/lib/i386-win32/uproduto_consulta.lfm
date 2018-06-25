@@ -1,5 +1,5 @@
 object frmproduto_consulta: Tfrmproduto_consulta
-  Left = 143
+  Left = 4
   Height = 425
   Top = 165
   Width = 1004
@@ -11,7 +11,7 @@ object frmproduto_consulta: Tfrmproduto_consulta
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.4.0'
   object Panel1: TPanel
     Left = 0
     Height = 50

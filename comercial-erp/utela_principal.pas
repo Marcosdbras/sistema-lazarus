@@ -22,6 +22,7 @@ type
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
     Panel1: TPanel;
     pnlsuperior: TPanel;
     pnlsuperior1: TPanel;
@@ -35,6 +36,7 @@ type
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
     procedure MenuItem5Click(Sender: TObject);
+    procedure MenuItem6Click(Sender: TObject);
   private
 
   public
@@ -47,7 +49,8 @@ var
 implementation
 
 
-         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb, uorcamento_pesquisa, umodulo_conexaodb, ulogin;
+         uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
+           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -73,15 +76,11 @@ LerINIBD;
 //Se não consegue conectar banco abre tela config banco
 if not conectarBanco then
    begin
-
-           frmconfig_banco := tfrmconfig_banco.create(self);
-           frmconfig_banco.showmodal;
-           frmconfig_banco.free;
-
-
-
-
+     frmconfig_banco := tfrmconfig_banco.create(self);
+     frmconfig_banco.showmodal;
+     frmconfig_banco.free;
    end;
+//endi
 
  atualiza_base;
 
@@ -147,6 +146,19 @@ begin
 frmconfig_banco := tfrmconfig_banco.create(self);
 frmconfig_banco.showmodal;
 frmconfig_banco.free;
+end;
+
+procedure Tfrmtela_principal.MenuItem6Click(Sender: TObject);
+begin
+  if conectarBanco_Aux then
+     begin
+
+       frmvendaorc := tfrmvendaorc.create(self);
+       frmvendaorc.showmodal;
+       frmvendaorc.free;
+
+     end;
+  //endi
 end;
 
 end.

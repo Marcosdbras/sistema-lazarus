@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, IniFiles;
 
 function GravarINIBD(Ip, CaminhoDB, Porta, Pass, Userx,
-  Protoc: String):boolean;
+  Protoc, charset, CaminhoDB2: String):boolean;
 
 procedure LerINIBD;
 
@@ -46,7 +46,7 @@ end;
 //Primeiro verifica se tem o arquivo ini de conexão com o banco
 //se não tiver precisa perguntar se vai ser local o remoto
 function GravarINIBD(Ip, CaminhoDB, Porta, Pass, Userx,
-  Protoc: String):boolean;
+  Protoc, charset, CaminhoDB2: String):boolean;
 var
   Arq: TIniFile;
   NovoNome: string;
@@ -67,14 +67,17 @@ begin
       try
         Arq.WriteString('ConexaoBanco', 'HostName', IP);
         Arq.WriteString('ConexaoBanco', 'Database', CaminhoDB);
-        //Arq.WriteString('ConexaoBanco', 'Port', Porta);
+        Arq.WriteString('ConexaoBanco', 'Database_2', CaminhoDB2);
+        Arq.WriteString('ConexaoBanco', 'Port', Porta);
         Arq.WriteString('ConexaoBanco', 'Password', Pass);
         Arq.WriteString('ConexaoBanco', 'User', Userx);
+        Arq.WriteString('ConexaoBanco', 'Charset', charset); //ISO8859_1
         //Arq.WriteString('ConexaoBanco', 'Protocol', Protoc);
         //Arq.WriteString('ConexaoBanco', 'LibraryLocation', 'fbclient.dll');
-        Arq.WriteString('ConexaoBanco', 'Charset', 'cCP_UTF8');
 
-        //Arq.WriteString('ConexaoBanco', 'Charset', 'ISO8859_1');
+
+
+
 
 
 
@@ -86,10 +89,6 @@ begin
          else
            Arq.WriteString('ConexaoBanco', 'Tipo Conexão', RetornaVersaoFirebird);
          }
-
-
-
-
 
          result := true;
        finally

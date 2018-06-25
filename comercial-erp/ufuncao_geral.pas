@@ -13,7 +13,7 @@ const versao:string =  'v.0.0.0';
 var
          //Variável global de conexão ao banco
          sHostName, sPort, sProtocol, sLibraryLocation, sUser,   sPassword,
-         sDatabase,   sClientCodepage: string;
+         sDatabase,   sClientCodepage, sCaminhoDB2: string;
 
          //Variáveil global
          icontrole: integer;

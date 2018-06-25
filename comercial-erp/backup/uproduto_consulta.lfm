@@ -114,7 +114,7 @@ object frmproduto_consulta: Tfrmproduto_consulta
       Width = 123
       Caption = 'Cancelar'
       OnClick = btncancelarClick
-      TabOrder = 0
+      TabOrder = 1
     end
     object btnconfirma: TButton
       Left = 875
@@ -123,7 +123,7 @@ object frmproduto_consulta: Tfrmproduto_consulta
       Width = 123
       Caption = 'Confirmar'
       OnClick = btnconfirmaClick
-      TabOrder = 1
+      TabOrder = 0
     end
   end
 end

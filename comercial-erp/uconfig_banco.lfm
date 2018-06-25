@@ -1,17 +1,17 @@
 object frmconfig_banco: Tfrmconfig_banco
-  Left = 286
-  Height = 338
-  Top = 224
+  Left = 182
+  Height = 403
+  Top = 190
   Width = 704
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Configuração do  Banco de Dados'
-  ClientHeight = 338
+  ClientHeight = 403
   ClientWidth = 704
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.4.0'
   object StaticText1: TStaticText
     Left = 16
     Height = 17
@@ -31,7 +31,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object StaticText3: TStaticText
     Left = 16
     Height = 17
-    Top = 126
+    Top = 162
     Width = 65
     Caption = 'Porta'
     TabOrder = 2
@@ -39,7 +39,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object StaticText4: TStaticText
     Left = 16
     Height = 17
-    Top = 166
+    Top = 202
     Width = 65
     Caption = 'Usuário'
     TabOrder = 3
@@ -47,7 +47,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object StaticText5: TStaticText
     Left = 16
     Height = 17
-    Top = 206
+    Top = 242
     Width = 65
     Caption = 'Senha'
     TabOrder = 4
@@ -76,7 +76,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object ediporta: TEdit
     Left = 192
     Height = 23
-    Top = 120
+    Top = 156
     Width = 96
     TabOrder = 7
     Text = '3050'
@@ -84,7 +84,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object ediusuario: TEdit
     Left = 192
     Height = 23
-    Top = 160
+    Top = 196
     Width = 200
     TabOrder = 8
     Text = 'SYSDBA'
@@ -92,7 +92,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object edisenha: TEdit
     Left = 192
     Height = 23
-    Top = 200
+    Top = 236
     Width = 200
     EchoMode = emPassword
     PasswordChar = '*'
@@ -102,7 +102,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object Label1: TLabel
     Left = 16
     Height = 15
-    Top = 248
+    Top = 284
     Width = 119
     Caption = 'Tipo e versão do SGDB'
     ParentColor = False
@@ -110,7 +110,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object cbxversaosgdb: TComboBox
     Left = 192
     Height = 23
-    Top = 240
+    Top = 276
     Width = 200
     ItemHeight = 15
     ItemIndex = 0
@@ -123,7 +123,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object btnfechar: TButton
     Left = 613
     Height = 25
-    Top = 297
+    Top = 365
     Width = 75
     Caption = 'Fechar'
     OnClick = btnfecharClick
@@ -132,7 +132,7 @@ object frmconfig_banco: Tfrmconfig_banco
   object Button2: TButton
     Left = 528
     Height = 25
-    Top = 297
+    Top = 365
     Width = 75
     Caption = 'Salvar '
     OnClick = Button2Click
@@ -146,6 +146,31 @@ object frmconfig_banco: Tfrmconfig_banco
     Caption = '...'
     OnClick = btncaminhodbClick
     TabOrder = 13
+  end
+  object StaticText6: TStaticText
+    Left = 16
+    Height = 17
+    Top = 120
+    Width = 176
+    Caption = 'Banco de dados Systcom'
+    TabOrder = 14
+  end
+  object edibancodados2: TEdit
+    Left = 192
+    Height = 23
+    Top = 114
+    Width = 432
+    TabOrder = 15
+    Text = 'C:\SGBR\Master\BASESGMASTER.FDB'
+  end
+  object btncaminhodb1: TButton
+    Left = 624
+    Height = 25
+    Top = 112
+    Width = 35
+    Caption = '...'
+    OnClick = btncaminhodb1Click
+    TabOrder = 16
   end
   object opeCaminhodb: TOpenDialog
     Filter = 'Firebird|*.FDB'

@@ -14,6 +14,7 @@ type
 
   Tmodulo_conexaodb = class(TDataModule)
     conexaodb: TIBConnection;
+    conexaodb_Aux: TIBConnection;
     dssequencia: TDataSource;
     qrorcamento1CONTROLE: TLongintField;
     qrsequencia: TSQLQuery;
@@ -36,6 +37,7 @@ type
     qrconsulta_base: TSQLQuery;
     qrexec_base: TSQLQuery;
     tzcontrole: TSQLTransaction;
+    tzcontrole_Aux: TSQLTransaction;
     procedure conexaodbStartTransaction(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

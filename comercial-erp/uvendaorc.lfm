@@ -1,0 +1,64 @@
+object frmvendaorc: Tfrmvendaorc
+  Left = 24
+  Height = 524
+  Top = 77
+  Width = 887
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Exportar Pedido para NF-e'
+  ClientHeight = 524
+  ClientWidth = 887
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '1.8.4.0'
+  object DBGrid1: TDBGrid
+    Left = 16
+    Height = 472
+    Top = 40
+    Width = 704
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'CLIENTE'
+        Width = 500
+        FieldName = 'NOME'
+      end    
+      item
+        Title.Caption = 'COD. CLI'
+        FieldName = 'CCLI'
+      end    
+      item
+        Title.Caption = 'TOTAL'
+        FieldName = 'TOTAL'
+      end>
+    DataSource = modulo_vendaorc.dsvendaorc
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 11
+    Width = 42
+    Caption = 'Pedidos'
+    ParentColor = False
+  end
+  object btnexportar: TButton
+    Left = 728
+    Height = 57
+    Top = 40
+    Width = 152
+    Caption = 'Exportar para NF-e'
+    TabOrder = 1
+  end
+  object btncancelar: TButton
+    Left = 728
+    Height = 57
+    Top = 104
+    Width = 152
+    Caption = 'Cancelar'
+    OnClick = btncancelarClick
+    TabOrder = 2
+  end
+end

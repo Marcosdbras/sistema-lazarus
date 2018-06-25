@@ -11,7 +11,7 @@ uses
   ufuncao_arq_ini, uconfig_banco, utela_principal, ufuncao_conexaodb,
   ufuncao_geral, usplash, ulogin, ucadastrar_senha, umodulo_cliente,
   umodulo_funcionario, umodulo_unidade, umodulo_produto, uproduto_consulta,
-  uimporc
+  uimporc, umodulo_vendaorc, uvendaorc
   { you can add units after this };
 
 {$R *.res}
@@ -36,11 +36,11 @@ begin
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
   Application.CreateForm(Tmodulo_unidade, modulo_unidade);
   Application.CreateForm(Tmodulo_produto, modulo_produto);
-
+  Application.CreateForm(Tmodulo_vendaorc, modulo_vendaorc);
 
   frmsplash.Hide;
   frmsplash.Free;
-
+  Application.CreateForm(Tfrmvendaorc, frmvendaorc);
   Application.Run;
 end.
 

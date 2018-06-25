@@ -13,7 +13,7 @@ const versao:string =  'v.0.0.0';
 var
          //Variável global de conexão ao banco
          sHostName, sPort, sProtocol, sLibraryLocation, sUser,   sPassword,
-         sDatabase,   sClientCodepage: string;
+         sDatabase,   sClientCodepage, CaminhoDB2: string;
 
          //Variáveil global
          icontrole: integer;
@@ -56,6 +56,8 @@ if existe_tabela('MASTER_UNIDADE') = 0 then
         //Script.Script.Add('commit work;');
         //Script.Script.Add('SET AUTODDL ON;');
         //Script.Execute;
+
+
 
 
        Script.Terminator:=';';

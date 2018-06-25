@@ -7,7 +7,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
   Width = 273
   PPI = 96
   object conexaodb: TIBConnection
-    Connected = True
+    Connected = False
     LoginPrompt = False
     DatabaseName = 'C:\SGBR\Master\BASESGMASTER.FDB'
     KeepConnection = False
@@ -21,7 +21,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
     top = 16
   end
   object tzcontrole: TSQLTransaction
-    Active = True
+    Active = False
     Database = conexaodb
     left = 48
     top = 192
@@ -243,5 +243,25 @@ object modulo_conexaodb: Tmodulo_conexaodb
     DataSet = qrsequencia
     left = 144
     top = 80
+  end
+  object conexaodb_Aux: TIBConnection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'C:\auxsystcom\fbdados.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = tzcontrole_Aux
+    UserName = 'SYSDBA'
+    CharSet = 'UTF8'
+    HostName = 'localhost'
+    CheckTransactionParams = False
+    left = 48
+    top = 336
+  end
+  object tzcontrole_Aux: TSQLTransaction
+    Active = False
+    Database = conexaodb_Aux
+    left = 48
+    top = 408
   end
 end

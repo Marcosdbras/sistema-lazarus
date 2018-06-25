@@ -728,6 +728,7 @@ begin
                             descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
                             codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
 
+                            localizaUn;
                           end;
                        //endi
 
@@ -766,7 +767,7 @@ begin
                        descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
                        codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
 
-
+                       localizaUn;
                      end;
                   //endi
 
@@ -803,6 +804,7 @@ begin
                  descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
                  codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
 
+                 localizaUn;
                end;
             //endi
 
@@ -826,7 +828,7 @@ begin
       descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
       codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
 
-
+      localizaUn;
     end;
  //endi
 
