@@ -53,7 +53,7 @@ begin
 
        qrvenda.close;
        qrvenda.SQL.Clear;
-       qrvenda.SQL.Add('select v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo where coalesce(v.nped, 0) > 0');
+       qrvenda.SQL.Add('select v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo where coalesce(v.nped, 0) > 0');
        qrvenda.Open;
 
      end;

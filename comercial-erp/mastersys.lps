@@ -166,7 +166,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="8"/>
         <CursorPos X="41" Y="14"/>
-        <UsageCount Value="142"/>
+        <UsageCount Value="143"/>
       </Unit15>
       <Unit16>
         <Filename Value="umodulo_produto.pas"/>
@@ -177,7 +177,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="162"/>
         <CursorPos X="56" Y="277"/>
-        <UsageCount Value="129"/>
+        <UsageCount Value="130"/>
       </Unit16>
       <Unit17>
         <Filename Value="uproduto_consulta.pas"/>
@@ -188,7 +188,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="81"/>
         <CursorPos X="26" Y="85"/>
-        <UsageCount Value="127"/>
+        <UsageCount Value="128"/>
       </Unit17>
       <Unit18>
         <Filename Value="uimporc.pas"/>
@@ -199,7 +199,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="42" Y="22"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="44"/>
       </Unit18>
       <Unit19>
         <Filename Value="umodulo_vendaorc.pas"/>
@@ -209,9 +209,9 @@
         <ResourceBaseClass Value="DataModule"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="18"/>
-        <CursorPos X="13" Y="29"/>
-        <UsageCount Value="25"/>
+        <TopLine Value="32"/>
+        <CursorPos X="37" Y="42"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit19>
@@ -222,9 +222,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="49"/>
-        <CursorPos X="149" Y="56"/>
-        <UsageCount Value="23"/>
+        <TopLine Value="50"/>
+        <CursorPos X="28" Y="57"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
@@ -294,7 +294,7 @@
         <UsageCount Value="3"/>
       </Unit29>
     </Units>
-    <JumpHistory Count="22" HistoryIndex="21">
+    <JumpHistory Count="23" HistoryIndex="22">
       <Position1>
         <Filename Value="umodulo_vendaorc.pas"/>
       </Position1>
@@ -379,8 +379,12 @@
       </Position21>
       <Position22>
         <Filename Value="umodulo_vendaorc.pas"/>
-        <Caret Line="30" Column="13" TopLine="19"/>
+        <Caret Line="30" Column="13" TopLine="18"/>
       </Position22>
+      <Position23>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="56" Column="28" TopLine="49"/>
+      </Position23>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

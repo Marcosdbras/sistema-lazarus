@@ -14,8 +14,8 @@ object frmvendaorc: Tfrmvendaorc
   LCLVersion = '1.8.4.0'
   object DBGrid1: TDBGrid
     Left = 16
-    Height = 472
-    Top = 40
+    Height = 481
+    Top = 32
     Width = 704
     Color = clWindow
     Columns = <    
@@ -49,7 +49,7 @@ object frmvendaorc: Tfrmvendaorc
   object btnexportar: TButton
     Left = 728
     Height = 57
-    Top = 40
+    Top = 32
     Width = 152
     Caption = 'Exportar para NF-e'
     TabOrder = 1
@@ -57,7 +57,7 @@ object frmvendaorc: Tfrmvendaorc
   object btncancelar: TButton
     Left = 728
     Height = 57
-    Top = 104
+    Top = 96
     Width = 152
     Caption = 'Cancelar'
     OnClick = btncancelarClick

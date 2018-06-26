@@ -1286,6 +1286,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
         DataType = ftInteger
         Precision = -1
       end>
+    AfterScroll = qrvendaAfterScroll
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
