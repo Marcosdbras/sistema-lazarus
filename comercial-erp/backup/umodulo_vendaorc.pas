@@ -39,7 +39,8 @@ begin
 
        qrvenda_itemproduto.close;
        qrvenda_itemproduto.SQL.Clear;
-       qrvenda_itemproduto.SQL.Add('select d.codigo, d.cpro, d.prve, d.qtde, p.codigo as codprod from dvenda d left join dprodutos p on d.cpro = p.codigo where d.codsvenda = :codsvenda');
+       qrvenda_itemproduto.SQL.Add('select d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod from dvenda d left join dprodutos dp on d.cpro = dp.codigo where d.codsvenda = :codsvenda');
+       qrvenda_itemproduto.ParamByName('codsvenda').AsInteger:= qrvenda.FieldByName('codigo').AsInteger;
        qrvenda_itemproduto.Open;
 
      end;

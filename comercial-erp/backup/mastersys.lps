@@ -75,7 +75,6 @@
         <CursorPos X="72" Y="53"/>
         <UsageCount Value="205"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="ufuncao_conexaodb.pas"/>
@@ -166,7 +165,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="8"/>
         <CursorPos X="41" Y="14"/>
-        <UsageCount Value="143"/>
+        <UsageCount Value="144"/>
       </Unit15>
       <Unit16>
         <Filename Value="umodulo_produto.pas"/>
@@ -177,7 +176,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="162"/>
         <CursorPos X="56" Y="277"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="131"/>
       </Unit16>
       <Unit17>
         <Filename Value="uproduto_consulta.pas"/>
@@ -188,7 +187,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="81"/>
         <CursorPos X="26" Y="85"/>
-        <UsageCount Value="128"/>
+        <UsageCount Value="129"/>
       </Unit17>
       <Unit18>
         <Filename Value="uimporc.pas"/>
@@ -199,7 +198,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="42" Y="22"/>
-        <UsageCount Value="44"/>
+        <UsageCount Value="45"/>
       </Unit18>
       <Unit19>
         <Filename Value="umodulo_vendaorc.pas"/>
@@ -207,10 +206,11 @@
         <ComponentName Value="modulo_vendaorc"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="32"/>
-        <CursorPos X="104" Y="43"/>
-        <UsageCount Value="26"/>
+        <CursorPos X="80" Y="42"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit19>
@@ -220,13 +220,11 @@
         <ComponentName Value="frmvendaorc"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="50"/>
         <CursorPos X="28" Y="57"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit20>
       <Unit21>
         <Filename Value="C:\lazarus32bits\lcl\include\dblookup.inc"/>

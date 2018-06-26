@@ -50,7 +50,7 @@ implementation
 
 
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
-           uorcamento_pesquisa, umodulo_conexaodb, ulogin, umodulo_vendaorc;
+           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc;
 {$R *.lfm}
 
 { Tfrmtela_principal }
