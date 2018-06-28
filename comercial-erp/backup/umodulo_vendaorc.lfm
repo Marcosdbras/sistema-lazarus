@@ -6,9 +6,15 @@ object modulo_vendaorc: Tmodulo_vendaorc
   Width = 487
   PPI = 96
   object qrvenda: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CODIGO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NPED'
         DataType = ftInteger
         Precision = -1
       end    
@@ -18,1283 +24,77 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Precision = -1
       end    
       item
-        Name = 'CSIT'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'PDESC'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VALDESC'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'LIQUIDO'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
         Name = 'TOTAL'
         DataType = ftBCD
         Precision = 18
         Size = 2
       end    
       item
-        Name = 'GARANTIA'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'FRETE'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DIN'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DATA'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'CREP'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'TROCO'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'TOTITENS'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'TOTBRUTO'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'OUTROAVIST'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'PARC'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'JUROS'
-        DataType = ftBCD
-        Precision = 9
-        Size = 2
-      end    
-      item
-        Name = 'NPED'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'OBS'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'PRIPARC'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'TOTE'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DATACAD'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'EM_CAIXA'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'CUSTOPECAS'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'CUSTOPECAE'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'STATUS'
-        DataType = ftString
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'NCF'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'VENDEDORST'
-        DataType = ftString
-        Precision = -1
-        Size = 60
-      end    
-      item
-        Name = 'CLIENTEST'
-        DataType = ftString
-        Precision = -1
-        Size = 55
-      end    
-      item
-        Name = 'ENDERECOST'
-        DataType = ftString
-        Precision = -1
-        Size = 60
-      end    
-      item
-        Name = 'BAIRROST'
-        DataType = ftString
-        Precision = -1
-        Size = 40
-      end    
-      item
-        Name = 'FONEST'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'MUNICIPIOST'
-        DataType = ftString
-        Precision = -1
-        Size = 40
-      end    
-      item
-        Name = 'EMISSAOST'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'TOTALST'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'OPERACAOST'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'PAGAMENTOST'
-        DataType = ftString
-        Precision = -1
-        Size = 2
-      end    
-      item
-        Name = 'VENCIMENTOST'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'TOTALPST'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DESCONTOST'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DST'
-        DataType = ftString
-        Precision = -1
-        Size = 1
-      end    
-      item
-        Name = 'CONTATOST'
-        DataType = ftString
-        Precision = -1
-        Size = 60
-      end    
-      item
-        Name = 'CPFST'
-        DataType = ftString
-        Precision = -1
-        Size = 25
-      end    
-      item
-        Name = 'IEST'
-        DataType = ftString
-        Precision = -1
-        Size = 25
-      end    
-      item
-        Name = 'OBSST'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'FECHADOST'
-        DataType = ftString
-        Precision = -1
-        Size = 1
-      end    
-      item
-        Name = 'RETORNOST'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'HORAST'
-        DataType = ftTime
-        Precision = -1
-      end    
-      item
-        Name = 'CUSTOST'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'CFUN'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'SITUACAO'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'NCO'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'TIPOOP'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'TIPOENT'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'NUMORC'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'NUMPED'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'ABSDESC'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'TOTPAGAR'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'TOTGPAGAR'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'SAIDA'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'VOLUMES'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'RESUNI'
-        DataType = ftString
-        Precision = -1
-        Size = 30
-      end    
-      item
-        Name = 'PRAZO_VALIDADE'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'TOTGPRODD'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'TPNF'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'CNAT'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'BASEICMS'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VALORICMS'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'BASECALCICMSSUB'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VLRICMSSUB'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VLRFRETE'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VLRSEGURO'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'OUTDESP'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VLRIPI'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VLRTOTNF'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DADOSADICIONAIS'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'QUANTIDADE'
-        DataType = ftString
-        Precision = -1
-        Size = 15
-      end    
-      item
-        Name = 'ESPECIE'
-        DataType = ftString
-        Precision = -1
-        Size = 15
-      end    
-      item
-        Name = 'MARCA'
-        DataType = ftString
-        Precision = -1
-        Size = 15
-      end    
-      item
-        Name = 'NUMERO'
-        DataType = ftString
-        Precision = -1
-        Size = 15
-      end    
-      item
-        Name = 'PESOB'
-        DataType = ftString
-        Precision = -1
-        Size = 15
-      end    
-      item
-        Name = 'PESOL'
-        DataType = ftString
-        Precision = -1
-        Size = 15
-      end    
-      item
-        Name = 'FRETEPOR'
-        DataType = ftString
-        Precision = -1
-        Size = 1
-      end    
-      item
-        Name = 'PLACAVEI'
-        DataType = ftString
-        Precision = -1
-        Size = 10
-      end    
-      item
-        Name = 'UFVEI'
-        DataType = ftString
-        Precision = -1
-        Size = 2
-      end    
-      item
-        Name = 'NUMDUP1'
-        DataType = ftString
-        Precision = -1
-        Size = 12
-      end    
-      item
-        Name = 'VLRDUP1'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VCTDUP1'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'NUMDUP2'
-        DataType = ftString
-        Precision = -1
-        Size = 12
-      end    
-      item
-        Name = 'VLRDUP2'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VCTDUP2'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'NUMDUP3'
-        DataType = ftString
-        Precision = -1
-        Size = 12
-      end    
-      item
-        Name = 'VLRDUP3'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VCTDUP3'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'NUMDUP4'
-        DataType = ftString
-        Precision = -1
-        Size = 12
-      end    
-      item
-        Name = 'VLRDUP4'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VCTDUP4'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'FRETEP'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'DA1'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'DA2'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'DA3'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'DA4'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'DA5'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'DA6'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'DA7'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'DA8'
-        DataType = ftString
-        Precision = -1
-        Size = 50
-      end    
-      item
-        Name = 'CTRANSP'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'IMPDESTQCONT'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'PRAZO1'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'PRAZO2'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'PRAZO3'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'PRAZO4'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'LANCADO'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'ORIGINADO'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'PDESC_P'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VALDESC_P'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'LIQUIDO_P'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DIN_P'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'TROCO_P'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'OUTROAVIST_P'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'PARC_P'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'JUROS_P'
-        DataType = ftBCD
-        Precision = 9
-        Size = 2
-      end    
-      item
-        Name = 'PRIPARC_P'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'PDESC_O'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'VALDESC_O'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'LIQUIDO_O'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DIN_O'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'TROCO_O'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'OUTROAVIST_O'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'PARC_O'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'JUROS_O'
-        DataType = ftBCD
-        Precision = 9
-        Size = 2
-      end    
-      item
-        Name = 'PRIPARC_O'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'DATAFEC'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'ID1'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'ID2'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'DESC1'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC2'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC3'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC4'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC5'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC6'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC7'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC8'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC9'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC10'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC11'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC12'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC13'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC14'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC15'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC16'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC17'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC18'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC19'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC20'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC21'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC22'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC23'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC24'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC25'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC26'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC27'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC28'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC29'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC30'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC31'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC32'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC33'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC34'
+        Name = 'NOME'
         DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC35'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC36'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC37'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'DESC38'
-        DataType = ftString
-        Precision = -1
-        Size = 160
-      end    
-      item
-        Name = 'NOS'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CFUNREB'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CFUNCON'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'RETPOR'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'AUTPOR'
-        DataType = ftString
-        Precision = -1
-        Size = 80
-      end    
-      item
-        Name = 'CFUNENT'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'SINAL'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'ACRESCIMO_P'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'ACRESCIMO_O'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'OK'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 1
-      end    
-      item
-        Name = 'OBS1'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'OBS2'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'TPO'
-        DataType = ftSmallint
-        Precision = -1
-      end    
-      item
-        Name = 'HRCAD'
-        DataType = ftString
-        Precision = -1
-        Size = 5
-      end    
-      item
-        Name = 'HRFEC'
-        DataType = ftString
-        Precision = -1
-        Size = 5
-      end    
-      item
-        Name = 'MAQUINA'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'ECFLANCADO'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'IDMAQ'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'NCUPOMF'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'ST'
-        DataType = ftString
-        Precision = -1
-        Size = 1
-      end    
-      item
-        Name = 'CMAT_RESTAURAR'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CEMP'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CTAB'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'TIPO_COBERTURA'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO1'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO2'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO3'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO4'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO5'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO6'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO7'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO8'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO9'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATATIPO10'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU1'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU2'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU3'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU4'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU5'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU6'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU7'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU8'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU9'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'DATASITU10'
-        DataType = ftDateTime
-        Precision = -1
-      end    
-      item
-        Name = 'NORC'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CUSUB'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CUSUMA'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'IDTERMINAL'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CCONDPGTO'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'TIPODOC'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CPFCNPJ'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'CODATEND'
-        DataType = ftInteger
         Precision = -1
+        Size = 320
       end>
     AfterScroll = qrvendaAfterScroll
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo'
+      'select v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo'
     )
     Params = <>
     left = 64
     top = 48
+    object qrvendaCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrvendaNPED: TLongintField
+      FieldKind = fkData
+      FieldName = 'NPED'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvendaCCLI: TLongintField
+      FieldKind = fkData
+      FieldName = 'CCLI'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvendaTOTAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrvendaNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'NOME'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 320
+    end
   end
   object dsvenda: TDataSource
     DataSet = qrvenda
@@ -1302,7 +102,14 @@ object modulo_vendaorc: Tmodulo_vendaorc
     top = 48
   end
   object qrvenda_itemproduto: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 600
+      end    
       item
         Name = 'CODIGO'
         DataType = ftInteger
@@ -1326,387 +133,106 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Size = 3
       end    
       item
-        Name = 'CODSVENDA'
+        Name = 'CODPROD'
         DataType = ftInteger
         Precision = -1
-      end    
-      item
-        Name = 'EOUS'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 1
-      end    
-      item
-        Name = 'PRCU'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'CUNI'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CREP'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CGRU'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CMAR'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'PCOM'
-        DataType = ftBCD
-        Precision = 9
-        Size = 2
-      end    
-      item
-        Name = 'CVEN'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CCLI'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'NSERIE'
-        DataType = ftString
-        Precision = -1
-        Size = 120
-      end    
-      item
-        Name = 'OBS'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'BAIXA'
-        DataType = ftString
-        Precision = -1
-        Size = 1
       end    
       item
         Name = 'SUBTOTAL'
         DataType = ftBCD
         Precision = 18
         Size = 2
-      end    
-      item
-        Name = 'REFERENCIA'
-        DataType = ftString
-        Precision = -1
-        Size = 25
-      end    
-      item
-        Name = 'DATA_OP'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'COMISSAO'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'IDENTST'
-        DataType = ftString
-        Precision = -1
-        Size = 1
-      end    
-      item
-        Name = 'TIPOST'
-        DataType = ftString
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'PDESC'
-        DataType = ftBCD
-        Precision = 9
-        Size = 2
-      end    
-      item
-        Name = 'CUPOM'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'DESCRICAOST'
-        DataType = ftString
-        Precision = -1
-        Size = 80
-      end    
-      item
-        Name = 'UNDST'
-        DataType = ftString
-        Precision = -1
-        Size = 3
-      end    
-      item
-        Name = 'CLIENTEST'
-        DataType = ftString
-        Precision = -1
-        Size = 75
-      end    
-      item
-        Name = 'VENDEDORST'
-        DataType = ftString
-        Precision = -1
-        Size = 80
-      end    
-      item
-        Name = 'PGST'
-        DataType = ftString
-        Precision = -1
-        Size = 1
-      end    
-      item
-        Name = 'CFUN'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'MAXI'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'VDESC'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'ICM'
-        DataType = ftBCD
-        Precision = 9
-        Size = 2
-      end    
-      item
-        Name = 'ISS'
-        DataType = ftBCD
-        Precision = 9
-        Size = 2
-      end    
-      item
-        Name = 'METRAGEM'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'METRAGEM2'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'EHVENDA'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'TIPOV'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'NPRO'
-        DataType = ftString
-        Precision = -1
-        Size = 600
-      end    
-      item
-        Name = 'CONTROLE'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'VCOM'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'ESPECIFICACAO'
-        DataType = ftString
-        Precision = -1
-        Size = 60
-      end    
-      item
-        Name = 'SUBTOTALC'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'ACTDESC'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'IMPNF'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'CODCF'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODSITA'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODSITB'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODIPI'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODICMS'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'VLRIPI'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'COMENTARIO'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CODCFOP'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODPIS'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODCOFINS'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODMODBC'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODIRII'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODVII'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODOIMP'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODMODBCST'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CODMAT_RESTAURAR'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'QUAANT'
-        DataType = ftBCD
-        Precision = 18
-        Size = 3
-      end    
-      item
-        Name = 'QUAPOS'
-        DataType = ftBCD
-        Precision = 18
-        Size = 3
-      end    
-      item
-        Name = 'CEMP'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'NCM'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'INDTOT'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'ALTMAIS'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'ALTMENOS'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'SUBS'
-        DataType = ftString
-        Precision = -1
-        Size = 150
-      end    
-      item
-        Name = 'CEST'
-        DataType = ftString
-        Precision = -1
-        Size = 40
       end>
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select * from dvenda'
+      'select p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod , d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo'
     )
     Params = <>
     left = 64
     top = 152
+    object qrvenda_itemprodutoDESCRICAO: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 600
+    end
+    object qrvenda_itemprodutoCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrvenda_itemprodutoCPRO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CPRO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoPRVE: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRVE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrvenda_itemprodutoQTDE: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '###,###,##0.000'
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 3
+    end
+    object qrvenda_itemprodutoCODPROD: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODPROD'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoSUBTOTAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'SUBTOTAL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
   end
   object dsvenda_itemproduto: TDataSource
     DataSet = qrvenda_itemproduto

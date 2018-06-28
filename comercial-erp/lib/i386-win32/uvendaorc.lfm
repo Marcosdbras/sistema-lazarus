@@ -65,11 +65,36 @@ object frmvendaorc: Tfrmvendaorc
   end
   object DBGrid2: TDBGrid
     Left = 16
-    Height = 168
+    Height = 192
     Top = 320
     Width = 704
     Color = clWindow
-    Columns = <>
+    Columns = <    
+      item
+        Title.Caption = 'DESCRIÇÃO'
+        Width = 350
+        FieldName = 'DESCRICAO'
+      end    
+      item
+        Title.Caption = 'COD. PROD.'
+        Width = 74
+        FieldName = 'CODPROD'
+      end    
+      item
+        Title.Caption = 'QTDE'
+        Width = 70
+        FieldName = 'QTDE'
+      end    
+      item
+        Title.Caption = 'PRVE'
+        Width = 70
+        FieldName = 'PRVE'
+      end    
+      item
+        Title.Caption = 'SUBTOTAL'
+        Width = 70
+        FieldName = 'SUBTOTAL'
+      end>
     DataSource = modulo_vendaorc.dsvenda_itemproduto
     TabOrder = 3
   end

@@ -14,7 +14,7 @@ object frmvendaorc: Tfrmvendaorc
   LCLVersion = '1.8.4.0'
   object DBGrid1: TDBGrid
     Left = 16
-    Height = 481
+    Height = 280
     Top = 32
     Width = 704
     Color = clWindow
@@ -62,5 +62,38 @@ object frmvendaorc: Tfrmvendaorc
     Caption = 'Cancelar'
     OnClick = btncancelarClick
     TabOrder = 2
+  end
+  object DBGrid2: TDBGrid
+    Left = 16
+    Height = 192
+    Top = 320
+    Width = 704
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'DESCRIÇÃO'
+        Width = 350
+        FieldName = 'DESCRICAO'
+      end    
+      item
+        Title.Caption = 'COD. PROD.'
+        Width = 74
+        FieldName = 'CODPROD'
+      end    
+      item
+        Title.Caption = 'QTDE'
+        FieldName = 'QTDE'
+      end    
+      item
+        Title.Caption = 'PRVE'
+        Width = 64
+        FieldName = 'PRVE'
+      end    
+      item
+        Title.Caption = 'SUBTOTAL'
+        FieldName = 'SUBTOTAL'
+      end>
+    DataSource = modulo_vendaorc.dsvenda_itemproduto
+    TabOrder = 3
   end
 end

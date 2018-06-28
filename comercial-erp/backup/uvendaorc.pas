@@ -16,6 +16,7 @@ type
     btnexportar: TButton;
     btncancelar: TButton;
     DBGrid1: TDBGrid;
+    DBGrid2: TDBGrid;
     Label1: TLabel;
     procedure btncancelarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -53,7 +54,7 @@ begin
 
        qrvenda.close;
        qrvenda.SQL.Clear;
-       qrvenda.SQL.Add('select v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo where coalesce(v.nped, 0) > 0');
+       qrvenda.SQL.Add('select v.codigo as codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo where coalesce(v.nped, 0) > 0');
        qrvenda.Open;
 
      end;
