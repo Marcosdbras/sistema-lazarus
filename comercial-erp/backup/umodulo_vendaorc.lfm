@@ -6,8 +6,18 @@ object modulo_vendaorc: Tmodulo_vendaorc
   Width = 487
   PPI = 96
   object qrvenda: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
+      item
+        Name = 'CFUNC'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NFUNC'
+        DataType = ftString
+        Precision = -1
+        Size = 320
+      end    
       item
         Name = 'CODIGO'
         DataType = ftInteger
@@ -34,12 +44,18 @@ object modulo_vendaorc: Tmodulo_vendaorc
         DataType = ftString
         Precision = -1
         Size = 320
+      end    
+      item
+        Name = 'CEPENT'
+        DataType = ftFixedChar
+        Precision = -1
+        Size = 36
       end>
     AfterScroll = qrvendaAfterScroll
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo'
+      'select  v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome, c.cepent from svenda v left join clientes c on v.ccli = c.codigo   left join funcionarios f on v.cfun = f.codigo'
     )
     Params = <>
     left = 64
@@ -79,6 +95,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Currency = False
       MaxValue = 0
@@ -95,6 +112,35 @@ object modulo_vendaorc: Tmodulo_vendaorc
       Required = False
       Size = 320
     end
+    object qrvendaCFUNC: TLongintField
+      FieldKind = fkData
+      FieldName = 'CFUNC'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvendaNFUNC: TStringField
+      FieldKind = fkData
+      FieldName = 'NFUNC'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 320
+    end
+    object qrvendaCEPENT: TStringField
+      FieldKind = fkData
+      FieldName = 'CEPENT'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 36
+    end
   end
   object dsvenda: TDataSource
     DataSet = qrvenda
@@ -102,51 +148,11 @@ object modulo_vendaorc: Tmodulo_vendaorc
     top = 48
   end
   object qrvenda_itemproduto: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
-    FieldDefs = <    
-      item
-        Name = 'DESCRICAO'
-        DataType = ftString
-        Precision = -1
-        Size = 600
-      end    
-      item
-        Name = 'CODIGO'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CPRO'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'PRVE'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'QTDE'
-        DataType = ftBCD
-        Precision = 18
-        Size = 3
-      end    
-      item
-        Name = 'CODPROD'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'SUBTOTAL'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end>
+    FieldDefs = <>
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod , d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo'
+      'select d.prcu as precocusto, d.per as perclucro,  d.prve as precovenda,  d.cuni,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo'
     )
     Params = <>
     left = 64

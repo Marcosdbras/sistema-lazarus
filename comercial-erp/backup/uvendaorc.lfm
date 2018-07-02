@@ -52,6 +52,7 @@ object frmvendaorc: Tfrmvendaorc
     Top = 32
     Width = 152
     Caption = 'Exportar para NF-e'
+    OnClick = btnexportarClick
     TabOrder = 1
   end
   object btncancelar: TButton
@@ -82,18 +83,21 @@ object frmvendaorc: Tfrmvendaorc
       end    
       item
         Title.Caption = 'QTDE'
+        Width = 70
         FieldName = 'QTDE'
       end    
       item
         Title.Caption = 'PRVE'
-        Width = 64
+        Width = 70
         FieldName = 'PRVE'
       end    
       item
         Title.Caption = 'SUBTOTAL'
+        Width = 70
         FieldName = 'SUBTOTAL'
       end>
     DataSource = modulo_vendaorc.dsvenda_itemproduto
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 3
   end
 end

@@ -16,7 +16,10 @@ type
     dsvenda_itemproduto: TDataSource;
     qrvenda: TSQLQuery;
     qrvendaCCLI: TLongintField;
+    qrvendaCEPENT: TStringField;
+    qrvendaCFUNC: TLongintField;
     qrvendaCODIGO: TLongintField;
+    qrvendaNFUNC: TStringField;
     qrvendaNOME: TStringField;
     qrvendaNPED: TLongintField;
     qrvendaTOTAL: TBCDField;
@@ -24,10 +27,15 @@ type
     qrvenda_itemprodutoCODIGO: TLongintField;
     qrvenda_itemprodutoCODPROD: TLongintField;
     qrvenda_itemprodutoCPRO: TLongintField;
+    qrvenda_itemprodutoCUNI: TLongintField;
     qrvenda_itemprodutoDESCRICAO: TStringField;
+    qrvenda_itemprodutoPERCLUCRO: TBCDField;
+    qrvenda_itemprodutoPRECOCUSTO: TBCDField;
+    qrvenda_itemprodutoPRECOVENDA: TBCDField;
     qrvenda_itemprodutoPRVE: TBCDField;
     qrvenda_itemprodutoQTDE: TBCDField;
     qrvenda_itemprodutoSUBTOTAL: TBCDField;
+    qrvenda_itemprodutoUND: TStringField;
     procedure qrvendaAfterScroll(DataSet: TDataSet);
   private
 
@@ -53,7 +61,7 @@ begin
 
             qrvenda_itemproduto.close;
             qrvenda_itemproduto.SQL.Clear;
-            qrvenda_itemproduto.SQL.Add('select p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo where d.codsvenda = :codsvenda');
+            qrvenda_itemproduto.SQL.Add('select dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  d.cuni,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo     where d.codsvenda = :codsvenda');
             qrvenda_itemproduto.ParamByName('codsvenda').AsInteger:= qrvenda.FieldByName('codigo').AsInteger;
             qrvenda_itemproduto.Open;
 
