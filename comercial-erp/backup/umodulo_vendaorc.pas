@@ -24,13 +24,21 @@ type
     qrvendaNPED: TLongintField;
     qrvendaTOTAL: TBCDField;
     qrvenda_itemproduto: TSQLQuery;
+    qrvenda_itemprodutoCODCSTORIGEM: TStringField;
     qrvenda_itemprodutoCODIGO: TLongintField;
+    qrvenda_itemprodutoCODIGOCSTORIGEM: TLongintField;
     qrvenda_itemprodutoCODPROD: TLongintField;
+    qrvenda_itemprodutoCODSITB: TLongintField;
+    qrvenda_itemprodutoCODUNIDADEMEDIDA: TLongintField;
     qrvenda_itemprodutoCPRO: TLongintField;
     qrvenda_itemprodutoDESCRICAO: TStringField;
+    qrvenda_itemprodutoPERCLUCRO: TBCDField;
+    qrvenda_itemprodutoPRECOCUSTO: TBCDField;
+    qrvenda_itemprodutoPRECOVENDA: TBCDField;
     qrvenda_itemprodutoPRVE: TBCDField;
     qrvenda_itemprodutoQTDE: TBCDField;
     qrvenda_itemprodutoSUBTOTAL: TBCDField;
+    qrvenda_itemprodutoUND: TStringField;
     procedure qrvendaAfterScroll(DataSet: TDataSet);
   private
 
@@ -56,7 +64,9 @@ begin
 
             qrvenda_itemproduto.close;
             qrvenda_itemproduto.SQL.Clear;
-            qrvenda_itemproduto.SQL.Add('select dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  d.cuni,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo     where d.codsvenda = :codsvenda');
+            qrvenda_itemproduto.SQL.Add('select dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  d.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo      where d.codsvenda = :codsvenda');
+
+
             qrvenda_itemproduto.ParamByName('codsvenda').AsInteger:= qrvenda.FieldByName('codigo').AsInteger;
             qrvenda_itemproduto.Open;
 

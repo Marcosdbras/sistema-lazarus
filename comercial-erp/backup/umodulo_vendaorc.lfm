@@ -148,11 +148,97 @@ object modulo_vendaorc: Tmodulo_vendaorc
     top = 48
   end
   object qrvenda_itemproduto: TSQLQuery
-    FieldDefs = <>
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CODIGOCSTORIGEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODCSTORIGEM'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'CODSITB'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PRECOCUSTO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCLUCRO'
+        DataType = ftBCD
+        Precision = 9
+        Size = 2
+      end    
+      item
+        Name = 'PRECOVENDA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'CODUNIDADEMEDIDA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'UND'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 600
+      end    
+      item
+        Name = 'CODIGO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CPRO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PRVE'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'QTDE'
+        DataType = ftBCD
+        Precision = 18
+        Size = 3
+      end    
+      item
+        Name = 'CODPROD'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SUBTOTAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end>
+    Active = True
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select d.prcu as precocusto, d.per as perclucro,  d.prve as precovenda,  d.cuni,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo'
+      'select dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  d.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo'
     )
     Params = <>
     left = 64
@@ -238,6 +324,94 @@ object modulo_vendaorc: Tmodulo_vendaorc
       MaxValue = 0
       MinValue = 0
       Size = 2
+    end
+    object qrvenda_itemprodutoPRECOCUSTO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRECOCUSTO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrvenda_itemprodutoPERCLUCRO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCLUCRO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 9
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrvenda_itemprodutoPRECOVENDA: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRECOVENDA'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrvenda_itemprodutoUND: TStringField
+      FieldKind = fkData
+      FieldName = 'UND'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object qrvenda_itemprodutoCODIGOCSTORIGEM: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOCSTORIGEM'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoCODCSTORIGEM: TStringField
+      FieldKind = fkData
+      FieldName = 'CODCSTORIGEM'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoCODSITB: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODSITB'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoCODUNIDADEMEDIDA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODUNIDADEMEDIDA'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
   object dsvenda_itemproduto: TDataSource

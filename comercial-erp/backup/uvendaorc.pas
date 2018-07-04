@@ -47,7 +47,8 @@ implementation
     end;
 
 procedure Tfrmvendaorc.btnexportarClick(Sender: TObject);
-
+var
+  controle:integer;
 
 begin
    if Application.MessageBox('Tem certeza que deseja exportar este pedido para NF-e?','Atenção',MB_YESNO) = 6  then
@@ -177,6 +178,34 @@ begin
                         with modulo_conexaodb do
                              begin
 
+                               // Unidade Medida
+                               qrconsulta_base.Close;
+                               qrconsulta_base.SQL.Clear;
+                               qrconsulta_base.SQL.Add('select * from tunidademedida where descricao = :descricao');
+                               qrconsulta_base.ParamByName('descricao').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
+                               qrconsulta_base.Open;
+
+                               //showmessage(  inttostr( modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger));
+
+                               if (qrconsulta_base.RecordCount = 0) then
+                                  begin
+
+                                     qrexec_base.Close;
+                                     qrexec_base.SQL.Clear;
+                                     qrexec_base.SQL.Add('insert into tunidademedida (controle, descricao, dataehoracadastro) values (:controle, :descricao, :dataehoracadastro)');
+                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger;
+                                     qrexec_base.ParamByName('descricao').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
+                                     qrexec_base.ParamByName('dataehoracadastro').AsDateTime := now();
+                                     qrexec_base.ExecSQL;
+
+                                     atualizaBanco;
+
+                                  end;
+                               //endi
+
+
+
+
                                // Produto
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
@@ -192,15 +221,25 @@ begin
                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsInteger;
                                     qrexec_base.ParamByName('produto').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString;;
                                     qrexec_base.ParamByName('unidade').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
-                                    qrexec_base.ParamByName('codunidademedida').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cuni').AsInteger;
 
+                                    // Consulta Unidade Medida
+                                    qrconsulta_base.Close;
+                                    qrconsulta_base.SQL.Clear;
+                                    qrconsulta_base.SQL.Add('select * from tunidademedida where descricao = :descricao');
+                                    qrconsulta_base.ParamByName('descricao').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
+                                    qrconsulta_base.Open;
+
+                                    qrexec_base.ParamByName('codunidademedida').AsInteger :=    qrconsulta_base.FieldByName('controle').AsInteger;
+
+
+
+                                    qrexec_base.ParamByName('codigocstorigem').AsInteger:= 1; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
 
 
                                     qrexec_base.ParamByName('precocusto').Asfloat:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('precocusto').Asfloat;
                                     qrexec_base.ParamByName('perclucro').Asfloat:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('perclucro').Asfloat;
                                     qrexec_base.ParamByName('precovenda').Asfloat:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('precovenda').Asfloat;
-                                    qrexec_base.ParamByName('codcstorigem').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('codcstorigem').AsInteger;
-                                    qrexec_base.ParamByName('codigocstorigem').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
+                                    qrexec_base.ParamByName('codcstorigem').AsString:='1';    //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codcstorigem').AsString;
 
 
                                     qrexec_base.ParamByName('IAT').AsString:='A';
