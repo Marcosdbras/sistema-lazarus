@@ -55,7 +55,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select  v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome, c.cepent from svenda v left join clientes c on v.ccli = c.codigo   left join funcionarios f on v.cfun = f.codigo'
+      'select  v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome, c.cepent from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
     )
     Params = <>
     left = 64
@@ -151,6 +151,17 @@ object modulo_vendaorc: Tmodulo_vendaorc
     IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
+        Name = 'CGRU'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAOGRUPO'
+        DataType = ftString
+        Precision = -1
+        Size = 60
+      end    
+      item
         Name = 'CODIGOCSTORIGEM'
         DataType = ftInteger
         Precision = -1
@@ -237,7 +248,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  d.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo'
+      'select  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo'
     )
     Params = <>
     left = 64
@@ -411,6 +422,25 @@ object modulo_vendaorc: Tmodulo_vendaorc
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+    end
+    object qrvenda_itemprodutoCGRU: TLongintField
+      FieldKind = fkData
+      FieldName = 'CGRU'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoDESCRICAOGRUPO: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAOGRUPO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
     end
   end
   object dsvenda_itemproduto: TDataSource

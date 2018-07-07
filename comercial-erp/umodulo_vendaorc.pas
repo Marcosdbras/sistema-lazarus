@@ -24,6 +24,7 @@ type
     qrvendaNPED: TLongintField;
     qrvendaTOTAL: TBCDField;
     qrvenda_itemproduto: TSQLQuery;
+    qrvenda_itemprodutoCGRU: TLongintField;
     qrvenda_itemprodutoCODCSTORIGEM: TStringField;
     qrvenda_itemprodutoCODIGO: TLongintField;
     qrvenda_itemprodutoCODIGOCSTORIGEM: TLongintField;
@@ -32,6 +33,7 @@ type
     qrvenda_itemprodutoCODUNIDADEMEDIDA: TLongintField;
     qrvenda_itemprodutoCPRO: TLongintField;
     qrvenda_itemprodutoDESCRICAO: TStringField;
+    qrvenda_itemprodutoDESCRICAOGRUPO: TStringField;
     qrvenda_itemprodutoPERCLUCRO: TBCDField;
     qrvenda_itemprodutoPRECOCUSTO: TBCDField;
     qrvenda_itemprodutoPRECOVENDA: TBCDField;
@@ -64,9 +66,7 @@ begin
 
             qrvenda_itemproduto.close;
             qrvenda_itemproduto.SQL.Clear;
-            qrvenda_itemproduto.SQL.Add('select dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  d.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo      where d.codsvenda = :codsvenda');
-
-
+            qrvenda_itemproduto.SQL.Add('select  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo      where d.codsvenda = :codsvenda');
             qrvenda_itemproduto.ParamByName('codsvenda').AsInteger:= qrvenda.FieldByName('codigo').AsInteger;
             qrvenda_itemproduto.Open;
 
