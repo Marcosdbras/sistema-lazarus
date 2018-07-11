@@ -151,6 +151,24 @@ object modulo_vendaorc: Tmodulo_vendaorc
     IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
+        Name = 'CODBARRAS'
+        DataType = ftString
+        Precision = -1
+        Size = 13
+      end    
+      item
+        Name = 'REFERENCIA'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'NCM'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
         Name = 'CGRU'
         DataType = ftInteger
         Precision = -1
@@ -248,7 +266,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo'
+      'select  dp.cbar as codbarras, dp.caux as referencia, dp.ncm,  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo'
     )
     Params = <>
     left = 64
@@ -441,6 +459,34 @@ object modulo_vendaorc: Tmodulo_vendaorc
       ReadOnly = False
       Required = False
       Size = 60
+    end
+    object qrvenda_itemprodutoCODBARRAS: TStringField
+      FieldKind = fkData
+      FieldName = 'CODBARRAS'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 13
+    end
+    object qrvenda_itemprodutoREFERENCIA: TStringField
+      FieldKind = fkData
+      FieldName = 'REFERENCIA'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoNCM: TStringField
+      FieldKind = fkData
+      FieldName = 'NCM'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
   object dsvenda_itemproduto: TDataSource

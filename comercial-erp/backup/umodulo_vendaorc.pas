@@ -25,6 +25,7 @@ type
     qrvendaTOTAL: TBCDField;
     qrvenda_itemproduto: TSQLQuery;
     qrvenda_itemprodutoCGRU: TLongintField;
+    qrvenda_itemprodutoCODBARRAS: TStringField;
     qrvenda_itemprodutoCODCSTORIGEM: TStringField;
     qrvenda_itemprodutoCODIGO: TLongintField;
     qrvenda_itemprodutoCODIGOCSTORIGEM: TLongintField;
@@ -34,11 +35,13 @@ type
     qrvenda_itemprodutoCPRO: TLongintField;
     qrvenda_itemprodutoDESCRICAO: TStringField;
     qrvenda_itemprodutoDESCRICAOGRUPO: TStringField;
+    qrvenda_itemprodutoNCM: TStringField;
     qrvenda_itemprodutoPERCLUCRO: TBCDField;
     qrvenda_itemprodutoPRECOCUSTO: TBCDField;
     qrvenda_itemprodutoPRECOVENDA: TBCDField;
     qrvenda_itemprodutoPRVE: TBCDField;
     qrvenda_itemprodutoQTDE: TBCDField;
+    qrvenda_itemprodutoREFERENCIA: TStringField;
     qrvenda_itemprodutoSUBTOTAL: TBCDField;
     qrvenda_itemprodutoUND: TStringField;
     procedure qrvendaAfterScroll(DataSet: TDataSet);

@@ -265,7 +265,7 @@ begin
 
                                     qrexec_base.Close;
                                     qrexec_base.SQL.Clear;
-                                    qrexec_base.SQL.Add('insert into testoque (controle, produto, unidade, precocusto, perclucro, precovenda, IAT, IPPT, tributado, pesado, codunidademedida, codcstorigem, codigocstorigem, fatorconversao, controlarvalidade, codgrupo) values (:controle, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo)');
+                                    qrexec_base.SQL.Add('insert into testoque (controle, produto, unidade, precocusto, perclucro, precovenda, IAT, IPPT, tributado, pesado, codunidademedida, codcstorigem, codigocstorigem, fatorconversao, controlarvalidade, codgrupo, ncm, codbarras, tipobarra, ativo, referencia, customedio, datahoracadastro, usagrade, usaserial) values (:controle, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial)');
                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsInteger;
                                     qrexec_base.ParamByName('produto').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString;;
                                     qrexec_base.ParamByName('unidade').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
@@ -310,12 +310,17 @@ begin
                                     qrexec_base.ParamByName('precovenda').Asfloat:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('precovenda').Asfloat;
 
 
+                                    qrexec_base.ParamByName('codbarras').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('codbarras').AsString;
+                                    qrexec_base.ParamByName('referencia').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('referencia').AsString;
+                                    qrexec_base.ParamByName('ncm').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
+
                                     qrexec_base.ParamByName('IAT').AsString:='A';
                                     qrexec_base.ParamByName('IPPT').AsString:='T';
                                     qrexec_base.ParamByName('tributado').AsString:='SIM';
                                     qrexec_base.ParamByName('pesado').AsString:='NÃO';
                                     qrexec_base.ParamByName('fatorconversao').AsString:='*';
                                     qrexec_base.ParamByName('controlarvalidade').AsString:='NÃO';
+                                    qrexec_base.ParamByName('ativo').AsString:='SIM';
 
                                     qrexec_base.ExecSQL;
 
