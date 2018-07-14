@@ -423,7 +423,7 @@ begin
 
        qrvenda.close;
        qrvenda.SQL.Clear;
-       qrvenda.SQL.Add('select  v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome, c.cepent from svenda v right join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0');
+       qrvenda.SQL.Add('select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v right join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0');
        qrvenda.Open;
 
      end;

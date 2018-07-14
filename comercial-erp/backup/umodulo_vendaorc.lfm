@@ -6,7 +6,85 @@ object modulo_vendaorc: Tmodulo_vendaorc
   Width = 487
   PPI = 96
   object qrvenda: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
+      item
+        Name = 'ENDENT'
+        DataType = ftString
+        Precision = -1
+        Size = 400
+      end    
+      item
+        Name = 'CPF'
+        DataType = ftString
+        Precision = -1
+        Size = 72
+      end    
+      item
+        Name = 'IE'
+        DataType = ftString
+        Precision = -1
+        Size = 80
+      end    
+      item
+        Name = 'COMPLENT'
+        DataType = ftString
+        Precision = -1
+        Size = 200
+      end    
+      item
+        Name = 'BAIRROENT'
+        DataType = ftString
+        Precision = -1
+        Size = 400
+      end    
+      item
+        Name = 'CIDADEENT'
+        DataType = ftString
+        Precision = -1
+        Size = 160
+      end    
+      item
+        Name = 'CEPENT'
+        DataType = ftFixedChar
+        Precision = -1
+        Size = 36
+      end    
+      item
+        Name = 'TELEFONEENT'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'ESTADOENT'
+        DataType = ftFixedChar
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'OBSERVACAO'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'REFERENCIA_END'
+        DataType = ftString
+        Precision = -1
+        Size = 150
+      end    
+      item
+        Name = 'CTIPOCLI'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NROENT'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
       item
         Name = 'CFUNC'
         DataType = ftInteger
@@ -44,18 +122,12 @@ object modulo_vendaorc: Tmodulo_vendaorc
         DataType = ftString
         Precision = -1
         Size = 320
-      end    
-      item
-        Name = 'CEPENT'
-        DataType = ftFixedChar
-        Precision = -1
-        Size = 36
       end>
     AfterScroll = qrvendaAfterScroll
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select  v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome, c.cepent from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
+      'select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
     )
     Params = <>
     left = 64
@@ -141,6 +213,127 @@ object modulo_vendaorc: Tmodulo_vendaorc
       Required = False
       Size = 36
     end
+    object qrvendaENDENT: TStringField
+      FieldKind = fkData
+      FieldName = 'ENDENT'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 400
+    end
+    object qrvendaCPF: TStringField
+      FieldKind = fkData
+      FieldName = 'CPF'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 72
+    end
+    object qrvendaIE: TStringField
+      FieldKind = fkData
+      FieldName = 'IE'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object qrvendaCOMPLENT: TStringField
+      FieldKind = fkData
+      FieldName = 'COMPLENT'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qrvendaBAIRROENT: TStringField
+      FieldKind = fkData
+      FieldName = 'BAIRROENT'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 400
+    end
+    object qrvendaCIDADEENT: TStringField
+      FieldKind = fkData
+      FieldName = 'CIDADEENT'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 160
+    end
+    object qrvendaTELEFONEENT: TStringField
+      FieldKind = fkData
+      FieldName = 'TELEFONEENT'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrvendaESTADOENT: TStringField
+      FieldKind = fkData
+      FieldName = 'ESTADOENT'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object qrvendaOBSERVACAO: TMemoField
+      FieldKind = fkData
+      FieldName = 'OBSERVACAO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object qrvendaREFERENCIA_END: TStringField
+      FieldKind = fkData
+      FieldName = 'REFERENCIA_END'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 150
+    end
+    object qrvendaCTIPOCLI: TLongintField
+      FieldKind = fkData
+      FieldName = 'CTIPOCLI'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvendaNROENT: TStringField
+      FieldKind = fkData
+      FieldName = 'NROENT'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
   end
   object dsvenda: TDataSource
     DataSet = qrvenda
@@ -148,7 +341,6 @@ object modulo_vendaorc: Tmodulo_vendaorc
     top = 48
   end
   object qrvenda_itemproduto: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CODBARRAS'

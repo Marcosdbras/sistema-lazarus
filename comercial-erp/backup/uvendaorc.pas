@@ -265,7 +265,7 @@ begin
 
                                     qrexec_base.Close;
                                     qrexec_base.SQL.Clear;
-                                    qrexec_base.SQL.Add('insert into testoque (controle, produto, unidade, precocusto, perclucro, precovenda, IAT, IPPT, tributado, pesado, codunidademedida, codcstorigem, codigocstorigem, fatorconversao, controlarvalidade, codgrupo, ncm, codbarras, tipobarra, ativo, referencia) values (:controle, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia)');
+                                    qrexec_base.SQL.Add('insert into testoque (controle, produto, unidade, precocusto, perclucro, precovenda, IAT, IPPT, tributado, pesado, codunidademedida, codcstorigem, codigocstorigem, fatorconversao, controlarvalidade, codgrupo, ncm, codbarras, tipobarra, ativo, referencia, customedio, datahoracadastro, usagrade, usaserial) values (:controle, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial)');
                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsInteger;
                                     qrexec_base.ParamByName('produto').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString;;
                                     qrexec_base.ParamByName('unidade').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
@@ -423,7 +423,7 @@ begin
 
        qrvenda.close;
        qrvenda.SQL.Clear;
-       qrvenda.SQL.Add('select  v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome, c.cepent from svenda v right join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0');
+       qrvenda.SQL.Add('select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v right join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0');
        qrvenda.Open;
 
      end;
