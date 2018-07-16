@@ -6,8 +6,37 @@ object modulo_vendaorc: Tmodulo_vendaorc
   Width = 487
   PPI = 96
   object qrvenda: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
+      item
+        Name = 'RESPONSAVELENT'
+        DataType = ftString
+        Precision = -1
+        Size = 60
+      end    
+      item
+        Name = 'FANTASIA'
+        DataType = ftString
+        Precision = -1
+        Size = 240
+      end    
+      item
+        Name = 'TELEFONES'
+        DataType = ftString
+        Precision = -1
+        Size = 240
+      end    
+      item
+        Name = 'CONTATO'
+        DataType = ftString
+        Precision = -1
+        Size = 200
+      end    
+      item
+        Name = 'DDDEENT'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
       item
         Name = 'ENDENT'
         DataType = ftString
@@ -127,7 +156,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
+      'select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
     )
     Params = <>
     left = 64
@@ -334,6 +363,56 @@ object modulo_vendaorc: Tmodulo_vendaorc
       Required = False
       Size = 10
     end
+    object qrvendaRESPONSAVELENT: TStringField
+      FieldKind = fkData
+      FieldName = 'RESPONSAVELENT'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object qrvendaFANTASIA: TStringField
+      FieldKind = fkData
+      FieldName = 'FANTASIA'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 240
+    end
+    object qrvendaTELEFONES: TStringField
+      FieldKind = fkData
+      FieldName = 'TELEFONES'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 240
+    end
+    object qrvendaCONTATO: TStringField
+      FieldKind = fkData
+      FieldName = 'CONTATO'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qrvendaDDDEENT: TStringField
+      FieldKind = fkData
+      FieldName = 'DDDEENT'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
   end
   object dsvenda: TDataSource
     DataSet = qrvenda
@@ -341,7 +420,53 @@ object modulo_vendaorc: Tmodulo_vendaorc
     top = 48
   end
   object qrvenda_itemproduto: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
+      item
+        Name = 'CODIPI'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SIGLA'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'CPIS'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SIGLA_1'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'CCOFINS'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SIGLA_2'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'CSOSN'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'CEST'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
       item
         Name = 'CODBARRAS'
         DataType = ftString
@@ -458,7 +583,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select  dp.cbar as codbarras, dp.caux as referencia, dp.ncm,  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo'
+      'select dp.codipi,  ipi.sigla,  dp.cpis, pis.sigla, dp.ccofins, cofins.sigla, dp.csosn, dp.cest,  dp.cbar as codbarras, dp.caux as referencia, dp.ncm,  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo     left join ipi on dp.codipi = ipi.codigo       left join pis on dp.cpis = pis.codigo    left join cofins on dp.ccofins = cofins.codigo'
     )
     Params = <>
     left = 64

@@ -48,7 +48,8 @@ implementation
 
 procedure Tfrmvendaorc.btnexportarClick(Sender: TObject);
 var
-  controle, codigocstorigem:integer;
+  controle, codigocstorigem, codigocst:integer;
+  scodigocstpis, scodigocstcofins,  scodigocstipi:string;
 
 begin
    if Application.MessageBox('Tem certeza que deseja exportar este pedido para NF-e?','Atenção',MB_YESNO) = 6  then
@@ -209,7 +210,7 @@ begin
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
                                qrconsulta_base.SQL.Add('select * from tcstoriem where codigoorigem = :codigoorigem');
-                               codigocstorigem := StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('codcstorigem').AsString,1);
+                               codigocstorigem := StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('codcstorigem').AsString,0);
                                qrconsulta_base.ParamByName('codigoorigem').AsInteger:= codigocstorigem;
                                qrconsulta_base.Open;
 
@@ -254,6 +255,107 @@ begin
                                //endi
 
 
+
+                               // IPI
+                               qrconsulta_base.Close;
+                               qrconsulta_base.SQL.Clear;
+                               qrconsulta_base.SQL.Add('select * from tcstipi where codcstipi = :codcstipi');
+                               scodigocstipi := formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglaipi').AsString,53));
+                               qrconsulta_base.ParamByName('codcstipi').AsString:= scodigocstipi;
+                               qrconsulta_base.Open;
+
+                               //showmessage(  inttostr( modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger));
+
+                               if (qrconsulta_base.RecordCount = 0) then
+                                  begin
+                                    qrexec_base.Close;
+                                    qrexec_base.SQL.Clear;
+                                    qrexec_base.SQL.Add('insert into tcstipi (codcstipi, descricao) values (:codcstipi, :descricao)');
+                                    qrexec_base.ParamByName('codcstipi').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglaipi').AsString;
+                                    qrexec_base.ParamByName('descricao').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglaipi').AsString;
+                                    qrexec_base.ExecSQL;
+
+                                    atualizaBanco;
+                                  end;
+                               //endi
+
+
+                               // PIS
+                               qrconsulta_base.Close;
+                               qrconsulta_base.SQL.Clear;
+                               qrconsulta_base.SQL.Add('select * from tcstpis where codigocst = :codigocst');
+                               scodigocstpis := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglapis').AsString,7));
+                               qrconsulta_base.ParamByName('codigocst').AsString:= scodigocstpis;
+                               qrconsulta_base.Open;
+
+                               //showmessage(  inttostr( modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger));
+
+                               if (qrconsulta_base.RecordCount = 0) then
+                                  begin
+                                    qrexec_base.Close;
+                                    qrexec_base.SQL.Clear;
+                                    qrexec_base.SQL.Add('insert into tcstpis (codigocst, descricao) values (:codigocst, :descricao)');
+                                    qrexec_base.ParamByName('codigocst').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglapis').AsString;
+                                    qrexec_base.ParamByName('descricao').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglapis').AsString;
+                                    qrexec_base.ExecSQL;
+
+                                    atualizaBanco;
+                                  end;
+                               //endi
+
+
+
+
+
+                               // COFINS
+                               qrconsulta_base.Close;
+                               qrconsulta_base.SQL.Clear;
+                               qrconsulta_base.SQL.Add('select * from tcstcofins where codigocstcofins = :codigocstcofins');
+                               scodigocstcofins := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglacofins').AsString,7));
+                               qrconsulta_base.ParamByName('codigocstcofins').Asstring:= scodigocstcofins;
+                               qrconsulta_base.Open;
+
+                               //showmessage(  inttostr( modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger));
+
+                               if (qrconsulta_base.RecordCount = 0) then
+                                  begin
+                                    qrexec_base.Close;
+                                    qrexec_base.SQL.Clear;
+                                    qrexec_base.SQL.Add('insert into tcstcofins (codigocstcofins, descricao) values (:codigocstcofins, :descricao)');
+                                    qrexec_base.ParamByName('codigocstcofins').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglacofins').AsString;
+                                    qrexec_base.ParamByName('descricao').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglacofins').AsString;
+                                    qrexec_base.ExecSQL;
+
+                                    atualizaBanco;
+                                  end;
+                               //endi
+
+
+                               //  CSOSN
+                               qrconsulta_base.Close;
+                               qrconsulta_base.SQL.Clear;
+                               qrconsulta_base.SQL.Add('select * from tcsticms where codigocst = :codigocst');
+                               codigocst := StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('csosn').AsString,500);
+                               qrconsulta_base.ParamByName('codigocst').AsInteger:= codigocst;
+                               qrconsulta_base.Open;
+
+                               //showmessage(  inttostr( modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger));
+
+                               if (qrconsulta_base.RecordCount = 0) then
+                                  begin
+                                    qrexec_base.Close;
+                                    qrexec_base.SQL.Clear;
+                                    qrexec_base.SQL.Add('insert into tcsticms (codigocst, descricao) values (:codigocst, :descricao)');
+                                    qrexec_base.ParamByName('codigocst').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('csosn').AsString;
+                                    qrexec_base.ParamByName('descricao').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('csosn').AsString;
+                                    qrexec_base.ExecSQL;
+
+                                    atualizaBanco;
+                                  end;
+                                //endi
+
+
+
                                // Produto
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
@@ -265,12 +367,24 @@ begin
 
                                     qrexec_base.Close;
                                     qrexec_base.SQL.Clear;
-                                    qrexec_base.SQL.Add('insert into testoque (controle, produto, unidade, precocusto, perclucro, precovenda, IAT, IPPT, tributado, pesado, codunidademedida, codcstorigem, codigocstorigem, fatorconversao, controlarvalidade, codgrupo, ncm, codbarras, tipobarra, ativo, referencia, customedio, datahoracadastro, usagrade, usaserial) values (:controle, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial)');
+                                    qrexec_base.SQL.Add('insert into testoque (controle,   origem,  grupo,  produto,  unidade,  precocusto,  perclucro,  precovenda,  IAT,  IPPT,  tributado,  pesado,  codunidademedida,  codcstorigem,  codigocstorigem,  fatorconversao,  controlarvalidade,  codgrupo,  ncm,  codbarras,  tipobarra,  ativo,  referencia,  customedio,  datahoracadastro,  usagrade,  usaserial,  codtributacaoipi,  tributacaoipi,  codtributacaopis,  tributacaopis,  codtributacaocofins,  tributacaocofins,  possuiicmsst,  isento,  csosn,  descricaocsosn,  codaplicacaoproduto,  aplicacaoproduto,  codemitente,  cest  ) values ');
+                                    qrexec_base.SQL.Add('                     (:controle, :origem, :grupo, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial, :codtributacaoipi, :tributacaoipi, :codtributacaopis, :tributacaopis, :codtributacaocofins, :tributacaocofins, :possuiicmsst, :isento, :csosn, :descricaocsosn, :codaplicacaoproduto, :aplicacaoproduto, :codemitente, :cest  )');
+
                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsInteger;
                                     qrexec_base.ParamByName('produto').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString;;
                                     qrexec_base.ParamByName('unidade').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
-                                    qrexec_base.ParamByName('codcstorigem').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('codcstorigem').AsString;
+                                    qrexec_base.ParamByName('cest').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cest').AsString;
 
+
+                                    qrexec_base.ParamByName('usagrade').AsString:= 'NÃO';
+                                    qrexec_base.ParamByName('usaserial').AsString:= 'NÃO';
+                                    qrexec_base.ParamByName('datahoracadastro').AsDate:= now();
+                                    qrexec_base.ParamByName('possuiicmsst').AsString:= 'SIM';
+                                    qrexec_base.ParamByName('isento').AsString:= 'NÃO';
+                                    qrexec_base.ParamByName('codaplicacaoproduto').AsString:= '00';
+                                    qrexec_base.ParamByName('aplicacaoproduto').AsString:= 'MERCADORIA PARA REVENDA';
+                                    qrexec_base.ParamByName('codemitente').AsInteger:= 1;
+                                    qrexec_base.ParamByName('valorconversao').Asfloat:= 1;
 
                                     // Consulta Unidade Medida
                                     qrconsulta_base.Close;
@@ -286,11 +400,67 @@ begin
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
                                     qrconsulta_base.SQL.Add('select * from tcstoriem where codigoorigem = :codigoorigem');
-                                    codigocstorigem := StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('codcstorigem').AsString,1);
+                                    codigocstorigem := StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('codcstorigem').AsString,0);
                                     qrconsulta_base.ParamByName('codigoorigem').AsInteger:= codigocstorigem;
                                     qrconsulta_base.Open;
 
                                     qrexec_base.ParamByName('codcstorigem').AsInteger :=  qrconsulta_base.FieldByName('controle').AsInteger  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
+                                    qrexec_base.ParamByName('origem').AsString:= qrconsulta_base.FieldByName('codigoorigem').AsString+' - '+qrconsulta_base.FieldByName('descricaoorigem').AsString ;
+
+
+
+
+                                    //Consulta IPI
+                                    qrconsulta_base.Close;
+                                    qrconsulta_base.SQL.Clear;
+                                    qrconsulta_base.SQL.Add('select * from tcstipi where codcstipi = :codcstipi');
+                                    scodigocstipi := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglaipi').AsString,53));
+                                    qrconsulta_base.ParamByName('codcstipi').AsString:= scodigocstipi;
+                                    qrconsulta_base.Open;
+
+                                    qrexec_base.ParamByName('codtributacaoipi').Asstring :=  qrconsulta_base.FieldByName('codcstipi').AsString  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
+                                    qrexec_base.ParamByName('tributacaoipi').AsString:= qrconsulta_base.FieldByName('descricao').AsString;
+
+
+
+                                    //Consulta PIS
+                                    qrconsulta_base.Close;
+                                    qrconsulta_base.SQL.Clear;
+                                    qrconsulta_base.SQL.Add('select * from tcstpis where codigocst = :codigocst');
+                                    scodigocstpis :=  formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglapis').AsString,7));
+                                    qrconsulta_base.ParamByName('codigocst').AsString:= scodigocstpis;
+                                    qrconsulta_base.Open;
+
+                                    qrexec_base.ParamByName('codtributacaopis').AsString :=  qrconsulta_base.FieldByName('codigocst').AsString  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
+                                    qrexec_base.ParamByName('tributacaopis').AsString:= qrconsulta_base.FieldByName('descricao').AsString;
+
+
+                                    //Consulta Cofins
+                                    qrconsulta_base.Close;
+                                    qrconsulta_base.SQL.Clear;
+                                    qrconsulta_base.SQL.Add('select * from tcstcofins where codigocstcofins = :codigocstcofins');
+                                    scodigocstcofins :=  formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglacofins').AsString,7));
+                                    qrconsulta_base.ParamByName('codigocstcofins').AsString:= scodigocstcofins;
+                                    qrconsulta_base.Open;
+
+                                    qrexec_base.ParamByName('codtributacaocofins').AsString :=  qrconsulta_base.FieldByName('codigocstcofins').AsString  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
+                                    qrexec_base.ParamByName('tributacaocofins').AsString:= qrconsulta_base.FieldByName('descricao').AsString;
+
+
+
+
+                                    //Consulta CSOSN
+                                    qrconsulta_base.Close;
+                                    qrconsulta_base.SQL.Clear;
+                                    qrconsulta_base.SQL.Add('select * from tcsticms where codigocst = :codigocst');
+                                    codigocst :=  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('csosn').AsString,500);
+                                    qrconsulta_base.ParamByName('codigocst').AsInteger:= codigocst;
+                                    qrconsulta_base.Open;
+
+                                    qrexec_base.ParamByName('csosn').AsString :=  qrconsulta_base.FieldByName('codigocst').AsString  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
+                                    qrexec_base.ParamByName('descricaocsosn').AsString:= qrconsulta_base.FieldByName('descricao').AsString;
+
+
 
 
                                     //Consulta Grupo
@@ -301,9 +471,7 @@ begin
                                     qrconsulta_base.Open;
 
                                     qrexec_base.ParamByName('codgrupo').AsInteger :=  qrconsulta_base.FieldByName('controle').AsInteger  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
-
-
-
+                                    qrexec_base.ParamByName('grupo').AsString :=   modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString;
 
                                     qrexec_base.ParamByName('precocusto').Asfloat:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('precocusto').Asfloat;
                                     qrexec_base.ParamByName('perclucro').Asfloat:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('perclucro').Asfloat;
@@ -423,7 +591,7 @@ begin
 
        qrvenda.close;
        qrvenda.SQL.Clear;
-       qrvenda.SQL.Add('select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v right join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0');
+       qrvenda.SQL.Add('select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v right join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0');
        qrvenda.Open;
 
      end;
