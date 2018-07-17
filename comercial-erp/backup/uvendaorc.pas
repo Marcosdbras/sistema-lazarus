@@ -49,7 +49,7 @@ implementation
 procedure Tfrmvendaorc.btnexportarClick(Sender: TObject);
 var
   controle, codigocstorigem, codigocst:integer;
-  scodigocstpis, scodigocstcofins,  scodigocstipi:string;
+  scodigocstpis, scodigocstcofins,  scodigocstipi, scpf:string;
 
 begin
    if Application.MessageBox('Tem certeza que deseja exportar este pedido para NF-e?','Atenção',MB_YESNO) = 6  then
@@ -70,12 +70,67 @@ begin
 
                     qrexec_base.Close;
                     qrexec_base.SQL.Clear;
-                    qrexec_base.SQL.Add('insert into tcliente (controle, cliente, datahoracadastro, ativo) values (:controle, :cliente, :datahoracadastro, :ativo)');
+                    qrexec_base.SQL.Add('insert into tcliente ( controle,  cliente,  datahoracadastro,  ativo,  endereco,  complemento,  bairro,  codcidade,  cidade,  uf,  pais,  cep,  naturalidade,  tipocliente,   rg,  cpf,  cnpj,  ie,   im,  datanascimento,  pai,  mae,  telefone,  celular,   email,   estadocivil,  fantasia,  obs,  limitecredito,  numero,  codigocidadeibge,  codemitente,  status,  tributacao,  codvendedor,  vendedor,  codigopais,   codigocstorigem ) values');
+                    qrexec_base.SQL.Add('                     (:controle, :cliente, :datahoracadastro, :ativo, :endereco, :complemento, :bairro, :codcidade, :cidade, :uf, :pais, :cep, :naturalidade, :tipocliente,  :rg, :cpf, :cnpj, :ie,  :im, :datanascimento, :pai, :mae, :telefone, :celular,  :email,  :estadocivil, :fantasia, :obs, :limitecredito, :numero, :codigocidadeibge, :codemitente, :status, :tributacao, :codvendedor, :vendedor, :codigopais,  :codigocstorigem )');
                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda.FieldByName('ccli').AsInteger;
-                    qrexec_base.ParamByName('cliente').AsString:=modulo_vendaorc.qrvenda.FieldByName('nome').AsString;;
+                    qrexec_base.ParamByName('cliente').AsString:=modulo_vendaorc.qrvenda.FieldByName('nome').AsString;
+                    qrexec_base.ParamByName('fantasia').AsString:=modulo_vendaorc.qrvenda.FieldByName('fantasia').AsString;
+
+                    qrexec_base.ParamByName('endereco').AsString:=modulo_vendaorc.qrvenda.FieldByName('endent').AsString;
+                    qrexec_base.ParamByName('complemento').AsString:=modulo_vendaorc.qrvenda.FieldByName('complent').AsString;
+                    qrexec_base.ParamByName('bairro').AsString:=modulo_vendaorc.qrvenda.FieldByName('bairroent').AsString;
+                    qrexec_base.ParamByName('numero').AsString:=modulo_vendaorc.qrvenda.FieldByName('nroent').AsString;
+
+                    qrexec_base.ParamByName('codvendedor').AsInteger:=modulo_vendaorc.qrvenda.FieldByName('cfunc').AsInteger;
+                    qrexec_base.ParamByName('vendedor').AsString:=modulo_vendaorc.qrvenda.FieldByName('nfunc').AsString;
+
+                    // Consulta Código IBGE
+                    qrconsulta_base.Close;
+                    qrconsulta_base.SQL.Clear;
+                    qrconsulta_base.SQL.Add('select * from tcidadeibge where municipio = :municipio');
+                    qrconsulta_base.ParamByName('municipio').AsString:= modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString;
+                    qrconsulta_base.Open;
+
+                    qrexec_base.ParamByName('codigocidadeibge').AsString :=    qrconsulta_base.FieldByName('codigomunicipio').AsString;
+
+                    qrexec_base.ParamByName('cidade').AsString:=modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString;
+                    qrexec_base.ParamByName('uf').AsString:=modulo_vendaorc.qrvenda.FieldByName('estadoent').AsString;
+                    qrexec_base.ParamByName('cep').AsString:=modulo_vendaorc.qrvenda.FieldByName('cepent').AsString;
+                    qrexec_base.ParamByName('telefone').AsString:=modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
+
+                    scpf := modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
+                    scpf := tirapontos(tirabarras(tiratracos(scpf)));
+                    //scpf := tirabarras(scpf);
+                    //scpf := tiratracos(scpf);
+
+                    if length(scpf) = 14 then
+                       begin
+
+                         qrexec_base.ParamByName('tipocliente').AsString:= 'JURÍDICA';
+                         qrexec_base.ParamByName('cnpj').AsString:=modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
+                         qrexec_base.ParamByName('ie').AsString:=modulo_vendaorc.qrvenda.FieldByName('ie').AsString;
+
+
+                       end
+                    else
+                       begin
+
+                         qrexec_base.ParamByName('tipocliente').AsString:= 'FÍSICA';
+                         qrexec_base.ParamByName('cpf').AsString:=modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
+                         qrexec_base.ParamByName('rg').AsString:=modulo_vendaorc.qrvenda.FieldByName('ie').AsString;
+
+
+                       end;
+                    //endi
+
+                    //qrexec_base.ParamByName('codigopais').AsString:='1058';
+                    //qrexec_base.ParamByName('uf').AsString:='BRASIL';
                     qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
                     qrexec_base.ParamByName('ativo').AsString:='SIM';
+                    //qrexec_base.ParamByName('codemitente').AsInteger:=1;
+                    //qrexec_base.ParamByName('codigocstorigem').AsInteger:=1;
 
+                    //qrexec_base.ParamByName('tributacao').AsString:='NORMAL';
 
                     qrexec_base.ExecSQL;
 
@@ -367,8 +422,8 @@ begin
 
                                     qrexec_base.Close;
                                     qrexec_base.SQL.Clear;
-                                    qrexec_base.SQL.Add('insert into testoque (controle,   origem,  grupo,  produto,  unidade,  precocusto,  perclucro,  precovenda,  IAT,  IPPT,  tributado,  pesado,  codunidademedida,  codcstorigem,  codigocstorigem,  fatorconversao,  controlarvalidade,  codgrupo,  ncm,  codbarras,  tipobarra,  ativo,  referencia,  customedio,  datahoracadastro,  usagrade,  usaserial,  codtributacaoipi,  tributacaoipi,  codtributacaopis,  tributacaopis,  codtributacaocofins,  tributacaocofins,  possuiicmsst,  isento,  csosn,  descricaocsosn,  codaplicacaoproduto,  aplicacaoproduto,  codemitente,  cest  ) values ');
-                                    qrexec_base.SQL.Add('                     (:controle, :origem, :grupo, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial, :codtributacaoipi, :tributacaoipi, :codtributacaopis, :tributacaopis, :codtributacaocofins, :tributacaocofins, :possuiicmsst, :isento, :csosn, :descricaocsosn, :codaplicacaoproduto, :aplicacaoproduto, :codemitente, :cest  )');
+                                    qrexec_base.SQL.Add('insert into testoque (controle,   origem,  grupo,  produto,  unidade,  precocusto,  perclucro,  precovenda,  IAT,  IPPT,  tributado,  pesado,  codunidademedida,  codcstorigem,  codigocstorigem,  fatorconversao,  controlarvalidade,  codgrupo,  ncm,  codbarras,  tipobarra,  ativo,  referencia,  customedio,  datahoracadastro,  usagrade,  usaserial,  codtributacaoipi,  tributacaoipi,  codtributacaopis,  tributacaopis,  codtributacaocofins,  tributacaocofins,  possuiicmsst,  isento,  csosn,  descricaocsosn,  codaplicacaoproduto,  aplicacaoproduto,  codemitente,  cest,  valorconversao  ) values ');
+                                    qrexec_base.SQL.Add('                     (:controle, :origem, :grupo, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial, :codtributacaoipi, :tributacaoipi, :codtributacaopis, :tributacaopis, :codtributacaocofins, :tributacaocofins, :possuiicmsst, :isento, :csosn, :descricaocsosn, :codaplicacaoproduto, :aplicacaoproduto, :codemitente, :cest, :valorconversao  )');
 
                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsInteger;
                                     qrexec_base.ParamByName('produto').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString;;
