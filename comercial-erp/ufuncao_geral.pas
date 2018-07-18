@@ -42,6 +42,8 @@ Function MesExtenso(mDt:tDateTime):String;
 Function DataPorExtenso(mDt:tDateTime):String;
 Function Arred0dec(pValor:real):real;
 Function Arre1Dec(pValor:real):real;
+function FormataCNPJ(CNPJ: string): string;
+function FormataCPF(CPF: string): string;
 
 
 
@@ -778,6 +780,42 @@ end;
 
 
 
+function FormataCNPJ(CNPJ: string): string;
+ var
+   scnpj:string;
+begin
+
+  scnpj:=cnpj;
+
+  scnpj := tirapontos(Tiratracos(tirabarras(scnpj)));
+
+  //scnpj  :=  formatfloat('00000000000000',strtointdef(scnpj,0));
+
+  Result :=Copy(scnpj,1,2)+'.'+Copy(scnpj,3,3)+'.'+Copy(scnpj,6,3)+'/'+
+
+           Copy(scnpj,9,4)+'-'+Copy(scnpj,13,2);
+
+end;
+
+
+
+
+function FormataCPF(CPF: string): string;
+ var
+   sCPF:string;
+begin
+
+  sCPF:= CPF;
+
+  sCPF := tirapontos(Tiratracos(sCPF));
+
+  //sCPF  :=  formatfloat('00000000000',strtointdef(sCPF,0));
+
+  Result :=Copy(sCPF,1,3)+'.'+Copy(sCPF,4,3)+'.'+Copy(sCPF,7,3)+'-'+
+
+           Copy(sCPF,10,2);
+
+end;
 
 
 

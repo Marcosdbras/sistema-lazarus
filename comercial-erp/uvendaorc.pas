@@ -48,8 +48,8 @@ implementation
 
 procedure Tfrmvendaorc.btnexportarClick(Sender: TObject);
 var
-  controle, codigocstorigem, codigocst:integer;
-  scodigocstpis, scodigocstcofins,  scodigocstipi, scpf:string;
+  controle, codigocstorigem, codigocst, idddent:integer;
+  scodigocstpis, scodigocstcofins,  scodigocstipi, scpf, sie:string;
 
 begin
    if Application.MessageBox('Tem certeza que deseja exportar este pedido para NF-e?','Atenção',MB_YESNO) = 6  then
@@ -70,8 +70,8 @@ begin
 
                     qrexec_base.Close;
                     qrexec_base.SQL.Clear;
-                    qrexec_base.SQL.Add('insert into tcliente ( controle,  cliente,  datahoracadastro,  ativo,  endereco,  complemento,  bairro,  codcidade,  cidade,  uf,  pais,  cep,  naturalidade,  tipocliente,   rg,  cpf,  cnpj,  ie,   im,  datanascimento,  pai,  mae,  telefone,  celular,   email,   estadocivil,  fantasia,  obs,  limitecredito,  numero,  codigocidadeibge,  codemitente,  status,  tributacao,  codvendedor,  vendedor,  codigopais,   codigocstorigem ) values');
-                    qrexec_base.SQL.Add('                     (:controle, :cliente, :datahoracadastro, :ativo, :endereco, :complemento, :bairro, :codcidade, :cidade, :uf, :pais, :cep, :naturalidade, :tipocliente,  :rg, :cpf, :cnpj, :ie,  :im, :datanascimento, :pai, :mae, :telefone, :celular,  :email,  :estadocivil, :fantasia, :obs, :limitecredito, :numero, :codigocidadeibge, :codemitente, :status, :tributacao, :codvendedor, :vendedor, :codigopais,  :codigocstorigem )');
+                    qrexec_base.SQL.Add('insert into tcliente ( controle,  cliente,  datahoracadastro,  ativo,  endereco,  complemento,  bairro,  codcidade,  cidade,  uf,  pais,  cep,  naturalidade,  tipocliente,   rg,  cpf,  cnpj,  ie,   im,  datanascimento,  pai,  mae,  telefone,  celular,   email,   estadocivil,  fantasia,  obs,  limitecredito,  numero,  codigocidadeibge,  codemitente,  status,  tributacao,  codvendedor,  vendedor,  codigopais,   codigocstorigem  ) values');
+                    qrexec_base.SQL.Add('                     (:controle, :cliente, :datahoracadastro, :ativo, :endereco, :complemento, :bairro, :codcidade, :cidade, :uf, :pais, :cep, :naturalidade, :tipocliente,  :rg, :cpf, :cnpj, :ie,  :im, :datanascimento, :pai, :mae, :telefone, :celular,  :email,  :estadocivil, :fantasia, :obs, :limitecredito, :numero, :codigocidadeibge, :codemitente, :status, :tributacao, :codvendedor, :vendedor, :codigopais,  :codigocstorigem  )');
                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda.FieldByName('ccli').AsInteger;
                     qrexec_base.ParamByName('cliente').AsString:=modulo_vendaorc.qrvenda.FieldByName('nome').AsString;
                     qrexec_base.ParamByName('fantasia').AsString:=modulo_vendaorc.qrvenda.FieldByName('fantasia').AsString;
@@ -96,29 +96,32 @@ begin
                     qrexec_base.ParamByName('cidade').AsString:=modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString;
                     qrexec_base.ParamByName('uf').AsString:=modulo_vendaorc.qrvenda.FieldByName('estadoent').AsString;
                     qrexec_base.ParamByName('cep').AsString:=modulo_vendaorc.qrvenda.FieldByName('cepent').AsString;
-                    qrexec_base.ParamByName('telefone').AsString:=modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
+
+                    idddent := strtointdef(modulo_vendaorc.qrvenda.FieldByName('dddeent').AsString,11);
+
+
+                    qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
 
                     scpf := modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
                     scpf := tirapontos(tirabarras(tiratracos(scpf)));
-                    //scpf := tirabarras(scpf);
-                    //scpf := tiratracos(scpf);
 
-                    if length(scpf) = 14 then
+                    sie := modulo_vendaorc.qrvenda.FieldByName('ie').AsString;
+                    sie := tirapontos(tirabarras(tiratracos(sie)));
+
+                    if length(scpf) = 11 then
                        begin
 
-                         qrexec_base.ParamByName('tipocliente').AsString:= 'JURÍDICA';
-                         qrexec_base.ParamByName('cnpj').AsString:=modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
-                         qrexec_base.ParamByName('ie').AsString:=modulo_vendaorc.qrvenda.FieldByName('ie').AsString;
-
+                         qrexec_base.ParamByName('tipocliente').AsString:= 'FÍSICA';
+                         qrexec_base.ParamByName('cpf').AsString:=  formatacpf(scpf);
+                         qrexec_base.ParamByName('rg').AsString:=sie;
 
                        end
                     else
                        begin
 
-                         qrexec_base.ParamByName('tipocliente').AsString:= 'FÍSICA';
-                         qrexec_base.ParamByName('cpf').AsString:=modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
-                         qrexec_base.ParamByName('rg').AsString:=modulo_vendaorc.qrvenda.FieldByName('ie').AsString;
-
+                         qrexec_base.ParamByName('tipocliente').AsString:= 'JURÍDICA';
+                         qrexec_base.ParamByName('cnpj').AsString:=  formatacnpj(scpf);
+                         qrexec_base.ParamByName('ie').AsString:= sie;
 
                        end;
                     //endi
