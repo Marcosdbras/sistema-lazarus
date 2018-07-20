@@ -14,11 +14,16 @@ object frmvendaorc: Tfrmvendaorc
   LCLVersion = '1.8.4.0'
   object DBGrid1: TDBGrid
     Left = 16
-    Height = 280
-    Top = 32
+    Height = 272
+    Top = 40
     Width = 704
     Color = clWindow
     Columns = <    
+      item
+        Title.Caption = 'N.o PEDIDO'
+        Width = 100
+        FieldName = 'NPED'
+      end    
       item
         Title.Caption = 'CLIENTE'
         Width = 350
@@ -41,9 +46,9 @@ object frmvendaorc: Tfrmvendaorc
   object Label1: TLabel
     Left = 16
     Height = 15
-    Top = 11
-    Width = 42
-    Caption = 'Pedidos'
+    Top = 13
+    Width = 48
+    Caption = 'N.o Ped.:'
     ParentColor = False
   end
   object btnexportar: TButton
@@ -99,5 +104,22 @@ object frmvendaorc: Tfrmvendaorc
     DataSource = modulo_vendaorc.dsvenda_itemproduto
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 3
+  end
+  object edtnumped: TEdit
+    Left = 72
+    Height = 23
+    Top = 11
+    Width = 112
+    TabOrder = 4
+    Text = 'edtnumped'
+  end
+  object btnlocped: TButton
+    Left = 192
+    Height = 25
+    Top = 11
+    Width = 104
+    Caption = 'Localiza pedido'
+    OnClick = btnlocpedClick
+    TabOrder = 5
   end
 end

@@ -15,11 +15,22 @@ type
   Tfrmvendaorc = class(TForm)
     btnexportar: TButton;
     btncancelar: TButton;
+    btnlocped: TButton;
+    btnprimeiro: TButton;
+    btnanterior: TButton;
+    btnproximo: TButton;
+    btnultimo: TButton;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
+    edtnumped: TEdit;
     Label1: TLabel;
+    procedure btnanteriorClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure btnexportarClick(Sender: TObject);
+    procedure btnlocpedClick(Sender: TObject);
+    procedure btnprimeiroClick(Sender: TObject);
+    procedure btnproximoClick(Sender: TObject);
+    procedure btnultimoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private
@@ -46,6 +57,11 @@ implementation
       close;
     end;
 
+procedure Tfrmvendaorc.btnanteriorClick(Sender: TObject);
+begin
+  modulo_vendaorc.qrvenda.Prior;
+end;
+
 procedure Tfrmvendaorc.btnexportarClick(Sender: TObject);
 var
   controle, codigocstorigem, codigocst, idddent:integer;
@@ -58,6 +74,42 @@ begin
         //Atualiza tabelas auxiliares do sistema
         with modulo_conexaodb do
              begin
+
+               idddent := strtointdef(modulo_vendaorc.qrvenda.FieldByName('dddeent').AsString,11);
+               scpf := modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
+               scpf := tirapontos(tirabarras(tiratracos(scpf)));
+
+               sie := modulo_vendaorc.qrvenda.FieldByName('ie').AsString;
+               sie := tirapontos(tirabarras(tiratracos(sie)));
+
+
+
+
+               // Funcionário
+               qrconsulta_base.Close;
+               qrconsulta_base.SQL.Clear;
+               qrconsulta_base.SQL.Add('select * from tfuncionario where controle = :controle');
+               qrconsulta_base.ParamByName('controle').AsInteger:= modulo_vendaorc.qrvenda.FieldByName('cfunc').AsInteger;
+               qrconsulta_base.Open;
+               if qrconsulta_base.RecordCount = 0 then
+                  begin
+
+                    qrexec_base.Close;
+                    qrexec_base.SQL.Clear;
+                    qrexec_base.SQL.Add('insert into tfuncionario (controle, funcionario, datanascimento, datahoracadastro, ativo ) values (:controle, :funcionario, :datanascimento, :datahoracadastro, :ativo)');
+                    qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda.FieldByName('cfunc').AsInteger;
+                    qrexec_base.ParamByName('funcionario').AsString:=modulo_vendaorc.qrvenda.FieldByName('nfunc').AsString;;
+                    qrexec_base.ParamByName('datanascimento').Asdate:=strtodate('01/01/1900');
+                    qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
+                    qrexec_base.ParamByName('ativo').AsString:='SIM';
+
+                    qrexec_base.ExecSQL;
+
+                    atualizaBanco;
+
+                  end;
+               //endi
+
 
                // Cliente
                qrconsulta_base.Close;
@@ -97,16 +149,8 @@ begin
                     qrexec_base.ParamByName('uf').AsString:=modulo_vendaorc.qrvenda.FieldByName('estadoent').AsString;
                     qrexec_base.ParamByName('cep').AsString:=modulo_vendaorc.qrvenda.FieldByName('cepent').AsString;
 
-                    idddent := strtointdef(modulo_vendaorc.qrvenda.FieldByName('dddeent').AsString,11);
-
-
                     qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
 
-                    scpf := modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
-                    scpf := tirapontos(tirabarras(tiratracos(scpf)));
-
-                    sie := modulo_vendaorc.qrvenda.FieldByName('ie').AsString;
-                    sie := tirapontos(tirabarras(tiratracos(sie)));
 
                     if length(scpf) = 11 then
                        begin
@@ -142,32 +186,6 @@ begin
                   end;
                //endi
 
-
-               // Funcionário
-               qrconsulta_base.Close;
-               qrconsulta_base.SQL.Clear;
-               qrconsulta_base.SQL.Add('select * from tfuncionario where controle = :controle');
-               qrconsulta_base.ParamByName('controle').AsInteger:= modulo_vendaorc.qrvenda.FieldByName('cfunc').AsInteger;
-               qrconsulta_base.Open;
-               if qrconsulta_base.RecordCount = 0 then
-                  begin
-
-                    qrexec_base.Close;
-                    qrexec_base.SQL.Clear;
-                    qrexec_base.SQL.Add('insert into tfuncionario (controle, funcionario, datanascimento, datahoracadastro, ativo ) values (:controle, :funcionario, :datanascimento, :datahoracadastro, :ativo)');
-                    qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda.FieldByName('cfunc').AsInteger;
-                    qrexec_base.ParamByName('funcionario').AsString:=modulo_vendaorc.qrvenda.FieldByName('nfunc').AsString;;
-                    qrexec_base.ParamByName('datanascimento').Asdate:=strtodate('01/01/1900');
-                    qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
-                    qrexec_base.ParamByName('ativo').AsString:='SIM';
-
-                    qrexec_base.ExecSQL;
-
-                    atualizaBanco;
-
-                  end;
-               //endi
-
                qrsequencia.Close;
                qrsequencia.SQL.Clear;
                qrsequencia.SQL.Add('update tsequencia set controlevarchar = controlevarchar + 1');
@@ -189,8 +207,9 @@ begin
 
                qrexec_base.Close;
                qrexec_base.SQL.Clear;
-               qrexec_base.SQL.Add('insert into TPEDIDOVENDA(controle, codcliente,  cliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  controlevarchar,    datahoracadastro,  titulodav,  cancelado,  status, observacao,  dataprevisaoentrega, valordesconto, totalprodutos, totalliquido  ) ');
-               qrexec_base.SQL.Add('                values(:controle, :codcliente, :cliente, :codfuncionario, :funcionario, :codvendedor, :vendedor,  :controlevarchar,  :datahoracadastro,  :titulodav, :cancelado, :status, :observacao,  :dataprevisaoentrega, :valordesconto, :totalprodutos, :totalliquido  )');
+               qrexec_base.SQL.Add('insert into TPEDIDOVENDA(controle, codcliente,  cliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  controlevarchar,    datahoracadastro,  titulodav,  cancelado,  status, observacao,  dataprevisaoentrega, valordesconto, totalprodutos, totalliquido,         endereco,   bairro,   complemento,    cidade,     cep,     cpf,     cnpj,   email,    uf,    telefone,      numero,     rg,    ie,     im       )');
+               qrexec_base.SQL.Add('                values(:controle, :codcliente, :cliente, :codfuncionario, :funcionario, :codvendedor, :vendedor,  :controlevarchar,  :datahoracadastro,  :titulodav, :cancelado, :status, :observacao,  :dataprevisaoentrega, :valordesconto, :totalprodutos, :totalliquido, :endereco,  :bairro,  :complemento,   :cidade,    :cep,    :cpf,    :cnpj,  :email,   :uf,   :telefone,     :numero,    :rg,   :ie,    :im       )');
+
                qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
 
 
@@ -198,7 +217,7 @@ begin
                qrexec_base.ParamByName('controlevarchar').AsString:=numDav;
                qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
                qrexec_base.ParamByName('titulodav').AsString:='PEDIDO DE VENDA';
-               qrexec_base.ParamByName('cancelado').AsString:='NÃO';
+               qrexec_base.ParamByName('cancelado').AsString:='N';
                qrexec_base.ParamByName('status').AsString:='ABERTO';
                qrexec_base.ParamByName('dataprevisaoentrega').AsDate:=date;
                qrexec_base.ParamByName('valordesconto').Asfloat:=0;
@@ -211,6 +230,31 @@ begin
                qrexec_base.ParamByName('funcionario').AsString:=  modulo_vendaorc.qrvenda.FieldByName('nfunc').AsString;
                qrexec_base.ParamByName('codvendedor').AsInteger := modulo_vendaorc.qrvenda.FieldByName('cfunc').AsInteger;;
                qrexec_base.ParamByName('vendedor').AsString:= modulo_vendaorc.qrvenda.FieldByName('nfunc').AsString;
+
+
+               qrexec_base.ParamByName('endereco').AsString:= copy(modulo_vendaorc.qrvenda.FieldByName('endent').AsString,1,40);
+               qrexec_base.ParamByName('bairro').AsString:= modulo_vendaorc.qrvenda.FieldByName('bairroent').AsString;
+               qrexec_base.ParamByName('cidade').AsString:= modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString;
+               qrexec_base.ParamByName('cep').AsString:= modulo_vendaorc.qrvenda.FieldByName('cepent').AsString;
+               qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
+
+
+               qrexec_base.ParamByName('numero').AsString:= modulo_vendaorc.qrvenda.FieldByName('nroent').AsString;
+               if length(scpf) = 11 then
+                  begin
+
+                    qrexec_base.ParamByName('cpf').AsString:=  formatacpf(scpf);
+                    qrexec_base.ParamByName('rg').AsString:=sie;
+
+                  end
+               else
+                  begin
+
+                    qrexec_base.ParamByName('cnpj').AsString:=  formatacnpj(scpf);
+                    qrexec_base.ParamByName('ie').AsString:= sie;
+
+                  end;
+               //endi
 
 
 
@@ -636,6 +680,30 @@ begin
    //endi
 end;
 
+procedure Tfrmvendaorc.btnlocpedClick(Sender: TObject);
+begin
+  if not modulo_vendaorc.qrvenda.Locate('nped',edtnumped.Text,[]) then
+     begin
+       Application.MessageBox('Número do pedido não existe!','Atenção',MB_OK);
+     end;
+  //endif
+end;
+
+procedure Tfrmvendaorc.btnprimeiroClick(Sender: TObject);
+begin
+  modulo_vendaorc.qrvenda.First;
+end;
+
+procedure Tfrmvendaorc.btnproximoClick(Sender: TObject);
+begin
+  modulo_vendaorc.qrvenda.Next;
+end;
+
+procedure Tfrmvendaorc.btnultimoClick(Sender: TObject);
+begin
+  modulo_vendaorc.qrvenda.Last;
+end;
+
 procedure Tfrmvendaorc.FormClose(Sender: TObject; var CloseAction: TCloseAction
   );
 begin
@@ -644,12 +712,15 @@ end;
 
 procedure Tfrmvendaorc.FormCreate(Sender: TObject);
 begin
+   edtnumped.Text := '';
+
+
    with modulo_vendaorc do
      begin
 
        qrvenda.close;
        qrvenda.SQL.Clear;
-       qrvenda.SQL.Add('select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v right join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0');
+       qrvenda.SQL.Add('select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v inner join clientes c on v.ccli = c.codigo   inner join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0  order by nped');
        qrvenda.Open;
 
      end;

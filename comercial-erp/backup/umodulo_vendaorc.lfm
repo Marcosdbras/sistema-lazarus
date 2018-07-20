@@ -428,7 +428,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Precision = -1
       end    
       item
-        Name = 'SIGLA'
+        Name = 'SIGLAIPI'
         DataType = ftString
         Precision = -1
         Size = 10
@@ -439,7 +439,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Precision = -1
       end    
       item
-        Name = 'SIGLA_1'
+        Name = 'SIGLAPIS'
         DataType = ftString
         Precision = -1
         Size = 10
@@ -450,7 +450,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Precision = -1
       end    
       item
-        Name = 'SIGLA_2'
+        Name = 'SIGLACOFINS'
         DataType = ftString
         Precision = -1
         Size = 10
@@ -583,7 +583,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select dp.codipi,  ipi.sigla,  dp.cpis, pis.sigla, dp.ccofins, cofins.sigla, dp.csosn, dp.cest,  dp.cbar as codbarras, dp.caux as referencia, dp.ncm,  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo     left join ipi on dp.codipi = ipi.codigo       left join pis on dp.cpis = pis.codigo    left join cofins on dp.ccofins = cofins.codigo'
+      'select dp.codipi,  ipi.sigla as siglaipi,  dp.cpis, pis.sigla as siglapis, dp.ccofins, cofins.sigla as siglacofins, dp.csosn, dp.cest,  dp.cbar as codbarras, dp.caux as referencia, dp.ncm,  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d left join dprodutos dp on d.cpro = dp.codigo left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo     left join ipi on dp.codipi = ipi.codigo       left join pis on dp.cpis = pis.codigo    left join cofins on dp.ccofins = cofins.codigo'
     )
     Params = <>
     left = 64
@@ -804,6 +804,83 @@ object modulo_vendaorc: Tmodulo_vendaorc
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+    end
+    object qrvenda_itemprodutoCODIPI: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIPI'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoSIGLAIPI: TStringField
+      FieldKind = fkData
+      FieldName = 'SIGLAIPI'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrvenda_itemprodutoCPIS: TLongintField
+      FieldKind = fkData
+      FieldName = 'CPIS'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoSIGLAPIS: TStringField
+      FieldKind = fkData
+      FieldName = 'SIGLAPIS'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrvenda_itemprodutoCCOFINS: TLongintField
+      FieldKind = fkData
+      FieldName = 'CCOFINS'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrvenda_itemprodutoSIGLACOFINS: TStringField
+      FieldKind = fkData
+      FieldName = 'SIGLACOFINS'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrvenda_itemprodutoCSOSN: TStringField
+      FieldKind = fkData
+      FieldName = 'CSOSN'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrvenda_itemprodutoCEST: TStringField
+      FieldKind = fkData
+      FieldName = 'CEST'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
     end
   end
   object dsvenda_itemproduto: TDataSource
