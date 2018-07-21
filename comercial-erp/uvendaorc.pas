@@ -671,8 +671,26 @@ begin
                //endth
 
 
+              qrexec_base.close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('update tpedidovenda set valoracrescimo = :valoracrescimo where controle = :controle');
+              qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
+              qrexec_base.ParamByName('valoracrescimo').Asfloat:=0;
+              qrexec_base.ExecSQL;
+
+              atualizaBanco;
+
+
+
              end;
         //endth
+
+
+
+
+
+
+
 
         Application.MessageBox('Pedido exportado com sucesso!','Atenção',MB_OK);
 

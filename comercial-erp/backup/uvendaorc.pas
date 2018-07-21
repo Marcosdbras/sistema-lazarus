@@ -16,13 +16,21 @@ type
     btnexportar: TButton;
     btncancelar: TButton;
     btnlocped: TButton;
+    btnprimeiro: TButton;
+    btnanterior: TButton;
+    btnproximo: TButton;
+    btnultimo: TButton;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
     edtnumped: TEdit;
     Label1: TLabel;
+    procedure btnanteriorClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure btnexportarClick(Sender: TObject);
     procedure btnlocpedClick(Sender: TObject);
+    procedure btnprimeiroClick(Sender: TObject);
+    procedure btnproximoClick(Sender: TObject);
+    procedure btnultimoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private
@@ -48,6 +56,11 @@ implementation
     begin
       close;
     end;
+
+procedure Tfrmvendaorc.btnanteriorClick(Sender: TObject);
+begin
+  modulo_vendaorc.qrvenda.Prior;
+end;
 
 procedure Tfrmvendaorc.btnexportarClick(Sender: TObject);
 var
@@ -658,8 +671,26 @@ begin
                //endth
 
 
+              qrexec_base.close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('update tpedidovenda set valoracrescimo = :valoracrescimo where controle = :controle');
+              qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
+              qrexec_base.ParamByName('valoracrescimo').Asfloat:=0;
+              qrexec_base.ExecSQL;
+
+
+
+
+
              end;
         //endth
+
+
+
+
+
+
+
 
         Application.MessageBox('Pedido exportado com sucesso!','Atenção',MB_OK);
 
@@ -674,6 +705,21 @@ begin
        Application.MessageBox('Número do pedido não existe!','Atenção',MB_OK);
      end;
   //endif
+end;
+
+procedure Tfrmvendaorc.btnprimeiroClick(Sender: TObject);
+begin
+  modulo_vendaorc.qrvenda.First;
+end;
+
+procedure Tfrmvendaorc.btnproximoClick(Sender: TObject);
+begin
+  modulo_vendaorc.qrvenda.Next;
+end;
+
+procedure Tfrmvendaorc.btnultimoClick(Sender: TObject);
+begin
+  modulo_vendaorc.qrvenda.Last;
 end;
 
 procedure Tfrmvendaorc.FormClose(Sender: TObject; var CloseAction: TCloseAction

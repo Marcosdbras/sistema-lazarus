@@ -116,10 +116,46 @@ object frmvendaorc: Tfrmvendaorc
   object btnlocped: TButton
     Left = 192
     Height = 25
-    Top = 11
+    Top = 10
     Width = 104
     Caption = 'Localiza pedido'
     OnClick = btnlocpedClick
     TabOrder = 5
+  end
+  object btnprimeiro: TButton
+    Left = 304
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'Primeiro'
+    OnClick = btnprimeiroClick
+    TabOrder = 6
+  end
+  object btnanterior: TButton
+    Left = 384
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'Anterior'
+    OnClick = btnanteriorClick
+    TabOrder = 7
+  end
+  object btnproximo: TButton
+    Left = 464
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'Próximo'
+    OnClick = btnproximoClick
+    TabOrder = 8
+  end
+  object btnultimo: TButton
+    Left = 544
+    Height = 25
+    Top = 11
+    Width = 75
+    Caption = 'Último'
+    OnClick = btnultimoClick
+    TabOrder = 9
   end
 end
