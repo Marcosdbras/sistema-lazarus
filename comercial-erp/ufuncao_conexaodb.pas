@@ -91,6 +91,7 @@ implementation
                  Conexaodb_aux.Password        := Ini.ReadString('ConexaoBanco', 'Password', '');
                  Conexaodb_aux.DatabaseName        := Ini.ReadString('ConexaoBanco', 'Database_2', '');
                  Conexaodb_aux.CharSet  := Ini.ReadString('ConexaoBanco', 'Charset', 'UTF8');
+                 //Conexaodb_aux.CharSet  := 'WIN1252';
                  Conexaodb_aux.Connected       := True;
 
                  result := true;

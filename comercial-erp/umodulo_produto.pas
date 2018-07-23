@@ -12,6 +12,7 @@ type
   { Tmodulo_produto }
 
   Tmodulo_produto = class(TDataModule)
+    dscest: TDataSource;
     dstempProduto: TDataSource;
     dsproduto: TDataSource;
     qrprodutoALIQUOTAICMSECF: TBCDField;
@@ -150,6 +151,7 @@ type
     qrtempProduto: TBufDataset;
     qrtempProdutocund: TLongintField;
     qrproduto: TSQLQuery;
+    qrcest: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
 

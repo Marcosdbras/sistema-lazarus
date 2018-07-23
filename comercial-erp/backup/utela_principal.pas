@@ -52,7 +52,7 @@ implementation
 
 
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
-           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc;
+           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc, umodulo_vendaorc;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -118,7 +118,7 @@ end;
 
 procedure Tfrmtela_principal.Button1Click(Sender: TObject);
 begin
-  MenuItem6Click(Sender: TObject);
+  MenuItem6Click(Sender);
 end;
 
 procedure Tfrmtela_principal.FormShow(Sender: TObject);
@@ -159,6 +159,10 @@ procedure Tfrmtela_principal.MenuItem6Click(Sender: TObject);
 begin
   if conectarBanco_Aux then
      begin
+
+       Application.CreateForm(Tmodulo_vendaorc, modulo_vendaorc);
+
+
 
        frmvendaorc := tfrmvendaorc.create(self);
        frmvendaorc.showmodal;

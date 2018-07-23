@@ -420,7 +420,6 @@ object modulo_vendaorc: Tmodulo_vendaorc
     top = 48
   end
   object qrvenda_itemproduto: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CODIPI'

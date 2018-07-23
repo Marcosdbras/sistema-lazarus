@@ -64,8 +64,8 @@ end;
 
 procedure Tfrmvendaorc.btnexportarClick(Sender: TObject);
 var
-  controle, codigocstorigem, codigocst, idddent:integer;
-  scodigocstpis, scodigocstcofins,  scodigocstipi, scpf, sie:string;
+  controle, codigocstorigem, codigocst, idddent, ipos, idddfs:integer;
+  scodigocstpis, scodigocstcofins,  scodigocstipi, scpf, sie, sgrupo:string;
 
 begin
    if Application.MessageBox('Tem certeza que deseja exportar este pedido para NF-e?','Atenção',MB_YESNO) = 6  then
@@ -76,6 +76,7 @@ begin
              begin
 
                idddent := strtointdef(modulo_vendaorc.qrvenda.FieldByName('dddeent').AsString,11);
+               idddfs := strtointdef(modulo_vendaorc.qrvenda.FieldByName('dddfs').AsString,11);
                scpf := modulo_vendaorc.qrvenda.FieldByName('cpf').AsString;
                scpf := tirapontos(tirabarras(tiratracos(scpf)));
 
@@ -149,8 +150,11 @@ begin
                     qrexec_base.ParamByName('uf').AsString:=modulo_vendaorc.qrvenda.FieldByName('estadoent').AsString;
                     qrexec_base.ParamByName('cep').AsString:=modulo_vendaorc.qrvenda.FieldByName('cepent').AsString;
 
-                    qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
-
+                    if modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString <> '' then
+                       qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+copy(modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString,1,9)
+                    else
+                       qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddfs) +')'+copy(modulo_vendaorc.qrvenda.FieldByName('telefones').AsString,1,9);
+                    //endi
 
                     if length(scpf) = 11 then
                        begin
@@ -246,8 +250,8 @@ begin
                qrexec_base.ParamByName('bairro').AsString:= modulo_vendaorc.qrvenda.FieldByName('bairroent').AsString;
                qrexec_base.ParamByName('cidade').AsString:= modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString;
                qrexec_base.ParamByName('cep').AsString:= modulo_vendaorc.qrvenda.FieldByName('cepent').AsString;
-               qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
 
+               qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
 
                qrexec_base.ParamByName('numero').AsString:= modulo_vendaorc.qrvenda.FieldByName('nroent').AsString;
                if length(scpf) = 11 then
@@ -357,8 +361,8 @@ begin
                                // Grupo
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
-                               qrconsulta_base.SQL.Add('select * from tgrupoestoque where grupo = :grupo');
-                               qrconsulta_base.ParamByName('grupo').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString;
+                               qrconsulta_base.SQL.Add('select * from tgrupoestoque where  grupo = :grupo');
+                               qrconsulta_base.ParamByName('grupo').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString; ;
                                qrconsulta_base.Open;
 
                                //showmessage(  inttostr( modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger));
@@ -375,6 +379,8 @@ begin
 
                                    end;
                                //endi
+
+
 
 
 
@@ -495,8 +501,16 @@ begin
                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsInteger;
                                     qrexec_base.ParamByName('produto').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString;;
                                     qrexec_base.ParamByName('unidade').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
-                                    qrexec_base.ParamByName('cest').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cest').AsString;
 
+                                    if modulo_vendaorc.qrvenda_itemproduto.FieldByName('cest').AsString <> '' then
+                                       begin
+                                         qrexec_base.ParamByName('cest').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cest').AsString;
+                                       end
+                                    else
+                                       begin
+                                         qrexec_base.ParamByName('cest').AsString:=proc_cest(modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString);
+                                       end;
+                                    //endi
 
                                     qrexec_base.ParamByName('usagrade').AsString:= 'NÃO';
                                     qrexec_base.ParamByName('usaserial').AsString:= 'NÃO';
@@ -807,7 +821,7 @@ begin
 
        qrvenda.close;
        qrvenda.SQL.Clear;
-       qrvenda.SQL.Add('select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v inner join clientes c on v.ccli = c.codigo   inner join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0  order by nped');
+       qrvenda.SQL.Add('select c.dddfs,  c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v inner join clientes c on v.ccli = c.codigo   inner join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0  order by nped');
        qrvenda.Open;
 
      end;

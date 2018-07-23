@@ -2,12 +2,11 @@ object modulo_produto: Tmodulo_produto
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 378
-  HorizontalOffset = 1121
+  HorizontalOffset = 779
   VerticalOffset = 88
   Width = 195
   PPI = 96
   object qrproduto: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -883,6 +882,7 @@ object modulo_produto: Tmodulo_produto
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Currency = False
       MaxValue = 0
@@ -1996,6 +1996,7 @@ object modulo_produto: Tmodulo_produto
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Currency = False
       MaxValue = 0
@@ -2324,5 +2325,17 @@ object modulo_produto: Tmodulo_produto
     DataSet = qrtempProduto
     left = 104
     top = 111
+  end
+  object qrcest: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 16
+    top = 200
+  end
+  object DataSource1: TDataSource
+    left = 111
+    top = 200
   end
 end

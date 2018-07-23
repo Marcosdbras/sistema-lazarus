@@ -247,12 +247,12 @@ object modulo_conexaodb: Tmodulo_conexaodb
   object conexaodb_Aux: TIBConnection
     Connected = False
     LoginPrompt = False
-    DatabaseName = 'C:\SGBR\Master\BASESGMASTER.FDB'
+    DatabaseName = 'C:\auxsystcom\fbdados.FDB'
     KeepConnection = False
     Password = 'masterkey'
     Transaction = tzcontrole_Aux
     UserName = 'SYSDBA'
-    CharSet = 'ISO8859_1'
+    CharSet = 'UTF8'
     HostName = 'localhost'
     CheckTransactionParams = False
     left = 48

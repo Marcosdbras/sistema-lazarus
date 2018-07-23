@@ -26,6 +26,7 @@ type
     qrvendaCPF: TStringField;
     qrvendaCTIPOCLI: TLongintField;
     qrvendaDDDEENT: TStringField;
+    qrvendaDDDFS: TStringField;
     qrvendaENDENT: TStringField;
     qrvendaESTADOENT: TStringField;
     qrvendaFANTASIA: TStringField;
@@ -94,7 +95,7 @@ begin
 
             qrvenda_itemproduto.close;
             qrvenda_itemproduto.SQL.Clear;
-            qrvenda_itemproduto.SQL.Add('select dp.codipi,  ipi.sigla as siglaipi,  dp.cpis, pis.sigla as siglapis, dp.ccofins, cofins.sigla as siglacofins, dp.csosn, dp.cest,  dp.cbar as codbarras, dp.caux as referencia, dp.ncm,  dp.cgru, gr.descricao as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d      left join dprodutos dp on d.cpro = dp.codigo     left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo     left join ipi on dp.codipi = ipi.codigo       left join pis on dp.cpis = pis.codigo    left join cofins on dp.ccofins = cofins.codigo  where d.codsvenda = :codsvenda');
+            qrvenda_itemproduto.SQL.Add('select dp.codipi,  ipi.sigla as siglaipi,  dp.cpis, pis.sigla as siglapis, dp.ccofins, cofins.sigla as siglacofins, dp.csosn, dp.cest,  dp.cbar as codbarras, dp.caux as referencia, dp.ncm,  dp.cgru, gr.descricao  as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d      left join dprodutos dp on d.cpro = dp.codigo     left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo     left join ipi on dp.codipi = ipi.codigo       left join pis on dp.cpis = pis.codigo    left join cofins on dp.ccofins = cofins.codigo  where d.codsvenda = :codsvenda');
             qrvenda_itemproduto.ParamByName('codsvenda').AsInteger:= qrvenda.FieldByName('codigo').AsInteger;
             qrvenda_itemproduto.Open;
 

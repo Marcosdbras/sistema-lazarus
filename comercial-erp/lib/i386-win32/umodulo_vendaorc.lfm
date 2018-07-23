@@ -8,6 +8,12 @@ object modulo_vendaorc: Tmodulo_vendaorc
   object qrvenda: TSQLQuery
     FieldDefs = <    
       item
+        Name = 'DDDFS'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
         Name = 'RESPONSAVELENT'
         DataType = ftString
         Precision = -1
@@ -17,19 +23,19 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Name = 'FANTASIA'
         DataType = ftString
         Precision = -1
-        Size = 240
+        Size = 60
       end    
       item
         Name = 'TELEFONES'
         DataType = ftString
         Precision = -1
-        Size = 240
+        Size = 60
       end    
       item
         Name = 'CONTATO'
         DataType = ftString
         Precision = -1
-        Size = 200
+        Size = 50
       end    
       item
         Name = 'DDDEENT'
@@ -41,43 +47,43 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Name = 'ENDENT'
         DataType = ftString
         Precision = -1
-        Size = 400
+        Size = 100
       end    
       item
         Name = 'CPF'
         DataType = ftString
         Precision = -1
-        Size = 72
+        Size = 18
       end    
       item
         Name = 'IE'
         DataType = ftString
         Precision = -1
-        Size = 80
+        Size = 20
       end    
       item
         Name = 'COMPLENT'
         DataType = ftString
         Precision = -1
-        Size = 200
+        Size = 50
       end    
       item
         Name = 'BAIRROENT'
         DataType = ftString
         Precision = -1
-        Size = 400
+        Size = 100
       end    
       item
         Name = 'CIDADEENT'
         DataType = ftString
         Precision = -1
-        Size = 160
+        Size = 40
       end    
       item
         Name = 'CEPENT'
         DataType = ftFixedChar
         Precision = -1
-        Size = 36
+        Size = 9
       end    
       item
         Name = 'TELEFONEENT'
@@ -89,7 +95,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Name = 'ESTADOENT'
         DataType = ftFixedChar
         Precision = -1
-        Size = 8
+        Size = 2
       end    
       item
         Name = 'OBSERVACAO'
@@ -123,7 +129,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Name = 'NFUNC'
         DataType = ftString
         Precision = -1
-        Size = 320
+        Size = 80
       end    
       item
         Name = 'CODIGO'
@@ -150,13 +156,13 @@ object modulo_vendaorc: Tmodulo_vendaorc
         Name = 'NOME'
         DataType = ftString
         Precision = -1
-        Size = 320
+        Size = 80
       end>
     AfterScroll = qrvendaAfterScroll
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
+      'select c.dddfs,  c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
     )
     Params = <>
     left = 64
@@ -407,6 +413,16 @@ object modulo_vendaorc: Tmodulo_vendaorc
       FieldKind = fkData
       FieldName = 'DDDEENT'
       Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qrvendaDDDFS: TStringField
+      FieldKind = fkData
+      FieldName = 'DDDFS'
+      Index = 25
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False

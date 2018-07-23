@@ -38,9 +38,10 @@ begin
   Application.CreateForm(Tmodulo_produto, modulo_produto);
   Application.CreateForm(Tmodulo_vendaorc, modulo_vendaorc);
 
+
   frmsplash.Hide;
   frmsplash.Free;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(Tfrmvendaorc, frmvendaorc);
   Application.Run;
 end.
 

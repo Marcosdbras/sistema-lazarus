@@ -67,7 +67,7 @@ implementation
     function conectarBanco_aux:boolean;
          var
            Ini: TIniFile;
-           NovoNome: string;
+           NovoNome, error: string;
          begin
 
            result := false;
@@ -90,7 +90,8 @@ implementation
                  Conexaodb_aux.UserName            := Ini.ReadString('ConexaoBanco', 'User', '');
                  Conexaodb_aux.Password        := Ini.ReadString('ConexaoBanco', 'Password', '');
                  Conexaodb_aux.DatabaseName        := Ini.ReadString('ConexaoBanco', 'Database_2', '');
-                 Conexaodb_aux.CharSet  := Ini.ReadString('ConexaoBanco', 'Charset', 'UTF8');
+                 //Conexaodb_aux.CharSet  := Ini.ReadString('ConexaoBanco', 'Charset', 'UTF8');
+                 Conexaodb_aux.CharSet  := 'WIN1252';
                  Conexaodb_aux.Connected       := True;
 
                  result := true;
@@ -102,7 +103,7 @@ implementation
 
            except
                on E:Exception do
-               MessageDlg('Erro ao conectar!'#13'Erro: ' + e.Message, mtError, [mbOK], 0);
+               error := 'Erro ao conectar!'#13'Erro: ';
 
            end;
 

@@ -44,13 +44,14 @@ Function Arred0dec(pValor:real):real;
 Function Arre1Dec(pValor:real):real;
 function FormataCNPJ(CNPJ: string): string;
 function FormataCPF(CPF: string): string;
+function proc_cest(ncm:string):string;
 
 
 
 
 
 implementation
-        uses umodulo_conexaodb;
+        uses umodulo_conexaodb, umodulo_produto;
 
 
 procedure atualiza_base;
@@ -818,7 +819,61 @@ begin
 end;
 
 
+function proc_cest(ncm:string):string;
+begin
 
+  modulo_produto.qrcest.Close;
+  modulo_produto.qrcest.SQL.Clear;
+  modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
+  modulo_produto.qrcest.ParamByName('ncm').AsString:=ncm;
+  modulo_produto.qrcest.Open;
+
+  if modulo_produto.qrcest.RecordCount > 0 then
+     begin
+
+       result := modulo_produto.qrcest.FieldByName('cest').AsString;
+
+     end
+  else
+     begin
+
+        modulo_produto.qrcest.Close;
+        modulo_produto.qrcest.SQL.Clear;
+        modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
+        modulo_produto.qrcest.ParamByName('ncm').AsString:=copy(ncm,1,6);
+        modulo_produto.qrcest.Open;
+        if modulo_produto.qrcest.RecordCount > 0 then
+           begin
+
+              result := modulo_produto.qrcest.FieldByName('cest').AsString;
+
+           end
+        else
+           begin
+              modulo_produto.qrcest.Close;
+              modulo_produto.qrcest.SQL.Clear;
+              modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
+              modulo_produto.qrcest.ParamByName('ncm').AsString:=copy(ncm,1,4);
+              modulo_produto.qrcest.Open;
+              if modulo_produto.qrcest.RecordCount > 0 then
+                 begin
+                   result := modulo_produto.qrcest.FieldByName('cest').AsString;
+                 end
+              else
+                 begin
+                   result := '';
+                 end;
+              //endi
+           end;
+        //endi
+     end;
+  //endi
+
+
+
+
+
+end;
 
 end.
 
