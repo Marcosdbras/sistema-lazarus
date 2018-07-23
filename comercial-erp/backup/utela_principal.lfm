@@ -1,11 +1,11 @@
 object frmtela_principal: Tfrmtela_principal
-  Left = 5
+  Left = 0
   Height = 546
   Top = 97
-  Width = 1020
+  Width = 1008
   Caption = 'Master Plus'
   ClientHeight = 526
-  ClientWidth = 1020
+  ClientWidth = 1008
   Menu = MainMenu1
   OnCreate = FormCreate
   OnShow = FormShow
@@ -16,12 +16,23 @@ object frmtela_principal: Tfrmtela_principal
     Left = 0
     Height = 88
     Top = 0
-    Width = 1020
+    Width = 1008
     Align = alTop
     BevelOuter = bvNone
+    ClientHeight = 88
+    ClientWidth = 1008
     Color = 16744448
     ParentColor = False
     TabOrder = 0
+    object Button1: TButton
+      Left = 8
+      Height = 65
+      Top = 8
+      Width = 136
+      Caption = 'Exportar para NFE 4.0'
+      OnClick = Button1Click
+      TabOrder = 0
+    end
   end
   object pnlsuperior1: TPanel
     Left = 0
@@ -38,11 +49,11 @@ object frmtela_principal: Tfrmtela_principal
     Left = 0
     Height = 82
     Top = 444
-    Width = 1020
+    Width = 1008
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 82
-    ClientWidth = 1020
+    ClientWidth = 1008
     Color = 16744448
     ParentColor = False
     TabOrder = 2
@@ -50,11 +61,11 @@ object frmtela_principal: Tfrmtela_principal
       Left = 0
       Height = 23
       Top = 59
-      Width = 1020
+      Width = 1008
       Panels = <>
     end
     object Panel1: TPanel
-      Left = 884
+      Left = 872
       Height = 59
       Top = 0
       Width = 136
@@ -85,10 +96,10 @@ object frmtela_principal: Tfrmtela_principal
     Left = 168
     Height = 356
     Top = 88
-    Width = 852
+    Width = 840
     Align = alClient
     ClientHeight = 356
-    ClientWidth = 852
+    ClientWidth = 840
     TabOrder = 3
     object DBGrid1: TDBGrid
       Left = 16

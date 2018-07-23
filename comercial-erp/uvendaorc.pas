@@ -34,9 +34,9 @@ type
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private
-    icodigo_controle, icodigo_controle_item, codaplicacaoproduto, sequencia_num:integer;
+    icodigo_controle, icodigo_controle_item, codaplicacaoproduto, sequencia_num, icodimpostomedio:integer;
     opcao_item, cfop, referencia, fatorconversao, codbarras, descricaoun, nomeprod, numDav:string;
-    qtdeconvertida, valorconversao:real;
+    qtdeconvertida, valorconversao, faliquotanacional,faliquotaimportada,fpercimpostomedio :real;
 
 
   public
@@ -157,7 +157,13 @@ begin
 
                          qrexec_base.ParamByName('tipocliente').AsString:= 'FÍSICA';
                          qrexec_base.ParamByName('cpf').AsString:=  formatacpf(scpf);
-                         qrexec_base.ParamByName('rg').AsString:=sie;
+
+                         if  sie <> '' then
+                             qrexec_base.ParamByName('rg').AsString:=sie
+                         else
+                            qrexec_base.ParamByName('rg').AsString:='ISENTO';
+                         //endif
+
 
                        end
                     else
@@ -165,8 +171,12 @@ begin
 
                          qrexec_base.ParamByName('tipocliente').AsString:= 'JURÍDICA';
                          qrexec_base.ParamByName('cnpj').AsString:=  formatacnpj(scpf);
-                         qrexec_base.ParamByName('ie').AsString:= sie;
 
+                         if  sie <> '' then
+                             qrexec_base.ParamByName('ie').AsString:= sie
+                         else
+                               qrexec_base.ParamByName('rg').AsString:='ISENTO';
+                         //endif
                        end;
                     //endi
 
@@ -244,14 +254,24 @@ begin
                   begin
 
                     qrexec_base.ParamByName('cpf').AsString:=  formatacpf(scpf);
-                    qrexec_base.ParamByName('rg').AsString:=sie;
+
+                    if  qrexec_base.ParamByName('rg').AsString <> '' then
+                        qrexec_base.ParamByName('rg').AsString:=sie
+                    else
+                        qrexec_base.ParamByName('rg').AsString:='ISENTO';
+                    //endif
 
                   end
                else
                   begin
 
                     qrexec_base.ParamByName('cnpj').AsString:=  formatacnpj(scpf);
-                    qrexec_base.ParamByName('ie').AsString:= sie;
+
+                    if  qrexec_base.ParamByName('ie').AsString <> '' then
+                        qrexec_base.ParamByName('ie').AsString:= sie
+                    else
+                        qrexec_base.ParamByName('ie').AsString := 'ISENTO';
+                    //endif
 
                   end;
                //endi
@@ -469,8 +489,8 @@ begin
 
                                     qrexec_base.Close;
                                     qrexec_base.SQL.Clear;
-                                    qrexec_base.SQL.Add('insert into testoque (controle,   origem,  grupo,  produto,  unidade,  precocusto,  perclucro,  precovenda,  IAT,  IPPT,  tributado,  pesado,  codunidademedida,  codcstorigem,  codigocstorigem,  fatorconversao,  controlarvalidade,  codgrupo,  ncm,  codbarras,  tipobarra,  ativo,  referencia,  customedio,  datahoracadastro,  usagrade,  usaserial,  codtributacaoipi,  tributacaoipi,  codtributacaopis,  tributacaopis,  codtributacaocofins,  tributacaocofins,  possuiicmsst,  isento,  csosn,  descricaocsosn,  codaplicacaoproduto,  aplicacaoproduto,  codemitente,  cest,  valorconversao  ) values ');
-                                    qrexec_base.SQL.Add('                     (:controle, :origem, :grupo, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial, :codtributacaoipi, :tributacaoipi, :codtributacaopis, :tributacaopis, :codtributacaocofins, :tributacaocofins, :possuiicmsst, :isento, :csosn, :descricaocsosn, :codaplicacaoproduto, :aplicacaoproduto, :codemitente, :cest, :valorconversao  )');
+                                    qrexec_base.SQL.Add('insert into testoque (controle,   origem,  grupo,  produto,  unidade,  precocusto,  perclucro,  precovenda,  IAT,  IPPT,  tributado,  pesado,  codunidademedida,  codcstorigem,  codigocstorigem,  fatorconversao,  controlarvalidade,  codgrupo,  ncm,  codbarras,  tipobarra,  ativo,  referencia,  customedio,  datahoracadastro,  usagrade,  usaserial,  codtributacaoipi,  tributacaoipi,  codtributacaopis,  tributacaopis,  codtributacaocofins,  tributacaocofins,  possuiicmsst,  isento,  csosn,  descricaocsosn,  codaplicacaoproduto,  aplicacaoproduto,  codemitente,  cest,  valorconversao,   codimpostomedio,   percimpostomedio  ) values ');
+                                    qrexec_base.SQL.Add('                     (:controle, :origem, :grupo, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial, :codtributacaoipi, :tributacaoipi, :codtributacaopis, :tributacaopis, :codtributacaocofins, :tributacaocofins, :possuiicmsst, :isento, :csosn, :descricaocsosn, :codaplicacaoproduto, :aplicacaoproduto, :codemitente, :cest, :valorconversao,  :codimpostomedio,  :percimpostomedio  )');
 
                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsInteger;
                                     qrexec_base.ParamByName('produto').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString;;
@@ -508,6 +528,44 @@ begin
 
                                     qrexec_base.ParamByName('codcstorigem').AsInteger :=  qrconsulta_base.FieldByName('controle').AsInteger  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
                                     qrexec_base.ParamByName('origem').AsString:= qrconsulta_base.FieldByName('codigoorigem').AsString+' - '+qrconsulta_base.FieldByName('descricaoorigem').AsString ;
+                                    qrexec_base.ParamByName('codigocstorigem').AsInteger := qrconsulta_base.FieldByName('codigoorigem').AsInteger;
+
+
+
+
+                                    //Consulta Imposto médio
+                                    qrconsulta_base.Close;
+                                    qrconsulta_base.SQL.Clear;
+                                    qrconsulta_base.SQL.Add('select * from timpostomedio where ncmnbs = :ncmnbs');
+                                    qrconsulta_base.ParamByName('ncmnbs').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
+                                    qrconsulta_base.Open;
+
+                                    if qrconsulta_base.RecordCount > 0 then
+                                       begin
+
+                                         icodimpostomedio :=  qrconsulta_base.FieldByName('controle').AsInteger;
+                                         faliquotanacional :=  qrconsulta_base.FieldByName('aliquotanacional').Asfloat;
+                                         faliquotaimportada :=  qrconsulta_base.FieldByName('aliquotaimportada').Asfloat;
+
+
+                                       end
+                                    else
+                                       begin
+
+
+                                         icodimpostomedio :=  40242;
+                                         faliquotanacional :=  31.60;
+                                         faliquotaimportada :=  39.09;
+
+
+                                       end;
+                                    //endi
+
+                                    fpercimpostomedio := faliquotanacional;
+
+
+                                    qrexec_base.ParamByName('codimpostomedio').AsInteger :=  icodimpostomedio; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
+                                    qrexec_base.ParamByName('percimpostomedio').Asfloat := fpercimpostomedio;
 
 
 
@@ -616,7 +674,7 @@ begin
 
                                qrexec_base.Close;
                                qrexec_base.SQL.Clear;
-                               qrexec_base.SQL.Add('insert into TITEMPEDIDOVENDA(  codpedidovenda,   datahoracadastro,  codproduto,   produto,   qtde,   un,   valorunitario,   valordesconto,    valoracrescimo,    percdesconto,    percacrescimo,  situacaotributaria,  aliquota,  cancelado,     decimaisqtde,   decimaisvalorunitario,  coditem,    valordescontounitario,    valoracrescimounitario,    controleorigemmesclagem,  numerodav,   md5dav,   mesclar,  status,  qtdeconvertida,  unconvertida,   obs  ) ');
+                               qrexec_base.SQL.Add('insert into TITEMPEDIDOVENDA(  codpedidovenda,   datahoracadastro,  codproduto,   produto,   qtde,   un,   valorunitario,   valordesconto,    valoracrescimo,    percdesconto,    percacrescimo,  situacaotributaria,  aliquota,  cancelado,     decimaisqtde,   decimaisvalorunitario,  coditem,    valordescontounitario,    valoracrescimounitario,    controleorigemmesclagem,  numerodav,   md5dav,   mesclar,  status,  qtdeconvertida,  unconvertida,   obs ) ');
                                qrexec_base.SQL.Add('                     values(:codpedidovenda,   :datahoracadastro, :codproduto,  :produto,  :qtde,  :un,  :valorunitario,  :valordesconto,   :valoracrescimo,   :percdesconto,   :percacrescimo, :situacaotributaria, :aliquota, :cancelado,    :decimaisqtde,  :decimaisvalorunitario, :coditem,   :valordescontounitario,   :valoracrescimounitario,   :controleorigemmesclagem, :numerodav,  :md5dav,  :mesclar, :status, :qtdeconvertida, :unconvertida,  :obs ) ');
 
 
@@ -641,6 +699,7 @@ begin
                                qrexec_base.ParamByName('valoracrescimounitario').Asfloat:= 0;
                                qrexec_base.ParamByName('numerodav').AsString := numDav;
                                qrexec_base.ParamByName('status').AsString := 'ABERTO';
+                               //qrexec_base.ParamByName('md5dav').AsString:='7330290EE547E4C3F7F53C939728E610';
 
 
                                //qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
@@ -670,11 +729,21 @@ begin
                   end;
                //endth
 
+              //totaliza itens
+              qrconsulta_base.Close;
+              qrconsulta_base.sql.Clear;
+              qrconsulta_base.SQL.Add('select codpedidovenda, sum(totalliquido) as totalliquido from titempedidovenda group by codpedidovenda  having codpedidovenda = :codpedidovenda');
+              qrconsulta_base.ParamByName('codpedidovenda').AsInteger := icodigo_controle;
+              qrconsulta_base.Open;
 
+              //Grava totalizações na base
               qrexec_base.close;
               qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('update tpedidovenda set valoracrescimo = :valoracrescimo where controle = :controle');
+              qrexec_base.SQL.Add('update tpedidovenda set valoracrescimo = :valoracrescimo, totalliquido = :totalliquido,  totalprodutos = :totalprodutos where controle = :controle');
               qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
+              qrexec_base.ParamByName('totalliquido').Asfloat:=qrconsulta_base.FieldByName('totalliquido').AsFloat;
+              qrexec_base.ParamByName('totalprodutos').Asfloat:=qrconsulta_base.FieldByName('totalliquido').AsFloat;
+
               qrexec_base.ParamByName('valoracrescimo').Asfloat:=0;
               qrexec_base.ExecSQL;
 

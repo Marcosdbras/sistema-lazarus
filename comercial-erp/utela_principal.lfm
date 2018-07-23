@@ -19,9 +19,20 @@ object frmtela_principal: Tfrmtela_principal
     Width = 1008
     Align = alTop
     BevelOuter = bvNone
+    ClientHeight = 88
+    ClientWidth = 1008
     Color = 16744448
     ParentColor = False
     TabOrder = 0
+    object Button1: TButton
+      Left = 8
+      Height = 65
+      Top = 8
+      Width = 136
+      Caption = 'Exportar para NFE 4.0'
+      OnClick = Button1Click
+      TabOrder = 0
+    end
   end
   object pnlsuperior1: TPanel
     Left = 0

@@ -13,6 +13,7 @@ type
   { Tfrmtela_principal }
 
   Tfrmtela_principal = class(TForm)
+    Button1: TButton;
     Button2: TButton;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
@@ -29,6 +30,7 @@ type
     pnlsuperior2: TPanel;
     pnlsuperior3: TPanel;
     StatusBar1: TStatusBar;
+    procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -112,6 +114,11 @@ end;
 procedure Tfrmtela_principal.Button2Click(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmtela_principal.Button1Click(Sender: TObject);
+begin
+  MenuItem6Click(Sender: TObject);
 end;
 
 procedure Tfrmtela_principal.FormShow(Sender: TObject);
