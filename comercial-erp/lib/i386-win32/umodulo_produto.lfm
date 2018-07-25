@@ -2304,6 +2304,7 @@ object modulo_produto: Tmodulo_produto
   end
   object dsproduto: TDataSource
     DataSet = qrproduto
+    OnDataChange = dsprodutoDataChange
     left = 104
     top = 16
   end

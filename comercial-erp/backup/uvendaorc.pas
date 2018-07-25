@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, DBGrids,
-  StdCtrls, Types, LCLType;
+  StdCtrls, Types, LCLType, md5;
 
 type
 
@@ -65,7 +65,7 @@ end;
 procedure Tfrmvendaorc.btnexportarClick(Sender: TObject);
 var
   controle, codigocstorigem, codigocst, idddent, ipos, idddfs:integer;
-  scodigocstpis, scodigocstcofins,  scodigocstipi, scpf, sie, sgrupo:string;
+  scodigocstpis, scodigocstcofins,  scodigocstipi, scpf, sie, sgrupo, scest, sCestDescricao, hash, hash1:string;
 
 begin
    if Application.MessageBox('Tem certeza que deseja exportar este pedido para NF-e?','Atenção',MB_YESNO) = 6  then
@@ -74,6 +74,9 @@ begin
         //Atualiza tabelas auxiliares do sistema
         with modulo_conexaodb do
              begin
+
+
+
 
                idddent := strtointdef(modulo_vendaorc.qrvenda.FieldByName('dddeent').AsString,11);
                idddfs := strtointdef(modulo_vendaorc.qrvenda.FieldByName('dddfs').AsString,11);
@@ -151,9 +154,9 @@ begin
                     qrexec_base.ParamByName('cep').AsString:=modulo_vendaorc.qrvenda.FieldByName('cepent').AsString;
 
                     if modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString <> '' then
-                       qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString
+                       qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+copy(modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString,1,9)
                     else
-                       qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddfs) +')'+modulo_vendaorc.qrvenda.FieldByName('telefones').AsString;
+                       qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddfs) +')'+copy(modulo_vendaorc.qrvenda.FieldByName('telefones').AsString,1,9);
                     //endi
 
                     if length(scpf) = 11 then
@@ -179,7 +182,7 @@ begin
                          if  sie <> '' then
                              qrexec_base.ParamByName('ie').AsString:= sie
                          else
-                               qrexec_base.ParamByName('rg').AsString:='ISENTO';
+                             qrexec_base.ParamByName('rg').AsString:='ISENTO';
                          //endif
                        end;
                     //endi
@@ -221,13 +224,17 @@ begin
 
                qrexec_base.Close;
                qrexec_base.SQL.Clear;
-               qrexec_base.SQL.Add('insert into TPEDIDOVENDA(controle, codcliente,  cliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  controlevarchar,    datahoracadastro,  titulodav,  cancelado,  status, observacao,  dataprevisaoentrega, valordesconto, totalprodutos, totalliquido,         endereco,   bairro,   complemento,    cidade,     cep,     cpf,     cnpj,   email,    uf,    telefone,      numero,     rg,    ie,     im       )');
-               qrexec_base.SQL.Add('                values(:controle, :codcliente, :cliente, :codfuncionario, :funcionario, :codvendedor, :vendedor,  :controlevarchar,  :datahoracadastro,  :titulodav, :cancelado, :status, :observacao,  :dataprevisaoentrega, :valordesconto, :totalprodutos, :totalliquido, :endereco,  :bairro,  :complemento,   :cidade,    :cep,    :cpf,    :cnpj,  :email,   :uf,   :telefone,     :numero,    :rg,   :ie,    :im       )');
+               qrexec_base.SQL.Add('insert into TPEDIDOVENDA(controle, codcliente,  cliente,  codfuncionario,  funcionario,  codvendedor, vendedor,  controlevarchar,    datahoracadastro,  titulodav,  cancelado,  status, observacao,  dataprevisaoentrega, valordesconto, totalprodutos, totalliquido,         endereco,   bairro,   complemento,    cidade,     cep,     cpf,     cnpj,   email,    uf,    telefone,      numero,     rg,    ie,     im,     md5dav       )');
+               qrexec_base.SQL.Add('                values(:controle, :codcliente, :cliente, :codfuncionario, :funcionario, :codvendedor, :vendedor,  :controlevarchar,  :datahoracadastro,  :titulodav, :cancelado, :status, :observacao,  :dataprevisaoentrega, :valordesconto, :totalprodutos, :totalliquido, :endereco,  :bairro,  :complemento,   :cidade,    :cep,    :cpf,    :cnpj,  :email,   :uf,   :telefone,     :numero,    :rg,   :ie,    :im,    :md5dav       )');
 
                qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle;
 
 
                numDav := formatfloat('0000000000',qrsequencia.FieldByName('controlevarchar').AsInteger);
+
+
+               hash :=   uppercase(   MD5Print(MD5String(  numDav + datetostr(now())  ))   );
+
                qrexec_base.ParamByName('controlevarchar').AsString:=numDav;
                qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
                qrexec_base.ParamByName('titulodav').AsString:='PEDIDO DE VENDA';
@@ -252,6 +259,12 @@ begin
                qrexec_base.ParamByName('cep').AsString:= modulo_vendaorc.qrvenda.FieldByName('cepent').AsString;
 
                qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+modulo_vendaorc.qrvenda.FieldByName('telefoneent').AsString;
+
+
+
+
+               qrexec_base.ParamByName('md5dav').AsString:=hash;
+
 
                qrexec_base.ParamByName('numero').AsString:= modulo_vendaorc.qrvenda.FieldByName('nroent').AsString;
                if length(scpf) = 11 then
@@ -299,11 +312,88 @@ begin
 
                     while not qrvenda_itemproduto.EOF do
                       begin
+                        hash :=   uppercase(   MD5Print(MD5String(  modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsString + datetostr(now())  ))   );
+                        hash1 :=  uppercase(   MD5Print(MD5String(  modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString + datetostr(now())  ))   );
 
+
+                        scest := proc_cest(modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString);
+                        scestDescricao := proc_cestDescricao(modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString);
 
                         //Atualiza tabelas auxiliares do sistema
                         with modulo_conexaodb do
                              begin
+
+                               //Consulta Imposto médio
+                               qrconsulta_base.Close;
+                               qrconsulta_base.SQL.Clear;
+                               qrconsulta_base.SQL.Add('select * from timpostomedio where ncmnbs = :ncmnbs');
+                               qrconsulta_base.ParamByName('ncmnbs').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
+                               qrconsulta_base.Open;
+
+                               if qrconsulta_base.RecordCount > 0 then
+                                  begin
+
+                                    icodimpostomedio :=  qrconsulta_base.FieldByName('controle').AsInteger;
+                                    faliquotanacional :=  qrconsulta_base.FieldByName('aliquotanacional').Asfloat;
+                                    faliquotaimportada :=  qrconsulta_base.FieldByName('aliquotaimportada').Asfloat;
+
+
+                                  end
+                               else
+                                  begin
+
+
+                                    icodimpostomedio :=  40242;
+                                    faliquotanacional :=  31.60;
+                                    faliquotaimportada :=  39.09;
+
+
+                                  end;
+                               //endi
+
+
+                               //Consulta tcest
+                               qrconsulta_base.Close;
+                               qrconsulta_base.SQL.Clear;
+                               qrconsulta_base.SQL.Add('select * from tcest where ncm = :ncm');
+                               qrconsulta_base.ParamByName('ncm').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
+                               qrconsulta_base.Open;
+                               if qrconsulta_base.RecordCount = 0 then
+                                  begin
+
+                                    qrexec_base.Close;
+                                    qrexec_base.SQL.Clear;
+                                    qrexec_base.SQL.Add('insert into tcest (cest, ncm, codimpostomedio, descricao) values (:cest, :ncm, :codimpostomedio, :descricao)');
+
+                                    if modulo_vendaorc.qrvenda_itemproduto.FieldByName('cest').AsString <> '' then
+                                       begin
+
+                                         qrexec_base.ParamByName('cest').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cest').AsString;
+                                         qrexec_base.ParamByName('descricao').AsString:='Outros:';
+
+                                       end
+                                    else
+                                       begin
+
+                                         qrexec_base.ParamByName('cest').AsString := scest;
+                                         qrexec_base.ParamByName('descricao').AsString:=scestDescricao;
+
+                                       end;
+                                    //endi
+
+
+                                    qrexec_base.ParamByName('ncm').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
+
+                                    qrexec_base.ParamByName('codimpostomedio').AsInteger:=icodimpostomedio;
+
+                                    qrexec_base.ExecSQL;
+
+                                    atualizaBanco;
+
+
+                                  end;
+                               //endi
+
 
                                // Unidade Medida
                                qrconsulta_base.Close;
@@ -328,9 +418,6 @@ begin
 
                                   end;
                                //endi
-
-
-
 
                                // CST Origem
                                qrconsulta_base.Close;
@@ -357,15 +444,33 @@ begin
                                //endi
 
 
-
                                // Grupo
+
+                               try
+
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
                                qrconsulta_base.SQL.Add('select * from tgrupoestoque where  grupo = :grupo');
                                qrconsulta_base.ParamByName('grupo').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString; ;
                                qrconsulta_base.Open;
 
+
+                               except
+
+
+                                 qrconsulta_base.Close;
+                                 qrconsulta_base.SQL.Clear;
+                                 qrconsulta_base.SQL.Add('select * from tgrupoestoque where  controle = :controle');
+                                 qrconsulta_base.ParamByName('controle').AsInteger:= 1;
+                                 qrconsulta_base.Open;
+
+
+
+                               end;
+
                                //showmessage(  inttostr( modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger));
+                               finally
+                               end;
 
                                if (qrconsulta_base.RecordCount = 0) then
                                    begin
@@ -379,10 +484,6 @@ begin
 
                                    end;
                                //endi
-
-
-
-
 
                                // IPI
                                qrconsulta_base.Close;
@@ -430,10 +531,6 @@ begin
                                     atualizaBanco;
                                   end;
                                //endi
-
-
-
-
 
                                // COFINS
                                qrconsulta_base.Close;
@@ -495,22 +592,32 @@ begin
 
                                     qrexec_base.Close;
                                     qrexec_base.SQL.Clear;
-                                    qrexec_base.SQL.Add('insert into testoque (controle,   origem,  grupo,  produto,  unidade,  precocusto,  perclucro,  precovenda,  IAT,  IPPT,  tributado,  pesado,  codunidademedida,  codcstorigem,  codigocstorigem,  fatorconversao,  controlarvalidade,  codgrupo,  ncm,  codbarras,  tipobarra,  ativo,  referencia,  customedio,  datahoracadastro,  usagrade,  usaserial,  codtributacaoipi,  tributacaoipi,  codtributacaopis,  tributacaopis,  codtributacaocofins,  tributacaocofins,  possuiicmsst,  isento,  csosn,  descricaocsosn,  codaplicacaoproduto,  aplicacaoproduto,  codemitente,  cest,  valorconversao,   codimpostomedio,   percimpostomedio  ) values ');
-                                    qrexec_base.SQL.Add('                     (:controle, :origem, :grupo, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial, :codtributacaoipi, :tributacaoipi, :codtributacaopis, :tributacaopis, :codtributacaocofins, :tributacaocofins, :possuiicmsst, :isento, :csosn, :descricaocsosn, :codaplicacaoproduto, :aplicacaoproduto, :codemitente, :cest, :valorconversao,  :codimpostomedio,  :percimpostomedio  )');
+                                    qrexec_base.SQL.Add('insert into testoque (controle,   origem,  grupo,  produto,  unidade,  precocusto,  perclucro,  precovenda,  IAT,  IPPT,  tributado,  pesado,  codunidademedida,  codcstorigem,  codigocstorigem,  fatorconversao,  controlarvalidade,  codgrupo,  ncm,  codbarras,  tipobarra,  ativo,  referencia,  customedio,  datahoracadastro,  usagrade,  usaserial,  codtributacaoipi,  tributacaoipi,  codtributacaopis,  tributacaopis,  codtributacaocofins,  tributacaocofins,  possuiicmsst,  isento,  csosn,  descricaocsosn,  codaplicacaoproduto,  aplicacaoproduto,  codemitente,  cest,  valorconversao,   codimpostomedio,   percimpostomedio,  md5,  md5e2,  PERCICMSSTINTERNA,  percmvaoriginal,   percicmspropriost, valorunitariocompra,   percreducaobcst, percipi,   nometabelapreco,  percimpostomedioestadual,  percimpostomediomunicipal,   percglpcomb,   percgnncomb,     percgnicomb,   valorpartidacomb,    aliquotafcp,   PERCFCPST  ) values ');
+                                    qrexec_base.SQL.Add('                     (:controle, :origem, :grupo, :produto, :unidade, :precocusto, :perclucro, :precovenda, :IAT, :IPPT, :tributado, :pesado, :codunidademedida, :codcstorigem, :codigocstorigem, :fatorconversao, :controlarvalidade, :codgrupo, :ncm, :codbarras, :tipobarra, :ativo, :referencia, :customedio, :datahoracadastro, :usagrade, :usaserial, :codtributacaoipi, :tributacaoipi, :codtributacaopis, :tributacaopis, :codtributacaocofins, :tributacaocofins, :possuiicmsst, :isento, :csosn, :descricaocsosn, :codaplicacaoproduto, :aplicacaoproduto, :codemitente, :cest, :valorconversao,  :codimpostomedio,  :percimpostomedio, :md5, :md5e2, :PERCICMSSTINTERNA, :percmvaoriginal,  :percicmspropriost, :valorunitariocompra, :percreducaobcst, :percipi, :nometabelapreco, :percimpostomedioestadual, :percimpostomediomunicipal, :percglpcomb,    :percgnncomb,   :percgnicomb,   :valorpartidacomb,  :aliquotafcp,  :PERCFCPST  )');
 
                                     qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cpro').AsInteger;
                                     qrexec_base.ParamByName('produto').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricao').AsString;;
                                     qrexec_base.ParamByName('unidade').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('und').AsString;
 
+                                    qrexec_base.ParamByName('md5').AsString:= hash;
+                                    qrexec_base.ParamByName('md5e2').AsString:= hash1;
+
                                     if modulo_vendaorc.qrvenda_itemproduto.FieldByName('cest').AsString <> '' then
                                        begin
+
                                          qrexec_base.ParamByName('cest').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('cest').AsString;
+
                                        end
                                     else
                                        begin
-                                         qrexec_base.ParamByName('cest').AsString:=proc_cest(modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString);
+
+                                         qrexec_base.ParamByName('cest').AsString := scest;
+
                                        end;
                                     //endi
+
+
+                                    qrexec_base.ParamByName('valorunitariocompra').Asfloat:= qrvenda_itemproduto.FieldByName('precocusto').Asfloat;
 
                                     qrexec_base.ParamByName('usagrade').AsString:= 'NÃO';
                                     qrexec_base.ParamByName('usaserial').AsString:= 'NÃO';
@@ -521,6 +628,25 @@ begin
                                     qrexec_base.ParamByName('aplicacaoproduto').AsString:= 'MERCADORIA PARA REVENDA';
                                     qrexec_base.ParamByName('codemitente').AsInteger:= 1;
                                     qrexec_base.ParamByName('valorconversao').Asfloat:= 1;
+
+
+                                    qrexec_base.ParamByName('percicmsstinterna').Asfloat:= 0;
+                                    qrexec_base.ParamByName('percmvaoriginal').Asfloat:= 0;
+                                    qrexec_base.ParamByName('percicmspropriost').Asfloat:= 0;
+                                    qrexec_base.ParamByName('percreducaobcst').Asfloat:= 0;
+                                    qrexec_base.ParamByName('percipi').Asfloat:= 0;
+                                    qrexec_base.ParamByName('percglpcomb').Asfloat:= 0;
+                                    qrexec_base.ParamByName('percgnncomb').Asfloat:= 0;
+                                    qrexec_base.ParamByName('percgnicomb').Asfloat:= 0;
+                                    qrexec_base.ParamByName('valorpartidacomb').Asfloat:= 0;
+                                    qrexec_base.ParamByName('aliquotafcp').Asfloat:= 0;
+                                    qrexec_base.ParamByName('PERCFCPST').Asfloat:= 0;
+                                    qrexec_base.ParamByName('nometabelapreco').AsString:= '';
+                                    qrexec_base.ParamByName('percimpostomedioestadual').Asfloat:= 12;
+                                    qrexec_base.ParamByName('percimpostomediomunicipal').Asfloat:= 0;
+
+
+
 
                                     // Consulta Unidade Medida
                                     qrconsulta_base.Close;
@@ -545,43 +671,12 @@ begin
                                     qrexec_base.ParamByName('codigocstorigem').AsInteger := qrconsulta_base.FieldByName('codigoorigem').AsInteger;
 
 
-
-
-                                    //Consulta Imposto médio
-                                    qrconsulta_base.Close;
-                                    qrconsulta_base.SQL.Clear;
-                                    qrconsulta_base.SQL.Add('select * from timpostomedio where ncmnbs = :ncmnbs');
-                                    qrconsulta_base.ParamByName('ncmnbs').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
-                                    qrconsulta_base.Open;
-
-                                    if qrconsulta_base.RecordCount > 0 then
-                                       begin
-
-                                         icodimpostomedio :=  qrconsulta_base.FieldByName('controle').AsInteger;
-                                         faliquotanacional :=  qrconsulta_base.FieldByName('aliquotanacional').Asfloat;
-                                         faliquotaimportada :=  qrconsulta_base.FieldByName('aliquotaimportada').Asfloat;
-
-
-                                       end
-                                    else
-                                       begin
-
-
-                                         icodimpostomedio :=  40242;
-                                         faliquotanacional :=  31.60;
-                                         faliquotaimportada :=  39.09;
-
-
-                                       end;
-                                    //endi
-
+                                    //percentual medio de imposto
                                     fpercimpostomedio := faliquotanacional;
 
 
                                     qrexec_base.ParamByName('codimpostomedio').AsInteger :=  icodimpostomedio; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
                                     qrexec_base.ParamByName('percimpostomedio').Asfloat := fpercimpostomedio;
-
-
 
 
                                     //Consulta IPI
@@ -594,7 +689,6 @@ begin
 
                                     qrexec_base.ParamByName('codtributacaoipi').Asstring :=  qrconsulta_base.FieldByName('codcstipi').AsString  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
                                     qrexec_base.ParamByName('tributacaoipi').AsString:= qrconsulta_base.FieldByName('descricao').AsString;
-
 
 
                                     //Consulta PIS
@@ -621,8 +715,6 @@ begin
                                     qrexec_base.ParamByName('tributacaocofins').AsString:= qrconsulta_base.FieldByName('descricao').AsString;
 
 
-
-
                                     //Consulta CSOSN
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
@@ -633,8 +725,6 @@ begin
 
                                     qrexec_base.ParamByName('csosn').AsString :=  qrconsulta_base.FieldByName('codigocst').AsString  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
                                     qrexec_base.ParamByName('descricaocsosn').AsString:= qrconsulta_base.FieldByName('descricao').AsString;
-
-
 
 
                                     //Consulta Grupo
@@ -688,10 +778,10 @@ begin
 
                                qrexec_base.Close;
                                qrexec_base.SQL.Clear;
-                               qrexec_base.SQL.Add('insert into TITEMPEDIDOVENDA(  codpedidovenda,   datahoracadastro,  codproduto,   produto,   qtde,   un,   valorunitario,   valordesconto,    valoracrescimo,    percdesconto,    percacrescimo,  situacaotributaria,  aliquota,  cancelado,     decimaisqtde,   decimaisvalorunitario,  coditem,    valordescontounitario,    valoracrescimounitario,    controleorigemmesclagem,  numerodav,   md5dav,   mesclar,  status,  qtdeconvertida,  unconvertida,   obs ) ');
-                               qrexec_base.SQL.Add('                     values(:codpedidovenda,   :datahoracadastro, :codproduto,  :produto,  :qtde,  :un,  :valorunitario,  :valordesconto,   :valoracrescimo,   :percdesconto,   :percacrescimo, :situacaotributaria, :aliquota, :cancelado,    :decimaisqtde,  :decimaisvalorunitario, :coditem,   :valordescontounitario,   :valoracrescimounitario,   :controleorigemmesclagem, :numerodav,  :md5dav,  :mesclar, :status, :qtdeconvertida, :unconvertida,  :obs ) ');
+                               qrexec_base.SQL.Add('insert into TITEMPEDIDOVENDA(  codpedidovenda,   datahoracadastro,  codproduto,   produto,   qtde,   un,   valorunitario,   valordesconto,    valoracrescimo,    percdesconto,    percacrescimo,  situacaotributaria,  aliquota,  cancelado,     decimaisqtde,   decimaisvalorunitario,  coditem,    valordescontounitario,    valoracrescimounitario,    controleorigemmesclagem,  numerodav,   md5dav,   mesclar,  status,  qtdeconvertida,  unconvertida,   obs   ) ');
+                               qrexec_base.SQL.Add('                     values(:codpedidovenda,   :datahoracadastro, :codproduto,  :produto,  :qtde,  :un,  :valorunitario,  :valordesconto,   :valoracrescimo,   :percdesconto,   :percacrescimo, :situacaotributaria, :aliquota, :cancelado,    :decimaisqtde,  :decimaisvalorunitario, :coditem,   :valordescontounitario,   :valoracrescimounitario,   :controleorigemmesclagem, :numerodav,  :md5dav,  :mesclar, :status, :qtdeconvertida, :unconvertida,  :obs   ) ');
 
-
+                               qrexec_base.ParamByName('md5dav').AsString:=hash;
                                qrexec_base.ParamByName('codpedidovenda').AsInteger := icodigo_controle;
                                qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
                                qrexec_base.ParamByName('codproduto').AsInteger :=  qrvenda_itemproduto.FieldByName('cpro').AsInteger;
@@ -699,6 +789,9 @@ begin
                                qrexec_base.ParamByName('qtde').Asfloat := qrvenda_itemproduto.FieldByName('qtde').Asfloat;
                                qrexec_base.ParamByName('un').AsString:= qrvenda_itemproduto.FieldByName('und').AsString;
                                qrexec_base.ParamByName('valorunitario').Asfloat := qrvenda_itemproduto.FieldByName('prve').Asfloat;
+
+
+
                                qrexec_base.ParamByName('valordesconto').Asfloat:= 0;
                                qrexec_base.ParamByName('valoracrescimo').Asfloat:= 0;
                                qrexec_base.ParamByName('percdesconto').Asfloat:= 0;
@@ -713,8 +806,6 @@ begin
                                qrexec_base.ParamByName('valoracrescimounitario').Asfloat:= 0;
                                qrexec_base.ParamByName('numerodav').AsString := numDav;
                                qrexec_base.ParamByName('status').AsString := 'ABERTO';
-                               //qrexec_base.ParamByName('md5dav').AsString:='7330290EE547E4C3F7F53C939728E610';
-
 
                                //qrexec_base.ParamByName('controle').AsInteger:=icodigo_controle_item;
                                //qrexec_base.ParamByName('indicadorcancelamento').AsString:= 'N';

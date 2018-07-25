@@ -153,6 +153,7 @@ type
     qrproduto: TSQLQuery;
     qrcest: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);
+    procedure dsprodutoDataChange(Sender: TObject; Field: TField);
   private
 
   public
@@ -185,6 +186,11 @@ begin
          qrtempProduto.Open;
 
          qrtempProduto.Append;
+
+end;
+
+procedure Tmodulo_produto.dsprodutoDataChange(Sender: TObject; Field: TField);
+begin
 
 end;
 

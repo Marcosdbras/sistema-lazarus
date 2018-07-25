@@ -2334,7 +2334,8 @@ object modulo_produto: Tmodulo_produto
     left = 16
     top = 200
   end
-  object DataSource1: TDataSource
+  object dscest: TDataSource
+    DataSet = qrcest
     left = 111
     top = 200
   end

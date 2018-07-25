@@ -45,7 +45,7 @@ Function Arre1Dec(pValor:real):real;
 function FormataCNPJ(CNPJ: string): string;
 function FormataCPF(CPF: string): string;
 function proc_cest(ncm:string):string;
-
+function proc_cestDescricao(ncm:string):string;
 
 
 
@@ -822,7 +822,6 @@ end;
 function proc_cest(ncm:string):string;
 begin
 
-
   modulo_produto.qrcest.Close;
   modulo_produto.qrcest.SQL.Clear;
   modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
@@ -838,8 +837,6 @@ begin
   else
      begin
 
-
-
         modulo_produto.qrcest.Close;
         modulo_produto.qrcest.SQL.Clear;
         modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
@@ -853,7 +850,6 @@ begin
            end
         else
            begin
-
               modulo_produto.qrcest.Close;
               modulo_produto.qrcest.SQL.Clear;
               modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
@@ -878,6 +874,68 @@ begin
 
 
 end;
+
+
+
+
+
+function proc_cestDescricao(ncm:string):string;
+begin
+
+  modulo_produto.qrcest.Close;
+  modulo_produto.qrcest.SQL.Clear;
+  modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
+  modulo_produto.qrcest.ParamByName('ncm').AsString:=ncm;
+  modulo_produto.qrcest.Open;
+
+  if modulo_produto.qrcest.RecordCount > 0 then
+     begin
+
+       result := modulo_produto.qrcest.FieldByName('descricao').AsString;
+
+     end
+  else
+     begin
+
+        modulo_produto.qrcest.Close;
+        modulo_produto.qrcest.SQL.Clear;
+        modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
+        modulo_produto.qrcest.ParamByName('ncm').AsString:=copy(ncm,1,6);
+        modulo_produto.qrcest.Open;
+        if modulo_produto.qrcest.RecordCount > 0 then
+           begin
+
+              result := modulo_produto.qrcest.FieldByName('descricao').AsString;
+
+           end
+        else
+           begin
+              modulo_produto.qrcest.Close;
+              modulo_produto.qrcest.SQL.Clear;
+              modulo_produto.qrcest.SQL.Add('select cest, ncm from tcesttemp where ncm = :ncm');
+              modulo_produto.qrcest.ParamByName('ncm').AsString:=copy(ncm,1,4);
+              modulo_produto.qrcest.Open;
+              if modulo_produto.qrcest.RecordCount > 0 then
+                 begin
+                   result := modulo_produto.qrcest.FieldByName('descricao').AsString;
+                 end
+              else
+                 begin
+                   result := '';
+                 end;
+              //endi
+           end;
+        //endi
+     end;
+  //endi
+
+
+
+
+
+end;
+
+
 
 end.
 

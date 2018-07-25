@@ -12,7 +12,7 @@ type
   { Tmodulo_produto }
 
   Tmodulo_produto = class(TDataModule)
-    DataSource1: TDataSource;
+    dscest: TDataSource;
     dstempProduto: TDataSource;
     dsproduto: TDataSource;
     qrprodutoALIQUOTAICMSECF: TBCDField;
