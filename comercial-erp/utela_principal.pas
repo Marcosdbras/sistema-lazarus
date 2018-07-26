@@ -160,10 +160,6 @@ begin
   if conectarBanco_Aux then
      begin
 
-       //Application.CreateForm(Tmodulo_vendaorc, modulo_vendaorc);
-
-
-
        frmvendaorc := tfrmvendaorc.create(self);
        frmvendaorc.showmodal;
        frmvendaorc.free;

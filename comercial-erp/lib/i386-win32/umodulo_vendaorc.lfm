@@ -8,6 +8,12 @@ object modulo_vendaorc: Tmodulo_vendaorc
   object qrvenda: TSQLQuery
     FieldDefs = <    
       item
+        Name = 'LIQUIDO_P'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
         Name = 'DDDFS'
         DataType = ftString
         Precision = -1
@@ -162,7 +168,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     SQL.Strings = (
-      'select c.dddfs,  c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
+      'select v.liquido_p, c.dddfs,  c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v left join clientes c on v.ccli = c.codigo   right join funcionarios f on v.cfun = f.codigo'
     )
     Params = <>
     left = 64
@@ -427,6 +433,20 @@ object modulo_vendaorc: Tmodulo_vendaorc
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 2
+    end
+    object qrvendaLIQUIDO_P: TBCDField
+      FieldKind = fkData
+      FieldName = 'LIQUIDO_P'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
       Size = 2
     end
   end
@@ -902,5 +922,13 @@ object modulo_vendaorc: Tmodulo_vendaorc
     DataSet = qrvenda_itemproduto
     left = 208
     top = 152
+  end
+  object qrconsulta_baseaux: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb_Aux
+    Transaction = modulo_conexaodb.tzcontrole_Aux
+    Params = <>
+    left = 75
+    top = 262
   end
 end

@@ -84,14 +84,17 @@ implementation
 
                  Conexaodb_aux.Connected       := False;
                  Conexaodb_aux.HostName        := Ini.ReadString('ConexaoBanco', 'Hostname', '');
-                 //Conexaodb_aux.Port            := Ini.ReadInteger('ConexaoBanco', 'Port', 0);
-                 //Conexaodb_aux.Protocol        := Ini.ReadString('ConexaoBanco', 'Protocol', '');
-                 //Conexaodb_aux.LibraryLocation := Ini.ReadString('ConexaoBanco', 'LibraryLocation', '');
+
                  Conexaodb_aux.UserName            := Ini.ReadString('ConexaoBanco', 'User', '');
                  Conexaodb_aux.Password        := Ini.ReadString('ConexaoBanco', 'Password', '');
                  Conexaodb_aux.DatabaseName        := Ini.ReadString('ConexaoBanco', 'Database_2', '');
-                 //Conexaodb_aux.CharSet  := Ini.ReadString('ConexaoBanco', 'Charset', 'UTF8');
                  Conexaodb_aux.CharSet  := 'WIN1252';
+
+                 //Conexaodb_aux.CharSet  := Ini.ReadString('ConexaoBanco', 'Charset', 'UTF8');
+                 //Conexaodb_aux.Port            := Ini.ReadInteger('ConexaoBanco', 'Port', 0);
+                 //Conexaodb_aux.Protocol        := Ini.ReadString('ConexaoBanco', 'Protocol', '');
+                 //Conexaodb_aux.LibraryLocation := Ini.ReadString('ConexaoBanco', 'LibraryLocation', '');
+
                  Conexaodb_aux.Connected       := True;
 
                  result := true;

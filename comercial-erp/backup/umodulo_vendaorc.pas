@@ -26,10 +26,12 @@ type
     qrvendaCPF: TStringField;
     qrvendaCTIPOCLI: TLongintField;
     qrvendaDDDEENT: TStringField;
+    qrvendaDDDFS: TStringField;
     qrvendaENDENT: TStringField;
     qrvendaESTADOENT: TStringField;
     qrvendaFANTASIA: TStringField;
     qrvendaIE: TStringField;
+    qrvendaLIQUIDO_P: TBCDField;
     qrvendaNFUNC: TStringField;
     qrvendaNOME: TStringField;
     qrvendaNPED: TLongintField;
@@ -69,6 +71,7 @@ type
     qrvenda_itemprodutoSIGLAPIS: TStringField;
     qrvenda_itemprodutoSUBTOTAL: TBCDField;
     qrvenda_itemprodutoUND: TStringField;
+    qrconsulta_baseaux: TSQLQuery;
     procedure qrvendaAfterScroll(DataSet: TDataSet);
   private
 

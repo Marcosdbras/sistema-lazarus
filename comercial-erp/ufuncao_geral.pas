@@ -46,6 +46,9 @@ function FormataCNPJ(CNPJ: string): string;
 function FormataCPF(CPF: string): string;
 function proc_cest(ncm:string):string;
 function proc_cestDescricao(ncm:string):string;
+function RemoveAcentoTexto(aText : string) : string;
+function RemoveAcento(const pText: string): string;
+
 
 
 
@@ -928,14 +931,36 @@ begin
         //endi
      end;
   //endi
+end;
 
+ function RemoveAcentoTexto(aText : string) : string;
+const
+  ComAcento = 'àâêôûãõáéíóúçüñýÀÂÊÔÛÃÕÁÉÍÓÚÇÜÑÝ';
+  SemAcento = 'aaeouaoaeioucunyAAEOUAOAEIOUCUNY';
+var
+  x: Cardinal;
+begin;
+  for x := 1 to Length(aText) do
+  try
+    if (Pos(aText[x], ComAcento) <> 0) then
+      aText[x] := SemAcento[ Pos(aText[x], ComAcento) ];
+  except on E: Exception do
+    raise Exception.Create('Erro no processo.');
+  end;
 
-
-
-
+  Result := aText;
 end;
 
 
+
+
+
+function RemoveAcento(const pText: string): string;
+type
+  USAscii20127 = type AnsiString(20127);
+begin
+  Result := string(USAscii20127(pText));
+end;
 
 end.
 

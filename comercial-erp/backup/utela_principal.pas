@@ -52,7 +52,7 @@ implementation
 
 
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
-           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc, umodulo_vendaorc;
+           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -160,7 +160,7 @@ begin
   if conectarBanco_Aux then
      begin
 
-       Application.CreateForm(Tmodulo_vendaorc, modulo_vendaorc);
+       //Application.CreateForm(Tmodulo_vendaorc, modulo_vendaorc);
 
 
 

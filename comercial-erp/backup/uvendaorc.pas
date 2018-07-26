@@ -24,6 +24,8 @@ type
     DBGrid2: TDBGrid;
     edtnumped: TEdit;
     Label1: TLabel;
+    Total: TLabel;
+    lbltotal: TLabel;
     procedure btnanteriorClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure btnexportarClick(Sender: TObject);
@@ -445,39 +447,21 @@ begin
 
 
                                // Grupo
-
-                               try
-
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
                                qrconsulta_base.SQL.Add('select * from tgrupoestoque where  grupo = :grupo');
-                               qrconsulta_base.ParamByName('grupo').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString; ;
+                               qrconsulta_base.ParamByName('grupo').AsString:=   RemoveAcento(  modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString  );
                                qrconsulta_base.Open;
 
-
-                               except
-
-
-                                 qrconsulta_base.Close;
-                                 qrconsulta_base.SQL.Clear;
-                                 qrconsulta_base.SQL.Add('select * from tgrupoestoque where  controle = :controle');
-                                 qrconsulta_base.ParamByName('controle').AsInteger:= 1;
-                                 qrconsulta_base.Open;
-
-
-
-                               end;
-
                                //showmessage(  inttostr( modulo_vendaorc.qrvenda_itemproduto.FieldByName('codunidademedida').AsInteger));
-                               finally
-                               end;
+
 
                                if (qrconsulta_base.RecordCount = 0) then
                                    begin
                                      qrexec_base.Close;
                                      qrexec_base.SQL.Clear;
                                      qrexec_base.SQL.Add('insert into tgrupoestoque (grupo) values (:grupo)');
-                                     qrexec_base.ParamByName('grupo').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString;
+                                     qrexec_base.ParamByName('grupo').AsString:= RemoveAcento(  modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString);
                                      qrexec_base.ExecSQL;
 
                                      atualizaBanco;
@@ -731,11 +715,11 @@ begin
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
                                     qrconsulta_base.SQL.Add('select * from tgrupoestoque where grupo = :grupo');
-                                    qrconsulta_base.ParamByName('grupo').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString;
+                                    qrconsulta_base.ParamByName('grupo').AsString:= RemoveAcento(modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString);
                                     qrconsulta_base.Open;
 
                                     qrexec_base.ParamByName('codgrupo').AsInteger :=  qrconsulta_base.FieldByName('controle').AsInteger  ; //modulo_vendaorc.qrvenda_itemproduto.FieldByName('codigocstorigem').AsInteger;
-                                    qrexec_base.ParamByName('grupo').AsString :=   modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString;
+                                    qrexec_base.ParamByName('grupo').AsString :=   RemoveAcento(modulo_vendaorc.qrvenda_itemproduto.FieldByName('descricaogrupo').AsString);
 
                                     qrexec_base.ParamByName('precocusto').Asfloat:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('precocusto').Asfloat;
                                     qrexec_base.ParamByName('perclucro').Asfloat:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('perclucro').Asfloat;
@@ -912,8 +896,26 @@ begin
 
        qrvenda.close;
        qrvenda.SQL.Clear;
-       qrvenda.SQL.Add('select c.dddfs,  c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v inner join clientes c on v.ccli = c.codigo   inner join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0  order by nped');
+       qrvenda.SQL.Add('select v.liquido_p, c.dddfs,  c.responsavelent, c.fantasia, c.telefones, c.contato, c.dddeent, c.endent, c.cpf, c.ie, c.complent, c.bairroent, c.cidadeent, c.cepent, c.telefoneent, c.estadoent, c.observacao, c.referencia_end, ctipocli, c.nroent,   v.cfun as cfunc, f.nome as nfunc,  v.codigo, v.nped, v.ccli, v.total, c.nome from svenda v inner join clientes c on v.ccli = c.codigo   inner join funcionarios f on v.cfun = f.codigo    where coalesce(v.nped, 0) > 0  order by nped');
        qrvenda.Open;
+
+
+       qrvenda_itemproduto.close;
+       qrvenda_itemproduto.SQL.Clear;
+       qrvenda_itemproduto.SQL.Add('select dp.codipi,  ipi.sigla as siglaipi,  dp.cpis, pis.sigla as siglapis, dp.ccofins, cofins.sigla as siglacofins, dp.csosn, dp.cest,  dp.cbar as codbarras, dp.caux as referencia, dp.ncm,  dp.cgru, gr.descricao  as descricaogrupo, dp.codsita as codigocstorigem,  o.descricao as codcstorigem,   dp.codsitb, dp.prcu as precocusto, dp.per as perclucro,  dp.prve as precovenda,  dp.cuni as codunidademedida,  u.descricao as und,  p.descricao, d.codigo, d.cpro, d.prve, d.qtde, dp.codigo as codprod, d.subtotal from dvenda d      left join dprodutos dp on d.cpro = dp.codigo     left join produtos p on dp.cdescprod = p.codigo    left join unidade u on  dp.cuni = u.codigo    left join sita o on dp.codsita = o.codigo    left join sitb cst on dp.codsitb = cst.codigo       left join grupo gr on dp.cgru = gr.codigo     left join ipi on dp.codipi = ipi.codigo       left join pis on dp.cpis = pis.codigo    left join cofins on dp.ccofins = cofins.codigo  where d.codsvenda = :codsvenda');
+       qrvenda_itemproduto.ParamByName('codsvenda').AsInteger:= qrvenda.FieldByName('codigo').AsInteger;
+       qrvenda_itemproduto.Open;
+
+
+
+       qrconsulta_baseaux.Close;
+       qrconsulta_baseaux.SQL.Clear;
+       qrconsulta_baseaux.SQL.Add('select sum(qtde*prve) as total from dvenda  group by codsvenda  having codsvenda = :codsvenda ');
+       qrconsulta_baseaux.ParamByName('codsvenda').AsInteger:= qrvenda.FieldByName('codigo').AsInteger;
+       qrconsulta_baseaux.Open;
+
+
+       lbltotal.Caption:=formatfloat('0.00',qrconsulta_baseaux.FieldByName('total').AsFloat);
 
      end;
    //end

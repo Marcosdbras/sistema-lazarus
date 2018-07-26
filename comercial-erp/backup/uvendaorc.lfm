@@ -26,18 +26,13 @@ object frmvendaorc: Tfrmvendaorc
       end    
       item
         Title.Caption = 'CLIENTE'
-        Width = 350
+        Width = 430
         FieldName = 'NOME'
       end    
       item
         Title.Caption = 'COD. CLI'
         Width = 100
         FieldName = 'CCLI'
-      end    
-      item
-        Title.Caption = 'TOTAL'
-        Width = 100
-        FieldName = 'TOTAL'
       end>
     DataSource = modulo_vendaorc.dsvenda
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
@@ -71,7 +66,7 @@ object frmvendaorc: Tfrmvendaorc
   end
   object DBGrid2: TDBGrid
     Left = 16
-    Height = 192
+    Height = 168
     Top = 320
     Width = 704
     Color = clWindow
@@ -157,5 +152,22 @@ object frmvendaorc: Tfrmvendaorc
     Caption = 'Último'
     OnClick = btnultimoClick
     TabOrder = 9
+  end
+  object Total: TLabel
+    Left = 520
+    Height = 15
+    Top = 501
+    Width = 27
+    Caption = 'Total'
+    ParentColor = False
+  end
+  object lbltotal: TLabel
+    Left = 683
+    Height = 15
+    Top = 501
+    Width = 37
+    Alignment = taRightJustify
+    Caption = 'lbltotal'
+    ParentColor = False
   end
 end
