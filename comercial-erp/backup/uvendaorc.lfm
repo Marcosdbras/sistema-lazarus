@@ -25,14 +25,14 @@ object frmvendaorc: Tfrmvendaorc
         FieldName = 'NPED'
       end    
       item
-        Title.Caption = 'CLIENTE'
-        Width = 430
-        FieldName = 'NOME'
-      end    
-      item
         Title.Caption = 'COD. CLI'
         Width = 100
         FieldName = 'CCLI'
+      end    
+      item
+        Title.Caption = 'CLIENTE'
+        Width = 430
+        FieldName = 'NOME'
       end>
     DataSource = modulo_vendaorc.dsvenda
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]

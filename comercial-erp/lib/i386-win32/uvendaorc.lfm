@@ -154,20 +154,36 @@ object frmvendaorc: Tfrmvendaorc
     TabOrder = 9
   end
   object Total: TLabel
-    Left = 520
-    Height = 15
-    Top = 501
-    Width = 27
+    Left = 496
+    Height = 24
+    Top = 500
+    Width = 48
     Caption = 'Total'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -21
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
     ParentColor = False
+    ParentFont = False
   end
   object lbltotal: TLabel
-    Left = 683
-    Height = 15
-    Top = 501
-    Width = 37
+    Left = 653
+    Height = 24
+    Top = 500
+    Width = 67
     Alignment = taRightJustify
     Caption = 'lbltotal'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -21
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
     ParentColor = False
+    ParentFont = False
   end
 end
