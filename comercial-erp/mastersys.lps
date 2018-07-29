@@ -42,7 +42,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="60"/>
+        <TopLine Value="58"/>
         <CursorPos X="32" Y="47"/>
         <UsageCount Value="201"/>
       </Unit3>
@@ -70,10 +70,11 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="155"/>
+        <TopLine Value="82"/>
         <CursorPos X="7" Y="162"/>
         <UsageCount Value="205"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="ufuncao_conexaodb.pas"/>
@@ -86,10 +87,12 @@
       <Unit8>
         <Filename Value="ufuncao_geral.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="949"/>
-        <CursorPos X="10" Y="958"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="345"/>
+        <CursorPos X="15" Y="345"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="usplash.pas"/>
@@ -216,8 +219,8 @@
         <ComponentName Value="frmvendaorc"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
         <TopLine Value="903"/>
         <CursorPos X="33" Y="908"/>
         <UsageCount Value="200"/>
@@ -228,12 +231,42 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3450"/>
         <CursorPos Y="3458"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit21>
     </Units>
-    <General>
-      <ActiveWindowIndexAtStart Value="-1"/>
-    </General>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="8" HistoryIndex="7">
+      <Position1>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="162" Column="7" TopLine="82"/>
+      </Position1>
+      <Position2>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="28" Column="34" TopLine="18"/>
+      </Position2>
+      <Position3>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="69" Column="11" TopLine="60"/>
+      </Position3>
+      <Position4>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="70" Column="12" TopLine="64"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="81" Column="28" TopLine="71"/>
+      </Position5>
+      <Position6>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="339" Column="34" TopLine="328"/>
+      </Position6>
+      <Position7>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="364" Column="60" TopLine="340"/>
+      </Position7>
+      <Position8>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="334" Column="60" TopLine="331"/>
+      </Position8>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>

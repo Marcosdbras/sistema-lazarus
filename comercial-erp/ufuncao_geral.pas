@@ -58,12 +58,13 @@ implementation
 
 
 procedure atualiza_base;
+var
+  f:string;
 
 begin
 
-
-
 try
+
 
 //Tabela MASTER_UNIDADE existe?
 if existe_tabela('MASTER_UNIDADE') = 0 then
@@ -296,6 +297,116 @@ if existe_tabela('MASTER_OS') = 0 then
 
 
 
+// Atualiza procedure
+with modulo_conexaodb do
+     begin
+
+       f := DataDirectory+'\atualizacao\sparetucest.sql';
+       if fileexists(f) then
+          begin
+            Script.Script.Clear;
+            Script.Terminator:='^';
+            Script.Script.LoadFromFile(f);
+            Script.Execute;
+          end;
+       //endi
+
+       f := DataDirectory+'\atualizacao\spatualizacest.sql';
+       if fileexists(f) then
+          begin
+            Script.Script.Clear;
+            Script.Terminator:='^';
+            Script.Script.LoadFromFile(f);
+            Script.Execute;
+          end;
+       //endi
+
+       f := DataDirectory+'\atualizacao\vendanfe.sql';
+       if fileexists(f) then
+          begin
+            Script.Script.Clear;
+            Script.Terminator:='^';
+            Script.Script.LoadFromFile(f);
+            Script.Execute;
+          end;
+       //endi
+
+       f := DataDirectory+'\atualizacao\zerar_tabela_nivel4.sql';
+       if fileexists(f) then
+          begin
+            Script.Script.Clear;
+            Script.Terminator:=';';
+            Script.Script.LoadFromFile(f);
+            Script.Execute;
+
+            deletefile(f);
+
+          end;
+       //endi
+
+       f := DataDirectory+'\atualizacao\zerar_tabela_nivel3.sql';
+       if fileexists(f) then
+          begin
+            Script.Script.Clear;
+            Script.Terminator:=';';
+            Script.Script.LoadFromFile(f);
+            Script.Execute;
+
+            deletefile(f);
+
+          end;
+       //endi
+
+
+       f := DataDirectory+'\atualizacao\zerar_tabela_nivel2.sql';
+       if fileexists(f) then
+          begin
+            Script.Script.Clear;
+            Script.Terminator:=';';
+            Script.Script.LoadFromFile(f);
+            Script.Execute;
+
+            deletefile(f);
+
+          end;
+       //endi
+
+
+
+       f := DataDirectory+'\atualizacao\zerar_tabela_nivel1.sql';
+       if fileexists(f) then
+          begin
+            Script.Script.Clear;
+            Script.Terminator:=';';
+            Script.Script.LoadFromFile(f);
+            Script.Execute;
+
+            deletefile(f);
+
+          end;
+       //endi
+
+
+
+
+       //Script.Script.Clear;
+       //Script.Terminator:='^';
+       //Script.Script.Add('CREATE OR ALTER procedure sparetucest (ncm varchar(8)) returns (cest varchar(10)) ');
+       //Script.Script.Add(' as ');
+       //Script.Script.Add('begin');
+       //Script.Script.Add('  for');
+       //Script.Script.Add('    select tcest.ncm,  tcest.cest from tcest where tcest.ncm = :ncm into :ncm, :cest');
+       //Script.Script.Add('  do');
+       //Script.Script.Add('  begin');
+       //Script.Script.Add('     suspend;');
+       //Script.Script.Add('  end');
+       //Script.Script.Add('end^');
+       //Script.Script.Add('');
+       //Script.Script.Add('COMMIT^');
+       //Script.Execute;
+
+    end;
+//endth
 
 
 
