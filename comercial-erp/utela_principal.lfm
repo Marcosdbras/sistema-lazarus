@@ -126,6 +126,9 @@ object frmtela_principal: Tfrmtela_principal
           OnClick = MenuItem5Click
         end
       end
+      object MenuItem7: TMenuItem
+        Caption = '-'
+      end
       object MenuItem3: TMenuItem
         Caption = 'Orçamentos'
         OnClick = MenuItem3Click
@@ -133,6 +136,13 @@ object frmtela_principal: Tfrmtela_principal
       object MenuItem6: TMenuItem
         Caption = 'Exportar para NF-e'
         OnClick = MenuItem6Click
+      end
+      object Ajustes: TMenuItem
+        Caption = 'Ajustes'
+        object MenuItem9: TMenuItem
+          Caption = 'CSOSN''s'
+          OnClick = MenuItem9Click
+        end
       end
     end
     object MenuItem4: TMenuItem

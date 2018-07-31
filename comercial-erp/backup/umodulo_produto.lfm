@@ -2304,6 +2304,7 @@ object modulo_produto: Tmodulo_produto
   end
   object dsproduto: TDataSource
     DataSet = qrproduto
+    OnDataChange = dsprodutoDataChange
     left = 104
     top = 16
   end
@@ -2338,5 +2339,69 @@ object modulo_produto: Tmodulo_produto
     DataSet = qrcest
     left = 111
     top = 200
+  end
+  object qrcsticms: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOCST'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'PERMITECREDITO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'POSSUIICMSST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ISENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'TRIBUTADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'OC'
+        DataType = ftString
+        Precision = -1
+        Size = 1000
+      end>
+    Active = True
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcsticms'
+    )
+    Params = <>
+    left = 19
+    top = 288
+  end
+  object dscsticms: TDataSource
+    DataSet = qrcsticms
+    left = 117
+    top = 288
   end
 end

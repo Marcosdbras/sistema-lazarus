@@ -24,6 +24,9 @@ type
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    Ajustes: TMenuItem;
+    MenuItem9: TMenuItem;
     Panel1: TPanel;
     pnlsuperior: TPanel;
     pnlsuperior1: TPanel;
@@ -39,6 +42,7 @@ type
     procedure MenuItem4Click(Sender: TObject);
     procedure MenuItem5Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
   private
 
   public
@@ -52,7 +56,7 @@ implementation
 
 
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
-           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc;
+           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc, uajusteprodutos;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -166,6 +170,13 @@ begin
 
      end;
   //endi
+end;
+
+procedure Tfrmtela_principal.MenuItem9Click(Sender: TObject);
+begin
+  frmajusteprodutos := tfrmajusteprodutos.create(self);
+  frmajusteprodutos.showmodal;
+  frmajusteprodutos.free;
 end;
 
 end.

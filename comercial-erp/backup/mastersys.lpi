@@ -36,7 +36,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="21">
+    <Units Count="23">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -172,6 +172,18 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit20>
+      <Unit21>
+        <Filename Value="uajusteprodutos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmajusteprodutos"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="umodulo_temp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_temp"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit22>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

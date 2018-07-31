@@ -12,6 +12,7 @@ type
   { Tmodulo_produto }
 
   Tmodulo_produto = class(TDataModule)
+    dscsticms: TDataSource;
     dscest: TDataSource;
     dstempProduto: TDataSource;
     dsproduto: TDataSource;
@@ -152,7 +153,9 @@ type
     qrtempProdutocund: TLongintField;
     qrproduto: TSQLQuery;
     qrcest: TSQLQuery;
+    qrcsticms: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);
+    procedure dsprodutoDataChange(Sender: TObject; Field: TField);
   private
 
   public
@@ -185,6 +188,11 @@ begin
          qrtempProduto.Open;
 
          qrtempProduto.Append;
+
+end;
+
+procedure Tmodulo_produto.dsprodutoDataChange(Sender: TObject; Field: TField);
+begin
 
 end;
 
