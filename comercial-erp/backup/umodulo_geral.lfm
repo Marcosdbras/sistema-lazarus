@@ -1,0 +1,19 @@
+object modulo_geral: Tmodulo_geral
+  OldCreateOrder = False
+  Height = 235
+  HorizontalOffset = 299
+  VerticalOffset = 137
+  Width = 210
+  PPI = 96
+  object qrmaster_indice: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * master_indice'
+    )
+    Params = <>
+    left = 46
+    top = 81
+  end
+end

@@ -66,6 +66,80 @@ begin
 try
 
 
+//Tabela MASTER_INDICE existe?
+if existe_tabela('MASTER_INDICE') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+
+        //Script.Terminator:=';';
+        //Script.Script.Clear;
+        //Script.Script.Add('execute procedure sptotalizaorcamento(10);');
+        //Script.Script.Add('commit work;');
+        //Script.Script.Add('SET AUTODDL ON;');
+        //Script.Execute;
+
+
+
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE MASTER_INDICE (CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_INDICE_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_INDICE ADD CONSTRAINT PK_MASTER_INDICE  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger master_indice_bi for master_indice');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_master_indice_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
+
+
+//Campo CSOSN padrão existe?
+if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcsosnpadrao integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
 //Tabela MASTER_UNIDADE existe?
 if existe_tabela('MASTER_UNIDADE') = 0 then
    begin

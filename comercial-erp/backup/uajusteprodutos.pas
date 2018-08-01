@@ -15,13 +15,10 @@ type
   Tfrmajusteprodutos = class(TForm)
     btngravartodos: TButton;
     btncancelar: TButton;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
-    DBLookupComboBox3: TDBLookupComboBox;
-    DBLookupComboBox4: TDBLookupComboBox;
+    cbxcodcstde: TDBLookupComboBox;
+    cbxdesccstde: TDBLookupComboBox;
     Label1: TLabel;
     Label2: TLabel;
-    Label3: TLabel;
     procedure btncancelarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -57,14 +54,23 @@ begin
     end;
   //endth
 
-  cbxnomecliente.ListSource := modulo_cliente.dscliente;
-  cbxnomecliente.ListField:='cliente';
-  cbxnomecliente.KeyField:='controle';
-  cbxnomecliente.DataSource := modulo_cliente.dstempCliente;
-  cbxnomecliente.DataField:='ccli';
-  cbxnomecliente.ScrollListDataset:=true;
+  cbxcodcstde.ListSource := modulo_produto.dscsticms;
+  cbxcodcstde.ListField:='codigocst';
+  cbxcodcstde.KeyField:='controle';
+  cbxcodcstde.DataSource := modulo_temp.dstempCsticmsDe;
+  cbxcodcstde.DataField:='codigo';
+  cbxcodcstde.ScrollListDataset:=true;
+  cbxcodcstde.Style:=csDropDownList;
 
-  //cbxnomecliente.Style:=csDropDownList;
+  cbxcodcstde.ListSource := modulo_produto.dscsticms;
+  cbxcodcstde.ListField:='descricao';
+  cbxcodcstde.KeyField:='controle';
+  cbxcodcstde.DataSource := modulo_temp.dstempCsticmsDe;
+  cbxcodcstde.DataField:='codigo';
+  cbxcodcstde.ScrollListDataset:=true;
+  cbxcodcstde.Style:=csDropDownList;
+
+
 
 end;
 

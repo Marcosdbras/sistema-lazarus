@@ -36,7 +36,7 @@ type
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private
-    icodigo_controle, icodigo_controle_item, codaplicacaoproduto, sequencia_num, icodimpostomedio:integer;
+    icodigo_controle, icodigo_controle_item, codaplicacaoproduto, sequencia_num, icodimpostomedio, icsosnpadrao:integer;
     opcao_item, cfop, referencia, fatorconversao, codbarras, descricaoun, nomeprod, numDav:string;
     qtdeconvertida, valorconversao, faliquotanacional,faliquotaimportada,fpercimpostomedio :real;
 
@@ -49,7 +49,7 @@ var
   frmvendaorc: Tfrmvendaorc;
 
 implementation
-    uses umodulo_conexaodb, umodulo_vendaorc, ufuncao_geral;
+    uses umodulo_conexaodb, umodulo_vendaorc, ufuncao_geral, umodulo_produto, umodulo_geral;
 {$R *.lfm}
 
     { Tfrmvendaorc }
@@ -73,7 +73,34 @@ begin
    if Application.MessageBox('Tem certeza que deseja exportar este pedido para NF-e?','Atenção',MB_YESNO) = 6  then
       begin
 
+        with modulo_geral do
+        begin
+          qrmaster_indice.Close;
+          qrmaster_indice.SQL.Clear;
+          qrmaster_indice.SQL.Add('select * from master_indice');
+          qrmaster_indice.Open;
+
+        end;
+
+
+
+        with modulo_produto do
+         begin
+           qrcsticms.Close;
+           qrcsticms.SQL.Clear;
+           qrcsticms.SQL.Add('select * from tcsticms where controle = :controle');
+           qrcsticms.ParamByName('controle').AsInteger:=modulo_geral.qrmaster_indice.FieldByName('codcsosnpadrao').AsInteger;
+           qrcsticms.Open;
+
+           icsosnpadrao := qrcsticms.FieldByName('codigocst').AsInteger;
+         end;
+        //endth
+
         //Atualiza tabelas auxiliares do sistema
+
+
+
+
         with modulo_conexaodb do
              begin
 
@@ -544,7 +571,7 @@ begin
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
                                qrconsulta_base.SQL.Add('select * from tcsticms where codigocst = :codigocst');
-                               codigocst := StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('csosn').AsString,500);
+                               codigocst := StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('csosn').AsString,icsosnpadrao);
                                qrconsulta_base.ParamByName('codigocst').AsInteger:= codigocst;
                                qrconsulta_base.Open;
 
@@ -703,7 +730,7 @@ begin
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
                                     qrconsulta_base.SQL.Add('select * from tcsticms where codigocst = :codigocst');
-                                    codigocst :=  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('csosn').AsString,500);
+                                    codigocst :=  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('csosn').AsString,icsosnpadrao);
                                     qrconsulta_base.ParamByName('codigocst').AsInteger:= codigocst;
                                     qrconsulta_base.Open;
 

@@ -344,10 +344,6 @@ with modulo_conexaodb do
           end;
        //endi
 
-
-
-
-
        f := DataDirectory+'\atualizacao\zerar_tabela_nivel3.sql';
        if fileexists(f) then
           begin

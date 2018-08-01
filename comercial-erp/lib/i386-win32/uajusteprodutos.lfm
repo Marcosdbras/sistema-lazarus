@@ -52,47 +52,13 @@ object frmajusteprodutos: Tfrmajusteprodutos
     Width = 1
     ParentColor = False
   end
-  object Label3: TLabel
-    Left = 8
-    Height = 15
-    Top = 65
-    Width = 23
-    Caption = 'Para'
-    ParentColor = False
-  end
-  object cbxcodcstpara: TDBLookupComboBox
-    Left = 9
-    Height = 23
-    Top = 88
-    Width = 81
-    DataSource = modulo_temp.dstempCsticmsPara
-    KeyField = 'CONTROLE'
-    ListField = 'CODIGOCST'
-    ListFieldIndex = 0
-    ListSource = modulo_produto.dscsticms
-    LookupCache = False
-    TabOrder = 2
-  end
-  object cbxdesccstpara: TDBLookupComboBox
-    Left = 97
-    Height = 23
-    Top = 88
-    Width = 288
-    DataField = 'codigo'
-    DataSource = modulo_temp.dstempCsticmsPara
-    ListField = 'DESCRICAO'
-    ListFieldIndex = 0
-    ListSource = modulo_produto.dscsticms
-    LookupCache = False
-    TabOrder = 3
-  end
   object btngravartodos: TButton
     Left = 24
     Height = 25
     Top = 152
     Width = 337
     Caption = 'Gravar em todos os produtos'
-    TabOrder = 4
+    TabOrder = 2
   end
   object btncancelar: TButton
     Left = 24
@@ -101,6 +67,6 @@ object frmajusteprodutos: Tfrmajusteprodutos
     Width = 336
     Caption = 'Cancelar'
     OnClick = btncancelarClick
-    TabOrder = 5
+    TabOrder = 3
   end
 end
