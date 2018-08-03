@@ -460,24 +460,75 @@ with modulo_conexaodb do
           end;
        //endi
 
+       Script.Script.Clear;
+       Script.Script.Add('/*Retorna dados*/');
+       Script.Terminator:='^';
+       Script.Script.Add('CREATE OR ALTER procedure sparetucest (ncm varchar(8)) returns (cest varchar(10)) ');
+       Script.Script.Add(' as ');
+       Script.Script.Add('begin');
+       Script.Script.Add('  for');
+       Script.Script.Add('    select tcest.ncm,  tcest.cest from tcest where tcest.ncm = :ncm into :ncm, :cest');
+       Script.Script.Add('  do');
+       Script.Script.Add('  begin');
+       Script.Script.Add('     suspend;');
+       Script.Script.Add('  end');
+       Script.Script.Add('end^');
+       Script.Script.Add('');
+       Script.Script.Add('COMMIT^');
+       Script.Execute;
+
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('/*Atualiza  dados*/');
+       Script.Script.Add('CREATE OR ALTER procedure spatualizacest (');
+       Script.Script.Add('    codnfe integer)');
+       Script.Script.Add('as');
+       Script.Script.Add('declare variable codproduto integer;');
+       Script.Script.Add('declare variable cest varchar(10);');
+       Script.Script.Add('declare variable controle integer;');
+       Script.Script.Add('declare variable ncm varchar(8);');
+       Script.Script.Add('declare variable codbarra varchar(60);');
+       Script.Script.Add('declare variable codigo_barra varchar(60);');
+       Script.Script.Add('begin');
+       Script.Script.Add('  for');
+       Script.Script.Add('    select titensvendanfe.controle, titensvendanfe.ncm, titensvendanfe.codproduto, titensvendanfe.codbarra  from titensvendanfe where titensvendanfe.codnfe = :codnfe  into :controle, :ncm, :codproduto, :codigo_barra');
+       Script.Script.Add('  do');
+       Script.Script.Add('  begin');
+       Script.Script.Add('    if (:codigo_barra is null) then');
+       Script.Script.Add('      begin');
+       Script.Script.Add('        select testoque.codbarras from testoque where testoque.controle = :codproduto  into :codbarra;');
+       Script.Script.Add('        update titensvendanfe set titensvendanfe.codbarra = :codbarra where  titensvendanfe.controle = :controle;');
+       Script.Script.Add('      end');
+       Script.Script.Add('    execute procedure sparetucest(:ncm) returning_values :cest;');
+       Script.Script.Add('    update titensvendanfe set titensvendanfe.cest = :cest where  titensvendanfe.controle = :controle;');
+       Script.Script.Add('  end');
+       Script.Script.Add('  suspend;');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+       Script.Execute;
 
 
 
-       //Script.Script.Clear;
-       //Script.Terminator:='^';
-       //Script.Script.Add('CREATE OR ALTER procedure sparetucest (ncm varchar(8)) returns (cest varchar(10)) ');
-       //Script.Script.Add(' as ');
-       //Script.Script.Add('begin');
-       //Script.Script.Add('  for');
-       //Script.Script.Add('    select tcest.ncm,  tcest.cest from tcest where tcest.ncm = :ncm into :ncm, :cest');
-       //Script.Script.Add('  do');
-       //Script.Script.Add('  begin');
-       //Script.Script.Add('     suspend;');
-       //Script.Script.Add('  end');
-       //Script.Script.Add('end^');
-       //Script.Script.Add('');
-       //Script.Script.Add('COMMIT^');
-       //Script.Execute;
+       Script.Script.Clear;
+
+       Script.Terminator:='^';
+       Script.Script.Add('/*Atualiza dados*/');
+       Script.Script.Add('CREATE OR ALTER trigger tvendanfe_au1 for tvendanfe');
+       Script.Script.Add('active after update position 1');
+       Script.Script.Add('AS');
+       Script.Script.Add('begin');
+       Script.Script.Add('  execute procedure spatualizacest(old.controle);');
+       Script.Script.Add('end^');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('COMMIT^');
+       Script.Execute;
+
+
+
+
 
     end;
 //endth

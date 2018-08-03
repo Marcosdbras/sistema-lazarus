@@ -190,6 +190,7 @@
         <Filename Value="umodulo_geral.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_geral"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit23>
     </Units>
