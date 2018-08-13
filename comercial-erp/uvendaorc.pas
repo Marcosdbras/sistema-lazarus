@@ -36,8 +36,12 @@ type
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private
-    icodigo_controle, icodigo_controle_item, codaplicacaoproduto, sequencia_num, icodimpostomedio, icsosnpadrao:integer;
-    opcao_item, cfop, referencia, fatorconversao, codbarras, descricaoun, nomeprod, numDav:string;
+    icodigo_controle, icodigo_controle_item, codaplicacaoproduto, sequencia_num, icodimpostomedio,
+    icsosnpadrao, icodcstipipadrao, icodcstpispadrao, icodcstcofinspadrao:integer;
+
+    opcao_item, cfop, referencia, fatorconversao, codbarras, descricaoun, nomeprod, numDav,
+    permitecreditoicmspadrao, possuiicmsstpadrao, isentoicmspadrao, tributadoicmspadrao:string;
+
     qtdeconvertida, valorconversao, faliquotanacional,faliquotaimportada,fpercimpostomedio :real;
 
 
@@ -86,6 +90,8 @@ begin
 
         with modulo_produto do
          begin
+           //Carregar valor padrão
+
            qrcsticms.Close;
            qrcsticms.SQL.Clear;
            qrcsticms.SQL.Add('select * from tcsticms where controle = :controle');
@@ -93,6 +99,45 @@ begin
            qrcsticms.Open;
 
            icsosnpadrao := qrcsticms.FieldByName('codigocst').AsInteger;
+           permitecreditoicmspadrao := qrcsticms.FieldByName('permitecredito').AsString;
+           possuiicmsstpadrao := qrcsticms.FieldByName('possuiicmsst').Asstring;
+           isentoicmspadrao := qrcsticms.FieldByName('isento').AsString;
+           tributadoicmspadrao := qrcsticms.FieldByName('tributado').AsString;
+
+
+
+
+           qrcstipi.Close;
+           qrcstipi.SQL.Clear;
+           qrcstipi.SQL.Add('select * from tcstipi where controle = :controle');
+           qrcstipi.ParamByName('controle').AsInteger:=modulo_geral.qrmaster_indice.FieldByName('codcstipipadrao').AsInteger;
+           qrcstipi.Open;
+
+           icodcstipipadrao := qrcstipi.FieldByName('codcstipi').AsInteger;
+
+
+           qrcstpis.Close;
+           qrcstpis.SQL.Clear;
+           qrcstpis.SQL.Add('select * from tcstpis where controle = :controle');
+           qrcstpis.ParamByName('controle').AsInteger:=modulo_geral.qrmaster_indice.FieldByName('codcstpispadrao').AsInteger;
+           qrcstpis.Open;
+
+           icodcstpispadrao := qrcstpis.FieldByName('codigocst').AsInteger;
+
+
+
+           qrcstcofins.Close;
+           qrcstcofins.SQL.Clear;
+           qrcstcofins.SQL.Add('select * from tcstcofins where controle = :controle');
+           qrcstcofins.ParamByName('controle').AsInteger:=modulo_geral.qrmaster_indice.FieldByName('codcstcofinspadrao').AsInteger;
+           qrcstcofins.Open;
+
+           icodcstcofinspadrao := qrcstcofins.FieldByName('codigocstcofins').AsInteger;
+
+
+
+
+
          end;
         //endth
 
@@ -500,7 +545,7 @@ begin
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
                                qrconsulta_base.SQL.Add('select * from tcstipi where codcstipi = :codcstipi');
-                               scodigocstipi := formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglaipi').AsString,53));
+                               scodigocstipi := formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglaipi').AsString,icodcstipipadrao));
                                qrconsulta_base.ParamByName('codcstipi').AsString:= scodigocstipi;
                                qrconsulta_base.Open;
 
@@ -524,7 +569,7 @@ begin
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
                                qrconsulta_base.SQL.Add('select * from tcstpis where codigocst = :codigocst');
-                               scodigocstpis := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglapis').AsString,7));
+                               scodigocstpis := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglapis').AsString,icodcstpispadrao));
                                qrconsulta_base.ParamByName('codigocst').AsString:= scodigocstpis;
                                qrconsulta_base.Open;
 
@@ -547,7 +592,7 @@ begin
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
                                qrconsulta_base.SQL.Add('select * from tcstcofins where codigocstcofins = :codigocstcofins');
-                               scodigocstcofins := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglacofins').AsString,7));
+                               scodigocstcofins := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglacofins').AsString,icodcstcofinspadrao));
                                qrconsulta_base.ParamByName('codigocstcofins').Asstring:= scodigocstcofins;
                                qrconsulta_base.Open;
 
@@ -630,11 +675,21 @@ begin
 
                                     qrexec_base.ParamByName('valorunitariocompra').Asfloat:= qrvenda_itemproduto.FieldByName('precocusto').Asfloat;
 
+
+
+                                    //aqui
+
+
+
+
+
                                     qrexec_base.ParamByName('usagrade').AsString:= 'NÃO';
                                     qrexec_base.ParamByName('usaserial').AsString:= 'NÃO';
+
                                     qrexec_base.ParamByName('datahoracadastro').AsDate:= now();
-                                    qrexec_base.ParamByName('possuiicmsst').AsString:= 'SIM';
-                                    qrexec_base.ParamByName('isento').AsString:= 'NÃO';
+                                    qrexec_base.ParamByName('possuiicmsst').AsString:= possuiicmsstpadrao;
+                                    qrexec_base.ParamByName('isento').AsString:= isentoicmspadrao;
+
                                     qrexec_base.ParamByName('codaplicacaoproduto').AsString:= '00';
                                     qrexec_base.ParamByName('aplicacaoproduto').AsString:= 'MERCADORIA PARA REVENDA';
                                     qrexec_base.ParamByName('codemitente').AsInteger:= 1;
@@ -694,7 +749,7 @@ begin
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
                                     qrconsulta_base.SQL.Add('select * from tcstipi where codcstipi = :codcstipi');
-                                    scodigocstipi := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglaipi').AsString,53));
+                                    scodigocstipi := formatfloat('00',StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglaipi').AsString,icodcstipipadrao));
                                     qrconsulta_base.ParamByName('codcstipi').AsString:= scodigocstipi;
                                     qrconsulta_base.Open;
 
@@ -706,7 +761,7 @@ begin
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
                                     qrconsulta_base.SQL.Add('select * from tcstpis where codigocst = :codigocst');
-                                    scodigocstpis :=  formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglapis').AsString,7));
+                                    scodigocstpis :=  formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglapis').AsString,icodcstpispadrao));
                                     qrconsulta_base.ParamByName('codigocst').AsString:= scodigocstpis;
                                     qrconsulta_base.Open;
 
@@ -718,7 +773,7 @@ begin
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
                                     qrconsulta_base.SQL.Add('select * from tcstcofins where codigocstcofins = :codigocstcofins');
-                                    scodigocstcofins :=  formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglacofins').AsString,7));
+                                    scodigocstcofins :=  formatfloat('00',  StrToIntDef(modulo_vendaorc.qrvenda_itemproduto.FieldByName('siglacofins').AsString,icodcstcofinspadrao));
                                     qrconsulta_base.ParamByName('codigocstcofins').AsString:= scodigocstcofins;
                                     qrconsulta_base.Open;
 
@@ -757,9 +812,17 @@ begin
                                     qrexec_base.ParamByName('referencia').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('referencia').AsString;
                                     qrexec_base.ParamByName('ncm').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
 
+
+                                    //permitecreditoicmspadrao
+
+
                                     qrexec_base.ParamByName('IAT').AsString:='A';
                                     qrexec_base.ParamByName('IPPT').AsString:='T';
-                                    qrexec_base.ParamByName('tributado').AsString:='SIM';
+
+                                    qrexec_base.ParamByName('tributado').AsString:=tributadoicmspadrao;
+
+
+
                                     qrexec_base.ParamByName('pesado').AsString:='NÃO';
                                     qrexec_base.ParamByName('fatorconversao').AsString:='*';
                                     qrexec_base.ParamByName('controlarvalidade').AsString:='NÃO';

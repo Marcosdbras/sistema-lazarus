@@ -1,10 +1,10 @@
 object modulo_produto: Tmodulo_produto
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 370
-  HorizontalOffset = 779
-  VerticalOffset = 88
-  Width = 195
+  Height = 642
+  HorizontalOffset = 754
+  VerticalOffset = 34
+  Width = 220
   PPI = 96
   object qrproduto: TSQLQuery
     FieldDefs = <    
@@ -795,7 +795,7 @@ object modulo_produto: Tmodulo_produto
       'select * from testoque'
     )
     Params = <>
-    left = 16
+    left = 33
     top = 16
     object qrprodutoCONTROLE: TLongintField
       FieldKind = fkData
@@ -2305,13 +2305,13 @@ object modulo_produto: Tmodulo_produto
   object dsproduto: TDataSource
     DataSet = qrproduto
     OnDataChange = dsprodutoDataChange
-    left = 104
+    left = 131
     top = 16
   end
   object qrtempProduto: TBufDataset
     FieldDefs = <>
-    left = 16
-    top = 111
+    left = 33
+    top = 80
     object qrtempProdutocund: TLongintField
       FieldKind = fkData
       FieldName = 'cund'
@@ -2324,24 +2324,23 @@ object modulo_produto: Tmodulo_produto
   end
   object dstempProduto: TDataSource
     DataSet = qrtempProduto
-    left = 104
-    top = 111
+    left = 131
+    top = 80
   end
   object qrcest: TSQLQuery
     FieldDefs = <>
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     Params = <>
-    left = 16
-    top = 200
+    left = 33
+    top = 144
   end
   object dscest: TDataSource
     DataSet = qrcest
-    left = 111
-    top = 200
+    left = 128
+    top = 144
   end
   object qrcsticms: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -2389,19 +2388,252 @@ object modulo_produto: Tmodulo_produto
         Precision = -1
         Size = 1000
       end>
-    Active = True
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
       'select * from tcsticms'
     )
     Params = <>
-    left = 19
-    top = 288
+    left = 33
+    top = 208
   end
   object dscsticms: TDataSource
     DataSet = qrcsticms
-    left = 117
-    top = 288
+    left = 131
+    top = 208
+  end
+  object qrcstipi: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOCST'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'PERMITECREDITO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'POSSUIICMSST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ISENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'TRIBUTADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'OC'
+        DataType = ftString
+        Precision = -1
+        Size = 1000
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcstipi'
+    )
+    Params = <>
+    left = 33
+    top = 280
+  end
+  object dscstipi: TDataSource
+    DataSet = qrcstipi
+    OnDataChange = dscstipiDataChange
+    left = 131
+    top = 280
+  end
+  object qrcstcofins: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'CODIGOCSTCOFINS'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcstcofins'
+    )
+    Params = <>
+    left = 33
+    top = 352
+  end
+  object dscstcofins: TDataSource
+    DataSet = qrcstcofins
+    OnDataChange = dscstipiDataChange
+    left = 131
+    top = 352
+  end
+  object qrcstoriem: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOORIGEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAOORIGEM'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcstoriem'
+    )
+    Params = <>
+    left = 32
+    top = 424
+  end
+  object dscstoriem: TDataSource
+    DataSet = qrcstoriem
+    OnDataChange = dscstipiDataChange
+    left = 130
+    top = 424
+  end
+  object qrcstpis: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'CODIGOCST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'DESCRICAOABREVIADA'
+        DataType = ftString
+        Precision = -1
+        Size = 1000
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcstpis'
+      ''
+    )
+    Params = <>
+    left = 33
+    top = 496
+  end
+  object dscstpis: TDataSource
+    DataSet = qrcstpis
+    OnDataChange = dscstipiDataChange
+    left = 131
+    top = 496
+  end
+  object qrcst: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CST'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'DESCRICAOCST'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'PERMITECREDITO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'POSSUIICMSST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ISENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'TRIBUTADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcst'
+      ''
+    )
+    Params = <>
+    left = 33
+    top = 568
+  end
+  object dscst: TDataSource
+    DataSet = qrcst
+    OnDataChange = dscstipiDataChange
+    left = 131
+    top = 568
   end
 end

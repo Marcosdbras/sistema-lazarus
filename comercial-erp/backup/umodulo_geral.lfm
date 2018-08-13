@@ -6,11 +6,22 @@ object modulo_geral: Tmodulo_geral
   Width = 210
   PPI = 96
   object qrmaster_indice: TSQLQuery
-    FieldDefs = <>
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CODIGO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODCSOSNPADRAO'
+        DataType = ftInteger
+        Precision = -1
+      end>
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
-      'select * master_indice'
+      'select * from master_indice'
     )
     Params = <>
     left = 46

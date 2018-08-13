@@ -17,8 +17,17 @@ type
     btncancelar: TButton;
     cbxcodcstde: TDBLookupComboBox;
     cbxdesccstde: TDBLookupComboBox;
+    cbxcodipi: TDBLookupComboBox;
+    cbxdescipi: TDBLookupComboBox;
+    cbxcodpis: TDBLookupComboBox;
+    cbxdescpis: TDBLookupComboBox;
+    cbxcodcofins: TDBLookupComboBox;
+    cbxdesccofins: TDBLookupComboBox;
     Label1: TLabel;
     Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
     procedure btncancelarClick(Sender: TObject);
     procedure btngravartodosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -51,14 +60,20 @@ begin
     qrexec_base.SQL.Clear;
     if modulo_geral.qrmaster_indice.RecordCount = 0 then
        begin
-         qrexec_base.SQL.Add('insert into master_indice(codcsosnpadrao) values (:codcsosnpadrao)');
+         qrexec_base.SQL.Add('insert into master_indice(codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao) values (:codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao)');
       end
     else
       begin
-         qrexec_base.SQL.Add('update master_indice set codcsosnpadrao = :codcsosnpadrao');
+         qrexec_base.SQL.Add('update master_indice set codcsosnpadrao = :codcsosnpadrao, codcstpispadrao = :codcstpispadrao, codcstoriempadrao = :codcstoriempadrao, codcstipipadrao = :codcstipipadrao, codcstpadrao = :codcstpadrao, codcstcofinspadrao = :codcstcofinspadrao');
        end;
     //endi
     qrexec_base.ParamByName('codcsosnpadrao').AsInteger:=modulo_temp.qrtempCsticmsDe.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('codcstpispadrao').AsInteger:=modulo_temp.qrtempCstPis.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('codcstoriempadrao').AsInteger:=modulo_temp.qrtempcstoriem.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('codcstipipadrao').AsInteger:=modulo_temp.qrtempcstipi.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('codcstpadrao').AsInteger:=modulo_temp.qrtempcst.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('codcstcofinspadrao').AsInteger:=modulo_temp.qrtempcstcofins.FieldByName('codigo').AsInteger;
+
     qrexec_base.ExecSQL;
 
 
@@ -86,6 +101,69 @@ begin
   end;
   //endth
 
+  with modulo_produto do
+  begin
+
+    qrcstipi.Close;
+    qrcstipi.SQL.Clear;
+    qrcstipi.SQL.Add('select * from tcstipi');
+    qrcstipi.Open;
+
+  end;
+  //endth
+
+
+  with modulo_produto do
+  begin
+
+    qrcstcofins.Close;
+    qrcstcofins.SQL.Clear;
+    qrcstcofins.SQL.Add('select * from tcstcofins');
+    qrcstcofins.Open;
+
+  end;
+  //endth
+
+
+
+  with modulo_produto do
+  begin
+
+    qrcstoriem.Close;
+    qrcstoriem.SQL.Clear;
+    qrcstoriem.SQL.Add('select * from tcstoriem');
+    qrcstoriem.Open;
+
+  end;
+  //endth
+
+
+  with modulo_produto do
+  begin
+
+    qrcstpis.Close;
+    qrcstpis.SQL.Clear;
+    qrcstpis.SQL.Add('select * from tcstpis');
+    qrcstpis.Open;
+
+  end;
+  //endth
+
+
+
+  with modulo_produto do
+  begin
+
+    qrcst.Close;
+    qrcst.SQL.Clear;
+    qrcst.SQL.Add('select * from tcst');
+    qrcst.Open;
+
+  end;
+  //endth
+
+
+
   with modulo_geral do
   begin
     qrmaster_indice.Close;
@@ -97,6 +175,13 @@ begin
 
 
   modulo_temp.qrtempCsticmsDe.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcsosnpadrao').AsInteger;
+  modulo_temp.qrtempCstCofins.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstcofinspadrao').AsInteger;
+  modulo_temp.qrtempCstipi.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstipipadrao').AsInteger;
+  modulo_temp.qrtempCstoriem.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstoriempadrao').AsInteger;
+  modulo_temp.qrtempCstpis.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstpispadrao').AsInteger;
+  modulo_temp.qrtempCst.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstpadrao').AsInteger;
+
+
 
   cbxcodcstde.ListSource := modulo_produto.dscsticms;
   cbxcodcstde.ListField:='codigocst';
@@ -114,6 +199,53 @@ begin
   cbxdesccstde.ScrollListDataset:=true;
   cbxdesccstde.Style:=csDropDownList;
 
+  cbxcodipi.ListSource := modulo_produto.dscstipi;
+  cbxcodipi.ListField:='codcstipi';
+  cbxcodipi.KeyField:='controle';
+  cbxcodipi.DataSource := modulo_temp.dstempCstIPI;
+  cbxcodipi.DataField:='codigo';
+  cbxcodipi.ScrollListDataset:=true;
+  cbxcodipi.Style:=csDropDownList;
+
+  cbxdescipi.ListSource := modulo_produto.dscstipi;
+  cbxdescipi.ListField:='descricao';
+  cbxdescipi.KeyField:='controle';
+  cbxdescipi.DataSource := modulo_temp.dstempCstIPI;
+  cbxdescipi.DataField:='codigo';
+  cbxdescipi.ScrollListDataset:=true;
+  cbxdescipi.Style:=csDropDownList;
+
+  cbxcodpis.ListSource := modulo_produto.dscstpis;
+  cbxcodpis.ListField:='codigocst';
+  cbxcodpis.KeyField:='controle';
+  cbxcodpis.DataSource := modulo_temp.dstempCstPis;
+  cbxcodpis.DataField:='codigo';
+  cbxcodpis.ScrollListDataset:=true;
+  cbxcodpis.Style:=csDropDownList;
+
+  cbxdescpis.ListSource := modulo_produto.dscstpis;
+  cbxdescpis.ListField:='descricao';
+  cbxdescpis.KeyField:='controle';
+  cbxdescpis.DataSource := modulo_temp.dstempCstPis;
+  cbxdescpis.DataField:='codigo';
+  cbxdescpis.ScrollListDataset:=true;
+  cbxdescpis.Style:=csDropDownList;
+
+  cbxcodcofins.ListSource := modulo_produto.dscstcofins;
+  cbxcodcofins.ListField:='codigocstcofins';
+  cbxcodcofins.KeyField:='controle';
+  cbxcodcofins.DataSource := modulo_temp.dstempCstCofins;
+  cbxcodcofins.DataField:='codigo';
+  cbxcodcofins.ScrollListDataset:=true;
+  cbxcodcofins.Style:=csDropDownList;
+
+  cbxdesccofins.ListSource := modulo_produto.dscstcofins;
+  cbxdesccofins.ListField:='descricao';
+  cbxdesccofins.KeyField:='controle';
+  cbxdesccofins.DataSource := modulo_temp.dstempCstCofins;
+  cbxdesccofins.DataField:='codigo';
+  cbxdesccofins.ScrollListDataset:=true;
+  cbxdesccofins.Style:=csDropDownList;
 
 
 end;

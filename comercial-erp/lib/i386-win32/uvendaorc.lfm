@@ -60,7 +60,7 @@ object frmvendaorc: Tfrmvendaorc
     Height = 57
     Top = 96
     Width = 152
-    Caption = 'Cancelar'
+    Caption = 'Fechar'
     OnClick = btncancelarClick
     TabOrder = 2
   end

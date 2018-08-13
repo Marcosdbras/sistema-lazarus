@@ -117,6 +117,110 @@ if existe_tabela('MASTER_INDICE') = 0 then
 //endif
 
 
+
+//Campo CSTPIS padrão existe?
+if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstpispadrao integer default 1;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo CSTORIEM padrão existe?
+if existe_campo('MASTER_INDICE','codcstoriempadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstoriempadrao integer default 1;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+//Campo CSTIPI padrão existe?
+if existe_campo('MASTER_INDICE','codcstipipadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstipipadrao integer default 7;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo CST padrão existe?
+if existe_campo('MASTER_INDICE','codcstpadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstpadrao integer default 1;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo Cofinspadrao padrão existe?
+if existe_campo('MASTER_INDICE','codcstcofinspadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstcofinspadrao integer default 7;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
 //Campo CSOSN padrão existe?
 if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
    begin
@@ -126,7 +230,7 @@ if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcsosnpadrao integer;   ');
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcsosnpadrao integer default 1;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -461,6 +565,7 @@ with modulo_conexaodb do
        //endi
 
        Script.Script.Clear;
+       Script.Script.Add('/*Retorna dados*/');
        Script.Terminator:='^';
        Script.Script.Add('CREATE OR ALTER procedure sparetucest (ncm varchar(8)) returns (cest varchar(10)) ');
        Script.Script.Add(' as ');
@@ -479,6 +584,7 @@ with modulo_conexaodb do
 
        Script.Script.Clear;
        Script.Terminator:='^';
+       Script.Script.Add('/*Atualiza  dados*/');
        Script.Script.Add('CREATE OR ALTER procedure spatualizacest (');
        Script.Script.Add('    codnfe integer)');
        Script.Script.Add('as');
@@ -509,7 +615,9 @@ with modulo_conexaodb do
 
 
        Script.Script.Clear;
+
        Script.Terminator:='^';
+       Script.Script.Add('/*Atualiza dados*/');
        Script.Script.Add('CREATE OR ALTER trigger tvendanfe_au1 for tvendanfe');
        Script.Script.Add('active after update position 1');
        Script.Script.Add('AS');

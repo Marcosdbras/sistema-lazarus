@@ -12,10 +12,20 @@ type
   { Tmodulo_produto }
 
   Tmodulo_produto = class(TDataModule)
+    dscstoriem: TDataSource;
     dscsticms: TDataSource;
     dscest: TDataSource;
+    dscstipi: TDataSource;
+    dscstcofins: TDataSource;
+    dscstpis: TDataSource;
+    dscst: TDataSource;
     dstempProduto: TDataSource;
     dsproduto: TDataSource;
+    qrcstoriem: TSQLQuery;
+    qrcstipi: TSQLQuery;
+    qrcstcofins: TSQLQuery;
+    qrcstpis: TSQLQuery;
+    qrcst: TSQLQuery;
     qrprodutoALIQUOTAICMSECF: TBCDField;
     qrprodutoALIQUOTAISS: TBCDField;
     qrprodutoAPLICACAOPRODUTO: TStringField;
@@ -155,6 +165,7 @@ type
     qrcest: TSQLQuery;
     qrcsticms: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);
+    procedure dscstipiDataChange(Sender: TObject; Field: TField);
     procedure dsprodutoDataChange(Sender: TObject; Field: TField);
   private
 
@@ -188,6 +199,11 @@ begin
          qrtempProduto.Open;
 
          qrtempProduto.Append;
+
+end;
+
+procedure Tmodulo_produto.dscstipiDataChange(Sender: TObject; Field: TField);
+begin
 
 end;
 

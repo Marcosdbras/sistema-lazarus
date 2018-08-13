@@ -6,7 +6,6 @@ object modulo_geral: Tmodulo_geral
   Width = 210
   PPI = 96
   object qrmaster_indice: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CODIGO'
@@ -24,7 +23,7 @@ object modulo_geral: Tmodulo_geral
       'select * from master_indice'
     )
     Params = <>
-    left = 46
-    top = 81
+    left = 32
+    top = 24
   end
 end
