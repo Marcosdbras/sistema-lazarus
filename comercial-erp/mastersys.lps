@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="25">
+    <Units Count="26">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -70,10 +70,10 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="94"/>
         <CursorPos X="22" Y="111"/>
         <UsageCount Value="205"/>
-        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="ufuncao_conexaodb.pas"/>
@@ -173,12 +173,10 @@
         <ComponentName Value="modulo_produto"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="205"/>
         <CursorPos X="3" Y="207"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit16>
       <Unit17>
         <Filename Value="uproduto_consulta.pas"/>
@@ -221,8 +219,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="95"/>
-        <CursorPos X="67" Y="105"/>
+        <TopLine Value="885"/>
+        <CursorPos X="32" Y="888"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -233,12 +231,10 @@
         <ComponentName Value="frmindice"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="60"/>
         <CursorPos X="47" Y="70"/>
-        <UsageCount Value="195"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="196"/>
       </Unit21>
       <Unit22>
         <Filename Value="umodulo_temp.pas"/>
@@ -249,7 +245,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="95"/>
         <CursorPos X="8" Y="126"/>
-        <UsageCount Value="192"/>
+        <UsageCount Value="193"/>
       </Unit22>
       <Unit23>
         <Filename Value="umodulo_geral.pas"/>
@@ -257,12 +253,10 @@
         <ComponentName Value="modulo_geral"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="31" Y="26"/>
-        <UsageCount Value="186"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="187"/>
       </Unit23>
       <Unit24>
         <Filename Value="C:\lazarus\lcl\include\dblookup.inc"/>
@@ -271,128 +265,35 @@
         <CursorPos Y="419"/>
         <UsageCount Value="9"/>
       </Unit24>
+      <Unit25>
+        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
+        <TopLine Value="3492"/>
+        <CursorPos Y="3501"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit25>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
         <Filename Value="uvendaorc.pas"/>
-        <Caret Line="756" Column="174" TopLine="742"/>
+        <Caret Line="105" Column="67" TopLine="95"/>
       </Position1>
       <Position2>
         <Filename Value="uvendaorc.pas"/>
-        <Caret Line="768" Column="62" TopLine="754"/>
+        <Caret Line="889" Column="53" TopLine="884"/>
       </Position2>
       <Position3>
         <Filename Value="uvendaorc.pas"/>
-        <Caret Line="139" Column="35" TopLine="137"/>
+        <Caret Line="80" Column="9" TopLine="77"/>
       </Position3>
       <Position4>
         <Filename Value="uvendaorc.pas"/>
-        <Caret Line="29" Column="51" TopLine="28"/>
+        <Caret Line="893" Column="70" TopLine="880"/>
       </Position4>
       <Position5>
         <Filename Value="uvendaorc.pas"/>
-        <Caret Line="40" Column="74" TopLine="28"/>
+        <Caret Line="435" Column="151" TopLine="427"/>
       </Position5>
-      <Position6>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="43" Column="88" TopLine="29"/>
-      </Position6>
-      <Position7>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="99" Column="28" TopLine="90"/>
-      </Position7>
-      <Position8>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="101" Column="24" TopLine="90"/>
-      </Position8>
-      <Position9>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="102" Column="36" TopLine="90"/>
-      </Position9>
-      <Position10>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="103" Column="30" TopLine="90"/>
-      </Position10>
-      <Position11>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="104" Column="28" TopLine="90"/>
-      </Position11>
-      <Position12>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="105" Column="31" TopLine="91"/>
-      </Position12>
-      <Position13>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Column="21"/>
-      </Position13>
-      <Position14>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="40" Column="74" TopLine="26"/>
-      </Position14>
-      <Position15>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="43" Column="88" TopLine="29"/>
-      </Position15>
-      <Position16>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="99" Column="28" TopLine="91"/>
-      </Position16>
-      <Position17>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="101" Column="24" TopLine="91"/>
-      </Position17>
-      <Position18>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="102" Column="36" TopLine="91"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="103" Column="30" TopLine="91"/>
-      </Position19>
-      <Position20>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="104" Column="28" TopLine="91"/>
-      </Position20>
-      <Position21>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="105" Column="31" TopLine="91"/>
-      </Position21>
-      <Position22>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Column="18"/>
-      </Position22>
-      <Position23>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="38" Column="14" TopLine="26"/>
-      </Position23>
-      <Position24>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="2" Column="64"/>
-      </Position24>
-      <Position25>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="43" Column="30" TopLine="30"/>
-      </Position25>
-      <Position26>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="2" Column="72"/>
-      </Position26>
-      <Position27>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="43" Column="23" TopLine="29"/>
-      </Position27>
-      <Position28>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="102" Column="30" TopLine="88"/>
-      </Position28>
-      <Position29>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="816" Column="63" TopLine="810"/>
-      </Position29>
-      <Position30>
-        <Filename Value="uvendaorc.pas"/>
-        <Caret Line="102" Column="86" TopLine="95"/>
-      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

@@ -77,6 +77,8 @@ begin
    if Application.MessageBox('Tem certeza que deseja exportar este pedido para NF-e?','Atenção',MB_YESNO) = 6  then
       begin
 
+
+
         with modulo_geral do
         begin
           qrmaster_indice.Close;
@@ -430,7 +432,7 @@ begin
                                qrconsulta_base.Close;
                                qrconsulta_base.SQL.Clear;
                                qrconsulta_base.SQL.Add('select * from tcest where ncm = :ncm');
-                               qrconsulta_base.ParamByName('ncm').AsString:= modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
+                               qrconsulta_base.ParamByName('ncm').AsString:= copy(modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString,1,8);
                                qrconsulta_base.Open;
                                if qrconsulta_base.RecordCount = 0 then
                                   begin
@@ -456,7 +458,7 @@ begin
                                     //endi
 
 
-                                    qrexec_base.ParamByName('ncm').AsString:=modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString;
+                                    qrexec_base.ParamByName('ncm').AsString:=copy(modulo_vendaorc.qrvenda_itemproduto.FieldByName('ncm').AsString,1,8);
 
                                     qrexec_base.ParamByName('codimpostomedio').AsInteger:=icodimpostomedio;
 
@@ -675,14 +677,6 @@ begin
 
                                     qrexec_base.ParamByName('valorunitariocompra').Asfloat:= qrvenda_itemproduto.FieldByName('precocusto').Asfloat;
 
-
-
-                                    //aqui
-
-
-
-
-
                                     qrexec_base.ParamByName('usagrade').AsString:= 'NÃO';
                                     qrexec_base.ParamByName('usaserial').AsString:= 'NÃO';
 
@@ -888,7 +882,11 @@ begin
 
                                qrexec_base.ExecSQL;
 
-                               atualizaBanco;
+                               //atualizaBanco;
+
+                               modulo_conexaodb.tzcontrole.Commit;
+
+
 
                              end;
                         //endth
