@@ -106,9 +106,6 @@ begin
            isentoicmspadrao := qrcsticms.FieldByName('isento').AsString;
            tributadoicmspadrao := qrcsticms.FieldByName('tributado').AsString;
 
-
-
-
            qrcstipi.Close;
            qrcstipi.SQL.Clear;
            qrcstipi.SQL.Add('select * from tcstipi where controle = :controle');
@@ -163,8 +160,6 @@ begin
                sie := tirapontos(tirabarras(tiratracos(sie)));
 
 
-
-
                // Funcionário
                qrconsulta_base.Close;
                qrconsulta_base.SQL.Clear;
@@ -199,6 +194,42 @@ begin
                qrconsulta_base.Open;
                if qrconsulta_base.RecordCount = 0 then
                   begin
+
+
+
+                    if (length(modulo_vendaorc.qrvenda.FieldByName('cepent').AsString) < 9) or
+                       (pos('',modulo_vendaorc.qrvenda.FieldByName('cepent').AsString)>0 ) or
+                       (pos('-',modulo_vendaorc.qrvenda.FieldByName('cepent').AsString)=0 )
+                    then
+                       begin
+                         showmessage('Operação cancelada! O cep está incompleto, não está preenchido corretamente ou está fora do formato padrão 00000-000. Por gentileza verifique no cadastro de clientes da base original');
+                         exit;
+                       end;
+                    //endi
+
+                    if (length(modulo_vendaorc.qrvenda.FieldByName('estadoent').AsString) < 2) or
+                       (pos('',modulo_vendaorc.qrvenda.FieldByName('estadoent').AsString)>0 )
+
+                    then
+                       begin
+                         showmessage('Operação cancelada! O campo estado não está preenchido corretamente. Verifique no cadastro original.');
+                         exit;
+                       end;
+                    //endi
+
+
+                    if (length(modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString) = 0) or
+                       (pos('',modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString)>0 )
+                    then
+                       begin
+                         showmessage('Operação cancelada! O campo cidade não está preenchido corretamente. Verifique no cadastro original.');
+                         exit;
+                       end;
+                    //endi
+
+
+
+
 
                     qrexec_base.Close;
                     qrexec_base.SQL.Clear;
@@ -258,8 +289,9 @@ begin
                          if  sie <> '' then
                              qrexec_base.ParamByName('ie').AsString:= sie
                          else
-                             qrexec_base.ParamByName('rg').AsString:='ISENTO';
+                             qrexec_base.ParamByName('ie').AsString:='ISENTO';
                          //endif
+
                        end;
                     //endi
 
@@ -882,9 +914,7 @@ begin
 
                                qrexec_base.ExecSQL;
 
-                               //atualizaBanco;
-
-                               modulo_conexaodb.tzcontrole.Commit;
+                               atualizaBancoFechaTransacao;
 
 
                              end;

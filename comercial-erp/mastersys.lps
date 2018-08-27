@@ -41,10 +41,12 @@
         <ComponentName Value="modulo_conexaodb"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="58"/>
-        <CursorPos X="32" Y="47"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="61"/>
+        <CursorPos X="23" Y="63"/>
         <UsageCount Value="201"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="ufuncao_arq_ini.pas"/>
@@ -219,8 +221,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="885"/>
-        <CursorPos X="32" Y="888"/>
+        <TopLine Value="213"/>
+        <CursorPos X="97" Y="222"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -234,7 +236,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="60"/>
         <CursorPos X="47" Y="70"/>
-        <UsageCount Value="196"/>
+        <UsageCount Value="207"/>
       </Unit21>
       <Unit22>
         <Filename Value="umodulo_temp.pas"/>
@@ -245,7 +247,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="95"/>
         <CursorPos X="8" Y="126"/>
-        <UsageCount Value="193"/>
+        <UsageCount Value="204"/>
       </Unit22>
       <Unit23>
         <Filename Value="umodulo_geral.pas"/>
@@ -256,24 +258,24 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="31" Y="26"/>
-        <UsageCount Value="187"/>
+        <UsageCount Value="199"/>
       </Unit23>
       <Unit24>
         <Filename Value="C:\lazarus\lcl\include\dblookup.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="411"/>
         <CursorPos Y="419"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit24>
       <Unit25>
         <Filename Value="C:\lazarus\lcl\include\control.inc"/>
         <TopLine Value="3492"/>
         <CursorPos Y="3501"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="17"/>
         <Loaded Value="True"/>
       </Unit25>
     </Units>
-    <JumpHistory Count="5" HistoryIndex="4">
+    <JumpHistory Count="6" HistoryIndex="5">
       <Position1>
         <Filename Value="uvendaorc.pas"/>
         <Caret Line="105" Column="67" TopLine="95"/>
@@ -294,6 +296,10 @@
         <Filename Value="uvendaorc.pas"/>
         <Caret Line="435" Column="151" TopLine="427"/>
       </Position5>
+      <Position6>
+        <Filename Value="uvendaorc.pas"/>
+        <Caret Line="197" Column="87" TopLine="189"/>
+      </Position6>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

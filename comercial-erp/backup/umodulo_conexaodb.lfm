@@ -252,7 +252,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
     Password = 'masterkey'
     Transaction = tzcontrole_Aux
     UserName = 'SYSDBA'
-    CharSet = 'UTF8'
+    CharSet = 'win1252'
     HostName = 'localhost'
     CheckTransactionParams = False
     left = 48

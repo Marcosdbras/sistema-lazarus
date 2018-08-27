@@ -44,6 +44,7 @@ type
 
   public
     procedure atualizaBanco;
+    procedure atualizaBancoFechaTransacao;
 
   end;
 
@@ -56,6 +57,11 @@ implementation
 
 { Tmodulo_conexaodb }
 
+
+procedure Tmodulo_conexaodb.atualizaBancoFechaTransacao;
+begin
+   tzcontrole.Commit;
+end;
 
 procedure Tmodulo_conexaodb.atualizaBanco;
 begin
