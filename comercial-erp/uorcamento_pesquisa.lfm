@@ -68,7 +68,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       NumGlyphs = 1
       MaxLength = 0
       OnKeyPress = edtdatainicioKeyPress
-      TabOrder = 0
+      TabOrder = 3
       Text = 'edtdatainicio'
     end
     object Label3: TLabel
@@ -98,7 +98,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       NumGlyphs = 1
       MaxLength = 0
       OnKeyPress = edtdatafimKeyPress
-      TabOrder = 1
+      TabOrder = 4
       Text = 'edtdatafim'
     end
     object Label4: TLabel
@@ -143,7 +143,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       LookupCache = False
       NullValueKey = 46
       OnKeyPress = cbxnomeclienteKeyPress
-      TabOrder = 2
+      TabOrder = 0
     end
     object cbxnomefun: TDBLookupComboBox
       Left = 240
@@ -155,7 +155,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       LookupCache = False
       NullValueKey = 46
       OnKeyPress = cbxnomefunKeyPress
-      TabOrder = 3
+      TabOrder = 1
     end
     object cbxnomeven: TDBLookupComboBox
       Left = 408
@@ -167,7 +167,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       LookupCache = False
       NullValueKey = 46
       OnKeyPress = cbxnomevenKeyPress
-      TabOrder = 4
+      TabOrder = 2
     end
     object Panel2: TPanel
       Left = 922
@@ -302,6 +302,22 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
         ParentFont = False
         TabOrder = 0
       end
+    end
+    object btnimprimir: TButton
+      Left = 520
+      Height = 40
+      Top = 7
+      Width = 123
+      Caption = 'Imprimir'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      OnClick = btnimprimirClick
+      ParentFont = False
+      TabOrder = 5
     end
   end
   object pnlcentral: TPanel

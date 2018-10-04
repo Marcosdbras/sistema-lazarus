@@ -25,6 +25,7 @@ var
 
 procedure arq_execscript;
 procedure atualiza_base;
+procedure transf_dados;
 function DataDirectory: string;
 function existe_tabela(nome:string):integer;
 function existe_campo(tabela,campo:string):integer;
@@ -56,6 +57,18 @@ function RemoveAcento(const pText: string): string;
 implementation
         uses umodulo_conexaodb, umodulo_produto;
 
+
+
+procedure transf_dados;
+begin
+   //-------
+   with modulo_conexaodb do
+     begin
+
+
+     end;
+   //endth
+end;
 
 procedure atualiza_base;
 var

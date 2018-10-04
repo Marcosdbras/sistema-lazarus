@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, RLReport,
-  RLPDFFilter;
+  RLPDFFilter, RLPreviewForm;
 
 type
 
@@ -19,6 +19,7 @@ type
     RLDBText1: TRLDBText;
     rlimporc: TRLReport;
     RLPDFFilter1: TRLPDFFilter;
+    RLPreviewSetup1: TRLPreviewSetup;
   private
 
   public

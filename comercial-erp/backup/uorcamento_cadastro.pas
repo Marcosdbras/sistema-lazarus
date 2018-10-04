@@ -21,7 +21,6 @@ type
     btnlancar: TButton;
     Button1: TButton;
     Button2: TButton;
-    btnimprimir: TButton;
     cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
@@ -333,9 +332,7 @@ end;
 
 procedure Tfrmorcamento_cadastro.btnimprimirClick(Sender: TObject);
 begin
-  frmimporc := tfrmimporc.Create(self);
-  frmimporc.rlimporc.preview;
-  frmimporc.free;
+
 end;
 
 procedure Tfrmorcamento_cadastro.btnClassItemClick(Sender: TObject);
@@ -831,6 +828,7 @@ begin
       localizaUn;
     end;
  //endi
+
 
 
 end;

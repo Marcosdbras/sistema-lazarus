@@ -174,9 +174,9 @@ end;
 
 procedure Tfrmtela_principal.MenuItem9Click(Sender: TObject);
 begin
-  frmajusteprodutos := tfrmajusteprodutos.create(self);
-  frmajusteprodutos.showmodal;
-  frmajusteprodutos.free;
+  frmindice := tfrmindice.create(self);
+  frmindice.showmodal;
+  frmindice.free;
 end;
 
 end.

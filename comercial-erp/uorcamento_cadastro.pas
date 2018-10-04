@@ -21,7 +21,6 @@ type
     btnlancar: TButton;
     Button1: TButton;
     Button2: TButton;
-    btnimprimir: TButton;
     cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
@@ -138,7 +137,7 @@ var
 implementation
 
 uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario,
-      umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta, uimporc;
+      umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta;
 
 {$R *.lfm}
 
@@ -333,9 +332,7 @@ end;
 
 procedure Tfrmorcamento_cadastro.btnimprimirClick(Sender: TObject);
 begin
-  frmimporc := tfrmimporc.Create(self);
-  frmimporc.rlimporc.preview;
-  frmimporc.free;
+
 end;
 
 procedure Tfrmorcamento_cadastro.btnClassItemClick(Sender: TObject);
@@ -831,6 +828,7 @@ begin
       localizaUn;
     end;
  //endi
+
 
 
 end;

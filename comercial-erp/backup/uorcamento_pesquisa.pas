@@ -14,6 +14,7 @@ type
 
   Tfrmorcamento_pesquisa = class(TForm)
     btnfiltrar: TButton;
+    btnimprimir: TButton;
     btnlimpar: TButton;
     Button1: TButton;
     Button2: TButton;
@@ -39,6 +40,7 @@ type
     pnlinferior: TPanel;
     pnlcentral: TPanel;
     procedure btnfiltrarClick(Sender: TObject);
+    procedure btnimprimirClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -72,7 +74,7 @@ var
   frmorcamento_pesquisa: Tfrmorcamento_pesquisa;
 
 implementation
-     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario;
+     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uimporc;
 {$R *.lfm}
 
 { Tfrmorcamento_pesquisa }
@@ -143,6 +145,13 @@ end;
 procedure Tfrmorcamento_pesquisa.btnfiltrarClick(Sender: TObject);
 begin
   filtrar;
+end;
+
+procedure Tfrmorcamento_pesquisa.btnimprimirClick(Sender: TObject);
+begin
+  frmimporc := tfrmimporc.Create(self);
+  frmimporc.rlimporc.preview;
+  frmimporc.free;
 end;
 
 procedure Tfrmorcamento_pesquisa.btnlimparClick(Sender: TObject);

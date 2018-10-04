@@ -25,6 +25,7 @@ var
 
 procedure arq_execscript;
 procedure atualiza_base;
+procedure transf_dados;
 function DataDirectory: string;
 function existe_tabela(nome:string):integer;
 function existe_campo(tabela,campo:string):integer;
@@ -56,6 +57,13 @@ function RemoveAcento(const pText: string): string;
 implementation
         uses umodulo_conexaodb, umodulo_produto;
 
+
+
+procedure transf_dados;
+begin
+   //-------
+
+end;
 
 procedure atualiza_base;
 var
@@ -116,8 +124,6 @@ if existe_tabela('MASTER_INDICE') = 0 then
    end;
 //endif
 
-
-
 //Campo CSTPIS padrão existe?
 if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
    begin
@@ -127,7 +133,7 @@ if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstpispadrao integer default 1;   ');
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstpispadrao integer default 11;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -135,10 +141,6 @@ if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
          //endth
   end;
 //endi
-
-
-
-
 
 //Campo CSTORIEM padrão existe?
 if existe_campo('MASTER_INDICE','codcstoriempadrao') = 0 then

@@ -71,4 +71,8 @@ object frmimporc: Tfrmimporc
     left = 200
     top = 64
   end
+  object RLPreviewSetup1: TRLPreviewSetup
+    left = 310
+    top = 92
+  end
 end

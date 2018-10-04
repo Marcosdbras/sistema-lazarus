@@ -1,13 +1,13 @@
 object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
-  Left = -8
+  Left = -40
   Height = 706
-  Top = -8
-  Width = 1024
+  Top = 0
+  Width = 1028
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
   Caption = 'Master Plus - Pesquisa de Orçamentos'
   ClientHeight = 706
-  ClientWidth = 1024
+  ClientWidth = 1028
   OnClose = FormClose
   OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
@@ -16,11 +16,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Left = 0
     Height = 88
     Top = 0
-    Width = 1024
+    Width = 1028
     Align = alTop
     BevelOuter = bvNone
     ClientHeight = 88
-    ClientWidth = 1024
+    ClientWidth = 1028
     Color = 16744448
     ParentColor = False
     TabOrder = 0
@@ -170,7 +170,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 4
     end
     object Panel2: TPanel
-      Left = 918
+      Left = 922
       Height = 88
       Top = 0
       Width = 106
@@ -203,11 +203,11 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Left = 0
     Height = 50
     Top = 656
-    Width = 1024
+    Width = 1028
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 50
-    ClientWidth = 1024
+    ClientWidth = 1028
     Color = 16744448
     ParentColor = False
     TabOrder = 1
@@ -277,7 +277,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       TabOrder = 3
     end
     object Panel1: TPanel
-      Left = 918
+      Left = 922
       Height = 50
       Top = 0
       Width = 106
@@ -303,16 +303,32 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
         TabOrder = 0
       end
     end
+    object btnimprimir: TButton
+      Left = 520
+      Height = 40
+      Top = 7
+      Width = 123
+      Caption = 'Imprimir'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      OnClick = btnimprimirClick
+      ParentFont = False
+      TabOrder = 5
+    end
   end
   object pnlcentral: TPanel
     Left = 0
     Height = 52
     Top = 604
-    Width = 1024
+    Width = 1028
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 52
-    ClientWidth = 1024
+    ClientWidth = 1028
     Color = 16744448
     ParentColor = False
     TabOrder = 2
@@ -354,7 +370,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
     Left = 0
     Height = 516
     Top = 88
-    Width = 1024
+    Width = 1028
     Align = alClient
     AutoEdit = False
     Color = clWindow

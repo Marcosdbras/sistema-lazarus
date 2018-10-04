@@ -1,12 +1,12 @@
 object frmorcamento_cadastro: Tfrmorcamento_cadastro
   Left = 6
-  Height = 706
+  Height = 690
   Top = 0
   Width = 900
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
   Caption = 'Master Plus - Orçamento'
-  ClientHeight = 706
+  ClientHeight = 690
   ClientWidth = 900
   OnClose = FormClose
   OnCreate = FormCreate
@@ -54,7 +54,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   object pnlinferior: TPanel
     Left = 0
     Height = 50
-    Top = 656
+    Top = 640
     Width = 900
     Align = alBottom
     BevelOuter = bvNone
@@ -107,46 +107,30 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         TabOrder = 0
       end
     end
-    object btnimprimir: TButton
-      Left = 96
-      Height = 40
-      Top = 10
-      Width = 91
-      Caption = 'Imprimir'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = clNavy
-      Font.Height = -15
-      Font.Name = 'Arial'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      OnClick = btnimprimirClick
-      ParentFont = False
-      TabOrder = 2
-    end
   end
   object pnlcentral: TPanel
     Left = 0
-    Height = 624
+    Height = 608
     Top = 32
     Width = 900
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 624
+    ClientHeight = 608
     ClientWidth = 900
     Color = 16744576
     ParentColor = False
     TabOrder = 2
     object ScrollBox1: TScrollBox
       Left = 0
-      Height = 624
+      Height = 608
       Top = 0
       Width = 900
-      HorzScrollBar.Page = 895
-      VertScrollBar.Page = 613
+      HorzScrollBar.Page = 883
+      VertScrollBar.Page = 591
       Align = alClient
       BorderStyle = bsNone
-      ClientHeight = 624
-      ClientWidth = 900
+      ClientHeight = 591
+      ClientWidth = 883
       Color = clForm
       ParentColor = False
       TabOrder = 0
@@ -155,11 +139,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Left = 0
         Height = 85
         Top = 0
-        Width = 900
+        Width = 895
         Align = alTop
         Caption = ' Identificação '
         ClientHeight = 65
-        ClientWidth = 896
+        ClientWidth = 891
         TabOrder = 0
         object lblcliente: TLabel
           Left = 0
@@ -250,22 +234,22 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Left = 0
         Height = 411
         Top = 85
-        Width = 900
+        Width = 895
         Align = alTop
         Caption = ' Produtos '
         ClientHeight = 391
-        ClientWidth = 896
+        ClientWidth = 891
         TabOrder = 1
         OnClick = GroupBox2Click
         object Panel3: TPanel
           Left = 0
           Height = 58
           Top = 0
-          Width = 896
+          Width = 891
           Align = alTop
           BevelOuter = bvNone
           ClientHeight = 58
-          ClientWidth = 896
+          ClientWidth = 891
           TabOrder = 0
           object lblcliente3: TLabel
             Left = 0
@@ -420,12 +404,12 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Left = 0
           Height = 333
           Top = 58
-          Width = 896
+          Width = 891
           Align = alClient
           BevelOuter = bvNone
           Caption = 'Panel5'
           ClientHeight = 333
-          ClientWidth = 896
+          ClientWidth = 891
           TabOrder = 1
           object dbgproduto: TDBGrid
             Left = 0
@@ -475,11 +459,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Left = 0
             Height = 93
             Top = 240
-            Width = 896
+            Width = 891
             Align = alBottom
             BevelOuter = bvNone
             ClientHeight = 93
-            ClientWidth = 896
+            ClientWidth = 891
             TabOrder = 1
             object GroupBox3: TGroupBox
               Left = 0
@@ -566,23 +550,23 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       end
       object GroupBox4: TGroupBox
         Left = 0
-        Height = 128
+        Height = 117
         Top = 496
-        Width = 900
+        Width = 895
         Align = alClient
         Caption = 'Observação'
-        ClientHeight = 108
-        ClientWidth = 896
+        ClientHeight = 97
+        ClientWidth = 891
         TabOrder = 2
         object pnlobservacao: TPanel
           Left = 0
-          Height = 108
+          Height = 97
           Top = 0
-          Width = 896
+          Width = 891
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 108
-          ClientWidth = 896
+          ClientHeight = 97
+          ClientWidth = 891
           TabOrder = 0
           object memoobs: TMemo
             Left = 0
