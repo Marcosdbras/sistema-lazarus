@@ -64,9 +64,12 @@ procedure Tfrmproduto_consulta.btnconfirmaClick(Sender: TObject);
 begin
    if frmorcamento_cadastro <> nil then
      begin
-        frmorcamento_cadastro.lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
-        frmorcamento_cadastro.edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
-        frmorcamento_cadastro.edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
+
+       frmorcamento_cadastro.carregaCampoProd;
+
+       frmorcamento_cadastro.localizaUn;
+
+
      end;
   //endi
 

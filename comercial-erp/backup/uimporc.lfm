@@ -6,6 +6,7 @@ object frmimporc: Tfrmimporc
   Caption = 'frmimporc'
   ClientHeight = 411
   ClientWidth = 864
+  OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
   object rlimporc: TRLReport
     Left = 0
@@ -22,7 +23,7 @@ object frmimporc: Tfrmimporc
     RealBounds.Height = 0
     object RLBand1: TRLBand
       Left = 38
-      Height = 96
+      Height = 136
       Top = 38
       Width = 718
       BandType = btHeader
@@ -30,33 +31,238 @@ object frmimporc: Tfrmimporc
       RealBounds.Top = 0
       RealBounds.Width = 0
       RealBounds.Height = 0
+      object RLImage1: TRLImage
+        Left = 1
+        Height = 82
+        Top = 1
+        Width = 714
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLLabel1: TRLLabel
+        Left = 40
+        Height = 16
+        Top = 120
+        Width = 76
+        Caption = 'PRODUTOS'
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLLabel2: TRLLabel
+        Left = 368
+        Height = 16
+        Top = 120
+        Width = 87
+        Caption = 'QUANTIDADE'
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLLabel3: TRLLabel
+        Left = 464
+        Height = 16
+        Top = 120
+        Width = 26
+        Caption = 'UN.'
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel3AfterPrint
+      end
+      object RLLabel4: TRLLabel
+        Left = 512
+        Height = 16
+        Top = 120
+        Width = 96
+        Caption = 'VLR. UNIT√ÅRIO'
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel4AfterPrint
+      end
+      object RLLabel5: TRLLabel
+        Left = 635
+        Height = 16
+        Top = 120
+        Width = 77
+        Caption = 'VLR. TOTAL'
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel4AfterPrint
+      end
+      object RLLabel6: TRLLabel
+        Left = 21
+        Height = 16
+        Top = 120
+        Width = 11
+        Caption = '#'
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel4AfterPrint
+      end
+      object RLSystemInfo1: TRLSystemInfo
+        Left = 1
+        Height = 16
+        Top = 88
+        Width = 60
+        Info = itFullDate
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLSystemInfo2: TRLSystemInfo
+        Left = 576
+        Height = 16
+        Top = 88
+        Width = 87
+        Alignment = taRightJustify
+        Info = itPageNumber
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLSystemInfo3: TRLSystemInfo
+        Left = 672
+        Height = 16
+        Top = 88
+        Width = 40
+        Info = itLastPageNumber
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLLabel7: TRLLabel
+        Left = 664
+        Height = 16
+        Top = 88
+        Width = 8
+        Caption = '/'
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
     end
     object RLBand2: TRLBand
       Left = 38
       Height = 18
-      Top = 134
+      Top = 174
       Width = 718
+      Color = clWhite
+      ParentColor = False
       RealBounds.Left = 0
       RealBounds.Top = 0
       RealBounds.Width = 0
       RealBounds.Height = 0
+      Transparent = False
       object RLDBText1: TRLDBText
-        Left = 3
+        Left = 1
         Height = 16
-        Top = 1
-        Width = 62
+        Top = 0
+        Width = 31
+        Alignment = taRightJustify
+        AutoSize = False
         DataField = 'CODITEM'
         DataSource = modulo_orcamento.dsorcamento_itemproduto
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
         RealBounds.Height = 0
+        Transparent = False
+      end
+      object RLDBText2: TRLDBText
+        Left = 40
+        Height = 16
+        Top = 0
+        Width = 320
+        AutoSize = False
+        DataField = 'PRODUTO'
+        DataSource = modulo_orcamento.dsorcamento_itemproduto
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        Transparent = False
+      end
+      object RLDBText3: TRLDBText
+        Left = 368
+        Height = 16
+        Top = 0
+        Width = 87
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'QTDE'
+        DataSource = modulo_orcamento.dsorcamento_itemproduto
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        Transparent = False
+      end
+      object RLDBText4: TRLDBText
+        Left = 464
+        Height = 16
+        Top = 0
+        Width = 40
+        AutoSize = False
+        DataField = 'UN'
+        DataSource = modulo_orcamento.dsorcamento_itemproduto
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        Transparent = False
+      end
+      object RLDBText5: TRLDBText
+        Left = 520
+        Height = 16
+        Top = 0
+        Width = 88
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'VALORUNITARIO'
+        DataSource = modulo_orcamento.dsorcamento_itemproduto
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        Transparent = False
+      end
+      object RLDBText6: TRLDBText
+        Left = 616
+        Height = 16
+        Top = 0
+        Width = 96
+        Alignment = taRightJustify
+        AutoSize = False
+        DataField = 'VALORUNITARIO'
+        DataSource = modulo_orcamento.dsorcamento_itemproduto
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        Transparent = False
       end
     end
     object RLBand3: TRLBand
       Left = 38
       Height = 64
-      Top = 152
+      Top = 192
       Width = 718
       BandType = btFooter
       RealBounds.Left = 0
@@ -65,14 +271,14 @@ object frmimporc: Tfrmimporc
       RealBounds.Height = 0
     end
   end
-  object RLPDFFilter1: TRLPDFFilter
-    DocumentInfo.Creator = 'FortesReport Community Edition v4.0 \251 Copyright © 1999-2016 Fortes Inform·tica'
+  object rlfilter: TRLPDFFilter
+    DocumentInfo.Creator = 'FortesReport Community Edition v4.0 \251 Copyright ¬© 1999-2016 Fortes Inform√°tica'
     DisplayName = 'Documento PDF'
-    left = 200
-    top = 64
+    left = 144
+    top = 40
   end
-  object RLPreviewSetup1: TRLPreviewSetup
-    left = 310
-    top = 92
+  object rlpreview: TRLPreviewSetup
+    left = 272
+    top = 40
   end
 end

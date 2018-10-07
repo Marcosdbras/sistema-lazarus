@@ -74,7 +74,7 @@ var
   frmorcamento_pesquisa: Tfrmorcamento_pesquisa;
 
 implementation
-     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uimporc;
+     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uorcamento_impressao;
 {$R *.lfm}
 
 { Tfrmorcamento_pesquisa }
@@ -149,9 +149,21 @@ end;
 
 procedure Tfrmorcamento_pesquisa.btnimprimirClick(Sender: TObject);
 begin
-  frmimporc := tfrmimporc.Create(self);
-  frmimporc.rlimporc.preview;
-  frmimporc.free;
+  frmorcamento_impressao := torcamento_impressao.Create(self);
+  frmorcamento_impressao.rlimporc.preview;
+  frmorcamento_impressao.free;
+
+
+  //frmimporc := tfrmimporc.Create(self);
+  //frmimporc.rlimporc.preview;
+
+  //frmimporc.rlimporc.SaveToFile( 'C:\sgbr\orçamento.pdf' );
+  //frmimporc.rlimporc.Prepare;
+  //frmimporc.rlfilter.FilterPages(frmimporc.rlimporc.Pages,1,-1,'',1);   //(frmimporc.rlimporc.Pages,1,-1,False);
+
+
+
+  //frmimporc.free;
 end;
 
 procedure Tfrmorcamento_pesquisa.btnlimparClick(Sender: TObject);

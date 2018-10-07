@@ -17,10 +17,29 @@ type
     RLBand2: TRLBand;
     RLBand3: TRLBand;
     RLDBText1: TRLDBText;
+    RLDBText2: TRLDBText;
+    RLDBText3: TRLDBText;
+    RLDBText4: TRLDBText;
+    RLDBText5: TRLDBText;
+    RLDBText6: TRLDBText;
+    RLImage1: TRLImage;
     rlimporc: TRLReport;
-    RLPDFFilter1: TRLPDFFilter;
-    RLPreviewSetup1: TRLPreviewSetup;
+    RLLabel1: TRLLabel;
+    RLLabel2: TRLLabel;
+    RLLabel3: TRLLabel;
+    RLLabel4: TRLLabel;
+    RLLabel5: TRLLabel;
+    RLLabel6: TRLLabel;
+    rlfilter: TRLPDFFilter;
+    RLLabel7: TRLLabel;
+    rlpreview: TRLPreviewSetup;
+    RLSystemInfo1: TRLSystemInfo;
+    RLSystemInfo2: TRLSystemInfo;
+    RLSystemInfo3: TRLSystemInfo;
     procedure FormCreate(Sender: TObject);
+    procedure RLLabel3AfterPrint(Sender: TObject);
+    procedure RLLabel4AfterPrint(Sender: TObject);
+    procedure RLLabel7AfterPrint(Sender: TObject);
   private
 
   public
@@ -56,6 +75,21 @@ implementation
 
 
        end;
+
+procedure Tfrmimporc.RLLabel3AfterPrint(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmimporc.RLLabel4AfterPrint(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmimporc.RLLabel7AfterPrint(Sender: TObject);
+begin
+
+end;
 
 end.
 

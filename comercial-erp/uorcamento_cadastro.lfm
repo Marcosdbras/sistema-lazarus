@@ -419,11 +419,6 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Color = clWindow
             Columns = <            
               item
-                Title.Caption = 'ITEM'
-                Width = 32
-                FieldName = 'CODITEM'
-              end            
-              item
                 Title.Caption = 'Title'
                 Width = 325
                 FieldName = 'PRODUTO'
@@ -445,8 +440,13 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
               end            
               item
                 Title.Caption = 'TOTALLIQUIDO'
-                Width = 92
+                Width = 125
                 FieldName = 'TOTALLIQUIDO'
+              end            
+              item
+                Title.Caption = 'ITEM'
+                Width = 32
+                FieldName = 'CODITEM'
               end>
             DataSource = modulo_orcamento.dsorcamento_itemproduto
             FixedCols = 0

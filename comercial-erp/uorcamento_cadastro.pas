@@ -116,7 +116,7 @@ type
     procedure bloqueiaProdutoAlt;
     procedure desbloqueiaProdutoAlt;
     procedure classificarItem;
-    procedure localizaUn;
+
 
 
     procedure ScrollBox1Click(Sender: TObject);
@@ -128,6 +128,8 @@ type
       qtdeconvertida, valorconversao:real;
 
   public
+    procedure localizaUn;
+    procedure carregaCampoProd;
 
   end;
 
@@ -704,6 +706,7 @@ begin
 
                        if reglocalizado > 1 then
                           begin
+
                             frmproduto_consulta := tfrmproduto_consulta.Create(self);
                             frmproduto_consulta.ShowModal;
                             frmproduto_consulta.Free;
@@ -712,20 +715,12 @@ begin
                        else
                           begin
 
-                            lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
-                            edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
-                            edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
 
-                            referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
-                            cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
-                            codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
-                            fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
-                            valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
-
-                            descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
-                            codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+                            carregaCampoProd;
 
                             localizaUn;
+
+
                           end;
                        //endi
 
@@ -750,19 +745,7 @@ begin
                       end
                   else
                      begin
-
-                       lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
-                       edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
-                       edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
-
-                       referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
-                       cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
-                       codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
-                       fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
-                       valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
-
-                       descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
-                       codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+                       carregaCampoProd;
 
                        localizaUn;
                      end;
@@ -787,19 +770,7 @@ begin
             else
                begin
 
-                 lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
-                 edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
-                 edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
-
-
-                 referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
-                 cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
-                 codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
-                 fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
-                 valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
-
-                 descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
-                 codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+                 carregaCampoProd;
 
                  localizaUn;
                end;
@@ -812,20 +783,10 @@ begin
  else
     begin
 
-      lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
-      edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
-      edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
-
-      referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
-      cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
-      codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
-      fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
-      valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
-
-      descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
-      codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+      carregaCampoProd;
 
       localizaUn;
+
     end;
  //endi
 
@@ -1480,6 +1441,26 @@ begin
 
     end;
 end;
+
+procedure tfrmorcamento_cadastro.carregaCampoProd;
+   begin
+
+     lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
+     edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
+     edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
+
+     referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
+     cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;
+     codaplicacaoproduto:=modulo_produto.qrproduto.FieldByName('codaplicacaoproduto').AsInteger;
+     fatorconversao:=modulo_produto.qrproduto.FieldByName('fatorconversao').AsString;
+     valorconversao:=modulo_produto.qrproduto.FieldByName('valorconversao').Asfloat;
+
+     descricaoun:=modulo_produto.qrproduto.FieldByName('unidade').AsString;
+     codbarras:=modulo_produto.qrproduto.FieldByName('codbarras').AsString;
+
+
+
+   end;
 
 end.
 
