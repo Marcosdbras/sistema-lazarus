@@ -2,12 +2,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
   Left = 374
   Height = 130
   Top = 212
-  Width = 382
+  Width = 383
   Caption = 'Impressão Orçamento'
   ClientHeight = 130
-  ClientWidth = 382
+  ClientWidth = 383
   LCLVersion = '1.8.4.0'
-  object ComboBox1: TComboBox
+  object cbxvisualiza: TComboBox
     Left = 120
     Height = 23
     Top = 24
@@ -36,6 +36,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
     Top = 80
     Width = 75
     Caption = 'OK'
+    OnClick = btnokClick
     TabOrder = 1
   end
   object btncancelar: TButton
@@ -43,7 +44,14 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
     Height = 25
     Top = 80
     Width = 75
-    Caption = 'Cancelar'
+    Caption = 'Fechar'
+    OnClick = btncancelarClick
     TabOrder = 2
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.PDF'
+    Filter = 'PDF|*.PDF'
+    left = 89
+    top = 81
   end
 end

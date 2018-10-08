@@ -149,8 +149,8 @@ end;
 
 procedure Tfrmorcamento_pesquisa.btnimprimirClick(Sender: TObject);
 begin
-  frmorcamento_impressao := torcamento_impressao.Create(self);
-  frmorcamento_impressao.rlimporc.preview;
+  frmorcamento_impressao := tfrmorcamento_impressao.Create(self);
+  frmorcamento_impressao.ShowModal;
   frmorcamento_impressao.free;
 
 

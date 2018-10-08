@@ -197,6 +197,7 @@
         <Filename Value="uorcamento_impressao.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmorcamento_impressao"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit24>
     </Units>

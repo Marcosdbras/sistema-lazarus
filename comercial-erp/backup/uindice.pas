@@ -15,6 +15,8 @@ type
   Tfrmindice = class(TForm)
     btngravartodos: TButton;
     btncancelar: TButton;
+    btnbuscarlogo: TButton;
+    btnbuscarcaminhopadraoarquivo: TButton;
     cbxcodcstde: TDBLookupComboBox;
     cbxdesccstde: TDBLookupComboBox;
     cbxcodipi: TDBLookupComboBox;
@@ -23,11 +25,15 @@ type
     cbxdescpis: TDBLookupComboBox;
     cbxcodcofins: TDBLookupComboBox;
     cbxdesccofins: TDBLookupComboBox;
+    edtlogotipo: TEdit;
+    edtlogotipo1: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
     procedure btncancelarClick(Sender: TObject);
     procedure btngravartodosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -72,7 +78,7 @@ begin
     qrexec_base.ParamByName('codcstoriempadrao').AsInteger:=modulo_temp.qrtempcstoriem.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('codcstipipadrao').AsInteger:=modulo_temp.qrtempcstipi.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('codcstpadrao').AsInteger:=modulo_temp.qrtempcst.FieldByName('codigo').AsInteger;
-    qrexec_base.ParamByName('codcstcofins').AsInteger:=modulo_temp.qrtempcstcofins.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('codcstcofinspadrao').AsInteger:=modulo_temp.qrtempcstcofins.FieldByName('codigo').AsInteger;
 
     qrexec_base.ExecSQL;
 

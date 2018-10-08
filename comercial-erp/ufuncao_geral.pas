@@ -129,6 +129,47 @@ if existe_tabela('MASTER_INDICE') = 0 then
    end;
 //endif
 
+
+//Campo logotipo existe?
+if existe_campo('MASTER_INDICE','logotipo') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD logotipo varchar(200);   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo caminhopadraopdf existe?
+if existe_campo('MASTER_INDICE','caminhopadraopdf') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD caminhopadraopdf varchar(200);   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
 //Campo CSTPIS padrão existe?
 if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
    begin

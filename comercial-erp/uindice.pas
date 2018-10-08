@@ -15,6 +15,8 @@ type
   Tfrmindice = class(TForm)
     btngravartodos: TButton;
     btncancelar: TButton;
+    btnbuscarlogo: TButton;
+    btnbuscarcaminhopadraoarquivo: TButton;
     cbxcodcstde: TDBLookupComboBox;
     cbxdesccstde: TDBLookupComboBox;
     cbxcodipi: TDBLookupComboBox;
@@ -23,11 +25,19 @@ type
     cbxdescpis: TDBLookupComboBox;
     cbxcodcofins: TDBLookupComboBox;
     cbxdesccofins: TDBLookupComboBox;
+    edtlogotipo: TEdit;
+    edtlogotipo1: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    OpenDialog1: TOpenDialog;
+    SelectDirectoryDialog1: TSelectDirectoryDialog;
+    procedure btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
+    procedure btnbuscarlogoClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure btngravartodosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -49,6 +59,22 @@ implementation
 procedure Tfrmindice.btncancelarClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmindice.btnbuscarlogoClick(Sender: TObject);
+begin
+  if opendialog1.Execute then
+     begin
+
+       edtlogotipo.Text:=opendialog1.FileName;
+
+
+     end;
+end;
+
+procedure Tfrmindice.btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
+begin
+  selectdirectorydialog1.Execute;
 end;
 
 procedure Tfrmindice.btngravartodosClick(Sender: TObject);

@@ -62,7 +62,12 @@ implementation
 procedure transf_dados;
 begin
    //-------
+   with modulo_conexaodb do
+     begin
 
+
+     end;
+   //endth
 end;
 
 procedure atualiza_base;
@@ -123,6 +128,30 @@ if existe_tabela('MASTER_INDICE') = 0 then
 
    end;
 //endif
+
+
+//Campo logotipo existe?
+if existe_campo('MASTER_INDICE','logotipo') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD logotipo varchar(200);   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
 
 //Campo CSTPIS padrão existe?
 if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
