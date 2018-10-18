@@ -74,7 +74,13 @@ end;
 
 procedure Tfrmindice.btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
 begin
-  selectdirectorydialog1.Execute;
+
+  if selectdirectorydialog1.Execute then
+     begin
+
+       edtlogotipo1.Text:=selectdirectorydialog1.FileName;
+
+     end;
 end;
 
 procedure Tfrmindice.btngravartodosClick(Sender: TObject);
@@ -86,7 +92,7 @@ begin
     qrexec_base.SQL.Clear;
     if modulo_geral.qrmaster_indice.RecordCount = 0 then
        begin
-         qrexec_base.SQL.Add('insert into master_indice(codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao) values (:codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao)');
+         qrexec_base.SQL.Add('insert into master_indice(  codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao) values (:codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao)');
       end
     else
       begin

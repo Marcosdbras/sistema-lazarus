@@ -198,6 +198,7 @@ object frmindice: Tfrmindice
     Top = 295
     Width = 46
     Caption = '...'
+    OnClick = btnbuscarlogoClick
     TabOrder = 12
   end
   object btnbuscarcaminhopadraoarquivo: TButton
@@ -206,6 +207,15 @@ object frmindice: Tfrmindice
     Top = 358
     Width = 46
     Caption = '...'
+    OnClick = btnbuscarcaminhopadraoarquivoClick
     TabOrder = 13
+  end
+  object OpenDialog1: TOpenDialog
+    left = 616
+    top = 280
+  end
+  object SelectDirectoryDialog1: TSelectDirectoryDialog
+    left = 600
+    top = 393
   end
 end

@@ -23,7 +23,7 @@ object frmimporc: Tfrmimporc
     RealBounds.Height = 0
     object RLBand1: TRLBand
       Left = 38
-      Height = 136
+      Height = 192
       Top = 38
       Width = 718
       BandType = btHeader
@@ -31,6 +31,19 @@ object frmimporc: Tfrmimporc
       RealBounds.Top = 0
       RealBounds.Width = 0
       RealBounds.Height = 0
+      AfterPrint = RLBand1AfterPrint
+      object RLDraw3: TRLDraw
+        Left = 1
+        Height = 8
+        Top = 165
+        Width = 714
+        Angle = 0
+        DrawKind = dkLine
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
       object RLImage1: TRLImage
         Left = 1
         Height = 95
@@ -2554,21 +2567,37 @@ object frmimporc: Tfrmimporc
       end
       object RLLabel1: TRLLabel
         Left = 40
-        Height = 16
-        Top = 120
-        Width = 76
+        Height = 18
+        Top = 172
+        Width = 84
         Caption = 'PRODUTOS'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
         RealBounds.Height = 0
       end
       object RLLabel2: TRLLabel
-        Left = 368
-        Height = 16
-        Top = 120
-        Width = 87
+        Left = 355
+        Height = 18
+        Top = 172
+        Width = 100
         Caption = 'QUANTIDADE'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
@@ -2576,10 +2605,18 @@ object frmimporc: Tfrmimporc
       end
       object RLLabel3: TRLLabel
         Left = 464
-        Height = 16
-        Top = 120
-        Width = 26
+        Height = 18
+        Top = 172
+        Width = 30
         Caption = 'UN.'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
@@ -2587,11 +2624,19 @@ object frmimporc: Tfrmimporc
         AfterPrint = RLLabel3AfterPrint
       end
       object RLLabel4: TRLLabel
-        Left = 512
-        Height = 16
-        Top = 120
-        Width = 96
-        Caption = 'VLR. UNITÁRIO'
+        Left = 527
+        Height = 18
+        Top = 172
+        Width = 81
+        Caption = 'VLR. UNIT.'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
@@ -2599,11 +2644,19 @@ object frmimporc: Tfrmimporc
         AfterPrint = RLLabel4AfterPrint
       end
       object RLLabel5: TRLLabel
-        Left = 635
-        Height = 16
-        Top = 120
-        Width = 77
+        Left = 626
+        Height = 18
+        Top = 172
+        Width = 89
         Caption = 'VLR. TOTAL'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
@@ -2611,11 +2664,19 @@ object frmimporc: Tfrmimporc
         AfterPrint = RLLabel4AfterPrint
       end
       object RLLabel6: TRLLabel
-        Left = 21
-        Height = 16
-        Top = 120
-        Width = 11
+        Left = 19
+        Height = 18
+        Top = 172
+        Width = 13
         Caption = '#'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
@@ -2623,14 +2684,14 @@ object frmimporc: Tfrmimporc
         AfterPrint = RLLabel4AfterPrint
       end
       object RLSystemInfo1: TRLSystemInfo
-        Left = 1
-        Height = 18
-        Top = 97
-        Width = 47
+        Left = 438
+        Height = 22
+        Top = 100
+        Width = 56
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -15
-        Font.Name = 'Arial'
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -2641,15 +2702,15 @@ object frmimporc: Tfrmimporc
         RealBounds.Height = 0
       end
       object RLSystemInfo2: TRLSystemInfo
-        Left = 600
-        Height = 18
-        Top = 97
-        Width = 63
+        Left = 632
+        Height = 22
+        Top = 100
+        Width = 43
         Alignment = taRightJustify
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -15
-        Font.Name = 'Arial'
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -2661,14 +2722,15 @@ object frmimporc: Tfrmimporc
         RealBounds.Height = 0
       end
       object RLSystemInfo3: TRLSystemInfo
-        Left = 672
-        Height = 18
-        Top = 97
-        Width = 40
+        Left = 679
+        Height = 22
+        Top = 100
+        Width = 36
+        Alignment = taRightJustify
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -15
-        Font.Name = 'Arial'
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -2680,15 +2742,151 @@ object frmimporc: Tfrmimporc
         RealBounds.Height = 0
       end
       object RLLabel7: TRLLabel
-        Left = 664
-        Height = 18
-        Top = 97
-        Width = 8
+        Left = 672
+        Height = 22
+        Top = 100
+        Width = 9
         Caption = '/'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -15
-        Font.Name = 'Arial'
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object RLLabel8: TRLLabel
+        Left = 390
+        Height = 22
+        Top = 100
+        Width = 44
+        Caption = 'Data'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object lblnome: TRLLabel
+        Left = 1
+        Height = 22
+        Top = 124
+        Width = 50
+        Caption = 'nome'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object RLLabel10: TRLLabel
+        Left = 551
+        Height = 22
+        Top = 100
+        Width = 82
+        Caption = 'Página(s)'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object lblendereco: TRLLabel
+        Left = 1
+        Height = 22
+        Top = 146
+        Width = 82
+        Caption = 'endereco'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object RLDraw1: TRLDraw
+        Left = 1
+        Height = 8
+        Top = 96
+        Width = 714
+        Angle = 0
+        DrawKind = dkLine
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLDraw2: TRLDraw
+        Left = 1
+        Height = 8
+        Top = 121
+        Width = 714
+        Angle = 0
+        DrawKind = dkLine
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLDraw4: TRLDraw
+        Left = 1
+        Height = 8
+        Top = 188
+        Width = 714
+        Angle = 0
+        DrawKind = dkLine
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object lblcnpjie: TRLLabel
+        Left = 1
+        Height = 22
+        Top = 100
+        Width = 40
+        Caption = 'cnpj'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -2702,8 +2900,8 @@ object frmimporc: Tfrmimporc
     end
     object RLBand2: TRLBand
       Left = 38
-      Height = 18
-      Top = 174
+      Height = 20
+      Top = 230
       Width = 718
       Color = clWhite
       ParentColor = False
@@ -2715,7 +2913,7 @@ object frmimporc: Tfrmimporc
       object RLDBText1: TRLDBText
         Left = 1
         Height = 16
-        Top = 0
+        Top = 2
         Width = 31
         Alignment = taRightJustify
         AutoSize = False
@@ -2730,8 +2928,8 @@ object frmimporc: Tfrmimporc
       object RLDBText2: TRLDBText
         Left = 40
         Height = 16
-        Top = 0
-        Width = 320
+        Top = 2
+        Width = 312
         AutoSize = False
         DataField = 'PRODUTO'
         DataSource = modulo_orcamento.dsorcamento_itemproduto
@@ -2742,10 +2940,10 @@ object frmimporc: Tfrmimporc
         Transparent = False
       end
       object RLDBText3: TRLDBText
-        Left = 368
+        Left = 355
         Height = 16
-        Top = 0
-        Width = 87
+        Top = 2
+        Width = 100
         Alignment = taRightJustify
         AutoSize = False
         DataField = 'QTDE'
@@ -2759,7 +2957,7 @@ object frmimporc: Tfrmimporc
       object RLDBText4: TRLDBText
         Left = 464
         Height = 16
-        Top = 0
+        Top = 2
         Width = 40
         AutoSize = False
         DataField = 'UN'
@@ -2773,7 +2971,7 @@ object frmimporc: Tfrmimporc
       object RLDBText5: TRLDBText
         Left = 520
         Height = 16
-        Top = 0
+        Top = 2
         Width = 88
         Alignment = taRightJustify
         AutoSize = False
@@ -2788,7 +2986,7 @@ object frmimporc: Tfrmimporc
       object RLDBText6: TRLDBText
         Left = 616
         Height = 16
-        Top = 0
+        Top = 2
         Width = 96
         Alignment = taRightJustify
         AutoSize = False
@@ -2804,7 +3002,7 @@ object frmimporc: Tfrmimporc
     object RLBand3: TRLBand
       Left = 38
       Height = 64
-      Top = 192
+      Top = 250
       Width = 718
       BandType = btFooter
       RealBounds.Left = 0

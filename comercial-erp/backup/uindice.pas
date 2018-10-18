@@ -34,6 +34,10 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    OpenDialog1: TOpenDialog;
+    SelectDirectoryDialog1: TSelectDirectoryDialog;
+    procedure btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
+    procedure btnbuscarlogoClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure btngravartodosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -55,6 +59,28 @@ implementation
 procedure Tfrmindice.btncancelarClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmindice.btnbuscarlogoClick(Sender: TObject);
+begin
+  if opendialog1.Execute then
+     begin
+
+       edtlogotipo.Text:=opendialog1.FileName;
+
+
+     end;
+end;
+
+procedure Tfrmindice.btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
+begin
+
+  if selectdirectorydialog1.Execute then
+     begin
+
+       edtlogotipo1.Text:=selectdirectorydialog1.FileName;
+
+     end;
 end;
 
 procedure Tfrmindice.btngravartodosClick(Sender: TObject);
