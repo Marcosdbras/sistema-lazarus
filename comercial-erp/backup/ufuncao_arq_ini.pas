@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, IniFiles;
 
 function GravarINIBD(Ip, CaminhoDB, Porta, Pass, Userx,
-  Protoc, charset, CaminhoDB2: String):boolean;
+  Protoc, charset, CaminhoDB2, Ipremoto, CaminhoDBremoto: String):boolean;
 
 procedure LerINIBD;
 
@@ -37,16 +37,17 @@ begin
   sPassword        := Ini.ReadString('ConexaoBanco', 'Password', '');
   sDatabase        := Ini.ReadString('ConexaoBanco', 'Database', '');
   sClientCodepage  := Ini.ReadString('ConexaoBanco', 'Charset', '');
+  sCaminhoDB2      := Ini.ReadString('ConexaoBanco', 'Database_2', '');
 
-
-
+  sHostNameRemoto        := Ini.ReadString('ConexaoBanco', 'HostnameRemoto', '');
+  sDatabaseRemoto        := Ini.ReadString('ConexaoBanco', 'DatabaseRemoto', '');
 end;
 
 //funcoes INI
 //Primeiro verifica se tem o arquivo ini de conexão com o banco
 //se não tiver precisa perguntar se vai ser local o remoto
 function GravarINIBD(Ip, CaminhoDB, Porta, Pass, Userx,
-  Protoc, charset, CaminhoDB2: String):boolean;
+  Protoc, charset, CaminhoDB2, Ipremoto, CaminhoDBremoto: String):boolean;
 var
   Arq: TIniFile;
   NovoNome: string;
@@ -74,6 +75,10 @@ begin
         Arq.WriteString('ConexaoBanco', 'Charset', charset); //ISO8859_1
         //Arq.WriteString('ConexaoBanco', 'Protocol', Protoc);
         //Arq.WriteString('ConexaoBanco', 'LibraryLocation', 'fbclient.dll');
+
+        Arq.WriteString('ConexaoBanco', 'HostNameRemoto', IPremoto);
+        Arq.WriteString('ConexaoBanco', 'DatabaseRemoto', CaminhoDBremoto);
+
 
 
 

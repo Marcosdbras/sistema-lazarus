@@ -56,7 +56,8 @@ implementation
 
 
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
-           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc, uindice;
+           uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc, uindice,
+           uparametro;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -174,9 +175,9 @@ end;
 
 procedure Tfrmtela_principal.MenuItem9Click(Sender: TObject);
 begin
-  frmindice := tfrmindice.create(self);
-  frmindice.showmodal;
-  frmindice.free;
+  frmparametro := tfrmparametro.create(self);
+  frmparametro.showmodal;
+  frmparametro.free;
 end;
 
 end.

@@ -1,11 +1,11 @@
-object frmindice: Tfrmindice
+object frmparametro: Tfrmparametro
   Left = 168
   Height = 475
   Top = 195
   Width = 674
   BorderIcons = []
   BorderStyle = bsDialog
-  Caption = 'Indice'
+  Caption = 'Valores Padrão'
   ClientHeight = 475
   ClientWidth = 674
   OnCreate = FormCreate

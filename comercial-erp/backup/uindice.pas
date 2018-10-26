@@ -26,7 +26,7 @@ type
     cbxcodcofins: TDBLookupComboBox;
     cbxdesccofins: TDBLookupComboBox;
     edtlogotipo: TEdit;
-    edtlogotipo1: TEdit;
+    edtcaminhopadraopdf: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -78,7 +78,7 @@ begin
   if selectdirectorydialog1.Execute then
      begin
 
-       edtlogotipo1.Text:=selectdirectorydialog1.FileName;
+       edtcaminhopadraopdf.Text:=selectdirectorydialog1.FileName;
 
      end;
 end;
@@ -92,11 +92,11 @@ begin
     qrexec_base.SQL.Clear;
     if modulo_geral.qrmaster_indice.RecordCount = 0 then
        begin
-         qrexec_base.SQL.Add('insert into master_indice(codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao) values (:codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao)');
+         qrexec_base.SQL.Add('insert into master_indice( logotipo, caminhopadraopdf, codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao) values (:logotipo, :caminhopadraopdf,  :codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao)');
       end
     else
       begin
-         qrexec_base.SQL.Add('update master_indice set codcsosnpadrao = :codcsosnpadrao, codcstpispadrao = :codcstpispadrao, codcstoriempadrao = :codcstoriempadrao, codcstipipadrao = :codcstipipadrao, codcstpadrao = :codcstpadrao, codcstcofinspadrao = :codcstcofinspadrao');
+         qrexec_base.SQL.Add('update master_indice set  logotipo  = :logotipo, caminhopadraopdf = :caminhopadraopdf,   codcsosnpadrao = :codcsosnpadrao, codcstpispadrao = :codcstpispadrao, codcstoriempadrao = :codcstoriempadrao, codcstipipadrao = :codcstipipadrao, codcstpadrao = :codcstpadrao, codcstcofinspadrao = :codcstcofinspadrao');
        end;
     //endi
     qrexec_base.ParamByName('codcsosnpadrao').AsInteger:=modulo_temp.qrtempCsticmsDe.FieldByName('codigo').AsInteger;
@@ -105,6 +105,9 @@ begin
     qrexec_base.ParamByName('codcstipipadrao').AsInteger:=modulo_temp.qrtempcstipi.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('codcstpadrao').AsInteger:=modulo_temp.qrtempcst.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('codcstcofinspadrao').AsInteger:=modulo_temp.qrtempcstcofins.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('logotipo').AsString  := edtlogotipo.Text;
+    qrexec_base.ParamByName('caminhopadrapdf').AsString := edtcaminhopadraopdf.Text;
+
 
     qrexec_base.ExecSQL;
 
@@ -212,8 +215,8 @@ begin
   modulo_temp.qrtempCstoriem.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstoriempadrao').AsInteger;
   modulo_temp.qrtempCstpis.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstpispadrao').AsInteger;
   modulo_temp.qrtempCst.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstpadrao').AsInteger;
-
-
+  edtlogotipo.Text := modulo_geral.qrmaster_indice.FieldByName('logotipo').AsString;
+  edtcaminhopadraopdf.Text := modulo_geral.qrmaster_indice.FieldByName('caminhopadraopdf').AsString;
 
   cbxcodcstde.ListSource := modulo_produto.dscsticms;
   cbxcodcstde.ListField:='codigocst';

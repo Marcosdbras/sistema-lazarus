@@ -218,7 +218,8 @@ begin
                     //endi
 
 
-                    if (length(modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString) = 0)
+                    if (length(modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString) = 0) or
+                       (pos('',modulo_vendaorc.qrvenda.FieldByName('cidadeent').AsString)>0 )
                     then
                        begin
                          showmessage('Operação cancelada! O campo cidade não está preenchido corretamente. Verifique no cadastro original.');

@@ -1,4 +1,4 @@
-object frmindice: Tfrmindice
+object frmparametro: Tfrmparametro
   Left = 168
   Height = 475
   Top = 195

@@ -81,6 +81,7 @@ begin
 
         with modulo_geral do
         begin
+
           qrmaster_indice.Close;
           qrmaster_indice.SQL.Clear;
           qrmaster_indice.SQL.Add('select * from master_indice');

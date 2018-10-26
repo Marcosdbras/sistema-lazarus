@@ -173,9 +173,9 @@
         <ResourceBaseClass Value="Form"/>
       </Unit20>
       <Unit21>
-        <Filename Value="uindice.pas"/>
+        <Filename Value="uparametro.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmindice"/>
+        <ComponentName Value="frmparametro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit21>

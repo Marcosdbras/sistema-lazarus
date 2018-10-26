@@ -17,8 +17,10 @@ type
     btncaminhodb: TButton;
     Button2: TButton;
     cbxhostname: TComboBox;
+    cbxhostnameremoto: TComboBox;
     cbxversaosgdb: TComboBox;
     edibancodados: TEdit;
+    edibancodadosremoto: TEdit;
     edibancodados2: TEdit;
     ediporta: TEdit;
     ediusuario: TEdit;
@@ -31,6 +33,8 @@ type
     StaticText4: TStaticText;
     StaticText5: TStaticText;
     StaticText6: TStaticText;
+    StaticText7: TStaticText;
+    StaticText8: TStaticText;
     procedure btncaminhodb1Click(Sender: TObject);
     procedure btncaminhodbClick(Sender: TObject);
     procedure btnfecharClick(Sender: TObject);
@@ -64,7 +68,9 @@ begin
                   ediusuario.Text,
                   cbxversaosgdb.Text,
                   'UTF8',
-                  edibancodados2.Text))
+                  edibancodados2.Text,
+                  cbxhostnameremoto.Text,
+                  edibancodadosremoto.Text))
 
         and (conectarBanco)
 
@@ -107,6 +113,10 @@ begin
    ediusuario.Text := sUser;
    edisenha.Text := sPassword;
    edibancodados.Text := sDatabase;
+   edibancodados2.Text:=sCaminhoDb2;
+
+   cbxhostnameremoto.Text := sHostNameremoto;
+   edibancodadosremoto.Text := sDatabaseremoto;
 
    //Localização da clientdll e informação da Codepage
    //sLibraryLocation;

@@ -13,7 +13,7 @@ const versao:string =  'v.0.0.0';
 var
          //Variável global de conexão ao banco
          sHostName, sPort, sProtocol, sLibraryLocation, sUser,   sPassword,
-         sDatabase,   sClientCodepage, sCaminhoDB2: string;
+         sDatabase,   sClientCodepage, sCaminhoDB2, sHostNameRemoto, sDataBaseRemoto: string;
 
          //Variáveil global
          icontrole: integer;
@@ -286,6 +286,166 @@ if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
          //endth
   end;
 //endi
+
+
+
+//Campo Slogan padrão existe?
+if existe_campo('MASTER_INDICE','slogan') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD slogan varchar(100) default '+quotedstr('O mercado certo para sua obra está aqui')+';');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('update MASTER_INDICE set slogan = '+quotedstr('O mercado certo para sua obra')+';');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo agradcdtesp padrão existe?
+if existe_campo('MASTER_INDICE','agradcdtesp') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD agradcdtesp varchar(100) default '+quotedstr('Agradecemos a preferência, volte sempre!')+';');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('update MASTER_INDICE set agradcdtesp = '+quotedstr('Agradecemos a preferência, volte sempre!')+';');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo PADRAOOS padrão existe?
+//ALTER TABLE MASTER_INDICE  ADD PADRAOOS BLOB SUB_TYPE 1 SEGMENT SIZE 80
+if existe_campo('MASTER_INDICE','PADRAOOS') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD PADRAOOS BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('update MASTER_INDICE set PADRAOOS = '+quotedstr(''+chr(13)+
+                                                                                 ''+chr(13)+
+                                                                                 ''+chr(13)+
+                                                                                 ''+chr(13)+chr(13)+
+                                                                                 '_____________________________________________'+chr(13)+
+                                                                                 'Departamento Comercial'
+              )+';');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo PADRAOORCAMENTO padrão existe?
+//ALTER TABLE MASTER_INDICE  ADD PADRAOORCAMENTO BLOB SUB_TYPE 1 SEGMENT SIZE 80
+if existe_campo('MASTER_INDICE','PADRAOORCAMENTO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD PADRAOORCAMENTO BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('update MASTER_INDICE set PADRAOORCAMENTO = '+quotedstr('Condições de pagamento: 28 dias'+chr(13)+
+                                                                                        'Prazo de entrega: 2 dias'+chr(13)+
+                                                                                        'Frete: ( )CIF / ( )FOB'+chr(13)+
+                                                                                        'Validade deste orçamento: 20 dias'+chr(13)+chr(13)+
+                                                                                        '_____________________________________________'+chr(13)+
+                                                                                        'Departamento Comercial'
+              )+';');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+//Campo PADRAOPEDIDO padrão existe?
+//ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDO BLOB SUB_TYPE 1 SEGMENT SIZE 80
+if existe_campo('MASTER_INDICE','PADRAOPEDIDO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDO BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('update MASTER_INDICE set PADRAOPEDIDO = '+quotedstr(''+chr(13)+
+                                                                                        ''+chr(13)+
+                                                                                        ''+chr(13)+
+                                                                                        ''+chr(13)+chr(13)+
+                                                                                        '_____________________________________________'+chr(13)+
+                                                                                        'Departamento Comercial'
+              )+';');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
 
 
 

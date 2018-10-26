@@ -6,6 +6,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
   Caption = 'Impressão Orçamento'
   ClientHeight = 130
   ClientWidth = 383
+  OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
   object cbxvisualiza: TComboBox
     Left = 120

@@ -1,4 +1,4 @@
-unit uindice;
+unit uparametro;
 
 {$mode objfpc}{$H+}
 
@@ -10,9 +10,9 @@ uses
 
 type
 
-  { Tfrmindice }
+  { Tfrmparametro }
 
-  Tfrmindice = class(TForm)
+  Tfrmparametro = class(TForm)
     btngravartodos: TButton;
     btncancelar: TButton;
     btnbuscarlogo: TButton;
@@ -48,20 +48,20 @@ type
   end;
 
 var
-  frmindice: Tfrmindice;
+  frmparametro: Tfrmparametro;
 
 implementation
      uses umodulo_temp, umodulo_produto, umodulo_geral, umodulo_conexaodb;
 {$R *.lfm}
 
-{ Tfrmindice }
+{ Tfrmparametro }
 
-procedure Tfrmindice.btncancelarClick(Sender: TObject);
+procedure Tfrmparametro.btncancelarClick(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tfrmindice.btnbuscarlogoClick(Sender: TObject);
+procedure Tfrmparametro.btnbuscarlogoClick(Sender: TObject);
 begin
   if opendialog1.Execute then
      begin
@@ -72,7 +72,7 @@ begin
      end;
 end;
 
-procedure Tfrmindice.btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
+procedure Tfrmparametro.btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
 begin
 
   if selectdirectorydialog1.Execute then
@@ -83,7 +83,7 @@ begin
      end;
 end;
 
-procedure Tfrmindice.btngravartodosClick(Sender: TObject);
+procedure Tfrmparametro.btngravartodosClick(Sender: TObject);
 begin
   with modulo_conexaodb do
   begin
@@ -123,7 +123,7 @@ begin
 
 end;
 
-procedure Tfrmindice.FormCreate(Sender: TObject);
+procedure Tfrmparametro.FormCreate(Sender: TObject);
 begin
   with modulo_produto do
   begin

@@ -1,4 +1,4 @@
-unit uindice;
+unit utextopadrao;
 
 {$mode objfpc}{$H+}
 
@@ -10,32 +10,22 @@ uses
 
 type
 
-  { Tfrmindice }
+  { Tfrmtextopadrao }
 
-  Tfrmindice = class(TForm)
+  Tfrmtextopadrao = class(TForm)
     btngravartodos: TButton;
     btncancelar: TButton;
-    btnbuscarlogo: TButton;
-    btnbuscarcaminhopadraoarquivo: TButton;
-    cbxcodcstde: TDBLookupComboBox;
-    cbxdesccstde: TDBLookupComboBox;
-    cbxcodipi: TDBLookupComboBox;
-    cbxdescipi: TDBLookupComboBox;
-    cbxcodpis: TDBLookupComboBox;
-    cbxdescpis: TDBLookupComboBox;
-    cbxcodcofins: TDBLookupComboBox;
-    cbxdesccofins: TDBLookupComboBox;
-    edtlogotipo: TEdit;
-    edtcaminhopadraopdf: TEdit;
-    Label1: TLabel;
+    edtslogan: TEdit;
+    edttxtagradecimento: TEdit;
+    Label10: TLabel;
     Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    OpenDialog1: TOpenDialog;
-    SelectDirectoryDialog1: TSelectDirectoryDialog;
+    Label8: TLabel;
+    Label9: TLabel;
+    edttxtorcamento: TMemo;
+    edttxtpedido: TMemo;
+    Memo3: TMemo;
     procedure btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
     procedure btnbuscarlogoClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
@@ -48,42 +38,42 @@ type
   end;
 
 var
-  frmindice: Tfrmindice;
+  frmtextopadrao: Tfrmtextopadrao;
 
 implementation
      uses umodulo_temp, umodulo_produto, umodulo_geral, umodulo_conexaodb;
 {$R *.lfm}
 
-{ Tfrmindice }
+{ Tfrmtextopadrao }
 
-procedure Tfrmindice.btncancelarClick(Sender: TObject);
+procedure Tfrmtextopadrao.btncancelarClick(Sender: TObject);
 begin
   close;
 end;
 
-procedure Tfrmindice.btnbuscarlogoClick(Sender: TObject);
+procedure Tfrmtextopadrao.btnbuscarlogoClick(Sender: TObject);
 begin
   if opendialog1.Execute then
      begin
 
-       edtlogotipo.Text:=opendialog1.FileName;
+       edtslogan.Text:=opendialog1.FileName;
 
 
      end;
 end;
 
-procedure Tfrmindice.btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
+procedure Tfrmtextopadrao.btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
 begin
 
   if selectdirectorydialog1.Execute then
      begin
 
-       edtcaminhopadraopdf.Text:=selectdirectorydialog1.FileName;
+       edttxtagradecimento.Text:=selectdirectorydialog1.FileName;
 
      end;
 end;
 
-procedure Tfrmindice.btngravartodosClick(Sender: TObject);
+procedure Tfrmtextopadrao.btngravartodosClick(Sender: TObject);
 begin
   with modulo_conexaodb do
   begin
@@ -105,8 +95,8 @@ begin
     qrexec_base.ParamByName('codcstipipadrao').AsInteger:=modulo_temp.qrtempcstipi.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('codcstpadrao').AsInteger:=modulo_temp.qrtempcst.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('codcstcofinspadrao').AsInteger:=modulo_temp.qrtempcstcofins.FieldByName('codigo').AsInteger;
-    qrexec_base.ParamByName('logotipo').AsString  := edtlogotipo.Text;
-    qrexec_base.ParamByName('caminhopadraopdf').AsString := edtcaminhopadraopdf.Text;
+    qrexec_base.ParamByName('logotipo').AsString  := edtslogan.Text;
+    qrexec_base.ParamByName('caminhopadraopdf').AsString := edttxtagradecimento.Text;
 
 
     qrexec_base.ExecSQL;
@@ -123,7 +113,7 @@ begin
 
 end;
 
-procedure Tfrmindice.FormCreate(Sender: TObject);
+procedure Tfrmtextopadrao.FormCreate(Sender: TObject);
 begin
   with modulo_produto do
   begin
@@ -215,8 +205,8 @@ begin
   modulo_temp.qrtempCstoriem.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstoriempadrao').AsInteger;
   modulo_temp.qrtempCstpis.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstpispadrao').AsInteger;
   modulo_temp.qrtempCst.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstpadrao').AsInteger;
-  edtlogotipo.Text := modulo_geral.qrmaster_indice.FieldByName('logotipo').AsString;
-  edtcaminhopadraopdf.Text := modulo_geral.qrmaster_indice.FieldByName('caminhopadraopdf').AsString;
+  edtslogan.Text := modulo_geral.qrmaster_indice.FieldByName('logotipo').AsString;
+  edttxtagradecimento.Text := modulo_geral.qrmaster_indice.FieldByName('caminhopadraopdf').AsString;
 
   cbxcodcstde.ListSource := modulo_produto.dscsticms;
   cbxcodcstde.ListField:='codigocst';

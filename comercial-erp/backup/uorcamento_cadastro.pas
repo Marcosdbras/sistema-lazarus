@@ -45,8 +45,8 @@ type
     lblcliente3: TLabel;
     lblcliente4: TLabel;
     lblcliente5: TLabel;
-    memoobs: TMemo;
     memoformapgto: TMemo;
+    memoobs: TMemo;
     Panel1: TPanel;
     pnlobservacao: TPanel;
     Panel2: TPanel;
@@ -139,7 +139,7 @@ var
 implementation
 
 uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario,
-      umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta;
+      umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta, umodulo_geral;
 
 {$R *.lfm}
 
@@ -192,6 +192,8 @@ begin
 
 
 
+
+
   with modulo_unidade do
     begin
        qrunidade.Close;
@@ -226,23 +228,40 @@ begin
   memoformapgto.Lines.Clear;
   memoobs.Lines.Clear;
 
+  with modulo_geral do
+        begin
+
+
+
+          qrmaster_indice.Close;
+          qrmaster_indice.SQL.Clear;
+          qrmaster_indice.SQL.Add('select * from master_indice');
+          qrmaster_indice.Open;
+
+
+
+
+        end;
+  //endi
+
+
+
 
   with modulo_orcamento do
     begin
       if frmorcamento_pesquisa.opcao <> 'I' then
          begin
+
            icodigo_controle := qrorcamento.FieldByName('controle').AsInteger;
 
            qrtempCliente.FieldByName('ccli').AsInteger:= qrorcamento.FieldByName('codcliente').AsInteger;
            qrtempFuncionario.FieldByName('cfun').AsInteger:= qrorcamento.FieldByName('codfuncionario').AsInteger;
            qrtempVendedor.FieldByName('cven').AsInteger:= qrorcamento.FieldByName('codvendedor').AsInteger;
 
-
            memoformapgto.Lines.Add(qrorcamento.FieldByName('condicaopagamento').AsString);
            memoobs.Lines.Add(qrorcamento.FieldByName('observacao').AsString);
 
            edttotal.Value:= qrorcamento.FieldByName('valortotal').Asfloat;
-
 
 
          end
@@ -254,9 +273,9 @@ begin
            qrtempFuncionario.FieldByName('cfun').AsInteger:=0;
            qrtempVendedor.FieldByName('cven').AsInteger:=0;
 
+            memoformapgto.Lines.add(modulo_geral.qrmaster_indice.FieldByName('padraoorcamento').AsString);
+
            edttotal.Value := 0;
-
-
 
          end;
       //endi

@@ -19,8 +19,9 @@ type
     SaveDialog1: TSaveDialog;
     procedure btncancelarClick(Sender: TObject);
     procedure btnokClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
-
+     caminhopadraopdf:string;
   public
 
   end;
@@ -29,7 +30,7 @@ var
   frmorcamento_impressao: Tfrmorcamento_impressao;
 
 implementation
-        uses uimporc;
+        uses uimporc, umodulo_geral, umodulo_orcamento;
 {$R *.lfm}
 
         { Tfrmorcamento_impressao }
@@ -49,22 +50,26 @@ begin
           frmimporc.free;
 
 
+
+
         end;
 
 
       1:begin
-
+          try
           frmimporc := tfrmimporc.Create(self);
           frmimporc.rlimporc.Print;
           frmimporc.free;
-
+          except
+            showmessage('Operação Cancelada!');
+          end;
 
         end;
 
 
 
       2:begin
-          SaveDialog1.FileName :=  'C:\';
+          SaveDialog1.FileName :=  caminhopadraopdf+'ORC'+modulo_orcamento.qrorcamento.FieldByName('controlevarchar').AsString;
           if savedialog1.Execute then
              begin
 
@@ -85,6 +90,24 @@ begin
 
 
    end;
+end;
+
+procedure Tfrmorcamento_impressao.FormCreate(Sender: TObject);
+begin
+        with modulo_geral do
+        begin
+
+          qrmaster_indice.Close;
+          qrmaster_indice.SQL.Clear;
+          qrmaster_indice.SQL.Add('select * from master_indice');
+          qrmaster_indice.Open;
+
+          caminhopadraopdf := qrmaster_indice.FieldByName('caminhopadraopdf').AsString;
+
+        end;
+
+        cbxvisualiza.Style:=csDropDownList;
+
 end;
 
 end.

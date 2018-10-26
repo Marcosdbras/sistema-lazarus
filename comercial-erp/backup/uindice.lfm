@@ -184,13 +184,13 @@ object frmindice: Tfrmindice
     Caption = 'Caminho arquivo padrão'
     ParentColor = False
   end
-  object edtlogotipo1: TEdit
+  object edtcaminhopadraopdf: TEdit
     Left = 11
     Height = 23
     Top = 360
     Width = 581
     TabOrder = 11
-    Text = 'edtlogotipo1'
+    Text = 'edtcaminhopadraopdf'
   end
   object btnbuscarlogo: TButton
     Left = 594
