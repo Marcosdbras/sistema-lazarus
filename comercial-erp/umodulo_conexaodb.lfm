@@ -23,8 +23,8 @@ object modulo_conexaodb: Tmodulo_conexaodb
   object tzcontrole: TSQLTransaction
     Active = False
     Database = conexaodb
-    left = 48
-    top = 192
+    left = 136
+    top = 24
   end
   object Script: TSQLScript
     DataBase = conexaodb
@@ -52,8 +52,8 @@ object modulo_conexaodb: Tmodulo_conexaodb
     UseSetTerm = True
     UseCommit = True
     UseDefines = True
-    left = 144
-    top = 192
+    left = 216
+    top = 24
   end
   object qrconsulta_base: TSQLQuery
     FieldDefs = <>
@@ -256,12 +256,27 @@ object modulo_conexaodb: Tmodulo_conexaodb
     HostName = 'localhost'
     CheckTransactionParams = False
     left = 48
-    top = 336
+    top = 280
   end
   object tzcontrole_Aux: TSQLTransaction
     Active = False
     Database = conexaodb_Aux
     left = 48
-    top = 408
+    top = 352
+  end
+  object conexaodb_remoto: TIBConnection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = tzcontrole_remoto
+    CheckTransactionParams = False
+    left = 160
+    top = 280
+  end
+  object tzcontrole_remoto: TSQLTransaction
+    Active = False
+    Database = conexaodb_remoto
+    left = 160
+    top = 352
   end
 end

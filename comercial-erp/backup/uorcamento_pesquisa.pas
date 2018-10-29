@@ -154,16 +154,7 @@ begin
   frmorcamento_impressao.free;
 
 
-  //frmimporc := tfrmimporc.Create(self);
-  //frmimporc.rlimporc.preview;
 
-  //frmimporc.rlimporc.SaveToFile( 'C:\sgbr\orçamento.pdf' );
-  //frmimporc.rlimporc.Prepare;
-  //frmimporc.rlfilter.FilterPages(frmimporc.rlimporc.Pages,1,-1,'',1);   //(frmimporc.rlimporc.Pages,1,-1,False);
-
-
-
-  //frmimporc.free;
 end;
 
 procedure Tfrmorcamento_pesquisa.btnlimparClick(Sender: TObject);

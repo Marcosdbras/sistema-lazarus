@@ -16,6 +16,7 @@ type
     conexaodb: TIBConnection;
     conexaodb_Aux: TIBConnection;
     dssequencia: TDataSource;
+    conexaodb_remoto: TIBConnection;
     qrorcamento1CONTROLE: TLongintField;
     qrsequencia: TSQLQuery;
     qrsequenciaCODIGOCLIENTE: TLongintField;
@@ -36,6 +37,7 @@ type
     Script: TSQLScript;
     qrconsulta_base: TSQLQuery;
     qrexec_base: TSQLQuery;
+    tzcontrole_remoto: TSQLTransaction;
     tzcontrole: TSQLTransaction;
     tzcontrole_Aux: TSQLTransaction;
     procedure conexaodbStartTransaction(Sender: TObject);
@@ -44,6 +46,11 @@ type
 
   public
     procedure atualizaBanco;
+    procedure atualizaBancoFechaTransacao;
+    procedure desconectarBancoRemoto;
+
+    procedure atualizaBancoRemoto;
+    procedure atualizaBancoRemotoFechaTransacao;
 
   end;
 
@@ -56,6 +63,26 @@ implementation
 
 { Tmodulo_conexaodb }
 
+
+procedure Tmodulo_conexaodb.desconectarBancoRemoto;
+begin
+   Conexaodb_remoto.Connected := false;
+end;
+
+procedure Tmodulo_conexaodb.atualizaBancoRemoto;
+begin
+  tzcontrole_remoto.CommitRetaining;
+end;
+
+procedure Tmodulo_conexaodb.atualizaBancoRemotoFechaTransacao;
+begin
+  tzcontrole_remoto.Commit;
+end;
+
+procedure Tmodulo_conexaodb.atualizaBancoFechaTransacao;
+begin
+   tzcontrole.Commit;
+end;
 
 procedure Tmodulo_conexaodb.atualizaBanco;
 begin

@@ -12,7 +12,7 @@ uses
   ufuncao_geral, usplash, ulogin, ucadastrar_senha, umodulo_cliente,
   umodulo_funcionario, umodulo_unidade, umodulo_produto, uproduto_consulta,
   uimporc, umodulo_vendaorc, uvendaorc, uindice, umodulo_temp, umodulo_geral,
-  uorcamento_impressao
+  uorcamento_impressao, usincorc
   { you can add units after this };
 
 {$R *.res}
@@ -48,7 +48,7 @@ begin
 
   frmsplash.Hide;
   frmsplash.Free;
-
+  Application.CreateForm(Tfrmsincorc, frmsincorc);
   Application.Run;
 end.
 

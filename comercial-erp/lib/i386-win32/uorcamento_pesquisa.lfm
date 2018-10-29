@@ -319,6 +319,21 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ParentFont = False
       TabOrder = 5
     end
+    object btnsinc: TButton
+      Left = 648
+      Height = 40
+      Top = 7
+      Width = 139
+      Caption = 'Sincronização'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -15
+      Font.Name = 'Arial Narrow'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      OnClick = btnsincClick
+      ParentFont = False
+      TabOrder = 6
+    end
   end
   object pnlcentral: TPanel
     Left = 0

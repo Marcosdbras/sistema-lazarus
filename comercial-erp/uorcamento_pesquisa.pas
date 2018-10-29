@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids, ZDataset, db, BufDataset;
+  ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids, ZDataset, db, BufDataset, usincorc;
 
 type
 
@@ -21,6 +21,7 @@ type
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
+    btnsinc: TButton;
     DBGrid1: TDBGrid;
     DBText1: TDBText;
     edtdatainicio: TDateEdit;
@@ -42,6 +43,7 @@ type
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnimprimirClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
+    procedure btnsincClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -160,6 +162,13 @@ end;
 procedure Tfrmorcamento_pesquisa.btnlimparClick(Sender: TObject);
 begin
   limpar;
+end;
+
+procedure Tfrmorcamento_pesquisa.btnsincClick(Sender: TObject);
+begin
+  frmsincorc := tfrmsincorc.create(self);
+  frmsincorc.showmodal;
+  frmsincorc.free;
 end;
 
 procedure Tfrmorcamento_pesquisa.Button1Click(Sender: TObject);

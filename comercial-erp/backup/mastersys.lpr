@@ -44,10 +44,11 @@ begin
   //Application.CreateForm(Tfrmvendaorc, frmvendaorc);
   //Application.CreateForm(Tfrmajusteprodutos, frmajusteprodutos);
   //Application.CreateForm(Tmodulo_temp, modulo_temp);
+  //Application.CreateForm(Tfrmorcamento_impressao, frmorcamento_impressao);
 
   frmsplash.Hide;
   frmsplash.Free;
-  Application.CreateForm(Tfrmorcamento_impressao, frmorcamento_impressao);
+
   Application.Run;
 end.
 
