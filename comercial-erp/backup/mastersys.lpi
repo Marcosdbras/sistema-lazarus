@@ -36,7 +36,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="26">
+    <Units Count="29">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -204,8 +204,29 @@
         <Filename Value="usincorc.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmsincorc"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit25>
+      <Unit26>
+        <Filename Value="umodulo_remoto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_remoto"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="usincbaseremota.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmsincbaseremota"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="umodulo_emitente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_emitente"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit28>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

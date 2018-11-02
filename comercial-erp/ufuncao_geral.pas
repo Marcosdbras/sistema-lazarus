@@ -20,11 +20,14 @@ var
 
          //Variável global
          susuario, ssenha:string;
+         icemp:integer;
+
 
 
 
 procedure arq_execscript;
 procedure atualiza_base;
+procedure verificaInf;
 procedure transf_dados;
 function DataDirectory: string;
 function existe_tabela(nome:string):integer;
@@ -55,9 +58,126 @@ function RemoveAcento(const pText: string): string;
 
 
 implementation
-        uses umodulo_conexaodb, umodulo_produto;
+        uses umodulo_conexaodb, umodulo_produto, umodulo_remoto, umodulo_emitente, ufuncao_conexaodb;
 
 
+procedure verificaInf;
+begin
+
+  if conectarBanco_remoto then
+     begin
+
+       modulo_emitente.qremitente.Close;
+       modulo_emitente.qremitente.SQL.Clear;
+       modulo_emitente.qremitente.SQL.Add('select * from temitente');
+       modulo_emitente.qremitente.Open;
+       if modulo_emitente.qremitente.RecordCount > 0 then
+          begin
+
+            modulo_remoto.qrconsulta_base_remoto.Close;
+            modulo_remoto.qrconsulta_base_remoto.SQL.Clear;
+            modulo_remoto.qrconsulta_base_remoto.SQL.Add('select * from temitente where cnpj = :cnpj;');
+            modulo_remoto.qrconsulta_base_remoto.Params.ParamByName('cnpj').AsString  := modulo_emitente.qremitente.FieldByName('cnpj').AsString;
+            modulo_remoto.qrconsulta_base_remoto.Open;
+
+            if modulo_remoto.qrconsulta_base_remoto.RecordCount = 0 then
+               begin
+
+                 modulo_remoto.qrexec_base_remoto.Close;
+                 modulo_remoto.qrexec_base_remoto.SQL.Clear;
+                 modulo_remoto.qrexec_base_remoto.SQL.Add('insert into temitente( codcidade,  nomefantasia,  razaosocial,  cnpj,  codicms,  endereco,  bairro,  cidade,  uf,  cep,  pais,  codcidadeibge,  datahoracadastro,  verificadorfb,  autorizadouso,  atualizarestoque,  comparando,  numero,  telefone,  email) values '+
+                                                                               '(:codcidade, :nomefantasia, :razaosocial, :cnpj, :codicms, :endereco, :bairro, :cidade, :uf, :cep, :pais, :codcidadeibge, :datahoracadastro, :verificadorfb, :autorizadouso, :atualizarestoque, :comparando, :numero, :telefone, :email)');
+
+
+                 if modulo_emitente.qremitente.FieldByName('codcidade').AsInteger > 0 then
+                    modulo_remoto.qrexec_base_remoto.Params.ParamByName('codcidade').AsInteger := modulo_emitente.qremitente.FieldByName('codcidade').AsInteger;
+                 //endi
+
+                 if modulo_emitente.qremitente.FieldByName('codicms').AsInteger > 0 then
+                    modulo_remoto.qrexec_base_remoto.Params.ParamByName('codicms').AsInteger := modulo_emitente.qremitente.FieldByName('codicms').AsInteger;
+                 //endi
+
+
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('nomefantasia').AsString := modulo_emitente.qremitente.FieldByName('nomefantasia').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('razaosocial').AsString := modulo_emitente.qremitente.FieldByName('razaosocial').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('cnpj').AsString := modulo_emitente.qremitente.FieldByName('cnpj').AsString;
+
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('endereco').AsString := modulo_emitente.qremitente.FieldByName('endereco').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('bairro').AsString := modulo_emitente.qremitente.FieldByName('bairro').AsString;
+
+
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('cidade').AsString := modulo_emitente.qremitente.FieldByName('cidade').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('uf').AsString := modulo_emitente.qremitente.FieldByName('uf').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('cep').AsString := modulo_emitente.qremitente.FieldByName('cep').AsString;
+
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('pais').AsString := modulo_emitente.qremitente.FieldByName('pais').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('codcidadeibge').AsString := modulo_emitente.qremitente.FieldByName('codcidadeibge').AsString;
+
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('verificadorfb').AsString := modulo_emitente.qremitente.FieldByName('verificadorfb').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('autorizadouso').AsString := modulo_emitente.qremitente.FieldByName('autorizadouso').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('atualizarestoque').AsString := modulo_emitente.qremitente.FieldByName('atualizarestoque').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('comparando').AsString := modulo_emitente.qremitente.FieldByName('comparando').AsString;
+
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('numero').AsString := modulo_emitente.qremitente.FieldByName('numero').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('telefone').AsString := modulo_emitente.qremitente.FieldByName('telefone').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('email').AsString := modulo_emitente.qremitente.FieldByName('email').AsString;
+
+
+
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('datahoracadastro').AsDateTime := modulo_emitente.qremitente.FieldByName('datahoracadastro').AsDateTime;
+
+
+                 modulo_remoto.qrexec_base_remoto.ExecSQL;
+
+                 modulo_conexaodb.atualizaBancoRemotoFechaTransacao;
+
+                 modulo_remoto.qrconsulta_base_remoto.Close;
+                 modulo_remoto.qrconsulta_base_remoto.SQL.Clear;
+                 modulo_remoto.qrconsulta_base_remoto.SQL.Add('select * from temitente where (cnpj = :cnpj)');
+                 modulo_remoto.qrconsulta_base_remoto.Params.ParamByName('cnpj').AsString  := modulo_emitente.qremitente.FieldByName('cnpj').AsString;
+                 modulo_remoto.qrconsulta_base_remoto.Open;
+
+                   icemp :=  modulo_remoto.qrconsulta_base_remoto.FieldByName('controle').Asinteger;
+
+               end
+            else
+               begin
+
+                 modulo_remoto.qrexec_base_remoto.Close;
+                 modulo_remoto.qrexec_base_remoto.SQL.Clear;
+                 modulo_remoto.qrexec_base_remoto.SQL.Add('update temitente set codcidade = :codcidade, nomefantasia = :nomefantasia, razaosocial = :razaosocial, codicms = :codicms where cnpj = :cnpj');
+
+                 if modulo_emitente.qremitente.FieldByName('codcidade').AsInteger > 0 then
+                    modulo_remoto.qrexec_base_remoto.Params.ParamByName('codcidade').AsInteger := modulo_emitente.qremitente.FieldByName('codcidade').AsInteger;
+                 //endi
+
+                 if  modulo_emitente.qremitente.FieldByName('codicms').AsInteger > 0 then
+                     modulo_remoto.qrexec_base_remoto.Params.ParamByName('codicms').AsInteger := modulo_emitente.qremitente.FieldByName('codicms').AsInteger;
+                 //endi
+
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('nomefantasia').AsString := modulo_emitente.qremitente.FieldByName('nomefantasia').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('razaosocial').AsString := modulo_emitente.qremitente.FieldByName('razaosocial').AsString;
+                 modulo_remoto.qrexec_base_remoto.Params.ParamByName('cnpj').AsString := modulo_emitente.qremitente.FieldByName('cnpj').AsString;
+
+                 modulo_remoto.qrexec_base_remoto.ExecSQL;
+
+                 icemp :=  modulo_remoto.qrconsulta_base_remoto.FieldByName('controle').AsInteger;
+
+               end;
+            //endi
+
+          end;
+       //endi
+
+       modulo_conexaodb.desconectarBancoRemoto;
+
+     end;
+  //endi
+
+
+
+
+end;
 
 procedure transf_dados;
 begin
@@ -128,6 +248,29 @@ if existe_tabela('MASTER_INDICE') = 0 then
 
    end;
 //endif
+
+
+
+//Campo AdmSN existe?
+if existe_campo('MASTER_INDICE','AdmSN') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD AdmSN varchar(1) default ''N'' ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
 
 
 //Campo logotipo existe?

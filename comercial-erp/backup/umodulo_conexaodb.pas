@@ -48,7 +48,6 @@ type
     procedure atualizaBanco;
     procedure atualizaBancoFechaTransacao;
     procedure desconectarBancoRemoto;
-
     procedure atualizaBancoRemoto;
     procedure atualizaBancoRemotoFechaTransacao;
 

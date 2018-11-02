@@ -19,6 +19,7 @@ type
     DBGrid1: TDBGrid;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -37,6 +38,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -57,7 +59,7 @@ implementation
 
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
            uorcamento_pesquisa, umodulo_conexaodb, ulogin, uvendaorc, uindice,
-           uparametro;
+           uparametro, usincbaseremota;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -90,6 +92,8 @@ if not conectarBanco then
 //endi
 
  atualiza_base;
+
+ verificaInf;
 
  frmlogin := tfrmlogin.Create(self);
  frmlogin.ShowModal;
@@ -133,6 +137,13 @@ begin
 
 
 
+end;
+
+procedure Tfrmtela_principal.MenuItem10Click(Sender: TObject);
+begin
+  frmsincbaseremota := tfrmsincbaseremota.Create(self);
+  frmsincbaseremota.ShowModal;
+  frmsincbaseremota.Free;
 end;
 
 procedure Tfrmtela_principal.MenuItem3Click(Sender: TObject);

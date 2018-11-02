@@ -45,11 +45,14 @@ type
   private
 
   public
+
     procedure atualizaBanco;
     procedure atualizaBancoFechaTransacao;
-    procedure desconectarBancoRemoto;
+
+
     procedure atualizaBancoRemoto;
     procedure atualizaBancoRemotoFechaTransacao;
+    procedure desconectarBancoRemoto;
 
   end;
 

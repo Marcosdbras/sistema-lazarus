@@ -143,6 +143,10 @@ object frmtela_principal: Tfrmtela_principal
           Caption = 'CSOSN''s'
           OnClick = MenuItem9Click
         end
+        object MenuItem10: TMenuItem
+          Caption = 'Sincronizar Dados'
+          OnClick = MenuItem10Click
+        end
       end
     end
     object MenuItem4: TMenuItem

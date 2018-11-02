@@ -1,0 +1,14 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 305
+  VerticalOffset = 130
+  Width = 150
+  PPI = 96
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    left = 48
+    top = 24
+  end
+end
