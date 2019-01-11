@@ -51,18 +51,17 @@ procedure Tfrmsincbaseremota.atualizaBaseRemotaFun;
              lblmensagem.caption := 'Sincronizando informações dos funcionários...';
              lblmensagem.Update;
 
-
              modulo_funcionario.qrfuncionario.Close;
              modulo_funcionario.qrfuncionario.SQL.Clear;
-             modulo_funcionario.qrfuncionario.SQL.Add('select * from tfuncionario');
+             modulo_funcionario.qrfuncionario.SQL.Add('select * from tfuncionario order by controle');
              modulo_funcionario.qrfuncionario.Open;
              while not modulo_funcionario.qrfuncionario.EOF do
                begin
 
                  modulo_remoto.qrconsulta_base_remoto.Close;
                  modulo_remoto.qrconsulta_base_remoto.SQL.Clear;
-                 modulo_remoto.qrconsulta_base_remoto.SQL.Add('select * from tfuncionario where (controle = :controle) and (cemp = :cemp)');
-                 modulo_remoto.qrconsulta_base_remoto.Params.ParamByName('controle').AsInteger  := modulo_funcionario.qrfuncionario.FieldByName('controle').AsInteger;
+                 modulo_remoto.qrconsulta_base_remoto.SQL.Add('select * from tfuncionario where ( ccontrole= :ccontrole) and (cemp = :cemp)');
+                 modulo_remoto.qrconsulta_base_remoto.Params.ParamByName('ccontrole').AsInteger  := modulo_funcionario.qrfuncionario.FieldByName('controle').AsInteger;
                  modulo_remoto.qrconsulta_base_remoto.Params.ParamByName('cemp').AsInteger  :=  icemp;
                  modulo_remoto.qrconsulta_base_remoto.Open;
 
@@ -71,14 +70,37 @@ procedure Tfrmsincbaseremota.atualizaBaseRemotaFun;
 
                       modulo_remoto.qrexec_base_remoto.Close;
                       modulo_remoto.qrexec_base_remoto.SQL.Clear;
-                      modulo_remoto.qrexec_base_remoto.SQL.Add('insert into tfuncionario( controle, funcionario, datanascimento, datahoracadastro, ativo, cemp ) values (:controle, :funcionario, :datanascimento, :datahoracadastro, :ativo, :cemp) ');
-                      modulo_remoto.qrexec_base_remoto.ParamByName('controle').AsInteger:=modulo_funcionario.qrfuncionario.FieldByName('controle').AsInteger;
+                      modulo_remoto.qrexec_base_remoto.SQL.Add('insert into tfuncionario( funcionario, datanascimento, datahoracadastro, ativo, cemp, ccontrole ) values (:funcionario, :datanascimento, :datahoracadastro, :ativo, :cemp, :ccontrole) ');
                       modulo_remoto.qrexec_base_remoto.ParamByName('funcionario').AsString:=modulo_funcionario.qrfuncionario.FieldByName('funcionario').AsString;
                       modulo_remoto.qrexec_base_remoto.ParamByName('datanascimento').AsdateTime:=modulo_funcionario.qrfuncionario.FieldByName('datanascimento').AsdateTime;
                       modulo_remoto.qrexec_base_remoto.ParamByName('datahoracadastro').AsDateTime := modulo_funcionario.qrfuncionario.FieldByName('datahoracadastro').AsDateTime;
                       modulo_remoto.qrexec_base_remoto.ParamByName('ativo').AsString:=modulo_funcionario.qrfuncionario.FieldByName('ativo').AsString;
+                      modulo_remoto.qrexec_base_remoto.ParamByName('ccontrole').AsInteger:=modulo_funcionario.qrfuncionario.FieldByName('controle').AsInteger;
                       modulo_remoto.qrexec_base_remoto.ParamByName('cemp').AsInteger:=icemp;
                       modulo_remoto.qrexec_base_remoto.ExecSQL;
+
+                    end
+                 else
+                    begin
+
+                      modulo_remoto.qrexec_base_remoto.Close;
+                      modulo_remoto.qrexec_base_remoto.SQL.Clear;
+                      modulo_remoto.qrexec_base_remoto.SQL.Add('update tfuncionario  set funcionario = :funcionario, datanascimento = :datanascimento, datahoracadastro  = :datahoracadastro, ativo = :ativo where controle = :controle ');        //,cemp = :cemp, ccontrole = :ccontrole
+
+                      modulo_remoto.qrexec_base_remoto.ParamByName('controle').AsInteger:=modulo_remoto.qrconsulta_base_remoto.FieldByName('controle').AsInteger;
+                      modulo_remoto.qrexec_base_remoto.ParamByName('funcionario').AsString:=modulo_funcionario.qrfuncionario.FieldByName('funcionario').AsString;
+                      modulo_remoto.qrexec_base_remoto.ParamByName('datanascimento').AsdateTime:=modulo_funcionario.qrfuncionario.FieldByName('datanascimento').AsdateTime;
+                      modulo_remoto.qrexec_base_remoto.ParamByName('datahoracadastro').AsDateTime := modulo_funcionario.qrfuncionario.FieldByName('datahoracadastro').AsDateTime;
+                      modulo_remoto.qrexec_base_remoto.ParamByName('ativo').AsString:=modulo_funcionario.qrfuncionario.FieldByName('ativo').AsString;
+                      //modulo_remoto.qrexec_base_remoto.ParamByName('ccontrole').AsInteger:=modulo_funcionario.qrfuncionario.FieldByName('controle').AsInteger;
+                      //modulo_remoto.qrexec_base_remoto.ParamByName('cemp').AsInteger:=icemp;
+                      modulo_remoto.qrexec_base_remoto.ExecSQL;
+
+
+
+
+
+
 
                     end;
                  //endi

@@ -821,6 +821,7 @@ begin
 
 
                                     //Consulta Grupo
+                                    //try
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
                                     qrconsulta_base.SQL.Add('select * from tgrupoestoque where grupo = :grupo');
@@ -858,6 +859,13 @@ begin
                                     qrexec_base.ExecSQL;
 
                                     atualizaBanco;
+                                    //except
+                                      //Quando ocorre erro de grupo
+                                    //end;
+
+
+
+
 
                                   end;
                                //endi
@@ -915,7 +923,7 @@ begin
 
                                qrexec_base.ExecSQL;
 
-                               atualizaBancoFechaTransacao;
+                               atualizaBanco;
 
 
                              end;
@@ -948,7 +956,7 @@ begin
               qrexec_base.ParamByName('valoracrescimo').Asfloat:=0;
               qrexec_base.ExecSQL;
 
-              atualizaBanco;
+              atualizaBancoFechaTransacao;
 
 
 

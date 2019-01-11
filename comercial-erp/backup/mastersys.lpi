@@ -225,6 +225,7 @@
         <Filename Value="umodulo_emitente.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_emitente"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit28>
     </Units>

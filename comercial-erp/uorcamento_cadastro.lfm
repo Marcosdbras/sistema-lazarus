@@ -1,12 +1,12 @@
 object frmorcamento_cadastro: Tfrmorcamento_cadastro
   Left = 6
-  Height = 690
+  Height = 689
   Top = 0
   Width = 900
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
   Caption = 'Master Plus - Orçamento'
-  ClientHeight = 690
+  ClientHeight = 689
   ClientWidth = 900
   OnClose = FormClose
   OnCreate = FormCreate
@@ -54,7 +54,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   object pnlinferior: TPanel
     Left = 0
     Height = 50
-    Top = 640
+    Top = 639
     Width = 900
     Align = alBottom
     BevelOuter = bvNone
@@ -110,26 +110,26 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   end
   object pnlcentral: TPanel
     Left = 0
-    Height = 608
+    Height = 607
     Top = 32
     Width = 900
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 608
+    ClientHeight = 607
     ClientWidth = 900
     Color = 16744576
     ParentColor = False
     TabOrder = 2
     object ScrollBox1: TScrollBox
       Left = 0
-      Height = 608
+      Height = 607
       Top = 0
       Width = 900
       HorzScrollBar.Page = 895
       VertScrollBar.Page = 539
       Align = alClient
       BorderStyle = bsNone
-      ClientHeight = 608
+      ClientHeight = 607
       ClientWidth = 900
       Color = clForm
       ParentColor = False
@@ -419,9 +419,19 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Color = clWindow
             Columns = <            
               item
+                Title.Caption = 'ITEM'
+                Width = 32
+                FieldName = 'CODITEM'
+              end            
+              item
                 Title.Caption = 'Title'
-                Width = 325
+                Width = 275
                 FieldName = 'PRODUTO'
+              end            
+              item
+                Title.Caption = 'COD. PROD.'
+                Width = 50
+                FieldName = 'CODPRODUTO'
               end            
               item
                 Title.Caption = 'QTDE'
@@ -442,11 +452,6 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Title.Caption = 'TOTALLIQUIDO'
                 Width = 125
                 FieldName = 'TOTALLIQUIDO'
-              end            
-              item
-                Title.Caption = 'ITEM'
-                Width = 32
-                FieldName = 'CODITEM'
               end>
             DataSource = modulo_orcamento.dsorcamento_itemproduto
             FixedCols = 0
@@ -548,27 +553,27 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       end
       object GroupBox4: TGroupBox
         Left = 0
-        Height = 112
+        Height = 111
         Top = 496
         Width = 900
         Align = alClient
         Caption = 'Condições Gerais'
-        ClientHeight = 92
+        ClientHeight = 91
         ClientWidth = 896
         TabOrder = 2
         object pnlobservacao: TPanel
           Left = 0
-          Height = 92
+          Height = 91
           Top = 0
           Width = 896
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 92
+          ClientHeight = 91
           ClientWidth = 896
           TabOrder = 0
           object memoformapgto: TMemo
             Left = 0
-            Height = 92
+            Height = 91
             Top = 0
             Width = 564
             Align = alLeft

@@ -1,13 +1,13 @@
 object frmorcamento_cadastro: Tfrmorcamento_cadastro
-  Left = -8
-  Height = 705
-  Top = -8
-  Width = 1366
+  Left = 6
+  Height = 690
+  Top = 0
+  Width = 900
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
   Caption = 'Master Plus - Orçamento'
-  ClientHeight = 705
-  ClientWidth = 1366
+  ClientHeight = 690
+  ClientWidth = 900
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
@@ -17,11 +17,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
     Left = 0
     Height = 32
     Top = 0
-    Width = 1366
+    Width = 900
     Align = alTop
     BevelOuter = bvNone
     ClientHeight = 32
-    ClientWidth = 1366
+    ClientWidth = 900
     Color = 16744448
     ParentColor = False
     TabOrder = 0
@@ -42,7 +42,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       ParentFont = False
     end
     object Panel2: TPanel
-      Left = 1275
+      Left = 809
       Height = 32
       Top = 0
       Width = 91
@@ -54,12 +54,12 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   object pnlinferior: TPanel
     Left = 0
     Height = 50
-    Top = 655
-    Width = 1366
+    Top = 640
+    Width = 900
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 50
-    ClientWidth = 1366
+    ClientWidth = 900
     Color = 16744448
     ParentColor = False
     TabOrder = 1
@@ -81,7 +81,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       TabOrder = 0
     end
     object Panel1: TPanel
-      Left = 1258
+      Left = 792
       Height = 50
       Top = 0
       Width = 108
@@ -110,27 +110,27 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   end
   object pnlcentral: TPanel
     Left = 0
-    Height = 623
+    Height = 608
     Top = 32
-    Width = 1366
+    Width = 900
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 623
-    ClientWidth = 1366
+    ClientHeight = 608
+    ClientWidth = 900
     Color = 16744576
     ParentColor = False
     TabOrder = 2
     object ScrollBox1: TScrollBox
       Left = 0
-      Height = 623
+      Height = 608
       Top = 0
-      Width = 1366
+      Width = 900
       HorzScrollBar.Page = 895
       VertScrollBar.Page = 539
       Align = alClient
       BorderStyle = bsNone
-      ClientHeight = 623
-      ClientWidth = 1366
+      ClientHeight = 608
+      ClientWidth = 900
       Color = clForm
       ParentColor = False
       TabOrder = 0
@@ -139,11 +139,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Left = 0
         Height = 85
         Top = 0
-        Width = 1366
+        Width = 900
         Align = alTop
         Caption = ' Identificação '
         ClientHeight = 65
-        ClientWidth = 1362
+        ClientWidth = 896
         TabOrder = 0
         object lblcliente: TLabel
           Left = 0
@@ -234,22 +234,22 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Left = 0
         Height = 411
         Top = 85
-        Width = 1366
+        Width = 900
         Align = alTop
         Caption = ' Produtos '
         ClientHeight = 391
-        ClientWidth = 1362
+        ClientWidth = 896
         TabOrder = 1
         OnClick = GroupBox2Click
         object Panel3: TPanel
           Left = 0
           Height = 58
           Top = 0
-          Width = 1362
+          Width = 896
           Align = alTop
           BevelOuter = bvNone
           ClientHeight = 58
-          ClientWidth = 1362
+          ClientWidth = 896
           TabOrder = 0
           object lblcliente3: TLabel
             Left = 0
@@ -404,12 +404,12 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Left = 0
           Height = 333
           Top = 58
-          Width = 1362
+          Width = 896
           Align = alClient
           BevelOuter = bvNone
           Caption = 'Panel5'
           ClientHeight = 333
-          ClientWidth = 1362
+          ClientWidth = 896
           TabOrder = 1
           object dbgproduto: TDBGrid
             Left = 0
@@ -419,9 +419,19 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Color = clWindow
             Columns = <            
               item
+                Title.Caption = 'ITEM'
+                Width = 32
+                FieldName = 'CODITEM'
+              end            
+              item
                 Title.Caption = 'Title'
-                Width = 325
+                Width = 275
                 FieldName = 'PRODUTO'
+              end            
+              item
+                Title.Caption = 'COD. PROD.'
+                Width = 50
+                FieldName = 'CODPRODUTO'
               end            
               item
                 Title.Caption = 'QTDE'
@@ -442,11 +452,6 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Title.Caption = 'TOTALLIQUIDO'
                 Width = 125
                 FieldName = 'TOTALLIQUIDO'
-              end            
-              item
-                Title.Caption = 'ITEM'
-                Width = 32
-                FieldName = 'CODITEM'
               end>
             DataSource = modulo_orcamento.dsorcamento_itemproduto
             FixedCols = 0
@@ -459,11 +464,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Left = 0
             Height = 93
             Top = 240
-            Width = 1362
+            Width = 896
             Align = alBottom
             BevelOuter = bvNone
             ClientHeight = 93
-            ClientWidth = 1362
+            ClientWidth = 896
             TabOrder = 1
             object GroupBox3: TGroupBox
               Left = 0
@@ -548,27 +553,27 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       end
       object GroupBox4: TGroupBox
         Left = 0
-        Height = 127
+        Height = 112
         Top = 496
-        Width = 1366
+        Width = 900
         Align = alClient
         Caption = 'Condições Gerais'
-        ClientHeight = 107
-        ClientWidth = 1362
+        ClientHeight = 92
+        ClientWidth = 896
         TabOrder = 2
         object pnlobservacao: TPanel
           Left = 0
-          Height = 107
+          Height = 92
           Top = 0
-          Width = 1362
+          Width = 896
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 107
-          ClientWidth = 1362
+          ClientHeight = 92
+          ClientWidth = 896
           TabOrder = 0
           object memoformapgto: TMemo
             Left = 0
-            Height = 107
+            Height = 92
             Top = 0
             Width = 564
             Align = alLeft
