@@ -12,7 +12,8 @@ uses
   ufuncao_geral, usplash, ulogin, ucadastrar_senha, umodulo_cliente,
   umodulo_funcionario, umodulo_unidade, umodulo_produto, uproduto_consulta,
   uimporc, umodulo_vendaorc, uvendaorc, uindice, umodulo_temp, umodulo_geral,
-  uorcamento_impressao, usincorc, umodulo_remoto, usincbaseremota, umodulo_emitente
+  uorcamento_impressao, usincorc, umodulo_remoto, usincbaseremota,
+  umodulo_emitente, umodulo_tabpreco
 
   { you can add units after this };
 
@@ -30,13 +31,14 @@ begin
   Application.CreateForm(Tmodulo_conexaodb, modulo_conexaodb);
 
   // 2-Cria módulo conexao com a tabela remota para sincronismo com base
-  Application.CreateForm(Tmodulo_remoto, modulo_remoto);
   Application.CreateForm(Tmodulo_emitente, modulo_emitente);
+   Application.CreateForm(Tmodulo_remoto, modulo_remoto);
 
   // 3-Cria tela principal para atualizar base de dados
   Application.CreateForm(Tfrmtela_principal, frmtela_principal);
 
   // 4-Cria módulos de conexao com as tabelas
+  Application.CreateForm(Tmodulo_tabpreco, modulo_tabpreco);
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
   Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);

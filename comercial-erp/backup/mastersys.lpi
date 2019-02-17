@@ -16,6 +16,7 @@
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
+      <DestinationDirectory Value="C:\SGBR\Master"/>
     </PublishOptions>
     <RunParams>
       <local>
@@ -36,7 +37,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="29">
+    <Units Count="30">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -228,6 +229,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit28>
+      <Unit29>
+        <Filename Value="umodulo_tabpreco.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_tabpreco"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit29>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -1,8 +1,8 @@
 object modulo_vendaorc: Tmodulo_vendaorc
   OldCreateOrder = False
-  Height = 380
-  HorizontalOffset = 218
-  VerticalOffset = 181
+  Height = 542
+  HorizontalOffset = 305
+  VerticalOffset = 95
   Width = 487
   PPI = 96
   object qrvenda: TSQLQuery
@@ -622,7 +622,7 @@ object modulo_vendaorc: Tmodulo_vendaorc
     )
     Params = <>
     left = 64
-    top = 152
+    top = 112
     object qrvenda_itemprodutoDESCRICAO: TStringField
       FieldKind = fkData
       FieldName = 'DESCRICAO'
@@ -921,14 +921,66 @@ object modulo_vendaorc: Tmodulo_vendaorc
   object dsvenda_itemproduto: TDataSource
     DataSet = qrvenda_itemproduto
     left = 208
-    top = 152
+    top = 112
   end
   object qrconsulta_baseaux: TSQLQuery
     FieldDefs = <>
     Database = modulo_conexaodb.conexaodb_Aux
     Transaction = modulo_conexaodb.tzcontrole_Aux
     Params = <>
-    left = 75
-    top = 262
+    left = 368
+    top = 48
+  end
+  object qrtabpreco: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb_Aux
+    Transaction = modulo_conexaodb.tzcontrole_Aux
+    Params = <>
+    left = 64
+    top = 184
+  end
+  object dstabpreco: TDataSource
+    DataSet = qrtabpreco
+    left = 208
+    top = 184
+  end
+  object qrdescricao_tabpreco: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb_Aux
+    Transaction = modulo_conexaodb.tzcontrole_Aux
+    Params = <>
+    left = 65
+    top = 256
+  end
+  object dsdescricao_tabpreco: TDataSource
+    DataSet = qrdescricao_tabpreco
+    left = 207
+    top = 256
+  end
+  object qrprodutos: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb_Aux
+    Transaction = modulo_conexaodb.tzcontrole_Aux
+    Params = <>
+    left = 65
+    top = 328
+  end
+  object dsprodutos: TDataSource
+    DataSet = qrprodutos
+    left = 213
+    top = 328
+  end
+  object qrclientes: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb_Aux
+    Transaction = modulo_conexaodb.tzcontrole_Aux
+    Params = <>
+    left = 64
+    top = 400
+  end
+  object dsclientes: TDataSource
+    DataSet = qrclientes
+    left = 220
+    top = 400
   end
 end

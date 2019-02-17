@@ -12,6 +12,11 @@ type
   { Tmodulo_vendaorc }
 
   Tmodulo_vendaorc = class(TDataModule)
+    dsfornecedores: TDataSource;
+    dsclientes: TDataSource;
+    dsprodutos: TDataSource;
+    dsdescricao_tabpreco: TDataSource;
+    dstabpreco: TDataSource;
     dsvenda: TDataSource;
     dsvenda_itemproduto: TDataSource;
     qrvenda: TSQLQuery;
@@ -72,6 +77,11 @@ type
     qrvenda_itemprodutoSUBTOTAL: TBCDField;
     qrvenda_itemprodutoUND: TStringField;
     qrconsulta_baseaux: TSQLQuery;
+    qrtabpreco: TSQLQuery;
+    qrdescricao_tabpreco: TSQLQuery;
+    qrprodutos: TSQLQuery;
+    qrclientes: TSQLQuery;
+    qrfornecedores: TSQLQuery;
     procedure qrvendaAfterScroll(DataSet: TDataSet);
   private
 

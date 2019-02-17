@@ -10,6 +10,7 @@ uses
 function GravarINIBD(Ip, CaminhoDB, Porta, Pass, Userx,
   Protoc, charset, CaminhoDB2, Ipremoto, CaminhoDBremoto: String):boolean;
 
+procedure GravarLog(nomeArquivo, mensagemLog: String);
 procedure LerINIBD;
 
 
@@ -57,10 +58,6 @@ begin
   //if not FileExists(NovoNome) then
   //begin
 
-
-
-
-
     try
 
       Arq := TIniFile.Create(NovoNome);
@@ -78,14 +75,6 @@ begin
 
         Arq.WriteString('ConexaoBanco', 'HostNameRemoto', IPremoto);
         Arq.WriteString('ConexaoBanco', 'DatabaseRemoto', CaminhoDBremoto);
-
-
-
-
-
-
-
-
 
         //Não ha mais necessidade da linha abaixo.
         {
@@ -110,6 +99,46 @@ begin
     end;
   //end;
 end;
+
+
+
+procedure GravarLog(nomeArquivo, mensagemLog: String);
+var
+  Arq: TIniFile;
+  NovoNome: string;
+begin
+  (* Cria arquivo ini *)
+  NovoNome := DataDirectory + nomeArquivo;
+  //if not FileExists(NovoNome) then
+  //begin
+
+
+      Arq := TIniFile.Create(NovoNome);
+
+      try
+        Arq.WriteString('DadosLog', 'DataHoraLog', datetimetostr( now() ) );
+        Arq.WriteString('DadosLog', 'Mensagem', mensagemlog);
+
+        //Não ha mais necessidade da linha abaixo.
+        {
+        if frmParametrizarBanco.bTipoConnection = True then
+           Arq.WriteString('ConexaoBanco', 'Tipo Conexão', RetornaVersaoFirebird)
+         else
+           Arq.WriteString('ConexaoBanco', 'Tipo Conexão', RetornaVersaoFirebird);
+         }
+
+
+       finally
+         FreeAndNil(Arq);
+
+       end;
+
+
+
+
+end;
+
+
 
 
 end.

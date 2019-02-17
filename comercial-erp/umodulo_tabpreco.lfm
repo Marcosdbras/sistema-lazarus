@@ -1,0 +1,21 @@
+object modulo_tabpreco: Tmodulo_tabpreco
+  OldCreateOrder = False
+  Height = 339
+  HorizontalOffset = 668
+  VerticalOffset = 225
+  Width = 414
+  PPI = 96
+  object dstabpreco: TDataSource
+    DataSet = qrtabpreco
+    left = 224
+    top = 24
+  end
+  object qrtabpreco: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 48
+    top = 24
+  end
+end
