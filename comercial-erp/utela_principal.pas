@@ -816,7 +816,7 @@ begin
                    modulo_conexaodb.qrexec_base.ParamByName('controle').AsInteger:= qrdescricao_tabpreco.FieldByName('codigo').AsInteger;
                    modulo_conexaodb.qrexec_base.ParamByName('nometabela').asString:=  qrdescricao_tabpreco.FieldByName('descricao').AsString;
                    modulo_conexaodb.qrexec_base.ParamByName('datainicial').asdate:=date;
-                   modulo_conexaodb.qrexec_base.ParamByName('datafinal').asdate:=date;
+                   modulo_conexaodb.qrexec_base.ParamByName('datafinal').asdate:=date+720;
                    modulo_conexaodb.qrexec_base.ParamByName('datahoracadastro').asdatetime:= now();
                    modulo_conexaodb.qrexec_base.ParamByName('ativo').AsString:='SIM';
                    modulo_conexaodb.qrexec_base.ParamByName('percdesconto').asfloat:= 0;
@@ -903,6 +903,18 @@ begin
              //endiw
 
              qrtabpreco.Close;
+
+
+
+
+             //Atualizar generator
+             //GEN_TTABELAPRECO_ID
+
+
+
+             //GEN_TITEMTABELAPRECO_ID
+
+
 
              modulo_conexaodb.atualizaBancoFechaTransacao;
 

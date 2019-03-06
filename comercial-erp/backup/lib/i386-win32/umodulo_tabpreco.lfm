@@ -1,0 +1,8 @@
+object modulo_tabpreco: Tmodulo_tabpreco
+  OldCreateOrder = False
+  Height = 339
+  HorizontalOffset = 668
+  VerticalOffset = 225
+  Width = 414
+  PPI = 96
+end

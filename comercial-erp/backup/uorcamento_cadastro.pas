@@ -26,6 +26,7 @@ type
     cbxnomeven: TDBLookupComboBox;
     cbxnomefun: TDBLookupComboBox;
     dbgproduto: TDBGrid;
+    cbxtabpreco: TDBLookupComboBox;
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
     edttotal: TFloatSpinEdit;
@@ -36,6 +37,7 @@ type
     GroupBox3: TGroupBox;
     GroupBox4: TGroupBox;
     Label2: TLabel;
+    lblcliente6: TLabel;
     lblcliente7: TLabel;
     lblcontroleprod: TLabel;
     lblstatus: TLabel;
@@ -75,6 +77,9 @@ type
     procedure cbxnomevenExit(Sender: TObject);
     procedure cbxnomevenKeyPress(Sender: TObject; var Key: char);
     procedure cbxunidadeKeyPress(Sender: TObject; var Key: char);
+    procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox1KeyPress(Sender: TObject; var Key: char);
     procedure dbgprodutoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
       );
     procedure dbgprodutoKeyPress(Sender: TObject; var Key: char);
@@ -139,7 +144,8 @@ var
 implementation
 
 uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario,
-      umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta, umodulo_geral;
+      umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta, umodulo_geral,
+      umodulo_tabpreco;
 
 {$R *.lfm}
 
@@ -224,6 +230,21 @@ begin
 
     end;
   //endth
+
+
+  with modulo_tabpreco do
+    begin
+
+      qrtabpreco.Close;
+      qrtabpreco.SQL.Clear;
+      qrtabpreco.SQL.Add('select * from ttabelapreco where ativo = :ativo order by nometabela');
+      qrtabpreco.ParamByName('ativo').AsString:='SIM';
+      qrtabpreco.Open;
+
+    end;
+  //endth
+
+
 
   memoformapgto.Lines.Clear;
   memoobs.Lines.Clear;
@@ -319,6 +340,12 @@ begin
   cbxunidade.DataField:='cund';
   cbxunidade.ScrollListDataset:=true;
 
+  cbxtabpreco.ListSource := modulo_tabpreco.dstabpreco;
+  cbxtabpreco.ListField:='nometabela';
+  cbxtabpreco.KeyField:='controle';
+  cbxtabpreco.DataSource:=modulo_tabpreco.dstemptabpreco;
+  cbxtabpreco.DataField:='ctabp';
+  cbxtabpreco.ScrollListDataset:=true;
 
 
   limparProduto;
@@ -626,6 +653,25 @@ begin
      exit;
    end;
 //endi
+end;
+
+procedure Tfrmorcamento_cadastro.ComboBox1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.ComboBox1KeyPress(Sender: TObject;
+  var Key: char);
+begin
+     if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+//endi
+
 end;
 
 procedure Tfrmorcamento_cadastro.dbgprodutoKeyDown(Sender: TObject; var Key: Word;
@@ -952,7 +998,9 @@ procedure Tfrmorcamento_cadastro.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
 
-  //FreeAndNil(frmorcamento_cadastro);  //Action:= caFree;   // frmorcamento_cadastro := nil;
+  //FreeAndNil(frmorcamento_cadastro);
+  //Action:= caFree;
+  //frmorcamento_cadastro := nil;
 
 end;
 
@@ -1466,7 +1514,23 @@ procedure tfrmorcamento_cadastro.carregaCampoProd;
 
      lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
      edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
-     edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
+
+     if modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger > 0 then
+        begin
+          modulo_conexaodb.qrconsulta_base.Close;
+          modulo_conexaodb.qrconsulta_base.SQL.Clear;
+          modulo_conexaodb.qrconsulta_base.SQL.Add('select t.controle, i.codtabelapreco, i.codproduto, i.precovendatabelado from ttabelapreco t inner join titemtabelapreco i on t.controle=i.codtabelapreco inner join testoque e on i.codproduto=e.controle where codproduto = :codproduto and codtabelapreco = :codtabelapreco');
+          modulo_conexaodb.qrconsulta_base.Params.ParamByName('codproduto').AsInteger:=modulo_produto.qrproduto.FieldByName('controle').AsInteger;
+          modulo_conexaodb.qrconsulta_base.Params.ParamByName('codtabelapreco').AsInteger:=modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger ;
+          modulo_conexaodb.qrconsulta_base.Open;
+
+          edtvlrunitario.Value:=  modulo_conexaodb.qrconsulta_base.FieldByName('precovendatabelado').AsFloat;
+        end
+     else
+        begin
+          edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
+        end;
+     //endi
 
      referencia:=modulo_produto.qrproduto.FieldByName('referencia').AsString;
      cfop:=modulo_produto.qrproduto.FieldByName('cfop').AsString;

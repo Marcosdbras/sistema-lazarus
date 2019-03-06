@@ -1,0 +1,24 @@
+object modulo_remoto: Tmodulo_remoto
+  OldCreateOrder = False
+  Height = 254
+  HorizontalOffset = 305
+  VerticalOffset = 130
+  Width = 193
+  PPI = 96
+  object qrconsulta_base_remoto: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb_remoto
+    Transaction = modulo_conexaodb.tzcontrole_remoto
+    Params = <>
+    left = 72
+    top = 35
+  end
+  object qrexec_base_remoto: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb_remoto
+    Transaction = modulo_conexaodb.tzcontrole_remoto
+    Params = <>
+    left = 72
+    top = 144
+  end
+end

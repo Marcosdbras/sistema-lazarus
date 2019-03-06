@@ -1,0 +1,81 @@
+object frmcadastrar_senha: Tfrmcadastrar_senha
+  Left = 363
+  Height = 207
+  Top = 300
+  Width = 587
+  BorderStyle = bsDialog
+  Caption = 'Cadastrar Senha'
+  ClientHeight = 207
+  ClientWidth = 587
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '1.8.0.6'
+  object Label1: TLabel
+    Left = 24
+    Height = 15
+    Top = 88
+    Width = 32
+    Caption = 'Senha'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 24
+    Height = 15
+    Top = 143
+    Width = 85
+    Caption = 'Confirma Senha'
+    ParentColor = False
+  end
+  object edtsenha: TEdit
+    Left = 152
+    Height = 23
+    Top = 88
+    Width = 240
+    TabOrder = 0
+    Text = 'edtsenha'
+  end
+  object edtconfirma_senha: TEdit
+    Left = 152
+    Height = 23
+    Top = 143
+    Width = 240
+    TabOrder = 1
+    Text = 'edtconfirma_senha'
+  end
+  object btnsalvar: TButton
+    Left = 464
+    Height = 57
+    Top = 40
+    Width = 112
+    Caption = 'Salvar'
+    ModalResult = 1
+    OnClick = btnsalvarClick
+    TabOrder = 2
+  end
+  object btncancelar: TButton
+    Left = 464
+    Height = 58
+    Top = 108
+    Width = 112
+    Caption = 'Cancelar'
+    ModalResult = 2
+    OnClick = btncancelarClick
+    TabOrder = 3
+  end
+  object Label3: TLabel
+    Left = 24
+    Height = 15
+    Top = 40
+    Width = 40
+    Caption = 'Usuário'
+    ParentColor = False
+  end
+  object lblusuario: TLabel
+    Left = 152
+    Height = 15
+    Top = 40
+    Width = 52
+    Caption = 'lblusuario'
+    ParentColor = False
+  end
+end

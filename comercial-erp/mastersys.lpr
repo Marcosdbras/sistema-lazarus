@@ -30,14 +30,11 @@ begin
   // 1-Realiza conexao com base de dados
   Application.CreateForm(Tmodulo_conexaodb, modulo_conexaodb);
 
-  // 2-Cria módulo conexao com a tabela remota para sincronismo com base
-  Application.CreateForm(Tmodulo_emitente, modulo_emitente);
-   Application.CreateForm(Tmodulo_remoto, modulo_remoto);
-
   // 3-Cria tela principal para atualizar base de dados
   Application.CreateForm(Tfrmtela_principal, frmtela_principal);
 
   // 4-Cria módulos de conexao com as tabelas
+  Application.CreateForm(Tmodulo_emitente, modulo_emitente);
   Application.CreateForm(Tmodulo_tabpreco, modulo_tabpreco);
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
   Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
@@ -48,6 +45,8 @@ begin
   Application.CreateForm(Tmodulo_temp, modulo_temp);
   Application.CreateForm(Tmodulo_geral, modulo_geral);
 
+  // 2-Cria módulo conexao com a tabela remota para sincronismo com base
+  Application.CreateForm(Tmodulo_remoto, modulo_remoto);
 
 
   //Application.CreateForm(Tfrmvendaorc, frmvendaorc);

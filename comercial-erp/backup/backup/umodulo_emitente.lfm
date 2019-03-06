@@ -1,0 +1,38 @@
+object modulo_emitente: Tmodulo_emitente
+  OldCreateOrder = False
+  Height = 179
+  HorizontalOffset = 305
+  VerticalOffset = 130
+  Width = 150
+  PPI = 96
+  object qremitente: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    left = 24
+    top = 24
+  end
+  object qrtemp: TBufDataset
+    FieldDefs = <>
+    left = 24
+    top = 104
+    object qrtempccli: TLongintField
+      FieldKind = fkData
+      FieldName = 'ccli'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstemp: TDataSource
+    DataSet = qrtemp
+    left = 96
+    top = 104
+  end
+  object dsemitente: TDataSource
+    DataSet = qremitente
+    left = 96
+    top = 24
+  end
+end

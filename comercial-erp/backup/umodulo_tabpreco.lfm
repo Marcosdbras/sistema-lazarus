@@ -1,8 +1,41 @@
 object modulo_tabpreco: Tmodulo_tabpreco
+  OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 339
+  Height = 243
   HorizontalOffset = 668
   VerticalOffset = 225
-  Width = 414
+  Width = 258
   PPI = 96
+  object dstabpreco: TDataSource
+    DataSet = qrtabpreco
+    left = 136
+    top = 24
+  end
+  object qrtabpreco: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 48
+    top = 24
+  end
+  object qrtempTabPreco: TBufDataset
+    FieldDefs = <>
+    left = 65
+    top = 140
+    object qrtempTabPrecoctabp: TLongintField
+      FieldKind = fkData
+      FieldName = 'ctabp'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempTabPreco: TDataSource
+    DataSet = qrtempTabPreco
+    left = 172
+    top = 140
+  end
 end

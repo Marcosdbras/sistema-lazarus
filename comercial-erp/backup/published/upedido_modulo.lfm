@@ -1,0 +1,17 @@
+object frmpedido_modulo: Tfrmpedido_modulo
+  OldCreateOrder = False
+  Height = 367
+  HorizontalOffset = 256
+  VerticalOffset = 210
+  Width = 921
+  PPI = 96
+  object ZQuery1: TZQuery
+    Connection = frmprincipal_conexao.conexaodb
+    SQL.Strings = (
+      'select * from temitente'
+    )
+    Params = <>
+    left = 90
+    top = 48
+  end
+end

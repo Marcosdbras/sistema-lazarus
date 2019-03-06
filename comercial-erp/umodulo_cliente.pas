@@ -18,6 +18,7 @@ type
     qrtempCliente: TBufDataset;
     qrtempClienteccli: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure qrclienteAfterScroll(DataSet: TDataSet);
   private
 
   public
@@ -28,7 +29,7 @@ var
   modulo_cliente: Tmodulo_cliente;
 
 implementation
-      uses umodulo_conexaodb;
+      uses umodulo_conexaodb, uorcamento_cadastro,umodulo_tabpreco;
 {$R *.lfm}
 
       { Tmodulo_cliente }
@@ -51,6 +52,33 @@ implementation
 
 
       end;
+
+procedure Tmodulo_cliente.qrclienteAfterScroll(DataSet: TDataSet);
+begin
+    if  frmorcamento_cadastro <> nil then
+        begin
+
+          if modulo_tabpreco.qrtabpreco.Locate('controle',qrcliente.FieldByName('codtabelapreco').AsInteger,[]) then
+             begin
+
+               modulo_tabpreco.qrtempTabPreco.Edit;
+               modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger := qrcliente.FieldByName('codtabelapreco').AsInteger;
+
+             end
+          else
+             begin
+
+               modulo_tabpreco.qrtempTabPreco.Edit;
+               modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger := 0;
+
+
+             end;
+          //endi
+
+
+        end;
+    //endi
+end;
 
 end.
 

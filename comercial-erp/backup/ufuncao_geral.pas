@@ -64,6 +64,8 @@ implementation
 procedure verificaInf;
 begin
 
+{
+try
   if conectarBanco_remoto then
      begin
 
@@ -167,9 +169,11 @@ begin
 
      end;
   //endi
+  except
+    //mensagem erro de conexao
+  end;
 
-
-
+}
 
 end;
 

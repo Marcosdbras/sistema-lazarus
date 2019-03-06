@@ -1,0 +1,177 @@
+object frmtela_principal: Tfrmtela_principal
+  Left = 9
+  Height = 546
+  Top = 100
+  Width = 1008
+  Caption = 'Master Plus'
+  ClientHeight = 526
+  ClientWidth = 1008
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '1.8.4.0'
+  Visible = True
+  WindowState = wsMaximized
+  object pnlsuperior: TPanel
+    Left = 0
+    Height = 88
+    Top = 0
+    Width = 1008
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 88
+    ClientWidth = 1008
+    Color = 16744448
+    ParentColor = False
+    TabOrder = 0
+    object Button1: TButton
+      Left = 8
+      Height = 65
+      Top = 8
+      Width = 136
+      Caption = 'Exportar para NFE 4.0'
+      OnClick = Button1Click
+      TabOrder = 0
+    end
+  end
+  object pnlsuperior1: TPanel
+    Left = 0
+    Height = 356
+    Top = 88
+    Width = 168
+    Align = alLeft
+    BevelOuter = bvNone
+    Color = 16744448
+    ParentColor = False
+    TabOrder = 1
+  end
+  object pnlsuperior2: TPanel
+    Left = 0
+    Height = 82
+    Top = 444
+    Width = 1008
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 82
+    ClientWidth = 1008
+    Color = 16744448
+    ParentColor = False
+    TabOrder = 2
+    object StatusBar1: TStatusBar
+      Left = 0
+      Height = 23
+      Top = 59
+      Width = 1008
+      Panels = <>
+    end
+    object Panel1: TPanel
+      Left = 872
+      Height = 59
+      Top = 0
+      Width = 136
+      Align = alRight
+      BevelOuter = bvNone
+      ClientHeight = 59
+      ClientWidth = 136
+      TabOrder = 1
+      object Button2: TButton
+        Left = 8
+        Height = 40
+        Top = 8
+        Width = 123
+        Caption = 'Sair'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clNavy
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Button2Click
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+    object lblstatus: TLabel
+      Left = 8
+      Height = 20
+      Top = 32
+      Width = 45
+      Caption = 'lblstatus'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Height = -15
+      Font.Name = 'Arial Narrow'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object pnlsuperior3: TPanel
+    Left = 168
+    Height = 356
+    Top = 88
+    Width = 840
+    Align = alClient
+    ClientHeight = 356
+    ClientWidth = 840
+    TabOrder = 3
+    object DBGrid1: TDBGrid
+      Left = 16
+      Height = 300
+      Top = 22
+      Width = 1072
+      Color = clWindow
+      Columns = <>
+      DataSource = DataSource1
+      TabOrder = 0
+      Visible = False
+    end
+  end
+  object MainMenu1: TMainMenu
+    left = 315
+    top = 102
+    object MenuItem1: TMenuItem
+      Caption = '&Principal'
+      OnClick = MenuItem1Click
+      object MenuItem2: TMenuItem
+        Caption = 'Configurações'
+        object MenuItem5: TMenuItem
+          Caption = 'Banco de Dados'
+          OnClick = MenuItem5Click
+        end
+        object MenuItem11: TMenuItem
+          Caption = 'Dados Padrões'
+          OnClick = MenuItem11Click
+        end
+      end
+      object Ajustes: TMenuItem
+        Caption = 'Ajustes'
+        object MenuItem8: TMenuItem
+          Caption = 'Transf. tabela de preço'
+          OnClick = MenuItem8Click
+        end
+      end
+      object MenuItem7: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Orçamentos'
+        OnClick = MenuItem3Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'Exportar para NF-e'
+        OnClick = MenuItem6Click
+      end
+    end
+    object MenuItem4: TMenuItem
+      Caption = '&Sair'
+      OnClick = MenuItem4Click
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = modulo_conexaodb.qrconsulta_base
+    left = 435
+    top = 211
+  end
+end

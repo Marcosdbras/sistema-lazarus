@@ -1,0 +1,117 @@
+object frmorcamento_tela: Tfrmorcamento_tela
+  Left = 73
+  Height = 638
+  Top = 27
+  Width = 1249
+  BorderIcons = [biMinimize, biMaximize]
+  BorderStyle = bsSingle
+  Caption = 'Master Plus - Orçamento'
+  ClientHeight = 638
+  ClientWidth = 1249
+  OnCreate = FormCreate
+  LCLVersion = '1.8.0.6'
+  WindowState = wsMaximized
+  object pnlsuperior: TPanel
+    Left = 0
+    Height = 88
+    Top = 0
+    Width = 1249
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 88
+    ClientWidth = 1249
+    Color = 16744448
+    ParentColor = False
+    TabOrder = 0
+    object Label5: TLabel
+      Left = 8
+      Height = 18
+      Top = 32
+      Width = 189
+      Caption = 'Cadastro de orçamentos ...'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clYellow
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Panel2: TPanel
+      Left = 1158
+      Height = 88
+      Top = 0
+      Width = 91
+      Align = alRight
+      BevelOuter = bvNone
+      TabOrder = 0
+    end
+  end
+  object pnlinferior: TPanel
+    Left = 0
+    Height = 50
+    Top = 588
+    Width = 1249
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 50
+    ClientWidth = 1249
+    Color = 16744448
+    ParentColor = False
+    TabOrder = 1
+    OnClick = pnlinferiorClick
+    object Button1: TButton
+      Left = 8
+      Height = 42
+      Top = 6
+      Width = 75
+      Caption = 'Salvar'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Left = 88
+      Height = 42
+      Top = 6
+      Width = 75
+      Caption = 'Cancelar'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      OnClick = Button2Click
+      ParentFont = False
+      TabOrder = 1
+    end
+    object Panel1: TPanel
+      Left = 1158
+      Height = 50
+      Top = 0
+      Width = 91
+      Align = alRight
+      BevelOuter = bvNone
+      TabOrder = 2
+    end
+  end
+  object pnlcentral: TPanel
+    Left = 0
+    Height = 500
+    Top = 88
+    Width = 1249
+    Align = alClient
+    BevelOuter = bvNone
+    Color = 16744576
+    ParentColor = False
+    TabOrder = 2
+  end
+end

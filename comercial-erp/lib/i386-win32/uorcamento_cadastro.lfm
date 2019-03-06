@@ -126,7 +126,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       Top = 0
       Width = 900
       HorzScrollBar.Page = 895
-      VertScrollBar.Page = 539
+      VertScrollBar.Page = 574
       Align = alClient
       BorderStyle = bsNone
       ClientHeight = 607
@@ -137,18 +137,18 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       OnClick = ScrollBox1Click
       object GroupBox1: TGroupBox
         Left = 0
-        Height = 85
+        Height = 120
         Top = 0
         Width = 900
         Align = alTop
         Caption = ' Identificação '
-        ClientHeight = 65
+        ClientHeight = 100
         ClientWidth = 896
         TabOrder = 0
         object lblcliente: TLabel
           Left = 0
           Height = 18
-          Top = 3
+          Top = 0
           Width = 150
           Caption = 'Razão Social (Nome):'
           Font.CharSet = ANSI_CHARSET
@@ -164,7 +164,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         object cbxnomecliente: TDBLookupComboBox
           Left = 0
           Height = 23
-          Top = 27
+          Top = 18
           Width = 352
           DataField = 'ccli'
           ListFieldIndex = 0
@@ -176,7 +176,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         object cbxnomeven: TDBLookupComboBox
           Left = 360
           Height = 23
-          Top = 27
+          Top = 18
           Width = 256
           DataField = 'cven'
           ListFieldIndex = 0
@@ -188,7 +188,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         object lblcliente1: TLabel
           Left = 360
           Height = 18
-          Top = 3
+          Top = 0
           Width = 72
           Caption = 'Vendedor:'
           Font.CharSet = ANSI_CHARSET
@@ -220,7 +220,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         object cbxnomefun: TDBLookupComboBox
           Left = 624
           Height = 23
-          Top = 24
+          Top = 18
           Width = 224
           DataField = 'cfun'
           ListFieldIndex = 0
@@ -229,11 +229,39 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           OnKeyPress = cbxnomefunKeyPress
           TabOrder = 2
         end
+        object lblcliente6: TLabel
+          Left = 0
+          Height = 18
+          Top = 46
+          Width = 119
+          Caption = 'Tabela de Preço:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object cbxtabpreco: TDBLookupComboBox
+          Left = 0
+          Height = 23
+          Top = 64
+          Width = 352
+          DataField = 'ctabp'
+          DataSource = modulo_tabpreco.dstempTabPreco
+          ListFieldIndex = 0
+          LookupCache = False
+          NullValueKey = 46
+          TabOrder = 3
+        end
       end
       object GroupBox2: TGroupBox
         Left = 0
         Height = 411
-        Top = 85
+        Top = 120
         Width = 900
         Align = alTop
         Caption = ' Produtos '
@@ -243,18 +271,18 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         OnClick = GroupBox2Click
         object Panel3: TPanel
           Left = 0
-          Height = 58
+          Height = 43
           Top = 0
           Width = 896
           Align = alTop
           BevelOuter = bvNone
-          ClientHeight = 58
+          ClientHeight = 43
           ClientWidth = 896
           TabOrder = 0
           object lblcliente3: TLabel
             Left = 0
             Height = 18
-            Top = 3
+            Top = -1
             Width = 71
             Caption = 'Descrição'
             Font.CharSet = ANSI_CHARSET
@@ -270,7 +298,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object edtdescricao: TEdit
             Left = 0
             Height = 23
-            Top = 24
+            Top = 20
             Width = 352
             OnExit = edtdescricaoExit
             OnKeyPress = edtdescricaoKeyPress
@@ -280,7 +308,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object lblcliente4: TLabel
             Left = 394
             Height = 18
-            Top = 3
+            Top = -1
             Width = 82
             Caption = 'Quantidade'
             Font.CharSet = ANSI_CHARSET
@@ -296,7 +324,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object edtqtde: TFloatSpinEdit
             Left = 360
             Height = 23
-            Top = 24
+            Top = 20
             Width = 120
             Alignment = taRightJustify
             DecimalPlaces = 3
@@ -312,7 +340,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object cbxunidade: TDBLookupComboBox
             Left = 483
             Height = 23
-            Top = 24
+            Top = 20
             Width = 52
             DataField = 'cund'
             DataSource = modulo_orcamento.dstempUnidade
@@ -324,7 +352,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object edtvlrunitario: TFloatSpinEdit
             Left = 538
             Height = 23
-            Top = 24
+            Top = 20
             Width = 96
             Alignment = taRightJustify
             Increment = 1
@@ -338,7 +366,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object lblcliente5: TLabel
             Left = 552
             Height = 18
-            Top = 0
+            Top = -4
             Width = 82
             Caption = 'Vlr. Unitário'
             Font.CharSet = ANSI_CHARSET
@@ -354,7 +382,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object edtvlrsubtotal: TFloatSpinEdit
             Left = 640
             Height = 23
-            Top = 24
+            Top = 20
             Width = 82
             Alignment = taRightJustify
             Enabled = False
@@ -368,7 +396,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object lblcontroleprod: TLabel
             Left = 104
             Height = 15
-            Top = 3
+            Top = -1
             Width = 82
             Caption = 'lblcontroleprod'
             ParentColor = False
@@ -377,7 +405,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object lblcliente7: TLabel
             Left = 685
             Height = 18
-            Top = 3
+            Top = -1
             Width = 35
             Caption = 'Total'
             Font.CharSet = ANSI_CHARSET
@@ -393,7 +421,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object btnlancar: TButton
             Left = 728
             Height = 40
-            Top = 7
+            Top = 3
             Width = 83
             Caption = 'Lançar'
             OnClick = btnlancarClick
@@ -402,19 +430,19 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         end
         object Panel5: TPanel
           Left = 0
-          Height = 333
-          Top = 58
+          Height = 348
+          Top = 43
           Width = 896
           Align = alClient
           BevelOuter = bvNone
           Caption = 'Panel5'
-          ClientHeight = 333
+          ClientHeight = 348
           ClientWidth = 896
           TabOrder = 1
           object dbgproduto: TDBGrid
             Left = 0
-            Height = 240
-            Top = 0
+            Height = 252
+            Top = 2
             Width = 808
             Color = clWindow
             Columns = <            
@@ -463,7 +491,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           object Panel7: TPanel
             Left = 0
             Height = 93
-            Top = 240
+            Top = 255
             Width = 896
             Align = alBottom
             BevelOuter = bvNone
@@ -493,7 +521,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             object Label2: TLabel
               Left = 576
               Height = 15
-              Top = 13
+              Top = 8
               Width = 27
               Caption = 'Total'
               ParentColor = False
@@ -553,27 +581,27 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       end
       object GroupBox4: TGroupBox
         Left = 0
-        Height = 111
-        Top = 496
+        Height = 76
+        Top = 531
         Width = 900
         Align = alClient
         Caption = 'Condições Gerais'
-        ClientHeight = 91
+        ClientHeight = 56
         ClientWidth = 896
         TabOrder = 2
         object pnlobservacao: TPanel
           Left = 0
-          Height = 91
+          Height = 56
           Top = 0
           Width = 896
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 91
+          ClientHeight = 56
           ClientWidth = 896
           TabOrder = 0
           object memoformapgto: TMemo
             Left = 0
-            Height = 91
+            Height = 56
             Top = 0
             Width = 564
             Align = alLeft

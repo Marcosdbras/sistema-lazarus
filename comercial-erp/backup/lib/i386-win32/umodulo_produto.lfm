@@ -1,0 +1,2639 @@
+object modulo_produto: Tmodulo_produto
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 642
+  HorizontalOffset = 754
+  VerticalOffset = 34
+  Width = 220
+  PPI = 96
+  object qrproduto: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PRODUTO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'TIPOBARRA'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODBARRAS'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'UNIDADE'
+        DataType = ftString
+        Precision = -1
+        Size = 6
+      end    
+      item
+        Name = 'PRECOCUSTO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'PERCLUCRO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'PRECOVENDA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'CODGRUPO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'GRUPO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'OBS'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'CODFORNECEDOR'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'FORNECEDOR'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'TAMANHO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'PESO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'CUSTOULTIMACOMPRA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'CUSTOMEDIO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDETOTALCOMPRADA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDETOTALVENDIDA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'DATAULTIMACOMPRA'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATAULTIMAVENDA'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATAHORACADASTRO'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'QTDEMINIMA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDEMAXIMA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDE'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'ATIVO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'NCM'
+        DataType = ftString
+        Precision = -1
+        Size = 50
+      end    
+      item
+        Name = 'PERCREDITOCICMS'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'USAGRADE'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'USASERIAL'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ORIGEM'
+        DataType = ftString
+        Precision = -1
+        Size = 300
+      end    
+      item
+        Name = 'CODTRIBUTACAOIPI'
+        DataType = ftString
+        Precision = -1
+        Size = 4
+      end    
+      item
+        Name = 'TRIBUTACAOIPI'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODTRIBUTACAOPIS'
+        DataType = ftString
+        Precision = -1
+        Size = 4
+      end    
+      item
+        Name = 'CODTRIBUTACAOCOFINS'
+        DataType = ftString
+        Precision = -1
+        Size = 4
+      end    
+      item
+        Name = 'TRIBUTACAOPIS'
+        DataType = ftString
+        Precision = -1
+        Size = 300
+      end    
+      item
+        Name = 'TRIBUTACAOCOFINS'
+        DataType = ftString
+        Precision = -1
+        Size = 300
+      end    
+      item
+        Name = 'TIPOTRIBUTACAO'
+        DataType = ftString
+        Precision = -1
+        Size = 80
+      end    
+      item
+        Name = 'PERCICMSSTINTERNA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCMVAORIGINAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'POSSUIICMSST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ISENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'PERCICMSPROPRIOST'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'IAT'
+        DataType = ftString
+        Precision = -1
+        Size = 1
+      end    
+      item
+        Name = 'IPPT'
+        DataType = ftString
+        Precision = -1
+        Size = 1
+      end    
+      item
+        Name = 'TRIBUTADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'CSOSN'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'DESCRICAOCSOSN'
+        DataType = ftString
+        Precision = -1
+        Size = 300
+      end    
+      item
+        Name = 'PESADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'BASECALCULOICMSSTRETIDO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'VALORICMSSTRETIDO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'ALIQUOTAICMSECF'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'FOTO'
+        DataType = ftBlob
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'MD5'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'MENSAGEMNFE'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'CODMENSAGEMNFE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODUNIDADEMEDIDA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODAPLICACAOPRODUTO'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'APLICACAOPRODUTO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'MD5E2'
+        DataType = ftString
+        Precision = -1
+        Size = 80
+      end    
+      item
+        Name = 'QTDEINICIAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'ALIQUOTAISS'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'CODIMPOSTOMEDIO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PERCIMPOSTOMEDIO'
+        DataType = ftBCD
+        Precision = 9
+        Size = 2
+      end    
+      item
+        Name = 'CODCSTORIGEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOCSTORIGEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODEMITENTE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DIASVALIDADEPRODUTO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'FATORCONVERSAO'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'TRIBUTACAOSERVICO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'REDUCAOBASECALCULOSERVICO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'STATUS'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'DESCRICAOCOMPLEMENTAR'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'REFERENCIA'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'PRECOVENDAUSS'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCMAXIMODESCONTO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'VALORCOMISSAOFIXO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCCOMISSAO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PRECOMINIMOUSS'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PRECOMINIMO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'CODCOMPRA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'VALORFRETE'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'VALOROUTROS'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'VALORICMSST'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'VALORIPI'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'VALORUNITARIOCOMPRA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'PERCPIS'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCCOFINS'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'VALORCONVERSAO'
+        DataType = ftFMTBcd
+        Precision = 18
+        Size = 8
+      end    
+      item
+        Name = 'CAMPO1'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO2'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO3'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO4'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO5'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO6'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO7'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO8'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO9'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO10'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODIGOANP'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'MARCA'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'PERCREDUCAOBC'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCREDUCAOBCST'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'CODSUBGRUPO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SUBGRUPO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CONTROLARVALIDADE'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'CODMARCA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PRECOREVENDA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCIPI'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'CFOP'
+        DataType = ftString
+        Precision = -1
+        Size = 4
+      end    
+      item
+        Name = 'UNIDADECONVERSAOVENDA'
+        DataType = ftString
+        Precision = -1
+        Size = 6
+      end    
+      item
+        Name = 'VALORCONVERSAOVENDA'
+        DataType = ftFMTBcd
+        Precision = 18
+        Size = 8
+      end    
+      item
+        Name = 'CODTABELAPRECO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NOMETABELAPRECO'
+        DataType = ftString
+        Precision = -1
+        Size = 200
+      end    
+      item
+        Name = 'PERCIMPOSTOMEDIOESTADUAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCIMPOSTOMEDIOMUNICIPAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'CODIGOENQUADRAMENTOIPI'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'CEST'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'QTDEEMPRODUCAO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDEPEDIDOVENDA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDEPEDIDOCOMPRA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDERESERVADA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDEREAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'QTDEEMPRODUCAOMP'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'UNIDADEMEDIDAETIQUETA'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'FATORCONVERSAOETIQUETA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'DESCRICAOANP'
+        DataType = ftString
+        Precision = -1
+        Size = 95
+      end    
+      item
+        Name = 'PERCGLPCOMB'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'PERCGNNCOMB'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'PERCGNICOMB'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'VALORPARTIDACOMB'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'CNPJFABRICANTE'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'CODBENEFICIOFISCAL'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from testoque'
+    )
+    Params = <>
+    left = 33
+    top = 16
+    object qrprodutoCONTROLE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONTROLE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrprodutoPRODUTO: TStringField
+      FieldKind = fkData
+      FieldName = 'PRODUTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object qrprodutoTIPOBARRA: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPOBARRA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCODBARRAS: TStringField
+      FieldKind = fkData
+      FieldName = 'CODBARRAS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object qrprodutoUNIDADE: TStringField
+      FieldKind = fkData
+      FieldName = 'UNIDADE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 6
+    end
+    object qrprodutoPRECOCUSTO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRECOCUSTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoPERCLUCRO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCLUCRO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoPRECOVENDA: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRECOVENDA'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoCODGRUPO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODGRUPO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoGRUPO: TStringField
+      FieldKind = fkData
+      FieldName = 'GRUPO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoOBS: TMemoField
+      FieldKind = fkData
+      FieldName = 'OBS'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object qrprodutoCODFORNECEDOR: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODFORNECEDOR'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoFORNECEDOR: TStringField
+      FieldKind = fkData
+      FieldName = 'FORNECEDOR'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoTAMANHO: TStringField
+      FieldKind = fkData
+      FieldName = 'TAMANHO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoPESO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PESO'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoCUSTOULTIMACOMPRA: TBCDField
+      FieldKind = fkData
+      FieldName = 'CUSTOULTIMACOMPRA'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoCUSTOMEDIO: TBCDField
+      FieldKind = fkData
+      FieldName = 'CUSTOMEDIO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDETOTALCOMPRADA: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDETOTALCOMPRADA'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDETOTALVENDIDA: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDETOTALVENDIDA'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoDATAULTIMACOMPRA: TDateField
+      FieldKind = fkData
+      FieldName = 'DATAULTIMACOMPRA'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoDATAULTIMAVENDA: TDateField
+      FieldKind = fkData
+      FieldName = 'DATAULTIMAVENDA'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoDATAHORACADASTRO: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'DATAHORACADASTRO'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoQTDEMINIMA: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDEMINIMA'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDEMAXIMA: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDEMAXIMA'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDE: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDE'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoATIVO: TStringField
+      FieldKind = fkData
+      FieldName = 'ATIVO'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrprodutoNCM: TStringField
+      FieldKind = fkData
+      FieldName = 'NCM'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object qrprodutoPERCREDITOCICMS: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCREDITOCICMS'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoUSAGRADE: TStringField
+      FieldKind = fkData
+      FieldName = 'USAGRADE'
+      Index = 28
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrprodutoUSASERIAL: TStringField
+      FieldKind = fkData
+      FieldName = 'USASERIAL'
+      Index = 29
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrprodutoORIGEM: TStringField
+      FieldKind = fkData
+      FieldName = 'ORIGEM'
+      Index = 30
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 300
+    end
+    object qrprodutoCODTRIBUTACAOIPI: TStringField
+      FieldKind = fkData
+      FieldName = 'CODTRIBUTACAOIPI'
+      Index = 31
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qrprodutoTRIBUTACAOIPI: TStringField
+      FieldKind = fkData
+      FieldName = 'TRIBUTACAOIPI'
+      Index = 32
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCODTRIBUTACAOPIS: TStringField
+      FieldKind = fkData
+      FieldName = 'CODTRIBUTACAOPIS'
+      Index = 33
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qrprodutoCODTRIBUTACAOCOFINS: TStringField
+      FieldKind = fkData
+      FieldName = 'CODTRIBUTACAOCOFINS'
+      Index = 34
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qrprodutoTRIBUTACAOPIS: TStringField
+      FieldKind = fkData
+      FieldName = 'TRIBUTACAOPIS'
+      Index = 35
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 300
+    end
+    object qrprodutoTRIBUTACAOCOFINS: TStringField
+      FieldKind = fkData
+      FieldName = 'TRIBUTACAOCOFINS'
+      Index = 36
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 300
+    end
+    object qrprodutoTIPOTRIBUTACAO: TStringField
+      FieldKind = fkData
+      FieldName = 'TIPOTRIBUTACAO'
+      Index = 37
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object qrprodutoPERCICMSSTINTERNA: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCICMSSTINTERNA'
+      Index = 38
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPERCMVAORIGINAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCMVAORIGINAL'
+      Index = 39
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPOSSUIICMSST: TStringField
+      FieldKind = fkData
+      FieldName = 'POSSUIICMSST'
+      Index = 40
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrprodutoISENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'ISENTO'
+      Index = 41
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrprodutoPERCICMSPROPRIOST: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCICMSPROPRIOST'
+      Index = 42
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoIAT: TStringField
+      FieldKind = fkData
+      FieldName = 'IAT'
+      Index = 43
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1
+    end
+    object qrprodutoIPPT: TStringField
+      FieldKind = fkData
+      FieldName = 'IPPT'
+      Index = 44
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1
+    end
+    object qrprodutoTRIBUTADO: TStringField
+      FieldKind = fkData
+      FieldName = 'TRIBUTADO'
+      Index = 45
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 3
+    end
+    object qrprodutoCSOSN: TStringField
+      FieldKind = fkData
+      FieldName = 'CSOSN'
+      Index = 46
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrprodutoDESCRICAOCSOSN: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAOCSOSN'
+      Index = 47
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 300
+    end
+    object qrprodutoPESADO: TStringField
+      FieldKind = fkData
+      FieldName = 'PESADO'
+      Index = 48
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 3
+    end
+    object qrprodutoBASECALCULOICMSSTRETIDO: TBCDField
+      FieldKind = fkData
+      FieldName = 'BASECALCULOICMSSTRETIDO'
+      Index = 49
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoVALORICMSSTRETIDO: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORICMSSTRETIDO'
+      Index = 50
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoALIQUOTAICMSECF: TBCDField
+      FieldKind = fkData
+      FieldName = 'ALIQUOTAICMSECF'
+      Index = 51
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoFOTO: TBlobField
+      FieldKind = fkData
+      FieldName = 'FOTO'
+      Index = 52
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 8
+    end
+    object qrprodutoMD5: TStringField
+      FieldKind = fkData
+      FieldName = 'MD5'
+      Index = 53
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoMENSAGEMNFE: TStringField
+      FieldKind = fkData
+      FieldName = 'MENSAGEMNFE'
+      Index = 54
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object qrprodutoCODMENSAGEMNFE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODMENSAGEMNFE'
+      Index = 55
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoCODUNIDADEMEDIDA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODUNIDADEMEDIDA'
+      Index = 56
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrprodutoCODAPLICACAOPRODUTO: TStringField
+      FieldKind = fkData
+      FieldName = 'CODAPLICACAOPRODUTO'
+      Index = 57
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2
+    end
+    object qrprodutoAPLICACAOPRODUTO: TStringField
+      FieldKind = fkData
+      FieldName = 'APLICACAOPRODUTO'
+      Index = 58
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoMD5E2: TStringField
+      FieldKind = fkData
+      FieldName = 'MD5E2'
+      Index = 59
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object qrprodutoQTDEINICIAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDEINICIAL'
+      Index = 60
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoALIQUOTAISS: TBCDField
+      FieldKind = fkData
+      FieldName = 'ALIQUOTAISS'
+      Index = 61
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoCODIMPOSTOMEDIO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIMPOSTOMEDIO'
+      Index = 62
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoPERCIMPOSTOMEDIO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCIMPOSTOMEDIO'
+      Index = 63
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 9
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoCODCSTORIGEM: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODCSTORIGEM'
+      Index = 64
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrprodutoCODIGOCSTORIGEM: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOCSTORIGEM'
+      Index = 65
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoCODEMITENTE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODEMITENTE'
+      Index = 66
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoDIASVALIDADEPRODUTO: TLongintField
+      FieldKind = fkData
+      FieldName = 'DIASVALIDADEPRODUTO'
+      Index = 67
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoFATORCONVERSAO: TStringField
+      FieldKind = fkData
+      FieldName = 'FATORCONVERSAO'
+      Index = 68
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2
+    end
+    object qrprodutoTRIBUTACAOSERVICO: TStringField
+      FieldKind = fkData
+      FieldName = 'TRIBUTACAOSERVICO'
+      Index = 69
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoREDUCAOBASECALCULOSERVICO: TBCDField
+      FieldKind = fkData
+      FieldName = 'REDUCAOBASECALCULOSERVICO'
+      Index = 70
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 71
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrprodutoDESCRICAOCOMPLEMENTAR: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAOCOMPLEMENTAR'
+      Index = 72
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoREFERENCIA: TStringField
+      FieldKind = fkData
+      FieldName = 'REFERENCIA'
+      Index = 73
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoPRECOVENDAUSS: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRECOVENDAUSS'
+      Index = 74
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPERCMAXIMODESCONTO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCMAXIMODESCONTO'
+      Index = 75
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoVALORCOMISSAOFIXO: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORCOMISSAOFIXO'
+      Index = 76
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPERCCOMISSAO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCCOMISSAO'
+      Index = 77
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPRECOMINIMOUSS: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRECOMINIMOUSS'
+      Index = 78
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPRECOMINIMO: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRECOMINIMO'
+      Index = 79
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoCODCOMPRA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODCOMPRA'
+      Index = 80
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoVALORFRETE: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORFRETE'
+      Index = 81
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoVALOROUTROS: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALOROUTROS'
+      Index = 82
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoVALORICMSST: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORICMSST'
+      Index = 83
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoVALORIPI: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORIPI'
+      Index = 84
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoVALORUNITARIOCOMPRA: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORUNITARIOCOMPRA'
+      Index = 85
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoPERCPIS: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCPIS'
+      Index = 86
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPERCCOFINS: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCCOFINS'
+      Index = 87
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoVALORCONVERSAO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VALORCONVERSAO'
+      Index = 88
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+      Size = 8
+    end
+    object qrprodutoCAMPO1: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO1'
+      Index = 89
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO2: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO2'
+      Index = 90
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO3: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO3'
+      Index = 91
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO4: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO4'
+      Index = 92
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO5: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO5'
+      Index = 93
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO6: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO6'
+      Index = 94
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO7: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO7'
+      Index = 95
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO8: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO8'
+      Index = 96
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO9: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO9'
+      Index = 97
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCAMPO10: TStringField
+      FieldKind = fkData
+      FieldName = 'CAMPO10'
+      Index = 98
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCODIGOANP: TStringField
+      FieldKind = fkData
+      FieldName = 'CODIGOANP'
+      Index = 99
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrprodutoMARCA: TStringField
+      FieldKind = fkData
+      FieldName = 'MARCA'
+      Index = 100
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoPERCREDUCAOBC: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCREDUCAOBC'
+      Index = 101
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPERCREDUCAOBCST: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCREDUCAOBCST'
+      Index = 102
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoCODSUBGRUPO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODSUBGRUPO'
+      Index = 103
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoSUBGRUPO: TStringField
+      FieldKind = fkData
+      FieldName = 'SUBGRUPO'
+      Index = 104
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoCONTROLARVALIDADE: TStringField
+      FieldKind = fkData
+      FieldName = 'CONTROLARVALIDADE'
+      Index = 105
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrprodutoCODMARCA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODMARCA'
+      Index = 106
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoPRECOREVENDA: TBCDField
+      FieldKind = fkData
+      FieldName = 'PRECOREVENDA'
+      Index = 107
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPERCIPI: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCIPI'
+      Index = 108
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoCFOP: TStringField
+      FieldKind = fkData
+      FieldName = 'CFOP'
+      Index = 109
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 4
+    end
+    object qrprodutoUNIDADECONVERSAOVENDA: TStringField
+      FieldKind = fkData
+      FieldName = 'UNIDADECONVERSAOVENDA'
+      Index = 110
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 6
+    end
+    object qrprodutoVALORCONVERSAOVENDA: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VALORCONVERSAOVENDA'
+      Index = 111
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+      Size = 8
+    end
+    object qrprodutoCODTABELAPRECO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODTABELAPRECO'
+      Index = 112
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoNOMETABELAPRECO: TStringField
+      FieldKind = fkData
+      FieldName = 'NOMETABELAPRECO'
+      Index = 113
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qrprodutoPERCIMPOSTOMEDIOESTADUAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCIMPOSTOMEDIOESTADUAL'
+      Index = 114
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoPERCIMPOSTOMEDIOMUNICIPAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCIMPOSTOMEDIOMUNICIPAL'
+      Index = 115
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoCODIGOENQUADRAMENTOIPI: TStringField
+      FieldKind = fkData
+      FieldName = 'CODIGOENQUADRAMENTOIPI'
+      Index = 116
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrprodutoCEST: TStringField
+      FieldKind = fkData
+      FieldName = 'CEST'
+      Index = 117
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrprodutoQTDEEMPRODUCAO: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDEEMPRODUCAO'
+      Index = 118
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDEPEDIDOVENDA: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDEPEDIDOVENDA'
+      Index = 119
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDEPEDIDOCOMPRA: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDEPEDIDOCOMPRA'
+      Index = 120
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDERESERVADA: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDERESERVADA'
+      Index = 121
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDEREAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDEREAL'
+      Index = 122
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoQTDEEMPRODUCAOMP: TBCDField
+      FieldKind = fkData
+      FieldName = 'QTDEEMPRODUCAOMP'
+      Index = 123
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoUNIDADEMEDIDAETIQUETA: TStringField
+      FieldKind = fkData
+      FieldName = 'UNIDADEMEDIDAETIQUETA'
+      Index = 124
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrprodutoFATORCONVERSAOETIQUETA: TBCDField
+      FieldKind = fkData
+      FieldName = 'FATORCONVERSAOETIQUETA'
+      Index = 125
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoDESCRICAOANP: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAOANP'
+      Index = 126
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 95
+    end
+    object qrprodutoPERCGLPCOMB: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCGLPCOMB'
+      Index = 127
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoPERCGNNCOMB: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCGNNCOMB'
+      Index = 128
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoPERCGNICOMB: TBCDField
+      FieldKind = fkData
+      FieldName = 'PERCGNICOMB'
+      Index = 129
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+    end
+    object qrprodutoVALORPARTIDACOMB: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORPARTIDACOMB'
+      Index = 130
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrprodutoCNPJFABRICANTE: TStringField
+      FieldKind = fkData
+      FieldName = 'CNPJFABRICANTE'
+      Index = 131
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrprodutoCODBENEFICIOFISCAL: TStringField
+      FieldKind = fkData
+      FieldName = 'CODBENEFICIOFISCAL'
+      Index = 132
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+  end
+  object dsproduto: TDataSource
+    DataSet = qrproduto
+    OnDataChange = dsprodutoDataChange
+    left = 131
+    top = 16
+  end
+  object qrtempProduto: TBufDataset
+    FieldDefs = <>
+    left = 33
+    top = 80
+    object qrtempProdutocund: TLongintField
+      FieldKind = fkData
+      FieldName = 'cund'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempProduto: TDataSource
+    DataSet = qrtempProduto
+    left = 131
+    top = 80
+  end
+  object qrcest: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 33
+    top = 144
+  end
+  object dscest: TDataSource
+    DataSet = qrcest
+    left = 128
+    top = 144
+  end
+  object qrcsticms: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOCST'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'PERMITECREDITO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'POSSUIICMSST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ISENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'TRIBUTADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'OC'
+        DataType = ftString
+        Precision = -1
+        Size = 1000
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcsticms'
+    )
+    Params = <>
+    left = 33
+    top = 208
+  end
+  object dscsticms: TDataSource
+    DataSet = qrcsticms
+    left = 131
+    top = 208
+  end
+  object qrcstipi: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOCST'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'PERMITECREDITO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'POSSUIICMSST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ISENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'TRIBUTADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'OC'
+        DataType = ftString
+        Precision = -1
+        Size = 1000
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcstipi'
+    )
+    Params = <>
+    left = 33
+    top = 280
+  end
+  object dscstipi: TDataSource
+    DataSet = qrcstipi
+    OnDataChange = dscstipiDataChange
+    left = 131
+    top = 280
+  end
+  object qrcstcofins: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'CODIGOCSTCOFINS'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcstcofins'
+    )
+    Params = <>
+    left = 33
+    top = 352
+  end
+  object dscstcofins: TDataSource
+    DataSet = qrcstcofins
+    OnDataChange = dscstipiDataChange
+    left = 131
+    top = 352
+  end
+  object qrcstoriem: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOORIGEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAOORIGEM'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcstoriem'
+    )
+    Params = <>
+    left = 32
+    top = 424
+  end
+  object dscstoriem: TDataSource
+    DataSet = qrcstoriem
+    OnDataChange = dscstipiDataChange
+    left = 130
+    top = 424
+  end
+  object qrcstpis: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'CODIGOCST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'DESCRICAOABREVIADA'
+        DataType = ftString
+        Precision = -1
+        Size = 1000
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcstpis'
+      ''
+    )
+    Params = <>
+    left = 33
+    top = 496
+  end
+  object dscstpis: TDataSource
+    DataSet = qrcstpis
+    OnDataChange = dscstipiDataChange
+    left = 131
+    top = 496
+  end
+  object qrcst: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CST'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'DESCRICAOCST'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'PERMITECREDITO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'POSSUIICMSST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ISENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'TRIBUTADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from tcst'
+      ''
+    )
+    Params = <>
+    left = 33
+    top = 568
+  end
+  object dscstpis1: TDataSource
+    DataSet = qrcst
+    OnDataChange = dscstipiDataChange
+    left = 131
+    top = 568
+  end
+end

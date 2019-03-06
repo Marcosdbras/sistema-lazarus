@@ -1,0 +1,142 @@
+object modulo_temp: Tmodulo_temp
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 535
+  HorizontalOffset = 738
+  VerticalOffset = 136
+  Width = 257
+  PPI = 96
+  object qrtempCsticmsDe: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 24
+    object qrtempCsticmsDecodigo: TLongintField
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCsticmsDe: TDataSource
+    DataSet = qrtempCsticmsDe
+    left = 152
+    top = 24
+  end
+  object qrtempCsticmsPara: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 88
+    object qrtempCsticmsDecodigo1: TLongintField
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCsticmsPara: TDataSource
+    DataSet = qrtempCsticmsPara
+    left = 160
+    top = 88
+  end
+  object qrtempCst: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 160
+    object qrtempCsticmsDecodigo2: TLongintField
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCst: TDataSource
+    DataSet = qrtempCst
+    left = 160
+    top = 160
+  end
+  object qrtempCstCofins: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 232
+    object qrtempCsticmsDecodigo3: TLongintField
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCstCofins: TDataSource
+    DataSet = qrtempCstCofins
+    left = 160
+    top = 232
+  end
+  object qrtempCstIPI: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 312
+    object qrtempCsticmsDecodigo4: TLongintField
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCstIPI: TDataSource
+    DataSet = qrtempCstIPI
+    left = 160
+    top = 312
+  end
+  object qrtempCstOriem: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 392
+    object qrtempCsticmsDecodigo5: TLongintField
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCstOriem: TDataSource
+    DataSet = qrtempCstOriem
+    left = 160
+    top = 392
+  end
+  object qrtempCstPis: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 464
+    object qrtempCsticmsDecodigo6: TLongintField
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempCstPis: TDataSource
+    DataSet = qrtempCstPis
+    left = 160
+    top = 464
+  end
+end

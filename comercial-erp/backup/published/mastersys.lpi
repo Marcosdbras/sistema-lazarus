@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="10"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="mastersys"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+    </General>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <DestinationDirectory Value="$(ProjPath)\published\"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="4">
+      <Item1>
+        <PackageName Value="frce"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="FCL"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="zcomponent"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="LCL"/>
+      </Item4>
+    </RequiredPackages>
+    <Units Count="31">
+      <Unit0>
+        <Filename Value="mastersys.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmorcamento_cadastro"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="umodulo_orcamento.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_orcamento"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="umodulo_conexaodb.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_conexaodb"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="ufuncao_arq_ini.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="uconfig_banco.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmconfig_banco"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="utela_principal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmtela_principal"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="ufuncao_conexaodb.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="ufuncao_geral.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="usplash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmsplash"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="ulogin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmlogin"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="ucadastrar_senha.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmcadastrar_senha"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmorcamento_pesquisa"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="umodulo_cliente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_cliente"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="umodulo_funcionario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_funcionario"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="umodulo_unidade.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_unidade"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="umodulo_produto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_produto"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="uproduto_consulta.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmproduto_consulta"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="uimporc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmimporc"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="umodulo_vendaorc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_vendaorc"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="uvendaorc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmvendaorc"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="uparametro.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmparametro"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="umodulo_temp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_temp"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="umodulo_geral.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_geral"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="uorcamento_impressao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmorcamento_impressao"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="usincorc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmsincorc"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="umodulo_remoto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_remoto"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="usincbaseremota.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmsincbaseremota"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="umodulo_emitente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_emitente"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="umodulo_tabpreco.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_tabpreco"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="umodulo_cadastrocliente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_cadastrocliente"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit30>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="mastersys"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CustomOptions Value="-dUseCThreads"/>
+      <OtherDefines Count="1">
+        <Define0 Value="UseCThreads"/>
+      </OtherDefines>
+    </Other>
+  </CompilerOptions>
+</CONFIG>

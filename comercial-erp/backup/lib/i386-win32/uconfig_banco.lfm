@@ -1,0 +1,216 @@
+object frmconfig_banco: Tfrmconfig_banco
+  Left = 182
+  Height = 427
+  Top = 190
+  Width = 704
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Configuração do  Banco de Dados'
+  ClientHeight = 427
+  ClientWidth = 704
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '1.8.4.0'
+  object StaticText1: TStaticText
+    Left = 16
+    Height = 17
+    Top = 46
+    Width = 65
+    Caption = 'HostName'
+    TabOrder = 0
+  end
+  object StaticText2: TStaticText
+    Left = 16
+    Height = 17
+    Top = 86
+    Width = 176
+    Caption = 'Banco de dados'
+    TabOrder = 1
+  end
+  object StaticText3: TStaticText
+    Left = 16
+    Height = 17
+    Top = 235
+    Width = 65
+    Caption = 'Porta'
+    TabOrder = 2
+  end
+  object StaticText4: TStaticText
+    Left = 16
+    Height = 17
+    Top = 275
+    Width = 65
+    Caption = 'Usuário'
+    TabOrder = 3
+  end
+  object StaticText5: TStaticText
+    Left = 16
+    Height = 17
+    Top = 315
+    Width = 65
+    Caption = 'Senha'
+    TabOrder = 4
+  end
+  object cbxhostname: TComboBox
+    Left = 192
+    Height = 23
+    Top = 40
+    Width = 296
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'localhost'
+    )
+    TabOrder = 5
+    Text = 'localhost'
+  end
+  object edibancodados: TEdit
+    Left = 192
+    Height = 23
+    Top = 80
+    Width = 432
+    TabOrder = 6
+    Text = 'C:\SGBR\Master\BASESGMASTER.FDB'
+  end
+  object ediporta: TEdit
+    Left = 192
+    Height = 23
+    Top = 229
+    Width = 96
+    TabOrder = 7
+    Text = '3050'
+  end
+  object ediusuario: TEdit
+    Left = 192
+    Height = 23
+    Top = 269
+    Width = 200
+    TabOrder = 8
+    Text = 'SYSDBA'
+  end
+  object edisenha: TEdit
+    Left = 192
+    Height = 23
+    Top = 309
+    Width = 200
+    EchoMode = emPassword
+    PasswordChar = '*'
+    TabOrder = 9
+    Text = 'masterkey'
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 357
+    Width = 119
+    Caption = 'Tipo e versão do SGDB'
+    ParentColor = False
+  end
+  object cbxversaosgdb: TComboBox
+    Left = 192
+    Height = 23
+    Top = 349
+    Width = 200
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'firebirdd-2.5'
+    )
+    TabOrder = 10
+    Text = 'firebirdd-2.5'
+  end
+  object btnfechar: TButton
+    Left = 613
+    Height = 25
+    Top = 393
+    Width = 75
+    Caption = 'Fechar'
+    OnClick = btnfecharClick
+    TabOrder = 12
+  end
+  object Button2: TButton
+    Left = 528
+    Height = 25
+    Top = 393
+    Width = 75
+    Caption = 'Salvar '
+    OnClick = Button2Click
+    TabOrder = 11
+  end
+  object btncaminhodb: TButton
+    Left = 624
+    Height = 25
+    Top = 78
+    Width = 35
+    Caption = '...'
+    OnClick = btncaminhodbClick
+    TabOrder = 13
+  end
+  object StaticText6: TStaticText
+    Left = 16
+    Height = 17
+    Top = 120
+    Width = 176
+    Caption = 'Banco de dados descontinuado'
+    TabOrder = 14
+  end
+  object edibancodados2: TEdit
+    Left = 192
+    Height = 23
+    Top = 114
+    Width = 432
+    TabOrder = 15
+    Text = 'C:\SGBR\Master\BASESGMASTER.FDB'
+  end
+  object btncaminhodb1: TButton
+    Left = 624
+    Height = 25
+    Top = 112
+    Width = 35
+    Caption = '...'
+    OnClick = btncaminhodb1Click
+    TabOrder = 16
+  end
+  object StaticText7: TStaticText
+    Left = 16
+    Height = 17
+    Top = 158
+    Width = 120
+    Caption = 'HostName remoto'
+    TabOrder = 17
+  end
+  object cbxhostnameremoto: TComboBox
+    Left = 192
+    Height = 23
+    Top = 152
+    Width = 296
+    ItemHeight = 15
+    Items.Strings = (
+      '167.114.39.253'
+    )
+    TabOrder = 18
+    Text = 'cbxhostnameremoto'
+  end
+  object StaticText8: TStaticText
+    Left = 16
+    Height = 17
+    Top = 198
+    Width = 176
+    Caption = 'Banco de dados remoto'
+    TabOrder = 19
+  end
+  object edibancodadosremoto: TEdit
+    Left = 192
+    Height = 23
+    Top = 192
+    Width = 432
+    TabOrder = 20
+    Text = 'C:\SGBR\Master\BASESGMASTER.FDB'
+  end
+  object opeCaminhodb: TOpenDialog
+    Filter = 'Firebird|*.FDB'
+    left = 599
+    top = 31
+  end
+end

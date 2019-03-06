@@ -178,6 +178,7 @@ begin
   frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
   frmorcamento_cadastro.ShowModal;
   frmorcamento_cadastro.Free;
+  frmorcamento_cadastro := nil;
 
 
 end;

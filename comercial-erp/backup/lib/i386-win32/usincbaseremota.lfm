@@ -1,0 +1,36 @@
+object frmsincbaseremota: Tfrmsincbaseremota
+  Left = 336
+  Height = 109
+  Top = 319
+  Width = 660
+  Caption = 'Sincroniza Base Remota e Gerar pedido à partir do orçamento'
+  ClientHeight = 109
+  ClientWidth = 660
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+  object lblmensagem: TLabel
+    Left = 8
+    Height = 15
+    Top = 8
+    Width = 72
+    Caption = 'lblmensagem'
+    ParentColor = False
+  end
+  object btnok: TButton
+    Left = 392
+    Height = 25
+    Top = 72
+    Width = 125
+    Caption = 'OK'
+    OnClick = btnokClick
+    TabOrder = 0
+  end
+  object btncancelar: TButton
+    Left = 528
+    Height = 25
+    Top = 72
+    Width = 123
+    Caption = 'Cancelar'
+    TabOrder = 1
+  end
+end

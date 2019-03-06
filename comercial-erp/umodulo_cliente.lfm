@@ -8,6 +8,7 @@ object modulo_cliente: Tmodulo_cliente
   PPI = 96
   object qrcliente: TSQLQuery
     FieldDefs = <>
+    AfterScroll = qrclienteAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (

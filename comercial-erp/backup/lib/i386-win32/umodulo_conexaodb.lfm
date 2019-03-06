@@ -1,0 +1,282 @@
+object modulo_conexaodb: Tmodulo_conexaodb
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 624
+  HorizontalOffset = 701
+  VerticalOffset = 48
+  Width = 273
+  PPI = 96
+  object conexaodb: TIBConnection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'C:\SGBR\Master\BASESGMASTER.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = tzcontrole
+    UserName = 'SYSDBA'
+    CharSet = 'ISO8859_1'
+    HostName = 'localhost'
+    CheckTransactionParams = False
+    left = 48
+    top = 16
+  end
+  object tzcontrole: TSQLTransaction
+    Active = False
+    Database = conexaodb
+    left = 136
+    top = 24
+  end
+  object Script: TSQLScript
+    DataBase = conexaodb
+    Transaction = tzcontrole
+    UseDollarString = False
+    Directives.Strings = (
+      'SET TERM'
+      'COMMIT WORK'
+      'COMMIT RETAIN'
+      'COMMIT'
+      '#IFDEF'
+      '#IFNDEF'
+      '#ELSE'
+      '#ENDIF'
+      '#DEFINE'
+      '#UNDEF'
+      '#UNDEFINE'
+    )
+    Script.Strings = (
+      'CREATE GENERATOR GEN_MUSUARIO_ID;'
+      'commit;'
+    )
+    Terminator = ';'
+    CommentsinSQL = True
+    UseSetTerm = True
+    UseCommit = True
+    UseDefines = True
+    left = 216
+    top = 24
+  end
+  object qrconsulta_base: TSQLQuery
+    FieldDefs = <>
+    Database = conexaodb
+    Transaction = tzcontrole
+    Params = <>
+    left = 48
+    top = 144
+  end
+  object qrexec_base: TSQLQuery
+    FieldDefs = <>
+    Database = conexaodb
+    Transaction = tzcontrole
+    Params = <>
+    left = 144
+    top = 144
+  end
+  object qrsequencia: TSQLQuery
+    PacketRecords = 1
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PREVENDA'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'RPS'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NUMEROOS'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NUMEROLOTE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SENHACOMANDA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NUMERONOTAMANUAL'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODIGOCLIENTE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CONTROLEVARCHAR'
+        DataType = ftLargeint
+        Precision = -1
+      end    
+      item
+        Name = 'NSUMANIFESTO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'IDDFE'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Database = conexaodb
+    Transaction = tzcontrole
+    SQL.Strings = (
+      'select * from tsequencia'
+    )
+    Params = <>
+    left = 48
+    top = 80
+    object qrsequenciaCONTROLE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CONTROLE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrsequenciaPREVENDA: TStringField
+      FieldKind = fkData
+      FieldName = 'PREVENDA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object qrsequenciaRPS: TLongintField
+      FieldKind = fkData
+      FieldName = 'RPS'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaNUMEROOS: TLongintField
+      FieldKind = fkData
+      FieldName = 'NUMEROOS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaNUMEROLOTE: TLongintField
+      FieldKind = fkData
+      FieldName = 'NUMEROLOTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaSENHACOMANDA: TLongintField
+      FieldKind = fkData
+      FieldName = 'SENHACOMANDA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaNUMERONOTAMANUAL: TLongintField
+      FieldKind = fkData
+      FieldName = 'NUMERONOTAMANUAL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaCODIGOCLIENTE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGOCLIENTE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaCONTROLEVARCHAR: TLargeintField
+      FieldKind = fkData
+      FieldName = 'CONTROLEVARCHAR'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaNSUMANIFESTO: TLongintField
+      FieldKind = fkData
+      FieldName = 'NSUMANIFESTO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrsequenciaIDDFE: TLongintField
+      FieldKind = fkData
+      FieldName = 'IDDFE'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dssequencia: TDataSource
+    DataSet = qrsequencia
+    left = 144
+    top = 80
+  end
+  object conexaodb_Aux: TIBConnection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'C:\auxsystcom\fbdados.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = tzcontrole_Aux
+    UserName = 'SYSDBA'
+    CharSet = 'win1252'
+    HostName = 'localhost'
+    CheckTransactionParams = False
+    left = 48
+    top = 280
+  end
+  object tzcontrole_Aux: TSQLTransaction
+    Active = False
+    Database = conexaodb_Aux
+    left = 48
+    top = 352
+  end
+  object conexaodb_remoto: TIBConnection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = tzcontrole_remoto
+    CheckTransactionParams = False
+    left = 160
+    top = 280
+  end
+  object tzcontrole_remoto: TSQLTransaction
+    Active = False
+    Database = conexaodb_remoto
+    left = 160
+    top = 352
+  end
+end

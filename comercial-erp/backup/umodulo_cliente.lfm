@@ -8,6 +8,7 @@ object modulo_cliente: Tmodulo_cliente
   PPI = 96
   object qrcliente: TSQLQuery
     FieldDefs = <>
+    AfterScroll = qrclienteAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
@@ -22,11 +23,11 @@ object modulo_cliente: Tmodulo_cliente
     left = 144
     top = 19
   end
-  object qrtemp: TBufDataset
+  object qrtempCliente: TBufDataset
     FieldDefs = <>
     left = 37
     top = 112
-    object qrtempccli: TLongintField
+    object qrtempClienteccli: TLongintField
       FieldKind = fkData
       FieldName = 'ccli'
       Index = 0
@@ -36,8 +37,8 @@ object modulo_cliente: Tmodulo_cliente
       Required = False
     end
   end
-  object dstemp: TDataSource
-    DataSet = qrtemp
+  object dstempCliente: TDataSource
+    DataSet = qrtempCliente
     left = 144
     top = 112
   end

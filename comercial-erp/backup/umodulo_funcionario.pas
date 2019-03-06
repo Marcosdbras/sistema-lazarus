@@ -44,7 +44,7 @@ implementation
           with qrtempFuncionario.fieldDefs do
              begin
                    Add('cfun', ftInteger, 0, True);
-                   Add('cven', ftInteger, 0, True);
+
              end;
 
           qrtempFuncionario.CreateDataset;
@@ -52,6 +52,22 @@ implementation
           qrtempFuncionario.Open;
 
           qrtempFuncionario.Append;
+
+
+          with qrtempVendedor.fieldDefs do
+             begin
+
+                   Add('cven', ftInteger, 0, True);
+             end;
+
+          qrtempVendedor.CreateDataset;
+
+          qrtempVendedor.Open;
+
+          qrtempVendedor.Append;
+
+
+
 
 
 
