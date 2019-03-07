@@ -282,8 +282,16 @@ begin
            memoformapgto.Lines.Add(qrorcamento.FieldByName('condicaopagamento').AsString);
            memoobs.Lines.Add(qrorcamento.FieldByName('observacao').AsString);
 
-           edttotal.Value:= qrorcamento.FieldByName('valortotal').Asfloat;
+           modulo_conexaodb.qrconsulta_base.Close;
+           modulo_conexaodb.qrconsulta_base.SQL.Clear;
+           modulo_conexaodb.qrconsulta_base.SQL.Add('select * from master_orcamento where controle_torcamento = :controle_torcamento');
+           modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle_torcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+           modulo_conexaodb.qrconsulta_base.Open;
 
+           modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=modulo_conexaodb.qrconsulta_base.FieldByName('ctabp').AsInteger;
+           showmessage(modulo_conexaodb.qrconsulta_base.FieldByName('ctabp').AsString);
+
+           edttotal.Value:= qrorcamento.FieldByName('valortotal').Asfloat;
 
          end
       else
@@ -998,6 +1006,8 @@ procedure Tfrmorcamento_cadastro.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
 
+
+
   //FreeAndNil(frmorcamento_cadastro);
   //Action:= caFree;
   //frmorcamento_cadastro := nil;
@@ -1136,7 +1146,6 @@ begin
         with modulo_conexaodb do
           begin
 
-
             qrexec_base.ParamByName('codcliente').AsInteger := modulo_orcamento.qrtempCliente.FieldByName('ccli').AsInteger;
             qrexec_base.ParamByName('nomecliente').AsString:= nomecliente;
             qrexec_base.ParamByName('codfuncionario').AsInteger := modulo_orcamento.qrtempfuncionario.FieldByName('cfun').AsInteger;
@@ -1145,8 +1154,41 @@ begin
             qrexec_base.ParamByName('vendedor').AsString:= nomevendedor;
             qrexec_base.ParamByName('condicaopagamento').AsString:=memoformapgto.Text;
             qrexec_base.ParamByName('observacao').AsString:=memoobs.Text;
-
             qrexec_base.ExecSQL;
+
+            atualizaBanco;
+
+            qrconsulta_base.Close;
+            qrconsulta_base.SQL.Clear;
+            qrconsulta_base.SQL.Add('select * from master_orcamento where controle_torcamento = :controle_torcamento');
+            qrconsulta_base.Params.ParamByName('controle_torcamento').AsInteger := icodigo_controle;
+            qrconsulta_base.Open;
+            if qrconsulta_base.RecordCount = 0 then
+               begin
+
+                 qrexec_base.Close;
+                 qrexec_base.SQL.Clear;
+                 qrexec_base.SQL.Add('insert into master_orcamento(controle_torcamento,ctabp) values (:controle_torcamento, :ctabp);');
+                 qrexec_base.Params.ParamByName('controle_torcamento').AsInteger := icodigo_controle;
+                 qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
+                 qrexec_base.ExecSQL;
+
+               end
+            else
+               begin
+
+                 qrexec_base.Close;
+                 qrexec_base.SQL.Clear;
+                 qrexec_base.SQL.Add('update master_orcamento  set ctabp = :ctabp where controle_torcamento   = :controle_torcamento;');
+                 qrexec_base.Params.ParamByName('controle_torcamento').AsInteger := icodigo_controle;
+                 qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
+                 qrexec_base.ExecSQL;
+
+
+
+
+               end;
+            //endi
 
             atualizaBanco;
 
@@ -1159,6 +1201,8 @@ begin
        modulo_orcamento.qrorcamento.Locate('controle',icodigo_controle,[]);
 
        edttotal.Value:= modulo_orcamento.qrorcamento.FieldByName('valortotal').Asfloat;
+
+
 
      end;
   //endi
@@ -1282,12 +1326,49 @@ begin
             //Analisar no SGBr como esta informação é persistida
             qrexec_base.ParamByName('qtdeconvertida').Asfloat := 1; //fatorconversao;  //valorconversao;
 
-
-
-
             qrexec_base.ExecSQL;
 
             atualizaBanco;
+
+
+            qrconsulta_base.Close;
+            qrconsulta_base.SQL.Clear;
+            qrconsulta_base.SQL.Add('select * from master_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
+            qrconsulta_base.Params.ParamByName('controle_titensorcamento').AsInteger := icodigo_controle_item;
+            qrconsulta_base.Open;
+            if qrconsulta_base.RecordCount = 0 then
+               begin
+
+                 qrexec_base.Close;
+                 qrexec_base.SQL.Clear;
+                 qrexec_base.SQL.Add('insert into master_itensorcamento(controle_titensorcamento,ctabp) values (:controle_titensorcamento, :ctabp);');
+                 qrexec_base.Params.ParamByName('controle_titensorcamento').AsInteger := icodigo_controle_item;
+                 qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
+                 qrexec_base.ExecSQL;
+
+               end
+            else
+               begin
+
+                 qrexec_base.Close;
+                 qrexec_base.SQL.Clear;
+                 qrexec_base.SQL.Add('update master_itensorcamento  set ctabp = :ctabp where controle_titensorcamento   = :controle_titensorcamento;');
+                 qrexec_base.Params.ParamByName('controle_titensorcamento').AsInteger := icodigo_controle_item;
+                 qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
+                 qrexec_base.ExecSQL;
+
+
+
+
+               end;
+            //endi
+
+            atualizaBanco;
+
+
+
+
+
 
           end;
         //endth
@@ -1519,7 +1600,7 @@ procedure tfrmorcamento_cadastro.carregaCampoProd;
         begin
           modulo_conexaodb.qrconsulta_base.Close;
           modulo_conexaodb.qrconsulta_base.SQL.Clear;
-          modulo_conexaodb.qrconsulta_base.SQL.Add('select t.controle, i.codtabelapreco, i.codproduto, i.precovendatabelado from ttabelapreco t inner join titemtabelapreco i on t.controle=i.codtabelapreco inner join testoque e on i.codproduto=e.controle where codproduto = :codproduto and codtabelapreco = :codtabelapreco');
+          modulo_conexaodb.qrconsulta_base.SQL.Add('select t.controle, i.codtabelapreco, i.codproduto, i.precovendatabelado from ttabelapreco t inner join titemtabelapreco i on t.controle=i.codtabelapreco inner join testoque e on i.codproduto=e.controle where i.codproduto = :codproduto and i.codtabelapreco = :codtabelapreco');
           modulo_conexaodb.qrconsulta_base.Params.ParamByName('codproduto').AsInteger:=modulo_produto.qrproduto.FieldByName('controle').AsInteger;
           modulo_conexaodb.qrconsulta_base.Params.ParamByName('codtabelapreco').AsInteger:=modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger ;
           modulo_conexaodb.qrconsulta_base.Open;

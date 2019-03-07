@@ -904,6 +904,15 @@ begin
 
              qrtabpreco.Close;
 
+
+
+
+             //Atualizar generator
+             //GEN_TTABELAPRECO_ID
+             //GEN_TITEMTABELAPRECO_ID
+
+
+
              modulo_conexaodb.atualizaBancoFechaTransacao;
 
              application.MessageBox('Transferência de informação concluida!','Informação',mb_ok);

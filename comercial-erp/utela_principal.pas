@@ -37,6 +37,7 @@ type
     StatusBar1: TStatusBar;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MenuItem10Click(Sender: TObject);
@@ -133,6 +134,12 @@ end;
 procedure Tfrmtela_principal.Button2Click(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmtela_principal.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  modulo_conexaodb.atualizaBancoFechaTransacao;
 end;
 
 procedure Tfrmtela_principal.Button1Click(Sender: TObject);
@@ -909,9 +916,6 @@ begin
 
              //Atualizar generator
              //GEN_TTABELAPRECO_ID
-
-
-
              //GEN_TITEMTABELAPRECO_ID
 
 

@@ -199,6 +199,93 @@ begin
 try
 
 
+
+
+//Tabela MASTER_ITENSORCAMENTO existe?
+if existe_tabela('MASTER_ITENSORCAMENTO') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE MASTER_ITENSORCAMENTO(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_ITENSORCAMENTO_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO ADD CONSTRAINT PK_MASTER_ITENSORCAMENTO  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger master_itensorcamento_bi for master_itensorcamento');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_master_itensorcamento_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
+
+
+
+
+
+
+
+
+//Tabela MASTER_ORCAMENTO existe?
+if existe_tabela('MASTER_ORCAMENTO') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE MASTER_ORCAMENTO(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_ORCAMENTO_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO ADD CONSTRAINT PK_MASTER_ORCAMENTO  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger master_orcamento_bi for master_orcamento');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_master_orcamento_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
+
 //Tabela MASTER_INDICE existe?
 if existe_tabela('MASTER_INDICE') = 0 then
    begin
@@ -251,6 +338,84 @@ if existe_tabela('MASTER_INDICE') = 0 then
 
 
 
+//Campo controle_titensorcamento existe?
+if existe_campo('MASTER_ITENSORCAMENTO','controle_titensorcamento') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO  ADD controle_titensorcamento integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo ctabp no itensorcamento existe?
+if existe_campo('MASTER_ITENSORCAMENTO','ctabp') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO ADD ctabp integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo controle_torcamento existe?
+if existe_campo('MASTER_ORCAMENTO','controle_torcamento') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO  ADD controle_torcamento integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo ctabp existe?
+if existe_campo('MASTER_ORCAMENTO','ctabp') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO  ADD ctabp integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
 //Campo AdmSN existe?
 if existe_campo('MASTER_INDICE','AdmSN') = 0 then
    begin
@@ -269,10 +434,6 @@ if existe_campo('MASTER_INDICE','AdmSN') = 0 then
   end;
 //endi
 
-
-
-
-
 //Campo logotipo existe?
 if existe_campo('MASTER_INDICE','logotipo') = 0 then
    begin
@@ -290,8 +451,6 @@ if existe_campo('MASTER_INDICE','logotipo') = 0 then
          //endth
   end;
 //endi
-
-
 
 //Campo caminhopadraopdf existe?
 if existe_campo('MASTER_INDICE','caminhopadraopdf') = 0 then

@@ -76,7 +76,7 @@ var
   frmorcamento_pesquisa: Tfrmorcamento_pesquisa;
 
 implementation
-     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uorcamento_impressao;
+     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uorcamento_impressao, umodulo_conexaodb;
 {$R *.lfm}
 
 { Tfrmorcamento_pesquisa }
@@ -311,6 +311,8 @@ end;
 procedure Tfrmorcamento_pesquisa.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
+
+  //modulo_conexaodb.atualizaBancoFechaTransacao;
 
   //FreeAndNil(frmorcamento_pesquisa);  //Action:= caFree;  //frmorcamento_pesquisa := nil;
 

@@ -7,6 +7,7 @@ object frmtela_principal: Tfrmtela_principal
   ClientHeight = 526
   ClientWidth = 1008
   Menu = MainMenu1
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '1.8.4.0'
