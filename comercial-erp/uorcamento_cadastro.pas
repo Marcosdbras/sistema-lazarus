@@ -36,10 +36,22 @@ type
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
     GroupBox4: TGroupBox;
+    Label1: TLabel;
     Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    lblestadocli: TLabel;
+    lblcidadecli: TLabel;
+    lblenderecocli: TLabel;
     lblcliente6: TLabel;
     lblcliente7: TLabel;
     lblcontroleprod: TLabel;
+    lblnumerocli: TLabel;
+    lblbairrocli: TLabel;
+    lblcepcli: TLabel;
     lblstatus: TLabel;
     lblcliente: TLabel;
     lblcliente1: TLabel;
@@ -70,12 +82,17 @@ type
     procedure btnAlterarprodutoClick(Sender: TObject);
     procedure btnExcluirProdutoClick(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure cbxnomeclienteChange(Sender: TObject);
     procedure cbxnomeclienteExit(Sender: TObject);
+    procedure cbxnomeclienteKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
     procedure cbxnomeclienteKeyPress(Sender: TObject; var Key: char);
+    procedure cbxnomeclienteSelect(Sender: TObject);
     procedure cbxnomefunExit(Sender: TObject);
     procedure cbxnomefunKeyPress(Sender: TObject; var Key: char);
     procedure cbxnomevenExit(Sender: TObject);
     procedure cbxnomevenKeyPress(Sender: TObject; var Key: char);
+    procedure cbxtabprecoKeyPress(Sender: TObject; var Key: char);
     procedure cbxunidadeKeyPress(Sender: TObject; var Key: char);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -121,6 +138,8 @@ type
     procedure bloqueiaProdutoAlt;
     procedure desbloqueiaProdutoAlt;
     procedure classificarItem;
+    procedure mostrarDados;
+
 
 
 
@@ -180,8 +199,6 @@ end;
 procedure Tfrmorcamento_cadastro.FormCreate(Sender: TObject);
 begin
 
-
-
   //with qrtemp.fieldDefs do
   //  begin
   //    Add('controle', ftAutoInc, 0, True);
@@ -196,12 +213,9 @@ begin
 
   //qrtemp.Append;
 
-
-
-
-
   with modulo_unidade do
     begin
+
        qrunidade.Close;
        qrunidade.SQL.Clear;
        qrunidade.SQL.Add('select * from tunidademedida order by descricao');
@@ -212,6 +226,7 @@ begin
 
   with modulo_cliente do
     begin
+
        qrcliente.Close;
        qrcliente.SQL.Clear;
        qrcliente.SQL.Add('select * from tcliente order by cliente');
@@ -222,6 +237,7 @@ begin
 
   with modulo_funcionario do
     begin
+
       qrfuncionario.Close;
       qrfuncionario.SQL.Clear;
       qrfuncionario.SQL.Add('select * from tfuncionario where ativo = :ativo order by funcionario');
@@ -244,29 +260,19 @@ begin
     end;
   //endth
 
-
-
   memoformapgto.Lines.Clear;
   memoobs.Lines.Clear;
 
   with modulo_geral do
         begin
 
-
-
           qrmaster_indice.Close;
           qrmaster_indice.SQL.Clear;
           qrmaster_indice.SQL.Add('select * from master_indice');
           qrmaster_indice.Open;
 
-
-
-
         end;
   //endi
-
-
-
 
   with modulo_orcamento do
     begin
@@ -282,6 +288,25 @@ begin
            memoformapgto.Lines.Add(qrorcamento.FieldByName('condicaopagamento').AsString);
            memoobs.Lines.Add(qrorcamento.FieldByName('observacao').AsString);
 
+           modulo_cliente.qrcliente.Locate('controle',qrorcamento.FieldByName('codcliente').AsInteger,[]);
+
+           lblenderecocli.Caption:= modulo_cliente.qrcliente.FieldByName('endereco').AsString;
+           lblnumerocli.Caption:=modulo_cliente.qrcliente.FieldByName('numero').AsString;
+           lblbairrocli.Caption:=modulo_cliente.qrcliente.FieldByName('bairro').AsString;
+           lblcidadecli.Caption:=modulo_cliente.qrcliente.FieldByName('cidade').AsString;
+           lblcepcli.Caption:=modulo_cliente.qrcliente.FieldByName('cep').AsString;
+           lblestadocli.Caption:=modulo_cliente.qrcliente.FieldByName('uf').AsString;
+
+           modulo_conexaodb.qrconsulta_base.Close;
+           modulo_conexaodb.qrconsulta_base.SQL.Clear;
+           modulo_conexaodb.qrconsulta_base.SQL.Add('select * from master_orcamento where controle_torcamento = :controle_torcamento');
+           modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle_torcamento').AsInteger := modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+           modulo_conexaodb.qrconsulta_base.Open;
+
+           modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=modulo_conexaodb.qrconsulta_base.FieldByName('ctabp').AsInteger;
+           //showmessage(modulo_conexaodb.qrconsulta_base.FieldByName('ctabp').AsString);
+
+
 
            edttotal.Value:= qrorcamento.FieldByName('valortotal').Asfloat;
 
@@ -296,15 +321,22 @@ begin
 
             memoformapgto.Lines.add(modulo_geral.qrmaster_indice.FieldByName('padraoorcamento').AsString);
 
-           edttotal.Value := 0;
+
+           modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=0;
+
+            lblenderecocli.Caption:= '';
+            lblnumerocli.Caption:='';
+            lblbairrocli.Caption:='';
+            lblcidadecli.Caption:='';
+            lblcepcli.Caption:='';
+            lblestadocli.Caption:='';
+
+            edttotal.Value := 0;
 
          end;
       //endi
 
-
       mostrarItemProduto;
-
-
 
     end;
   //endth
@@ -347,27 +379,33 @@ begin
   cbxtabpreco.DataField:='ctabp';
   cbxtabpreco.ScrollListDataset:=true;
 
-
   limparProduto;
 
 
+  {
   modulo_conexaodb.qrconsulta_base.Close;
   modulo_conexaodb.qrconsulta_base.SQL.Clear;
-  modulo_conexaodb.qrconsulta_base.SQL.Add('select * from master_orcamento where controle_torcamento = :controle_torcamento');
-  modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle_torcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+  modulo_conexaodb.qrconsulta_base.SQL.Add('select * from tcliente where controle = :controle');
+  modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle').AsInteger := modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger;
   modulo_conexaodb.qrconsulta_base.Open;
 
-  modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=modulo_conexaodb.qrconsulta_base.FieldByName('ctabp').AsInteger;
-  //showmessage(modulo_conexaodb.qrconsulta_base.FieldByName('ctabp').AsString);
+  if modulo_conexaodb.qrconsulta_base.RecordCount > 0 then
+     begin
 
+       lblenderecocli.Caption:= modulo_conexaodb.qrconsulta_base.FieldByName('endereco').AsString;
+       lblnumerocli.Caption:=modulo_conexaodb.qrconsulta_base.FieldByName('numero').AsString;
+       lblbairrocli.Caption:=modulo_conexaodb.qrconsulta_base.FieldByName('bairro').AsString;
+       lblcidadecli.Caption:=modulo_conexaodb.qrconsulta_base.FieldByName('cidade').AsString;
+       lblcepcli.Caption:=modulo_conexaodb.qrconsulta_base.FieldByName('cep').AsString;
+       lblestadocli.Caption:=modulo_conexaodb.qrconsulta_base.FieldByName('uf').AsString;
 
+     end;
+  //endi
+
+  }
 
 
   btnCancelarAltprod.Enabled:=false;
-
-
-
-
 
 end;
 
@@ -376,7 +414,7 @@ begin
   if (frmorcamento_pesquisa.opcao = 'I') or (frmorcamento_pesquisa.opcao = 'A') then
     begin
 
-      cbxnomecliente.SetFocus;
+      cbxnomefun.SetFocus;
 
     end;
 end;
@@ -605,21 +643,89 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.cbxnomeclienteChange(Sender: TObject);
+begin
+
+
+
+
+end;
+
 procedure Tfrmorcamento_cadastro.cbxnomeclienteExit(Sender: TObject);
 begin
+
+
+
+end;
+
+procedure Tfrmorcamento_cadastro.cbxnomeclienteKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+
 end;
 
 procedure Tfrmorcamento_cadastro.cbxnomeclienteKeyPress(Sender: TObject;
   var Key: char);
 begin
-    if key = #13 then
+
+
+
+
+
+
+  if key = #13 then
    begin
+
+     if modulo_cliente.qrcliente.Locate('cliente',cbxnomecliente.Text,[]) then
+        begin
+
+          lblenderecocli.Caption:= modulo_cliente.qrcliente.FieldByName('endereco').AsString;
+          lblnumerocli.Caption:=modulo_cliente.qrcliente.FieldByName('numero').AsString;
+          lblbairrocli.Caption:=modulo_cliente.qrcliente.FieldByName('bairro').AsString;
+          lblcidadecli.Caption:=modulo_cliente.qrcliente.FieldByName('cidade').AsString;
+          lblcepcli.Caption:=modulo_cliente.qrcliente.FieldByName('cep').AsString;
+          lblestadocli.Caption:=modulo_cliente.qrcliente.FieldByName('uf').AsString;
+
+
+
+        end
+     else
+        begin
+
+
+          modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=0;
+
+          lblenderecocli.Caption:= '';
+          lblnumerocli.Caption:='';
+          lblbairrocli.Caption:='';
+          lblcidadecli.Caption:='';
+          lblcepcli.Caption:='';
+          lblestadocli.Caption:='';
+
+
+
+        end;
+
+
+
+
      key := #0;
      SelectNext(ActiveControl,True,True);
      exit;
    end;
 //endi
 
+
+
+
+
+
+
+end;
+
+procedure Tfrmorcamento_cadastro.cbxnomeclienteSelect(Sender: TObject);
+begin
+  mostrarDados;
 end;
 
 procedure Tfrmorcamento_cadastro.cbxnomefunExit(Sender: TObject);
@@ -654,6 +760,18 @@ begin
    end;
 //endi
 
+end;
+
+procedure Tfrmorcamento_cadastro.cbxtabprecoKeyPress(Sender: TObject;
+  var Key: char);
+begin
+  if key = #13 then
+  begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+  end;
+  //endi
 end;
 
 procedure Tfrmorcamento_cadastro.cbxunidadeKeyPress(Sender: TObject;
@@ -1630,6 +1748,45 @@ procedure tfrmorcamento_cadastro.carregaCampoProd;
 
 
    end;
+
+
+procedure  tfrmorcamento_cadastro.mostrarDados;
+begin
+
+
+  if cbxnomecliente.Text <> '' then
+     begin
+
+       lblenderecocli.Caption:= modulo_cliente.qrcliente.FieldByName('endereco').AsString;
+       lblnumerocli.Caption:=modulo_cliente.qrcliente.FieldByName('numero').AsString;
+       lblbairrocli.Caption:=modulo_cliente.qrcliente.FieldByName('bairro').AsString;
+       lblcidadecli.Caption:=modulo_cliente.qrcliente.FieldByName('cidade').AsString;
+       lblcepcli.Caption:=modulo_cliente.qrcliente.FieldByName('cep').AsString;
+       lblestadocli.Caption:=modulo_cliente.qrcliente.FieldByName('uf').AsString;
+
+     end
+  else
+     begin
+
+       modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=0;
+
+       lblenderecocli.Caption:= '';
+       lblnumerocli.Caption:='';
+       lblbairrocli.Caption:='';
+       lblcidadecli.Caption:='';
+       lblcepcli.Caption:='';
+       lblestadocli.Caption:='';
+
+     end;
+  //endi
+
+
+
+
+
+end;
+
+
 
 end.
 

@@ -68,13 +68,40 @@ begin
           else
              begin
 
-                   modulo_tabpreco.qrtempTabPreco.Edit;
-                   modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger := 0;
+               modulo_tabpreco.qrtempTabPreco.Edit;
+               modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger := 0;
 
 
              end;
           //endi
 
+          {
+
+          if frmorcamento_cadastro.cbxnomecliente.Text <> '' then
+             begin
+
+               frmorcamento_cadastro.lblenderecocli.Caption:= qrcliente.FieldByName('endereco').AsString;
+               frmorcamento_cadastro.lblnumerocli.Caption:=qrcliente.FieldByName('numero').AsString;
+               frmorcamento_cadastro.lblbairrocli.Caption:=qrcliente.FieldByName('bairro').AsString;
+               frmorcamento_cadastro.lblcidadecli.Caption:=qrcliente.FieldByName('cidade').AsString;
+               frmorcamento_cadastro.lblcepcli.Caption:=qrcliente.FieldByName('cep').AsString;
+               frmorcamento_cadastro.lblestadocli.Caption:=qrcliente.FieldByName('uf').AsString;
+
+             end
+          else
+             begin
+
+               frmorcamento_cadastro.lblenderecocli.Caption:= '';
+               frmorcamento_cadastro.lblnumerocli.Caption:='';
+               frmorcamento_cadastro.lblbairrocli.Caption:='';
+               frmorcamento_cadastro.lblcidadecli.Caption:='';
+               frmorcamento_cadastro.lblcepcli.Caption:='';
+               frmorcamento_cadastro.lblestadocli.Caption:='';
+
+             end;
+          //endi
+
+          }
 
         end;
     //endi

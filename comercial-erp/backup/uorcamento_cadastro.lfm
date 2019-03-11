@@ -146,7 +146,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         ClientWidth = 896
         TabOrder = 0
         object lblcliente: TLabel
-          Left = 0
+          Left = 360
           Height = 18
           Top = 0
           Width = 150
@@ -162,22 +162,25 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object cbxnomecliente: TDBLookupComboBox
-          Left = 0
-          Height = 23
-          Top = 18
-          Width = 352
-          DataField = 'ccli'
-          ListFieldIndex = 0
-          LookupCache = False
-          OnExit = cbxnomeclienteExit
-          OnKeyPress = cbxnomeclienteKeyPress
-          TabOrder = 0
-        end
-        object cbxnomeven: TDBLookupComboBox
           Left = 360
           Height = 23
           Top = 18
-          Width = 256
+          Width = 448
+          DataField = 'ccli'
+          ListFieldIndex = 0
+          LookupCache = False
+          OnChange = cbxnomeclienteChange
+          OnExit = cbxnomeclienteExit
+          OnKeyDown = cbxnomeclienteKeyDown
+          OnKeyPress = cbxnomeclienteKeyPress
+          OnSelect = cbxnomeclienteSelect
+          TabOrder = 2
+        end
+        object cbxnomeven: TDBLookupComboBox
+          Left = 176
+          Height = 23
+          Top = 18
+          Width = 176
           DataField = 'cven'
           ListFieldIndex = 0
           LookupCache = False
@@ -186,7 +189,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           TabOrder = 1
         end
         object lblcliente1: TLabel
-          Left = 360
+          Left = 176
           Height = 18
           Top = 0
           Width = 72
@@ -202,7 +205,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object lblcliente2: TLabel
-          Left = 624
+          Left = 0
           Height = 18
           Top = 0
           Width = 88
@@ -218,21 +221,21 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object cbxnomefun: TDBLookupComboBox
-          Left = 624
+          Left = 0
           Height = 23
           Top = 18
-          Width = 224
+          Width = 168
           DataField = 'cfun'
           ListFieldIndex = 0
           LookupCache = False
           OnExit = cbxnomefunExit
           OnKeyPress = cbxnomefunKeyPress
-          TabOrder = 2
+          TabOrder = 0
         end
         object lblcliente6: TLabel
           Left = 0
           Height = 18
-          Top = 46
+          Top = 55
           Width = 119
           Caption = 'Tabela de Preço:'
           Font.CharSet = ANSI_CHARSET
@@ -248,14 +251,197 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         object cbxtabpreco: TDBLookupComboBox
           Left = 0
           Height = 23
-          Top = 64
+          Top = 73
           Width = 352
           DataField = 'ctabp'
           DataSource = modulo_tabpreco.dstempTabPreco
           ListFieldIndex = 0
           LookupCache = False
           NullValueKey = 46
+          OnKeyPress = cbxtabprecoKeyPress
           TabOrder = 3
+        end
+        object Label1: TLabel
+          Left = 360
+          Height = 16
+          Top = 44
+          Width = 64
+          Caption = 'Endereço:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lblenderecocli: TLabel
+          Left = 432
+          Height = 16
+          Top = 44
+          Width = 280
+          AutoSize = False
+          Caption = 'lblenderecocli'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 720
+          Height = 16
+          Top = 44
+          Width = 54
+          Caption = 'Número:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lblnumerocli: TLabel
+          Left = 784
+          Height = 16
+          Top = 44
+          Width = 80
+          Caption = 'lblnumerocli'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label4: TLabel
+          Left = 360
+          Height = 16
+          Top = 64
+          Width = 43
+          Caption = 'Bairro:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lblbairrocli: TLabel
+          Left = 432
+          Height = 16
+          Top = 64
+          Width = 197
+          AutoSize = False
+          Caption = 'lblbairrocli'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 640
+          Height = 16
+          Top = 64
+          Width = 49
+          Caption = 'Cidade:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lblcidadecli: TLabel
+          Left = 693
+          Height = 16
+          Top = 64
+          Width = 74
+          Caption = 'lblcidadecli'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 360
+          Height = 16
+          Top = 83
+          Width = 30
+          Caption = 'CEP:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lblcepcli: TLabel
+          Left = 432
+          Height = 16
+          Top = 83
+          Width = 54
+          Caption = 'lblcepcli'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label7: TLabel
+          Left = 517
+          Height = 16
+          Top = 83
+          Width = 46
+          Caption = 'Estado:'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object lblestadocli: TLabel
+          Left = 568
+          Height = 16
+          Top = 83
+          Width = 73
+          Caption = 'lblestadocli'
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
         end
       end
       object GroupBox2: TGroupBox

@@ -13,20 +13,20 @@ type
   { Tfrmimporc }
 
   Tfrmimporc = class(TForm)
-    lblsiteemi: TRLLabel;
+    lblbairroemi: TRLLabel;
+    lblcepemi: TRLLabel;
+    lblcidadeemi: TRLLabel;
+    lblemailemi: TRLLabel;
+    lblenderecoemi: TRLLabel;
     lblestadocli: TRLLabel;
-    lblcepemi1: TRLLabel;
     lblcepemi2: TRLLabel;
     lblemailcli: TRLLabel;
-    lblbairroemi: TRLLabel;
     lblenderecocli2: TRLLabel;
     lblbairrocli: TRLLabel;
-    lblenderecoemi2: TRLLabel;
-    lblestadoemi: TRLLabel;
     lblcnpj1: TRLLabel;
     lblcnpjcli1: TRLLabel;
     lblenderecocli1: TRLLabel;
-    lblenderecoemi1: TRLLabel;
+    lblestadoemi: TRLLabel;
     lblie1: TRLLabel;
     lbliecli: TRLLabel;
     lblie: TRLLabel;
@@ -34,25 +34,21 @@ type
     lblcepcli: TRLLabel;
     lbliecli1: TRLLabel;
     lblnomecli1: TRLLabel;
+    lblnomeemi: TRLLabel;
     lblnomeemi1: TRLLabel;
+    lblsiteemi: TRLLabel;
+    lblslogan: TRLLabel;
     lbltelefonecli1: TRLLabel;
     lbltelefonecli2: TRLLabel;
     lblcidadecli: TRLLabel;
     lbltelefonecli3: TRLLabel;
     lbltelefonecli4: TRLLabel;
-    lbltelefoneemi: TRLLabel;
     lbltelefonecli: TRLLabel;
     lblnomecli: TRLLabel;
     lblenderecocli: TRLLabel;
     lblnorc: TRLLabel;
     lblnorc1: TRLLabel;
-    lblemailemi: TRLLabel;
-    lblenderecoemi: TRLLabel;
-    lblcepemi: TRLLabel;
-    lbltelefoneemi1: TRLLabel;
-    lbltelefoneemi2: TRLLabel;
-    lblcidadeemi: TRLLabel;
-    lbltelefoneemi3: TRLLabel;
+    lbltelefoneemi: TRLLabel;
     RLBand1: TRLBand;
     RLBand2: TRLBand;
     RLBand3: TRLBand;
@@ -67,13 +63,13 @@ type
     RLDraw4: TRLDraw;
     RLDraw5: TRLDraw;
     RLDraw6: TRLDraw;
+    RLDraw7: TRLDraw;
     RLImage1: TRLImage;
     rlimporc: TRLReport;
     RLLabel1: TRLLabel;
-    RLLabel10: TRLLabel;
-    lblslogan: TRLLabel;
     lbltittotal: TRLLabel;
     lbltotal: TRLLabel;
+    RLLabel10: TRLLabel;
     RLLabel2: TRLLabel;
     RLLabel3: TRLLabel;
     RLLabel4: TRLLabel;
@@ -83,7 +79,6 @@ type
     RLLabel7: TRLLabel;
     RLLabel8: TRLLabel;
     lblcnpj: TRLLabel;
-    lblnomeemi: TRLLabel;
     RLLabel9: TRLLabel;
     memocodgeral: TRLMemo;
     rlpreview: TRLPreviewSetup;
@@ -92,6 +87,7 @@ type
     RLSystemInfo3: TRLSystemInfo;
     procedure FormCreate(Sender: TObject);
     procedure RLBand1AfterPrint(Sender: TObject);
+    procedure RLBand2AfterPrint(Sender: TObject);
     procedure RLImage1AfterPrint(Sender: TObject);
     procedure RLLabel3AfterPrint(Sender: TObject);
     procedure RLLabel4AfterPrint(Sender: TObject);
@@ -128,7 +124,9 @@ implementation
           qrmaster_indice.SQL.Add('select * from master_indice');
           qrmaster_indice.Open;
 
-          rlimage1.Picture.LoadFromFile(qrmaster_indice.FieldByName('logotipo').AsString);
+          if qrmaster_indice.FieldByName('logotipo').AsString <> '' then
+             rlimage1.Picture.LoadFromFile(qrmaster_indice.FieldByName('logotipo').AsString);
+          //endi
           lblslogan.caption := qrmaster_indice.FieldByName('slogan').AsString;
 
         end;
@@ -252,6 +250,11 @@ implementation
        end;
 
 procedure Tfrmimporc.RLBand1AfterPrint(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmimporc.RLBand2AfterPrint(Sender: TObject);
 begin
 
 end;
