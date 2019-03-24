@@ -21,6 +21,7 @@ type
     btnlancar: TButton;
     Button1: TButton;
     Button2: TButton;
+    Button3: TButton;
     cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
@@ -43,6 +44,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    lblcliente8: TLabel;
     lblestadocli: TLabel;
     lblcidadecli: TLabel;
     lblenderecocli: TLabel;
@@ -71,6 +73,7 @@ type
     pnlinferior: TPanel;
     pnlcentral: TPanel;
     ScrollBox1: TScrollBox;
+    ediprazo: TSpinEdit;
     procedure btnCancelarAltprodClick(Sender: TObject);
     procedure btnClassItemClick(Sender: TObject);
     procedure btnfiltrarClick(Sender: TObject);
@@ -81,6 +84,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure btnAlterarprodutoClick(Sender: TObject);
     procedure btnExcluirProdutoClick(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure cbxnomeclienteChange(Sender: TObject);
     procedure cbxnomeclienteExit(Sender: TObject);
@@ -105,6 +109,7 @@ type
     procedure DBGrid2KeyPress(Sender: TObject; var Key: char);
     procedure DBText2Click(Sender: TObject);
     procedure dsorcamentoDataChange(Sender: TObject; Field: TField);
+    procedure ediprazoKeyPress(Sender: TObject; var Key: char);
     procedure edtdescricaoExit(Sender: TObject);
     procedure edtdescricaoKeyPress(Sender: TObject; var Key: char);
     procedure edtqtdeChange(Sender: TObject);
@@ -164,7 +169,7 @@ implementation
 
 uses ufuncao_geral, umodulo_orcamento, uorcamento_pesquisa, umodulo_cliente, umodulo_funcionario,
       umodulo_conexaodb, umodulo_unidade, umodulo_produto, uproduto_consulta, umodulo_geral,
-      umodulo_tabpreco;
+      umodulo_tabpreco, ucotacao_cadastro;
 
 {$R *.lfm}
 
@@ -304,6 +309,7 @@ begin
            modulo_conexaodb.qrconsulta_base.Open;
 
            modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=modulo_conexaodb.qrconsulta_base.FieldByName('ctabp').AsInteger;
+           ediprazo.Value :=  modulo_conexaodb.qrconsulta_base.FieldByName('prazo').AsInteger;
            //showmessage(modulo_conexaodb.qrconsulta_base.FieldByName('ctabp').AsString);
 
 
@@ -323,6 +329,8 @@ begin
 
 
            modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=0;
+
+           ediprazo.Value := 0;
 
             lblenderecocli.Caption:= '';
             lblnumerocli.Caption:='';
@@ -638,6 +646,16 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.Button3Click(Sender: TObject);
+begin
+
+  frmcotacao_cadastro := tfrmcotacao_cadastro.Create(self);
+  frmcotacao_cadastro.ShowModal;
+  frmcotacao_cadastro.Free;
+  frmcotacao_cadastro := nil;
+
+end;
+
 procedure Tfrmorcamento_cadastro.Button5Click(Sender: TObject);
 begin
 
@@ -694,6 +712,8 @@ begin
 
 
           modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=0;
+
+          ediprazo.Value := 0;
 
           lblenderecocli.Caption:= '';
           lblnumerocli.Caption:='';
@@ -867,6 +887,19 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.ediprazoKeyPress(Sender: TObject; var Key: char
+  );
+begin
+  if key = #13 then
+  begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+  end;
+  //endi
+
+end;
+
 procedure Tfrmorcamento_cadastro.edtdescricaoExit(Sender: TObject);
 var reglocalizado:integer;
 
@@ -906,6 +939,7 @@ begin
                             frmproduto_consulta := tfrmproduto_consulta.Create(self);
                             frmproduto_consulta.ShowModal;
                             frmproduto_consulta.Free;
+                            frmproduto_consulta := nil;
 
                           end
                        else
@@ -937,6 +971,7 @@ begin
                        frmproduto_consulta := tfrmproduto_consulta.Create(self);
                        frmproduto_consulta.ShowModal;
                        frmproduto_consulta.Free;
+                       frmproduto_consulta := nil;
 
                       end
                   else
@@ -961,6 +996,7 @@ begin
                  frmproduto_consulta := tfrmproduto_consulta.Create(self);
                  frmproduto_consulta.ShowModal;
                  frmproduto_consulta.Free;
+                 frmproduto_consulta := nil;
 
                end
             else
@@ -1291,9 +1327,10 @@ begin
 
                  qrexec_base.Close;
                  qrexec_base.SQL.Clear;
-                 qrexec_base.SQL.Add('insert into master_orcamento(controle_torcamento,ctabp) values (:controle_torcamento, :ctabp);');
+                 qrexec_base.SQL.Add('insert into master_orcamento(controle_torcamento,ctabp,prazo) values (:controle_torcamento, :ctabp, :prazo);');
                  qrexec_base.Params.ParamByName('controle_torcamento').AsInteger := icodigo_controle;
                  qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
+                 qrexec_base.Params.ParamByName('prazo').AsInteger := ediprazo.Value;
                  qrexec_base.ExecSQL;
 
                end
@@ -1302,9 +1339,10 @@ begin
 
                  qrexec_base.Close;
                  qrexec_base.SQL.Clear;
-                 qrexec_base.SQL.Add('update master_orcamento  set ctabp = :ctabp where controle_torcamento   = :controle_torcamento;');
+                 qrexec_base.SQL.Add('update master_orcamento  set ctabp = :ctabp, prazo = :prazo  where controle_torcamento   = :controle_torcamento;');
                  qrexec_base.Params.ParamByName('controle_torcamento').AsInteger := icodigo_controle;
                  qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
+                 qrexec_base.Params.ParamByName('prazo').AsInteger := ediprazo.Value;
                  qrexec_base.ExecSQL;
 
 
@@ -1770,6 +1808,8 @@ begin
 
        modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger:=0;
 
+       ediprazo.Value := 0;
+
        lblenderecocli.Caption:= '';
        lblnumerocli.Caption:='';
        lblbairrocli.Caption:='';
@@ -1780,12 +1820,7 @@ begin
      end;
   //endi
 
-
-
-
-
 end;
-
 
 
 end.

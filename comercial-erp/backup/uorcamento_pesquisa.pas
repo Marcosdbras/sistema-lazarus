@@ -154,9 +154,7 @@ begin
   frmorcamento_impressao := tfrmorcamento_impressao.Create(self);
   frmorcamento_impressao.ShowModal;
   frmorcamento_impressao.free;
-
-
-
+  frmorcamento_impressao := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.btnlimparClick(Sender: TObject);
@@ -185,22 +183,27 @@ end;
 
 procedure Tfrmorcamento_pesquisa.Button2Click(Sender: TObject);
 begin
-    opcao := 'A';
+ opcao := 'A';
 
   frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
   frmorcamento_cadastro.ShowModal;
   frmorcamento_cadastro.Free;
+  frmorcamento_cadastro := nil;
 
 end;
 
 procedure Tfrmorcamento_pesquisa.Button3Click(Sender: TObject);
 begin
   opcao := 'E';
+
+  //frmorcamento_cadastro := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.Button4Click(Sender: TObject);
 begin
   opcao := 'C';
+
+  //frmorcamento_cadastro := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.Button5Click(Sender: TObject);
@@ -312,7 +315,7 @@ procedure Tfrmorcamento_pesquisa.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
 
-  modulo_conexaodb.atualizaBancoFechaTransacao;
+  //modulo_conexaodb.atualizaBancoFechaTransacao;
 
   //FreeAndNil(frmorcamento_pesquisa);  //Action:= caFree;  //frmorcamento_pesquisa := nil;
 

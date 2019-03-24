@@ -154,9 +154,7 @@ begin
   frmorcamento_impressao := tfrmorcamento_impressao.Create(self);
   frmorcamento_impressao.ShowModal;
   frmorcamento_impressao.free;
-
-
-
+  frmorcamento_impressao := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.btnlimparClick(Sender: TObject);
@@ -169,6 +167,7 @@ begin
   frmsincorc := tfrmsincorc.create(self);
   frmsincorc.showmodal;
   frmsincorc.free;
+  frmsincorc := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.Button1Click(Sender: TObject);
@@ -185,22 +184,27 @@ end;
 
 procedure Tfrmorcamento_pesquisa.Button2Click(Sender: TObject);
 begin
-    opcao := 'A';
+ opcao := 'A';
 
   frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
   frmorcamento_cadastro.ShowModal;
   frmorcamento_cadastro.Free;
+  frmorcamento_cadastro := nil;
 
 end;
 
 procedure Tfrmorcamento_pesquisa.Button3Click(Sender: TObject);
 begin
   opcao := 'E';
+
+  //frmorcamento_cadastro := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.Button4Click(Sender: TObject);
 begin
   opcao := 'C';
+
+  //frmorcamento_cadastro := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.Button5Click(Sender: TObject);

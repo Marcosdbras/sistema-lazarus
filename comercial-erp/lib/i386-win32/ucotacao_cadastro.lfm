@@ -1,0 +1,369 @@
+object frmcotacao_cadastro: Tfrmcotacao_cadastro
+  Left = 122
+  Height = 497
+  Top = 128
+  Width = 1073
+  Caption = 'Cotação'
+  ClientHeight = 497
+  ClientWidth = 1073
+  OnClose = FormClose
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+  object pnlsuperior: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 1073
+    Align = alTop
+    ClientHeight = 50
+    ClientWidth = 1073
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Height = 29
+      Top = 9
+      Width = 125
+      Caption = 'PRODUTO:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblnomeproduto: TLabel
+      Left = 141
+      Height = 29
+      Top = 9
+      Width = 515
+      AutoSize = False
+      Caption = 'lblnomeproduto'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      OnClick = lblnomeprodutoClick
+    end
+    object Valor: TLabel
+      Left = 659
+      Height = 29
+      Top = 9
+      Width = 184
+      Caption = 'VLR. UNITÁRIO:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblvalor: TLabel
+      Left = 890
+      Height = 29
+      Top = 9
+      Width = 86
+      Alignment = taRightJustify
+      Caption = 'lblvalor'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object pnlcentral: TPanel
+    Left = 0
+    Height = 397
+    Top = 50
+    Width = 1073
+    Align = alClient
+    ClientHeight = 397
+    ClientWidth = 1073
+    TabOrder = 1
+    OnClick = pnlcentralClick
+    object Label2: TLabel
+      Left = 8
+      Height = 15
+      Top = 8
+      Width = 60
+      Caption = 'Fornecedor'
+      ParentColor = False
+    end
+    object cbxnomefor: TDBLookupComboBox
+      Left = 8
+      Height = 23
+      Top = 28
+      Width = 264
+      DataField = 'cfor'
+      DataSource = modulo_fornecedor.dstempFornecedor
+      ListFieldIndex = 0
+      LookupCache = False
+      OnKeyPress = cbxnomeforKeyPress
+      TabOrder = 0
+    end
+    object Label3: TLabel
+      Left = 280
+      Height = 15
+      Top = 8
+      Width = 71
+      Caption = 'Data Cotação'
+      ParentColor = False
+    end
+    object edidatacotacao: TMaskEdit
+      Left = 280
+      Height = 23
+      Top = 28
+      Width = 128
+      CharCase = ecNormal
+      MaxLength = 0
+      TabOrder = 1
+      OnKeyPress = edidatacotacaoKeyPress
+      Text = 'edidatacotacao'
+      SpaceChar = '_'
+    end
+    object edivalor: TFloatSpinEdit
+      Left = 415
+      Height = 23
+      Top = 28
+      Width = 107
+      Alignment = taRightJustify
+      Increment = 1
+      MaxValue = 100
+      MinValue = 0
+      OnKeyPress = edivalorKeyPress
+      TabOrder = 2
+      Value = 0
+    end
+    object Label4: TLabel
+      Left = 455
+      Height = 15
+      Top = 8
+      Width = 67
+      Alignment = taRightJustify
+      Caption = 'Valor cotado'
+      ParentColor = False
+    end
+    object edimargem_lucro: TFloatSpinEdit
+      Left = 528
+      Height = 23
+      Top = 28
+      Width = 104
+      Alignment = taRightJustify
+      Increment = 1
+      MaxValue = 100
+      MinValue = 0
+      OnKeyPress = edimargem_lucroKeyPress
+      TabOrder = 3
+      Value = 0
+    end
+    object Label5: TLabel
+      Left = 538
+      Height = 15
+      Top = 8
+      Width = 94
+      Alignment = taRightJustify
+      Caption = 'Margem de Lucro'
+      ParentColor = False
+    end
+    object ediprazo: TSpinEdit
+      Left = 638
+      Height = 23
+      Top = 28
+      Width = 48
+      Alignment = taRightJustify
+      OnKeyPress = ediprazoKeyPress
+      TabOrder = 4
+    end
+    object Label6: TLabel
+      Left = 657
+      Height = 15
+      Top = 8
+      Width = 29
+      Alignment = taRightJustify
+      Caption = 'Prazo'
+      ParentColor = False
+      OnClick = Label6Click
+    end
+    object Label7: TLabel
+      Left = 690
+      Height = 15
+      Top = 32
+      Width = 5
+      Alignment = taRightJustify
+      Caption = '/'
+      ParentColor = False
+    end
+    object Label8: TLabel
+      Left = 698
+      Height = 15
+      Top = 8
+      Width = 43
+      Alignment = taRightJustify
+      Caption = 'Dif. Dias'
+      ParentColor = False
+    end
+    object cbxescolhido: TComboBox
+      Left = 840
+      Height = 23
+      Top = 28
+      Width = 35
+      ItemHeight = 15
+      OnKeyPress = cbxescolhidoKeyPress
+      TabOrder = 7
+      Text = 'cbxescolhido'
+    end
+    object btnlancar: TButton
+      Left = 880
+      Height = 41
+      Top = 10
+      Width = 96
+      Caption = 'Lançar'
+      OnClick = btnlancarClick
+      TabOrder = 8
+    end
+    object DBGrid1: TDBGrid
+      Left = 8
+      Height = 328
+      Top = 56
+      Width = 968
+      Color = clWindow
+      Columns = <      
+        item
+          Title.Caption = 'CODIGO'
+          FieldName = 'CODIGO'
+        end      
+        item
+          Title.Caption = 'CFORN'
+          FieldName = 'CFORN'
+        end      
+        item
+          Title.Caption = 'DATA'
+          FieldName = 'DATA'
+        end      
+        item
+          Title.Caption = 'VALOR'
+          FieldName = 'VALOR'
+        end      
+        item
+          Title.Caption = 'MARGEM_LUCRO'
+          FieldName = 'MARGEM_LUCRO'
+        end      
+        item
+          Title.Caption = 'PRAZO'
+          FieldName = 'PRAZO'
+        end      
+        item
+          Title.Caption = 'DIF_PRAZO'
+          FieldName = 'DIF_PRAZO'
+        end      
+        item
+          Title.Caption = 'NDANFE'
+          FieldName = 'NDANFE'
+        end      
+        item
+          Title.Caption = 'ESCOLHIDO'
+          FieldName = 'ESCOLHIDO'
+        end>
+      DataSource = modulo_cotacao.dsmaster_cotacao_item
+      TabOrder = 9
+    end
+    object edindanfe: TSpinEdit
+      Left = 747
+      Height = 23
+      Top = 28
+      Width = 88
+      Alignment = taRightJustify
+      OnKeyPress = edindanfeKeyPress
+      TabOrder = 6
+    end
+    object Label9: TLabel
+      Left = 747
+      Height = 15
+      Top = 8
+      Width = 53
+      Alignment = taRightJustify
+      Caption = 'N.o Danfe'
+      ParentColor = False
+    end
+    object edidif_prazo: TSpinEdit
+      Left = 698
+      Height = 23
+      Top = 28
+      Width = 46
+      Enabled = False
+      OnKeyPress = edidif_prazoKeyPress
+      TabOrder = 5
+    end
+    object btnAlterarproduto: TButton
+      Left = 984
+      Height = 40
+      Top = 56
+      Width = 80
+      Caption = 'Alterar'
+      TabOrder = 10
+    end
+    object btnCancelarAltprod: TButton
+      Left = 984
+      Height = 40
+      Top = 96
+      Width = 80
+      Caption = 'Cancelar'
+      TabOrder = 11
+    end
+    object btnExcluirProduto: TButton
+      Left = 984
+      Height = 40
+      Top = 136
+      Width = 80
+      Caption = 'Excluir'
+      TabOrder = 12
+    end
+  end
+  object pnlinferior: TPanel
+    Left = 0
+    Height = 50
+    Top = 447
+    Width = 1073
+    Align = alBottom
+    ClientHeight = 50
+    ClientWidth = 1073
+    TabOrder = 2
+    object Panel1: TPanel
+      Left = 974
+      Height = 48
+      Top = 1
+      Width = 98
+      Align = alRight
+      ClientHeight = 48
+      ClientWidth = 98
+      TabOrder = 0
+      object Button2: TButton
+        Left = 3
+        Height = 40
+        Top = 2
+        Width = 91
+        Caption = 'Fechar'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clNavy
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Button2Click
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+  end
+end

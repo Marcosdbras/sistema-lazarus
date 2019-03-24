@@ -37,7 +37,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="30">
+    <Units Count="33">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -236,6 +236,27 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit29>
+      <Unit30>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmcotacao_cadastro"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="umodulo_fornecedor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_fornecedor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="umodulo_cotacao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_cotacao"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit32>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

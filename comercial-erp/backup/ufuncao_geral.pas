@@ -199,6 +199,44 @@ begin
 try
 
 
+//Tabela MASTER_COTACAO_ITEM existe?
+if existe_tabela('MASTER_COTACAO_ITEM') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE MASTER_COTACAO_ITEM(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_COTACAO_ITEM_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM ADD CONSTRAINT PK_MASTER_COTACAO_ITEM  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger master_cotacao_item_bi for master_cotacao_item');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_master_cotacao_item_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
 
 
 //Tabela MASTER_ITENSORCAMENTO existe?
@@ -239,13 +277,6 @@ if existe_tabela('MASTER_ITENSORCAMENTO') = 0 then
 
    end;
 //endif
-
-
-
-
-
-
-
 
 //Tabela MASTER_ORCAMENTO existe?
 if existe_tabela('MASTER_ORCAMENTO') = 0 then
@@ -337,6 +368,213 @@ if existe_tabela('MASTER_INDICE') = 0 then
 //endif
 
 
+//Campo dif_prazo existe?
+if existe_campo('MASTER_COTACAO_ITEM','dif_prazo') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD dif_prazo integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo prazo existe?
+if existe_campo('MASTER_COTACAO_ITEM','prazo') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD prazo integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo escolhido existe?
+if existe_campo('MASTER_COTACAO_ITEM','escolhido') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD escolhido char(1) default ''N'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo margem_lucro existe?
+if existe_campo('MASTER_COTACAO_ITEM','margem_lucro') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD margem_lucro decimal(15,2);   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo ndanfe existe?
+if existe_campo('MASTER_COTACAO_ITEM','ndanfe') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD ndanfe integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo valor existe?
+if existe_campo('MASTER_COTACAO_ITEM','valor') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD valor decimal(15,2);   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo cforn existe?
+if existe_campo('MASTER_COTACAO_ITEM','cforn') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD cforn integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo data existe?
+if existe_campo('MASTER_COTACAO_ITEM','data') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD data date ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo ccotacao no itensorcamento existe?
+if existe_campo('MASTER_ITENSORCAMENTO','ccotacao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO ADD ccotacao integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('CREATE SEQUENCE GEN_CCOTACAO_ID;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo controle_titensorcamento existe?
+if existe_campo('MASTER_ITENSORCAMENTO','controle_titensorcamento') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO  ADD controle_titensorcamento integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo ctabp no itensorcamento existe?
+if existe_campo('MASTER_ITENSORCAMENTO','ctabp') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO ADD ctabp integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
 
 //Campo controle_torcamento existe?
 if existe_campo('MASTER_ORCAMENTO','controle_torcamento') = 0 then
@@ -356,11 +594,23 @@ if existe_campo('MASTER_ORCAMENTO','controle_torcamento') = 0 then
   end;
 //endi
 
+//Campo prazo existe?
+if existe_campo('MASTER_ORCAMENTO','prazo') = 0 then
+   begin
 
+         with modulo_conexaodb do
+           begin
 
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO  ADD prazo integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
 
-
-
+           end;
+         //endth
+  end;
+//endi
 
 //Campo ctabp existe?
 if existe_campo('MASTER_ORCAMENTO','ctabp') = 0 then
@@ -380,10 +630,6 @@ if existe_campo('MASTER_ORCAMENTO','ctabp') = 0 then
   end;
 //endi
 
-
-
-
-
 //Campo AdmSN existe?
 if existe_campo('MASTER_INDICE','AdmSN') = 0 then
    begin
@@ -401,10 +647,6 @@ if existe_campo('MASTER_INDICE','AdmSN') = 0 then
          //endth
   end;
 //endi
-
-
-
-
 
 //Campo logotipo existe?
 if existe_campo('MASTER_INDICE','logotipo') = 0 then
@@ -424,8 +666,6 @@ if existe_campo('MASTER_INDICE','logotipo') = 0 then
   end;
 //endi
 
-
-
 //Campo caminhopadraopdf existe?
 if existe_campo('MASTER_INDICE','caminhopadraopdf') = 0 then
    begin
@@ -443,8 +683,6 @@ if existe_campo('MASTER_INDICE','caminhopadraopdf') = 0 then
          //endth
   end;
 //endi
-
-
 
 //Campo CSTPIS padrão existe?
 if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
@@ -482,9 +720,6 @@ if existe_campo('MASTER_INDICE','codcstoriempadrao') = 0 then
   end;
 //endi
 
-
-
-
 //Campo CSTIPI padrão existe?
 if existe_campo('MASTER_INDICE','codcstipipadrao') = 0 then
    begin
@@ -502,10 +737,6 @@ if existe_campo('MASTER_INDICE','codcstipipadrao') = 0 then
          //endth
   end;
 //endi
-
-
-
-
 
 //Campo CST padrão existe?
 if existe_campo('MASTER_INDICE','codcstpadrao') = 0 then
@@ -525,7 +756,6 @@ if existe_campo('MASTER_INDICE','codcstpadrao') = 0 then
   end;
 //endi
 
-
 //Campo Cofinspadrao padrão existe?
 if existe_campo('MASTER_INDICE','codcstcofinspadrao') = 0 then
    begin
@@ -544,7 +774,6 @@ if existe_campo('MASTER_INDICE','codcstcofinspadrao') = 0 then
   end;
 //endi
 
-
 //Campo CSOSN padrão existe?
 if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
    begin
@@ -562,8 +791,6 @@ if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
          //endth
   end;
 //endi
-
-
 
 //Campo Slogan padrão existe?
 if existe_campo('MASTER_INDICE','slogan') = 0 then
@@ -592,7 +819,6 @@ if existe_campo('MASTER_INDICE','slogan') = 0 then
   end;
 //endi
 
-
 //Campo agradcdtesp padrão existe?
 if existe_campo('MASTER_INDICE','agradcdtesp') = 0 then
    begin
@@ -616,7 +842,6 @@ if existe_campo('MASTER_INDICE','agradcdtesp') = 0 then
          //endth
   end;
 //endi
-
 
 //Campo PADRAOOS padrão existe?
 //ALTER TABLE MASTER_INDICE  ADD PADRAOOS BLOB SUB_TYPE 1 SEGMENT SIZE 80
@@ -649,10 +874,6 @@ if existe_campo('MASTER_INDICE','PADRAOOS') = 0 then
   end;
 //endi
 
-
-
-
-
 //Campo PADRAOORCAMENTO padrão existe?
 //ALTER TABLE MASTER_INDICE  ADD PADRAOORCAMENTO BLOB SUB_TYPE 1 SEGMENT SIZE 80
 if existe_campo('MASTER_INDICE','PADRAOORCAMENTO') = 0 then
@@ -684,9 +905,6 @@ if existe_campo('MASTER_INDICE','PADRAOORCAMENTO') = 0 then
   end;
 //endi
 
-
-
-
 //Campo PADRAOPEDIDO padrão existe?
 //ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDO BLOB SUB_TYPE 1 SEGMENT SIZE 80
 if existe_campo('MASTER_INDICE','PADRAOPEDIDO') = 0 then
@@ -717,16 +935,6 @@ if existe_campo('MASTER_INDICE','PADRAOPEDIDO') = 0 then
          //endth
   end;
 //endi
-
-
-
-
-
-
-
-
-
-
 
 //Tabela MASTER_UNIDADE existe?
 if existe_tabela('MASTER_UNIDADE') = 0 then
@@ -778,7 +986,6 @@ if existe_tabela('MASTER_UNIDADE') = 0 then
    end;
 //endif
 
-
 //Campo DESCRICAOCOMPLETA existe?
 if existe_campo('MASTER_UNIDADE','DESCRICAOCOMPLETA') = 0 then
    begin
@@ -796,7 +1003,6 @@ if existe_campo('MASTER_UNIDADE','DESCRICAOCOMPLETA') = 0 then
          //endth
   end;
 //endi
-
 
 //Campo SIGLA existe?
 if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
@@ -816,8 +1022,6 @@ if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
   end;
 //endi
 
-
-
 //Campo CONTROLE_TUNIDADEMEDIDA existe?
 if existe_campo('MASTER_UNIDADE','CONTROLE_TUNIDADEMEDIDA') = 0 then
    begin
@@ -835,10 +1039,6 @@ if existe_campo('MASTER_UNIDADE','CONTROLE_TUNIDADEMEDIDA') = 0 then
          //endth
   end;
 //endi
-
-
-
-
 
 //Tabela MASTER_USUARIO existe?
 if existe_tabela('MASTER_USUARIO') = 0 then
@@ -915,8 +1115,6 @@ if existe_campo('MASTER_USUARIO','CONTROLE_TUSUARIO') = 0 then
   end;
 //endi
 
-
-
 //Tabela MASTER_OS existe?
 if existe_tabela('MASTER_OS') = 0 then
    begin
@@ -956,8 +1154,6 @@ if existe_tabela('MASTER_OS') = 0 then
 
    end;
 //endif
-
-
 
 // Atualiza procedure
 with modulo_conexaodb do

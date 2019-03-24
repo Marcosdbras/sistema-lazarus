@@ -1,0 +1,41 @@
+object modulo_fornecedor: Tmodulo_fornecedor
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 310
+  HorizontalOffset = 475
+  VerticalOffset = 130
+  Width = 232
+  PPI = 96
+  object qrfornecedor: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 48
+    top = 32
+  end
+  object dsfornecedor: TDataSource
+    DataSet = qrfornecedor
+    left = 136
+    top = 32
+  end
+  object qrtempFornecedor: TBufDataset
+    FieldDefs = <>
+    left = 40
+    top = 128
+    object qrtempFornecedorccli: TLongintField
+      FieldKind = fkData
+      FieldName = 'ccli'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempFornecedor: TDataSource
+    DataSet = qrtempFornecedor
+    left = 160
+    top = 128
+  end
+end

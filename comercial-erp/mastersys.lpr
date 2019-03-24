@@ -13,7 +13,8 @@ uses
   umodulo_funcionario, umodulo_unidade, umodulo_produto, uproduto_consulta,
   uimporc, umodulo_vendaorc, uvendaorc, uindice, umodulo_temp, umodulo_geral,
   uorcamento_impressao, usincorc, umodulo_remoto, usincbaseremota,
-  umodulo_emitente, umodulo_tabpreco
+  umodulo_emitente, umodulo_tabpreco, ucotacao_cadastro, umodulo_fornecedor,
+  umodulo_cotacao
 
   { you can add units after this };
 
@@ -32,8 +33,7 @@ begin
 
   // 3-Cria tela principal para atualizar base de dados
   Application.CreateForm(Tfrmtela_principal, frmtela_principal);
-
-  // 4-Cria módulos de conexao com as tabelas
+  Application.CreateForm(Tmodulo_fornecedor, modulo_fornecedor);
   Application.CreateForm(Tmodulo_emitente, modulo_emitente);
   Application.CreateForm(Tmodulo_tabpreco, modulo_tabpreco);
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
@@ -44,6 +44,7 @@ begin
   Application.CreateForm(Tmodulo_vendaorc, modulo_vendaorc);
   Application.CreateForm(Tmodulo_temp, modulo_temp);
   Application.CreateForm(Tmodulo_geral, modulo_geral);
+  Application.CreateForm(Tmodulo_cotacao, modulo_cotacao);
 
   // 2-Cria módulo conexao com a tabela remota para sincronismo com base
   Application.CreateForm(Tmodulo_remoto, modulo_remoto);
@@ -53,6 +54,8 @@ begin
   //Application.CreateForm(Tfrmajusteprodutos, frmajusteprodutos);
   //Application.CreateForm(Tmodulo_temp, modulo_temp);
   //Application.CreateForm(Tfrmorcamento_impressao, frmorcamento_impressao);
+  //Application.CreateForm(Tfrmcotacao_cadastro, frmcotacao_cadastro);
+
 
   frmsplash.Hide;
   frmsplash.Free;

@@ -7,7 +7,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
   Width = 273
   PPI = 96
   object conexaodb: TIBConnection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'C:\SGBR\Master\BASESGMASTER.FDB'
     KeepConnection = False
@@ -21,7 +21,7 @@ object modulo_conexaodb: Tmodulo_conexaodb
     top = 16
   end
   object tzcontrole: TSQLTransaction
-    Active = False
+    Active = True
     Database = conexaodb
     left = 136
     top = 24

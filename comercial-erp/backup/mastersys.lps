@@ -4,14 +4,15 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="35">
+    <Units Count="39">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="32"/>
-        <CursorPos X="7" Y="33"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="33"/>
+        <CursorPos X="59" Y="47"/>
         <UsageCount Value="202"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="uorcamento_cadastro.pas"/>
@@ -20,11 +21,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="1443"/>
-        <CursorPos Y="1443"/>
+        <TopLine Value="1493"/>
+        <CursorPos X="39" Y="1426"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="umodulo_orcamento.pas"/>
@@ -32,10 +32,9 @@
         <ComponentName Value="modulo_orcamento"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="209"/>
-        <CursorPos X="33" Y="145"/>
+        <EditorIndex Value="6"/>
         <UsageCount Value="202"/>
+        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="umodulo_conexaodb.pas"/>
@@ -43,8 +42,8 @@
         <ComponentName Value="modulo_conexaodb"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="71"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="65"/>
         <CursorPos X="15" Y="50"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
@@ -74,7 +73,7 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="139"/>
         <CursorPos X="46" Y="140"/>
         <UsageCount Value="205"/>
@@ -83,17 +82,18 @@
       <Unit7>
         <Filename Value="ufuncao_conexaodb.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="144"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="116"/>
         <CursorPos Y="152"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="ufuncao_geral.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="381"/>
-        <CursorPos X="80" Y="342"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="541"/>
+        <CursorPos X="87" Y="529"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit8>
@@ -134,9 +134,9 @@
         <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="322"/>
-        <CursorPos X="54" Y="315"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="123"/>
+        <CursorPos X="39" Y="130"/>
         <UsageCount Value="271"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -147,8 +147,8 @@
         <ComponentName Value="modulo_cliente"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <TopLine Value="67"/>
-        <CursorPos Y="80"/>
+        <TopLine Value="36"/>
+        <CursorPos X="19" Y="39"/>
         <UsageCount Value="258"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -203,8 +203,7 @@
         <ComponentName Value="frmimporc"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="148"/>
         <CursorPos X="115" Y="162"/>
         <UsageCount Value="200"/>
@@ -318,7 +317,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="49" Y="26"/>
-        <UsageCount Value="199"/>
+        <UsageCount Value="200"/>
       </Unit28>
       <Unit29>
         <Filename Value="umodulo_tabpreco.pas"/>
@@ -329,17 +328,56 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="46"/>
         <CursorPos X="53" Y="51"/>
-        <UsageCount Value="149"/>
+        <UsageCount Value="199"/>
       </Unit29>
       <Unit30>
-        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="3492"/>
-        <CursorPos Y="3501"/>
-        <UsageCount Value="29"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmcotacao_cadastro"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="350"/>
+        <CursorPos X="15" Y="358"/>
+        <UsageCount Value="65"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit30>
       <Unit31>
+        <Filename Value="umodulo_fornecedor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_fornecedor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="30"/>
+        <CursorPos X="52" Y="41"/>
+        <UsageCount Value="56"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="umodulo_cotacao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_cotacao"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="23"/>
+        <CursorPos X="47" Y="25"/>
+        <UsageCount Value="50"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5006"/>
+        <CursorPos Y="5016"/>
+        <UsageCount Value="25"/>
+      </Unit33>
+      <Unit34>
         <Filename Value="utextopadrao.pas"/>
         <ComponentName Value="frmtextopadrao"/>
         <HasResources Value="True"/>
@@ -347,152 +385,160 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="82"/>
         <CursorPos X="76" Y="83"/>
-        <UsageCount Value="93"/>
-      </Unit31>
-      <Unit32>
+        <UsageCount Value="88"/>
+      </Unit34>
+      <Unit35>
         <Filename Value="C:\lazarus\fpc\3.0.4\source\packages\fcl-db\src\base\db.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1212"/>
         <CursorPos X="14" Y="1219"/>
-        <UsageCount Value="6"/>
-      </Unit32>
-      <Unit33>
+        <UsageCount Value="1"/>
+      </Unit35>
+      <Unit36>
         <Filename Value="C:\lazarus\fpc\3.0.4\source\packages\hash\src\md5.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="170"/>
         <CursorPos X="10" Y="183"/>
-        <UsageCount Value="2"/>
-      </Unit33>
-      <Unit34>
+        <UsageCount Value="7"/>
+      </Unit36>
+      <Unit37>
         <Filename Value="C:\lazarus\lcl\include\dblookup.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="411"/>
         <CursorPos Y="419"/>
-        <UsageCount Value="5"/>
-      </Unit34>
+        <UsageCount Value="0"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="C:\lazarus\lcl\lresources.pp"/>
+        <UnitName Value="LResources"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3176"/>
+        <CursorPos Y="3184"/>
+        <UsageCount Value="8"/>
+      </Unit38>
     </Units>
     <OtherDefines Count="1">
       <Define0 Value="UseCThreads"/>
     </OtherDefines>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="133" Column="17" TopLine="122"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="63" Column="22" TopLine="59"/>
       </Position1>
       <Position2>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="132" Column="17" TopLine="121"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Column="27"/>
       </Position2>
       <Position3>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="133" Column="17" TopLine="122"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="63" Column="31" TopLine="49"/>
       </Position3>
       <Position4>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="132" Column="17" TopLine="121"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="66" Column="16" TopLine="52"/>
       </Position4>
       <Position5>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="131" Column="17" TopLine="120"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="90" Column="20" TopLine="75"/>
       </Position5>
       <Position6>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="130" Column="17" TopLine="119"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="103" Column="18" TopLine="89"/>
       </Position6>
       <Position7>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="129" Column="17" TopLine="118"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="220" Column="62" TopLine="205"/>
       </Position7>
       <Position8>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="128" Column="17" TopLine="117"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="221" Column="74" TopLine="206"/>
       </Position8>
       <Position9>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="127" Column="17" TopLine="116"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="226" Column="29" TopLine="211"/>
       </Position9>
       <Position10>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="126" Column="17" TopLine="115"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="227" Column="29" TopLine="212"/>
       </Position10>
       <Position11>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="125" Column="17" TopLine="114"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="228" Column="72" TopLine="213"/>
       </Position11>
       <Position12>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="124" Column="17" TopLine="113"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="229" Column="29" TopLine="214"/>
       </Position12>
       <Position13>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="123" Column="17" TopLine="112"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Column="29"/>
       </Position13>
       <Position14>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="122" Column="17" TopLine="111"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="140" Column="28" TopLine="126"/>
       </Position14>
       <Position15>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="121" Column="17" TopLine="110"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="491" Column="16" TopLine="477"/>
       </Position15>
       <Position16>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="133" Column="17" TopLine="122"/>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="2" Column="26"/>
       </Position16>
       <Position17>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="134" Column="17" TopLine="123"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="306" Column="76" TopLine="295"/>
       </Position17>
       <Position18>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="264" Column="3" TopLine="262"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="308" Column="12" TopLine="297"/>
       </Position18>
       <Position19>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="265" Column="3" TopLine="263"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="306" Column="43" TopLine="298"/>
       </Position19>
       <Position20>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="264" Column="3" TopLine="262"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="310" Column="14" TopLine="299"/>
       </Position20>
       <Position21>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="263" Column="3" TopLine="261"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="326" Column="34" TopLine="314"/>
       </Position21>
       <Position22>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="262" Column="3" TopLine="260"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Column="30"/>
       </Position22>
       <Position23>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="261" Column="3" TopLine="259"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="57" Column="25" TopLine="43"/>
       </Position23>
       <Position24>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="260" Column="3" TopLine="258"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="259" Column="2" TopLine="251"/>
       </Position24>
       <Position25>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="259" Column="3" TopLine="257"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="108" Column="20" TopLine="88"/>
       </Position25>
       <Position26>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="258" Column="3" TopLine="256"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="3" Column="24"/>
       </Position26>
       <Position27>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="257" Column="3" TopLine="255"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="57" Column="25" TopLine="43"/>
       </Position27>
       <Position28>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="259" Column="3" TopLine="257"/>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Column="22"/>
       </Position28>
       <Position29>
-        <Filename Value="uimporc.pas"/>
-        <Caret Line="258" Column="3" TopLine="256"/>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="203" Column="56" TopLine="200"/>
       </Position29>
       <Position30>
-        <Filename Value="uimporc.pas"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
         <Caret Line="3" Column="21"/>
       </Position30>
     </JumpHistory>
