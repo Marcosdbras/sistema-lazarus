@@ -358,6 +358,14 @@ begin
        //endi
 
 
+       modulo_conexaodb.qrexec_base.Close;
+       modulo_conexaodb.qrexec_base.SQL.Clear;
+       modulo_conexaodb.qrexec_base.SQL.Add('insert into master_cotacao_item( prazo,  escolhido,  marger_lucro,  ndanfe,  valor,  cfor,  dif_prazo,    data,  ccotacao ) ');
+       modulo_conexaodb.qrexec_base.SQL.Add('                     values( :prazo,  :escolhido,  :marger_lucro,  :ndanfe,  :valor,  :cfor,  :dif_prazo,    :data,  :ccotacao) ');
+
+       modulo_conexaodb.qrexec_base.FieldByName('ccotacao').AsString:=iccotacao;
+
+
      end
   else if opcao_item = 'A' then
      begin

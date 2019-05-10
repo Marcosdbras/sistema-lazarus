@@ -21,8 +21,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="1429"/>
-        <CursorPos X="31" Y="1442"/>
+        <TopLine Value="1447"/>
+        <CursorPos X="17" Y="1460"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -338,9 +338,9 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="352"/>
-        <CursorPos X="8" Y="366"/>
-        <UsageCount Value="66"/>
+        <TopLine Value="368"/>
+        <CursorPos X="60" Y="379"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit30>
@@ -353,7 +353,7 @@
         <EditorIndex Value="5"/>
         <TopLine Value="30"/>
         <CursorPos X="52" Y="41"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="59"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit31>
@@ -366,7 +366,7 @@
         <EditorIndex Value="4"/>
         <TopLine Value="23"/>
         <CursorPos X="47" Y="25"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit32>
@@ -406,7 +406,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="411"/>
         <CursorPos Y="419"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit37>
       <Unit38>
         <Filename Value="C:\lazarus\lcl\lresources.pp"/>
@@ -423,123 +423,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="63" Column="22" TopLine="59"/>
+        <Caret Line="90" Column="20" TopLine="75"/>
       </Position1>
       <Position2>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Column="27"/>
+        <Caret Line="103" Column="18" TopLine="89"/>
       </Position2>
       <Position3>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="63" Column="31" TopLine="49"/>
+        <Caret Line="220" Column="62" TopLine="205"/>
       </Position3>
       <Position4>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="66" Column="16" TopLine="52"/>
+        <Caret Line="221" Column="74" TopLine="206"/>
       </Position4>
       <Position5>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="90" Column="20" TopLine="75"/>
+        <Caret Line="226" Column="29" TopLine="211"/>
       </Position5>
       <Position6>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="103" Column="18" TopLine="89"/>
+        <Caret Line="227" Column="29" TopLine="212"/>
       </Position6>
       <Position7>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="220" Column="62" TopLine="205"/>
+        <Caret Line="228" Column="72" TopLine="213"/>
       </Position7>
       <Position8>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="221" Column="74" TopLine="206"/>
+        <Caret Line="229" Column="29" TopLine="214"/>
       </Position8>
       <Position9>
-        <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="226" Column="29" TopLine="211"/>
-      </Position9>
-      <Position10>
-        <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="227" Column="29" TopLine="212"/>
-      </Position10>
-      <Position11>
-        <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="228" Column="72" TopLine="213"/>
-      </Position11>
-      <Position12>
-        <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="229" Column="29" TopLine="214"/>
-      </Position12>
-      <Position13>
         <Filename Value="uorcamento_cadastro.pas"/>
         <Caret Column="29"/>
-      </Position13>
-      <Position14>
+      </Position9>
+      <Position10>
         <Filename Value="uorcamento_cadastro.pas"/>
         <Caret Line="140" Column="28" TopLine="126"/>
-      </Position14>
-      <Position15>
+      </Position10>
+      <Position11>
         <Filename Value="uorcamento_cadastro.pas"/>
         <Caret Line="491" Column="16" TopLine="477"/>
-      </Position15>
-      <Position16>
+      </Position11>
+      <Position12>
         <Filename Value="ufuncao_geral.pas"/>
         <Caret Line="2" Column="26"/>
+      </Position12>
+      <Position13>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="306" Column="76" TopLine="295"/>
+      </Position13>
+      <Position14>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="308" Column="12" TopLine="297"/>
+      </Position14>
+      <Position15>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="306" Column="43" TopLine="298"/>
+      </Position15>
+      <Position16>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="310" Column="14" TopLine="299"/>
       </Position16>
       <Position17>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="306" Column="76" TopLine="295"/>
+        <Caret Line="326" Column="34" TopLine="314"/>
       </Position17>
       <Position18>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="308" Column="12" TopLine="297"/>
+        <Caret Column="30"/>
       </Position18>
       <Position19>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="306" Column="43" TopLine="298"/>
+        <Caret Line="57" Column="25" TopLine="43"/>
       </Position19>
       <Position20>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="310" Column="14" TopLine="299"/>
+        <Caret Line="259" Column="2" TopLine="251"/>
       </Position20>
       <Position21>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="326" Column="34" TopLine="314"/>
+        <Caret Line="108" Column="20" TopLine="88"/>
       </Position21>
       <Position22>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Column="30"/>
+        <Caret Line="3" Column="24"/>
       </Position22>
       <Position23>
         <Filename Value="ucotacao_cadastro.pas"/>
         <Caret Line="57" Column="25" TopLine="43"/>
       </Position23>
       <Position24>
-        <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="259" Column="2" TopLine="251"/>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Column="22"/>
       </Position24>
       <Position25>
-        <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="108" Column="20" TopLine="88"/>
+        <Filename Value="ufuncao_geral.pas"/>
+        <Caret Line="203" Column="56" TopLine="200"/>
       </Position25>
       <Position26>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="3" Column="24"/>
+        <Caret Line="3" Column="21"/>
       </Position26>
       <Position27>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="57" Column="25" TopLine="43"/>
+        <Caret Line="366" Column="8" TopLine="352"/>
       </Position27>
       <Position28>
-        <Filename Value="ufuncao_geral.pas"/>
-        <Caret Column="22"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="88" Column="2" TopLine="95"/>
       </Position28>
       <Position29>
-        <Filename Value="ufuncao_geral.pas"/>
-        <Caret Line="203" Column="56" TopLine="200"/>
+        <Filename Value="ucotacao_cadastro.pas"/>
+        <Caret Line="62" Column="28" TopLine="54"/>
       </Position29>
       <Position30>
         <Filename Value="ucotacao_cadastro.pas"/>
-        <Caret Line="3" Column="21"/>
+        <Caret Line="100" Column="15" TopLine="85"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
