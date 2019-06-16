@@ -52,24 +52,25 @@ type
     RLBand1: TRLBand;
     RLBand2: TRLBand;
     RLBand3: TRLBand;
+    RLBand4: TRLBand;
     RLDBText1: TRLDBText;
     RLDBText2: TRLDBText;
     RLDBText3: TRLDBText;
     RLDBText4: TRLDBText;
     RLDBText5: TRLDBText;
     RLDBText6: TRLDBText;
-    RLDBText7: TRLDBText;
     RLDraw1: TRLDraw;
     RLDraw4: TRLDraw;
-    RLDraw5: TRLDraw;
     RLDraw6: TRLDraw;
-    RLDraw7: TRLDraw;
+    RLDraw8: TRLDraw;
+    RLDraw9: TRLDraw;
     RLImage1: TRLImage;
     rlimporc: TRLReport;
     RLLabel1: TRLLabel;
     lbltittotal: TRLLabel;
     lbltotal: TRLLabel;
     RLLabel10: TRLLabel;
+    lblncm: TRLLabel;
     RLLabel2: TRLLabel;
     RLLabel3: TRLLabel;
     RLLabel4: TRLLabel;
@@ -88,6 +89,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure RLBand1AfterPrint(Sender: TObject);
     procedure RLBand2AfterPrint(Sender: TObject);
+    procedure RLBand2BeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure RLImage1AfterPrint(Sender: TObject);
     procedure RLLabel3AfterPrint(Sender: TObject);
     procedure RLLabel4AfterPrint(Sender: TObject);
@@ -256,6 +258,33 @@ end;
 
 procedure Tfrmimporc.RLBand2AfterPrint(Sender: TObject);
 begin
+
+
+
+end;
+
+procedure Tfrmimporc.RLBand2BeforePrint(Sender: TObject; var PrintIt: Boolean);
+begin
+    lblncm.Caption:='';
+
+  with modulo_conexaodb do
+  begin
+
+    //Localiza ncm
+    qrconsulta_base.Close;
+    qrconsulta_base.sql.Clear;
+    qrconsulta_base.SQL.Add('select * from testoque where controle = :codproduto');
+    qrconsulta_base.Params.ParamByName('codproduto').AsInteger:= modulo_orcamento.qrorcamento_itemproduto.FieldByName('codproduto').AsInteger;
+    qrconsulta_base.Open;
+
+    if qrconsulta_base.RecordCount > 0 then
+       begin
+         lblncm.Caption:=qrconsulta_base.FieldByName('ncm').AsString;
+       end;
+    //endif
+
+
+  end;
 
 end;
 

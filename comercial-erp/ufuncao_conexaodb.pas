@@ -149,9 +149,9 @@ implementation
                      //Conexaodb_remoto.Protocol        := Ini.ReadString('ConexaoBanco', 'Protocol', '');
                      //Conexaodb_remoto.LibraryLocation := Ini.ReadString('ConexaoBanco', 'LibraryLocation', '');
 
-                     Conexaodb_remoto.Connected       := True;
+                     //Conexaodb_remoto.Connected       := True;
 
-                     result := true;
+                     result := false;
 
 
 

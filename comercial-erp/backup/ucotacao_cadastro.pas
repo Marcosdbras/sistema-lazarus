@@ -312,31 +312,34 @@ end;
 
 procedure tfrmcotacao_cadastro.salvarCotacao;
 var
-  iccotacao:integer;
+  iccotacao, icodigo:integer;
 
 begin
-  if opcao_item = 'I' then
+
+
+  modulo_conexaodb.qrconsulta_base.Close;
+  modulo_conexaodb.qrconsulta_base.SQL.Clear;
+
+  if frmorcamento_cadastro <> nil then
      begin
 
+       modulo_conexaodb.qrconsulta_base.SQL.Add('select * from master_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
+       modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle_titensorcamento').AsInteger:= modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
 
-       modulo_conexaodb.qrconsulta_base.Close;
-       modulo_conexaodb.qrconsulta_base.SQL.Clear;
-
-       if frmorcamento_cadastro <> nil then
-          begin
-
-            modulo_conexaodb.qrconsulta_base.SQL.Add('select * from master_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
-            modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle_titensorcamento').AsInteger:= modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
-
-          end
-       else
-          begin
-            // seleciona tabela master pedido
-          end;
-       //endi
+     end
+  else
+     begin
+       // seleciona tabela master pedido
+     end;
+  //endi
 
 
-       modulo_conexaodb.qrconsulta_base.Open;
+  modulo_conexaodb.qrconsulta_base.Open;
+
+  icodigo := modulo_conexaodb.qrconsulta_base.FieldByName('codigo').AsInteger;
+
+  if opcao_item = 'I' then
+     begin
 
        if modulo_conexaodb.qrconsulta_base.FieldByName('ccotacao').AsInteger = 0 then
           begin
@@ -357,19 +360,23 @@ begin
           end;
        //endi
 
-
        modulo_conexaodb.qrexec_base.Close;
        modulo_conexaodb.qrexec_base.SQL.Clear;
-       modulo_conexaodb.qrexec_base.SQL.Add('insert into master_cotacao_item( prazo,  escolhido,  marger_lucro,  ndanfe,  valor,  cfor,  dif_prazo,    data,  ccotacao ) ');
-       modulo_conexaodb.qrexec_base.SQL.Add('                     values( :prazo,  :escolhido,  :marger_lucro,  :ndanfe,  :valor,  :cfor,  :dif_prazo,    :data,  :ccotacao) ');
+       modulo_conexaodb.qrexec_base.SQL.Add('insert into master_cotacao_item( prazo,  escolhido,  margem_lucro,  ndanfe,  valor,  cfor,  dif_prazo,    data,  ccotacao ) ');
+       modulo_conexaodb.qrexec_base.SQL.Add('                     values( :prazo,  :escolhido,  :margem_lucro,  :ndanfe,  :valor,  :cfor,  :dif_prazo,    :data,  :ccotacao) ');
 
-       modulo_conexaodb.qrexec_base.FieldByName('ccotacao').AsString:=iccotacao;
+       modulo_conexaodb.qrexec_base.FieldByName('ccotacao').AsInteger:=iccotacao;
 
 
      end
   else if opcao_item = 'A' then
      begin
 
+       modulo_conexaodb.qrexec_base.Close;
+       qrexec_base.SQL.Clear;
+       qrexec_base.SQL.Add('update master_cotacao_item set prazo = :prazo, escolhido = :escolhido, margem_lucro  = :margem_lucro,  ndanfe = :ndanfe, valor = :valor, cfor = :cfor,  dif_prazo = :dif_prazo,  data =  :data,   where codigo = :codigo');
+
+       qrexec_base.ParamByName('codigo').AsInteger:=icodigo;
 
 
 
