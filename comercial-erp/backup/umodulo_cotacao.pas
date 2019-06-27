@@ -16,6 +16,7 @@ type
     qrmaster_cotacao_item: TSQLQuery;
     qrmaster_cotacao_itemCFORN: TLongintField;
     qrmaster_cotacao_itemCODIGO: TLongintField;
+    qrmaster_cotacao_itemDATA: TDateField;
     qrmaster_cotacao_itemDIF_PRAZO: TLongintField;
     qrmaster_cotacao_itemESCOLHIDO: TStringField;
     qrmaster_cotacao_itemMARGEM_LUCRO: TBCDField;

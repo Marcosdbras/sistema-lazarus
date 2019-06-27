@@ -65,6 +65,8 @@ type
 
   private
      opcao_item:string;
+
+
   public
 
   end;
@@ -248,8 +250,10 @@ begin
        qrmaster_cotacao_item.Close;
        qrmaster_cotacao_item.SQL.Clear;
        qrmaster_cotacao_item.SQL.Add('select * from master_cotacao_item where ccotacao = :ccotacao');
-       qrmaster_cotacao_item.Params.ParamByName('ccotacao').AsInteger:=modulo_conexaodb.qrconsulta_base.FieldByName('ccotacao').AsInteger;
+       qrmaster_cotacao_item.Params.ParamByName('ccotacao').AsInteger:= modulo_conexaodb.qrconsulta_base.FieldByName('ccotacao').AsInteger;
        qrmaster_cotacao_item.Open;
+
+
 
      end;
   //endi
@@ -312,7 +316,8 @@ end;
 
 procedure tfrmcotacao_cadastro.salvarCotacao;
 var
-  iccotacao, icodigo:integer;
+  icodigo:integer;
+  iccotacao:integer;
 
 begin
 
@@ -362,10 +367,10 @@ begin
 
        modulo_conexaodb.qrexec_base.Close;
        modulo_conexaodb.qrexec_base.SQL.Clear;
-       modulo_conexaodb.qrexec_base.SQL.Add('insert into master_cotacao_item( prazo,  escolhido,  margem_lucro,  ndanfe,  valor,  cfor,  dif_prazo,    data,  ccotacao ) ');
+       modulo_conexaodb.qrexec_base.SQL.Add('insert into master_cotacao_item( prazo,  escolhido,  margem_lucro,  ndanfe,  valor,  cforn,  dif_prazo,    data,  ccotacao ) ');
        modulo_conexaodb.qrexec_base.SQL.Add('                     values( :prazo,  :escolhido,  :margem_lucro,  :ndanfe,  :valor,  :cfor,  :dif_prazo,    :data,  :ccotacao) ');
 
-       modulo_conexaodb.qrexec_base.FieldByName('ccotacao').AsInteger:=iccotacao;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('ccotacao').AsInteger:=iccotacao;
 
 
      end
@@ -374,11 +379,9 @@ begin
 
        modulo_conexaodb.qrexec_base.Close;
        modulo_conexaodb.qrexec_base.SQL.Clear;
-       modulo_conexaodb.qrexec_base.SQL.Add('update master_cotacao_item set prazo = :prazo, escolhido = :escolhido, margem_lucro  = :margem_lucro,  ndanfe = :ndanfe, valor = :valor, cfor = :cfor,  dif_prazo = :dif_prazo,  data =  :data,   where codigo = :codigo');
+       modulo_conexaodb.qrexec_base.SQL.Add('update master_cotacao_item set prazo = :prazo, escolhido = :escolhido, margem_lucro  = :margem_lucro,  ndanfe = :ndanfe, valor = :valor, cforn = :cfor,  dif_prazo = :dif_prazo,  data =  :data,   where codigo = :codigo');
 
-       modulo_conexaodb.qrexec_base.ParamByName('codigo').AsInteger:=icodigo;
-
-
+       modulo_conexaodb.qrexec_base.Params.ParamByName('codigo').AsInteger:=icodigo;
 
      end;
   //endi
@@ -386,15 +389,34 @@ begin
   if (opcao_item = 'I') or (opcao_item = 'A') then
      begin
 
+       modulo_conexaodb.qrexec_base.Params.ParamByName('prazo').AsInteger:=ediprazo.Value;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('escolhido').AsString:=cbxescolhido.Text;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('margem_lucro').Asfloat:=edimargem_lucro.Value;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('ndanfe').AsString:=edindanfe.Text;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('valor').Asfloat:=edivalor.Value;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('cfor').AsInteger:=modulo_fornecedor.qrtempFornecedor.FieldByName('cfor').AsInteger;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('dif_prazo').AsInteger:=edidif_prazo.Value;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('data').AsDateTime:=strtodate(edidatacotacao.Text);
+       modulo_conexaodb.qrexec_base.ExecSQL;
 
-
+       modulo_conexaodb.qrexec_base.Close;
+       modulo_conexaodb.qrexec_base.SQL.Clear;
+       modulo_conexaodb.qrexec_base.SQL.Add('update MASTER_ITENSORCAMENTO set ccotacao =  :ccotacao  where CONTROLE_TITENSORCAMENTO = :CONTROLE_TITENSORCAMENTO');
+       modulo_conexaodb.qrexec_base.Params.ParamByName('CONTROLE_TITENSORCAMENTO').AsInteger:=modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('ccotacao').AsInteger:=iccotacao;
+       modulo_conexaodb.qrexec_base.ExecSQL;
 
        modulo_conexaodb.atualizaBanco;
 
      end;
+  //end
 
 
 
+
+  modulo_cotacao.qrmaster_cotacao_item.Refresh;
+
+  opcao_item := 'I';
 
 end;
 

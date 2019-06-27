@@ -146,6 +146,15 @@ object modulo_cotacao: Tmodulo_cotacao
       ReadOnly = False
       Required = False
     end
+    object qrmaster_cotacao_itemDATA: TDateField
+      FieldKind = fkData
+      FieldName = 'DATA'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object dsmaster_cotacao_item: TDataSource
     DataSet = qrmaster_cotacao_item

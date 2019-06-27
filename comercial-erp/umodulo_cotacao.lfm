@@ -6,6 +6,7 @@ object modulo_cotacao: Tmodulo_cotacao
   Width = 342
   PPI = 96
   object qrmaster_cotacao_item: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CODIGO'
@@ -46,12 +47,17 @@ object modulo_cotacao: Tmodulo_cotacao
         Precision = -1
       end    
       item
+        Name = 'DIF_PRAZO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
         Name = 'DATA'
         DataType = ftDate
         Precision = -1
       end    
       item
-        Name = 'DIF_PRAZO'
+        Name = 'CCOTACAO'
         DataType = ftInteger
         Precision = -1
       end>
