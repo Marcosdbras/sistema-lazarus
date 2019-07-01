@@ -13,13 +13,13 @@ type
   { Tfrmcotacao_cadastro }
 
   Tfrmcotacao_cadastro = class(TForm)
-    btnAlterarproduto: TButton;
-    btnCancelarAltprod: TButton;
-    btnExcluirProduto: TButton;
+    btnAlterarcotacao: TButton;
+    btnCancelarAltcotacao: TButton;
+    btnExcluirCotacao: TButton;
     btnlancar: TButton;
     Button2: TButton;
     cbxescolhido: TComboBox;
-    DBGrid1: TDBGrid;
+    dbgcotacao: TDBGrid;
     cbxnomefor: TDBLookupComboBox;
     edivalor: TFloatSpinEdit;
     edimargem_lucro: TFloatSpinEdit;
@@ -33,20 +33,24 @@ type
     Label8: TLabel;
     Label9: TLabel;
     lblvalor: TLabel;
-    edidatacotacao: TMaskEdit;
     ediprazo: TSpinEdit;
     edindanfe: TSpinEdit;
     edidif_prazo: TSpinEdit;
+    edidatacotacao: TMaskEdit;
     Valor: TLabel;
     lblnomeproduto: TLabel;
     Panel1: TPanel;
     pnlsuperior: TPanel;
     pnlcentral: TPanel;
     pnlinferior: TPanel;
+    procedure btnAlterarcotacaoClick(Sender: TObject);
+    procedure btnCancelarAltcotacaoClick(Sender: TObject);
+    procedure btnExcluirCotacaoClick(Sender: TObject);
     procedure btnlancarClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure cbxescolhidoKeyPress(Sender: TObject; var Key: char);
     procedure cbxnomeforKeyPress(Sender: TObject; var Key: char);
+    procedure edidatacotacao1KeyPress(Sender: TObject; var Key: char);
     procedure edidatacotacaoKeyPress(Sender: TObject; var Key: char);
     procedure edidif_prazoKeyPress(Sender: TObject; var Key: char);
     procedure edimargem_lucroKeyPress(Sender: TObject; var Key: char);
@@ -62,9 +66,16 @@ type
     procedure salvarCotacao;
     procedure desbloqueiaCampo;
     procedure bloqueiaCampo;
+    procedure mostrarCotacao;
+    procedure bloqueiaCotacaoAlt;
+    procedure desbloqueiaCotacaoAlt;
+    procedure habilitarbotao;
+    procedure desabilitarbotao;
+
 
   private
      opcao_item:string;
+     icodigo_master_cotacao_item:integer;
 
 
   public
@@ -105,9 +116,87 @@ begin
 
  desbloqueiaCampo;
 
+ habilitarbotao;
+
+ btnCancelarAltCotacao.Enabled:=false;
+
  cbxnomefor.SetFocus;
 
  opcao_item := 'I';
+
+end;
+
+procedure Tfrmcotacao_cadastro.btnAlterarcotacaoClick(Sender: TObject);
+begin
+    if modulo_cotacao.qrmaster_cotacao_item.RecordCount = 0 then
+     begin
+       Application.MessageBox('Não há nennhuma cotação para ser alterada!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
+  opcao_item := 'A';
+
+  mostrarCotacao;
+
+  desabilitarbotao;
+
+  btnCancelarAltCotacao.Enabled:=true;
+  btnLancar.Enabled:=true;
+
+
+  bloqueiaCotacaoAlt;
+
+  cbxnomefor.SetFocus;
+
+end;
+
+procedure Tfrmcotacao_cadastro.btnCancelarAltcotacaoClick(Sender: TObject);
+begin
+  limparCampo;
+  desbloqueiaCotacaoAlt;
+  cbxnomefor.SetFocus;
+end;
+
+procedure Tfrmcotacao_cadastro.btnExcluirCotacaoClick(Sender: TObject);
+begin
+    if modulo_orcamento.qrorcamento_itemproduto.RecordCount = 0 then
+     begin
+       Application.MessageBox('Não há nennhum cotação para ser excluida!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
+  if Application.MessageBox('Tem certeza que deseja excluir a cotação selecionada?','Atenção',MB_YESNO) = 6  then
+     begin
+
+       icodigo_master_cotacao_item :=modulo_cotacao.qrmaster_cotacao_item.FieldByName('CODIGO').AsInteger;
+
+       with modulo_conexaodb do
+         begin
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('delete from master_cotacao_item where codigo = :codigo');
+            qrexec_base.ParamByName('codigo').AsInteger:= icodigo_master_cotacao_item;
+            qrexec_base.ExecSQL;
+
+            atualizaBanco;
+
+         end;
+       //endth
+
+
+
+       modulo_cotacao.qrmaster_cotacao_item.Refresh;
+
+       modulo_cotacao.qrmaster_cotacao_item.Locate('codigo',icodigo_master_cotacao_item+1,[]);
+
+
+
+
+     end;
+  //endi
 
 end;
 
@@ -138,10 +227,23 @@ begin
 
 end;
 
-procedure Tfrmcotacao_cadastro.edidatacotacaoKeyPress(Sender: TObject;
+procedure Tfrmcotacao_cadastro.edidatacotacao1KeyPress(Sender: TObject;
   var Key: char);
 begin
   if key = #13 then
+   begin
+     key := #0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+  //endi
+
+end;
+
+procedure Tfrmcotacao_cadastro.edidatacotacaoKeyPress(Sender: TObject;
+  var Key: char);
+begin
+    if key = #13 then
    begin
      key := #0;
      SelectNext(ActiveControl,True,True);
@@ -282,6 +384,10 @@ begin
 
  limparCampo;
 
+ habilitarbotao;
+ btnCancelarAltCotacao.Enabled:=false;
+
+
  opcao_item := 'I';
 
 end;
@@ -303,7 +409,7 @@ end;
 
 procedure tfrmcotacao_cadastro.limparCampo;
 begin
-  edidatacotacao.Text:='';
+  edidatacotacao.Text:=datetostr(date);
   edivalor.Value:=0;
   edimargem_lucro.Value:=0;
   ediprazo.Value:=0;
@@ -316,7 +422,7 @@ end;
 
 procedure tfrmcotacao_cadastro.salvarCotacao;
 var
-  icodigo:integer;
+  icodigo_master_itensorcamento:integer;
   iccotacao:integer;
 
 begin
@@ -341,7 +447,7 @@ begin
 
   modulo_conexaodb.qrconsulta_base.Open;
 
-  icodigo := modulo_conexaodb.qrconsulta_base.FieldByName('codigo').AsInteger;
+  icodigo_master_itensorcamento := modulo_conexaodb.qrconsulta_base.FieldByName('codigo').AsInteger;
 
   if opcao_item = 'I' then
      begin
@@ -349,12 +455,20 @@ begin
        if modulo_conexaodb.qrconsulta_base.FieldByName('ccotacao').AsInteger = 0 then
           begin
 
+            //Próximo número da cotação
             modulo_conexaodb.qrexec_base.Close;
             modulo_conexaodb.qrexec_base.SQL.Clear;
             modulo_conexaodb.qrexec_base.SQL.Add('select GEN_ID(GEN_CCOTACAO_ID,1) as prox_codigo FROM RDB$DATABASE;');
             modulo_conexaodb.qrexec_base.Open;
 
             iccotacao := modulo_conexaodb.qrexec_base.FieldByName('prox_codigo').AsInteger;
+
+            //Filtrar pelo número da cotação
+            modulo_cotacao.qrmaster_cotacao_item.Close;
+            modulo_cotacao.qrmaster_cotacao_item.SQL.Clear;
+            modulo_cotacao.qrmaster_cotacao_item.SQL.Add('select * from master_cotacao_item where ccotacao = :ccotacao');
+            modulo_cotacao.qrmaster_cotacao_item.Params.ParamByName('ccotacao').AsInteger:= iccotacao;
+            modulo_cotacao.qrmaster_cotacao_item.Open;
 
           end
        else
@@ -379,9 +493,9 @@ begin
 
        modulo_conexaodb.qrexec_base.Close;
        modulo_conexaodb.qrexec_base.SQL.Clear;
-       modulo_conexaodb.qrexec_base.SQL.Add('update master_cotacao_item set prazo = :prazo, escolhido = :escolhido, margem_lucro  = :margem_lucro,  ndanfe = :ndanfe, valor = :valor, cforn = :cfor,  dif_prazo = :dif_prazo,  data =  :data,   where codigo = :codigo');
+       modulo_conexaodb.qrexec_base.SQL.Add('update master_cotacao_item set prazo = :prazo, escolhido = :escolhido, margem_lucro  = :margem_lucro,  ndanfe = :ndanfe, valor = :valor, cforn = :cfor,  dif_prazo = :dif_prazo,  data =  :data   where codigo = :codigo');
 
-       modulo_conexaodb.qrexec_base.Params.ParamByName('codigo').AsInteger:=icodigo;
+       modulo_conexaodb.qrexec_base.Params.ParamByName('codigo').AsInteger:=icodigo_master_cotacao_item;
 
      end;
   //endi
@@ -399,22 +513,40 @@ begin
        modulo_conexaodb.qrexec_base.Params.ParamByName('data').AsDateTime:=strtodate(edidatacotacao.Text);
        modulo_conexaodb.qrexec_base.ExecSQL;
 
-       modulo_conexaodb.qrexec_base.Close;
-       modulo_conexaodb.qrexec_base.SQL.Clear;
-       modulo_conexaodb.qrexec_base.SQL.Add('update MASTER_ITENSORCAMENTO set ccotacao =  :ccotacao  where codigo = :codigo');
-       modulo_conexaodb.qrexec_base.Params.ParamByName('codigo').AsInteger:=modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
-       modulo_conexaodb.qrexec_base.Params.ParamByName('ccotacao').AsInteger:=iccotacao;
-       modulo_conexaodb.qrexec_base.ExecSQL;
+       if (opcao_item = 'I') then
+          begin
+
+            modulo_conexaodb.qrexec_base.Close;
+            modulo_conexaodb.qrexec_base.SQL.Clear;
+            modulo_conexaodb.qrexec_base.SQL.Add('update MASTER_ITENSORCAMENTO set ccotacao =  :ccotacao  where CONTROLE_TITENSORCAMENTO = :CONTROLE_TITENSORCAMENTO');
+            modulo_conexaodb.qrexec_base.Params.ParamByName('CONTROLE_TITENSORCAMENTO').AsInteger:=modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
+            modulo_conexaodb.qrexec_base.Params.ParamByName('ccotacao').AsInteger:=iccotacao;
+            modulo_conexaodb.qrexec_base.ExecSQL;
+
+
+          end;
+       //endi
 
        modulo_conexaodb.atualizaBanco;
+
+       modulo_cotacao.qrmaster_cotacao_item.Refresh;
+
+       if (opcao_item = 'I') then
+          begin
+            modulo_cotacao.qrmaster_cotacao_item.Last;
+          end;
+       //endi
+
+       if (opcao_item = 'A') then
+          begin
+             modulo_cotacao.qrmaster_cotacao_item.Locate('codigo',icodigo_master_cotacao_item,[]);
+          end;
+       //endi
 
      end;
   //end
 
-
-
-
-  modulo_cotacao.qrmaster_cotacao_item.Refresh;
+  desbloqueiaCotacaoAlt;
 
   opcao_item := 'I';
 
@@ -443,8 +575,55 @@ begin
   cbxescolhido.Enabled:=false;
 end;
 
+procedure tfrmcotacao_cadastro.mostrarCotacao;
+begin
+
+  modulo_fornecedor.qrtempFornecedor.Edit;
+  modulo_fornecedor.qrtempFornecedor.FieldByName('cfor').AsInteger:=modulo_cotacao.qrmaster_cotacao_item.FieldByName('cforn').AsInteger;
 
 
+  icodigo_master_cotacao_item :=modulo_cotacao.qrmaster_cotacao_item.FieldByName('CODIGO').AsInteger;
+  edidatacotacao.Text:=modulo_cotacao.qrmaster_cotacao_item.FieldByName('DATA').AsString;
+  edivalor.Value:=modulo_cotacao.qrmaster_cotacao_item.FieldByName('VALOR').AsFloat;
+  edimargem_lucro.Value:=modulo_cotacao.qrmaster_cotacao_item.FieldByName('MARGEM_LUCRO').AsFloat;
+  ediprazo.Value:=modulo_cotacao.qrmaster_cotacao_item.FieldByName('PRAZO').AsFloat;
+  edindanfe.Value:=modulo_cotacao.qrmaster_cotacao_item.FieldByName('ndanfe').AsFloat;
+  cbxescolhido.Text:=modulo_cotacao.qrmaster_cotacao_item.FieldByName('ESCOLHIDO').AsString;
+
+
+end;
+
+
+procedure  tfrmcotacao_cadastro.bloqueiaCotacaoAlt;
+begin
+
+  dbgCotacao.Enabled:=false;
+
+end;
+
+procedure tfrmcotacao_cadastro.desbloqueiaCotacaoAlt;
+begin
+
+  dbgCotacao.Enabled:=true;
+
+end;
+
+procedure tfrmcotacao_cadastro.habilitarbotao;
+begin
+  btnlancar.Enabled:=true;
+  btnalterarcotacao.Enabled:=true;
+  btncancelaraltCotacao.Enabled:=true;
+  btnexcluircotacao.Enabled:=true;
+end;
+
+procedure tfrmcotacao_cadastro.desabilitarbotao;
+begin
+  btnlancar.Enabled:=false;
+  btnalterarcotacao.Enabled:=false;
+  btncancelaraltCotacao.Enabled:=false;
+  btnexcluircotacao.Enabled:=false;
+
+end;
 
 end.
 

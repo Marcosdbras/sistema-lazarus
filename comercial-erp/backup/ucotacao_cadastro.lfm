@@ -120,18 +120,6 @@ object frmcotacao_cadastro: Tfrmcotacao_cadastro
       Caption = 'Data Cotação'
       ParentColor = False
     end
-    object edidatacotacao: TMaskEdit
-      Left = 280
-      Height = 23
-      Top = 28
-      Width = 128
-      CharCase = ecNormal
-      MaxLength = 0
-      TabOrder = 1
-      OnKeyPress = edidatacotacaoKeyPress
-      Text = 'edidatacotacao'
-      SpaceChar = '_'
-    end
     object edivalor: TFloatSpinEdit
       Left = 415
       Height = 23
@@ -139,7 +127,7 @@ object frmcotacao_cadastro: Tfrmcotacao_cadastro
       Width = 107
       Alignment = taRightJustify
       Increment = 1
-      MaxValue = 100
+      MaxValue = 0
       MinValue = 0
       OnKeyPress = edivalorKeyPress
       TabOrder = 2
@@ -161,7 +149,7 @@ object frmcotacao_cadastro: Tfrmcotacao_cadastro
       Width = 104
       Alignment = taRightJustify
       Increment = 1
-      MaxValue = 100
+      MaxValue = 0
       MinValue = 0
       OnKeyPress = edimargem_lucroKeyPress
       TabOrder = 3
@@ -182,6 +170,7 @@ object frmcotacao_cadastro: Tfrmcotacao_cadastro
       Top = 28
       Width = 48
       Alignment = taRightJustify
+      MaxValue = 0
       OnKeyPress = ediprazoKeyPress
       TabOrder = 4
     end
@@ -232,7 +221,7 @@ object frmcotacao_cadastro: Tfrmcotacao_cadastro
       OnClick = btnlancarClick
       TabOrder = 8
     end
-    object DBGrid1: TDBGrid
+    object dbgcotacao: TDBGrid
       Left = 8
       Height = 328
       Top = 56
@@ -284,6 +273,7 @@ object frmcotacao_cadastro: Tfrmcotacao_cadastro
       Top = 28
       Width = 88
       Alignment = taRightJustify
+      MaxValue = 0
       OnKeyPress = edindanfeKeyPress
       TabOrder = 6
     end
@@ -302,32 +292,49 @@ object frmcotacao_cadastro: Tfrmcotacao_cadastro
       Top = 28
       Width = 46
       Enabled = False
+      MaxValue = 0
       OnKeyPress = edidif_prazoKeyPress
       TabOrder = 5
     end
-    object btnAlterarproduto: TButton
+    object btnAlterarcotacao: TButton
       Left = 984
       Height = 40
       Top = 56
       Width = 80
       Caption = 'Alterar'
+      OnClick = btnAlterarcotacaoClick
       TabOrder = 10
     end
-    object btnCancelarAltprod: TButton
+    object btnCancelarAltcotacao: TButton
       Left = 984
       Height = 40
       Top = 96
       Width = 80
       Caption = 'Cancelar'
+      OnClick = btnCancelarAltcotacaoClick
       TabOrder = 11
     end
-    object btnExcluirProduto: TButton
+    object btnExcluirCotacao: TButton
       Left = 984
       Height = 40
       Top = 136
       Width = 80
       Caption = 'Excluir'
+      OnClick = btnExcluirCotacaoClick
       TabOrder = 12
+    end
+    object edidatacotacao: TMaskEdit
+      Left = 280
+      Height = 23
+      Top = 28
+      Width = 128
+      CharCase = ecNormal
+      MaxLength = 10
+      TabOrder = 1
+      OnKeyPress = edidatacotacaoKeyPress
+      EditMask = '##/##/####;1;_'
+      Text = '  /  /    '
+      SpaceChar = '_'
     end
   end
   object pnlinferior: TPanel
