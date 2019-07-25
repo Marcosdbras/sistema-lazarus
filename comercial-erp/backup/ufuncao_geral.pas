@@ -239,6 +239,49 @@ if existe_tabela('MASTER_COTACAO_ITEM') = 0 then
 //endif
 
 
+//Tabela MASTER_ITEMPEDIDOVENDA existe?
+if existe_tabela('MASTER_ITEMPEDIDOVENDA') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE MASTER_ITEMPEDIDOVENDA(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_ITEMPEDIDOVENDA_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA ADD CONSTRAINT PK_MASTER_ITEMPEDIDOVENDA  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger master_ITEMPEDIDOVENDA_bi for master_ITEMPEDIDOVENDA');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_master_ITEMPEDIDOVENDA_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
+
+
+
+
+
 //Tabela MASTER_ITENSORCAMENTO existe?
 if existe_tabela('MASTER_ITENSORCAMENTO') = 0 then
    begin
@@ -278,6 +321,58 @@ if existe_tabela('MASTER_ITENSORCAMENTO') = 0 then
    end;
 //endif
 
+
+
+
+
+//MarcosBras
+//24.07.2019
+//Tabela MASTER_PEDIDOVENDA existe?
+if existe_tabela('MASTER_PEDIDOVENDA') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE MASTER_PEDIDOVENDA(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_PEDIDOVENDA_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE MASTER_PEDIDOVENDA ADD CONSTRAINT PK_MASTER_PEDIDOVENDA  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger master_pedidovenda_bi for master_pedidovenda');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_master_pedidovenda_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
+
+
+
+
+
+
+
+
 //Tabela MASTER_ORCAMENTO existe?
 if existe_tabela('MASTER_ORCAMENTO') = 0 then
    begin
@@ -316,6 +411,11 @@ if existe_tabela('MASTER_ORCAMENTO') = 0 then
 
    end;
 //endif
+
+
+
+
+
 
 //Tabela MASTER_INDICE existe?
 if existe_tabela('MASTER_INDICE') = 0 then
@@ -516,6 +616,28 @@ if existe_campo('MASTER_COTACAO_ITEM','data') = 0 then
   end;
 //endi
 
+
+//Campo ccotacao existe?
+if existe_campo('MASTER_COTACAO_ITEM','ccotacao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD ccotacao integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
 //Campo ccotacao no itensorcamento existe?
 if existe_campo('MASTER_ITENSORCAMENTO','ccotacao') = 0 then
    begin
@@ -576,6 +698,77 @@ if existe_campo('MASTER_ITENSORCAMENTO','ctabp') = 0 then
   end;
 //endi
 
+
+
+
+//Marcos Bras
+//25.07.2019
+//Campo ccotacao no ITEMPEDIDOVENDA existe?
+if existe_campo('MASTER_ITEMPEDIDOVENDA','ccotacao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA ADD ccotacao integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+
+
+              //Script.Script.Clear;
+              //Script.Terminator:=';';
+              //Script.Script.Add('CREATE SEQUENCE GEN_CCOTACAO_ID;');
+              //Script.Script.Add('COMMIT;');
+              //Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo controle_tITEMPEDIDOVENDA existe?
+if existe_campo('MASTER_ITEMPEDIDOVENDA','controle_tITEMPEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA  ADD controle_tITEMPEDIDOVENDA integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo ctabp no ITEMPEDIDOVENDA existe?
+if existe_campo('MASTER_ITEMPEDIDOVENDA','ctabp') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA ADD ctabp integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
 //Campo controle_torcamento existe?
 if existe_campo('MASTER_ORCAMENTO','controle_torcamento') = 0 then
    begin
@@ -629,6 +822,74 @@ if existe_campo('MASTER_ORCAMENTO','ctabp') = 0 then
          //endth
   end;
 //endi
+
+
+
+
+//Marcos Brás
+//25.07.2019
+
+//Campo controle_tpedidovenda existe?
+if existe_campo('MASTER_PEDIDOVENDA','controle_tpedidovenda') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_PEDIDOVENDA  ADD controle_tpedidovenda integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo prazo existe?
+if existe_campo('MASTER_PEDIDOVENDA','prazo') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_PEDIDOVENDA  ADD prazo integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo ctabp existe?
+if existe_campo('MASTER_PEDIDOVENDA','ctabp') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_PEDIDOVENDA  ADD ctabp integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+
+
 
 //Campo AdmSN existe?
 if existe_campo('MASTER_INDICE','AdmSN') = 0 then
@@ -904,6 +1165,49 @@ if existe_campo('MASTER_INDICE','PADRAOORCAMENTO') = 0 then
          //endth
   end;
 //endi
+
+
+
+
+//Marcos Bras
+//25.07.2019
+//Campo PADRAOPEDIDOVENDA padrão existe?
+//ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDOVENDA BLOB SUB_TYPE 1 SEGMENT SIZE 80
+if existe_campo('MASTER_INDICE','PADRAOPEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDOVENDA BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('update MASTER_INDICE set PADRAOPEDIDOVENDA = '+quotedstr('Condições de pagamento: 28 dias'+chr(13)+
+                                                                                        'Prazo de entrega: 2 dias'+chr(13)+
+                                                                                        'Frete: ( )CIF / ( )FOB'+chr(13)+
+                                                                                        'Garantia para troca: 3 dias sem violação de embalagem ou remoção de etiqueta'+chr(13)+chr(13)+
+                                                                                        '_____________________________________________'+chr(13)+
+                                                                                        'Departamento Comercial'
+              )+';');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+
 
 //Campo PADRAOPEDIDO padrão existe?
 //ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDO BLOB SUB_TYPE 1 SEGMENT SIZE 80
