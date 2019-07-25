@@ -216,7 +216,7 @@ end;
 
 procedure Tmodulo_orcamento.qrorcamento_itemprodutoAfterPost(DataSet: TDataSet);
 begin
-  //qrorcamento_itemproduto.ApplyUpdates(0);
+
 end;
 
 procedure Tmodulo_orcamento.qrsequenciaAfterDelete(DataSet: TDataSet);

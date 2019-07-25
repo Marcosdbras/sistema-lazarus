@@ -39,12 +39,13 @@ begin
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
   Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
+  Application.CreateForm(Tmodulo_pedidovenda, modulo_pedidovenda);
   Application.CreateForm(Tmodulo_unidade, modulo_unidade);
   Application.CreateForm(Tmodulo_produto, modulo_produto);
   Application.CreateForm(Tmodulo_vendaorc, modulo_vendaorc);
   Application.CreateForm(Tmodulo_temp, modulo_temp);
   Application.CreateForm(Tmodulo_geral, modulo_geral);
-
+  Application.CreateForm(Tmodulo_cotacao, modulo_cotacao);
 
   // 2-Cria módulo conexao com a tabela remota para sincronismo com base
   Application.CreateForm(Tmodulo_remoto, modulo_remoto);
@@ -59,7 +60,7 @@ begin
 
   frmsplash.Hide;
   frmsplash.Free;
-  Application.CreateForm(Tmodulo_cotacao, modulo_cotacao);
+
   Application.Run;
 end.
 
