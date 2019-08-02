@@ -261,6 +261,7 @@
         <Filename Value="umodulo_orcamento.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_orcamento"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit33>
     </Units>

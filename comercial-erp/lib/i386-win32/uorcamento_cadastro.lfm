@@ -2,12 +2,12 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
   Left = 6
   Height = 689
   Top = 0
-  Width = 900
+  Width = 908
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
   Caption = 'Master Plus - Orçamento'
   ClientHeight = 689
-  ClientWidth = 900
+  ClientWidth = 908
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
@@ -17,14 +17,15 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
     Left = 0
     Height = 32
     Top = 0
-    Width = 900
+    Width = 908
     Align = alTop
     BevelOuter = bvNone
     ClientHeight = 32
-    ClientWidth = 900
+    ClientWidth = 908
     Color = 16744448
     ParentColor = False
     TabOrder = 0
+    OnClick = pnlsuperiorClick
     object lblstatus: TLabel
       Left = 7
       Height = 18
@@ -42,7 +43,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       ParentFont = False
     end
     object Panel2: TPanel
-      Left = 809
+      Left = 817
       Height = 32
       Top = 0
       Width = 91
@@ -55,16 +56,16 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
     Left = 0
     Height = 50
     Top = 639
-    Width = 900
+    Width = 908
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 50
-    ClientWidth = 900
+    ClientWidth = 908
     Color = 16744448
     ParentColor = False
     TabOrder = 1
     OnClick = pnlinferiorClick
-    object Button1: TButton
+    object btnsalvar: TButton
       Left = 3
       Height = 40
       Top = 8
@@ -76,12 +77,12 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      OnClick = Button1Click
+      OnClick = btnsalvarClick
       ParentFont = False
       TabOrder = 0
     end
     object Panel1: TPanel
-      Left = 792
+      Left = 800
       Height = 50
       Top = 0
       Width = 108
@@ -112,11 +113,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
     Left = 0
     Height = 607
     Top = 32
-    Width = 900
+    Width = 908
     Align = alClient
     BevelOuter = bvNone
     ClientHeight = 607
-    ClientWidth = 900
+    ClientWidth = 908
     Color = 16744576
     ParentColor = False
     TabOrder = 2
@@ -124,13 +125,13 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
       Left = 0
       Height = 607
       Top = 0
-      Width = 900
-      HorzScrollBar.Page = 895
+      Width = 908
+      HorzScrollBar.Page = 902
       VertScrollBar.Page = 574
       Align = alClient
       BorderStyle = bsNone
       ClientHeight = 607
-      ClientWidth = 900
+      ClientWidth = 908
       Color = clForm
       ParentColor = False
       TabOrder = 0
@@ -139,18 +140,34 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Left = 0
         Height = 120
         Top = 0
-        Width = 900
+        Width = 908
         Align = alTop
         Caption = ' Identificação '
         ClientHeight = 100
-        ClientWidth = 896
+        ClientWidth = 904
         TabOrder = 0
+        object Shape2: TShape
+          Left = 357
+          Height = 100
+          Top = 0
+          Width = 541
+          Align = alLeft
+          Pen.Color = clWhite
+        end
+        object Shape1: TShape
+          Left = 0
+          Height = 100
+          Top = 0
+          Width = 357
+          Align = alLeft
+          Pen.Color = clWhite
+        end
         object lblcliente: TLabel
-          Left = 360
+          Left = 363
           Height = 18
           Top = 0
-          Width = 150
-          Caption = 'Razão Social (Nome):'
+          Width = 146
+          Caption = 'Razão Social (Nome)'
           Font.CharSet = ANSI_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -162,11 +179,18 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object cbxnomecliente: TDBLookupComboBox
-          Left = 360
+          Left = 363
           Height = 23
           Top = 18
           Width = 448
           DataField = 'ccli'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
           ListFieldIndex = 0
           LookupCache = False
           OnChange = cbxnomeclienteChange
@@ -174,13 +198,14 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           OnKeyDown = cbxnomeclienteKeyDown
           OnKeyPress = cbxnomeclienteKeyPress
           OnSelect = cbxnomeclienteSelect
+          ParentFont = False
           TabOrder = 2
         end
         object cbxnomeven: TDBLookupComboBox
-          Left = 176
+          Left = 179
           Height = 23
           Top = 18
-          Width = 176
+          Width = 168
           DataField = 'cven'
           ListFieldIndex = 0
           LookupCache = False
@@ -189,11 +214,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           TabOrder = 1
         end
         object lblcliente1: TLabel
-          Left = 176
+          Left = 179
           Height = 18
           Top = 0
-          Width = 72
-          Caption = 'Vendedor:'
+          Width = 68
+          Caption = 'Vendedor'
           Font.CharSet = ANSI_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -205,11 +230,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object lblcliente2: TLabel
-          Left = 0
+          Left = 3
           Height = 18
           Top = 0
-          Width = 88
-          Caption = 'Funcionário:'
+          Width = 84
+          Caption = 'Funcionário'
           Font.CharSet = ANSI_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -221,7 +246,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object cbxnomefun: TDBLookupComboBox
-          Left = 0
+          Left = 3
           Height = 23
           Top = 18
           Width = 168
@@ -233,11 +258,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           TabOrder = 0
         end
         object lblcliente6: TLabel
-          Left = 0
+          Left = 3
           Height = 18
           Top = 55
-          Width = 119
-          Caption = 'Tabela de Preço:'
+          Width = 115
+          Caption = 'Tabela de Preço'
           Font.CharSet = ANSI_CHARSET
           Font.Color = clBlack
           Font.Height = -15
@@ -249,22 +274,23 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object cbxtabpreco: TDBLookupComboBox
-          Left = 0
+          Left = 3
           Height = 23
           Top = 73
-          Width = 282
+          Width = 344
           DataField = 'ctabp'
           DataSource = modulo_tabpreco.dstempTabPreco
           ListFieldIndex = 0
           LookupCache = False
           NullValueKey = 46
+          OnChange = cbxtabprecoChange
           OnKeyPress = cbxtabprecoKeyPress
           TabOrder = 3
         end
         object Label1: TLabel
-          Left = 360
+          Left = 363
           Height = 16
-          Top = 44
+          Top = 42
           Width = 64
           Caption = 'Endereço:'
           Font.CharSet = ANSI_CHARSET
@@ -277,9 +303,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object lblenderecocli: TLabel
-          Left = 432
+          Left = 435
           Height = 16
-          Top = 44
+          Top = 42
           Width = 280
           AutoSize = False
           Caption = 'lblenderecocli'
@@ -293,9 +319,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object Label3: TLabel
-          Left = 720
+          Left = 723
           Height = 16
-          Top = 44
+          Top = 42
           Width = 54
           Caption = 'Número:'
           Font.CharSet = ANSI_CHARSET
@@ -308,9 +334,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object lblnumerocli: TLabel
-          Left = 784
+          Left = 787
           Height = 16
-          Top = 44
+          Top = 42
           Width = 80
           Caption = 'lblnumerocli'
           Font.CharSet = ANSI_CHARSET
@@ -323,9 +349,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 360
+          Left = 363
           Height = 16
-          Top = 64
+          Top = 62
           Width = 43
           Caption = 'Bairro:'
           Font.CharSet = ANSI_CHARSET
@@ -338,9 +364,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object lblbairrocli: TLabel
-          Left = 432
+          Left = 435
           Height = 16
-          Top = 64
+          Top = 62
           Width = 197
           AutoSize = False
           Caption = 'lblbairrocli'
@@ -354,9 +380,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object Label5: TLabel
-          Left = 640
+          Left = 643
           Height = 16
-          Top = 64
+          Top = 62
           Width = 49
           Caption = 'Cidade:'
           Font.CharSet = ANSI_CHARSET
@@ -369,9 +395,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object lblcidadecli: TLabel
-          Left = 693
+          Left = 696
           Height = 16
-          Top = 64
+          Top = 62
           Width = 74
           Caption = 'lblcidadecli'
           Font.CharSet = ANSI_CHARSET
@@ -384,9 +410,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object Label6: TLabel
-          Left = 360
+          Left = 363
           Height = 16
-          Top = 83
+          Top = 81
           Width = 30
           Caption = 'CEP:'
           Font.CharSet = ANSI_CHARSET
@@ -399,9 +425,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object lblcepcli: TLabel
-          Left = 432
+          Left = 435
           Height = 16
-          Top = 83
+          Top = 81
           Width = 54
           Caption = 'lblcepcli'
           Font.CharSet = ANSI_CHARSET
@@ -414,9 +440,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object Label7: TLabel
-          Left = 517
+          Left = 520
           Height = 16
-          Top = 83
+          Top = 81
           Width = 46
           Caption = 'Estado:'
           Font.CharSet = ANSI_CHARSET
@@ -429,37 +455,13 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           ParentFont = False
         end
         object lblestadocli: TLabel
-          Left = 568
+          Left = 571
           Height = 16
-          Top = 83
+          Top = 81
           Width = 73
           Caption = 'lblestadocli'
           Font.CharSet = ANSI_CHARSET
           Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Pitch = fpVariable
-          Font.Quality = fqDraft
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
-        end
-        object ediprazo: TSpinEdit
-          Left = 288
-          Height = 23
-          Top = 73
-          Width = 64
-          OnKeyPress = ediprazoKeyPress
-          TabOrder = 4
-        end
-        object lblcliente8: TLabel
-          Left = 288
-          Height = 18
-          Top = 55
-          Width = 45
-          Caption = 'Prazo:'
-          Font.CharSet = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -15
           Font.Name = 'Arial'
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
@@ -472,22 +474,22 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Left = 0
         Height = 411
         Top = 120
-        Width = 900
+        Width = 908
         Align = alTop
         Caption = ' Produtos '
         ClientHeight = 391
-        ClientWidth = 896
+        ClientWidth = 904
         TabOrder = 1
         OnClick = GroupBox2Click
         object Panel3: TPanel
           Left = 0
           Height = 43
           Top = 0
-          Width = 896
+          Width = 904
           Align = alTop
           BevelOuter = bvNone
           ClientHeight = 43
-          ClientWidth = 896
+          ClientWidth = 904
           TabOrder = 0
           object lblcliente3: TLabel
             Left = 0
@@ -642,12 +644,12 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
           Left = 0
           Height = 348
           Top = 43
-          Width = 896
+          Width = 904
           Align = alClient
           BevelOuter = bvNone
           Caption = 'Panel5'
           ClientHeight = 348
-          ClientWidth = 896
+          ClientWidth = 904
           TabOrder = 1
           object dbgproduto: TDBGrid
             Left = 0
@@ -702,11 +704,11 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Left = 0
             Height = 93
             Top = 255
-            Width = 896
+            Width = 904
             Align = alBottom
             BevelOuter = bvNone
             ClientHeight = 93
-            ClientWidth = 896
+            ClientWidth = 904
             TabOrder = 1
             object GroupBox3: TGroupBox
               Left = 0
@@ -726,6 +728,8 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
                 Lines.Strings = (
                   'memoobs'
                 )
+                OnKeyDown = memoobsKeyDown
+                ScrollBars = ssVertical
                 TabOrder = 0
               end
             end
@@ -750,6 +754,48 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
               OnKeyPress = edtvlrsubtotalKeyPress
               TabOrder = 1
               Value = 0
+            end
+            object lblcliente8: TLabel
+              Left = 576
+              Height = 18
+              Top = 40
+              Width = 89
+              Caption = 'Forma Pagto'
+              Font.CharSet = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -15
+              Font.Name = 'Arial'
+              Font.Pitch = fpVariable
+              Font.Quality = fqDraft
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+              Visible = False
+            end
+            object ediprazo: TSpinEdit
+              Left = 672
+              Height = 23
+              Top = 35
+              Width = 48
+              OnKeyPress = ediprazoKeyPress
+              TabOrder = 2
+              Visible = False
+            end
+            object Label8: TLabel
+              Left = 727
+              Height = 16
+              Top = 42
+              Width = 27
+              Caption = 'Dias'
+              Font.CharSet = ANSI_CHARSET
+              Font.Height = -13
+              Font.Name = 'Arial'
+              Font.Pitch = fpVariable
+              Font.Quality = fqDraft
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+              Visible = False
             end
           end
           object btnAlterarproduto: TButton
@@ -788,14 +834,15 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             OnClick = btnCancelarAltprodClick
             TabOrder = 5
           end
-          object Button3: TButton
+          object btnCotacao: TButton
             Left = 811
             Height = 40
             Top = 162
             Width = 80
             Caption = 'Cotação'
-            OnClick = Button3Click
+            OnClick = btnCotacaoClick
             TabOrder = 6
+            Visible = False
           end
         end
       end
@@ -803,21 +850,21 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Left = 0
         Height = 76
         Top = 531
-        Width = 900
+        Width = 908
         Align = alClient
         Caption = 'Condições Gerais'
         ClientHeight = 56
-        ClientWidth = 896
+        ClientWidth = 904
         TabOrder = 2
         object pnlobservacao: TPanel
           Left = 0
           Height = 56
           Top = 0
-          Width = 896
+          Width = 904
           Align = alClient
           BevelOuter = bvNone
           ClientHeight = 56
-          ClientWidth = 896
+          ClientWidth = 904
           TabOrder = 0
           object memoformapgto: TMemo
             Left = 0
@@ -828,7 +875,9 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Lines.Strings = (
               'memoformapgto'
             )
+            OnKeyDown = memoformapgtoKeyDown
             OnKeyPress = memoformapgtoKeyPress
+            ScrollBars = ssVertical
             TabOrder = 0
           end
         end

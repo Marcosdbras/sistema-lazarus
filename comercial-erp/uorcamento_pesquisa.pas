@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids, ZDataset, db, BufDataset, usincorc;
+  ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids, ZDataset, db, BufDataset, usincorc,
+  Types, LCLType;
 
 type
 
@@ -197,12 +198,28 @@ procedure Tfrmorcamento_pesquisa.Button3Click(Sender: TObject);
 begin
   opcao := 'E';
 
+  if modulo_orcamento.qrorcamento.RecordCount = 0 then
+     application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
+  //endi
+
+  frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
+  frmorcamento_cadastro.ShowModal;
+  frmorcamento_cadastro.Free;
+  frmorcamento_cadastro := nil;
+
+
   //frmorcamento_cadastro := nil;
 end;
 
 procedure Tfrmorcamento_pesquisa.Button4Click(Sender: TObject);
 begin
   opcao := 'C';
+
+  frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
+  frmorcamento_cadastro.ShowModal;
+  frmorcamento_cadastro.Free;
+  frmorcamento_cadastro := nil;
+
 
   //frmorcamento_cadastro := nil;
 end;

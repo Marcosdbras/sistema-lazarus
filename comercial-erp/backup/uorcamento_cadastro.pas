@@ -19,15 +19,16 @@ type
     btnExcluirProduto: TButton;
     btnClassItem: TButton;
     btnlancar: TButton;
-    Button1: TButton;
+    btnsalvar: TButton;
     Button2: TButton;
-    Button3: TButton;
+    btnCotacao: TButton;
     cbxunidade: TDBLookupComboBox;
     cbxnomecliente: TDBLookupComboBox;
     cbxnomeven: TDBLookupComboBox;
     cbxnomefun: TDBLookupComboBox;
     dbgproduto: TDBGrid;
     cbxtabpreco: TDBLookupComboBox;
+    ediprazo: TSpinEdit;
     edtdescricao: TEdit;
     edtqtde: TFloatSpinEdit;
     edttotal: TFloatSpinEdit;
@@ -44,6 +45,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    Label8: TLabel;
     lblcliente8: TLabel;
     lblestadocli: TLabel;
     lblcidadecli: TLabel;
@@ -73,18 +75,19 @@ type
     pnlinferior: TPanel;
     pnlcentral: TPanel;
     ScrollBox1: TScrollBox;
-    ediprazo: TSpinEdit;
+    Shape1: TShape;
+    Shape2: TShape;
     procedure btnCancelarAltprodClick(Sender: TObject);
     procedure btnClassItemClick(Sender: TObject);
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnimprimirClick(Sender: TObject);
     procedure btnlancarClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnsalvarClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure btnAlterarprodutoClick(Sender: TObject);
     procedure btnExcluirProdutoClick(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
+    procedure btnCotacaoClick(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure cbxnomeclienteChange(Sender: TObject);
     procedure cbxnomeclienteExit(Sender: TObject);
@@ -96,6 +99,7 @@ type
     procedure cbxnomefunKeyPress(Sender: TObject; var Key: char);
     procedure cbxnomevenExit(Sender: TObject);
     procedure cbxnomevenKeyPress(Sender: TObject; var Key: char);
+    procedure cbxtabprecoChange(Sender: TObject);
     procedure cbxtabprecoKeyPress(Sender: TObject; var Key: char);
     procedure cbxunidadeKeyPress(Sender: TObject; var Key: char);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -129,12 +133,17 @@ type
     procedure FormShow(Sender: TObject);
     procedure GroupBox2Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
+    procedure memoformapgtoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
     procedure memoformapgtoKeyPress(Sender: TObject; var Key: char);
+    procedure memoobsKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
     procedure Panel6Click(Sender: TObject);
     procedure Panel9Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
     procedure filtrar;
     procedure limpar;
+    procedure pnlsuperiorClick(Sender: TObject);
     procedure salvarCadastro;
     procedure limparProduto;
     procedure salvarProduto;
@@ -144,6 +153,7 @@ type
     procedure desbloqueiaProdutoAlt;
     procedure classificarItem;
     procedure mostrarDados;
+    procedure bloqueiatudo;
 
 
 
@@ -180,6 +190,15 @@ begin
 
 end;
 
+procedure Tfrmorcamento_cadastro.memoformapgtoKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+    if (frmorcamento_pesquisa.opcao = 'E') or (frmorcamento_pesquisa.opcao = 'C') then
+     key:=0;
+  //endif
+
+end;
+
 procedure Tfrmorcamento_cadastro.memoformapgtoKeyPress(Sender: TObject; var Key: char);
 begin
   if key = #13 then
@@ -189,6 +208,14 @@ begin
      exit;
    end;
 //endi
+end;
+
+procedure Tfrmorcamento_cadastro.memoobsKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (frmorcamento_pesquisa.opcao = 'E') or (frmorcamento_pesquisa.opcao = 'C') then
+     key:=0;
+  //endif
 end;
 
 procedure Tfrmorcamento_cadastro.Panel6Click(Sender: TObject);
@@ -425,6 +452,35 @@ begin
       cbxnomefun.SetFocus;
 
     end;
+  //endif
+
+  if (frmorcamento_pesquisa.opcao = 'C') or (frmorcamento_pesquisa.opcao = 'E') then
+    begin
+
+      bloqueiatudo;
+
+      if (frmorcamento_pesquisa.opcao = 'C') then
+         begin
+
+           btnsalvar.Visible:=false;
+
+         end;
+      //endi
+
+      if (frmorcamento_pesquisa.opcao = 'E') then
+         begin
+
+           btnsalvar.Enabled:=true;
+           btnsalvar.Caption:='Excluir';
+
+         end;
+      //endi
+
+
+
+    end;
+  //endif
+
 end;
 
 procedure Tfrmorcamento_cadastro.GroupBox2Click(Sender: TObject);
@@ -520,8 +576,23 @@ begin
 
 end;
 
-procedure Tfrmorcamento_cadastro.Button1Click(Sender: TObject);
+procedure Tfrmorcamento_cadastro.btnsalvarClick(Sender: TObject);
 begin
+     if frmorcamento_pesquisa.opcao = 'E' then
+        begin
+          if application.MessageBox('Tem certeza que deseja excluir este registro?','Atenção',MB_YESNO) <> 6 then
+             begin
+
+
+               close;
+             end;
+          //endi
+          exit;
+        end;
+     //endi
+
+
+
 
         salvarCadastro;
 
@@ -646,7 +717,7 @@ begin
 
 end;
 
-procedure Tfrmorcamento_cadastro.Button3Click(Sender: TObject);
+procedure Tfrmorcamento_cadastro.btnCotacaoClick(Sender: TObject);
 begin
 
   frmcotacao_cadastro := tfrmcotacao_cadastro.Create(self);
@@ -779,6 +850,11 @@ begin
      exit;
    end;
 //endi
+
+end;
+
+procedure Tfrmorcamento_cadastro.cbxtabprecoChange(Sender: TObject);
+begin
 
 end;
 
@@ -1179,6 +1255,11 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.limpar;
+begin
+
+end;
+
+procedure Tfrmorcamento_cadastro.pnlsuperiorClick(Sender: TObject);
 begin
 
 end;
@@ -1820,12 +1901,32 @@ begin
      end;
   //endi
 
+end;
 
+procedure tfrmorcamento_cadastro.bloqueiatudo;
+begin
+
+  btnsalvar.Enabled:=false;
+  cbxnomefun.Enabled:=false;
+  cbxnomeven.Enabled:=false;
+  cbxnomecliente.Enabled:=false;
+  cbxtabpreco.Enabled:=false;
+  ediprazo.Enabled:=false;
+  edtdescricao.Enabled:=false;
+  edtqtde.Enabled:=false;
+  cbxunidade.Enabled:=false;
+  edtvlrunitario.Enabled:=false;
+  edtvlrsubtotal.Enabled:=false;
+  btnlancar.Enabled:=false;
+  btnalterarproduto.Enabled:=false;
+  btncancelaraltprod.Enabled:=false;
+  btnExcluirProduto.Enabled:=false;
+  btnclassitem.Enabled:=false;
+  btncotacao.Enabled:=false;
 
 
 
 end;
-
 
 
 end.

@@ -970,6 +970,7 @@ object frmimporc: Tfrmimporc
       RealBounds.Height = 0
       Transparent = False
       AfterPrint = RLBand2AfterPrint
+      BeforePrint = RLBand2BeforePrint
       object RLDBText1: TRLDBText
         Left = 1
         Height = 16

@@ -782,6 +782,15 @@ if existe_campo('MASTER_ORCAMENTO','controle_torcamento') = 0 then
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO ');
+              Script.Script.Add('ADD CONSTRAINT FK_MASTER_ORCAMENTO_AOEXCLUIR ');
+              Script.Script.Add('FOREIGN KEY (CONTROLE_TORCAMENTO) ');
+              Script.Script.Add('REFERENCES TORCAMENTO(CONTROLE) ');
+              Script.Script.Add('ON DELETE CASCADE;');
+              Script.Execute;
+
            end;
          //endth
   end;

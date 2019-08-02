@@ -89,6 +89,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure RLBand1AfterPrint(Sender: TObject);
     procedure RLBand2AfterPrint(Sender: TObject);
+    procedure RLBand2BeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure RLImage1AfterPrint(Sender: TObject);
     procedure RLLabel3AfterPrint(Sender: TObject);
     procedure RLLabel4AfterPrint(Sender: TObject);
@@ -258,7 +259,13 @@ end;
 procedure Tfrmimporc.RLBand2AfterPrint(Sender: TObject);
 begin
 
-  lblncm.Caption:='';
+
+
+end;
+
+procedure Tfrmimporc.RLBand2BeforePrint(Sender: TObject; var PrintIt: Boolean);
+begin
+    lblncm.Caption:='';
 
   with modulo_conexaodb do
   begin
@@ -278,7 +285,6 @@ begin
 
 
   end;
-
 
 end;
 

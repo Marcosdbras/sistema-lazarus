@@ -738,7 +738,7 @@ if existe_campo('MASTER_ITEMPEDIDOVENDA','controle_tITEMPEDIDOVENDA') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA  ADD controle_tITEMPEDIDOVENDA integer ;   ');
+              Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA  ADD controle_titempedidovenda integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
