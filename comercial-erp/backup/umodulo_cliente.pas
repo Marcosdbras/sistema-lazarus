@@ -12,13 +12,13 @@ type
   { Tmodulo_cliente }
 
   Tmodulo_cliente = class(TDataModule)
-    dscliente: TDataSource;
+    dstcliente: TDataSource;
     dstempCliente: TDataSource;
-    qrcliente: TSQLQuery;
+    qrtcliente: TSQLQuery;
     qrtempCliente: TBufDataset;
     qrtempClienteccli: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
-    procedure qrclienteAfterScroll(DataSet: TDataSet);
+    procedure qrtclienteAfterScroll(DataSet: TDataSet);
   private
 
   public
@@ -53,16 +53,16 @@ implementation
 
       end;
 
-procedure Tmodulo_cliente.qrclienteAfterScroll(DataSet: TDataSet);
+procedure Tmodulo_cliente.qrtclienteAfterScroll(DataSet: TDataSet);
 begin
     if  frmorcamento_cadastro <> nil then
         begin
 
-          if modulo_tabpreco.qrtabpreco.Locate('controle',qrcliente.FieldByName('codtabelapreco').AsInteger,[]) then
+          if modulo_tabpreco.qrtabpreco.Locate('controle',qrtcliente.FieldByName('codtabelapreco').AsInteger,[]) then
              begin
 
                modulo_tabpreco.qrtempTabPreco.Edit;
-               modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger := qrcliente.FieldByName('codtabelapreco').AsInteger;
+               modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger := qrtcliente.FieldByName('codtabelapreco').AsInteger;
 
              end
           else
@@ -77,29 +77,6 @@ begin
 
           {
 
-          if frmorcamento_cadastro.cbxnomecliente.Text <> '' then
-             begin
-
-               frmorcamento_cadastro.lblenderecocli.Caption:= qrcliente.FieldByName('endereco').AsString;
-               frmorcamento_cadastro.lblnumerocli.Caption:=qrcliente.FieldByName('numero').AsString;
-               frmorcamento_cadastro.lblbairrocli.Caption:=qrcliente.FieldByName('bairro').AsString;
-               frmorcamento_cadastro.lblcidadecli.Caption:=qrcliente.FieldByName('cidade').AsString;
-               frmorcamento_cadastro.lblcepcli.Caption:=qrcliente.FieldByName('cep').AsString;
-               frmorcamento_cadastro.lblestadocli.Caption:=qrcliente.FieldByName('uf').AsString;
-
-             end
-          else
-             begin
-
-               frmorcamento_cadastro.lblenderecocli.Caption:= '';
-               frmorcamento_cadastro.lblnumerocli.Caption:='';
-               frmorcamento_cadastro.lblbairrocli.Caption:='';
-               frmorcamento_cadastro.lblcidadecli.Caption:='';
-               frmorcamento_cadastro.lblcepcli.Caption:='';
-               frmorcamento_cadastro.lblestadocli.Caption:='';
-
-             end;
-          //endi
 
           }
 

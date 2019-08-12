@@ -92,11 +92,11 @@ begin
     qrexec_base.SQL.Clear;
     if modulo_geral.qrmaster_indice.RecordCount = 0 then
        begin
-         qrexec_base.SQL.Add('insert into master_indice( logotipo, caminhopadraopdf, codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao) values (:logotipo, :caminhopadraopdf,  :codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao)');
+         qrexec_base.SQL.Add('insert into tmaster_indice( logotipo, caminhopadraopdf, codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao) values (:logotipo, :caminhopadraopdf,  :codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao)');
       end
     else
       begin
-         qrexec_base.SQL.Add('update master_indice set  logotipo  = :logotipo, caminhopadraopdf = :caminhopadraopdf,   codcsosnpadrao = :codcsosnpadrao, codcstpispadrao = :codcstpispadrao, codcstoriempadrao = :codcstoriempadrao, codcstipipadrao = :codcstipipadrao, codcstpadrao = :codcstpadrao, codcstcofinspadrao = :codcstcofinspadrao');
+         qrexec_base.SQL.Add('update tmaster_indice set  logotipo  = :logotipo, caminhopadraopdf = :caminhopadraopdf,   codcsosnpadrao = :codcsosnpadrao, codcstpispadrao = :codcstpispadrao, codcstoriempadrao = :codcstoriempadrao, codcstipipadrao = :codcstipipadrao, codcstpadrao = :codcstpadrao, codcstcofinspadrao = :codcstcofinspadrao');
        end;
     //endi
     qrexec_base.ParamByName('codcsosnpadrao').AsInteger:=modulo_temp.qrtempCsticmsDe.FieldByName('codigo').AsInteger;
@@ -203,7 +203,7 @@ begin
   begin
     qrmaster_indice.Close;
     qrmaster_indice.SQL.Clear;
-    qrmaster_indice.SQL.Add('select * from master_indice');
+    qrmaster_indice.SQL.Add('select * from tmaster_indice');
     qrmaster_indice.Open;
   end;
   //endth

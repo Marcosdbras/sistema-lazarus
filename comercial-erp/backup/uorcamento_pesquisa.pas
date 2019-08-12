@@ -113,7 +113,7 @@ begin
     end;
   //endth
 
-  cbxnomecliente.ListSource := modulo_cliente.dscliente;
+  cbxnomecliente.ListSource := modulo_cliente.qrcliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
   cbxnomecliente.DataSource := modulo_cliente.dstempCliente;
@@ -200,7 +200,7 @@ begin
 
   if modulo_orcamento.qrorcamento.RecordCount = 0 then
      application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
-
+  //endi
 
   frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
   frmorcamento_cadastro.ShowModal;

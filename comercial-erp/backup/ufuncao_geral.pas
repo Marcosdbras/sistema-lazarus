@@ -199,8 +199,8 @@ begin
 try
 
 
-//Tabela MASTER_COTACAO_ITEM existe?
-if existe_tabela('MASTER_COTACAO_ITEM') = 0 then
+//Tabela TMASTER_COTACAO_ITEM existe?
+if existe_tabela('TMASTER_COTACAO_ITEM') = 0 then
    begin
 
      with modulo_conexaodb do
@@ -209,24 +209,24 @@ if existe_tabela('MASTER_COTACAO_ITEM') = 0 then
        Script.Terminator:=';';
 
        Script.Script.Clear;
-       Script.Script.Add('CREATE TABLE MASTER_COTACAO_ITEM(CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_COTACAO_ITEM_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_COTACAO_ITEM(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_COTACAO_ITEM_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM ADD CONSTRAINT PK_MASTER_COTACAO_ITEM  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM ADD CONSTRAINT PK_TMASTER_COTACAO_ITEM  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger master_cotacao_item_bi for master_cotacao_item');
+       Script.Script.Add('create trigger tmaster_cotacao_item_bi for tmaster_cotacao_item');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_master_cotacao_item_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_cotacao_item_id,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
 
@@ -239,8 +239,8 @@ if existe_tabela('MASTER_COTACAO_ITEM') = 0 then
 //endif
 
 
-//Tabela MASTER_ITEMPEDIDOVENDA existe?
-if existe_tabela('MASTER_ITEMPEDIDOVENDA') = 0 then
+//Tabela TMASTER_ITEMPEDIDOVENDA existe?
+if existe_tabela('TMASTER_ITEMPEDIDOVENDA') = 0 then
    begin
 
      with modulo_conexaodb do
@@ -249,24 +249,24 @@ if existe_tabela('MASTER_ITEMPEDIDOVENDA') = 0 then
        Script.Terminator:=';';
 
        Script.Script.Clear;
-       Script.Script.Add('CREATE TABLE MASTER_ITEMPEDIDOVENDA(CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_ITEMPEDIDOVENDA_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_ITEMPEDIDOVENDA(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_ITEMPEDIDOVENDA_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA ADD CONSTRAINT PK_MASTER_ITEMPEDIDOVENDA  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_ITEMPEDIDOVENDA ADD CONSTRAINT PK_TMASTER_ITEMPEDIDOVENDA  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger master_ITEMPEDIDOVENDA_bi for master_ITEMPEDIDOVENDA');
+       Script.Script.Add('create trigger TMASTER_ITEMPEDIDOVENDA_bi for TMASTER_ITEMPEDIDOVENDA');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_master_ITEMPEDIDOVENDA_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(GEN_TMASTER_ITEMPEDIDOVENDA_ID,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
 
@@ -282,8 +282,8 @@ if existe_tabela('MASTER_ITEMPEDIDOVENDA') = 0 then
 
 
 
-//Tabela MASTER_ITENSORCAMENTO existe?
-if existe_tabela('MASTER_ITENSORCAMENTO') = 0 then
+//Tabela TMASTER_ITENSORCAMENTO existe?
+if existe_tabela('TMASTER_ITENSORCAMENTO') = 0 then
    begin
 
      with modulo_conexaodb do
@@ -292,24 +292,24 @@ if existe_tabela('MASTER_ITENSORCAMENTO') = 0 then
        Script.Terminator:=';';
 
        Script.Script.Clear;
-       Script.Script.Add('CREATE TABLE MASTER_ITENSORCAMENTO(CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_ITENSORCAMENTO_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_ITENSORCAMENTO(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_ITENSORCAMENTO_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO ADD CONSTRAINT PK_MASTER_ITENSORCAMENTO  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_ITENSORCAMENTO ADD CONSTRAINT PK_TMASTER_ITENSORCAMENTO  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger master_itensorcamento_bi for master_itensorcamento');
+       Script.Script.Add('create trigger tmaster_itensorcamento_bi for tmaster_itensorcamento');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_master_itensorcamento_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_itensorcamento_id,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
 
@@ -327,8 +327,8 @@ if existe_tabela('MASTER_ITENSORCAMENTO') = 0 then
 
 //MarcosBras
 //24.07.2019
-//Tabela MASTER_PEDIDOVENDA existe?
-if existe_tabela('MASTER_PEDIDOVENDA') = 0 then
+//Tabela TMASTER_PEDIDOVENDA existe?
+if existe_tabela('TMASTER_PEDIDOVENDA') = 0 then
    begin
 
      with modulo_conexaodb do
@@ -337,24 +337,24 @@ if existe_tabela('MASTER_PEDIDOVENDA') = 0 then
        Script.Terminator:=';';
 
        Script.Script.Clear;
-       Script.Script.Add('CREATE TABLE MASTER_PEDIDOVENDA(CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_PEDIDOVENDA_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_PEDIDOVENDA(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_PEDIDOVENDA_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_PEDIDOVENDA ADD CONSTRAINT PK_MASTER_PEDIDOVENDA  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA ADD CONSTRAINT PK_TMASTER_PEDIDOVENDA  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger master_pedidovenda_bi for master_pedidovenda');
+       Script.Script.Add('create trigger tmaster_pedidovenda_bi for tmaster_pedidovenda');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_master_pedidovenda_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_pedidovenda_id,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
 
@@ -373,8 +373,8 @@ if existe_tabela('MASTER_PEDIDOVENDA') = 0 then
 
 
 
-//Tabela MASTER_ORCAMENTO existe?
-if existe_tabela('MASTER_ORCAMENTO') = 0 then
+//Tabela TMASTER_ORCAMENTO existe?
+if existe_tabela('TMASTER_ORCAMENTO') = 0 then
    begin
 
      with modulo_conexaodb do
@@ -383,24 +383,24 @@ if existe_tabela('MASTER_ORCAMENTO') = 0 then
        Script.Terminator:=';';
 
        Script.Script.Clear;
-       Script.Script.Add('CREATE TABLE MASTER_ORCAMENTO(CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_ORCAMENTO_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_ORCAMENTO(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_ORCAMENTO_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO ADD CONSTRAINT PK_MASTER_ORCAMENTO  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_ORCAMENTO ADD CONSTRAINT PK_TMASTER_ORCAMENTO  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger master_orcamento_bi for master_orcamento');
+       Script.Script.Add('create trigger tmaster_orcamento_bi for tmaster_orcamento');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_master_orcamento_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_orcamento_id,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
 
@@ -417,8 +417,8 @@ if existe_tabela('MASTER_ORCAMENTO') = 0 then
 
 
 
-//Tabela MASTER_INDICE existe?
-if existe_tabela('MASTER_INDICE') = 0 then
+//Tabela TMASTER_INDICE existe?
+if existe_tabela('TMASTER_INDICE') = 0 then
    begin
 
      with modulo_conexaodb do
@@ -438,24 +438,24 @@ if existe_tabela('MASTER_INDICE') = 0 then
        Script.Terminator:=';';
 
        Script.Script.Clear;
-       Script.Script.Add('CREATE TABLE MASTER_INDICE (CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_INDICE_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_INDICE (CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_INDICE_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_INDICE ADD CONSTRAINT PK_MASTER_INDICE  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_INDICE ADD CONSTRAINT PK_TMASTER_INDICE  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger master_indice_bi for master_indice');
+       Script.Script.Add('create trigger tmaster_indice_bi for tmaster_indice');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_master_indice_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_indice_id,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
 
@@ -469,7 +469,7 @@ if existe_tabela('MASTER_INDICE') = 0 then
 
 
 //Campo dif_prazo existe?
-if existe_campo('MASTER_COTACAO_ITEM','dif_prazo') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','dif_prazo') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -477,7 +477,7 @@ if existe_campo('MASTER_COTACAO_ITEM','dif_prazo') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD dif_prazo integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD dif_prazo integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -491,7 +491,7 @@ if existe_campo('MASTER_COTACAO_ITEM','dif_prazo') = 0 then
 
 
 //Campo prazo existe?
-if existe_campo('MASTER_COTACAO_ITEM','prazo') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','prazo') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -499,7 +499,7 @@ if existe_campo('MASTER_COTACAO_ITEM','prazo') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD prazo integer;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD prazo integer;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -509,7 +509,7 @@ if existe_campo('MASTER_COTACAO_ITEM','prazo') = 0 then
 //endi
 
 //Campo escolhido existe?
-if existe_campo('MASTER_COTACAO_ITEM','escolhido') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','escolhido') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -517,7 +517,7 @@ if existe_campo('MASTER_COTACAO_ITEM','escolhido') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD escolhido char(1) default ''N'';   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD escolhido char(1) default ''N'';   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -527,7 +527,7 @@ if existe_campo('MASTER_COTACAO_ITEM','escolhido') = 0 then
 //endi
 
 //Campo margem_lucro existe?
-if existe_campo('MASTER_COTACAO_ITEM','margem_lucro') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','margem_lucro') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -535,7 +535,7 @@ if existe_campo('MASTER_COTACAO_ITEM','margem_lucro') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD margem_lucro decimal(15,2);   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD margem_lucro decimal(15,2);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -545,7 +545,7 @@ if existe_campo('MASTER_COTACAO_ITEM','margem_lucro') = 0 then
 //endi
 
 //Campo ndanfe existe?
-if existe_campo('MASTER_COTACAO_ITEM','ndanfe') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','ndanfe') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -553,7 +553,7 @@ if existe_campo('MASTER_COTACAO_ITEM','ndanfe') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD ndanfe integer;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD ndanfe integer;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -563,7 +563,7 @@ if existe_campo('MASTER_COTACAO_ITEM','ndanfe') = 0 then
 //endi
 
 //Campo valor existe?
-if existe_campo('MASTER_COTACAO_ITEM','valor') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','valor') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -571,7 +571,7 @@ if existe_campo('MASTER_COTACAO_ITEM','valor') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD valor decimal(15,2);   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD valor decimal(15,2);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -581,7 +581,7 @@ if existe_campo('MASTER_COTACAO_ITEM','valor') = 0 then
 //endi
 
 //Campo cforn existe?
-if existe_campo('MASTER_COTACAO_ITEM','cforn') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','cforn') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -589,7 +589,7 @@ if existe_campo('MASTER_COTACAO_ITEM','cforn') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD cforn integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD cforn integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -599,7 +599,7 @@ if existe_campo('MASTER_COTACAO_ITEM','cforn') = 0 then
 //endi
 
 //Campo data existe?
-if existe_campo('MASTER_COTACAO_ITEM','data') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','data') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -607,7 +607,7 @@ if existe_campo('MASTER_COTACAO_ITEM','data') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD data date ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD data date ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -618,7 +618,7 @@ if existe_campo('MASTER_COTACAO_ITEM','data') = 0 then
 
 
 //Campo ccotacao existe?
-if existe_campo('MASTER_COTACAO_ITEM','ccotacao') = 0 then
+if existe_campo('TMASTER_COTACAO_ITEM','ccotacao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -626,7 +626,7 @@ if existe_campo('MASTER_COTACAO_ITEM','ccotacao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_COTACAO_ITEM  ADD ccotacao integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_COTACAO_ITEM  ADD ccotacao integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -639,7 +639,7 @@ if existe_campo('MASTER_COTACAO_ITEM','ccotacao') = 0 then
 
 
 //Campo ccotacao no itensorcamento existe?
-if existe_campo('MASTER_ITENSORCAMENTO','ccotacao') = 0 then
+if existe_campo('TMASTER_ITENSORCAMENTO','ccotacao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -647,13 +647,13 @@ if existe_campo('MASTER_ITENSORCAMENTO','ccotacao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO ADD ccotacao integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ITENSORCAMENTO ADD ccotacao integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('CREATE SEQUENCE GEN_CCOTACAO_ID;');
+              Script.Script.Add('CREATE SEQUENCE GEN_TCCOTACAO_;');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -663,7 +663,7 @@ if existe_campo('MASTER_ITENSORCAMENTO','ccotacao') = 0 then
 //endi
 
 //Campo controle_titensorcamento existe?
-if existe_campo('MASTER_ITENSORCAMENTO','controle_titensorcamento') = 0 then
+if existe_campo('TMASTER_ITENSORCAMENTO','controle_titensorcamento') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -671,9 +671,21 @@ if existe_campo('MASTER_ITENSORCAMENTO','controle_titensorcamento') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO  ADD controle_titensorcamento integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ITENSORCAMENTO  ADD controle_titensorcamento integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
+
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_ITENSORCAMENTO ');
+              Script.Script.Add('ADD CONSTRAINT FK_TMASTER_ITENSORCAMENTO_EXCL ');
+              Script.Script.Add('FOREIGN KEY (CONTROLE_TITENSORCAMENTO) ');
+              Script.Script.Add('REFERENCES TITENSORCAMENTO(CONTROLE) ');
+              Script.Script.Add('ON DELETE CASCADE;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
 
            end;
          //endth
@@ -681,7 +693,7 @@ if existe_campo('MASTER_ITENSORCAMENTO','controle_titensorcamento') = 0 then
 //endi
 
 //Campo ctabp no itensorcamento existe?
-if existe_campo('MASTER_ITENSORCAMENTO','ctabp') = 0 then
+if existe_campo('TMASTER_ITENSORCAMENTO','ctabp') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -689,7 +701,7 @@ if existe_campo('MASTER_ITENSORCAMENTO','ctabp') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ITENSORCAMENTO ADD ctabp integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ITENSORCAMENTO ADD ctabp integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -704,7 +716,7 @@ if existe_campo('MASTER_ITENSORCAMENTO','ctabp') = 0 then
 //Marcos Bras
 //25.07.2019
 //Campo ccotacao no ITEMPEDIDOVENDA existe?
-if existe_campo('MASTER_ITEMPEDIDOVENDA','ccotacao') = 0 then
+if existe_campo('TMASTER_ITEMPEDIDOVENDA','ccotacao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -712,7 +724,7 @@ if existe_campo('MASTER_ITEMPEDIDOVENDA','ccotacao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA ADD ccotacao integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ITEMPEDIDOVENDA ADD ccotacao integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -720,7 +732,7 @@ if existe_campo('MASTER_ITEMPEDIDOVENDA','ccotacao') = 0 then
 
               //Script.Script.Clear;
               //Script.Terminator:=';';
-              //Script.Script.Add('CREATE SEQUENCE GEN_CCOTACAO_ID;');
+              //Script.Script.Add('CREATE SEQUENCE gen_tccotacao_ID;');
               //Script.Script.Add('COMMIT;');
               //Script.Execute;
 
@@ -730,7 +742,7 @@ if existe_campo('MASTER_ITEMPEDIDOVENDA','ccotacao') = 0 then
 //endi
 
 //Campo controle_tITEMPEDIDOVENDA existe?
-if existe_campo('MASTER_ITEMPEDIDOVENDA','controle_tITEMPEDIDOVENDA') = 0 then
+if existe_campo('TMASTER_ITEMPEDIDOVENDA','controle_tITEMPEDIDOVENDA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -738,9 +750,21 @@ if existe_campo('MASTER_ITEMPEDIDOVENDA','controle_tITEMPEDIDOVENDA') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA  ADD controle_titempedidovenda integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ITEMPEDIDOVENDA  ADD controle_titempedidovenda integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_ITEMPEDIDOVENDA ');
+              Script.Script.Add('ADD CONSTRAINT FK_TMASTER_ITEMPEDIDOVENDA_EXCL ');
+              Script.Script.Add('FOREIGN KEY (CONTROLE_TITEMPEDIDOVENDA) ');
+              Script.Script.Add('REFERENCES TITEMPEDIDOVENDA(CONTROLE) ');
+              Script.Script.Add('ON DELETE CASCADE;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+
 
            end;
          //endth
@@ -748,7 +772,7 @@ if existe_campo('MASTER_ITEMPEDIDOVENDA','controle_tITEMPEDIDOVENDA') = 0 then
 //endi
 
 //Campo ctabp no ITEMPEDIDOVENDA existe?
-if existe_campo('MASTER_ITEMPEDIDOVENDA','ctabp') = 0 then
+if existe_campo('TMASTER_ITEMPEDIDOVENDA','ctabp') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -756,7 +780,7 @@ if existe_campo('MASTER_ITEMPEDIDOVENDA','ctabp') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ITEMPEDIDOVENDA ADD ctabp integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ITEMPEDIDOVENDA ADD ctabp integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -770,7 +794,7 @@ if existe_campo('MASTER_ITEMPEDIDOVENDA','ctabp') = 0 then
 
 
 //Campo controle_torcamento existe?
-if existe_campo('MASTER_ORCAMENTO','controle_torcamento') = 0 then
+if existe_campo('TMASTER_ORCAMENTO','controle_torcamento') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -778,7 +802,17 @@ if existe_campo('MASTER_ORCAMENTO','controle_torcamento') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO  ADD controle_torcamento integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ORCAMENTO  ADD controle_torcamento integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_ORCAMENTO ');
+              Script.Script.Add('ADD CONSTRAINT FK_TMASTER_ORCAMENTO_EXCL ');
+              Script.Script.Add('FOREIGN KEY (CONTROLE_TORCAMENTO) ');
+              Script.Script.Add('REFERENCES TORCAMENTO(CONTROLE) ');
+              Script.Script.Add('ON DELETE CASCADE;');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -788,7 +822,7 @@ if existe_campo('MASTER_ORCAMENTO','controle_torcamento') = 0 then
 //endi
 
 //Campo prazo existe?
-if existe_campo('MASTER_ORCAMENTO','prazo') = 0 then
+if existe_campo('TMASTER_ORCAMENTO','prazo') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -796,7 +830,7 @@ if existe_campo('MASTER_ORCAMENTO','prazo') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO  ADD prazo integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ORCAMENTO  ADD prazo integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -806,7 +840,7 @@ if existe_campo('MASTER_ORCAMENTO','prazo') = 0 then
 //endi
 
 //Campo ctabp existe?
-if existe_campo('MASTER_ORCAMENTO','ctabp') = 0 then
+if existe_campo('TMASTER_ORCAMENTO','ctabp') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -814,7 +848,7 @@ if existe_campo('MASTER_ORCAMENTO','ctabp') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_ORCAMENTO  ADD ctabp integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_ORCAMENTO  ADD ctabp integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -830,7 +864,7 @@ if existe_campo('MASTER_ORCAMENTO','ctabp') = 0 then
 //25.07.2019
 
 //Campo controle_tpedidovenda existe?
-if existe_campo('MASTER_PEDIDOVENDA','controle_tpedidovenda') = 0 then
+if existe_campo('TMASTER_PEDIDOVENDA','controle_tpedidovenda') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -838,9 +872,21 @@ if existe_campo('MASTER_PEDIDOVENDA','controle_tpedidovenda') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_PEDIDOVENDA  ADD controle_tpedidovenda integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD controle_tpedidovenda integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA ');
+              Script.Script.Add('ADD CONSTRAINT FK_TMASTER_PEDIDOVENDA_EXCL ');
+              Script.Script.Add('FOREIGN KEY (CONTROLE_TPEDIDOVENDA) ');
+              Script.Script.Add('REFERENCES TPEDIDOVENDA(CONTROLE) ');
+              Script.Script.Add('ON DELETE CASCADE;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+
 
            end;
          //endth
@@ -848,7 +894,7 @@ if existe_campo('MASTER_PEDIDOVENDA','controle_tpedidovenda') = 0 then
 //endi
 
 //Campo prazo existe?
-if existe_campo('MASTER_PEDIDOVENDA','prazo') = 0 then
+if existe_campo('TMASTER_PEDIDOVENDA','prazo') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -856,7 +902,7 @@ if existe_campo('MASTER_PEDIDOVENDA','prazo') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_PEDIDOVENDA  ADD prazo integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD prazo integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -866,7 +912,7 @@ if existe_campo('MASTER_PEDIDOVENDA','prazo') = 0 then
 //endi
 
 //Campo ctabp existe?
-if existe_campo('MASTER_PEDIDOVENDA','ctabp') = 0 then
+if existe_campo('TMASTER_PEDIDOVENDA','ctabp') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -874,7 +920,7 @@ if existe_campo('MASTER_PEDIDOVENDA','ctabp') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_PEDIDOVENDA  ADD ctabp integer ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD ctabp integer ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -892,7 +938,7 @@ if existe_campo('MASTER_PEDIDOVENDA','ctabp') = 0 then
 
 
 //Campo AdmSN existe?
-if existe_campo('MASTER_INDICE','AdmSN') = 0 then
+if existe_campo('TMASTER_INDICE','AdmSN') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -900,7 +946,7 @@ if existe_campo('MASTER_INDICE','AdmSN') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD AdmSN varchar(1) default ''N'' ;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD AdmSN varchar(1) default ''N'' ;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -910,7 +956,7 @@ if existe_campo('MASTER_INDICE','AdmSN') = 0 then
 //endi
 
 //Campo logotipo existe?
-if existe_campo('MASTER_INDICE','logotipo') = 0 then
+if existe_campo('TMASTER_INDICE','logotipo') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -918,7 +964,7 @@ if existe_campo('MASTER_INDICE','logotipo') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD logotipo varchar(200);   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD logotipo varchar(200);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -928,7 +974,7 @@ if existe_campo('MASTER_INDICE','logotipo') = 0 then
 //endi
 
 //Campo caminhopadraopdf existe?
-if existe_campo('MASTER_INDICE','caminhopadraopdf') = 0 then
+if existe_campo('TMASTER_INDICE','caminhopadraopdf') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -936,7 +982,7 @@ if existe_campo('MASTER_INDICE','caminhopadraopdf') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD caminhopadraopdf varchar(200);   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD caminhopadraopdf varchar(200);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -946,7 +992,7 @@ if existe_campo('MASTER_INDICE','caminhopadraopdf') = 0 then
 //endi
 
 //Campo CSTPIS padrão existe?
-if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
+if existe_campo('TMASTER_INDICE','codcstpispadrao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -954,7 +1000,7 @@ if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstpispadrao integer default 11;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD codcstpispadrao integer default 11;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -964,7 +1010,7 @@ if existe_campo('MASTER_INDICE','codcstpispadrao') = 0 then
 //endi
 
 //Campo CSTORIEM padrão existe?
-if existe_campo('MASTER_INDICE','codcstoriempadrao') = 0 then
+if existe_campo('TMASTER_INDICE','codcstoriempadrao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -972,7 +1018,7 @@ if existe_campo('MASTER_INDICE','codcstoriempadrao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstoriempadrao integer default 1;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD codcstoriempadrao integer default 1;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -982,7 +1028,7 @@ if existe_campo('MASTER_INDICE','codcstoriempadrao') = 0 then
 //endi
 
 //Campo CSTIPI padrão existe?
-if existe_campo('MASTER_INDICE','codcstipipadrao') = 0 then
+if existe_campo('TMASTER_INDICE','codcstipipadrao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -990,7 +1036,7 @@ if existe_campo('MASTER_INDICE','codcstipipadrao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstipipadrao integer default 7;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD codcstipipadrao integer default 7;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1000,7 +1046,7 @@ if existe_campo('MASTER_INDICE','codcstipipadrao') = 0 then
 //endi
 
 //Campo CST padrão existe?
-if existe_campo('MASTER_INDICE','codcstpadrao') = 0 then
+if existe_campo('TMASTER_INDICE','codcstpadrao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1008,7 +1054,7 @@ if existe_campo('MASTER_INDICE','codcstpadrao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstpadrao integer default 1;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD codcstpadrao integer default 1;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1018,7 +1064,7 @@ if existe_campo('MASTER_INDICE','codcstpadrao') = 0 then
 //endi
 
 //Campo Cofinspadrao padrão existe?
-if existe_campo('MASTER_INDICE','codcstcofinspadrao') = 0 then
+if existe_campo('TMASTER_INDICE','codcstcofinspadrao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1026,7 +1072,7 @@ if existe_campo('MASTER_INDICE','codcstcofinspadrao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcstcofinspadrao integer default 7;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD codcstcofinspadrao integer default 7;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1036,7 +1082,7 @@ if existe_campo('MASTER_INDICE','codcstcofinspadrao') = 0 then
 //endi
 
 //Campo CSOSN padrão existe?
-if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
+if existe_campo('TMASTER_INDICE','codcsosnpadrao') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1044,7 +1090,7 @@ if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD codcsosnpadrao integer default 1;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD codcsosnpadrao integer default 1;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1054,7 +1100,7 @@ if existe_campo('MASTER_INDICE','codcsosnpadrao') = 0 then
 //endi
 
 //Campo Slogan padrão existe?
-if existe_campo('MASTER_INDICE','slogan') = 0 then
+if existe_campo('TMASTER_INDICE','slogan') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1062,14 +1108,14 @@ if existe_campo('MASTER_INDICE','slogan') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD slogan varchar(100) default '+quotedstr('O mercado certo para sua obra está aqui')+';');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD slogan varchar(100) default '+quotedstr('O mercado certo para sua obra está aqui')+';');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('update MASTER_INDICE set slogan = '+quotedstr('O mercado certo para sua obra')+';');
+              Script.Script.Add('update TMASTER_INDICE set slogan = '+quotedstr('O mercado certo para sua obra')+';');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1081,7 +1127,7 @@ if existe_campo('MASTER_INDICE','slogan') = 0 then
 //endi
 
 //Campo agradcdtesp padrão existe?
-if existe_campo('MASTER_INDICE','agradcdtesp') = 0 then
+if existe_campo('TMASTER_INDICE','agradcdtesp') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1089,13 +1135,13 @@ if existe_campo('MASTER_INDICE','agradcdtesp') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD agradcdtesp varchar(100) default '+quotedstr('Agradecemos a preferência, volte sempre!')+';');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD agradcdtesp varchar(100) default '+quotedstr('Agradecemos a preferência, volte sempre!')+';');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('update MASTER_INDICE set agradcdtesp = '+quotedstr('Agradecemos a preferência, volte sempre!')+';');
+              Script.Script.Add('update TMASTER_INDICE set agradcdtesp = '+quotedstr('Agradecemos a preferência, volte sempre!')+';');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1105,8 +1151,8 @@ if existe_campo('MASTER_INDICE','agradcdtesp') = 0 then
 //endi
 
 //Campo PADRAOOS padrão existe?
-//ALTER TABLE MASTER_INDICE  ADD PADRAOOS BLOB SUB_TYPE 1 SEGMENT SIZE 80
-if existe_campo('MASTER_INDICE','PADRAOOS') = 0 then
+//ALTER TABLE TMASTER_INDICE  ADD PADRAOOS BLOB SUB_TYPE 1 SEGMENT SIZE 80
+if existe_campo('TMASTER_INDICE','PADRAOOS') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1114,13 +1160,13 @@ if existe_campo('MASTER_INDICE','PADRAOOS') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD PADRAOOS BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD PADRAOOS BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('update MASTER_INDICE set PADRAOOS = '+quotedstr(''+chr(13)+
+              Script.Script.Add('update TMASTER_INDICE set PADRAOOS = '+quotedstr(''+chr(13)+
                                                                                  ''+chr(13)+
                                                                                  ''+chr(13)+
                                                                                  ''+chr(13)+chr(13)+
@@ -1136,8 +1182,8 @@ if existe_campo('MASTER_INDICE','PADRAOOS') = 0 then
 //endi
 
 //Campo PADRAOORCAMENTO padrão existe?
-//ALTER TABLE MASTER_INDICE  ADD PADRAOORCAMENTO BLOB SUB_TYPE 1 SEGMENT SIZE 80
-if existe_campo('MASTER_INDICE','PADRAOORCAMENTO') = 0 then
+//ALTER TABLE TMASTER_INDICE  ADD PADRAOORCAMENTO BLOB SUB_TYPE 1 SEGMENT SIZE 80
+if existe_campo('TMASTER_INDICE','PADRAOORCAMENTO') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1145,13 +1191,13 @@ if existe_campo('MASTER_INDICE','PADRAOORCAMENTO') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD PADRAOORCAMENTO BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD PADRAOORCAMENTO BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('update MASTER_INDICE set PADRAOORCAMENTO = '+quotedstr('Condições de pagamento: 28 dias'+chr(13)+
+              Script.Script.Add('update TMASTER_INDICE set PADRAOORCAMENTO = '+quotedstr('Condições de pagamento: 28 dias'+chr(13)+
                                                                                         'Prazo de entrega: 2 dias'+chr(13)+
                                                                                         'Frete: ( )CIF / ( )FOB'+chr(13)+
                                                                                         'Validade deste orçamento: 20 dias'+chr(13)+chr(13)+
@@ -1172,8 +1218,8 @@ if existe_campo('MASTER_INDICE','PADRAOORCAMENTO') = 0 then
 //Marcos Bras
 //25.07.2019
 //Campo PADRAOPEDIDOVENDA padrão existe?
-//ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDOVENDA BLOB SUB_TYPE 1 SEGMENT SIZE 80
-if existe_campo('MASTER_INDICE','PADRAOPEDIDOVENDA') = 0 then
+//ALTER TABLE TMASTER_INDICE  ADD PADRAOPEDIDOVENDA BLOB SUB_TYPE 1 SEGMENT SIZE 80
+if existe_campo('TMASTER_INDICE','PADRAOPEDIDOVENDA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1181,13 +1227,13 @@ if existe_campo('MASTER_INDICE','PADRAOPEDIDOVENDA') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDOVENDA BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD PADRAOPEDIDOVENDA BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('update MASTER_INDICE set PADRAOPEDIDOVENDA = '+quotedstr('Condições de pagamento: 28 dias'+chr(13)+
+              Script.Script.Add('update TMASTER_INDICE set PADRAOPEDIDOVENDA = '+quotedstr('Condições de pagamento: 28 dias'+chr(13)+
                                                                                         'Prazo de entrega: 2 dias'+chr(13)+
                                                                                         'Frete: ( )CIF / ( )FOB'+chr(13)+
                                                                                         'Garantia para troca: 3 dias sem violação de embalagem ou remoção de etiqueta'+chr(13)+chr(13)+
@@ -1210,8 +1256,8 @@ if existe_campo('MASTER_INDICE','PADRAOPEDIDOVENDA') = 0 then
 
 
 //Campo PADRAOPEDIDO padrão existe?
-//ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDO BLOB SUB_TYPE 1 SEGMENT SIZE 80
-if existe_campo('MASTER_INDICE','PADRAOPEDIDO') = 0 then
+//ALTER TABLE TMASTER_INDICE  ADD PADRAOPEDIDO BLOB SUB_TYPE 1 SEGMENT SIZE 80
+if existe_campo('TMASTER_INDICE','PADRAOPEDIDO') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1219,13 +1265,13 @@ if existe_campo('MASTER_INDICE','PADRAOPEDIDO') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_INDICE  ADD PADRAOPEDIDO BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD PADRAOPEDIDO BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('update MASTER_INDICE set PADRAOPEDIDO = '+quotedstr(''+chr(13)+
+              Script.Script.Add('update TMASTER_INDICE set PADRAOPEDIDO = '+quotedstr(''+chr(13)+
                                                                                         ''+chr(13)+
                                                                                         ''+chr(13)+
                                                                                         ''+chr(13)+chr(13)+
@@ -1240,8 +1286,8 @@ if existe_campo('MASTER_INDICE','PADRAOPEDIDO') = 0 then
   end;
 //endi
 
-//Tabela MASTER_UNIDADE existe?
-if existe_tabela('MASTER_UNIDADE') = 0 then
+//Tabela TMASTER_UNIDADE existe?
+if existe_tabela('TMASTER_UNIDADE') = 0 then
    begin
 
      with modulo_conexaodb do
@@ -1261,24 +1307,24 @@ if existe_tabela('MASTER_UNIDADE') = 0 then
        Script.Terminator:=';';
 
        Script.Script.Clear;
-       Script.Script.Add('CREATE TABLE MASTER_UNIDADE (CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_UNIDADE_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_UNIDADE (CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_UNIDADE_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_UNIDADE ADD CONSTRAINT PK_MASTER_UNIDADE  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_UNIDADE ADD CONSTRAINT PK_TMASTER_UNIDADE  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger master_unidade_bi for master_unidade');
+       Script.Script.Add('create trigger tmaster_unidade_bi for tmaster_unidade');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_master_unidade_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_unidade_id,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
 
@@ -1291,7 +1337,7 @@ if existe_tabela('MASTER_UNIDADE') = 0 then
 //endif
 
 //Campo DESCRICAOCOMPLETA existe?
-if existe_campo('MASTER_UNIDADE','DESCRICAOCOMPLETA') = 0 then
+if existe_campo('TMASTER_UNIDADE','DESCRICAOCOMPLETA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1299,7 +1345,7 @@ if existe_campo('MASTER_UNIDADE','DESCRICAOCOMPLETA') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD DESCRICAOCOMPLETA VARCHAR(120);   ');
+              Script.Script.Add('ALTER TABLE TMASTER_UNIDADE  ADD DESCRICAOCOMPLETA VARCHAR(120);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1309,7 +1355,7 @@ if existe_campo('MASTER_UNIDADE','DESCRICAOCOMPLETA') = 0 then
 //endi
 
 //Campo SIGLA existe?
-if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
+if existe_campo('TMASTER_UNIDADE','SIGLA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1317,7 +1363,7 @@ if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD SIGLA VARCHAR(6);   ');
+              Script.Script.Add('ALTER TABLE TMASTER_UNIDADE  ADD SIGLA VARCHAR(6);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1327,7 +1373,7 @@ if existe_campo('MASTER_UNIDADE','SIGLA') = 0 then
 //endi
 
 //Campo CONTROLE_TUNIDADEMEDIDA existe?
-if existe_campo('MASTER_UNIDADE','CONTROLE_TUNIDADEMEDIDA') = 0 then
+if existe_campo('TMASTER_UNIDADE','CONTROLE_TUNIDADEMEDIDA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1335,7 +1381,7 @@ if existe_campo('MASTER_UNIDADE','CONTROLE_TUNIDADEMEDIDA') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_UNIDADE  ADD CONTROLE_TUNIDADEMEDIDA integer;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_UNIDADE  ADD CONTROLE_TUNIDADEMEDIDA integer;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1344,8 +1390,8 @@ if existe_campo('MASTER_UNIDADE','CONTROLE_TUNIDADEMEDIDA') = 0 then
   end;
 //endi
 
-//Tabela MASTER_USUARIO existe?
-if existe_tabela('MASTER_USUARIO') = 0 then
+//Tabela TMASTER_USUARIO existe?
+if existe_tabela('TMASTER_USUARIO') = 0 then
    begin
 
      with modulo_conexaodb do
@@ -1354,24 +1400,24 @@ if existe_tabela('MASTER_USUARIO') = 0 then
        Script.Terminator:=';';
 
        Script.Script.Clear;
-       Script.Script.Add('CREATE TABLE MASTER_USUARIO (CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_USUARIO_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_USUARIO (CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_USUARIO_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_USUARIO ADD CONSTRAINT PK_MASTER_USUARIO  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_USUARIO ADD CONSTRAINT PK_TMASTER_USUARIO  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger master_usuario_bi for master_usuario');
+       Script.Script.Add('create trigger tmaster_usuario_bi for tmaster_usuario');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_master_usuario_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_usuario_id,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
 
@@ -1384,7 +1430,7 @@ if existe_tabela('MASTER_USUARIO') = 0 then
 //endif
 
 //Campo SENHA existe?
-if existe_campo('MASTER_USUARIO','SENHA') = 0 then
+if existe_campo('TMASTER_USUARIO','SENHA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1392,7 +1438,7 @@ if existe_campo('MASTER_USUARIO','SENHA') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_USUARIO  ADD SENHA VARCHAR(20);   ');
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD SENHA VARCHAR(20);   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1402,7 +1448,7 @@ if existe_campo('MASTER_USUARIO','SENHA') = 0 then
 //endi
 
 //Campo CONTROLE_TUSUARIO existe?
-if existe_campo('MASTER_USUARIO','CONTROLE_TUSUARIO') = 0 then
+if existe_campo('TMASTER_USUARIO','CONTROLE_TUSUARIO') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -1410,7 +1456,7 @@ if existe_campo('MASTER_USUARIO','CONTROLE_TUSUARIO') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE MASTER_USUARIO  ADD CONTROLE_TUSUARIO INTEGER;   ');
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD CONTROLE_TUSUARIO INTEGER;   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -1419,8 +1465,8 @@ if existe_campo('MASTER_USUARIO','CONTROLE_TUSUARIO') = 0 then
   end;
 //endi
 
-//Tabela MASTER_OS existe?
-if existe_tabela('MASTER_OS') = 0 then
+//Tabela TMASTER_OS existe?
+if existe_tabela('TMASTER_OS') = 0 then
    begin
 
 
@@ -1431,24 +1477,24 @@ if existe_tabela('MASTER_OS') = 0 then
 
        Script.Script.Clear;
        Script.Terminator:=';';
-       Script.Script.Add('CREATE TABLE MASTER_OS (CODIGO INTEGER NOT NULL);');
-       Script.Script.Add('CREATE SEQUENCE GEN_MASTER_OS_ID;');
+       Script.Script.Add('CREATE TABLE TMASTER_OS (CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_OS_ID;');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
-       Script.Script.Add('ALTER TABLE MASTER_OS ADD CONSTRAINT PK_MASTER_OS  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('ALTER TABLE TMASTER_OS ADD CONSTRAINT PK_TMASTER_OS  PRIMARY KEY (CODIGO);');
        Script.Script.Add('COMMIT;');
        Script.Execute;
 
        Script.Script.Clear;
        Script.Terminator:='^';
-       Script.Script.Add('create trigger MASTER_OS_bi for MASTER_OS');
+       Script.Script.Add('create trigger TMASTER_OS_bi for TMASTER_OS');
        Script.Script.Add('active before insert position 0');
        Script.Script.Add('as');
        Script.Script.Add('begin');
        Script.Script.Add('if (new.codigo is null) then');
-       Script.Script.Add('    new.codigo = gen_id(gen_MASTER_OS_id,1);');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_os_id,1);');
        Script.Script.Add('end^');
        Script.Script.Add('COMMIT^');
        Script.Execute;

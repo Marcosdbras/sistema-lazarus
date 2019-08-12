@@ -9,7 +9,7 @@ object frmcadastrar_senha: Tfrmcadastrar_senha
   ClientWidth = 587
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.4.0'
   object Label1: TLabel
     Left = 24
     Height = 15

@@ -300,7 +300,7 @@ begin
 
           qrmaster_indice.Close;
           qrmaster_indice.SQL.Clear;
-          qrmaster_indice.SQL.Add('select * from master_indice');
+          qrmaster_indice.SQL.Add('select * from tmaster_indice');
           qrmaster_indice.Open;
 
         end;
@@ -331,7 +331,7 @@ begin
 
            modulo_conexaodb.qrconsulta_base.Close;
            modulo_conexaodb.qrconsulta_base.SQL.Clear;
-           modulo_conexaodb.qrconsulta_base.SQL.Add('select * from master_orcamento where controle_torcamento = :controle_torcamento');
+           modulo_conexaodb.qrconsulta_base.SQL.Add('select * from tmaster_orcamento where controle_torcamento = :controle_torcamento');
            modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle_torcamento').AsInteger := modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
            modulo_conexaodb.qrconsulta_base.Open;
 
@@ -577,13 +577,63 @@ begin
 end;
 
 procedure Tfrmorcamento_cadastro.btnsalvarClick(Sender: TObject);
+var icontrole:integer;
 begin
      if frmorcamento_pesquisa.opcao = 'E' then
         begin
-          if application.MessageBox('Tem certeza que deseja excluir este registro?','Atenção',MB_YESNO) <> 6 then
+          if application.MessageBox('Tem certeza que deseja excluir este registro?','Atenção',MB_YESNO) = 6 then
              begin
 
+               icontrole :=  modulo_orcamento.qrorcamento.FieldByName('controle').asInteger;
 
+               with modulo_conexaodb do
+                 begin
+
+                   qrconsulta_base.Close;
+                   qrconsulta_base.SQL.Clear;
+                   qrconsulta_base.SQL.Add('select m.ccotacao from titensorcamento t inner join tmaster_itensorcamento m on m.controle_titensorcamento = t.controle where t.codorcamento = :codorcamento');
+                   qrconsulta_base.Params.ParamByName('codorcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+                   qrconsulta_base.Open;
+                   while not qrconsulta_base.EOF do
+                      begin
+
+                        qrexec_base.Close;
+                        qrexec_base.SQL.Clear;
+                        qrexec_base.sql.Add('delete from tmaster_cotacao_item where ccotacao = :ccotacao');
+                        qrexec_base.Params.ParamByName('ccotacao').AsInteger := qrconsulta_base.FieldByName('ccotacao').AsInteger;
+                        qrexec_base.ExecSQL;
+
+                        qrconsulta_base.Next;
+
+
+                      end;
+                   //endi
+
+
+
+                   qrexec_base.Close;
+                   qrexec_base.SQL.Clear;
+                   qrexec_base.SQL.Add('delete from titensorcamento where codorcamento = :codorcamento');
+                   qrexec_base.Params.ParamByName('codorcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+                   qrexec_base.ExecSQL;
+
+
+                   qrexec_base.Close;
+                   qrexec_base.SQL.Clear;
+                   qrexec_base.SQL.Add('delete from torcamento where controle = :controle');
+                   qrexec_base.Params.ParamByName('controle').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+                   qrexec_base.ExecSQL;
+
+
+                   atualizaBanco;
+
+                   modulo_orcamento.qrorcamento.Refresh;
+
+                   modulo_orcamento.qrorcamento.Locate('controle',icontrole+1,[]);
+
+
+                 end;
+               //endi
                close;
              end;
           //endi
@@ -681,6 +731,21 @@ begin
            icodigo_controle_item := modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
            subtotal := modulo_orcamento.qrorcamento_itemproduto.FieldByName('totalliquido').Asfloat;
            coditem := modulo_orcamento.qrorcamento_itemproduto.FieldByName('coditem').AsInteger;
+
+
+           qrconsulta_base.Close;
+           qrconsulta_base.SQL.Clear;
+           qrconsulta_base.SQL.Add('select m.ccotacao from titensorcamento t inner join tmaster_itensorcamento m on m.controle_titensorcamento = t.controle where t.controle = :controle');
+           qrconsulta_base.Params.ParamByName('controle').AsInteger:=icodigo_controle_item;
+           qrconsulta_base.Open;
+
+
+           qrexec_base.Close;
+           qrexec_base.SQL.Clear;
+           qrexec_base.sql.Add('delete from tmaster_cotacao_item where ccotacao = :ccotacao');
+           qrexec_base.Params.ParamByName('ccotacao').AsInteger := qrconsulta_base.FieldByName('ccotacao').AsInteger;
+           qrexec_base.ExecSQL;
+
 
            qrexec_base.Close;
            qrexec_base.SQL.Clear;
@@ -1400,7 +1465,7 @@ begin
 
             qrconsulta_base.Close;
             qrconsulta_base.SQL.Clear;
-            qrconsulta_base.SQL.Add('select * from master_orcamento where controle_torcamento = :controle_torcamento');
+            qrconsulta_base.SQL.Add('select * from tmaster_orcamento where controle_torcamento = :controle_torcamento');
             qrconsulta_base.Params.ParamByName('controle_torcamento').AsInteger := icodigo_controle;
             qrconsulta_base.Open;
             if qrconsulta_base.RecordCount = 0 then
@@ -1575,7 +1640,7 @@ begin
 
             qrconsulta_base.Close;
             qrconsulta_base.SQL.Clear;
-            qrconsulta_base.SQL.Add('select * from master_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
+            qrconsulta_base.SQL.Add('select * from tmaster_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
             qrconsulta_base.Params.ParamByName('controle_titensorcamento').AsInteger := icodigo_controle_item;
             qrconsulta_base.Open;
             if qrconsulta_base.RecordCount = 0 then

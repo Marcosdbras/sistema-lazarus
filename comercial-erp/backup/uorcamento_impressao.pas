@@ -69,7 +69,7 @@ begin
 
 
       2:begin
-          SaveDialog1.FileName :=  caminhopadraopdf+'ORC'+modulo_orcamento.qrorcamento.FieldByName('controlevarchar').AsString;
+          SaveDialog1.FileName :=  caminhopadraopdf+'\ORC'+modulo_orcamento.qrorcamento.FieldByName('controlevarchar').AsString;
           if savedialog1.Execute then
              begin
 

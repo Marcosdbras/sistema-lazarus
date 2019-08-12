@@ -117,7 +117,7 @@ begin
           qrconsulta_base.Close;
           qrconsulta_base.SQL.Clear;
           qrconsulta_base.SQL.Add(
-            'select m.controle_tusuario, m.senha as senha, m.codigo from master_usuario m where m.controle_tusuario = :controle');
+            'select m.controle_tusuario, m.senha as senha, m.codigo from tmaster_usuario m where m.controle_tusuario = :controle');
           qrconsulta_base.ParamByName('controle').AsInteger := icontrole;
           qrconsulta_base.Open;
           if qrconsulta_base.RecordCount = 0 then

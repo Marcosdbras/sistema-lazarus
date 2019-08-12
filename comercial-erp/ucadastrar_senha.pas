@@ -52,7 +52,7 @@ begin
       qrexec_base.Close;
       qrexec_base.SQL.Clear;
       qrexec_base.SQL.Add(
-        'insert into master_usuario (controle_tusuario, senha) values (:controle, :senha)');
+        'insert into tmaster_usuario (controle_tusuario, senha) values (:controle, :senha)');
 
       qrexec_base.ParamByName(
         'controle').AsInteger := icontrole;

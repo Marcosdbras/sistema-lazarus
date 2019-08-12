@@ -821,7 +821,7 @@ begin
 
 
                                     //Consulta Grupo
-                                    try
+                                    //try
                                     qrconsulta_base.Close;
                                     qrconsulta_base.SQL.Clear;
                                     qrconsulta_base.SQL.Add('select * from tgrupoestoque where grupo = :grupo');
@@ -859,9 +859,9 @@ begin
                                     qrexec_base.ExecSQL;
 
                                     atualizaBanco;
-                                    except
+                                    //except
                                       //Quando ocorre erro de grupo
-                                    end;
+                                    //end;
 
 
 

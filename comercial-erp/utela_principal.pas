@@ -228,7 +228,7 @@ begin
 
           qrmaster_indice.Close;
           qrmaster_indice.SQL.Clear;
-          qrmaster_indice.SQL.Add('select * from master_indice');
+          qrmaster_indice.SQL.Add('select * from tmaster_indice');
           qrmaster_indice.Open;
 
         end;

@@ -5,7 +5,7 @@ object frmparametro: Tfrmparametro
   Width = 674
   BorderIcons = []
   BorderStyle = bsDialog
-  Caption = 'Valores Padrão'
+  Caption = 'Valores Padrões'
   ClientHeight = 475
   ClientWidth = 674
   OnCreate = FormCreate

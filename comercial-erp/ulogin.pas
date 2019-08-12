@@ -81,7 +81,7 @@ begin
       qrconsulta_base.Close;
       qrconsulta_base.SQL.Clear;
       qrconsulta_base.SQL.Add(
-        'select t.controle as controle, t.login as login, m.controle_tusuario, m.senha as senha from tusuario t inner join master_usuario m on t.controle = m.controle_tusuario');
+        'select t.controle as controle, t.login as login, m.controle_tusuario, m.senha as senha from tusuario t inner join tmaster_usuario m on t.controle = m.controle_tusuario');
       qrconsulta_base.SQL.Add(
         ' where (t.login = :login) and (m.senha = :senha);');
       qrconsulta_base.ParamByName('login').AsString := edtusuario.Text;
@@ -93,7 +93,7 @@ begin
         qrconsulta_base.Close;
         qrconsulta_base.SQL.Clear;
         qrconsulta_base.SQL.Add(
-          'select t.controle as controle, t.login as login, m.controle_tusuario as controle_tusuario, m.senha as senha from tusuario t left join master_usuario m on t.controle = controle_tusuario');
+          'select t.controle as controle, t.login as login, m.controle_tusuario as controle_tusuario, m.senha as senha from tusuario t left join tmaster_usuario m on t.controle = controle_tusuario');
         qrconsulta_base.SQL.Add(' where (t.login = :login);');
         qrconsulta_base.ParamByName('login').AsString := edtusuario.Text;
         qrconsulta_base.Open;
@@ -117,7 +117,7 @@ begin
           qrconsulta_base.Close;
           qrconsulta_base.SQL.Clear;
           qrconsulta_base.SQL.Add(
-            'select m.controle_tusuario, m.senha as senha, m.codigo from master_usuario m where m.controle_tusuario = :controle');
+            'select m.controle_tusuario, m.senha as senha, m.codigo from tmaster_usuario m where m.controle_tusuario = :controle');
           qrconsulta_base.ParamByName('controle').AsInteger := icontrole;
           qrconsulta_base.Open;
           if qrconsulta_base.RecordCount = 0 then

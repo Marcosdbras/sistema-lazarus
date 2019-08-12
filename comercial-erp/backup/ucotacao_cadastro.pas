@@ -155,6 +155,11 @@ procedure Tfrmcotacao_cadastro.btnCancelarAltcotacaoClick(Sender: TObject);
 begin
   limparCampo;
   desbloqueiaCotacaoAlt;
+
+  habilitarbotao;
+  btnCancelarAltCotacao.Enabled:=false;
+
+
   cbxnomefor.SetFocus;
 end;
 
@@ -177,7 +182,7 @@ begin
 
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('delete from master_cotacao_item where codigo = :codigo');
+            qrexec_base.SQL.Add('delete from tmaster_cotacao_item where codigo = :codigo');
             qrexec_base.ParamByName('codigo').AsInteger:= icodigo_master_cotacao_item;
             qrexec_base.ExecSQL;
 
@@ -331,7 +336,7 @@ begin
   if frmorcamento_cadastro <> nil then
      begin
 
-       modulo_conexaodb.qrconsulta_base.SQL.Add('select * from master_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
+       modulo_conexaodb.qrconsulta_base.SQL.Add('select * from tmaster_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
        modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle_titensorcamento').AsInteger:= modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
 
        lblnomeproduto.Caption := modulo_orcamento.qrorcamento_itemproduto.FieldByName('produto').AsString;
@@ -351,7 +356,7 @@ begin
 
        qrmaster_cotacao_item.Close;
        qrmaster_cotacao_item.SQL.Clear;
-       qrmaster_cotacao_item.SQL.Add('select * from master_cotacao_item where ccotacao = :ccotacao');
+       qrmaster_cotacao_item.SQL.Add('select * from tmaster_cotacao_item where ccotacao = :ccotacao');
        qrmaster_cotacao_item.Params.ParamByName('ccotacao').AsInteger:= modulo_conexaodb.qrconsulta_base.FieldByName('ccotacao').AsInteger;
        qrmaster_cotacao_item.Open;
 
@@ -434,7 +439,7 @@ begin
   if frmorcamento_cadastro <> nil then
      begin
 
-       modulo_conexaodb.qrconsulta_base.SQL.Add('select * from master_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
+       modulo_conexaodb.qrconsulta_base.SQL.Add('select * from tmaster_itensorcamento where controle_titensorcamento = :controle_titensorcamento');
        modulo_conexaodb.qrconsulta_base.Params.ParamByName('controle_titensorcamento').AsInteger:= modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
 
      end
@@ -458,7 +463,7 @@ begin
             //Próximo número da cotação
             modulo_conexaodb.qrexec_base.Close;
             modulo_conexaodb.qrexec_base.SQL.Clear;
-            modulo_conexaodb.qrexec_base.SQL.Add('select GEN_ID(GEN_CCOTACAO_ID,1) as prox_codigo FROM RDB$DATABASE;');
+            modulo_conexaodb.qrexec_base.SQL.Add('select GEN_ID(gen_tccotacao_ID,1) as prox_codigo FROM RDB$DATABASE;');
             modulo_conexaodb.qrexec_base.Open;
 
             iccotacao := modulo_conexaodb.qrexec_base.FieldByName('prox_codigo').AsInteger;
@@ -466,7 +471,7 @@ begin
             //Filtrar pelo número da cotação
             modulo_cotacao.qrmaster_cotacao_item.Close;
             modulo_cotacao.qrmaster_cotacao_item.SQL.Clear;
-            modulo_cotacao.qrmaster_cotacao_item.SQL.Add('select * from master_cotacao_item where ccotacao = :ccotacao');
+            modulo_cotacao.qrmaster_cotacao_item.SQL.Add('select * from tmaster_cotacao_item where ccotacao = :ccotacao');
             modulo_cotacao.qrmaster_cotacao_item.Params.ParamByName('ccotacao').AsInteger:= iccotacao;
             modulo_cotacao.qrmaster_cotacao_item.Open;
 
@@ -481,7 +486,7 @@ begin
 
        modulo_conexaodb.qrexec_base.Close;
        modulo_conexaodb.qrexec_base.SQL.Clear;
-       modulo_conexaodb.qrexec_base.SQL.Add('insert into master_cotacao_item( prazo,  escolhido,  margem_lucro,  ndanfe,  valor,  cforn,  dif_prazo,    data,  ccotacao ) ');
+       modulo_conexaodb.qrexec_base.SQL.Add('insert into tmaster_cotacao_item( prazo,  escolhido,  margem_lucro,  ndanfe,  valor,  cforn,  dif_prazo,    data,  ccotacao ) ');
        modulo_conexaodb.qrexec_base.SQL.Add('                     values( :prazo,  :escolhido,  :margem_lucro,  :ndanfe,  :valor,  :cfor,  :dif_prazo,    :data,  :ccotacao) ');
 
        modulo_conexaodb.qrexec_base.Params.ParamByName('ccotacao').AsInteger:=iccotacao;
@@ -493,7 +498,7 @@ begin
 
        modulo_conexaodb.qrexec_base.Close;
        modulo_conexaodb.qrexec_base.SQL.Clear;
-       modulo_conexaodb.qrexec_base.SQL.Add('update master_cotacao_item set prazo = :prazo, escolhido = :escolhido, margem_lucro  = :margem_lucro,  ndanfe = :ndanfe, valor = :valor, cforn = :cfor,  dif_prazo = :dif_prazo,  data =  :data   where codigo = :codigo');
+       modulo_conexaodb.qrexec_base.SQL.Add('update tmaster_cotacao_item set prazo = :prazo, escolhido = :escolhido, margem_lucro  = :margem_lucro,  ndanfe = :ndanfe, valor = :valor, cforn = :cfor,  dif_prazo = :dif_prazo,  data =  :data   where codigo = :codigo');
 
        modulo_conexaodb.qrexec_base.Params.ParamByName('codigo').AsInteger:=icodigo_master_cotacao_item;
 
@@ -518,7 +523,7 @@ begin
 
             modulo_conexaodb.qrexec_base.Close;
             modulo_conexaodb.qrexec_base.SQL.Clear;
-            modulo_conexaodb.qrexec_base.SQL.Add('update MASTER_ITENSORCAMENTO set ccotacao =  :ccotacao  where CONTROLE_TITENSORCAMENTO = :CONTROLE_TITENSORCAMENTO');
+            modulo_conexaodb.qrexec_base.SQL.Add('update TMASTER_ITENSORCAMENTO set ccotacao =  :ccotacao  where CONTROLE_TITENSORCAMENTO = :CONTROLE_TITENSORCAMENTO');
             modulo_conexaodb.qrexec_base.Params.ParamByName('CONTROLE_TITENSORCAMENTO').AsInteger:=modulo_orcamento.qrorcamento_itemproduto.FieldByName('controle').AsInteger;
             modulo_conexaodb.qrexec_base.Params.ParamByName('ccotacao').AsInteger:=iccotacao;
             modulo_conexaodb.qrexec_base.ExecSQL;
