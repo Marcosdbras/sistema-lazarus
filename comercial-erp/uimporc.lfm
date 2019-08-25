@@ -300,7 +300,7 @@ object frmimporc: Tfrmimporc
       object lblnorc: TRLLabel
         Left = 624
         Height = 16
-        Top = 69
+        Top = 87
         Width = 91
         Alignment = taRightJustify
         Font.CharSet = ANSI_CHARSET
@@ -318,11 +318,11 @@ object frmimporc: Tfrmimporc
         AfterPrint = RLLabel7AfterPrint
       end
       object lblnorc1: TRLLabel
-        Left = 504
+        Left = 501
         Height = 16
-        Top = 69
-        Width = 116
-        Caption = 'ORÇAMENTO N.o:'
+        Top = 87
+        Width = 109
+        Caption = 'ORÇAMENTO Nº:'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -777,9 +777,9 @@ object frmimporc: Tfrmimporc
         AfterPrint = RLLabel7AfterPrint
       end
       object RLLabel7: TRLLabel
-        Left = 674
+        Left = 671
         Height = 16
-        Top = 87
+        Top = 69
         Width = 8
         Caption = '/'
         Font.CharSet = ANSI_CHARSET
@@ -797,9 +797,9 @@ object frmimporc: Tfrmimporc
         AfterPrint = RLLabel7AfterPrint
       end
       object RLSystemInfo3: TRLSystemInfo
-        Left = 681
+        Left = 678
         Height = 16
-        Top = 87
+        Top = 69
         Width = 33
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
@@ -816,9 +816,9 @@ object frmimporc: Tfrmimporc
         RealBounds.Height = 0
       end
       object RLSystemInfo2: TRLSystemInfo
-        Left = 626
+        Left = 623
         Height = 16
-        Top = 87
+        Top = 69
         Width = 51
         Alignment = taRightJustify
         Font.CharSet = ANSI_CHARSET
@@ -836,9 +836,9 @@ object frmimporc: Tfrmimporc
         RealBounds.Height = 0
       end
       object RLLabel10: TRLLabel
-        Left = 504
+        Left = 501
         Height = 16
-        Top = 87
+        Top = 69
         Width = 75
         Caption = 'PÁGINA(S):'
         Font.CharSet = ANSI_CHARSET

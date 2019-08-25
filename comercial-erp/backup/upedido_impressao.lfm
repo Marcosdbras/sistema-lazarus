@@ -1,0 +1,58 @@
+object frmpedido_impressao: Tfrmpedido_impressao
+  Left = 374
+  Height = 130
+  Top = 212
+  Width = 383
+  Caption = 'Impressão Orçamento'
+  ClientHeight = 130
+  ClientWidth = 383
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+  object cbxvisualiza: TComboBox
+    Left = 120
+    Height = 23
+    Top = 24
+    Width = 240
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'Visualizar'
+      'Impressão'
+      'Salvar PDF'
+    )
+    TabOrder = 0
+    Text = 'Visualizar'
+  end
+  object Label1: TLabel
+    Left = 8
+    Height = 15
+    Top = 27
+    Width = 97
+    Caption = 'Tipo de Impressão'
+    ParentColor = False
+  end
+  object btnok: TButton
+    Left = 199
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = 'OK'
+    OnClick = btnokClick
+    TabOrder = 1
+  end
+  object btncancelar: TButton
+    Left = 285
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = 'Fechar'
+    OnClick = btncancelarClick
+    TabOrder = 2
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.PDF'
+    Filter = 'PDF|*.PDF'
+    left = 89
+    top = 81
+  end
+end

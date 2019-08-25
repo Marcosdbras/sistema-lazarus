@@ -20,6 +20,7 @@ type
     lblstatus: TLabel;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
@@ -29,6 +30,7 @@ type
     MenuItem7: TMenuItem;
     Ajustes: TMenuItem;
     MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
     Panel1: TPanel;
     pnlsuperior: TPanel;
     pnlsuperior1: TPanel;
@@ -48,6 +50,7 @@ type
     procedure MenuItem5Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure MenuItem8Click(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
 
   private
     icodigo_controle, icodigo_controle_item, codaplicacaoproduto, sequencia_num, icodimpostomedio,
@@ -70,7 +73,8 @@ implementation
 
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
            uorcamento_pesquisa, umodulo_conexaodb, ulogin, umodulo_vendaorc, uvendaorc,
-           uindice, uparametro, usincbaseremota, umodulo_tabpreco, umodulo_produto, umodulo_geral;
+           uindice, uparametro, usincbaseremota, umodulo_tabpreco, umodulo_produto, umodulo_geral,
+           pedidovenda_pesquisa;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -228,7 +232,7 @@ begin
 
           qrmaster_indice.Close;
           qrmaster_indice.SQL.Clear;
-          qrmaster_indice.SQL.Add('select * from master_indice');
+          qrmaster_indice.SQL.Add('select * from tmaster_indice');
           qrmaster_indice.Open;
 
         end;
@@ -935,6 +939,14 @@ begin
 
      end;
  //endif
+
+end;
+
+procedure Tfrmtela_principal.MenuItem9Click(Sender: TObject);
+begin
+  frmpedidovenda_pesquisa := tfrmpedidovenda_pesquisa.create(self);
+  frmpedidovenda_pesquisa.showmodal;
+  frmpedidovenda_pesquisa.free;
 
 end;
 

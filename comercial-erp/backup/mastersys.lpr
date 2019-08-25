@@ -14,7 +14,7 @@ uses
   uimporc, umodulo_vendaorc, uvendaorc, uindice, umodulo_temp, umodulo_geral,
   uorcamento_impressao, usincorc, umodulo_remoto, usincbaseremota,
   umodulo_emitente, umodulo_tabpreco, ucotacao_cadastro, umodulo_fornecedor,
-  umodulo_cotacao
+  umodulo_cotacao, umodulo_pedidovenda, uorcamento_cadastro
 
   { you can add units after this };
 

@@ -22,7 +22,7 @@ type
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
-    btnsinc: TButton;
+    btntransfpedido: TButton;
     DBGrid1: TDBGrid;
     DBText1: TDBText;
     edtdatainicio: TDateEdit;
@@ -44,7 +44,7 @@ type
     procedure btnfiltrarClick(Sender: TObject);
     procedure btnimprimirClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
-    procedure btnsincClick(Sender: TObject);
+    procedure btntransfpedidoClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -113,7 +113,7 @@ begin
     end;
   //endth
 
-  cbxnomecliente.ListSource := modulo_cliente.qrcliente;
+  cbxnomecliente.ListSource := modulo_cliente.dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
   cbxnomecliente.DataSource := modulo_cliente.dstempCliente;
@@ -163,12 +163,45 @@ begin
   limpar;
 end;
 
-procedure Tfrmorcamento_pesquisa.btnsincClick(Sender: TObject);
+procedure Tfrmorcamento_pesquisa.btntransfpedidoClick(Sender: TObject);
 begin
-  frmsincorc := tfrmsincorc.create(self);
-  frmsincorc.showmodal;
-  frmsincorc.free;
-  frmsincorc := nil;
+  if modulo_orcamento.qrorcamento.RecordCount = 0 then
+     begin
+       Application.MessageBox('Não há nennhum orçamento selecionado para ser transferido!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
+  if Application.MessageBox('Tem certeza que deseja transferir o orçamento selecionado?','Atenção',MB_YESNO) = 6  then
+     begin
+
+        with modulo_conexaodb do
+          begin
+                                                                                                                                                                                    //,  status,  ,  dataprevisaoentrega, valordesconto, totalprodutos, totalliquido,         endereco,   bairro,   complemento,    cidade,     cep,     cpf,     cnpj,   email,    uf,    telefone,      numero,     rg,    ie,     im,     md5dav
+            qrexec_base.Close;                                                                                                                                                      //tipodesconto,   ,  cancelado,  status, condicaopagamento
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tpedidovenda(         codcliente,   cliente,       codfuncionario,   funcionario,   codvendedor,  vendedor,   controlevarchar,     titulodav,   observacao, datahoracadastro, valordesconto,    totalprodutos,  totalliquido, titulodav             ) ');
+            qrexec_base.SQL.Add('                     select       codcliente,   nomecliente,   codfuncionario,   funcionario,   codvendedor,  vendedor,   controlevarchar,     titulodav,   observacao, current_time,     0            ,    0            ,  0           , ''PEDIDO DE VENDA''  from torcamento where controle = :controle ');
+
+            //qrexec_base.SQL.Add('                     returning    codcliente,   nomecliente,   codfuncionario,   funcionario,   codvendedor,  vendedor,   controlevarchar,     titulodav,   observacao ');
+            //qrexec_base.SQL.Add('                     into        :codcliente,  :nomecliente,  :codfuncionario,  :funcionario,  :codvendedor, :vendedor,  :controlevarchar,    :titulodav,  :observacao  ');
+
+            qrexec_base.Params.ParamByName('controle').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+
+          end;
+        //endi
+
+
+
+
+     end;
+  //endif
+
+
+
 end;
 
 procedure Tfrmorcamento_pesquisa.Button1Click(Sender: TObject);

@@ -319,18 +319,18 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       ParentFont = False
       TabOrder = 5
     end
-    object btnsinc: TButton
+    object btntransfpedido: TButton
       Left = 648
       Height = 40
       Top = 7
       Width = 139
-      Caption = 'Sincronização'
+      Caption = 'Transf. para pedido'
       Font.CharSet = ANSI_CHARSET
       Font.Height = -15
       Font.Name = 'Arial Narrow'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      OnClick = btnsincClick
+      OnClick = btntransfpedidoClick
       ParentFont = False
       TabOrder = 6
     end

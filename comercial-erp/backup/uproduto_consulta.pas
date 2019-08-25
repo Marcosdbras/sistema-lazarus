@@ -45,7 +45,7 @@ var
   frmproduto_consulta: Tfrmproduto_consulta;
 
 implementation
-      uses uorcamento_cadastro, umodulo_produto;
+      uses  upedidovenda_cadastro,  uorcamento_cadastro, umodulo_produto;
 {$R *.lfm}
 
 { Tfrmproduto_consulta }
@@ -64,11 +64,28 @@ procedure Tfrmproduto_consulta.btnconfirmaClick(Sender: TObject);
 begin
    if frmorcamento_cadastro <> nil then
      begin
-        frmorcamento_cadastro.lblcontroleprod.Caption:= inttostr( modulo_produto.qrproduto.FieldByName('controle').AsInteger );
-        frmorcamento_cadastro.edtdescricao.Caption:=modulo_produto.qrproduto.FieldByName('produto').AsString;
-        frmorcamento_cadastro.edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
+
+       frmorcamento_cadastro.carregaCampoProd;
+
+       frmorcamento_cadastro.localizaUn;
+
+
      end;
   //endi
+
+
+   if frmpedidovenda_cadastro <> nil then
+     begin
+
+       frmpedidovenda_cadastro.carregaCampoProd;
+
+       frmpedidovenda_cadastro.localizaUn;
+
+
+     end;
+  //endi
+
+
 
   close;
 end;

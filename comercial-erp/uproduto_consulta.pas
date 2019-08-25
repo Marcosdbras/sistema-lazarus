@@ -45,7 +45,7 @@ var
   frmproduto_consulta: Tfrmproduto_consulta;
 
 implementation
-      uses uorcamento_cadastro, umodulo_produto;
+      uses  upedidovenda_cadastro,  uorcamento_cadastro, umodulo_produto;
 {$R *.lfm}
 
 { Tfrmproduto_consulta }
@@ -72,6 +72,20 @@ begin
 
      end;
   //endi
+
+
+   if frmpedidovenda_cadastro <> nil then
+     begin
+
+       frmpedidovenda_cadastro.carregaCampoProd;
+
+       frmpedidovenda_cadastro.localizaUn;
+
+
+     end;
+  //endi
+
+
 
   close;
 end;
@@ -182,9 +196,16 @@ end;
 
 procedure Tfrmproduto_consulta.FormCreate(Sender: TObject);
 begin
+
   if frmorcamento_cadastro <> nil then
      edtlocalizar.Text:=frmorcamento_cadastro.edtdescricao.Text;
   //endi
+
+
+    if frmpedidovenda_cadastro <> nil then
+     edtlocalizar.Text:=frmpedidovenda_cadastro.edtdescricao.Text;
+  //endi
+
 
 end;
 

@@ -37,15 +37,15 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="34">
+    <Units Count="38">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="uorcamento_cadastro.pas"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmorcamento_cadastro"/>
+        <ComponentName Value="frmpedidovenda_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>
@@ -111,9 +111,9 @@
         <ResourceBaseClass Value="Form"/>
       </Unit11>
       <Unit12>
-        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Filename Value="upedidovenda_pesquisa.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmorcamento_pesquisa"/>
+        <ComponentName Value="frmpedidovenda_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit12>
@@ -153,9 +153,9 @@
         <ResourceBaseClass Value="Form"/>
       </Unit17>
       <Unit18>
-        <Filename Value="uimporc.pas"/>
+        <Filename Value="uimppedvenda.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmimporc"/>
+        <ComponentName Value="frmimppedvenda"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit18>
@@ -195,9 +195,9 @@
         <ResourceBaseClass Value="DataModule"/>
       </Unit23>
       <Unit24>
-        <Filename Value="uorcamento_impressao.pas"/>
+        <Filename Value="upedidovenda_impressao.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmorcamento_impressao"/>
+        <ComponentName Value="frmpedidovenda_impressao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit24>
@@ -264,6 +264,33 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit33>
+      <Unit34>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmorcamento_pesquisa"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmorcamento_cadastro"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="uorcamento_impressao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmorcamento_impressao"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="uimporc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmimporc"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit37>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

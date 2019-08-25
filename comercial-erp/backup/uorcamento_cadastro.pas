@@ -1473,7 +1473,7 @@ begin
 
                  qrexec_base.Close;
                  qrexec_base.SQL.Clear;
-                 qrexec_base.SQL.Add('insert into master_orcamento(controle_torcamento,ctabp,prazo) values (:controle_torcamento, :ctabp, :prazo);');
+                 qrexec_base.SQL.Add('insert into tmaster_orcamento(controle_torcamento,ctabp,prazo) values (:controle_torcamento, :ctabp, :prazo);');
                  qrexec_base.Params.ParamByName('controle_torcamento').AsInteger := icodigo_controle;
                  qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
                  qrexec_base.Params.ParamByName('prazo').AsInteger := ediprazo.Value;
@@ -1485,7 +1485,7 @@ begin
 
                  qrexec_base.Close;
                  qrexec_base.SQL.Clear;
-                 qrexec_base.SQL.Add('update master_orcamento  set ctabp = :ctabp, prazo = :prazo  where controle_torcamento   = :controle_torcamento;');
+                 qrexec_base.SQL.Add('update tmaster_orcamento  set ctabp = :ctabp, prazo = :prazo  where controle_torcamento   = :controle_torcamento;');
                  qrexec_base.Params.ParamByName('controle_torcamento').AsInteger := icodigo_controle;
                  qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
                  qrexec_base.Params.ParamByName('prazo').AsInteger := ediprazo.Value;
@@ -1648,7 +1648,7 @@ begin
 
                  qrexec_base.Close;
                  qrexec_base.SQL.Clear;
-                 qrexec_base.SQL.Add('insert into master_itensorcamento(controle_titensorcamento,ctabp) values (:controle_titensorcamento, :ctabp);');
+                 qrexec_base.SQL.Add('insert into tmaster_itensorcamento(controle_titensorcamento,ctabp) values (:controle_titensorcamento, :ctabp);');
                  qrexec_base.Params.ParamByName('controle_titensorcamento').AsInteger := icodigo_controle_item;
                  qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
                  qrexec_base.ExecSQL;
@@ -1659,7 +1659,7 @@ begin
 
                  qrexec_base.Close;
                  qrexec_base.SQL.Clear;
-                 qrexec_base.SQL.Add('update master_itensorcamento  set ctabp = :ctabp where controle_titensorcamento   = :controle_titensorcamento;');
+                 qrexec_base.SQL.Add('update tmaster_itensorcamento  set ctabp = :ctabp where controle_titensorcamento   = :controle_titensorcamento;');
                  qrexec_base.Params.ParamByName('controle_titensorcamento').AsInteger := icodigo_controle_item;
                  qrexec_base.Params.ParamByName('ctabp').AsInteger := modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger;
                  qrexec_base.ExecSQL;
