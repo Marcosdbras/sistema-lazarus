@@ -232,7 +232,9 @@ implementation
        with modulo_orcamento do
        begin
 
-         lblnorc.Caption := qrorcamento.FieldByName('controlevarchar').asString;
+         //lblnorc.Caption := qrorcamento.FieldByName('controlevarchar').asString;
+
+         lblnorc.Caption:=  formatfloat('0000000000',qrorcamento.FieldByName('controle').asfloat) ;
 
          qrorcamento_itemproduto.Close;
          qrorcamento_itemproduto.SQL.Clear;

@@ -52,7 +52,6 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Top = 0
         RealBounds.Width = 0
         RealBounds.Height = 0
-        Stretch = True
         AfterPrint = RLImage1AfterPrint
       end
       object RLLabel1: TRLLabel

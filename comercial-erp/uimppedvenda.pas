@@ -232,7 +232,11 @@ implementation
        with modulo_pedidovenda do
        begin
 
-         lblnped.Caption := qrpedidovenda.FieldByName('controlevarchar').asString;
+         //lblnped.Caption := qrpedidovenda.FieldByName('controlevarchar').asString;
+
+
+         lblnped.Caption:=  formatfloat('0000000000',qrpedidovenda.FieldByName('controle').asfloat) ;
+
 
          qrpedidovenda_itemproduto.Close;
          qrpedidovenda_itemproduto.SQL.Clear;

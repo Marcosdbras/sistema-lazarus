@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, ExtDlgs, EditBtn, DbCtrls, DBGrids, ZDataset, db, BufDataset, usincorc,
-  Types, LCLType;
+  Types, LCLType, md5;
 
 type
 
@@ -164,6 +164,10 @@ begin
 end;
 
 procedure Tfrmorcamento_pesquisa.btntransfpedidoClick(Sender: TObject);
+var
+  hash,numDav:String;
+  icontrole:integer;
+
 begin
   if modulo_orcamento.qrorcamento.RecordCount = 0 then
      begin
@@ -177,16 +181,75 @@ begin
 
         with modulo_conexaodb do
           begin
-                                                                                                                                                                                    //,  status,  ,  dataprevisaoentrega, valordesconto, totalprodutos, totalliquido,         endereco,   bairro,   complemento,    cidade,     cep,     cpf,     cnpj,   email,    uf,    telefone,      numero,     rg,    ie,     im,     md5dav
+
+            qrsequencia.Close;
+            qrsequencia.SQL.Clear;
+            qrsequencia.SQL.Add('update tsequencia set controlevarchar = controlevarchar + 1');
+            qrsequencia.ExecSQL;
+
+            atualizaBanco;
+
+            qrsequencia.Close;
+            qrsequencia.SQL.Clear;
+            qrsequencia.SQL.Add('select * from tsequencia');
+            qrsequencia.Open;
+
+            numDav := formatfloat('0000000000',qrsequencia.FieldByName('controlevarchar').AsInteger);
+
+            hash :=   uppercase(   MD5Print(MD5String(  numDav + datetostr(now())  ))   );
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('select GEN_ID(GEN_tpedidovenda_ID,1) as prox_codigo FROM RDB$DATABASE;');
+            qrexec_base.Open;
+
+            icontrole := qrexec_base.FieldByName('prox_codigo').AsInteger;
+
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into titempedidovenda(   codpedidovenda,    datahoracadastro,    codproduto,    produto,      qtde,     un,     valorunitario,   valordesconto,                valoracrescimo,              percdesconto,                     percacrescimo,                       situacaotributaria,      aliquota,      cancelado,     decimaisqtde,          decimaisvalorunitario,                 coditem,         valordescontounitario,    valoracrescimounitario,    controleorigemmesclagem,           numerodav,    md5dav,      mesclar,     status,       qtdeconvertida,        unconvertida,        obs ) ');
+            qrexec_base.SQL.Add('              select            :codpedidovenda,  :datahoracadastro,  t.codproduto,  t.produto,    t.qtde,   t.un,   t.valorunitario,   t.valordesconto,            t.valoracrescimo,            t.percdesconto,                   t.percacrescimo,             :situacaotributaria,     :aliquota,     :cancelado,     t.decimaisqtde,        t.decimaisvalorunitario,               t.coditem,       t.valordescontounitario,   t.valoracrescimounitario,   :controleorigemmesclagem,          :numerodav,   :md5dav,     :mesclar,    :status,       :qtdeconvertida,       :unconvertida,       :obs     from titensorcamento t  where t.codorcamento = :codorcamento');
+
+            qrexec_base.Params.ParamByName('codorcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;;
+            qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icontrole;
+            qrexec_base.Params.ParamByName('datahoracadastro').AsDateTime := now();
+            qrexec_base.Params.ParamByName('numerodav').AsString:=numDav;
+            qrexec_base.Params.ParamByName('md5dav').AsString:=hash;
+
+            //qrexec_base.Params.ParamByName('valordesconto').Asfloat:= 0;
+            //qrexec_base.Params.ParamByName('valoracrescimo').Asfloat:= 0;
+            //qrexec_base.Params.ParamByName('percdesconto').Asfloat:= 0;
+            //qrexec_base.Params.ParamByName('percacrescimo').Asfloat:= 0;
+            qrexec_base.Params.ParamByName('situacaotributaria').AsString:= 'F';
+            qrexec_base.Params.ParamByName('aliquota').Asfloat:= 0;
+            qrexec_base.Params.ParamByName('cancelado').AsString:= 'N';
+            //qrexec_base.Params.ParamByName('decimaisqtde').AsInteger:= 2;
+            //qrexec_base.Params.ParamByName('decimaisvalorunitario').AsInteger:= 2;
+
+            //qrexec_base.Params.ParamByName('valordescontounitario').Asfloat:= 0;
+            //qrexec_base.Params.ParamByName('valoracrescimounitario').Asfloat:= 0;
+
+
+
+            //Analisar no SGBr como esta informação é persistida
+            qrexec_base.Params.ParamByName('qtdeconvertida').Asfloat := 1; //fatorconversao;  //valorconversao;
+
+
+
+
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+
             qrexec_base.Close;                                                                                                                                                      //tipodesconto,   ,  cancelado,  status, condicaopagamento
             qrexec_base.SQL.Clear;
-            qrexec_base.SQL.Add('insert into tpedidovenda(         codcliente,   cliente,       codfuncionario,   funcionario,   codvendedor,  vendedor,   controlevarchar,     titulodav,   observacao, datahoracadastro, valordesconto,    totalprodutos,  totalliquido, titulodav             ) ');
-            qrexec_base.SQL.Add('                     select       codcliente,   nomecliente,   codfuncionario,   funcionario,   codvendedor,  vendedor,   controlevarchar,     titulodav,   observacao, current_time,     0            ,    0            ,  0           , ''PEDIDO DE VENDA''  from torcamento where controle = :controle ');
-
-            //qrexec_base.SQL.Add('                     returning    codcliente,   nomecliente,   codfuncionario,   funcionario,   codvendedor,  vendedor,   controlevarchar,     titulodav,   observacao ');
-            //qrexec_base.SQL.Add('                     into        :codcliente,  :nomecliente,  :codfuncionario,  :funcionario,  :codvendedor, :vendedor,  :controlevarchar,    :titulodav,  :observacao  ');
-
+            qrexec_base.SQL.Add('insert into tpedidovenda( controle,              codcliente,     cliente,         codfuncionario,     funcionario,     codvendedor,    vendedor,     controlevarchar,     titulodav,               observacao, datahoracadastro, valordesconto,    totalprodutos,  totalliquido, endereco  , bairro  ,   complemento,   cidade  ,   cep  , cpf  , cnpj  , email  , uf  , telefone   , numero  , rg  , ie  , im  ,cancelado, status   ,md5dav       ) ');
+            qrexec_base.SQL.Add('                     select :numcontrole,      t.codcliente,   t.nomecliente,   t.codfuncionario,   t.funcionario,   t.codvendedor,  t.vendedor,    :controlevarchar,     ''PEDIDO DE VENDA'',   t.observacao, current_time,     0            ,    0            ,  0           , c.endereco, c.bairro,   c.complemento, c.cidade,   c.cep, c.cpf, c.cnpj, c.email, c.uf, c.telefone, c.numero, c.rg, c.ie, c.im,''N''     ,''ABERTO'',:md5dav      from torcamento t  inner join tcliente c  on  t.codcliente=c.controle     where t.controle = :controle ');
             qrexec_base.Params.ParamByName('controle').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+            qrexec_base.Params.ParamByName('controlevarchar').AsString:=numDav;
+            qrexec_base.Params.ParamByName('md5dav').AsString:=hash;
+            qrexec_base.Params.ParamByName('numcontrole').AsInteger:=icontrole;
             qrexec_base.ExecSQL;
 
             atualizabanco;
