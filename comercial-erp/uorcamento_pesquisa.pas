@@ -165,7 +165,7 @@ end;
 
 procedure Tfrmorcamento_pesquisa.btntransfpedidoClick(Sender: TObject);
 var
-  hash,numDav:String;
+  hash,numDav,aSQLText,aSQLCommand:String;
   icontrole:integer;
 
 begin
@@ -235,9 +235,6 @@ begin
             //Analisar no SGBr como esta informação é persistida
             qrexec_base.Params.ParamByName('qtdeconvertida').Asfloat := 1; //fatorconversao;  //valorconversao;
 
-
-
-
             qrexec_base.ExecSQL;
 
             atualizabanco;
@@ -254,10 +251,18 @@ begin
 
             atualizabanco;
 
+            aSQLText:= 'execute procedure sptotalizapedidovenda(%d)';
+            aSQLCommand:= Format(aSQLText, [icontrole]);
+            conexaodb.ExecuteDirect(aSQLCommand);
+
+            atualizaBanco;
+
+
+
           end;
         //endi
 
-
+        Application.MessageBox(pchar('Pedido nº '+ formatfloat('0000000000',icontrole) +' foi criado com sucesso!'),'Processo bem sucedido',MB_OK);
 
 
      end;

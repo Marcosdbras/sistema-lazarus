@@ -209,7 +209,7 @@ begin
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
             qrexec_base.SQL.Add('insert into titempedidovenda(   codpedidovenda,    datahoracadastro,    codproduto,    produto,      qtde,     un,     valorunitario,   valordesconto,                valoracrescimo,              percdesconto,                     percacrescimo,                       situacaotributaria,      aliquota,      cancelado,     decimaisqtde,          decimaisvalorunitario,                 coditem,         valordescontounitario,    valoracrescimounitario,    controleorigemmesclagem,           numerodav,    md5dav,      mesclar,     status,       qtdeconvertida,        unconvertida,        obs ) ');
-            qrexec_base.SQL.Add('              select            :codpedidovenda,  :datahoracadastro,  t.codproduto,  t.produto,    t.qtde,   t.un,   t.valorunitario,   t.valordesconto,            t.valoracrescimo,            t.percdesconto,                   t.percacrescimo,             :situacaotributaria,     :aliquota,     :cancelado,     t.decimaisqtde,        t.decimaisvalorunitario,               t.coditem,       t.valordescontounitario,   t.valoracrescimounitario,   :controleorigemmesclagem,          :numerodav,   :md5dav,     :mesclar,    :status,       :qtdeconvertida,       :unconvertida,       :obs     from titensorcamento t  where t.codorcamento = :codorcamento');
+            qrexec_base.SQL.Add('              select            :codpedidovenda,  :datahoracadastro,  t.codproduto,  t.produto,    t.qtde,   t.un,   t.valorunitario,   t.valordescontounitario,            t.valoracrescimounitario,            t.percdescontounitario,                   t.percacrescimounitario,             :situacaotributaria,     :aliquota,     :cancelado,     t.decimaisqtde,        t.decimaisvalorunitario,               t.coditem,       t.valordescontounitario,   t.valoracrescimounitario,   :controleorigemmesclagem,          :numerodav,   :md5dav,     :mesclar,    :status,       :qtdeconvertida,       :unconvertida,       :obs     from titensorcamento t  where t.codorcamento = :codorcamento');
 
             qrexec_base.Params.ParamByName('codorcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;;
             qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icontrole;
@@ -235,9 +235,6 @@ begin
             //Analisar no SGBr como esta informação é persistida
             qrexec_base.Params.ParamByName('qtdeconvertida').Asfloat := 1; //fatorconversao;  //valorconversao;
 
-
-
-
             qrexec_base.ExecSQL;
 
             atualizabanco;
@@ -254,10 +251,18 @@ begin
 
             atualizabanco;
 
+            aSQLText:= 'execute procedure sptotalizapedidovenda(%d)';
+            aSQLCommand:= Format(aSQLText, [icontrole]);
+            conexaodb.ExecuteDirect(aSQLCommand);
+
+            atualizaBanco;
+
+
+
           end;
         //endi
 
-
+        Application.MessageBox(pchar('Pedido nº '+ formatfloat('0000000000',icontrole) +' foi criado com sucesso!'),'Processo bem sucedido',MB_OK);
 
 
      end;
