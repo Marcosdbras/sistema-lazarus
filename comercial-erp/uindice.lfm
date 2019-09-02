@@ -1,19 +1,19 @@
 object frmindice: Tfrmindice
   Left = 168
-  Height = 475
-  Top = 195
-  Width = 674
+  Height = 616
+  Top = 54
+  Width = 689
   BorderIcons = []
   BorderStyle = bsDialog
-  Caption = 'Indice'
-  ClientHeight = 475
-  ClientWidth = 674
+  Caption = 'Indice de Parâmetros'
+  ClientHeight = 616
+  ClientWidth = 689
   OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
   object cbxcodcstde: TDBLookupComboBox
     Left = 9
     Height = 23
-    Top = 32
+    Top = 25
     Width = 127
     DataField = 'codigo'
     DataSource = modulo_temp.dstempCsticmsDe
@@ -27,8 +27,8 @@ object frmindice: Tfrmindice
   object cbxdesccstde: TDBLookupComboBox
     Left = 144
     Height = 23
-    Top = 32
-    Width = 520
+    Top = 25
+    Width = 512
     DataField = 'codigo'
     DataSource = modulo_temp.dstempCsticmsDe
     ListField = 'DESCRICAO'
@@ -38,7 +38,7 @@ object frmindice: Tfrmindice
     TabOrder = 1
   end
   object Label1: TLabel
-    Left = 9
+    Left = 8
     Height = 15
     Top = 8
     Width = 88
@@ -55,7 +55,7 @@ object frmindice: Tfrmindice
   object btngravartodos: TButton
     Left = 104
     Height = 25
-    Top = 400
+    Top = 555
     Width = 480
     Caption = 'Salvar'
     OnClick = btngravartodosClick
@@ -64,24 +64,24 @@ object frmindice: Tfrmindice
   object btncancelar: TButton
     Left = 104
     Height = 25
-    Top = 432
+    Top = 587
     Width = 480
     Caption = 'Fechar'
     OnClick = btncancelarClick
     TabOrder = 3
   end
   object Label3: TLabel
-    Left = 9
+    Left = 8
     Height = 15
-    Top = 69
+    Top = 52
     Width = 63
     Caption = 'IPI PADRÃO'
     ParentColor = False
   end
   object cbxcodipi: TDBLookupComboBox
-    Left = 11
+    Left = 8
     Height = 23
-    Top = 96
+    Top = 71
     Width = 125
     DataField = 'codigo'
     DataSource = modulo_temp.dstempCstIPI
@@ -92,7 +92,7 @@ object frmindice: Tfrmindice
   object cbxdescipi: TDBLookupComboBox
     Left = 144
     Height = 23
-    Top = 96
+    Top = 71
     Width = 512
     DataField = 'codigo'
     DataSource = modulo_temp.dstempCstIPI
@@ -101,9 +101,9 @@ object frmindice: Tfrmindice
     TabOrder = 5
   end
   object Label4: TLabel
-    Left = 9
+    Left = 8
     Height = 15
-    Top = 136
+    Top = 99
     Width = 66
     Caption = 'PIS PADRÃO'
     ParentColor = False
@@ -111,7 +111,7 @@ object frmindice: Tfrmindice
   object cbxcodpis: TDBLookupComboBox
     Left = 8
     Height = 23
-    Top = 160
+    Top = 119
     Width = 125
     DataField = 'codigo'
     DataSource = modulo_temp.dstempCstPis
@@ -122,7 +122,7 @@ object frmindice: Tfrmindice
   object cbxdescpis: TDBLookupComboBox
     Left = 144
     Height = 23
-    Top = 160
+    Top = 119
     Width = 512
     DataField = 'codigo'
     DataSource = modulo_temp.dstempCstPis
@@ -131,28 +131,29 @@ object frmindice: Tfrmindice
     TabOrder = 7
   end
   object Label5: TLabel
-    Left = 9
+    Left = 8
     Height = 15
-    Top = 205
+    Top = 151
     Width = 91
     Caption = 'COFINS PADRÃO'
     ParentColor = False
   end
   object cbxcodcofins: TDBLookupComboBox
-    Left = 11
+    Left = 8
     Height = 23
-    Top = 232
+    Top = 171
     Width = 125
     DataField = 'codigo'
     DataSource = modulo_temp.dstempCstCofins
     ListFieldIndex = 0
     LookupCache = False
+    OnChange = cbxcodcofinsChange
     TabOrder = 8
   end
   object cbxdesccofins: TDBLookupComboBox
     Left = 144
     Height = 23
-    Top = 232
+    Top = 171
     Width = 512
     DataField = 'codigo'
     DataSource = modulo_temp.dstempCstCofins
@@ -163,15 +164,15 @@ object frmindice: Tfrmindice
   object Label6: TLabel
     Left = 9
     Height = 15
-    Top = 270
-    Width = 165
-    Caption = 'Caminho Cabeçalho Impressão'
+    Top = 435
+    Width = 195
+    Caption = 'CAMINHO CABEÇALHO IMPRESSÃO'
     ParentColor = False
   end
   object edtlogotipo: TEdit
     Left = 11
     Height = 23
-    Top = 296
+    Top = 456
     Width = 581
     TabOrder = 10
     Text = 'edtlogotipo'
@@ -179,15 +180,15 @@ object frmindice: Tfrmindice
   object Label7: TLabel
     Left = 11
     Height = 15
-    Top = 336
-    Width = 132
-    Caption = 'Caminho arquivo padrão'
+    Top = 501
+    Width = 161
+    Caption = 'CAMINHO ARQUIVO PADRÃO'
     ParentColor = False
   end
   object edtcaminhopadraopdf: TEdit
     Left = 11
     Height = 23
-    Top = 360
+    Top = 520
     Width = 581
     TabOrder = 11
     Text = 'edtcaminhopadraopdf'
@@ -195,7 +196,7 @@ object frmindice: Tfrmindice
   object btnbuscarlogo: TButton
     Left = 594
     Height = 25
-    Top = 295
+    Top = 455
     Width = 46
     Caption = '...'
     OnClick = btnbuscarlogoClick
@@ -204,18 +205,138 @@ object frmindice: Tfrmindice
   object btnbuscarcaminhopadraoarquivo: TButton
     Left = 594
     Height = 25
-    Top = 358
+    Top = 518
     Width = 46
     Caption = '...'
     OnClick = btnbuscarcaminhopadraoarquivoClick
     TabOrder = 13
   end
+  object Label8: TLabel
+    Left = 8
+    Height = 15
+    Top = 202
+    Width = 154
+    Caption = 'CENTRO DE CUSTO PADRÃO'
+    ParentColor = False
+  end
+  object cbxcodcofins1: TDBLookupComboBox
+    Left = 8
+    Height = 23
+    Top = 226
+    Width = 125
+    DataField = 'codigo'
+    DataSource = modulo_temp.dstempCstCofins
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 14
+  end
+  object cbxdesccofins1: TDBLookupComboBox
+    Left = 144
+    Height = 23
+    Top = 226
+    Width = 512
+    DataField = 'codigo'
+    DataSource = modulo_temp.dstempCstCofins
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 15
+  end
+  object Label9: TLabel
+    Left = 8
+    Height = 15
+    Top = 260
+    Width = 229
+    Caption = 'FORMA DE PAGAMENTO À VISTA PADRÃO'
+    ParentColor = False
+  end
+  object cbxcodcofins2: TDBLookupComboBox
+    Left = 8
+    Height = 23
+    Top = 284
+    Width = 125
+    DataField = 'codigo'
+    DataSource = modulo_temp.dstempCstCofins
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 16
+  end
+  object cbxdesccofins2: TDBLookupComboBox
+    Left = 144
+    Height = 23
+    Top = 284
+    Width = 512
+    DataField = 'codigo'
+    DataSource = modulo_temp.dstempCstCofins
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 17
+  end
+  object Label10: TLabel
+    Left = 8
+    Height = 15
+    Top = 316
+    Width = 236
+    Caption = 'FORMA DE PAGAMENTO A PRAZO PADRÃO'
+    ParentColor = False
+  end
+  object cbxcodcofins3: TDBLookupComboBox
+    Left = 8
+    Height = 23
+    Top = 340
+    Width = 125
+    DataField = 'codigo'
+    DataSource = modulo_temp.dstempCstCofins
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 18
+  end
+  object cbxdesccofins3: TDBLookupComboBox
+    Left = 144
+    Height = 23
+    Top = 340
+    Width = 512
+    DataField = 'codigo'
+    DataSource = modulo_temp.dstempCstCofins
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 19
+  end
+  object Label11: TLabel
+    Left = 11
+    Height = 15
+    Top = 368
+    Width = 159
+    Caption = 'PLANO DE CONTAS  PADRÃO'
+    ParentColor = False
+  end
+  object cbxcodcofins4: TDBLookupComboBox
+    Left = 11
+    Height = 23
+    Top = 392
+    Width = 125
+    DataField = 'codigo'
+    DataSource = modulo_temp.dstempCstCofins
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 20
+  end
+  object cbxdesccofins4: TDBLookupComboBox
+    Left = 147
+    Height = 23
+    Top = 392
+    Width = 512
+    DataField = 'codigo'
+    DataSource = modulo_temp.dstempCstCofins
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 21
+  end
   object OpenDialog1: TOpenDialog
-    left = 616
-    top = 280
+    left = 664
+    top = 224
   end
   object SelectDirectoryDialog1: TSelectDirectoryDialog
-    left = 600
-    top = 393
+    left = 661
+    top = 312
   end
 end

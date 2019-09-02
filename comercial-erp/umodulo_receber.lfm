@@ -1,0 +1,541 @@
+object modulo_receber: Tmodulo_receber
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 219
+  HorizontalOffset = 447
+  VerticalOffset = 301
+  Width = 323
+  PPI = 96
+  object qrReceber: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CLIENTE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'ENDERECO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'COMPLEMENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'BAIRRO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODCIDADE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CIDADE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'UF'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'PAIS'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CEP'
+        DataType = ftString
+        Precision = -1
+        Size = 9
+      end    
+      item
+        Name = 'NATURALIDADE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'TIPOCLIENTE'
+        DataType = ftString
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'RG'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'CPF'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'CNPJ'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'IE'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'IM'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'DATANASCIMENTO'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DATAHORACADASTRO'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'PAI'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'MAE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'TELEFONE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CELULAR'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'EMAIL'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'ESTADOCIVIL'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'ATIVO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'FANTASIA'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'OBS'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'LIMITECREDITO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'NOMECONJUGE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'DATAULTIMAVENDA'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DIASSEMCOMPRAR'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODCONVENIO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CONVENIO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'PROFISSAO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'EMPRESAQUETRABALHA'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'FONETRABALHO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'RENDAMENSAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'TOTALVENDIDO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'NACIONALIDADE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'NUMERO'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'CODCONSULTASPC'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'SEXO'
+        DataType = ftString
+        Precision = -1
+        Size = 25
+      end    
+      item
+        Name = 'CODIGOCIDADEIBGE'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end    
+      item
+        Name = 'CODEMITENTE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NOMECONTATOJURIDICA'
+        DataType = ftString
+        Precision = -1
+        Size = 60
+      end    
+      item
+        Name = 'EMAIL2'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'STATUS'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'MD5L'
+        DataType = ftString
+        Precision = -1
+        Size = 1000
+      end    
+      item
+        Name = 'SERIAL'
+        DataType = ftString
+        Precision = -1
+        Size = 25
+      end    
+      item
+        Name = 'CODGRUPO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'GRUPO'
+        DataType = ftString
+        Precision = -1
+        Size = 80
+      end    
+      item
+        Name = 'FOTO'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'TRIBUTACAO'
+        DataType = ftString
+        Precision = -1
+        Size = 25
+      end    
+      item
+        Name = 'CAMPO1'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO2'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO3'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO4'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO5'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO6'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO7'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO8'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO9'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CAMPO10'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'ISSMUNICIPIO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'DADOSADICIONAIS'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'SITE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODIGOPAIS'
+        DataType = ftString
+        Precision = -1
+        Size = 4
+      end    
+      item
+        Name = 'CSOSN'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'PERCICMSPROPRIOST'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCMVAORIGINAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCICMSSTINTERNA'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCREDUCAOBCST'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'DESCRICAOCSOSN'
+        DataType = ftString
+        Precision = -1
+        Size = 300
+      end    
+      item
+        Name = 'CODIGOCSTORIGEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'ORIGEM'
+        DataType = ftString
+        Precision = -1
+        Size = 300
+      end    
+      item
+        Name = 'POSSUIICMSST'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ISENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'TRIBUTADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'CODCSTORIGEM'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'MENSAGEMFISCAL'
+        DataType = ftString
+        Precision = -1
+        Size = 400
+      end    
+      item
+        Name = 'CODTABELAPRECO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'TABELAPRECO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODVENDEDOR'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'VENDEDOR'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end>
+    AfterScroll = qrReceberAfterScroll
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from treceber'
+    )
+    Params = <>
+    left = 37
+    top = 19
+  end
+  object dsReceber: TDataSource
+    DataSet = qrReceber
+    left = 144
+    top = 19
+  end
+  object qrtempReceber: TBufDataset
+    FieldDefs = <>
+    left = 37
+    top = 112
+    object qrtempReceberccli: TLongintField
+      FieldKind = fkData
+      FieldName = 'ccli'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dstempReceber: TDataSource
+    DataSet = qrtempReceber
+    left = 144
+    top = 112
+  end
+end

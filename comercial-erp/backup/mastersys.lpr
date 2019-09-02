@@ -14,7 +14,8 @@ uses
   uimporc, umodulo_vendaorc, uvendaorc, uindice, umodulo_temp, umodulo_geral,
   uorcamento_impressao, usincorc, umodulo_remoto, usincbaseremota,
   umodulo_emitente, umodulo_tabpreco, ucotacao_cadastro, umodulo_fornecedor,
-  umodulo_cotacao, umodulo_pedidovenda, uorcamento_cadastro
+  umodulo_cotacao, umodulo_pedidovenda, uorcamento_cadastro, umodulo_planoconta,
+  umodulo_centrocusto, umodulo_caixa, umodulo_receber, umodulo_especie
 
   { you can add units after this };
 
@@ -37,6 +38,12 @@ begin
   Application.CreateForm(Tmodulo_emitente, modulo_emitente);
   Application.CreateForm(Tmodulo_tabpreco, modulo_tabpreco);
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
+  Application.CreateForm(Tmodulo_especie, modulo_especie);
+  Application.CreateForm(Tmodulo_planoconta, modulo_planoconta);
+  Application.CreateForm(Tmodulo_caixa, modulo_caixa);
+  Application.CreateForm(Tmodulo_receber, modulo_receber);
+
+
   Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
   Application.CreateForm(Tmodulo_pedidovenda, modulo_pedidovenda);

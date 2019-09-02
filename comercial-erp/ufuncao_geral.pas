@@ -931,11 +931,95 @@ if existe_campo('TMASTER_PEDIDOVENDA','ctabp') = 0 then
 
 
 
+//Campo cplanocontaaprazopadrao existe?
+if existe_campo('TMASTER_INDICE','cplanocontaaprazopadrao') = 0 then
+   begin
 
+         with modulo_conexaodb do
+           begin
 
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD cplanocontaaprazopadrao integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
 
+           end;
+         //endth
+  end;
+//endi
 
+//Campo cplanocontaavistapadrao existe?
+if existe_campo('TMASTER_INDICE','cplanocontaavistapadrao') = 0 then
+   begin
 
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD cplanocontaavistapadrao integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo cpagamentoaprazopadrao existe?
+if existe_campo('TMASTER_INDICE','cpagamentoaprazopadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD cpagamentoaprazopadrao integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo cpagamentoavistapadrao existe?
+if existe_campo('TMASTER_INDICE','cpagamentoavistapadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD cpagamentoavistapadrao integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo ccentrocustopadrao existe?
+if existe_campo('TMASTER_INDICE','ccentrocustopadrao') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_INDICE  ADD ccentrocustopadrao integer;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
 
 //Campo AdmSN existe?
 if existe_campo('TMASTER_INDICE','AdmSN') = 0 then

@@ -320,8 +320,8 @@ object frmimporc: Tfrmimporc
         Left = 501
         Height = 16
         Top = 87
-        Width = 109
-        Caption = 'ORÇAMENTO Nº:'
+        Width = 89
+        Caption = 'ORÇ./DAV Nº:'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13

@@ -235,7 +235,7 @@ implementation
          //lblnped.Caption := qrpedidovenda.FieldByName('controlevarchar').asString;
 
 
-         lblnped.Caption:=  formatfloat('0000000000',qrpedidovenda.FieldByName('controle').asfloat) ;
+         lblnped.Caption:=  formatfloat('00000',qrpedidovenda.FieldByName('controle').asfloat)+' / '+formatfloat('00000',qrpedidovenda.FieldByName('controlevarchar').asfloat)  ;
 
 
          qrpedidovenda_itemproduto.Close;

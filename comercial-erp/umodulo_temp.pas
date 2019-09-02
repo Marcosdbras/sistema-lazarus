@@ -12,16 +12,28 @@ type
   { Tmodulo_temp }
 
   Tmodulo_temp = class(TDataModule)
+    dstempEspecieAvista: TDataSource;
     dstempCstCofins: TDataSource;
+    dstempCentroCusto: TDataSource;
     dstempCstIPI: TDataSource;
     dstempCsticmsDe: TDataSource;
     dstempCsticmsPara: TDataSource;
     dstempCst: TDataSource;
     dstempCstOriem: TDataSource;
     dstempCstPis: TDataSource;
+    dstempEspecieAprazo: TDataSource;
+    dstempPlanoContaAvista: TDataSource;
+    dstempPlanoContaAprazo: TDataSource;
+    qrtempCsticmsDecodigo10: TLongintField;
+    qrtempCsticmsDecodigo8: TLongintField;
+    qrtempCsticmsDecodigo9: TLongintField;
+    qrtempEspecieAvista: TBufDataset;
     qrtempCstCofins: TBufDataset;
+    qrtempCentroCusto: TBufDataset;
+    qrtempCsticmsDecodigo4: TLongintField;
     qrtempCsticmsDecodigo5: TLongintField;
     qrtempCsticmsDecodigo6: TLongintField;
+    qrtempCsticmsDecodigo7: TLongintField;
     qrtempCstIPI: TBufDataset;
     qrtempCsticmsDe: TBufDataset;
     qrtempCsticmsDecodigo2: TLongintField;
@@ -33,6 +45,9 @@ type
     qrtempCstIPIcodigo: TLongintField;
     qrtempCstOriem: TBufDataset;
     qrtempCstPis: TBufDataset;
+    qrtempEspecieAprazo: TBufDataset;
+    qrtempPlanoContaAvista: TBufDataset;
+    qrtempPlanoContaAprazo: TBufDataset;
     procedure DataModuleCreate(Sender: TObject);
   private
 
@@ -136,7 +151,66 @@ begin
 
 
 
+        with qrtempCentroCusto.fieldDefs do
+           begin
+             Add('codigo', ftInteger, 0, True);
+           end;
 
+        qrtempCentroCusto.CreateDataset;
+
+        qrtempCentroCusto.Open;
+
+        qrtempCentroCusto.Append;
+
+
+        with qrtempEspecieAvista.fieldDefs do
+           begin
+             Add('codigo', ftInteger, 0, True);
+           end;
+
+        qrtempEspecieAvista.CreateDataset;
+
+        qrtempEspecieAvista.Open;
+
+        qrtempEspecieAVista.Append;
+
+
+
+        with qrtempEspecieAprazo.fieldDefs do
+           begin
+             Add('codigo', ftInteger, 0, True);
+           end;
+
+        qrtempEspecieAprazo.CreateDataset;
+
+        qrtempEspecieAprazo.Open;
+
+        qrtempEspecieAprazo.Append;
+
+
+
+        with qrtempPlanoContaAvista.fieldDefs do
+           begin
+             Add('codigo', ftInteger, 0, True);
+           end;
+
+        qrtempPlanoContaAvista.CreateDataset;
+
+        qrtempPlanoContaAvista.Open;
+
+        qrtempPlanoContaAVista.Append;
+
+
+        with qrtempPlanoContaAprazo.fieldDefs do
+           begin
+             Add('codigo', ftInteger, 0, True);
+           end;
+
+        qrtempPlanoContaAprazo.CreateDataset;
+
+        qrtempPlanoContaAprazo.Open;
+
+        qrtempPlanoContaAprazo.Append;
 
 
 

@@ -17,7 +17,15 @@ type
     btncancelar: TButton;
     btnbuscarlogo: TButton;
     btnbuscarcaminhopadraoarquivo: TButton;
+    cbxcodcofins1: TDBLookupComboBox;
+    cbxcodcofins2: TDBLookupComboBox;
+    cbxcodcofins3: TDBLookupComboBox;
+    cbxcodcofins4: TDBLookupComboBox;
     cbxcodcstde: TDBLookupComboBox;
+    cbxdesccofins1: TDBLookupComboBox;
+    cbxdesccofins2: TDBLookupComboBox;
+    cbxdesccofins3: TDBLookupComboBox;
+    cbxdesccofins4: TDBLookupComboBox;
     cbxdesccstde: TDBLookupComboBox;
     cbxcodipi: TDBLookupComboBox;
     cbxdescipi: TDBLookupComboBox;
@@ -28,18 +36,23 @@ type
     edtlogotipo: TEdit;
     edtcaminhopadraopdf: TEdit;
     Label1: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     OpenDialog1: TOpenDialog;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
     procedure btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
     procedure btnbuscarlogoClick(Sender: TObject);
     procedure btncancelarClick(Sender: TObject);
     procedure btngravartodosClick(Sender: TObject);
+    procedure cbxcodcofinsChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -120,6 +133,11 @@ begin
 
 
   close;
+
+end;
+
+procedure Tfrmindice.cbxcodcofinsChange(Sender: TObject);
+begin
 
 end;
 

@@ -320,8 +320,8 @@ object frmimppedvenda: Tfrmimppedvenda
         Left = 500
         Height = 16
         Top = 87
-        Width = 75
-        Caption = 'PEDIDO Nº:'
+        Width = 87
+        Caption = 'PED./DAV Nº:'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13

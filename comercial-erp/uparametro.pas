@@ -17,7 +17,17 @@ type
     btncancelar: TButton;
     btnbuscarlogo: TButton;
     btnbuscarcaminhopadraoarquivo: TButton;
+    cbxcodcentrocustopadrao: TDBLookupComboBox;
+    cbxcodespecieavistapadrao: TDBLookupComboBox;
+    cbxcodespecieaprazopadrao: TDBLookupComboBox;
+    cbxcodplanocontasavistapadrao: TDBLookupComboBox;
+    cbxcodplanocontasaprazopadrao: TDBLookupComboBox;
     cbxcodcstde: TDBLookupComboBox;
+    cbxdesccentrocustopadrao: TDBLookupComboBox;
+    cbxdescespecieavistapadrao: TDBLookupComboBox;
+    cbxdescespecieaprazopadrao: TDBLookupComboBox;
+    cbxdescplanocontasavistapadrao: TDBLookupComboBox;
+    cbxdescplanocontasaprazopadrao: TDBLookupComboBox;
     cbxdesccstde: TDBLookupComboBox;
     cbxcodipi: TDBLookupComboBox;
     cbxdescipi: TDBLookupComboBox;
@@ -28,12 +38,17 @@ type
     edtlogotipo: TEdit;
     edtcaminhopadraopdf: TEdit;
     Label1: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     OpenDialog1: TOpenDialog;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
     procedure btnbuscarcaminhopadraoarquivoClick(Sender: TObject);
@@ -51,7 +66,8 @@ var
   frmparametro: Tfrmparametro;
 
 implementation
-     uses umodulo_temp, umodulo_produto, umodulo_geral, umodulo_conexaodb;
+     uses umodulo_temp, umodulo_produto, umodulo_geral,
+          umodulo_conexaodb, umodulo_centrocusto, umodulo_planoconta, umodulo_especie;
 {$R *.lfm}
 
 { Tfrmparametro }
@@ -92,13 +108,14 @@ begin
     qrexec_base.SQL.Clear;
     if modulo_geral.qrmaster_indice.RecordCount = 0 then
        begin
-         qrexec_base.SQL.Add('insert into tmaster_indice( logotipo, caminhopadraopdf, codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao) values (:logotipo, :caminhopadraopdf,  :codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao)');
+         qrexec_base.SQL.Add('insert into tmaster_indice( logotipo, caminhopadraopdf, codcsosnpadrao, codcstpispadrao, codcstoriempadrao, codcstipipadrao, codcstpadrao, codcstcofinspadrao, ccentrocustopadrao, cplanocontaaprazopadrao, cplanocontaavistapadrao, cpagamentoaprazopadrao, cpagamentoavistapadrao) values (:logotipo, :caminhopadraopdf,  :codcsosnpadrao, :codcstpispadrao, :codcstoriempadrao, :codcstipipadrao, :codcstpadrao, :codcstcofinspadrao, :ccentrocustopadrao, :cplanocontaaprazopadrao, :cplanocontaavistapadrao, :cpagamentoaprazopadrao, :cpagamentoavistapadrao)');
       end
     else
       begin
-         qrexec_base.SQL.Add('update tmaster_indice set  logotipo  = :logotipo, caminhopadraopdf = :caminhopadraopdf,   codcsosnpadrao = :codcsosnpadrao, codcstpispadrao = :codcstpispadrao, codcstoriempadrao = :codcstoriempadrao, codcstipipadrao = :codcstipipadrao, codcstpadrao = :codcstpadrao, codcstcofinspadrao = :codcstcofinspadrao');
+         qrexec_base.SQL.Add('update tmaster_indice set  logotipo  = :logotipo, caminhopadraopdf = :caminhopadraopdf,   codcsosnpadrao = :codcsosnpadrao, codcstpispadrao = :codcstpispadrao, codcstoriempadrao = :codcstoriempadrao, codcstipipadrao = :codcstipipadrao, codcstpadrao = :codcstpadrao, codcstcofinspadrao = :codcstcofinspadrao,  ccentrocustopadrao = :ccentrocustopadrao, cplanocontaaprazopadrao = :cplanocontaaprazopadrao, cplanocontaavistapadrao = :cplanocontaavistapadrao, cpagamentoaprazopadrao = :cpagamentoaprazopadrao, cpagamentoavistapadrao = :cpagamentoavistapadrao ');
        end;
     //endi
+
     qrexec_base.ParamByName('codcsosnpadrao').AsInteger:=modulo_temp.qrtempCsticmsDe.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('codcstpispadrao').AsInteger:=modulo_temp.qrtempCstPis.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('codcstoriempadrao').AsInteger:=modulo_temp.qrtempcstoriem.FieldByName('codigo').AsInteger;
@@ -107,6 +124,13 @@ begin
     qrexec_base.ParamByName('codcstcofinspadrao').AsInteger:=modulo_temp.qrtempcstcofins.FieldByName('codigo').AsInteger;
     qrexec_base.ParamByName('logotipo').AsString  := edtlogotipo.Text;
     qrexec_base.ParamByName('caminhopadraopdf').AsString := edtcaminhopadraopdf.Text;
+
+
+    qrexec_base.ParamByName('CCENTROCUSTOPADRAO').AsInteger:=modulo_temp.qrtempCentroCusto.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('CPLANOCONTAAPRAZOPADRAO').AsInteger:=modulo_temp.qrtempPlanoContaAprazo.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('CPLANOCONTAAVISTAPADRAO').AsInteger:=modulo_temp.qrtempPlanoContaAvista.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('CPAGAMENTOAPRAZOPADRAO').AsInteger:=modulo_temp.qrtempEspecieAprazo.FieldByName('codigo').AsInteger;
+    qrexec_base.ParamByName('CPAGAMENTOAVISTAPADRAO').AsInteger:=modulo_temp.qrtempEspecieAvista.FieldByName('codigo').AsInteger;
 
 
     qrexec_base.ExecSQL;
@@ -209,12 +233,57 @@ begin
   //endth
 
 
-  modulo_temp.qrtempCsticmsDe.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcsosnpadrao').AsInteger;
+  with modulo_centrocusto do
+     begin
+       qrcentrocusto.Close;
+       qrcentrocusto.SQL.Clear;
+       qrcentrocusto.SQL.Add('select * from tcentrocusto');
+       qrcentrocusto.Open;
+
+     end;
+ //end
+
+
+ with modulo_especie do
+    begin
+      qrespecie.Close;
+      qrespecie.SQL.Clear;
+      qrespecie.SQL.Add('select * from tespecie');
+      qrespecie.Open;
+
+    end;
+//end
+
+
+with modulo_planoconta do
+   begin
+     qrplanoconta.Close;
+     qrplanoconta.SQL.Clear;
+     qrplanoconta.SQL.Add('select * from tplanoconta');
+     qrplanoconta.Open;
+
+   end;
+//end
+
+
+
+
+
+modulo_temp.qrtempCsticmsDe.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcsosnpadrao').AsInteger;
   modulo_temp.qrtempCstCofins.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstcofinspadrao').AsInteger;
   modulo_temp.qrtempCstipi.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstipipadrao').AsInteger;
   modulo_temp.qrtempCstoriem.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstoriempadrao').AsInteger;
   modulo_temp.qrtempCstpis.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstpispadrao').AsInteger;
   modulo_temp.qrtempCst.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('codcstpadrao').AsInteger;
+
+
+  modulo_temp.qrtempCentroCusto.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('CCENTROCUSTOPADRAO').AsInteger;
+  modulo_temp.qrtempEspecieaPrazo.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('CPAGAMENTOAPRAZOPADRAO').AsInteger;
+  modulo_temp.qrtempEspecieaVista.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('CPAGAMENTOAVISTAPADRAO').AsInteger;
+  modulo_temp.qrtempPlanoContaAvista.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('CPLANOCONTAAVISTAPADRAO').AsInteger;
+  modulo_temp.qrtempPlanoContaAPrazo.FieldByName('codigo').AsInteger := modulo_geral.qrmaster_indice.FieldByName('CPLANOCONTAAPRAZOPADRAO').AsInteger;
+
+
   edtlogotipo.Text := modulo_geral.qrmaster_indice.FieldByName('logotipo').AsString;
   edtcaminhopadraopdf.Text := modulo_geral.qrmaster_indice.FieldByName('caminhopadraopdf').AsString;
 
@@ -281,6 +350,96 @@ begin
   cbxdesccofins.DataField:='codigo';
   cbxdesccofins.ScrollListDataset:=true;
   cbxdesccofins.Style:=csDropDownList;
+
+
+  cbxcodcentrocustopadrao.ListSource := modulo_centrocusto.dsCentroCusto;
+  cbxcodcentrocustopadrao.ListField:='controle';
+  cbxcodcentrocustopadrao.KeyField:='controle';
+  cbxcodcentrocustopadrao.DataSource := modulo_temp.dstempCentroCusto;
+  cbxcodcentrocustopadrao.DataField:='codigo';
+  cbxcodcentrocustopadrao.ScrollListDataset:=true;
+  cbxcodcentrocustopadrao.Style:=csDropDownList;
+
+  cbxdesccentrocustopadrao.ListSource := modulo_centrocusto.dsCentroCusto;
+  cbxdesccentrocustopadrao.ListField:='centrocusto';
+  cbxdesccentrocustopadrao.KeyField:='controle';
+  cbxdesccentrocustopadrao.DataSource := modulo_temp.dstempCentroCusto;
+  cbxdesccentrocustopadrao.DataField:='codigo';
+  cbxdesccentrocustopadrao.ScrollListDataset:=true;
+  cbxdesccentrocustopadrao.Style:=csDropDownList;
+
+  cbxcodespecieavistapadrao.ListSource := modulo_especie.dsEspecie;
+  cbxcodespecieavistapadrao.ListField:='controle';
+  cbxcodespecieavistapadrao.KeyField:='controle';
+  cbxcodespecieavistapadrao.DataSource := modulo_temp.dstempEspecieAvista;
+  cbxcodespecieavistapadrao.DataField:='codigo';
+  cbxcodespecieavistapadrao.ScrollListDataset:=true;
+  cbxcodespecieavistapadrao.Style:=csDropDownList;
+
+  cbxdescespecieavistapadrao.ListSource := modulo_especie.dsEspecie;
+  cbxdescespecieavistapadrao.ListField:='especie';
+  cbxdescespecieavistapadrao.KeyField:='controle';
+  cbxdescespecieavistapadrao.DataSource := modulo_temp.dstempEspecieAvista;
+  cbxdescespecieavistapadrao.DataField:='codigo';
+  cbxdescespecieavistapadrao.ScrollListDataset:=true;
+  cbxdescespecieavistapadrao.Style:=csDropDownList;
+
+  cbxcodespecieaprazopadrao.ListSource := modulo_especie.dsEspecie;
+  cbxcodespecieaprazopadrao.ListField:='controle';
+  cbxcodespecieaprazopadrao.KeyField:='controle';
+  cbxcodespecieaprazopadrao.DataSource := modulo_temp.dstempEspecieAprazo;
+  cbxcodespecieaprazopadrao.DataField:='codigo';
+  cbxcodespecieaprazopadrao.ScrollListDataset:=true;
+  cbxcodespecieaprazopadrao.Style:=csDropDownList;
+
+  cbxdescespecieaprazopadrao.ListSource := modulo_especie.dsEspecie;
+  cbxdescespecieaprazopadrao.ListField:='especie';
+  cbxdescespecieaprazopadrao.KeyField:='controle';
+  cbxdescespecieaprazopadrao.DataSource := modulo_temp.dstempEspecieAprazo;
+  cbxdescespecieaprazopadrao.DataField:='codigo';
+  cbxdescespecieaprazopadrao.ScrollListDataset:=true;
+  cbxdescespecieaprazopadrao.Style:=csDropDownList;
+
+  cbxcodplanocontasavistapadrao.ListSource := modulo_planoconta.dsPlanoConta;
+  cbxcodplanocontasavistapadrao.ListField:='controle';
+  cbxcodplanocontasavistapadrao.KeyField:='controle';
+  cbxcodplanocontasavistapadrao.DataSource := modulo_temp.dstempPlanoContaAvista;
+  cbxcodplanocontasavistapadrao.DataField:='codigo';
+  cbxcodplanocontasavistapadrao.ScrollListDataset:=true;
+  cbxcodplanocontasavistapadrao.Style:=csDropDownList;
+
+  cbxdescplanocontasavistapadrao.ListSource := modulo_planoconta.dsPlanoConta;
+  cbxdescplanocontasavistapadrao.ListField:='planoconta';
+  cbxdescplanocontasavistapadrao.KeyField:='controle';
+  cbxdescplanocontasavistapadrao.DataSource := modulo_temp.dstempPlanoContaAvista;
+  cbxdescplanocontasavistapadrao.DataField:='codigo';
+  cbxdescplanocontasavistapadrao.ScrollListDataset:=true;
+  cbxdescplanocontasavistapadrao.Style:=csDropDownList;
+
+
+  cbxcodplanocontasaprazopadrao.ListSource := modulo_planoconta.dsPlanoConta;
+  cbxcodplanocontasaprazopadrao.ListField:='controle';
+  cbxcodplanocontasaprazopadrao.KeyField:='controle';
+  cbxcodplanocontasaprazopadrao.DataSource := modulo_temp.dstempPlanoContaAprazo;
+  cbxcodplanocontasaprazopadrao.DataField:='codigo';
+  cbxcodplanocontasaprazopadrao.ScrollListDataset:=true;
+  cbxcodplanocontasaprazopadrao.Style:=csDropDownList;
+
+  cbxdescplanocontasaprazopadrao.ListSource := modulo_planoconta.dsPlanoConta;
+  cbxdescplanocontasaprazopadrao.ListField:='planoconta';
+  cbxdescplanocontasaprazopadrao.KeyField:='controle';
+  cbxdescplanocontasaprazopadrao.DataSource := modulo_temp.dstempPlanoContaAprazo;
+  cbxdescplanocontasaprazopadrao.DataField:='codigo';
+  cbxdescplanocontasaprazopadrao.ScrollListDataset:=true;
+  cbxdescplanocontasaprazopadrao.Style:=csDropDownList;
+
+
+
+
+
+
+
+
 
 
 end;

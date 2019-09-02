@@ -12,13 +12,13 @@ type
   { Tmodulo_cliente }
 
   Tmodulo_cliente = class(TDataModule)
-    dstcliente: TDataSource;
+    dscliente: TDataSource;
     dstempCliente: TDataSource;
-    qrtcliente: TSQLQuery;
+    qrcliente: TSQLQuery;
     qrtempCliente: TBufDataset;
     qrtempClienteccli: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
-    procedure qrtclienteAfterScroll(DataSet: TDataSet);
+    procedure qrclienteAfterScroll(DataSet: TDataSet);
   private
 
   public
@@ -53,16 +53,16 @@ implementation
 
       end;
 
-procedure Tmodulo_cliente.qrtclienteAfterScroll(DataSet: TDataSet);
+procedure Tmodulo_cliente.qrclienteAfterScroll(DataSet: TDataSet);
 begin
     if  frmorcamento_cadastro <> nil then
         begin
 
-          if modulo_tabpreco.qrtabpreco.Locate('controle',qrtcliente.FieldByName('codtabelapreco').AsInteger,[]) then
+          if modulo_tabpreco.qrtabpreco.Locate('controle',qrcliente.FieldByName('codtabelapreco').AsInteger,[]) then
              begin
 
                modulo_tabpreco.qrtempTabPreco.Edit;
-               modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger := qrtcliente.FieldByName('codtabelapreco').AsInteger;
+               modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger := qrcliente.FieldByName('codtabelapreco').AsInteger;
 
              end
           else
