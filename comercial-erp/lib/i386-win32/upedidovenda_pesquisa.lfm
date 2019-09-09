@@ -1,7 +1,7 @@
 object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
   Left = 18
   Height = 706
-  Top = 0
+  Top = -7
   Width = 1028
   BorderIcons = [biMinimize, biMaximize]
   BorderStyle = bsSingle
@@ -289,7 +289,7 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
       object Button5: TButton
         Left = 8
         Height = 40
-        Top = 7
+        Top = 8
         Width = 91
         Caption = 'Fechar'
         Font.CharSet = ANSI_CHARSET
@@ -303,36 +303,52 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
         TabOrder = 0
       end
     end
-    object btnimprimir: TButton
-      Left = 520
-      Height = 40
+    object btnfecharpedido: TButton
+      Left = 664
+      Height = 41
       Top = 7
       Width = 123
-      Caption = 'Imprimir'
+      Caption = 'Lançar Pedido'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clNavy
       Font.Height = -15
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      OnClick = btnimprimirClick
+      OnClick = btnfecharpedidoClick
       ParentFont = False
       TabOrder = 5
     end
-    object btnsinc: TButton
-      Left = 648
+    object btnfecharpedido1: TButton
+      Left = 792
       Height = 40
-      Top = 7
+      Top = 8
       Width = 139
-      Caption = 'Sincronização'
+      Caption = 'Cancelar Pedido'
       Font.CharSet = ANSI_CHARSET
       Font.Height = -15
       Font.Name = 'Arial Narrow'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      OnClick = btnsincClick
+      OnClick = btnfecharpedido1Click
       ParentFont = False
       TabOrder = 6
+      Visible = False
+    end
+    object btnimpressao: TButton
+      Left = 520
+      Height = 40
+      Top = 8
+      Width = 139
+      Caption = 'Impressão'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -15
+      Font.Name = 'Arial Narrow'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      OnClick = btnimpressaoClick
+      ParentFont = False
+      TabOrder = 7
     end
   end
   object pnlcentral: TPanel

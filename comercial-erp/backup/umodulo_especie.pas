@@ -9,16 +9,16 @@ uses
 
 type
 
-  { Tmodulo_centrocuto }
+  { Tmodulo_especie }
 
-  Tmodulo_centrocuto = class(TDataModule)
-    dsCentroCusto: TDataSource;
-    dstempCentroCusto: TDataSource;
-    qrCentroCusto: TSQLQuery;
-    qrtempCentroCusto: TBufDataset;
-    qrtempCentroCustoccli: TLongintField;
+  Tmodulo_especie = class(TDataModule)
+    dsEspecie: TDataSource;
+    dstempEspecie: TDataSource;
+    qrEspecie: TSQLQuery;
+    qrtempEspecie: TBufDataset;
+    qrtempEspecieccli: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
-    procedure qrCentroCustoAfterScroll(DataSet: TDataSet);
+    procedure qrEspecieAfterScroll(DataSet: TDataSet);
   private
 
   public
@@ -26,34 +26,34 @@ type
   end;
 
 var
-  modulo_centrocuto: Tmodulo_centrocuto;
+  modulo_especie: Tmodulo_especie;
 
 implementation
       uses umodulo_conexaodb, uorcamento_cadastro,umodulo_tabpreco;
 {$R *.lfm}
 
-      { Tmodulo_centrocuto }
+      { Tmodulo_especie }
 
-      procedure Tmodulo_centrocuto.DataModuleCreate(Sender: TObject);
+      procedure Tmodulo_especie.DataModuleCreate(Sender: TObject);
       begin
 
-        with qrtempCentroCusto.fieldDefs do
+        with qrtempEspecie.fieldDefs do
            begin
-                 Add('ccentrocusto', ftInteger, 0, True);
+                 Add('ccespecie', ftInteger, 0, True);
            end;
 
-        qrtempCentroCusto.CreateDataset;
+        qrtempEspecie.CreateDataset;
 
-        qrtempCentroCusto.Open;
+        qrtempEspecie.Open;
 
-        qrtempCentroCusto.Append;
+        qrtempEspecie.Append;
 
 
 
 
       end;
 
-procedure Tmodulo_centrocuto.qrCentroCustoAfterScroll(DataSet: TDataSet);
+procedure Tmodulo_especie.qrEspecieAfterScroll(DataSet: TDataSet);
 begin
 end;
 

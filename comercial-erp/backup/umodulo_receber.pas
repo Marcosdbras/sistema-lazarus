@@ -13,11 +13,15 @@ type
 
   Tmodulo_receber = class(TDataModule)
     dsReceber: TDataSource;
+    dsMasterReceber: TDataSource;
     dstempReceber: TDataSource;
+    dstempMasterReceber: TDataSource;
     qrReceber: TSQLQuery;
+    qrMasterReceber: TSQLQuery;
     qrtempReceber: TBufDataset;
-    qrtempReceberccli: TLongintField;
+    qrtempMasterReceber: TBufDataset;
     procedure DataModuleCreate(Sender: TObject);
+    procedure dstempMasterReceberDataChange(Sender: TObject; Field: TField);
     procedure qrReceberAfterScroll(DataSet: TDataSet);
   private
 
@@ -39,7 +43,7 @@ implementation
 
         with qrtempReceber.fieldDefs do
            begin
-                 Add('cplanoconta', ftInteger, 0, True);
+                 Add('creceber', ftInteger, 0, True);
            end;
 
         qrtempReceber.CreateDataset;
@@ -51,7 +55,31 @@ implementation
 
 
 
+        with qrtempMasterReceber.fieldDefs do
+           begin
+                 Add('cmasterreceber', ftInteger, 0, True);
+           end;
+
+        qrtempMasterReceber.CreateDataset;
+
+        qrtempMasterReceber.Open;
+
+        qrtempMasterReceber.Append;
+
+
+
+
+
+
+
+
       end;
+
+procedure Tmodulo_receber.dstempMasterReceberDataChange(Sender: TObject;
+  Field: TField);
+begin
+
+end;
 
 procedure Tmodulo_receber.qrReceberAfterScroll(DataSet: TDataSet);
 begin

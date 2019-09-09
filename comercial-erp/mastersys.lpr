@@ -15,7 +15,8 @@ uses
   uorcamento_impressao, usincorc, umodulo_remoto, usincbaseremota,
   umodulo_emitente, umodulo_tabpreco, ucotacao_cadastro, umodulo_fornecedor,
   umodulo_cotacao, umodulo_pedidovenda, uorcamento_cadastro, umodulo_planoconta,
-  umodulo_centrocusto, umodulo_caixa, umodulo_receber, umodulo_especie
+  umodulo_centrocusto, umodulo_caixa, umodulo_receber, umodulo_especie, ufechapedidovenda,
+  umodulo_parcelapredefinida
 
   { you can add units after this };
 
@@ -40,6 +41,7 @@ begin
   Application.CreateForm(Tmodulo_cliente, modulo_cliente);
   Application.CreateForm(Tmodulo_especie, modulo_especie);
   Application.CreateForm(Tmodulo_planoconta, modulo_planoconta);
+  Application.CreateForm(Tmodulo_parcelapredefinida, modulo_parcelapredefinida);
   Application.CreateForm(Tmodulo_caixa, modulo_caixa);
   Application.CreateForm(Tmodulo_receber, modulo_receber);
   Application.CreateForm(Tmodulo_centrocusto, modulo_centrocusto);
@@ -64,7 +66,7 @@ begin
   //Application.CreateForm(Tmodulo_temp, modulo_temp);
   //Application.CreateForm(Tfrmorcamento_impressao, frmorcamento_impressao);
   //Application.CreateForm(Tfrmcotacao_cadastro, frmcotacao_cadastro);
-
+  //Application.CreateForm(Tfrmfechapedidovenda, frmfechapedidovenda);
 
   frmsplash.Hide;
   frmsplash.Free;

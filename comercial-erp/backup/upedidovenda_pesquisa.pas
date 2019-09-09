@@ -14,15 +14,16 @@ type
   { Tfrmpedidovenda_pesquisa }
 
   Tfrmpedidovenda_pesquisa = class(TForm)
+    btnimpressao: TButton;
     btnfiltrar: TButton;
-    btnimprimir: TButton;
+    btnfecharpedido: TButton;
     btnlimpar: TButton;
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
-    btnsinc: TButton;
+    btnfecharpedido1: TButton;
     DBGrid1: TDBGrid;
     DBText1: TDBText;
     edtdatainicio: TDateEdit;
@@ -41,10 +42,11 @@ type
     pnlsuperior: TPanel;
     pnlinferior: TPanel;
     pnlcentral: TPanel;
+    procedure btnimpressaoClick(Sender: TObject);
     procedure btnfiltrarClick(Sender: TObject);
-    procedure btnimprimirClick(Sender: TObject);
+    procedure btnfecharpedidoClick(Sender: TObject);
     procedure btnlimparClick(Sender: TObject);
-    procedure btnsincClick(Sender: TObject);
+    procedure btnfecharpedido1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -77,7 +79,8 @@ var
   frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa;
 
 implementation
-     uses ufuncao_geral,  umodulo_pedidovenda, upedidovenda_cadastro, umodulo_cliente, umodulo_funcionario, upedidovenda_impressao, umodulo_conexaodb;
+     uses ufuncao_geral,  umodulo_pedidovenda, upedidovenda_cadastro, umodulo_cliente, umodulo_funcionario,
+          upedidovenda_impressao, umodulo_conexaodb, ufechapedidovenda;
 {$R *.lfm}
 
 { Tfrmpedidovenda_pesquisa }
@@ -150,12 +153,26 @@ begin
   filtrar;
 end;
 
-procedure Tfrmpedidovenda_pesquisa.btnimprimirClick(Sender: TObject);
+procedure Tfrmpedidovenda_pesquisa.btnimpressaoClick(Sender: TObject);
 begin
-  frmpedidovenda_impressao := tfrmpedidovenda_impressao.Create(self);
-  frmpedidovenda_impressao.ShowModal;
-  frmpedidovenda_impressao.free;
-  frmpedidovenda_impressao := nil;
+   frmpedidovenda_impressao := tfrmpedidovenda_impressao.Create(self);
+   frmpedidovenda_impressao.ShowModal;
+   frmpedidovenda_impressao.free;
+   frmpedidovenda_impressao := nil;
+
+end;
+
+procedure Tfrmpedidovenda_pesquisa.btnfecharpedidoClick(Sender: TObject);
+begin
+
+  frmfechapedidovenda := tfrmfechapedidovenda.Create(self);
+  frmfechapedidovenda.ShowModal;
+  frmfechapedidovenda.free;
+  frmfechapedidovenda := nil;
+
+
+
+
 end;
 
 procedure Tfrmpedidovenda_pesquisa.btnlimparClick(Sender: TObject);
@@ -163,7 +180,7 @@ begin
   limpar;
 end;
 
-procedure Tfrmpedidovenda_pesquisa.btnsincClick(Sender: TObject);
+procedure Tfrmpedidovenda_pesquisa.btnfecharpedido1Click(Sender: TObject);
 begin
   frmsincorc := tfrmsincorc.create(self);
   frmsincorc.showmodal;
@@ -232,7 +249,7 @@ end;
 procedure Tfrmpedidovenda_pesquisa.cbxnomeclienteKeyPress(Sender: TObject;
   var Key: char);
 begin
-  if key = #13 then
+if key = #13 then
    begin
      key := #0;
      SelectNext(ActiveControl,True,True);

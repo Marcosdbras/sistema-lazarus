@@ -1,4 +1,4 @@
-object modulo_centrocuto: Tmodulo_centrocuto
+object modulo_especie: Tmodulo_especie
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 219
@@ -6,7 +6,7 @@ object modulo_centrocuto: Tmodulo_centrocuto
   VerticalOffset = 301
   Width = 323
   PPI = 96
-  object qrCentroCusto: TSQLQuery
+  object qrEspecie: TSQLQuery
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -504,7 +504,7 @@ object modulo_centrocuto: Tmodulo_centrocuto
         Precision = -1
         Size = 100
       end>
-    AfterScroll = qrCentroCustoAfterScroll
+    AfterScroll = qrEspecieAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
@@ -514,16 +514,16 @@ object modulo_centrocuto: Tmodulo_centrocuto
     left = 56
     top = 19
   end
-  object dsCentroCusto: TDataSource
-    DataSet = qrCentroCusto
+  object dsEspecie: TDataSource
+    DataSet = qrEspecie
     left = 211
     top = 19
   end
-  object qrtempCentroCusto: TBufDataset
+  object qrtempEspecie: TBufDataset
     FieldDefs = <>
     left = 56
     top = 112
-    object qrtempCentroCustoccli: TLongintField
+    object qrtempEspecieccli: TLongintField
       FieldKind = fkData
       FieldName = 'ccli'
       Index = 0
@@ -533,8 +533,8 @@ object modulo_centrocuto: Tmodulo_centrocuto
       Required = False
     end
   end
-  object dstempCentroCusto: TDataSource
-    DataSet = qrtempCentroCusto
+  object dstempEspecie: TDataSource
+    DataSet = qrtempEspecie
     left = 211
     top = 112
   end
