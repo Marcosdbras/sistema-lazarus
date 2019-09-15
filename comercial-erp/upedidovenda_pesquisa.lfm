@@ -318,7 +318,6 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
       OnClick = btnfecharpedidoClick
       ParentFont = False
       TabOrder = 5
-      Visible = False
     end
     object btnfecharpedido1: TButton
       Left = 792

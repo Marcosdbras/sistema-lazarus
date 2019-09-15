@@ -16,7 +16,7 @@ uses
   umodulo_emitente, umodulo_tabpreco, ucotacao_cadastro, umodulo_fornecedor,
   umodulo_cotacao, umodulo_pedidovenda, uorcamento_cadastro, umodulo_planoconta,
   umodulo_centrocusto, umodulo_caixa, umodulo_receber, umodulo_especie, ufechapedidovenda,
-  umodulo_parcelapredefinida
+  umodulo_parcelapredefinida, umodulo_master_indice, ucadastro_parcelafinanceiro
 
   { you can add units after this };
 
@@ -45,8 +45,6 @@ begin
   Application.CreateForm(Tmodulo_caixa, modulo_caixa);
   Application.CreateForm(Tmodulo_receber, modulo_receber);
   Application.CreateForm(Tmodulo_centrocusto, modulo_centrocusto);
-
-
   Application.CreateForm(Tmodulo_funcionario, modulo_funcionario);
   Application.CreateForm(Tmodulo_orcamento, modulo_orcamento);
   Application.CreateForm(Tmodulo_pedidovenda, modulo_pedidovenda);
@@ -56,6 +54,7 @@ begin
   Application.CreateForm(Tmodulo_temp, modulo_temp);
   Application.CreateForm(Tmodulo_geral, modulo_geral);
   Application.CreateForm(Tmodulo_cotacao, modulo_cotacao);
+  Application.CreateForm(Tmodulo_master_indice, modulo_master_indice);
 
   // 2-Cria módulo conexao com a tabela remota para sincronismo com base
   Application.CreateForm(Tmodulo_remoto, modulo_remoto);
@@ -67,6 +66,7 @@ begin
   //Application.CreateForm(Tfrmorcamento_impressao, frmorcamento_impressao);
   //Application.CreateForm(Tfrmcotacao_cadastro, frmcotacao_cadastro);
   //Application.CreateForm(Tfrmfechapedidovenda, frmfechapedidovenda);
+  //Application.CreateForm(Tfrmcadastro_parcelafinanceiro, frmcadastro_parcelafinanceiro);
 
   frmsplash.Hide;
   frmsplash.Free;

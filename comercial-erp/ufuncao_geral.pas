@@ -948,6 +948,27 @@ if existe_campo('TMASTER_RECEBER','STATUS') = 0 then
 //endi
 
 
+//Campo PRAZO existe?
+if existe_campo('TMASTER_RECEBER','PRAZO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_RECEBER  ADD  PRAZO  INTEGER;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
 
 
 //Campo dif_prazo existe?

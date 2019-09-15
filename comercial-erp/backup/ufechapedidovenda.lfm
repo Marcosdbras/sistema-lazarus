@@ -2,22 +2,22 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
   Left = 319
   Height = 592
   Top = 69
-  Width = 526
+  Width = 535
   BorderStyle = bsDialog
   Caption = 'Lançar Pedido de Venda'
   ClientHeight = 592
-  ClientWidth = 526
+  ClientWidth = 535
   OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
   object pnlsuperior: TPanel
     Left = 0
     Height = 208
     Top = 0
-    Width = 526
+    Width = 535
     Align = alTop
     BevelOuter = bvNone
     ClientHeight = 208
-    ClientWidth = 526
+    ClientWidth = 535
     TabOrder = 0
     object Label1: TLabel
       Left = 4
@@ -265,9 +265,11 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       Height = 23
       Top = 181
       Width = 74
-      MaxValue = 0
+      MaxValue = 60
+      MinValue = 1
       OnKeyPress = edtnparcKeyPress
       TabOrder = 5
+      Value = 1
     end
     object Label3: TLabel
       Left = 576
@@ -443,6 +445,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       Top = 181
       Width = 109
       Caption = 'Lançar Parcela(s)'
+      OnClick = btnlancarparcelaClick
       TabOrder = 6
     end
     object Label15: TLabel
@@ -485,36 +488,65 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     Left = 0
     Height = 334
     Top = 208
-    Width = 526
+    Width = 535
     Align = alClient
     BevelOuter = bvNone
     ClientHeight = 334
-    ClientWidth = 526
+    ClientWidth = 535
     TabOrder = 1
     object DBGrid1: TDBGrid
       Left = 5
       Height = 344
       Top = 8
-      Width = 515
+      Width = 451
       Color = clWindow
-      Columns = <>
+      Columns = <      
+        item
+          Title.Caption = 'ESPECIE'
+          Width = 120
+          FieldName = 'ESPECIE'
+        end      
+        item
+          Title.Caption = 'PRAZO'
+          Width = 50
+          FieldName = 'PRAZO'
+        end      
+        item
+          Title.Caption = 'DATAVENCIMENTO'
+          Width = 120
+          FieldName = 'DATAVENCIMENTO'
+        end      
+        item
+          Title.Caption = 'VALORORIGINAL'
+          Width = 120
+          FieldName = 'VALORORIGINAL'
+        end>
       DataSource = modulo_receber.dsMasterReceber
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowEditor, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
       TabOrder = 0
+      OnKeyPress = DBGrid1KeyPress
+    end
+    object btnalterarfin: TBitBtn
+      Left = 457
+      Height = 40
+      Top = 8
+      Width = 75
+      Caption = 'Alterar Parc.'
+      TabOrder = 1
     end
   end
   object pnlinferior: TPanel
     Left = 0
     Height = 50
     Top = 542
-    Width = 526
+    Width = 535
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 50
-    ClientWidth = 526
+    ClientWidth = 535
     TabOrder = 2
     object btnlancar: TBitBtn
-      Left = 304
+      Left = 240
       Height = 38
       Top = 4
       Width = 104
@@ -523,7 +555,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       TabOrder = 0
     end
     object btncancelar: TBitBtn
-      Left = 416
+      Left = 352
       Height = 38
       Top = 4
       Width = 104

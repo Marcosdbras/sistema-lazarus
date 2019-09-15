@@ -929,6 +929,27 @@ if existe_campo('TMASTER_RECEBER','REPLICADA') = 0 then
 
 
 
+//Campo STATUS existe?
+if existe_campo('TMASTER_RECEBER','STATUS') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_RECEBER ADD STATUS VARCHAR(10) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
 //Campo dif_prazo existe?
 if existe_campo('TMASTER_COTACAO_ITEM','dif_prazo') = 0 then
    begin

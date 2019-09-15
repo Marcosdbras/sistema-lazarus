@@ -37,7 +37,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="44">
+    <Units Count="46">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -331,6 +331,18 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit43>
+      <Unit44>
+        <Filename Value="umodulo_master_indice.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_master_indice"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmcadastro_parcelafinanceiro"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit45>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

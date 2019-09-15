@@ -39,7 +39,7 @@ implementation
 
         with qrtempEspecie.fieldDefs do
            begin
-                 Add('ccespecie', ftInteger, 0, True);
+                 Add('cespecie', ftInteger, 0, True);
            end;
 
         qrtempEspecie.CreateDataset;

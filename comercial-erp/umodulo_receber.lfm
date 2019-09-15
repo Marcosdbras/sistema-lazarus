@@ -530,6 +530,7 @@ object modulo_receber: Tmodulo_receber
     top = 120
   end
   object qrMasterReceber: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CODIGO'
@@ -663,7 +664,13 @@ object modulo_receber: Tmodulo_receber
         DataType = ftString
         Precision = -1
         Size = 10
+      end    
+      item
+        Name = 'PRAZO'
+        DataType = ftInteger
+        Precision = -1
       end>
+    AfterPost = qrMasterReceberAfterPost
     AfterScroll = qrReceberAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
@@ -673,6 +680,263 @@ object modulo_receber: Tmodulo_receber
     Params = <>
     left = 56
     top = 209
+    object qrMasterReceberCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrMasterReceberCODPEDIDOVENDA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODPEDIDOVENDA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberDESCRICAOLANCAMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAOLANCAMENTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberQTDEPARCELA: TLongintField
+      FieldKind = fkData
+      FieldName = 'QTDEPARCELA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberNPARCELA: TLongintField
+      FieldKind = fkData
+      FieldName = 'NPARCELA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberCODCLIENTE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODCLIENTE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrMasterReceberCLIENTE: TStringField
+      FieldKind = fkData
+      FieldName = 'CLIENTE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberCODESPECIE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODESPECIE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrMasterReceberESPECIE: TStringField
+      FieldKind = fkData
+      FieldName = 'ESPECIE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberDATAHORACADASTRO: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'DATAHORACADASTRO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberDATAVENCIMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'DATAVENCIMENTO'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberCODPLANOCONTA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODPLANOCONTA'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrMasterReceberPLANOCONTA: TStringField
+      FieldKind = fkData
+      FieldName = 'PLANOCONTA'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object qrMasterReceberDOCUMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'DOCUMENTO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberORIGEM: TStringField
+      FieldKind = fkData
+      FieldName = 'ORIGEM'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberVALORORIGINAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORORIGINAL'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrMasterReceberOBS: TMemoField
+      FieldKind = fkData
+      FieldName = 'OBS'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object qrMasterReceberCODFUNCIONARIO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODFUNCIONARIO'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberFUNCIONARIO: TStringField
+      FieldKind = fkData
+      FieldName = 'FUNCIONARIO'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberCODVENDEDOR: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODVENDEDOR'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberVENDEDOR: TStringField
+      FieldKind = fkData
+      FieldName = 'VENDEDOR'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberCODBARRA: TStringField
+      FieldKind = fkData
+      FieldName = 'CODBARRA'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object qrMasterReceberREPLICADA: TStringField
+      FieldKind = fkData
+      FieldName = 'REPLICADA'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrMasterReceberSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object StringField1: TStringField
+      FieldKind = fkLookup
+      FieldName = 'ESPECIE1'
+      Index = 24
+      KeyFields = 'CODESPECIE'
+      LookupCache = False
+      LookupDataSet = modulo_especie.qrEspecie
+      LookupKeyFields = 'CONTROLE'
+      LookupResultField = 'ESPECIE'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberPRAZO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PRAZO'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object dsMasterReceber: TDataSource
     DataSet = qrMasterReceber

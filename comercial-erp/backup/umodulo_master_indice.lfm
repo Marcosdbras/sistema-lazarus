@@ -1,0 +1,310 @@
+object modulo_master_indice: Tmodulo_master_indice
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 427
+  HorizontalOffset = 237
+  VerticalOffset = 152
+  Width = 340
+  PPI = 96
+  object qrmaster_indice: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CONTROLE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODCLIENTE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NOMECLIENTE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'ENDERECO'
+        DataType = ftString
+        Precision = -1
+        Size = 150
+      end    
+      item
+        Name = 'NUMERO'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'BAIRRO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CIDADE'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CEP'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'UF'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'COMPLEMENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'TELEFONE'
+        DataType = ftString
+        Precision = -1
+        Size = 50
+      end    
+      item
+        Name = 'CELULAR'
+        DataType = ftString
+        Precision = -1
+        Size = 50
+      end    
+      item
+        Name = 'EMAIL'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'RG'
+        DataType = ftString
+        Precision = -1
+        Size = 50
+      end    
+      item
+        Name = 'CODFUNCIONARIO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'FUNCIONARIO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'DATA'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'HORA'
+        DataType = ftTime
+        Precision = -1
+      end    
+      item
+        Name = 'DATAHORACADASTRO'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'CONDICAOPAGAMENTO'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'OBSERVACAO'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'VALOR'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'DESCONTO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'VALORTOTAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'TIPODESCONTO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ACRESCIMO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'SERIEECF'
+        DataType = ftString
+        Precision = -1
+        Size = 21
+      end    
+      item
+        Name = 'TIPOECF'
+        DataType = ftString
+        Precision = -1
+        Size = 7
+      end    
+      item
+        Name = 'MARCAECF'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'MODELOECF'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'COO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'TITULODAV'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'COOVINCULADO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NUMEROECF'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DATAVENCIMENTO'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'DIASVENCIMENTO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CONTROLEVARCHAR'
+        DataType = ftString
+        Precision = -1
+        Size = 13
+      end    
+      item
+        Name = 'CODSEQUENCIA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CANCELADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'STATUS'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'TIPOCLIENTE'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'MESCLAR'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'CPF'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'CNPJ'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'MD5DAV'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODNFE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'INDICADOR'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODVENDEDOR'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'VENDEDOR'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'DATAFATURADA'
+        DataType = ftDate
+        Precision = -1
+      end>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    SQL.Strings = (
+      'select * from torcamento'
+    )
+    Params = <>
+    left = 64
+    top = 40
+  end
+  object dsmaster_indice: TDataSource
+    DataSet = qrmaster_indice
+    left = 184
+    top = 40
+  end
+end

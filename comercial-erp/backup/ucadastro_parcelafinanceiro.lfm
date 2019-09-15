@@ -1,0 +1,59 @@
+object frmcadastro_parcelafinanceiro: Tfrmcadastro_parcelafinanceiro
+  Left = 434
+  Height = 268
+  Top = 273
+  Width = 549
+  Caption = 'Parcela Financeiro'
+  ClientHeight = 268
+  ClientWidth = 549
+  LCLVersion = '1.8.4.0'
+  object Label1: TLabel
+    Left = 48
+    Height = 15
+    Top = 48
+    Width = 42
+    Caption = 'Especie:'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 48
+    Height = 15
+    Top = 96
+    Width = 32
+    Caption = 'Prazo:'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 48
+    Height = 15
+    Top = 144
+    Width = 94
+    Caption = 'Data Vencimento:'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 51
+    Height = 15
+    Top = 189
+    Width = 30
+    Caption = 'Valor:'
+    ParentColor = False
+  end
+  object btncancelar: TButton
+    Left = 376
+    Height = 25
+    Top = 232
+    Width = 75
+    Caption = 'Cancelar'
+    OnClick = btncancelarClick
+    TabOrder = 0
+  end
+  object btnsalvar: TButton
+    Left = 464
+    Height = 25
+    Top = 232
+    Width = 75
+    Caption = 'Salvar'
+    TabOrder = 1
+  end
+end

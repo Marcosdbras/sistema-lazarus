@@ -1,0 +1,4 @@
+keyFields := CODESPECIE
+LookupDataSet := modulo_especie.qrEspecie;
+LookupResultField := ESPECIE
+LookupKeyfields := controle

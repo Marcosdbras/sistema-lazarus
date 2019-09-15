@@ -16,12 +16,39 @@ type
     dsMasterReceber: TDataSource;
     dstempReceber: TDataSource;
     dstempMasterReceber: TDataSource;
+    qrMasterReceberCLIENTE: TStringField;
+    qrMasterReceberCODBARRA: TStringField;
+    qrMasterReceberCODCLIENTE: TLongintField;
+    qrMasterReceberCODESPECIE: TLongintField;
+    qrMasterReceberCODFUNCIONARIO: TLongintField;
+    qrMasterReceberCODIGO: TLongintField;
+    qrMasterReceberCODPEDIDOVENDA: TLongintField;
+    qrMasterReceberCODPLANOCONTA: TLongintField;
+    qrMasterReceberCODVENDEDOR: TLongintField;
+    qrMasterReceberDATAHORACADASTRO: TDateTimeField;
+    qrMasterReceberDATAVENCIMENTO: TDateField;
+    qrMasterReceberDESCRICAOLANCAMENTO: TStringField;
+    qrMasterReceberDOCUMENTO: TStringField;
+    qrMasterReceberESPECIE: TStringField;
+    qrMasterReceberFUNCIONARIO: TStringField;
+    qrMasterReceberNPARCELA: TLongintField;
+    qrMasterReceberOBS: TMemoField;
+    qrMasterReceberORIGEM: TStringField;
+    qrMasterReceberPLANOCONTA: TStringField;
+    qrMasterReceberPRAZO: TLongintField;
+    qrMasterReceberQTDEPARCELA: TLongintField;
+    qrMasterReceberREPLICADA: TStringField;
+    qrMasterReceberSTATUS: TStringField;
+    qrMasterReceberVALORORIGINAL: TBCDField;
+    qrMasterReceberVENDEDOR: TStringField;
     qrReceber: TSQLQuery;
     qrMasterReceber: TSQLQuery;
     qrtempReceber: TBufDataset;
     qrtempMasterReceber: TBufDataset;
+    StringField1: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure dstempMasterReceberDataChange(Sender: TObject; Field: TField);
+    procedure qrMasterReceberAfterPost(DataSet: TDataSet);
     procedure qrReceberAfterScroll(DataSet: TDataSet);
   private
 
@@ -79,6 +106,11 @@ procedure Tmodulo_receber.dstempMasterReceberDataChange(Sender: TObject;
   Field: TField);
 begin
 
+end;
+
+procedure Tmodulo_receber.qrMasterReceberAfterPost(DataSet: TDataSet);
+begin
+   qrMasterReceber.ApplyUpdates(0);
 end;
 
 procedure Tmodulo_receber.qrReceberAfterScroll(DataSet: TDataSet);

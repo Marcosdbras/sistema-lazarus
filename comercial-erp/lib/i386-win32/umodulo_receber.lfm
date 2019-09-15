@@ -530,9 +530,36 @@ object modulo_receber: Tmodulo_receber
     top = 120
   end
   object qrMasterReceber: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
-        Name = 'CONTROLE'
+        Name = 'CODIGO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODPEDIDOVENDA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAOLANCAMENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'QTDEPARCELA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NPARCELA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CODCLIENTE'
         DataType = ftInteger
         Precision = -1
       end    
@@ -543,98 +570,15 @@ object modulo_receber: Tmodulo_receber
         Size = 100
       end    
       item
-        Name = 'ENDERECO'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'COMPLEMENTO'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'BAIRRO'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CODCIDADE'
+        Name = 'CODESPECIE'
         DataType = ftInteger
         Precision = -1
       end    
       item
-        Name = 'CIDADE'
+        Name = 'ESPECIE'
         DataType = ftString
         Precision = -1
         Size = 100
-      end    
-      item
-        Name = 'UF'
-        DataType = ftString
-        Precision = -1
-        Size = 2
-      end    
-      item
-        Name = 'PAIS'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CEP'
-        DataType = ftString
-        Precision = -1
-        Size = 9
-      end    
-      item
-        Name = 'NATURALIDADE'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'TIPOCLIENTE'
-        DataType = ftString
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'RG'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'CPF'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'CNPJ'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'IE'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'IM'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'DATANASCIMENTO'
-        DataType = ftDate
-        Precision = -1
       end    
       item
         Name = 'DATAHORACADASTRO'
@@ -642,52 +586,38 @@ object modulo_receber: Tmodulo_receber
         Precision = -1
       end    
       item
-        Name = 'PAI'
+        Name = 'DATAVENCIMENTO'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'CODPLANOCONTA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PLANOCONTA'
         DataType = ftString
         Precision = -1
         Size = 100
       end    
       item
-        Name = 'MAE'
+        Name = 'DOCUMENTO'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'ORIGEM'
         DataType = ftString
         Precision = -1
         Size = 100
       end    
       item
-        Name = 'TELEFONE'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CELULAR'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'EMAIL'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'ESTADOCIVIL'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'ATIVO'
-        DataType = ftString
-        Precision = -1
-        Size = 3
-      end    
-      item
-        Name = 'FANTASIA'
-        DataType = ftString
-        Precision = -1
-        Size = 100
+        Name = 'VALORORIGINAL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
       end    
       item
         Name = 'OBS'
@@ -696,322 +626,12 @@ object modulo_receber: Tmodulo_receber
         Size = 8
       end    
       item
-        Name = 'LIMITECREDITO'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'NOMECONJUGE'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'DATAULTIMAVENDA'
-        DataType = ftDate
-        Precision = -1
-      end    
-      item
-        Name = 'DIASSEMCOMPRAR'
+        Name = 'CODFUNCIONARIO'
         DataType = ftInteger
         Precision = -1
       end    
       item
-        Name = 'CODCONVENIO'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'CONVENIO'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'PROFISSAO'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'EMPRESAQUETRABALHA'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'FONETRABALHO'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'RENDAMENSAL'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'TOTALVENDIDO'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'NACIONALIDADE'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'NUMERO'
-        DataType = ftString
-        Precision = -1
-        Size = 20
-      end    
-      item
-        Name = 'CODCONSULTASPC'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'SEXO'
-        DataType = ftString
-        Precision = -1
-        Size = 25
-      end    
-      item
-        Name = 'CODIGOCIDADEIBGE'
-        DataType = ftString
-        Precision = -1
-        Size = 7
-      end    
-      item
-        Name = 'CODEMITENTE'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'NOMECONTATOJURIDICA'
-        DataType = ftString
-        Precision = -1
-        Size = 60
-      end    
-      item
-        Name = 'EMAIL2'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'STATUS'
-        DataType = ftString
-        Precision = -1
-        Size = 10
-      end    
-      item
-        Name = 'MD5L'
-        DataType = ftString
-        Precision = -1
-        Size = 1000
-      end    
-      item
-        Name = 'SERIAL'
-        DataType = ftString
-        Precision = -1
-        Size = 25
-      end    
-      item
-        Name = 'CODGRUPO'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'GRUPO'
-        DataType = ftString
-        Precision = -1
-        Size = 80
-      end    
-      item
-        Name = 'FOTO'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'TRIBUTACAO'
-        DataType = ftString
-        Precision = -1
-        Size = 25
-      end    
-      item
-        Name = 'CAMPO1'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO2'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO3'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO4'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO5'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO6'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO7'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO8'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO9'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CAMPO10'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'ISSMUNICIPIO'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DADOSADICIONAIS'
-        DataType = ftMemo
-        Precision = -1
-        Size = 8
-      end    
-      item
-        Name = 'SITE'
-        DataType = ftString
-        Precision = -1
-        Size = 100
-      end    
-      item
-        Name = 'CODIGOPAIS'
-        DataType = ftString
-        Precision = -1
-        Size = 4
-      end    
-      item
-        Name = 'CSOSN'
-        DataType = ftString
-        Precision = -1
-        Size = 3
-      end    
-      item
-        Name = 'PERCICMSPROPRIOST'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'PERCMVAORIGINAL'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'PERCICMSSTINTERNA'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'PERCREDUCAOBCST'
-        DataType = ftBCD
-        Precision = 18
-        Size = 2
-      end    
-      item
-        Name = 'DESCRICAOCSOSN'
-        DataType = ftString
-        Precision = -1
-        Size = 300
-      end    
-      item
-        Name = 'CODIGOCSTORIGEM'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'ORIGEM'
-        DataType = ftString
-        Precision = -1
-        Size = 300
-      end    
-      item
-        Name = 'POSSUIICMSST'
-        DataType = ftString
-        Precision = -1
-        Size = 3
-      end    
-      item
-        Name = 'ISENTO'
-        DataType = ftString
-        Precision = -1
-        Size = 3
-      end    
-      item
-        Name = 'TRIBUTADO'
-        DataType = ftString
-        Precision = -1
-        Size = 3
-      end    
-      item
-        Name = 'CODCSTORIGEM'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'MENSAGEMFISCAL'
-        DataType = ftString
-        Precision = -1
-        Size = 400
-      end    
-      item
-        Name = 'CODTABELAPRECO'
-        DataType = ftInteger
-        Precision = -1
-      end    
-      item
-        Name = 'TABELAPRECO'
+        Name = 'FUNCIONARIO'
         DataType = ftString
         Precision = -1
         Size = 100
@@ -1026,16 +646,297 @@ object modulo_receber: Tmodulo_receber
         DataType = ftString
         Precision = -1
         Size = 100
+      end    
+      item
+        Name = 'CODBARRA'
+        DataType = ftString
+        Precision = -1
+        Size = 500
+      end    
+      item
+        Name = 'REPLICADA'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'STATUS'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'PRAZO'
+        DataType = ftInteger
+        Precision = -1
       end>
+    AfterPost = qrMasterReceberAfterPost
     AfterScroll = qrReceberAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
-      'select * from treceber'
+      'select * from tmaster_receber'
     )
     Params = <>
     left = 56
     top = 209
+    object qrMasterReceberCODIGO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrMasterReceberCODPEDIDOVENDA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODPEDIDOVENDA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberDESCRICAOLANCAMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAOLANCAMENTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberQTDEPARCELA: TLongintField
+      FieldKind = fkData
+      FieldName = 'QTDEPARCELA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberNPARCELA: TLongintField
+      FieldKind = fkData
+      FieldName = 'NPARCELA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberCODCLIENTE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODCLIENTE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrMasterReceberCLIENTE: TStringField
+      FieldKind = fkData
+      FieldName = 'CLIENTE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberCODESPECIE: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODESPECIE'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrMasterReceberESPECIE: TStringField
+      FieldKind = fkData
+      FieldName = 'ESPECIE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberDATAHORACADASTRO: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'DATAHORACADASTRO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberDATAVENCIMENTO: TDateField
+      FieldKind = fkData
+      FieldName = 'DATAVENCIMENTO'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberCODPLANOCONTA: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODPLANOCONTA'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrMasterReceberPLANOCONTA: TStringField
+      FieldKind = fkData
+      FieldName = 'PLANOCONTA'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object qrMasterReceberDOCUMENTO: TStringField
+      FieldKind = fkData
+      FieldName = 'DOCUMENTO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberORIGEM: TStringField
+      FieldKind = fkData
+      FieldName = 'ORIGEM'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberVALORORIGINAL: TBCDField
+      FieldKind = fkData
+      FieldName = 'VALORORIGINAL'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 18
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrMasterReceberOBS: TMemoField
+      FieldKind = fkData
+      FieldName = 'OBS'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Size = 8
+      Transliterate = False
+    end
+    object qrMasterReceberCODFUNCIONARIO: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODFUNCIONARIO'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberFUNCIONARIO: TStringField
+      FieldKind = fkData
+      FieldName = 'FUNCIONARIO'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberCODVENDEDOR: TLongintField
+      FieldKind = fkData
+      FieldName = 'CODVENDEDOR'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrMasterReceberVENDEDOR: TStringField
+      FieldKind = fkData
+      FieldName = 'VENDEDOR'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberCODBARRA: TStringField
+      FieldKind = fkData
+      FieldName = 'CODBARRA'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object qrMasterReceberREPLICADA: TStringField
+      FieldKind = fkData
+      FieldName = 'REPLICADA'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qrMasterReceberSTATUS: TStringField
+      FieldKind = fkData
+      FieldName = 'STATUS'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object StringField1: TStringField
+      FieldKind = fkLookup
+      FieldName = 'ESPECIE1'
+      Index = 24
+      KeyFields = 'CODESPECIE'
+      LookupCache = False
+      LookupDataSet = modulo_especie.qrEspecie
+      LookupKeyFields = 'CONTROLE'
+      LookupResultField = 'ESPECIE'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qrMasterReceberPRAZO: TLongintField
+      FieldKind = fkData
+      FieldName = 'PRAZO'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
   end
   object dsMasterReceber: TDataSource
     DataSet = qrMasterReceber

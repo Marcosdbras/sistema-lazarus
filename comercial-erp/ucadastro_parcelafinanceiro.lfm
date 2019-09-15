@@ -1,0 +1,115 @@
+object frmcadastro_parcelafinanceiro: Tfrmcadastro_parcelafinanceiro
+  Left = 434
+  Height = 268
+  Top = 273
+  Width = 549
+  Caption = 'Parcela Financeiro'
+  ClientHeight = 268
+  ClientWidth = 549
+  LCLVersion = '1.8.4.0'
+  object Label1: TLabel
+    Left = 32
+    Height = 15
+    Top = 72
+    Width = 42
+    Caption = 'Especie:'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 32
+    Height = 15
+    Top = 119
+    Width = 32
+    Caption = 'Prazo:'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 32
+    Height = 15
+    Top = 167
+    Width = 94
+    Caption = 'Data Vencimento:'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 35
+    Height = 15
+    Top = 212
+    Width = 30
+    Caption = 'Valor:'
+    ParentColor = False
+  end
+  object btncancelar: TButton
+    Left = 376
+    Height = 25
+    Top = 232
+    Width = 75
+    Caption = 'Cancelar'
+    OnClick = btncancelarClick
+    TabOrder = 0
+  end
+  object btnsalvar: TButton
+    Left = 464
+    Height = 25
+    Top = 232
+    Width = 75
+    Caption = 'Salvar'
+    TabOrder = 1
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 198
+    Height = 23
+    Top = 64
+    Width = 242
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 2
+  end
+  object SpinEdit1: TSpinEdit
+    Left = 198
+    Height = 23
+    Top = 111
+    Width = 66
+    TabOrder = 3
+  end
+  object DateEdit1: TDateEdit
+    Left = 198
+    Height = 23
+    Top = 159
+    Width = 146
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    DateOrder = doNone
+    ButtonWidth = 23
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 4
+    Text = 'DateEdit1'
+  end
+  object FloatSpinEdit1: TFloatSpinEdit
+    Left = 198
+    Height = 23
+    Top = 204
+    Width = 106
+    Increment = 1
+    MaxValue = 100
+    MinValue = 0
+    TabOrder = 5
+    Value = 0
+  end
+  object Label5: TLabel
+    Left = 32
+    Height = 15
+    Top = 24
+    Width = 41
+    Caption = 'Parcela:'
+    ParentColor = False
+  end
+  object edtparcela: TLabel
+    Left = 198
+    Height = 15
+    Top = 24
+    Width = 55
+    Caption = 'edtparcela'
+    ParentColor = False
+  end
+end
