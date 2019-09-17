@@ -14,7 +14,7 @@ object modulo_especie: Tmodulo_especie
         Precision = -1
       end    
       item
-        Name = 'CENTROCUSTO'
+        Name = 'ESPECIE'
         DataType = ftString
         Precision = -1
         Size = 100
@@ -26,9 +26,88 @@ object modulo_especie: Tmodulo_especie
         Size = 8
       end    
       item
-        Name = 'DATAHORACADASTRO'
-        DataType = ftDateTime
+        Name = 'ASSOCIADAECF'
+        DataType = ftString
         Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CODASSOCIADAECF'
+        DataType = ftString
+        Precision = -1
+        Size = 2
+      end    
+      item
+        Name = 'PERMITECUPOMVINCULADO'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'TIPOLANCAMENTOFINANCEIRO'
+        DataType = ftString
+        Precision = -1
+        Size = 25
+      end    
+      item
+        Name = 'TIPOCARTAO'
+        DataType = ftString
+        Precision = -1
+        Size = 25
+      end    
+      item
+        Name = 'NFCE'
+        DataType = ftString
+        Precision = -1
+        Size = 3
+      end    
+      item
+        Name = 'ASSOCIACAONFCE'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'ORDEMAPRESENTACAO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CREDITOCLIENTE'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'QTDEPARCELA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PERCJURO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 4
+      end    
+      item
+        Name = 'DEBITOAVISTA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CREDITOAVISTA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CREDITOPARCELADO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'TECLAFINALIZACAORAPIDA'
+        DataType = ftFixedChar
+        Precision = -1
+        Size = 2
       end>
     AfterScroll = qrEspecieAfterScroll
     Database = modulo_conexaodb.conexaodb
@@ -46,12 +125,16 @@ object modulo_especie: Tmodulo_especie
     top = 19
   end
   object qrtempEspecie: TBufDataset
-    FieldDefs = <>
+    FieldDefs = <    
+      item
+        Name = 'qrtempEspecieCespecie'
+        DataType = ftInteger
+      end>
     left = 56
     top = 112
-    object qrtempEspecieccli: TLongintField
+    object qrtempEspeciecespecie: TLongintField
       FieldKind = fkData
-      FieldName = 'ccli'
+      FieldName = 'cespecie'
       Index = 0
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]

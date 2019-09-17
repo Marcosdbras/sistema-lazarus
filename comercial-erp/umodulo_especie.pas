@@ -16,7 +16,7 @@ type
     dstempEspecie: TDataSource;
     qrEspecie: TSQLQuery;
     qrtempEspecie: TBufDataset;
-    qrtempEspecieccli: TLongintField;
+    qrtempEspeciecespecie: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
     procedure qrEspecieAfterScroll(DataSet: TDataSet);
   private

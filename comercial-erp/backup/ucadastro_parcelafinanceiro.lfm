@@ -6,35 +6,36 @@ object frmcadastro_parcelafinanceiro: Tfrmcadastro_parcelafinanceiro
   Caption = 'Parcela Financeiro'
   ClientHeight = 268
   ClientWidth = 549
+  OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
   object Label1: TLabel
-    Left = 48
+    Left = 32
     Height = 15
-    Top = 48
+    Top = 72
     Width = 42
     Caption = 'Especie:'
     ParentColor = False
   end
   object Label2: TLabel
-    Left = 48
+    Left = 32
     Height = 15
-    Top = 96
+    Top = 119
     Width = 32
     Caption = 'Prazo:'
     ParentColor = False
   end
   object Label3: TLabel
-    Left = 48
+    Left = 32
     Height = 15
-    Top = 144
+    Top = 167
     Width = 94
     Caption = 'Data Vencimento:'
     ParentColor = False
   end
   object Label4: TLabel
-    Left = 51
+    Left = 35
     Height = 15
-    Top = 189
+    Top = 212
     Width = 30
     Caption = 'Valor:'
     ParentColor = False
@@ -54,6 +55,76 @@ object frmcadastro_parcelafinanceiro: Tfrmcadastro_parcelafinanceiro
     Top = 232
     Width = 75
     Caption = 'Salvar'
+    OnClick = btnsalvarClick
     TabOrder = 1
+  end
+  object CBXESPECIE: TDBLookupComboBox
+    Left = 198
+    Height = 23
+    Top = 64
+    Width = 242
+    DataField = 'cespecie'
+    DataSource = modulo_especie.dstempEspecie
+    KeyField = 'CONTROLE'
+    ListField = 'ESPECIE'
+    ListFieldIndex = 0
+    ListSource = modulo_especie.dsEspecie
+    LookupCache = False
+    OnKeyPress = CBXESPECIEKeyPress
+    TabOrder = 2
+  end
+  object edtprazo: TSpinEdit
+    Left = 198
+    Height = 23
+    Top = 111
+    Width = 66
+    MaxValue = 0
+    OnExit = edtprazoExit
+    OnKeyPress = edtprazoKeyPress
+    TabOrder = 3
+  end
+  object edtvencto: TDateEdit
+    Left = 198
+    Height = 23
+    Top = 159
+    Width = 146
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    DateOrder = doNone
+    ButtonWidth = 23
+    NumGlyphs = 1
+    MaxLength = 0
+    OnExit = edtvenctoExit
+    OnKeyPress = edtvenctoKeyPress
+    TabOrder = 4
+    Text = 'edtvencto'
+  end
+  object edtvalororiginal: TFloatSpinEdit
+    Left = 198
+    Height = 23
+    Top = 204
+    Width = 106
+    Increment = 1
+    MaxValue = 0
+    MinValue = 0
+    OnKeyPress = edtvalororiginalKeyPress
+    TabOrder = 5
+    Value = 0
+  end
+  object Label5: TLabel
+    Left = 32
+    Height = 15
+    Top = 24
+    Width = 54
+    Caption = 'Descrição:'
+    ParentColor = False
+    OnClick = Label5Click
+  end
+  object edtdescricao: TLabel
+    Left = 198
+    Height = 15
+    Top = 24
+    Width = 67
+    Caption = 'edtdescricao'
+    ParentColor = False
   end
 end

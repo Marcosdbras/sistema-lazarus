@@ -7,7 +7,6 @@ object modulo_especie: Tmodulo_especie
   Width = 323
   PPI = 96
   object qrEspecie: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -110,7 +109,6 @@ object modulo_especie: Tmodulo_especie
         Precision = -1
         Size = 2
       end>
-    Active = True
     AfterScroll = qrEspecieAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
@@ -130,9 +128,9 @@ object modulo_especie: Tmodulo_especie
     FieldDefs = <>
     left = 56
     top = 112
-    object qrtempEspecieccli: TLongintField
+    object qrtempEspeciecespecie: TLongintField
       FieldKind = fkData
-      FieldName = 'ccli'
+      FieldName = 'cespecie'
       Index = 0
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]

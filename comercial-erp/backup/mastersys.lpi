@@ -335,12 +335,14 @@
         <Filename Value="umodulo_master_indice.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_master_indice"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit44>
       <Unit45>
         <Filename Value="ucadastro_parcelafinanceiro.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmcadastro_parcelafinanceiro"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit45>
     </Units>
