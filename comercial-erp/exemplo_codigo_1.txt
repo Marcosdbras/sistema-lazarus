@@ -1,0 +1,10 @@
+cparc_pred
+descricao_parc_pred
+totalproduto
+percdesconto
+vlrdesconto
+vlrpagar
+vlrrecebido
+vlrtroco
+nparc
+statuspedido

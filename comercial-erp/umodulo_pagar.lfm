@@ -1,0 +1,27 @@
+object modulo_pagar: Tmodulo_pagar
+  OldCreateOrder = False
+  Height = 293
+  HorizontalOffset = 237
+  VerticalOffset = 152
+  Width = 212
+  PPI = 96
+  object DataSource1: TDataSource
+    left = 144
+    top = 32
+  end
+  object BufDataset1: TBufDataset
+    FieldDefs = <>
+    left = 32
+    top = 160
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    left = 24
+    top = 32
+  end
+  object DataSource2: TDataSource
+    left = 144
+    top = 160
+  end
+end

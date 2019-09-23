@@ -325,6 +325,7 @@ object modulo_pedidovenda: Tmodulo_pedidovenda
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True
+      DisplayFormat = 'DD/MM/YYYY'
     end
     object qrpedidovendaCODCLIENTE: TLongintField
       FieldKind = fkData

@@ -220,7 +220,7 @@ implementation
           qrconsulta_base.params.ParamByName('codorcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
           qrconsulta_base.Open;
 
-          lbltotal.Caption:=formatfloat('0.00',qrconsulta_base.FieldByName('total').AsFloat);
+          lbltotal.Caption:='R$ '+formatfloat('0.00',qrconsulta_base.FieldByName('total').AsFloat);
 
 
 

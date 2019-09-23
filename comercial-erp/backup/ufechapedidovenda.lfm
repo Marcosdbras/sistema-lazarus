@@ -1,23 +1,23 @@
 object frmfechapedidovenda: Tfrmfechapedidovenda
   Left = 319
-  Height = 592
-  Top = 69
-  Width = 535
+  Height = 635
+  Top = 43
+  Width = 577
   BorderStyle = bsDialog
   Caption = 'Lançar Pedido de Venda'
-  ClientHeight = 592
-  ClientWidth = 535
+  ClientHeight = 635
+  ClientWidth = 577
   OnCreate = FormCreate
   LCLVersion = '1.8.4.0'
   object pnlsuperior: TPanel
     Left = 0
     Height = 208
     Top = 0
-    Width = 535
+    Width = 577
     Align = alTop
     BevelOuter = bvNone
     ClientHeight = 208
-    ClientWidth = 535
+    ClientWidth = 577
     TabOrder = 0
     object Label1: TLabel
       Left = 4
@@ -52,7 +52,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object Label9: TLabel
       Left = 4
       Height = 15
-      Top = 80
+      Top = 52
       Width = 106
       Caption = 'TOTAL DO PEDIDO:'
       Font.CharSet = ANSI_CHARSET
@@ -97,7 +97,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object lbltotal: TLabel
       Left = 153
       Height = 15
-      Top = 80
+      Top = 52
       Width = 188
       Alignment = taRightJustify
       AutoSize = False
@@ -115,7 +115,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object Label10: TLabel
       Left = 4
       Height = 16
-      Top = 104
+      Top = 74
       Width = 76
       Caption = 'DESCONTO:'
       Font.CharSet = ANSI_CHARSET
@@ -130,7 +130,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object Label11: TLabel
       Left = 210
       Height = 16
-      Top = 104
+      Top = 74
       Width = 38
       Caption = '%   R$'
       Font.CharSet = ANSI_CHARSET
@@ -145,7 +145,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object edtpercdesconto: TFloatSpinEdit
       Left = 152
       Height = 24
-      Top = 101
+      Top = 71
       Width = 53
       Alignment = taRightJustify
       Font.CharSet = ANSI_CHARSET
@@ -160,13 +160,13 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       OnExit = edtpercdescontoExit
       OnKeyPress = edtpercdescontoKeyPress
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
       Value = 0
     end
     object edtvlrdesconto: TFloatSpinEdit
       Left = 263
       Height = 24
-      Top = 101
+      Top = 71
       Width = 78
       Alignment = taRightJustify
       Font.CharSet = ANSI_CHARSET
@@ -181,13 +181,13 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       OnExit = edtvlrdescontoExit
       OnKeyPress = edtvlrdescontoKeyPress
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       Value = 0
     end
     object Label12: TLabel
       Left = 4
       Height = 16
-      Top = 132
+      Top = 99
       Width = 108
       Caption = 'TOTAL A PAGAR:'
       Font.CharSet = ANSI_CHARSET
@@ -202,7 +202,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object edtvlrpagar: TFloatSpinEdit
       Left = 152
       Height = 24
-      Top = 128
+      Top = 97
       Width = 189
       Alignment = taRightJustify
       Font.CharSet = ANSI_CHARSET
@@ -217,13 +217,13 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       OnExit = edtvlrpagarExit
       OnKeyPress = edtvlrpagarKeyPress
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       Value = 0
     end
     object Label13: TLabel
-      Left = 4
+      Left = 5
       Height = 15
-      Top = 59
+      Top = 126
       Width = 137
       Caption = 'FORMA DE PAGAMENTO:'
       Font.CharSet = ANSI_CHARSET
@@ -235,20 +235,26 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       ParentColor = False
       ParentFont = False
     end
-    object DBLookupComboBox1: TDBLookupComboBox
-      Left = 151
+    object cbxformapre: TDBLookupComboBox
+      Left = 152
       Height = 23
-      Top = 56
-      Width = 190
+      Top = 123
+      Width = 189
+      DataField = 'cparcpre'
+      DataSource = modulo_parcelapredefinida.dstempParcelaPredefinida
       ListFieldIndex = 0
+      ListSource = modulo_parcelapredefinida.dsParcelaPredefinida
       LookupCache = False
-      OnKeyPress = DBLookupComboBox1KeyPress
-      TabOrder = 0
+      NullValueKey = 46
+      OnChange = cbxformapreChange
+      OnExit = cbxformapreExit
+      OnKeyPress = cbxformapreKeyPress
+      TabOrder = 3
     end
     object Label14: TLabel
       Left = 4
       Height = 15
-      Top = 184
+      Top = 177
       Width = 94
       Caption = 'Nº DE PARCELAS'
       Font.CharSet = ANSI_CHARSET
@@ -263,13 +269,11 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object edtnparc: TSpinEdit
       Left = 152
       Height = 23
-      Top = 181
+      Top = 174
       Width = 74
       MaxValue = 60
-      MinValue = 1
       OnKeyPress = edtnparcKeyPress
       TabOrder = 5
-      Value = 1
     end
     object Label3: TLabel
       Left = 576
@@ -442,7 +446,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object btnlancarparcela: TBitBtn
       Left = 232
       Height = 25
-      Top = 181
+      Top = 174
       Width = 109
       Caption = 'Lançar Parcela(s)'
       OnClick = btnlancarparcelaClick
@@ -451,9 +455,9 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object Label15: TLabel
       Left = 5
       Height = 16
-      Top = 159
-      Width = 55
-      Caption = 'À VISTA:'
+      Top = 151
+      Width = 137
+      Caption = 'VALOR REC. À VISTA:'
       Font.CharSet = ANSI_CHARSET
       Font.Height = -13
       Font.Name = 'Arial'
@@ -466,7 +470,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
     object edtvlravista: TFloatSpinEdit
       Left = 153
       Height = 24
-      Top = 154
+      Top = 148
       Width = 188
       Alignment = taRightJustify
       Font.CharSet = ANSI_CHARSET
@@ -478,6 +482,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       Increment = 1
       MaxValue = 0
       MinValue = 0
+      OnExit = edtvlravistaExit
       OnKeyPress = edtvlravistaKeyPress
       ParentFont = False
       TabOrder = 4
@@ -486,18 +491,18 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
   end
   object pnlcentral: TPanel
     Left = 0
-    Height = 334
+    Height = 360
     Top = 208
-    Width = 535
+    Width = 577
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 334
-    ClientWidth = 535
+    ClientHeight = 360
+    ClientWidth = 577
     TabOrder = 1
-    object DBGrid1: TDBGrid
+    object dbgparcela: TDBGrid
       Left = 5
-      Height = 344
-      Top = 8
+      Height = 352
+      Top = 0
       Width = 451
       Color = clWindow
       Columns = <      
@@ -524,43 +529,72 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       DataSource = modulo_receber.dsMasterReceber
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
       TabOrder = 0
-      OnKeyPress = DBGrid1KeyPress
+      OnKeyPress = dbgparcelaKeyPress
     end
     object btnalterarfin: TBitBtn
-      Left = 457
+      Left = 464
       Height = 40
-      Top = 8
-      Width = 75
-      Caption = 'Alterar Parc.'
+      Top = 19
+      Width = 102
+      Caption = 'SELECIONADA'
+      OnClick = btnalterarfinClick
       TabOrder = 1
+    end
+    object Label16: TLabel
+      Left = 464
+      Height = 15
+      Top = 0
+      Width = 102
+      Caption = 'ALTERAR PARCELA'
+      ParentColor = False
     end
   end
   object pnlinferior: TPanel
     Left = 0
-    Height = 50
-    Top = 542
-    Width = 535
+    Height = 67
+    Top = 568
+    Width = 577
     Align = alBottom
     BevelOuter = bvNone
-    ClientHeight = 50
-    ClientWidth = 535
+    ClientHeight = 67
+    ClientWidth = 577
     TabOrder = 2
     object btnlancar: TBitBtn
       Left = 240
-      Height = 38
-      Top = 4
-      Width = 104
+      Height = 32
+      Top = 0
+      Width = 101
       Caption = 'LANÇAR PEDIDO'
       OnClick = btnlancarClick
       TabOrder = 0
     end
     object btncancelar: TBitBtn
-      Left = 352
-      Height = 38
-      Top = 4
-      Width = 104
+      Left = 344
+      Height = 32
+      Top = 0
+      Width = 112
       Caption = 'CANCELAR'
+      OnClick = btncancelarClick
       TabOrder = 1
+    end
+    object ckbimprimir: TCheckBox
+      Left = 5
+      Height = 19
+      Top = 43
+      Width = 66
+      Caption = 'Imprimir'
+      Checked = True
+      State = cbChecked
+      TabOrder = 2
+    end
+    object btnestornar: TButton
+      Left = 240
+      Height = 28
+      Top = 34
+      Width = 216
+      Caption = 'ESTORNAR LANÇAMENTO'
+      OnClick = btnestornarClick
+      TabOrder = 3
     end
   end
 end

@@ -37,7 +37,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="46">
+    <Units Count="48">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -345,6 +345,20 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit45>
+      <Unit46>
+        <Filename Value="umodulo_parcelapredefinida.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_parcelapredefinida"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="umodulo_pagar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_pagar"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit47>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -52,7 +52,7 @@ implementation
 
 procedure Tfrmcadastro_parcelafinanceiro.btncancelarClick(Sender: TObject);
 begin
-  showmessage(modulo_especie.qrtempEspecie.FieldByName('cespecie').AsString);
+  //showmessage(modulo_especie.qrtempEspecie.FieldByName('cespecie').AsString);
 
   close;
 end;
@@ -67,8 +67,8 @@ begin
              //qrexec_base.SQL.Add('update tmaster_receber set   DESCRICAOLANCAMENTO = :DESCRICAOLANCAMENTO, QTDEPARCELA = :QTDEPARCELA, NPARCELA = :NPARCELA, CODCLIENTE = :CODCLIENTE,  CLIENTE = :CLIENTE, CODESPECIE = :CODESPECIE, ESPECIE = :ESPECIE, DATAHORACADASTRO = :DATAHORACADASTRO,         DATAVENCIMENTO = :DATAVENCIMENTO, CODPLANOCONTA = :CODPLANOCONTA, PLANOCONTA = :PLANOCONTA, DOCUMENTO = :DOCUMENTO,          ORIGEM = :ORIGEM, VALORORIGINAL = :VALORORIGINAL,         OBS = :OBS, CODFUNCIONARIO = :CODFUNCIONARIO, FUNCIONARIO = :FUNCIONARIO, CODVENDEDOR = :CODVENDEDOR, VENDEDOR = :VENDEDOR,        CODBARRA = :CODBARRA,  REPLICADA = :REPLICADA, STATUS = :STATUS,        PRAZO = :PRAZO where codigo = :codigo')
              qrexec_base.SQL.Add('update tmaster_receber set  DATAHORACADASTRO = :DATAHORACADASTRO  ,CODESPECIE = :CODESPECIE, ESPECIE = :ESPECIE, DATAVENCIMENTO = :DATAVENCIMENTO, VALORORIGINAL = :VALORORIGINAL,  PRAZO = :PRAZO where codigo = :codigo');
              qrexec_base.Params.ParamByName('codigo').AsInteger:=icodigo;
-             qrexec_base.Params.ParamByName('codespecie').AsInteger :=  modulo_especie.qrEspecie.FieldByName('controle').AsInteger;   //modulo_especie.qrtempEspecie.FieldByName('cespecie').AsInteger;
-             qrexec_base.Params.ParamByName('especie').AsString:= modulo_especie.qrEspecie.FieldByName('especie').AsString;
+             qrexec_base.Params.ParamByName('codespecie').AsInteger :=  modulo_especie.qrtempEspecie.FieldByName('cespecie').AsInteger;
+             qrexec_base.Params.ParamByName('especie').AsString:= cbxespecie.Text;
              qrexec_base.Params.ParamByName('prazo').AsInteger :=  edtprazo.Value;
              qrexec_base.Params.ParamByName('datavencimento').AsDate := edtvencto.Date;
              qrexec_base.Params.ParamByName('valororiginal').Asfloat := edtvalororiginal.Value;

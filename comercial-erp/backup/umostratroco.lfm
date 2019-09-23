@@ -1,0 +1,54 @@
+object frmmostratroco: Tfrmmostratroco
+  Left = 408
+  Height = 240
+  Top = 265
+  Width = 511
+  BorderStyle = bsDialog
+  Caption = 'Troco'
+  ClientHeight = 240
+  ClientWidth = 511
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+  object Label17: TLabel
+    Left = 113
+    Height = 32
+    Top = 80
+    Width = 77
+    Alignment = taRightJustify
+    Caption = 'Troco'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -27
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object lbltroco: TLabel
+    Left = 325
+    Height = 32
+    Top = 80
+    Width = 53
+    Alignment = taRightJustify
+    Anchors = [akTop, akRight]
+    Caption = '0,00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -27
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object btnok: TBitBtn
+    Left = 202
+    Height = 30
+    Top = 185
+    Width = 112
+    Caption = 'OK'
+    OnClick = btnokClick
+    TabOrder = 0
+  end
+end

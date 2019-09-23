@@ -30,7 +30,7 @@ var
   frmpedidovenda_impressao: Tfrmpedidovenda_impressao;
 
 implementation
-        uses uimpped, umodulo_geral, umodulo_pedidovenda;
+        uses uimppedvenda, umodulo_geral, umodulo_pedidovenda;
 {$R *.lfm}
 
         { Tfrmpedidovenda_impressao }
@@ -45,9 +45,9 @@ begin
    case cbxvisualiza.ItemIndex of
       0:begin
 
-          frmimpped := tfrmimpped.Create(self);
-          frmimpped.rlimpped.preview;
-          frmimpped.free;
+          frmimppedvenda := tfrmimppedvenda.Create(self);
+          frmimppedvenda.rlimppedvenda.preview;
+          frmimppedvenda.free;
 
 
 
@@ -57,9 +57,9 @@ begin
 
       1:begin
           try
-          frmimpped := tfrmimpped.Create(self);
-          frmimpped.rlimpped.Print;
-          frmimpped.free;
+          frmimppedvenda := tfrmimppedvenda.Create(self);
+          frmimppedvenda.rlimppedvenda.Print;
+          frmimppedvenda.free;
           except
             showmessage('Operação Cancelada!');
           end;
@@ -73,11 +73,11 @@ begin
           if savedialog1.Execute then
              begin
 
-               frmimpped := tfrmimpped.Create(self);
-               frmimpped.rlimpped.SaveToFile( SaveDialog1.FileName );
-               frmimpped.rlimpped.Prepare;
-               frmimpped.rlfilter.FilterPages(frmimpped.rlimpped.Pages,1,-1,'',1);   //(frmimpped.rlimpped.Pages,1,-1,False);
-               frmimpped.free;
+               frmimppedvenda := tfrmimppedvenda.Create(self);
+               frmimppedvenda.rlimppedvenda.SaveToFile( SaveDialog1.FileName );
+               frmimppedvenda.rlimppedvenda.Prepare;
+               frmimppedvenda.rlfilter.FilterPages(frmimppedvenda.rlimppedvenda.Pages,1,-1,'',1);   //(frmimppedvenda.rlimppedvenda.Pages,1,-1,False);
+               frmimppedvenda.free;
 
              end;
 

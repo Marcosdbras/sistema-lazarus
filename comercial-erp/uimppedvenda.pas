@@ -82,6 +82,7 @@ type
     lblcnpj: TRLLabel;
     RLLabel9: TRLLabel;
     memocodgeral: TRLMemo;
+    memo1: TRLMemo;
     rlpreview: TRLPreviewSetup;
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
@@ -105,7 +106,7 @@ var
   frmimppedvenda: Tfrmimppedvenda;
 
 implementation
-       uses umodulo_pedidovenda, umodulo_geral, umodulo_conexaodb, umodulo_cliente;
+       uses umodulo_pedidovenda, umodulo_geral, umodulo_conexaodb, umodulo_cliente, umodulo_receber;
 
 {$R *.lfm}
 
@@ -220,11 +221,7 @@ implementation
           qrconsulta_base.params.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
           qrconsulta_base.Open;
 
-          lbltotal.Caption:=formatfloat('0.00',qrconsulta_base.FieldByName('total').AsFloat);
-
-
-
-
+          lbltotal.Caption:='R$ '+formatfloat('0.00',qrconsulta_base.FieldByName('total').AsFloat);
 
         end;
 
@@ -245,10 +242,50 @@ implementation
          qrpedidovenda_itemproduto.Open;
 
 
-         memocodgeral.Lines.Clear;
+         //memocodgeral.Lines.Clear;
          //memocodgeral.Lines.Add(qrpedidovenda.FieldByName('condicaopagamento').AsString);
 
        end;
+
+       with modulo_receber do
+          begin
+
+
+
+
+
+          end;
+       //endth
+
+
+       with modulo_pedidovenda do
+          begin
+
+             qrmaster_pedidovenda.Close;
+             qrmaster_pedidovenda.SQL.Clear;
+             qrmaster_pedidovenda.SQL.Add('select * from tmaster_pedidovenda where controle_tpedidovenda = :controle_tpedidovenda');
+             qrmaster_pedidovenda.Params.ParamByName('controle_tpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
+             qrmaster_pedidovenda.Open;
+
+          end;
+       //endif
+
+
+       memocodgeral.Lines.Clear;
+
+
+       memo1.Lines.Clear;
+       if modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat > 0 then
+          begin
+            memo1.Lines.Add('Desconto: '+ formatfloat('0.00',modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat)+'%   R$ '+formatfloat('###,###,##0.00', modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrdesconto').AsFloat));
+          end;
+       //endif
+
+       if modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrpagar').AsFloat > 0 then
+          begin
+            memo1.Lines.Add('Valor Pago:    R$'+ formatfloat('###,##0.00',modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrpagar').AsFloat));
+          end;
+       //endif
 
 
 

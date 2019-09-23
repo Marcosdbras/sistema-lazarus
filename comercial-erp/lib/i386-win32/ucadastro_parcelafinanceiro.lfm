@@ -41,7 +41,7 @@ object frmcadastro_parcelafinanceiro: Tfrmcadastro_parcelafinanceiro
     ParentColor = False
   end
   object btncancelar: TButton
-    Left = 376
+    Left = 385
     Height = 25
     Top = 232
     Width = 75

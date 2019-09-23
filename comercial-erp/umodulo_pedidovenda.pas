@@ -12,6 +12,7 @@ type
   { Tmodulo_pedidovenda }
 
   Tmodulo_pedidovenda = class(TDataModule)
+    dsmaster_pedidovenda: TDataSource;
     dspedidovenda_itemproduto: TDataSource;
     dspedidovenda: TDataSource;
     dstempCliente: TDataSource;
@@ -124,6 +125,7 @@ type
     qrtempUnidade: TBufDataset;
     qrtempUnidadecund: TLongintField;
     qrtempVendedor: TBufDataset;
+    qrmaster_pedidovenda: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure qrpedidovendaAfterScroll(DataSet: TDataSet);
     procedure qrpedidovenda_itemprodutoAfterPost(DataSet: TDataSet);

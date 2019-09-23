@@ -948,6 +948,68 @@ if existe_campo('TMASTER_RECEBER','STATUS') = 0 then
 //endi
 
 
+//Campo PRAZO existe?
+if existe_campo('TMASTER_RECEBER','PRAZO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_RECEBER  ADD  PRAZO  INTEGER;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo CODCENTROCUSTO   existe?
+if existe_campo('TMASTER_RECEBER','CODCENTROCUSTO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_RECEBER ADD CODCENTROCUSTO INTEGER NOT NULL;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo CENTROCUSTO existe?
+if existe_campo('TMASTER_RECEBER','CENTROCUSTO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_RECEBER ADD CENTROCUSTO VARCHAR(100) NOT NULL COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
 
 
 //Campo dif_prazo existe?
@@ -1408,6 +1470,218 @@ if existe_campo('TMASTER_PEDIDOVENDA','ctabp') = 0 then
 //endi
 
 
+
+
+//Campo cparc_pred existe?
+if existe_campo('TMASTER_PEDIDOVENDA','cparc_pred') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD cparc_pred integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo descricao_parc_pred existe?
+if existe_campo('TMASTER_PEDIDOVENDA','descricao_parc_pred') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD descricao_parc_pred varchar(100) ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo totalproduto existe?
+if existe_campo('TMASTER_PEDIDOVENDA','totalproduto') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD totalproduto decimal(15,2) ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo percdesconto existe?
+if existe_campo('TMASTER_PEDIDOVENDA','percdesconto') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD percdesconto decimal(15,2) ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+//Campo percdesconto existe?
+if existe_campo('TMASTER_PEDIDOVENDA','vlrdesconto') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD vlrdesconto decimal(15,2) ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+//Campo vlrpagar existe?
+if existe_campo('TMASTER_PEDIDOVENDA','vlrpagar') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD vlrpagar decimal(15,2) ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo vlrrecebido ou valor à vista existe?
+if existe_campo('TMASTER_PEDIDOVENDA','vlrrecebido') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD vlrrecebido decimal(15,2) ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo vlrrecebido ou valor à vista existe?
+if existe_campo('TMASTER_PEDIDOVENDA','vlrtroco') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD vlrtroco decimal(15,2) ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo nparc existe?
+if existe_campo('TMASTER_PEDIDOVENDA','nparc') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD nparc integer ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo statuspedido existe?
+if existe_campo('TMASTER_PEDIDOVENDA','statuspedido') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD statuspedido varchar(1) default ''A'' ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo vlrpagoavista ou valor à vista existe?
+if existe_campo('TMASTER_PEDIDOVENDA','vlrpagoavista') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD vlrpagoavista decimal(15,2) ;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
 
 //Campo cplanocontaaprazopadrao existe?
 if existe_campo('TMASTER_INDICE','cplanocontaaprazopadrao') = 0 then

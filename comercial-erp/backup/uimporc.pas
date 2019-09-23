@@ -234,7 +234,7 @@ implementation
 
          //lblnorc.Caption := qrorcamento.FieldByName('controlevarchar').asString;
 
-         lblnorc.Caption:=  formatfloat('00000',qrorcamento.FieldByName('controle').asfloat)+'/'+formatfloat('00000',qrorcamento.FieldByName('controlevarchar').asfloat) ;
+         lblnorc.Caption:=  formatfloat('00000',qrorcamento.FieldByName('controle').asfloat)+' / '+formatfloat('00000',qrorcamento.FieldByName('controlevarchar').asfloat) ;
 
          qrorcamento_itemproduto.Close;
          qrorcamento_itemproduto.SQL.Clear;

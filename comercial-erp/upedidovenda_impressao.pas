@@ -90,6 +90,11 @@ begin
 
 
    end;
+
+
+   close;
+
+
 end;
 
 procedure Tfrmpedidovenda_impressao.FormCreate(Sender: TObject);

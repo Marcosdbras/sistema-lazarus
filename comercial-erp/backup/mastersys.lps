@@ -4,13 +4,13 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="53">
+    <Units Count="56">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="23"/>
-        <TopLine Value="32"/>
-        <CursorPos X="66" Y="37"/>
+        <TopLine Value="10"/>
+        <CursorPos Y="76"/>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -20,19 +20,17 @@
         <ComponentName Value="frmpedidovenda_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="703"/>
-        <CursorPos X="21" Y="707"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="111"/>
+        <CursorPos Y="1415"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
-          <WindowIndex Value="-1"/>
-          <TopLine Value="111"/>
-          <CursorPos Y="1415"/>
+          <TopLine Value="311"/>
+          <CursorPos X="87" Y="328"/>
         </ExtraEditor1>
         <UsageCount Value="202"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="umodulo_pedidovenda.pas"/>
@@ -41,8 +39,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="20"/>
-        <TopLine Value="212"/>
-        <CursorPos X="75" Y="219"/>
+        <TopLine Value="206"/>
+        <CursorPos X="69" Y="212"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -50,6 +48,7 @@
         </ExtraEditor1>
         <UsageCount Value="202"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="umodulo_conexaodb.pas"/>
@@ -57,7 +56,7 @@
         <ComponentName Value="modulo_conexaodb"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="16"/>
         <TopLine Value="74"/>
         <CursorPos X="60" Y="84"/>
         <UsageCount Value="201"/>
@@ -88,7 +87,7 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="938"/>
         <CursorPos X="33" Y="949"/>
         <UsageCount Value="205"/>
@@ -106,9 +105,9 @@
       <Unit8>
         <Filename Value="ufuncao_geral.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="13"/>
-        <TopLine Value="952"/>
-        <CursorPos X="91" Y="960"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="1660"/>
+        <CursorPos X="3" Y="1669"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit8>
@@ -150,9 +149,9 @@
         <ComponentName Value="frmpedidovenda_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="18"/>
-        <TopLine Value="93"/>
-        <CursorPos X="3" Y="95"/>
+        <EditorIndex Value="17"/>
+        <TopLine Value="156"/>
+        <CursorPos X="7" Y="158"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -170,7 +169,7 @@
         <ComponentName Value="modulo_especie"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="1"/>
         <TopLine Value="33"/>
         <CursorPos X="41" Y="40"/>
         <UsageCount Value="258"/>
@@ -227,14 +226,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="230"/>
-        <CursorPos X="81" Y="241"/>
+        <TopLine Value="273"/>
+        <CursorPos X="104" Y="277"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
-          <WindowIndex Value="4"/>
-          <TopLine Value="34"/>
-          <CursorPos X="12" Y="50"/>
+          <TopLine Value="233"/>
+          <CursorPos X="36" Y="239"/>
         </ExtraEditor1>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -270,7 +268,7 @@
         <ComponentName Value="frmparametro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="9"/>
         <TopLine Value="417"/>
         <CursorPos X="59" Y="417"/>
         <UsageCount Value="207"/>
@@ -283,8 +281,8 @@
         <ComponentName Value="modulo_temp"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="12"/>
-        <TopLine Value="200"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="195"/>
         <CursorPos X="32" Y="209"/>
         <UsageCount Value="204"/>
         <Loaded Value="True"/>
@@ -308,9 +306,9 @@
         <ComponentName Value="frmpedidovenda_impressao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="40"/>
-        <CursorPos X="48" Y="50"/>
+        <EditorIndex Value="18"/>
+        <TopLine Value="76"/>
+        <CursorPos X="4" Y="97"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -319,6 +317,8 @@
           <CursorPos X="12" Y="92"/>
         </ExtraEditor1>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit24>
       <Unit25>
         <Filename Value="usincorc.pas"/>
@@ -424,12 +424,10 @@
         <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="163"/>
-        <CursorPos Y="170"/>
-        <UsageCount Value="195"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="118"/>
+        <CursorPos X="46" Y="121"/>
+        <UsageCount Value="201"/>
       </Unit34>
       <Unit35>
         <Filename Value="uorcamento_cadastro.pas"/>
@@ -437,10 +435,10 @@
         <ComponentName Value="frmorcamento_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="16"/>
-        <TopLine Value="908"/>
-        <CursorPos X="8" Y="919"/>
-        <UsageCount Value="194"/>
+        <EditorIndex Value="15"/>
+        <TopLine Value="506"/>
+        <CursorPos X="18" Y="528"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit35>
@@ -451,7 +449,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
-        <UsageCount Value="194"/>
+        <UsageCount Value="200"/>
       </Unit36>
       <Unit37>
         <Filename Value="uimporc.pas"/>
@@ -459,11 +457,12 @@
         <ComponentName Value="frmimporc"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="230"/>
-        <CursorPos X="97" Y="238"/>
-        <UsageCount Value="192"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="202"/>
+        <CursorPos X="101" Y="223"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit37>
       <Unit38>
         <Filename Value="umodulo_cliente.pas"/>
@@ -472,7 +471,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="22"/>
         <TopLine Value="35"/>
-        <UsageCount Value="132"/>
+        <UsageCount Value="187"/>
         <Loaded Value="True"/>
       </Unit38>
       <Unit39>
@@ -484,7 +483,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="139"/>
         <CursorPos X="110" Y="140"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="185"/>
       </Unit39>
       <Unit40>
         <Filename Value="umodulo_centrocusto.pas"/>
@@ -492,9 +491,9 @@
         <ComponentName Value="modulo_centrocusto"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="2"/>
         <CursorPos X="77" Y="4"/>
-        <UsageCount Value="127"/>
+        <UsageCount Value="182"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit40>
@@ -504,10 +503,11 @@
         <ComponentName Value="frmfechapedidovenda"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="14"/>
-        <TopLine Value="317"/>
-        <CursorPos Y="330"/>
-        <UsageCount Value="103"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="224"/>
+        <CursorPos X="17" Y="246"/>
+        <UsageCount Value="158"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit41>
@@ -516,9 +516,9 @@
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_planoconta"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="7"/>
         <CursorPos X="27"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
       </Unit42>
       <Unit43>
@@ -527,10 +527,10 @@
         <ComponentName Value="modulo_receber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="103"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="95"/>
         <CursorPos X="85" Y="110"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="148"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit43>
@@ -541,9 +541,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="21"/>
-        <TopLine Value="23"/>
+        <TopLine Value="15"/>
         <CursorPos X="3" Y="37"/>
-        <UsageCount Value="64"/>
+        <UsageCount Value="119"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit44>
@@ -553,22 +553,52 @@
         <ComponentName Value="frmcadastro_parcelafinanceiro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="15"/>
-        <TopLine Value="177"/>
-        <CursorPos X="73" Y="69"/>
-        <UsageCount Value="35"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="64"/>
+        <CursorPos X="98" Y="74"/>
+        <UsageCount Value="90"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit45>
       <Unit46>
+        <Filename Value="umodulo_parcelapredefinida.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_parcelapredefinida"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <IsVisibleTab Value="True"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="33"/>
+        <CursorPos X="39" Y="47"/>
+        <ExtraEditorCount Value="1"/>
+        <ExtraEditor1>
+          <EditorIndex Value="6"/>
+          <TopLine Value="60"/>
+          <CursorPos X="59" Y="66"/>
+        </ExtraEditor1>
+        <UsageCount Value="119"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="umodulo_pagar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_pagar"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="14"/>
+        <UsageCount Value="72"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit47>
+      <Unit48>
         <Filename Value="C:\lazarus\lcl\include\control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="5006"/>
         <CursorPos Y="5016"/>
-        <UsageCount Value="1"/>
-      </Unit46>
-      <Unit47>
+        <UsageCount Value="6"/>
+      </Unit48>
+      <Unit49>
         <Filename Value="utextopadrao.pas"/>
         <ComponentName Value="frmtextopadrao"/>
         <HasResources Value="True"/>
@@ -576,182 +606,180 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="82"/>
         <CursorPos X="76" Y="83"/>
-        <UsageCount Value="65"/>
-      </Unit47>
-      <Unit48>
-        <Filename Value="umodulo_parcelapredefinida.pas"/>
-        <ComponentName Value="modulo_parcelapredefinida"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="DataModule"/>
-        <IsVisibleTab Value="True"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="33"/>
-        <CursorPos X="78" Y="37"/>
-        <ExtraEditorCount Value="1"/>
-        <ExtraEditor1>
-          <EditorIndex Value="8"/>
-          <TopLine Value="33"/>
-          <CursorPos X="39" Y="35"/>
-        </ExtraEditor1>
-        <UsageCount Value="66"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
-      </Unit48>
-      <Unit49>
+        <UsageCount Value="60"/>
+      </Unit49>
+      <Unit50>
         <Filename Value="umodulo_caixa.pas"/>
         <EditorIndex Value="24"/>
         <TopLine Value="34"/>
         <CursorPos X="53" Y="42"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="93"/>
         <Loaded Value="True"/>
-      </Unit49>
-      <Unit50>
+      </Unit50>
+      <Unit51>
         <Filename Value="C:\lazarus\lcl\dbgrids.pas"/>
         <UnitName Value="DBGrids"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="3351"/>
         <CursorPos Y="3361"/>
-        <UsageCount Value="8"/>
-      </Unit50>
-      <Unit51>
+        <UsageCount Value="3"/>
+      </Unit51>
+      <Unit52>
         <Filename Value="C:\lazarus\lcl\lresources.pp"/>
         <UnitName Value="LResources"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="3149"/>
         <CursorPos Y="3156"/>
-        <UsageCount Value="8"/>
-      </Unit51>
-      <Unit52>
+        <UsageCount Value="3"/>
+      </Unit52>
+      <Unit53>
         <Filename Value="C:\lazarus\lcl\include\dblookup.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="411"/>
         <CursorPos Y="419"/>
-        <UsageCount Value="10"/>
-      </Unit52>
+        <UsageCount Value="5"/>
+      </Unit53>
+      <Unit54>
+        <Filename Value="C:\lazarus\lcl\grids.pas"/>
+        <UnitName Value="Grids"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="7767"/>
+        <CursorPos Y="7780"/>
+        <UsageCount Value="8"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="umostratroco.pas"/>
+        <ComponentName Value="frmmostratroco"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="24"/>
+        <CursorPos X="142" Y="45"/>
+        <UsageCount Value="22"/>
+      </Unit55>
     </Units>
     <OtherDefines Count="1">
       <Define0 Value="UseCThreads"/>
     </OtherDefines>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="58" Column="3" TopLine="40"/>
+        <Filename Value="uimppedvenda.pas"/>
+        <Caret Line="84" Column="17" TopLine="63"/>
       </Position1>
       <Position2>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="41" Column="28" TopLine="32"/>
+        <Filename Value="uimppedvenda.pas"/>
+        <Caret Line="248" Column="22" TopLine="227"/>
       </Position2>
       <Position3>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="67" Column="29" TopLine="50"/>
+        <Filename Value="uimppedvenda.pas"/>
+        <Caret Line="265" Column="59" TopLine="257"/>
       </Position3>
       <Position4>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Column="28"/>
+        <Filename Value="uimppedvenda.pas"/>
+        <Caret Line="282" Column="52" TopLine="266"/>
       </Position4>
       <Position5>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="78" Column="81" TopLine="62"/>
+        <Filename Value="uimppedvenda.pas"/>
+        <Caret Line="3" Column="22"/>
       </Position5>
       <Position6>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="155" Column="172" TopLine="140"/>
+        <Filename Value="uimppedvenda.pas"/>
+        <Caret Line="71" Column="13" TopLine="50"/>
       </Position6>
       <Position7>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="156" Column="177" TopLine="141"/>
+        <Filename Value="uimporc.pas"/>
+        <Caret Line="3" Column="25"/>
       </Position7>
       <Position8>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="168" Column="61" TopLine="153"/>
+        <Filename Value="uimporc.pas"/>
+        <Caret Line="71" Column="13" TopLine="50"/>
       </Position8>
       <Position9>
         <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="172" Column="56" TopLine="157"/>
+        <Caret Line="88" Column="39" TopLine="75"/>
       </Position9>
       <Position10>
         <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="173" Column="106" TopLine="158"/>
+        <Caret Line="159" Column="25" TopLine="148"/>
       </Position10>
       <Position11>
         <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="320" Column="22" TopLine="305"/>
+        <Caret Line="160" Column="25" TopLine="149"/>
       </Position11>
       <Position12>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="45" Column="97" TopLine="39"/>
+        <Filename Value="upedidovenda_pesquisa.pas"/>
+        <Caret Line="171" Column="31" TopLine="165"/>
       </Position12>
       <Position13>
-        <Filename Value="umodulo_especie.pas"/>
-        <Caret Line="40" Column="44" TopLine="33"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="173" Column="11" TopLine="154"/>
       </Position13>
       <Position14>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="93" Column="38" TopLine="84"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="167" Column="14" TopLine="163"/>
       </Position14>
       <Position15>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="54" Column="10" TopLine="52"/>
+        <Filename Value="upedidovenda_pesquisa.pas"/>
+        <Caret Line="161" Column="38" TopLine="156"/>
       </Position15>
       <Position16>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="49" Column="76" TopLine="47"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="177" Column="14" TopLine="160"/>
       </Position16>
       <Position17>
-        <Filename Value="umodulo_especie.pas"/>
-        <Caret Line="41" Column="31" TopLine="39"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="193" Column="82" TopLine="186"/>
       </Position17>
       <Position18>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="101" Column="86" TopLine="91"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="186" Column="13" TopLine="163"/>
       </Position18>
       <Position19>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="105" Column="95" TopLine="92"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Column="32"/>
       </Position19>
       <Position20>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="113" Column="78" TopLine="101"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="72" Column="25" TopLine="51"/>
       </Position20>
       <Position21>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="71" Column="31" TopLine="57"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="191" Column="54" TopLine="170"/>
       </Position21>
       <Position22>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="72" Column="31" TopLine="58"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="210" Column="73" TopLine="188"/>
       </Position22>
       <Position23>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="71" Column="31" TopLine="57"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="687" TopLine="661"/>
       </Position23>
       <Position24>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="68" Column="89" TopLine="53"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="611" Column="35" TopLine="597"/>
       </Position24>
       <Position25>
-        <Filename Value="uorcamento_cadastro.pas"/>
-        <Caret Line="408" Column="41" TopLine="405"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="526" Column="94" TopLine="523"/>
       </Position25>
       <Position26>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="92" Column="113" TopLine="90"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="527" Column="94" TopLine="524"/>
       </Position26>
       <Position27>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="88" Column="4" TopLine="85"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="526" Column="94" TopLine="523"/>
       </Position27>
       <Position28>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="107" Column="4" TopLine="104"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="533" Column="94" TopLine="530"/>
       </Position28>
       <Position29>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="127" Column="4" TopLine="124"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="119" Column="64" TopLine="104"/>
       </Position29>
       <Position30>
-        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
-        <Caret Line="94" Column="45" TopLine="93"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="249" TopLine="224"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

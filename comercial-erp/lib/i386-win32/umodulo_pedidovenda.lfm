@@ -1445,4 +1445,17 @@ object modulo_pedidovenda: Tmodulo_pedidovenda
     left = 224
     top = 456
   end
+  object dsmaster_pedidovenda: TDataSource
+    DataSet = qrmaster_pedidovenda
+    left = 224
+    top = 534
+  end
+  object qrmaster_pedidovenda: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 69
+    top = 540
+  end
 end

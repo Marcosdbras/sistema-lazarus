@@ -16,7 +16,7 @@ type
     dstempParcelaPredefinida: TDataSource;
     qrParcelaPredefinida: TSQLQuery;
     qrtempParcelaPredefinida: TBufDataset;
-    qrtempParcelaPredefinidaccli: TLongintField;
+    qrtempParcelaPredefinidacparcpre: TLongintField;
     procedure DataModuleCreate(Sender: TObject);
     procedure qrParcelaPredefinidaAfterScroll(DataSet: TDataSet);
   private
@@ -29,7 +29,7 @@ var
   modulo_parcelapredefinida: Tmodulo_parcelapredefinida;
 
 implementation
-      uses umodulo_conexaodb, uorcamento_cadastro,umodulo_tabpreco;
+      uses umodulo_conexaodb, uorcamento_cadastro,umodulo_tabpreco, ufechapedidovenda;
 {$R *.lfm}
 
       { Tmodulo_parcelapredefinida }
@@ -39,7 +39,7 @@ implementation
 
         with qrtempParcelaPredefinida.fieldDefs do
            begin
-                 Add('cplanoconta', ftInteger, 0, True);
+                 Add('cparcpre', ftInteger, 0, True);
            end;
 
         qrtempParcelaPredefinida.CreateDataset;
@@ -48,6 +48,7 @@ implementation
 
         qrtempParcelaPredefinida.Append;
 
+        qrtempParcelaPredefinida.FieldByName('cparcpre').AsInteger:=0;
 
 
 
@@ -55,6 +56,29 @@ implementation
 
 procedure Tmodulo_parcelapredefinida.qrParcelaPredefinidaAfterScroll(DataSet: TDataSet);
 begin
+
+  if frmfechapedidovenda <> nil then
+     begin
+       if qrtempparcelapredefinida.FieldByName('cparcpre').AsInteger > 0 then
+          begin
+
+            frmfechapedidovenda.edtnparc.Value :=  qrparcelapredefinida.FieldByName('qtdeparcela').AsInteger;
+            edtnparc.Enabled:=false;
+
+          end
+       else
+          begin
+
+            frmfechapedidovenda.edtnparc.Value := 0;
+            edtnparc.Enabled:=true;
+
+          end;
+      //endi
+
+
+     end;
+  //endi
+
 end;
 
 end.

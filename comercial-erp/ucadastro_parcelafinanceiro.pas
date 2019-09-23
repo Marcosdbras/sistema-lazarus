@@ -52,7 +52,7 @@ implementation
 
 procedure Tfrmcadastro_parcelafinanceiro.btncancelarClick(Sender: TObject);
 begin
-  showmessage(modulo_especie.qrtempEspecie.FieldByName('cespecie').AsString);
+  //showmessage(modulo_especie.qrtempEspecie.FieldByName('cespecie').AsString);
 
   close;
 end;
