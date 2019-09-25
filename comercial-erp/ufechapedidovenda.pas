@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Spin, DbCtrls, DBGrids, Buttons, Types, LCLType;
+  StdCtrls, Spin, DbCtrls, DBGrids, Buttons, Types, LCLType, math;
 
 type
 
@@ -76,8 +76,12 @@ type
     procedure excluirparcelas;
   private
        icodigo_controle:integer;
-       ftroco:real;
+       ftroco, fpercdesconto:real;
        stroco:string;
+
+
+
+
   public
 
   end;
@@ -112,8 +116,18 @@ end;
 
 procedure Tfrmfechapedidovenda.edtpercdescontoExit(Sender: TObject);
 begin
-  edtvlrdesconto.Value:=edtpercdesconto.Value/100*strtofloat(tirapontos(lbltotal.Caption));
-  edtvlrpagar.Value:=strtofloat(tirapontos(lbltotal.Caption))-edtvlrdesconto.Value;
+
+ if frac(fpercdesconto) <> frac(edtpercdesconto.Value) then
+    fpercdesconto :=  edtpercdesconto.Value
+ else
+    if  int(fpercdesconto) <> int(edtpercdesconto.Value) then
+        fpercdesconto :=  edtpercdesconto.Value;
+
+ edtvlrdesconto.Value :=     fpercdesconto / 100 * strtofloat(tirapontos(lbltotal.Caption));
+ edtvlrpagar.Value :=  strtofloat(tirapontos(lbltotal.Caption)) - edtvlrdesconto.Value;
+
+
+
 end;
 
 procedure Tfrmfechapedidovenda.btnlancarClick(Sender: TObject);
@@ -539,8 +553,15 @@ end;
 
 procedure Tfrmfechapedidovenda.edtvlrdescontoExit(Sender: TObject);
 begin
-  edtpercdesconto.Value:=edtvlrdesconto.Value/strtofloat(tirapontos(lbltotal.Caption))*100;
-  edtvlrpagar.Value:=strtofloat(tirapontos(lbltotal.Caption))-edtvlrdesconto.Value;
+
+  fpercdesconto  := edtvlrdesconto.value / strtofloat(tirapontos(lbltotal.Caption)) * 100;
+
+  edtpercdesconto.Value:=  fpercdesconto;
+
+
+  edtvlrpagar.Value:= strtofloat(tirapontos(lbltotal.Caption))-edtvlrdesconto.value;
+
+
 end;
 
 procedure Tfrmfechapedidovenda.edtvlrdescontoKeyPress(Sender: TObject;
@@ -557,9 +578,17 @@ begin
 end;
 
 procedure Tfrmfechapedidovenda.edtvlrpagarExit(Sender: TObject);
+
 begin
-  edtvlrdesconto.Value:=strtofloat(tirapontos(lbltotal.Caption))-edtvlrpagar.Value;
-  edtpercdesconto.Value:=edtvlrdesconto.Value/strtofloat(tirapontos(lbltotal.Caption))*100;
+
+  edtvlrdesconto.Value:=strtofloat(tirapontos(lbltotal.Caption)) - strtofloat(tirapontos(edtvlrpagar.Text));
+
+
+   fpercdesconto := strtofloat(tirapontos(edtvlrdesconto.text)) / strtofloat(tirapontos(lbltotal.Caption)) * 100;
+
+
+   edtpercdesconto.Value:= fpercdesconto;
+
 end;
 
 procedure Tfrmfechapedidovenda.edtvlrpagarKeyPress(Sender: TObject;
@@ -590,6 +619,9 @@ end;
 
 procedure Tfrmfechapedidovenda.FormCreate(Sender: TObject);
 begin
+
+  fpercdesconto := 0.01;
+
   icodigo_controle := modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
 
 
