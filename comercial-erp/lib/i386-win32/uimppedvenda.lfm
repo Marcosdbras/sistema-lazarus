@@ -1071,7 +1071,7 @@ object frmimppedvenda: Tfrmimppedvenda
     end
     object RLBand3: TRLBand
       Left = 38
-      Height = 57
+      Height = 50
       Top = 277
       Width = 718
       BandType = btFooter
@@ -1081,7 +1081,7 @@ object frmimppedvenda: Tfrmimppedvenda
       RealBounds.Height = 0
       object memocodgeral: TRLMemo
         Left = 0
-        Height = 20
+        Height = 16
         Top = 5
         Width = 520
         Behavior = [beSiteExpander]
@@ -1130,7 +1130,7 @@ object frmimppedvenda: Tfrmimppedvenda
       end
       object memo1: TRLMemo
         Left = 530
-        Height = 19
+        Height = 16
         Top = 21
         Width = 181
         Alignment = taRightJustify
@@ -1144,7 +1144,7 @@ object frmimppedvenda: Tfrmimppedvenda
     object RLBand4: TRLBand
       Left = 38
       Height = 56
-      Top = 334
+      Top = 327
       Width = 718
       BandType = btFooter
       RealBounds.Left = 0

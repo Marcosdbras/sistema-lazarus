@@ -64,6 +64,7 @@ type
     procedure edtdatainicioKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure pnlinferiorClick(Sender: TObject);
     procedure filtrar;
@@ -116,6 +117,7 @@ begin
     end;
   //endth
 
+
   cbxnomecliente.ListSource := modulo_cliente.dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
@@ -145,6 +147,30 @@ begin
 
 
 
+
+end;
+
+procedure Tfrmpedidovenda_pesquisa.FormShow(Sender: TObject);
+begin
+    with modulo_pedidovenda do
+    begin
+
+      qrmaster_pedidovenda.close;
+      qrmaster_pedidovenda.SQL.Clear;
+      qrmaster_pedidovenda.SQL.Add('select * from tmaster_pedidovenda where controle_tpedidovenda = :controle_tpedidovenda');
+      qrmaster_pedidovenda.Params.ParamByName('controle_tpedidovenda').AsInteger:=qrpedidovenda.FieldByName('controle').AsInteger;
+      qrmaster_pedidovenda.Open;
+
+      if qrmaster_pedidovenda.FieldByName('statuspedido').AsString = 'F' then
+         frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Forma Pagto'
+      else
+         frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Lançar Pedido';
+      //endiif
+
+
+
+    end;
+  //endth
 
 end;
 
@@ -413,15 +439,21 @@ begin
   with modulo_pedidovenda do
     begin
 
-      qrpedidovenda.Active:= false;
+      qrpedidovenda.Close;
       qrpedidovenda.SQL.Clear;
       qrpedidovenda.SQL.Add('select * from tpedidovenda where (cast(datahoracadastro as date) >= :dti and cast(datahoracadastro as date) <= :dtf) ' +filtro);
       qrpedidovenda.ParamByName('dti').AsDateTime:= edtdatainicio.Date;
       qrpedidovenda.ParamByName('dtf').AsDateTime:= edtdatafim.Date;
-      qrpedidovenda.Active:=true;
+      qrpedidovenda.open;
+
+
+
 
     end;
   //endth
+
+
+
 
 end;
 

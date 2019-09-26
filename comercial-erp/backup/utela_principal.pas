@@ -74,7 +74,7 @@ implementation
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
            uorcamento_pesquisa, umodulo_conexaodb, ulogin, umodulo_vendaorc, uvendaorc,
            uindice, uparametro, usincbaseremota, umodulo_tabpreco, umodulo_produto, umodulo_geral,
-           pedidovenda_pesquisa;
+           upedidovenda_pesquisa;
 {$R *.lfm}
 
 { Tfrmtela_principal }

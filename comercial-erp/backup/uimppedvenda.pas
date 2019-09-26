@@ -277,7 +277,7 @@ implementation
        memo1.Lines.Clear;
        if modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat > 0 then
           begin
-            memo1.Lines.Add('Desconto: '+ formatfloat('0,00',modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat)+'%   R$ '+formatfloat('###,###,##0.00', modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrdesconto').AsFloat));
+            memo1.Lines.Add('Desconto: '+ formatfloat('0.00',modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat)+'%   R$ '+formatfloat('###,###,##0.00', modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrdesconto').AsFloat));
           end;
        //endif
 

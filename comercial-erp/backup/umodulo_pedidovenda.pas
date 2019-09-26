@@ -12,6 +12,7 @@ type
   { Tmodulo_pedidovenda }
 
   Tmodulo_pedidovenda = class(TDataModule)
+    dsmaster_pedidovenda: TDataSource;
     dspedidovenda_itemproduto: TDataSource;
     dspedidovenda: TDataSource;
     dstempCliente: TDataSource;
@@ -124,6 +125,7 @@ type
     qrtempUnidade: TBufDataset;
     qrtempUnidadecund: TLongintField;
     qrtempVendedor: TBufDataset;
+    qrmaster_pedidovenda: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure qrpedidovendaAfterScroll(DataSet: TDataSet);
     procedure qrpedidovenda_itemprodutoAfterPost(DataSet: TDataSet);
@@ -139,7 +141,7 @@ var
   modulo_pedidovenda: Tmodulo_pedidovenda;
 
 implementation
-       uses umodulo_conexaodb;
+       uses umodulo_conexaodb, upedidovenda_pesquisa;
 {$R *.lfm}
 
        { Tmodulo_pedidovenda }
@@ -206,7 +208,15 @@ implementation
 
 procedure Tmodulo_pedidovenda.qrpedidovendaAfterScroll(DataSet: TDataSet);
 begin
+  if frmpedidovenda_pesquisa <> nil then
+     begin
 
+       qrmaster_pedidovenda.close;
+
+
+
+     end;
+  //endi
 
 
 end;

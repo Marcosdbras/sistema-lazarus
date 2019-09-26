@@ -116,6 +116,7 @@ begin
     end;
   //endth
 
+
   cbxnomecliente.ListSource := modulo_cliente.dscliente;
   cbxnomecliente.ListField:='cliente';
   cbxnomecliente.KeyField:='controle';
@@ -413,15 +414,21 @@ begin
   with modulo_pedidovenda do
     begin
 
-      qrpedidovenda.Active:= false;
+      qrpedidovenda.Close;
       qrpedidovenda.SQL.Clear;
       qrpedidovenda.SQL.Add('select * from tpedidovenda where (cast(datahoracadastro as date) >= :dti and cast(datahoracadastro as date) <= :dtf) ' +filtro);
       qrpedidovenda.ParamByName('dti').AsDateTime:= edtdatainicio.Date;
       qrpedidovenda.ParamByName('dtf').AsDateTime:= edtdatafim.Date;
-      qrpedidovenda.Active:=true;
+      qrpedidovenda.open;
+
+
+
 
     end;
   //endth
+
+
+
 
 end;
 

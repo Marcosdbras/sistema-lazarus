@@ -118,12 +118,15 @@ procedure Tfrmfechapedidovenda.edtpercdescontoExit(Sender: TObject);
 begin
 
  if frac(fpercdesconto) <> frac(edtpercdesconto.Value) then
-    fpercdesconto :=  edtpercdesconto.Value;
+    fpercdesconto :=  edtpercdesconto.Value
+ else
+    if  int(fpercdesconto) <> int(edtpercdesconto.Value) then
+        fpercdesconto :=  edtpercdesconto.Value;
+    //endi
+ //endi
 
  edtvlrdesconto.Value :=     fpercdesconto / 100 * strtofloat(tirapontos(lbltotal.Caption));
  edtvlrpagar.Value :=  strtofloat(tirapontos(lbltotal.Caption)) - edtvlrdesconto.Value;
-
-
 
 end;
 
@@ -204,12 +207,19 @@ begin
              frmimppedvenda.free;
              frmimppedvenda := nil;
           except
-            showmessage('Operação Cancelada!');
+            showmessage('Impressão Cancelada!');
           end;
 
 
         end;
      //endi
+
+
+
+     modulo_pedidovenda.qrpedidovenda.Refresh;
+
+
+     modulo_pedidovenda.qrpedidovenda.Locate('controle',icodigo_controle,[]);
 
      close;
 
@@ -260,7 +270,10 @@ begin
 
             excluirparcelas;
 
+            modulo_pedidovenda.qrpedidovenda.Refresh;
 
+
+            modulo_pedidovenda.qrpedidovenda.Locate('controle',icodigo_controle,[]);
 
 
   close;

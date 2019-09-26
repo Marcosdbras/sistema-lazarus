@@ -10,6 +10,7 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
   ClientWidth = 1028
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '1.8.4.0'
   WindowState = wsMaximized
   object pnlsuperior: TPanel

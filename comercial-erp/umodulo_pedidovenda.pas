@@ -141,7 +141,7 @@ var
   modulo_pedidovenda: Tmodulo_pedidovenda;
 
 implementation
-       uses umodulo_conexaodb;
+       uses umodulo_conexaodb, upedidovenda_pesquisa;
 {$R *.lfm}
 
        { Tmodulo_pedidovenda }
@@ -208,7 +208,25 @@ implementation
 
 procedure Tmodulo_pedidovenda.qrpedidovendaAfterScroll(DataSet: TDataSet);
 begin
+  if frmpedidovenda_pesquisa <> nil then
+     begin
 
+       qrmaster_pedidovenda.close;
+       qrmaster_pedidovenda.SQL.Clear;
+       qrmaster_pedidovenda.SQL.Add('select * from tmaster_pedidovenda where controle_tpedidovenda = :controle_tpedidovenda');
+       qrmaster_pedidovenda.Params.ParamByName('controle_tpedidovenda').AsInteger:=qrpedidovenda.FieldByName('controle').AsInteger;
+       qrmaster_pedidovenda.Open;
+
+       if qrmaster_pedidovenda.FieldByName('statuspedido').AsString = 'F' then
+          frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Forma Pagto'
+       else
+          frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Lançar Pedido';
+       //endiif
+
+
+
+     end;
+  //endi
 
 
 end;
