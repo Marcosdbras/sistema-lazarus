@@ -308,7 +308,7 @@ object frmorcamento_pesquisa: Tfrmorcamento_pesquisa
       Height = 40
       Top = 7
       Width = 123
-      Caption = 'Imprimir'
+      Caption = 'Visualizar'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clNavy
       Font.Height = -15

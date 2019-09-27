@@ -131,8 +131,10 @@ begin
 end;
 
 procedure Tfrmfechapedidovenda.btnlancarClick(Sender: TObject);
+var
+  ftotal, fvlrpagar:real;
 begin
-
+  fvlrpagar := strtofloat(tirapontos(edtvlrpagar.Text));
 
   if  modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('statuspedido').AsString <> 'F' then
      begin
@@ -140,11 +142,28 @@ begin
        with modulo_conexaodb do
             begin
 
+              qrconsulta_base.Close;
+              qrconsulta_base.SQL.Clear;
+              qrconsulta_base.SQL.Add('select sum(valororiginal) as total from tmaster_receber group by codpedidovenda having codpedidovenda = :codpedidovenda');
+              qrconsulta_base.ParamByName('codpedidovenda').AsInteger:=icodigo_controle;
+              qrconsulta_base.Open;
+              ftotal := qrconsulta_base.FieldByName('total').AsFloat+edtvlravista.Value;
+              if ftotal < fvlrpagar then
+                 begin
+                   application.MessageBox('Insuficiência de valores','Atençaõ',MB_OK);
+                   exit;
+                 end;
+              //endi
+              if (ftotal = 0) and (edtnparc.Value > 0) then
+                 begin
+                   application.MessageBox('Insuficiência de valores ou nenhuma parcela lançada','Atençaõ',MB_OK);
+                   exit;
+                 end;
+              //endi
+
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
               qrexec_base.SQL.Add('update tmaster_pedidovenda set cparc_pred = :cparc_pred, descricao_parc_pred = :descricao_parc_pred, percdesconto = :percdesconto, vlrdesconto = :vlrdesconto, vlrpagar = :vlrpagar, vlrrecebido = :vlrrecebido, vlrtroco = :vlrtroco, nparc = :nparc, statuspedido = :statuspedido where controle_tpedidovenda = :controle_tpedidovenda');
-
-
               if cbxformapre.Text <> '' then
                  begin
 
@@ -242,7 +261,7 @@ end;
 
 procedure Tfrmfechapedidovenda.btnestornarClick(Sender: TObject);
 begin
-              with modulo_conexaodb do
+            with modulo_conexaodb do
             begin
 
               qrexec_base.Close;
@@ -483,6 +502,8 @@ begin
 
       edtnparc.Value :=  modulo_parcelapredefinida.qrparcelapredefinida.FieldByName('qtdeparcela').AsInteger;
       edtnparc.Enabled:=false;
+      btnlancarparcela.Enabled:=false;
+      btnlancarparcela.Click;
 
     end
  else
@@ -490,6 +511,7 @@ begin
 
       edtnparc.Value :=  0;
       edtnparc.Enabled:=true;
+      btnlancarparcela.Enabled:=true;
 
     end;
  //endif
@@ -519,19 +541,26 @@ begin
 end;
 
 procedure Tfrmfechapedidovenda.edtvlravistaExit(Sender: TObject);
+var
+  fvlravista,fvlrpagar:real;
+
+
 begin
 
+  fvlravista := strtofloat(edtvlravista.Text);
+  fvlrpagar :=  strtofloat(edtvlrpagar.Text);
 
 
-  if edtvlravista.Value >= edtvlrpagar.Value then
+  if fvlravista >= fvlrpagar then
      begin
 
-       ftroco := edtvlravista.Value-edtvlrpagar.Value;
+       ftroco := fvlravista-fvlrpagar;
        edtnparc.Enabled:= false;
        btnlancarparcela.Enabled:=false;
        btnalterarfin.Enabled:=false;
        cbxformapre.Enabled:=false;
        dbgparcela.Enabled:=false;
+       btnlancarparcela.Enabled:=false;
 
        excluirparcelas;
 
@@ -548,11 +577,22 @@ begin
 
 
        ftroco:=0;
-       edtnparc.Enabled:= true;
+
        btnlancarparcela.Enabled:=true;
        btnalterarfin.Enabled:=true;
        cbxformapre.Enabled:=true;
        dbgparcela.Enabled:=true;
+
+       if cbxformapre.Text = '' then
+          begin
+            edtnparc.Enabled:= true;
+            btnlancarparcela.Enabled:=true;
+          end
+       else
+          begin
+            btnlancarparcela.Click;
+          end;
+       //endi
 
        //edtnparc.SetFocus;
 
@@ -691,11 +731,15 @@ begin
   else
      begin
 
+       modulo_parcelapredefinida.qrtempParcelaPredefinida.FieldByName('cparcpre').AsInteger:=0;
+
+       edtnparc.Value:=0;
+
        edtvlrpagar.Value:=    modulo_pedidovenda.qrpedidovenda.FieldByName('totalprodutos').asfloat;
 
        btnestornar.Enabled:= false;
 
-
+       excluirparcelas;
 
      end;
   //endi

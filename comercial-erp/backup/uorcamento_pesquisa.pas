@@ -165,7 +165,7 @@ end;
 
 procedure Tfrmorcamento_pesquisa.btntransfpedidoClick(Sender: TObject);
 var
-  hash,numDav:String;
+  hash,numDav,aSQLText,aSQLCommand:String;
   icontrole:integer;
 
 begin

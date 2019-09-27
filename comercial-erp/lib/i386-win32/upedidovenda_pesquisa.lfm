@@ -229,7 +229,7 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
       ParentFont = False
       TabOrder = 0
     end
-    object Button2: TButton
+    object btnalterar: TButton
       Left = 136
       Height = 40
       Top = 7
@@ -241,11 +241,11 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      OnClick = Button2Click
+      OnClick = btnalterarClick
       ParentFont = False
       TabOrder = 1
     end
-    object Button3: TButton
+    object btnexcluir: TButton
       Left = 264
       Height = 40
       Top = 7
@@ -257,11 +257,11 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      OnClick = Button3Click
+      OnClick = btnexcluirClick
       ParentFont = False
       TabOrder = 2
     end
-    object Button4: TButton
+    object btnconsulta: TButton
       Left = 392
       Height = 40
       Top = 7
@@ -273,7 +273,7 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      OnClick = Button4Click
+      OnClick = btnconsultaClick
       ParentFont = False
       TabOrder = 3
     end

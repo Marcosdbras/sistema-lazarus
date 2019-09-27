@@ -63,14 +63,14 @@ begin
           begin
 
             frmfechapedidovenda.edtnparc.Value :=  qrparcelapredefinida.FieldByName('qtdeparcela').AsInteger;
-            edtnparc.Enabled:=false;
+            frmfechapedidovenda.edtnparc.Enabled:=false;
 
           end
        else
           begin
 
             frmfechapedidovenda.edtnparc.Value := 0;
-            edtnparc.Enabled:=true;
+            frmfechapedidovenda.edtnparc.Enabled:=true;
 
           end;
       //endi

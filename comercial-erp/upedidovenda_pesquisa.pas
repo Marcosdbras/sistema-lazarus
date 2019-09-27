@@ -19,9 +19,9 @@ type
     btnfecharpedido: TButton;
     btnlimpar: TButton;
     Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
+    btnalterar: TButton;
+    btnexcluir: TButton;
+    btnconsulta: TButton;
     Button5: TButton;
     btnfecharpedido1: TButton;
     DBGrid1: TDBGrid;
@@ -48,9 +48,9 @@ type
     procedure btnlimparClick(Sender: TObject);
     procedure btnfecharpedido1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
+    procedure btnalterarClick(Sender: TObject);
+    procedure btnexcluirClick(Sender: TObject);
+    procedure btnconsultaClick(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure cbxnomeclienteKeyPress(Sender: TObject; var Key: char);
     procedure cbxnomefunKeyPress(Sender: TObject; var Key: char);
@@ -168,9 +168,10 @@ begin
       //endiif
 
 
-
     end;
   //endth
+
+
 
 end;
 
@@ -223,10 +224,35 @@ begin
   frmpedidovenda_cadastro.Free;
   frmpedidovenda_cadastro := nil;
 
+    if modulo_pedidovenda.qrpedidovenda.RecordCount = 0 then
+         begin
+
+           btnalterar.Enabled:=false;
+           btnexcluir.Enabled:=false;
+           btnconsulta.Enabled:=false;
+           btnimpressao.Enabled:=false;
+           btnfecharpedido.Enabled:=false;
+
+
+         end
+      else
+         begin
+
+           btnalterar.Enabled:=true;
+           btnexcluir.Enabled:=true;
+           btnconsulta.Enabled:=true;
+           btnimpressao.Enabled:=true;
+           btnfecharpedido.Enabled:=true;
+
+
+         end;
+      //endi
+
+
 
 end;
 
-procedure Tfrmpedidovenda_pesquisa.Button2Click(Sender: TObject);
+procedure Tfrmpedidovenda_pesquisa.btnalterarClick(Sender: TObject);
 begin
  opcao := 'A';
 
@@ -237,7 +263,7 @@ begin
 
 end;
 
-procedure Tfrmpedidovenda_pesquisa.Button3Click(Sender: TObject);
+procedure Tfrmpedidovenda_pesquisa.btnexcluirClick(Sender: TObject);
 begin
   opcao := 'E';
 
@@ -254,7 +280,7 @@ begin
   //frmpedidovenda_cadastro := nil;
 end;
 
-procedure Tfrmpedidovenda_pesquisa.Button4Click(Sender: TObject);
+procedure Tfrmpedidovenda_pesquisa.btnconsultaClick(Sender: TObject);
 begin
   opcao := 'C';
 
@@ -445,6 +471,32 @@ begin
       qrpedidovenda.ParamByName('dti').AsDateTime:= edtdatainicio.Date;
       qrpedidovenda.ParamByName('dtf').AsDateTime:= edtdatafim.Date;
       qrpedidovenda.open;
+
+
+      if qrpedidovenda.RecordCount = 0 then
+         begin
+
+           btnalterar.Enabled:=false;
+           btnexcluir.Enabled:=false;
+           btnconsulta.Enabled:=false;
+           btnimpressao.Enabled:=false;
+           btnfecharpedido.Enabled:=false;
+
+
+         end
+      else
+         begin
+
+           btnalterar.Enabled:=true;
+           btnexcluir.Enabled:=true;
+           btnconsulta.Enabled:=true;
+           btnimpressao.Enabled:=true;
+           btnfecharpedido.Enabled:=true;
+
+
+         end;
+      //endi
+
 
 
 
