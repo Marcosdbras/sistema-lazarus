@@ -8,6 +8,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
   ClientHeight = 635
   ClientWidth = 577
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '1.8.4.0'
   object pnlsuperior: TPanel
     Left = 0
@@ -247,6 +248,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       LookupCache = False
       NullValueKey = 46
       OnChange = cbxformapreChange
+      OnEnter = cbxformapreEnter
       OnExit = cbxformapreExit
       OnKeyPress = cbxformapreKeyPress
       TabOrder = 3
@@ -529,6 +531,7 @@ object frmfechapedidovenda: Tfrmfechapedidovenda
       DataSource = modulo_receber.dsMasterReceber
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
       TabOrder = 0
+      OnKeyDown = dbgparcelaKeyDown
       OnKeyPress = dbgparcelaKeyPress
     end
     object btnalterarfin: TBitBtn

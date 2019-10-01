@@ -162,16 +162,21 @@ begin
       qrmaster_pedidovenda.Open;
 
       if qrmaster_pedidovenda.FieldByName('statuspedido').AsString = 'F' then
-         frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Forma Pagto'
+         begin
+           btnalterar.Enabled:=false;
+           btnexcluir.Enabled:=false;
+           btnfecharpedido.Caption:='Forma Pagto';
+         end
       else
-         frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Lançar Pedido';
+         begin
+           btnalterar.Enabled:=true;
+           btnexcluir.Enabled:=true;
+           btnfecharpedido.Caption:='Lançar Pedido';
+         end;
       //endiif
-
 
     end;
   //endth
-
-
 
 end;
 

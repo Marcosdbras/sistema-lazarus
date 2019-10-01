@@ -947,6 +947,7 @@ begin
   frmpedidovenda_pesquisa := tfrmpedidovenda_pesquisa.create(self);
   frmpedidovenda_pesquisa.showmodal;
   frmpedidovenda_pesquisa.free;
+  frmpedidovenda_pesquisa := nil;
 
 end;
 

@@ -341,7 +341,7 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
       Height = 40
       Top = 8
       Width = 139
-      Caption = 'Visualizar'
+      Caption = 'Impressão'
       Font.CharSet = ANSI_CHARSET
       Font.Height = -15
       Font.Name = 'Arial Narrow'

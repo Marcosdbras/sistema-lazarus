@@ -57,6 +57,7 @@ function RemoveAcento(const pText: string): string;
 
 
 
+
 implementation
         uses umodulo_conexaodb, umodulo_produto, umodulo_remoto, umodulo_emitente, ufuncao_conexaodb;
 
@@ -197,6 +198,46 @@ var
 begin
 
 try
+
+
+//Tabela TMASTER_CAIXA existe?
+if existe_tabela('TMASTER_CAIXA') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE TMASTER_CAIXA(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_CAIXA_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CONSTRAINT PK_TMASTER_CAIXA  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger tmaster_caixa_bi for tmaster_caixa');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_caixa_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
 
 
 //Tabela TMASTER_RECEBER existe?
@@ -927,8 +968,6 @@ if existe_campo('TMASTER_RECEBER','REPLICADA') = 0 then
   end;
 //endi
 
-
-
 //Campo STATUS existe?
 if existe_campo('TMASTER_RECEBER','STATUS') = 0 then
    begin
@@ -946,7 +985,6 @@ if existe_campo('TMASTER_RECEBER','STATUS') = 0 then
          //endth
   end;
 //endi
-
 
 //Campo PRAZO existe?
 if existe_campo('TMASTER_RECEBER','PRAZO') = 0 then
@@ -966,8 +1004,6 @@ if existe_campo('TMASTER_RECEBER','PRAZO') = 0 then
   end;
 //endi
 
-
-
 //Campo CODCENTROCUSTO   existe?
 if existe_campo('TMASTER_RECEBER','CODCENTROCUSTO') = 0 then
    begin
@@ -985,8 +1021,6 @@ if existe_campo('TMASTER_RECEBER','CODCENTROCUSTO') = 0 then
          //endth
   end;
 //endi
-
-
 
 //Campo CENTROCUSTO existe?
 if existe_campo('TMASTER_RECEBER','CENTROCUSTO') = 0 then
@@ -1007,6 +1041,723 @@ if existe_campo('TMASTER_RECEBER','CENTROCUSTO') = 0 then
 //endi
 
 
+
+
+//Campo DATAHORACADASTRO existe?
+if existe_campo('TMASTER_CAIXA','DATAHORACADASTRO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD DATAHORACADASTRO  TIMESTAMP;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo ORIGEM existe?
+if existe_campo('TMASTER_CAIXA','ORIGEM') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD ORIGEM VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo DOCUMENTO existe?
+if existe_campo('TMASTER_CAIXA','DOCUMENTO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD DOCUMENTO  VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo DESCRICAOLANCAMENTO existe?
+if existe_campo('TMASTER_CAIXA','DESCRICAOLANCAMENTO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD DESCRICAOLANCAMENTO  VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo CODCLIENTE existe?
+if existe_campo('TMASTER_CAIXA','CODCLIENTE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODCLIENTE INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo CLIENTE existe?
+if existe_campo('TMASTER_CAIXA','CLIENTE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CLIENTE  VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo CODFORNECEDOR   existe?
+if existe_campo('TMASTER_CAIXA','CODFORNECEDOR') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODFORNECEDOR INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo FORNECEDOR  existe?
+if existe_campo('TMASTER_CAIXA','FORNECEDOR') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD FORNECEDOR VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo CODTRANSPORTADORA existe?
+if existe_campo('TMASTER_CAIXA','CODTRANSPORTADORA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODTRANSPORTADORA INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo TRANSPORTADORA existe?
+if existe_campo('TMASTER_CAIXA','TRANSPORTADORA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD TRANSPORTADORA VARCHAR(50) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo CODCENTROCUSTO  existe?
+if existe_campo('TMASTER_CAIXA','CODCENTROCUSTO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODCENTROCUSTO  INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo CENTROCUSTO existe?
+if existe_campo('TMASTER_CAIXA','CENTROCUSTO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CENTROCUSTO VARCHAR(100) NOT NULL COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo CODESPECIE   existe?
+if existe_campo('TMASTER_CAIXA','CODESPECIE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODESPECIE  INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo ESPECIE   existe?
+if existe_campo('TMASTER_CAIXA','ESPECIE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD ESPECIE VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo CENTROCUSTO existe?
+if existe_campo('TMASTER_CAIXA','CODPLANCONTA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODPLANCONTA INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo PLANCONTA  existe?
+if existe_campo('TMASTER_CAIXA','PLANCONTA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD PLANCONTA  VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo CODFUNCIONARIO existe?
+if existe_campo('TMASTER_CAIXA','CODFUNCIONARIO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODFUNCIONARIO INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo FUNCIONARIO  existe?
+if existe_campo('TMASTER_CAIXA','FUNCIONARIO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD FUNCIONARIO  VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+//Campo CODFUNCIONARIOVALE  existe?
+if existe_campo('TMASTER_CAIXA','CODFUNCIONARIOVALE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODFUNCIONARIOVALE   INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+//Campo FUNCIONARIOVALE   existe?
+if existe_campo('TMASTER_CAIXA','FUNCIONARIOVALE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD FUNCIONARIOVALE      VARCHAR(100) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo VALORENTRADA  existe?
+if existe_campo('TMASTER_CAIXA','VALORENTRADA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD VALORENTRADA DECIMAL(15,4);');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+//Campo VALORSAIDA  existe?
+if existe_campo('TMASTER_CAIXA','VALORSAIDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD VALORSAIDA  DECIMAL(15,4);');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+//Campo SALDO  existe?
+if existe_campo('TMASTER_CAIXA','SALDO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD SALDO DECIMAL(15,4);');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo OBS  existe?
+if existe_campo('TMASTER_CAIXA','OBS') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD OBS BLOB SUB_TYPE 1 SEGMENT SIZE 80;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo STATUS  existe?
+if existe_campo('TMASTER_CAIXA','STATUS') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD STATUS  VARCHAR(10) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo CODMODULO  existe?
+if existe_campo('TMASTER_CAIXA','CODMODULO') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODMODULO  INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo COOCCFPDV  existe?
+if existe_campo('TMASTER_CAIXA','COOCCFPDV') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD COOCCFPDV  VARCHAR(12) COLLATE PT_BR;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo CODCOMPRA  existe?
+if existe_campo('TMASTER_CAIXA','CODCOMPRA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODCOMPRA INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+
+//Campo CODNFE  existe?
+if existe_campo('TMASTER_CAIXA','CODNFE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODNFE INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+//Campo CODNFCE  existe?
+if existe_campo('TMASTER_CAIXA','CODNFCE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODNFCE INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+//Campo CODOS  existe?
+if existe_campo('TMASTER_CAIXA','CODOS') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODOS INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+
+
+//Campo CODPAGAR  existe?
+if existe_campo('TMASTER_CAIXA','CODPAGAR') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODPAGAR INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo CODPDV   existe?
+if existe_campo('TMASTER_CAIXA','CODPDV') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODPDV  INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+//Campo CODRECEBER existe?
+if existe_campo('TMASTER_CAIXA','CODRECEBER') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CODRECEBER INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+//Campo CONTROLENOPDV existe?
+if existe_campo('TMASTER_CAIXA','CONTROLENOPDV') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_CAIXA ADD CONTROLENOPDV  INTEGER;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//---------------------------------------
 
 
 
@@ -3167,6 +3918,7 @@ type
 begin
   Result := string(USAscii20127(pText));
 end;
+
 
 end.
 

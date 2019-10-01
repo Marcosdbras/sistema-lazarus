@@ -60,7 +60,10 @@ type
     procedure btnlancarClick(Sender: TObject);
     procedure btnlancarparcelaClick(Sender: TObject);
     procedure cbxformapreChange(Sender: TObject);
+    procedure cbxformapreEnter(Sender: TObject);
     procedure cbxformapreExit(Sender: TObject);
+    procedure dbgparcelaKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
     procedure dbgparcelaKeyPress(Sender: TObject; var Key: char);
     procedure cbxformapreKeyPress(Sender: TObject; var Key: char);
     procedure edtpercdescontoExit(Sender: TObject);
@@ -74,9 +77,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure edtnparcKeyPress(Sender: TObject; var Key: char);
     procedure excluirparcelas;
+    procedure FormShow(Sender: TObject);
   private
        icodigo_controle:integer;
-       ftroco, fpercdesconto:real;
+       ftroco, fpercdesconto, fvlrdesconto, fvlrpagar:real;
+       spercdesconto, svlrdesconto, svlrpagar:string;
        stroco:string;
 
 
@@ -101,9 +106,6 @@ procedure Tfrmfechapedidovenda.cbxformapreKeyPress(Sender: TObject;
   var Key: char);
 begin
 
-
-
-
 if key = #13 then
    begin
      key := #0;
@@ -117,22 +119,39 @@ end;
 procedure Tfrmfechapedidovenda.edtpercdescontoExit(Sender: TObject);
 begin
 
- if frac(fpercdesconto) <> frac(edtpercdesconto.Value) then
-    fpercdesconto :=  edtpercdesconto.Value
- else
-    if  int(fpercdesconto) <> int(edtpercdesconto.Value) then
-        fpercdesconto :=  edtpercdesconto.Value;
-    //endi
+ fpercdesconto :=  edtpercdesconto.Value;
+ fvlrpagar := edtvlrpagar.Value;
+ fvlrdesconto := edtvlrdesconto.Value;
+
+ if spercdesconto <> edtpercdesconto.Text then
+    begin
+
+      fvlrdesconto :=  fpercdesconto / 100 * strtofloat(tirapontos(lbltotal.Caption));
+      edtvlrdesconto.Value:=fvlrdesconto;
+
+      fvlrpagar  :=  strtofloat(tirapontos(lbltotal.Caption)) - fvlrdesconto;
+      edtvlrpagar.Value:=fvlrpagar;
+
+
+    end;
+ //endif
+ //if svlrpagar <> edtvlrpagar.Text then
+ //   begin
+ //   end;
  //endi
 
- edtvlrdesconto.Value :=     fpercdesconto / 100 * strtofloat(tirapontos(lbltotal.Caption));
- edtvlrpagar.Value :=  strtofloat(tirapontos(lbltotal.Caption)) - edtvlrdesconto.Value;
+ spercdesconto :=  edtpercdesconto.text;
+
+
+ //svlrpagar := edtvlrpagar.text;
+ //svlrdesconto := edtvlrdesconto.text;
+
 
 end;
 
 procedure Tfrmfechapedidovenda.btnlancarClick(Sender: TObject);
 var
-  ftotal, fvlrpagar:real;
+  ftotal:real;
 begin
   fvlrpagar := strtofloat(tirapontos(edtvlrpagar.Text));
 
@@ -150,16 +169,27 @@ begin
               ftotal := qrconsulta_base.FieldByName('total').AsFloat+edtvlravista.Value;
               if ftotal < fvlrpagar then
                  begin
-                   application.MessageBox('Insuficiência de valores','Atençaõ',MB_OK);
+                   application.MessageBox('Insuficiência de valores','Atenção',MB_OK);
                    exit;
                  end;
               //endi
               if (ftotal = 0) and (edtnparc.Value > 0) then
                  begin
-                   application.MessageBox('Insuficiência de valores ou nenhuma parcela lançada','Atençaõ',MB_OK);
+                   application.MessageBox('Insuficiência de valores ou nenhuma parcela lançada','Atenção',MB_OK);
                    exit;
                  end;
               //endi
+              if cbxformapre.Text <> '' then
+                 if modulo_parcelapredefinida.qrParcelaPredefinida.FieldByName('possuientrada').AsInteger = 1 then
+                    if edtvlravista.Value <= 0 then
+                       begin
+                         application.MessageBox('Forma de pagamento predefinida exige entrada maior que zero','Atenção',MB_OK);
+                         exit;
+                       end;
+                    //endi
+                 //endi
+              //endi
+
 
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
@@ -495,6 +525,22 @@ begin
 
 end;
 
+procedure Tfrmfechapedidovenda.cbxformapreEnter(Sender: TObject);
+begin
+   //fvlrdesconto := strtofloat(tirapontos(lbltotal.Caption)) - fvlrpagar;
+   //fpercdesconto := fvlrdesconto / strtofloat(tirapontos(lbltotal.Caption)) * 100;
+   //fvlrpagar :=  strtofloat(tirapontos(lbltotal.Caption)) -  fvlrdesconto;
+
+   //StrToCurr(FormatCurr(´0.00´, fvlrdesconto));
+   //edtvlrdesconto.Text :=   FormatCurr('0.00', fvlrdesconto);
+   //edtpercdesconto.Text := FormatCurr('0.00', fpercdesconto);
+   //edtvlrpagar.Text :=   FormatCurr('0.00', fvlrpagar);
+
+
+
+
+end;
+
 procedure Tfrmfechapedidovenda.cbxformapreExit(Sender: TObject);
 begin
    if cbxformapre.Text <> '' then
@@ -515,6 +561,27 @@ begin
 
     end;
  //endif
+
+end;
+
+procedure Tfrmfechapedidovenda.dbgparcelaKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+     if key = 13 then
+   begin
+     key := 0;
+     SelectNext(ActiveControl,True,True);
+     exit;
+   end;
+   //endi
+
+   if key = 9 then
+   begin
+     key := 0;
+
+     exit;
+   end;
+   //endi
 
 end;
 
@@ -542,7 +609,7 @@ end;
 
 procedure Tfrmfechapedidovenda.edtvlravistaExit(Sender: TObject);
 var
-  fvlravista,fvlrpagar:real;
+  fvlravista:real;
 
 
 begin
@@ -607,13 +674,36 @@ end;
 procedure Tfrmfechapedidovenda.edtvlrdescontoExit(Sender: TObject);
 begin
 
-  fpercdesconto  := edtvlrdesconto.value / strtofloat(tirapontos(lbltotal.Caption)) * 100;
+  fpercdesconto :=  edtpercdesconto.Value;
+  fvlrpagar := edtvlrpagar.Value;
+  fvlrdesconto := edtvlrdesconto.Value;
 
-  edtpercdesconto.Value:=  fpercdesconto;
+
+  if svlrdesconto <> edtvlrdesconto.text then
+     begin
+
+       fpercdesconto  := fvlrdesconto / strtofloat(tirapontos(lbltotal.Caption)) * 100;
+       edtpercdesconto.Value:= fpercdesconto;
+
+       fvlrpagar := strtofloat(tirapontos(lbltotal.Caption))-fvlrdesconto;
+       edtvlrpagar.Value:=fvlrpagar;
+
+       spercdesconto :=  edtpercdesconto.text;
 
 
-  edtvlrpagar.Value:= strtofloat(tirapontos(lbltotal.Caption))-edtvlrdesconto.value;
+     end;
+  //endi
+  //if svlrpagar <> edtvlrpagar.Text then
+  //   begin
 
+
+  //   end;
+  //endi
+
+  svlrdesconto := edtvlrdesconto.text;
+
+  //spercdesconto :=  edtpercdesconto.text;
+  //svlrpagar := edtvlrpagar.text;
 
 end;
 
@@ -631,16 +721,38 @@ begin
 end;
 
 procedure Tfrmfechapedidovenda.edtvlrpagarExit(Sender: TObject);
-
 begin
 
-  edtvlrdesconto.Value:=strtofloat(tirapontos(lbltotal.Caption)) - strtofloat(tirapontos(edtvlrpagar.Text));
+  fpercdesconto :=  edtpercdesconto.Value;
+  fvlrpagar := edtvlrpagar.Value;
+  fvlrdesconto :=  edtvlrdesconto.Value;
+
+  //if svlrdesconto <> edtvlrdesconto.Text then
+  //   begin
 
 
-   fpercdesconto := strtofloat(tirapontos(edtvlrdesconto.text)) / strtofloat(tirapontos(lbltotal.Caption)) * 100;
+  //   end;
+  //endi
+  if (svlrpagar <> edtvlrpagar.text)  then
+     begin
+
+       fvlrdesconto :=strtofloat(tirapontos(lbltotal.Caption)) - fvlrpagar;
+       edtvlrdesconto.Value:=   fvlrdesconto;
 
 
-   edtpercdesconto.Value:= fpercdesconto;
+       fpercdesconto := fvlrdesconto / strtofloat(tirapontos(lbltotal.Caption)) * 100;
+       edtpercdesconto.Value:=  fpercdesconto;
+
+
+       spercdesconto :=  edtpercdesconto.text;
+     end;
+  //endi
+
+  svlrpagar := edtvlrpagar.text;
+
+  //spercdesconto :=  edtpercdesconto.text;
+  //svlrdesconto := edtvlrdesconto.text;
+  //showmessage(FormatCurr('0.00', fpercdesconto));
 
 end;
 
@@ -673,15 +785,12 @@ end;
 procedure Tfrmfechapedidovenda.FormCreate(Sender: TObject);
 begin
 
-  fpercdesconto := 0.01;
-
+  //fpercdesconto := 0.01;
   icodigo_controle := modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
-
 
   lblpeddav.Caption :=  formatfloat('00000',modulo_pedidovenda.qrpedidovenda.FieldByName('controle').asfloat)+'/'+formatfloat('00000',modulo_pedidovenda.qrpedidovenda.FieldByName('controlevarchar').asfloat);
   lblnomecli.Caption:=  modulo_pedidovenda.qrpedidovenda.FieldByName('cliente').asString;
   lbltotal.Caption:=    formatfloat('###,###,##0.00',modulo_pedidovenda.qrpedidovenda.FieldByName('totalprodutos').asfloat);
-
 
   with modulo_pedidovenda do
      begin
@@ -717,17 +826,11 @@ begin
        ftroco:= modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrtroco').asfloat;
 
        modulo_parcelapredefinida.qrtempParcelaPredefinida.FieldByName('cparcpre').AsInteger:= modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('cparc_pred').asInteger;
-
-       btnlancar.Caption:='Imprimir';
-
+       btnlancar.Caption:='IMPRIMIR';
        ckbimprimir.Checked:=true;
-
        ckbimprimir.Visible:=false;
-
        pnlsuperior.Enabled:=false;
-
        pnlcentral.Enabled:=false;
-
        btnestornar.Enabled:= true;
 
      end
@@ -735,13 +838,9 @@ begin
      begin
 
        modulo_parcelapredefinida.qrtempParcelaPredefinida.FieldByName('cparcpre').AsInteger:=0;
-
        edtnparc.Value:=0;
-
        edtvlrpagar.Value:=    modulo_pedidovenda.qrpedidovenda.FieldByName('totalprodutos').asfloat;
-
        btnestornar.Enabled:= false;
-
        excluirparcelas;
 
      end;
@@ -755,10 +854,8 @@ begin
        qrmaster_indice.SQL.Add('select * from tmaster_indice');
        qrmaster_indice.Open;
 
-
      end;
  //endth
-
 
   with modulo_especie do
      begin
@@ -777,12 +874,11 @@ begin
 
        qrParcelaPredefinida.Close;
        qrParcelaPredefinida.SQL.Clear;
-       qrParcelaPredefinida.SQL.Add('select * from tParcelaPredefinida');
+       qrParcelaPredefinida.SQL.Add('select * from tParcelaPredefinida where ativa = 1');
        qrParcelaPredefinida.Open;
 
      end;
   //endth
-
 
   cbxformapre.ListSource := modulo_parcelapredefinida.dsParcelaPredefinida;
   cbxformapre.ListField:='descricao';
@@ -791,9 +887,6 @@ begin
   cbxformapre.DataField:='cparcpre';
   cbxformapre.ScrollListDataset:=true;
   cbxformapre.Style:=csDropDownList;
-
-
-
 
 end;
 
@@ -830,6 +923,15 @@ begin
 
   modulo_receber.qrMasterReceber.Refresh;
 
+
+end;
+
+procedure Tfrmfechapedidovenda.FormShow(Sender: TObject);
+begin
+
+  svlrpagar := formatfloat('###,###,##0.00',modulo_pedidovenda.qrpedidovenda.FieldByName('totalprodutos').asfloat);
+  spercdesconto :=  '0,00';
+  svlrdesconto := '0,00';
 
 end;
 

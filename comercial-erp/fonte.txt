@@ -1,0 +1,23 @@
+with dm.zqSumSaldoFluxoCaixa do
+  begin
+     close;
+     SQL.clear;
+     sql.add(´select x.saldo_anterior, x.recebimento, x.pagamento, ´
+            +´(x.saldo_anterior + x.recebimento - x.pagamento) Saldo_Atual, ´
+            +´(x.saldo_anterior + x.recebimento) TotRecPagMes ´
+            +´from( ´
+            +´select first 1 ´
+            +´((select coalesce(sum(recebimento),0) from fluxocaixa where mespgto < :pdata)) - ´
+            +´((select coalesce(sum(pagamento),0) from fluxocaixa where mespgto < :pdata)) ´
+            +´as Saldo_Anterior , ´
+            +´(select coalesce(sum(recebimento),0) from fluxocaixa ´
+            +´where extract(month from mespgto) = :pmes and extract(year from mespgto) = :pano) recebimento, ´
+            +´(select coalesce(sum(pagamento),0) from fluxocaixa ´
+            +´where extract(month from mespgto) = :pmes and extract(year from mespgto) = :pano) pagamento ´
+            +´from fluxocaixa ´
+            +´) as x´);
+     ParamByName(´Pdata´).Value:=StrToDate(Label20.Caption);
+     ParamByName(´PMes´).Value:=StrToInt(ComboBox3.Text); 
+     ParamByName(´PAno´).Value:=StrToInt(Edit2.Text);
+     Open;
+  end;

@@ -212,6 +212,16 @@ begin
      begin
 
        qrmaster_pedidovenda.close;
+       qrmaster_pedidovenda.SQL.Clear;
+       qrmaster_pedidovenda.SQL.Add('select * from tmaster_pedidovenda where controle_tpedidovenda = :controle_tpedidovenda');
+       qrmaster_pedidovenda.Params.ParamByName('controle_tpedidovenda').AsInteger:=qrpedidovenda.FieldByName('controle').AsInteger;
+       qrmaster_pedidovenda.Open;
+
+       if qrmaster_pedidovenda.FieldByName('statuspedido').AsString = 'F' then
+          frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Forma Pagto'
+       else
+          frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Lançar Pedido';
+       //endiif
 
 
 

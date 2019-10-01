@@ -915,14 +915,9 @@ begin
 
              qrtabpreco.Close;
 
-
-
-
              //Atualizar generator
              //GEN_TTABELAPRECO_ID
              //GEN_TITEMTABELAPRECO_ID
-
-
 
              modulo_conexaodb.atualizaBancoFechaTransacao;
 
@@ -931,11 +926,7 @@ begin
              lblstatus.Caption:='';
 
            end;
-
-
-
-
-
+       //endth
 
      end;
  //endif
