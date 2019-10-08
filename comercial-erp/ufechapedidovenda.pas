@@ -193,7 +193,7 @@ begin
 
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('update tmaster_pedidovenda set cparc_pred = :cparc_pred, descricao_parc_pred = :descricao_parc_pred, percdesconto = :percdesconto, vlrdesconto = :vlrdesconto, vlrpagar = :vlrpagar, vlrrecebido = :vlrrecebido, vlrtroco = :vlrtroco, nparc = :nparc, statuspedido = :statuspedido where controle_tpedidovenda = :controle_tpedidovenda');
+              qrexec_base.SQL.Add('update tmaster_pedidovenda set cparc_pred = :cparc_pred, descricao_parc_pred = :descricao_parc_pred, percdesconto = :percdesconto, vlrdesconto = :vlrdesconto, vlrpagar = :vlrpagar, vlrrecebido = :vlrrecebido, vlrtroco = :vlrtroco, nparc = :nparc, statuspedido = :statuspedido, datafec = :datafec where controle_tpedidovenda = :controle_tpedidovenda');
               if cbxformapre.Text <> '' then
                  begin
 
@@ -218,8 +218,18 @@ begin
               qrexec_base.ParamByName('vlrtroco').AsFloat:=ftroco;
               qrexec_base.ParamByName('nparc').AsInteger:=edtnparc.Value;
               qrexec_base.ParamByName('statuspedido').AsString:='F';
+              qrexec_base.ParamByName('datafec').AsDate:=date;
               qrexec_base.ParamByName('controle_tpedidovenda').AsInteger:=icodigo_controle;
 
+              qrexec_base.ExecSQL;
+
+              atualizaBanco;
+
+              qrexec_base.Close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('update tmaster_receber set datafec = :datafec where codpedidovenda = :codpedidovenda');
+              qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icodigo_controle;
+              qrexec_base.Params.ParamByName('datafec').AsDate:=date;
               qrexec_base.ExecSQL;
 
               atualizaBanco;
@@ -296,7 +306,7 @@ begin
 
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('update tmaster_pedidovenda set cparc_pred = :cparc_pred, descricao_parc_pred = :descricao_parc_pred, percdesconto = :percdesconto, vlrdesconto = :vlrdesconto, vlrpagar = :vlrpagar, vlrrecebido = :vlrrecebido, vlrtroco = :vlrtroco, nparc = :nparc, statuspedido = :statuspedido where controle_tpedidovenda = :controle_tpedidovenda');
+              qrexec_base.SQL.Add('update tmaster_pedidovenda set cparc_pred = :cparc_pred, descricao_parc_pred = :descricao_parc_pred, percdesconto = :percdesconto, vlrdesconto = :vlrdesconto, vlrpagar = :vlrpagar, vlrrecebido = :vlrrecebido, vlrtroco = :vlrtroco, nparc = :nparc, statuspedido = :statuspedido, datafec = NULL where controle_tpedidovenda = :controle_tpedidovenda');
 
               qrexec_base.ParamByName('cparc_pred').AsInteger:=  0;
               qrexec_base.ParamByName('descricao_parc_pred').AsString:='';
@@ -307,6 +317,7 @@ begin
               qrexec_base.ParamByName('vlrtroco').AsFloat:=0;
               qrexec_base.ParamByName('nparc').AsInteger:=0;
               qrexec_base.ParamByName('statuspedido').AsString:='A';
+
               qrexec_base.ParamByName('controle_tpedidovenda').AsInteger:=icodigo_controle;
 
               qrexec_base.ExecSQL;
@@ -785,8 +796,35 @@ end;
 procedure Tfrmfechapedidovenda.FormCreate(Sender: TObject);
 begin
 
-  //fpercdesconto := 0.01;
+
   icodigo_controle := modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
+
+  with modulo_conexaodb do
+     begin
+
+
+       qrconsulta_base.Close;
+       qrconsulta_base.SQL.Clear;
+       qrconsulta_base.SQL.Add('select * from tmaster_pedidovenda where controle_tpedidovenda = :controle_tpedidovenda');
+       qrconsulta_base.Params.ParamByName('controle_tpedidovenda').AsInteger := icodigo_controle;
+       qrconsulta_base.Open;
+
+       if qrconsulta_base.RecordCount = 0 then
+          begin
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_pedidovenda(controle_tpedidovenda) values (:controle_tpedidovenda);');
+            qrexec_base.Params.ParamByName('controle_tpedidovenda').AsInteger := icodigo_controle;
+            qrexec_base.ExecSQL;
+
+            atualizaBanco;
+          end;
+       //endi
+
+     end;
+  //endi
+
 
   lblpeddav.Caption :=  formatfloat('00000',modulo_pedidovenda.qrpedidovenda.FieldByName('controle').asfloat)+'/'+formatfloat('00000',modulo_pedidovenda.qrpedidovenda.FieldByName('controlevarchar').asfloat);
   lblnomecli.Caption:=  modulo_pedidovenda.qrpedidovenda.FieldByName('cliente').asString;

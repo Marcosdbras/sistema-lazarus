@@ -153,6 +153,17 @@ object frmtela_principal: Tfrmtela_principal
           OnClick = MenuItem8Click
         end
       end
+      object MenuItem14: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem12: TMenuItem
+        Caption = 'Financeiro'
+        OnClick = MenuItem12Click
+        object MenuItem13: TMenuItem
+          Caption = 'Movimento de Caixa'
+          OnClick = MenuItem13Click
+        end
+      end
       object MenuItem7: TMenuItem
         Caption = '-'
       end

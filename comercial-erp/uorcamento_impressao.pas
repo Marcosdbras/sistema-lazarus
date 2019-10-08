@@ -90,6 +90,9 @@ begin
 
 
    end;
+
+   close;
+
 end;
 
 procedure Tfrmorcamento_impressao.FormCreate(Sender: TObject);

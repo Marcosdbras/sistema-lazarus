@@ -1,0 +1,34 @@
+object modulo_consulta: Tmodulo_consulta
+  OldCreateOrder = False
+  Height = 205
+  HorizontalOffset = 237
+  VerticalOffset = 152
+  Width = 218
+  PPI = 96
+  object qrcaixatdinheiro: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 32
+    top = 24
+  end
+  object dspcaixadinheiro: TDataSource
+    DataSet = qrcaixatdinheiro
+    left = 144
+    top = 24
+  end
+  object qrtotalporespecie: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 32
+    top = 120
+  end
+  object dsptotalporespecie: TDataSource
+    DataSet = qrtotalporespecie
+    left = 144
+    top = 120
+  end
+end

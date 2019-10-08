@@ -21,3 +21,54 @@ with dm.zqSumSaldoFluxoCaixa do
      ParamByName(´PAno´).Value:=StrToInt(Edit2.Text);
      Open;
   end;
+
+
+  Script.Script.Add('   for select p.controle, p.datahoracadastro, coalesce(m.vlrrecebido,0), coalesce(m.vlrpagar,0), m.statuspedido from tpedidovenda p inner join tmaster_pedidovenda m on  p.controle = m.controle_tpedidovenda where (cast(p.datahoracadastro as date) >= :datainicio) and  (cast(p.datahoracadastro as date) <= :datafinal) and (m.statuspedido = ' + quotedstr('F')+     ')   into :controle,  :datafec, :vlrrecebido, :vlrpagar, :statuspedido do');
+
+SET TERM ^ ;
+
+create or alter procedure spcaixa (
+    datainicio date,
+    datafinal date)
+returns (
+    tdinheiro decimal(15,2))
+as
+declare variable vlrpagar decimal(15,2);
+declare variable vlrrecebido decimal(15,2);
+declare variable datahoracadastro timestamp;
+declare variable controle integer;
+declare variable statuspedido varchar(10);
+begin
+   /**/
+   tdinheiro = 0;
+
+   for select p.controle, p.datahoracadastro, coalesce(m.vlrrecebido,0), coalesce(m.vlrpagar,0), m.statuspedido from tpedidovenda p inner join tmaster_pedidovenda m on  p.controle = m.controle_tpedidovenda where (cast(p.datahoracadastro as date) >= :datainicio) and  (cast(p.datahoracadastro as date) <= :datafinal) and (m.statuspedido = 'F')   into :controle,  :datahoracadastro, :vlrrecebido, :vlrpagar, :statuspedido do
+   begin
+
+     if (vlrrecebido > vlrpagar) then
+     begin
+       tdinheiro = tdinheiro + vlrpagar;
+     end
+     else
+     begin
+       tdinheiro = tdinheiro + vlrrecebido;
+     end
+
+   end
+
+   suspend;
+
+
+
+end^
+
+SET TERM ; ^
+
+/* Following GRANT statements are generated automatically */
+
+GRANT SELECT ON TPEDIDOVENDA TO PROCEDURE SPCAIXA;
+GRANT SELECT ON TMASTER_PEDIDOVENDA TO PROCEDURE SPCAIXA;
+
+/* Existing privileges on this procedure */
+
+GRANT EXECUTE ON PROCEDURE SPCAIXA TO SYSDBA;

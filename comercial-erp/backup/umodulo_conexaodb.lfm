@@ -56,9 +56,19 @@ object modulo_conexaodb: Tmodulo_conexaodb
     top = 24
   end
   object qrconsulta_base: TSQLQuery
-    FieldDefs = <>
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'TDINHEIRO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end>
     Database = conexaodb
     Transaction = tzcontrole
+    SQL.Strings = (
+      'select * from  SPCAIXATDINHEIRO(''01.09.2019'',''30.09.2019'')'
+    )
     Params = <>
     left = 48
     top = 144

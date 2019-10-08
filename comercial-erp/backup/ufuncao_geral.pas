@@ -52,7 +52,7 @@ function proc_cest(ncm:string):string;
 function proc_cestDescricao(ncm:string):string;
 function RemoveAcentoTexto(aText : string) : string;
 function RemoveAcento(const pText: string): string;
-function  CurrToStrF(Value: Currency; Format: TFloatFormat = ffNumber; Digits: LongInt = 2): String;
+
 
 
 
@@ -1041,6 +1041,24 @@ if existe_campo('TMASTER_RECEBER','CENTROCUSTO') = 0 then
 //endi
 
 
+
+//Campo DATAFEC existe?
+if existe_campo('TMASTER_RECEBER','DATAFEC') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_RECEBER ADD DATAFEC DATE;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
 
 
 //Campo DATAHORACADASTRO existe?
@@ -2416,6 +2434,24 @@ if existe_campo('TMASTER_PEDIDOVENDA','statuspedido') = 0 then
   end;
 //endi
 
+//Campo DATAFEC existe?
+if existe_campo('TMASTER_PEDIDOVENDA','DATAFEC') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_PEDIDOVENDA  ADD DATAFEC DATE;');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
 //Campo vlrpagoavista ou valor à vista existe?
 //if existe_campo('TMASTER_PEDIDOVENDA','vlrpagoavista') = 0 then
 //   begin
@@ -3248,16 +3284,72 @@ with modulo_conexaodb do
        Script.Execute;
 
 
+       Script.Script.Clear;
+       Script.Script.Add('/*Caixa Dinheiro*/');
+       Script.Terminator:='^';
+       Script.Script.Add('create or alter procedure spcaixatdinheiro (');
+       Script.Script.Add('   datainicio date,');
+       Script.Script.Add('   datafinal date)');
+       Script.Script.Add('returns (');
+       Script.Script.Add('   tdinheiro decimal(15,2))');
+       Script.Script.Add('as');
+       Script.Script.Add('   declare variable vlrpagar decimal(15,2);');
+       Script.Script.Add('   declare variable vlrrecebido decimal(15,2);');
+       Script.Script.Add('   declare variable datafec date;');
+       Script.Script.Add('   declare variable controle integer;');
+       Script.Script.Add('   declare variable statuspedido varchar(10);');
+       Script.Script.Add('begin');
+       Script.Script.Add('   tdinheiro = 0;');
+       Script.Script.Add('for select p.controle, m.datafec, coalesce(m.vlrrecebido,0), coalesce(m.vlrpagar,0), m.statuspedido from tpedidovenda p inner join tmaster_pedidovenda m on  p.controle = m.controle_tpedidovenda where (m.datafec >= :datainicio) and  (m.datafec <= :datafinal) and (m.statuspedido ='+quotedstr('F')+ ')   into :controle,  :datahoracadastro, :vlrrecebido, :vlrpagar, :statuspedido do');
+       Script.Script.Add('   begin');
+       Script.Script.Add('     if (vlrrecebido > vlrpagar) then');
+       Script.Script.Add('     begin');
+       Script.Script.Add('       tdinheiro = tdinheiro + vlrpagar;');
+       Script.Script.Add('     end');
+       Script.Script.Add('     else');
+       Script.Script.Add('     begin');
+       Script.Script.Add('       tdinheiro = tdinheiro + vlrrecebido;');
+       Script.Script.Add('     end');
+       Script.Script.Add('   end');
+       Script.Script.Add('   suspend;');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+       Script.Execute;
 
+       Script.Script.Clear;
+       Script.Terminator:=';';
+       Script.Script.Add('CREATE OR ALTER VIEW TOTALPORESPECIE(');
+       Script.Script.Add('CONTROLE,');
+       Script.Script.Add('ESPECIE, ');
+       Script.Script.Add(' DATAFEC,');
+       Script.Script.Add('STATUSPEDIDO,');
+       Script.Script.Add('CODEPECIE,');
+       Script.Script.Add('TOTALTIPOPGTO)');
+       Script.Script.Add('AS');
+       Script.Script.Add('select e.controle, e.especie, r.datafec,   p.statuspedido ,   r.codespecie, sum( r.valororiginal ) as totaltipopgto  from   tmaster_receber r  right join tespecie e on r.codespecie = e.controle left join tmaster_pedidovenda p on p.controle_tpedidovenda = r.codpedidovenda group by p.statuspedido, r.datafec, e.controle, r.codespecie, e.especie;');
+       Script.Script.Add('/*Fim*/');
+       Script.Execute;
 
+       Script.Script.Clear;
+       Script.Script.Add('/*Valor total tipo pagto*/');
+       Script.Terminator:='^';
+       Script.Script.Add('create or alter procedure spvlrtotalportipopagto (');
+       Script.Script.Add('   datainicio date,');
+       Script.Script.Add('   datafinal date)');
+       Script.Script.Add('returns (');
+       Script.Script.Add('   tipopgto varchar(100),');
+       Script.Script.Add('   vlrtotaltipopagto decimal(15,2))');
+       Script.Script.Add('as');
+       Script.Script.Add('   declare variable datahoracadastro timestamp;');
+       Script.Script.Add('   declare variable controle integer;');
+       Script.Script.Add('begin');
+       Script.Script.Add('   suspend;');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+       Script.Execute;
 
-    end;
+     end;
 //endth
-
-
-
-
-
 
 
 except
@@ -3919,12 +4011,6 @@ begin
   Result := string(USAscii20127(pText));
 end;
 
-function CurrToStrF(Value: Currency; Format: TFloatFormat = ffNumber; Digits: LongInt = 2): String;
-var
-  Buffer: array[0..63] of Char;
-begin
-  SetString(Result, Buffer, FloatToText(Buffer, Value, fvCurrency,  Format, 0, Digits));
-end;
 
 end.
 

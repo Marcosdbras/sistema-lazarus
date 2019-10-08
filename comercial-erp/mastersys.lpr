@@ -17,7 +17,7 @@ uses
   umodulo_cotacao, umodulo_pedidovenda, uorcamento_cadastro, umodulo_planoconta,
   umodulo_centrocusto, umodulo_caixa, umodulo_receber, umodulo_especie,
   ufechapedidovenda, umodulo_parcelapredefinida, umodulo_master_indice,
-  ucadastro_parcelafinanceiro, umodulo_pagar;
+  ucadastro_parcelafinanceiro, umodulo_pagar, umodulo_consulta;
 
 {$R *.res}
 
@@ -55,6 +55,7 @@ begin
   Application.CreateForm(Tmodulo_cotacao, modulo_cotacao);
   Application.CreateForm(Tmodulo_master_indice, modulo_master_indice);
   Application.CreateForm(Tmodulo_parcelapredefinida, modulo_parcelapredefinida);
+  Application.CreateForm(Tmodulo_consulta, modulo_consulta);
 
   // 2-Cria módulo conexao com a tabela remota para sincronismo com base
   Application.CreateForm(Tmodulo_remoto, modulo_remoto);

@@ -22,6 +22,9 @@ type
     MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
+    MenuItem12: TMenuItem;
+    MenuItem13: TMenuItem;
+    MenuItem14: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -44,6 +47,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
+    procedure MenuItem12Click(Sender: TObject);
+    procedure MenuItem13Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -74,7 +79,7 @@ implementation
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
            uorcamento_pesquisa, umodulo_conexaodb, ulogin, umodulo_vendaorc, uvendaorc,
            uindice, uparametro, usincbaseremota, umodulo_tabpreco, umodulo_produto, umodulo_geral,
-           upedidovenda_pesquisa;
+           upedidovenda_pesquisa, ucaixa_impressao;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -172,6 +177,20 @@ begin
   frmparametro := tfrmparametro.create(self);
   frmparametro.showmodal;
   frmparametro.free;
+
+end;
+
+procedure Tfrmtela_principal.MenuItem12Click(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmtela_principal.MenuItem13Click(Sender: TObject);
+begin
+  frmcaixa_impressao := tfrmcaixa_impressao.create(self);
+  frmcaixa_impressao.showmodal;
+  frmcaixa_impressao.free;
+  frmcaixa_impressao := nil;
 
 end;
 
