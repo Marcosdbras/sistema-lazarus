@@ -225,6 +225,15 @@ begin
 
               atualizaBanco;
 
+              qrexec_base.Close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('update tmaster_receber set datafec = :datafec where codpedidovenda = :codpedidovenda');
+              qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icodigo_controle;
+              qrexec_base.Params.ParamByName('datafec').AsDate:=date;
+              qrexec_base.ExecSQL;
+
+              atualizaBanco;
+
             end;
 
 
@@ -790,6 +799,17 @@ begin
 
   icodigo_controle := modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
 
+  with modulo_master_indice do
+     begin
+
+       qrmaster_indice.Close;
+       qrmaster_indice.SQL.Clear;
+       qrmaster_indice.SQL.Add('select * from tmaster_indice');
+       qrmaster_indice.Open;
+
+     end;
+ //endth
+
   with modulo_conexaodb do
      begin
 
@@ -875,28 +895,17 @@ begin
      end;
   //endi
 
-  with modulo_master_indice do
-     begin
-
-       qrmaster_indice.Close;
-       qrmaster_indice.SQL.Clear;
-       qrmaster_indice.SQL.Add('select * from tmaster_indice');
-       qrmaster_indice.Open;
-
-     end;
- //endth
-
   with modulo_especie do
      begin
 
        qrespecie.Close;
        qrespecie.SQL.Clear;
-       qrespecie.SQL.Add('select * from tespecie');
+       qrespecie.SQL.Add('select * from tespecie where controle <> :controle');
+       qrespecie.Params.ParamByName('controle').AsInteger:=modulo_master_indice.qrmaster_indice.FieldByName('CPAGAMENTOAVISTAPADRAO').AsInteger;
        qrespecie.Open;
 
      end;
   //endth
-
 
   with modulo_parcelapredefinida do
      begin

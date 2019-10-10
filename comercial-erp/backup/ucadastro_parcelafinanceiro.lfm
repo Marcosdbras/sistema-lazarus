@@ -54,7 +54,7 @@ object frmcadastro_parcelafinanceiro: Tfrmcadastro_parcelafinanceiro
     Height = 25
     Top = 232
     Width = 75
-    Caption = 'Aplicar '
+    Caption = 'Salvar'
     OnClick = btnsalvarClick
     TabOrder = 1
   end

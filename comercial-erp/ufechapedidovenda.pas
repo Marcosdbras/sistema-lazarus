@@ -799,6 +799,17 @@ begin
 
   icodigo_controle := modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
 
+  with modulo_master_indice do
+     begin
+
+       qrmaster_indice.Close;
+       qrmaster_indice.SQL.Clear;
+       qrmaster_indice.SQL.Add('select * from tmaster_indice');
+       qrmaster_indice.Open;
+
+     end;
+ //endth
+
   with modulo_conexaodb do
      begin
 
@@ -884,17 +895,6 @@ begin
      end;
   //endi
 
-  with modulo_master_indice do
-     begin
-
-       qrmaster_indice.Close;
-       qrmaster_indice.SQL.Clear;
-       qrmaster_indice.SQL.Add('select * from tmaster_indice');
-       qrmaster_indice.Open;
-
-     end;
- //endth
-
   with modulo_especie do
      begin
 
@@ -905,7 +905,6 @@ begin
 
      end;
   //endth
-
 
   with modulo_parcelapredefinida do
      begin

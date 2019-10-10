@@ -162,16 +162,21 @@ begin
       qrmaster_pedidovenda.Open;
 
       if qrmaster_pedidovenda.FieldByName('statuspedido').AsString = 'F' then
-         frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Forma Pagto'
+         begin
+           btnalterar.Enabled:=false;
+           btnexcluir.Enabled:=false;
+           btnfecharpedido.Caption:='Forma Pagto';
+         end
       else
-         frmpedidovenda_pesquisa.btnfecharpedido.Caption:='Lançar Pedido';
+         begin
+           btnalterar.Enabled:=true;
+           btnexcluir.Enabled:=true;
+           btnfecharpedido.Caption:='Lançar Pedido';
+         end;
       //endiif
-
 
     end;
   //endth
-
-
 
 end;
 
@@ -256,6 +261,13 @@ procedure Tfrmpedidovenda_pesquisa.btnalterarClick(Sender: TObject);
 begin
  opcao := 'A';
 
+    if modulo_pedidovenda.qrpedidovenda.RecordCount = 0 then
+       begin
+         application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
+         exit;
+       end;
+    //endi
+
   frmpedidovenda_cadastro := tfrmpedidovenda_cadastro.Create(self);
   frmpedidovenda_cadastro.ShowModal;
   frmpedidovenda_cadastro.Free;
@@ -268,7 +280,10 @@ begin
   opcao := 'E';
 
   if modulo_pedidovenda.qrpedidovenda.RecordCount = 0 then
-     application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
+     begin
+       application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
+       exit;
+     end;
   //endi
 
   frmpedidovenda_cadastro := tfrmpedidovenda_cadastro.Create(self);

@@ -37,7 +37,7 @@ var
   frmcaixa_impressao: Tfrmcaixa_impressao;
 
 implementation
-        uses uimporc, umodulo_geral, umodulo_orcamento, uimpcaixa, umodulo_consulta;
+        uses uimporc, umodulo_geral, umodulo_orcamento, uimpcaixa, umodulo_consulta, umodulo_master_indice, umodulo_especie;
 {$R *.lfm}
 
         { Tfrmcaixa_impressao }
@@ -49,6 +49,30 @@ implementation
 
 procedure Tfrmcaixa_impressao.btnokClick(Sender: TObject);
 begin
+
+   with modulo_master_indice do
+      begin
+
+        qrmaster_indice.Close;
+        qrmaster_indice.SQL.Clear;
+        qrmaster_indice.SQL.Add('select * from tmaster_indice');
+        qrmaster_indice.Open;
+
+      end;
+  //endth
+
+   with modulo_especie do
+      begin
+
+        qrespecie.Close;
+        qrespecie.SQL.Clear;
+        qrespecie.SQL.Add('select * from tespecie where controle <> :controle');
+        qrespecie.Params.ParamByName('controle').AsInteger:=modulo_master_indice.qrmaster_indice.FieldByName('CPAGAMENTOAVISTAPADRAO').AsInteger;
+        qrespecie.Open;
+
+      end;
+   //endth
+
 
    with modulo_consulta.qrcaixatdinheiro do
         begin

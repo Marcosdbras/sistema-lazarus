@@ -150,16 +150,28 @@ end;
 
 procedure Tfrmcadastro_parcelafinanceiro.FormCreate(Sender: TObject);
 begin
-    with modulo_especie do
+
+  with modulo_master_indice do
+     begin
+
+       qrmaster_indice.Close;
+       qrmaster_indice.SQL.Clear;
+       qrmaster_indice.SQL.Add('select * from tmaster_indice');
+       qrmaster_indice.Open;
+
+     end;
+ //endth
+
+
+
+  with modulo_especie do
      begin
 
        qrespecie.Close;
        qrespecie.SQL.Clear;
-       qrespecie.SQL.Add('select * from tespecie');
+       qrespecie.SQL.Add('select * from tespecie where controle <> :controle');
+       qrespecie.Params.ParamByName('controle').AsInteger:=modulo_master_indice.qrmaster_indice.FieldByName('CPAGAMENTOAVISTAPADRAO').AsInteger;
        qrespecie.Open;
-
-
-
 
      end;
   //endth

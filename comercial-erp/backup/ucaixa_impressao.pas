@@ -37,7 +37,7 @@ var
   frmcaixa_impressao: Tfrmcaixa_impressao;
 
 implementation
-        uses uimporc, umodulo_geral, umodulo_orcamento, uimpcaixa, umodulo_consulta;
+        uses uimporc, umodulo_geral, umodulo_orcamento, uimpcaixa, umodulo_consulta, umodulo_master_indice;
 {$R *.lfm}
 
         { Tfrmcaixa_impressao }
@@ -49,6 +49,30 @@ implementation
 
 procedure Tfrmcaixa_impressao.btnokClick(Sender: TObject);
 begin
+
+   with modulo_master_indice do
+      begin
+
+        qrmaster_indice.Close;
+        qrmaster_indice.SQL.Clear;
+        qrmaster_indice.SQL.Add('select * from tmaster_indice');
+        qrmaster_indice.Open;
+
+      end;
+  //endth
+
+   with modulo_especie do
+      begin
+
+        qrespecie.Close;
+        qrespecie.SQL.Clear;
+        qrespecie.SQL.Add('select * from tespecie where controle <> :controle');
+        qrespecie.Params.ParamByName('controle').AsInteger:=modulo_master_indice.qrmaster_indice.FieldByName('CPAGAMENTOAVISTAPADRAO').AsInteger;
+        qrespecie.Open;
+
+      end;
+   //endth
+
 
    with modulo_consulta.qrcaixatdinheiro do
         begin
@@ -69,9 +93,9 @@ begin
 
           Close;
           SQL.Clear;
-          SQL.Add('select e.controle, e.especie, coalesce(p.statuspedido,'+quotedstr('A')+'),   r.codespecie, sum( r.valororiginal ) as totaltipopgto  from   tmaster_receber r  right join tespecie e on r.codespecie = e.controle left join tmaster_pedidovenda p on p.controle_tpedidovenda = r.codpedidovenda where r.datafec >= :datai and  r.datafec <=:dataf  group by p.statuspedido, e.controle, r.codespecie, e.especie;');
-          Params.ParamByName('datai').Asdate:= edtdatainicial.date;                   //;//datetostr( datai );  //'06/10/2019';
-          Params.ParamByName('dataf').Asdate:= edtdatafinal.date; //;//datetostr(dataf);  //'06/10/2019';
+          SQL.Add('select e.controle, e.especie, coalesce(p.statuspedido,'+quotedstr('A')+'),   r.codespecie, sum( coalesce(r.valororiginal,0) ) as totaltipopgto  from   tmaster_receber r  right join tespecie e on r.codespecie = e.controle left join tmaster_pedidovenda p on p.controle_tpedidovenda = r.codpedidovenda where r.datafec >= :datai and  r.datafec <=:dataf  group by p.statuspedido, e.controle, r.codespecie, e.especie;');
+          Params.ParamByName('datai').Asdate:= edtdatainicial.date;
+          Params.ParamByName('dataf').Asdate:= edtdatafinal.date;
           Open;
 
        end;

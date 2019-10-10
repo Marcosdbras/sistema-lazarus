@@ -13,7 +13,7 @@ object frmimpcaixa: Tfrmimpcaixa
     Height = 1123
     Top = 8
     Width = 794
-    DataSource = modulo_consulta.dsptotalporespecie
+    DataSource = modulo_especie.dsEspecie
     Font.Color = clBlack
     Font.Height = -13
     Font.Name = 'Arial'
@@ -610,26 +610,23 @@ object frmimpcaixa: Tfrmimpcaixa
       RealBounds.Top = 0
       RealBounds.Width = 0
       RealBounds.Height = 0
-      object RLDBText1: TRLDBText
-        Left = 315
+      BeforePrint = RLBand2BeforePrint
+      object lblespecie: TRLLabel
+        Left = 8
         Height = 16
-        Top = 3
-        Width = 75
-        Alignment = taRightJustify
-        DataField = 'totaltipopgto'
-        DataSource = modulo_consulta.dsptotalporespecie
+        Top = 5
+        Width = 62
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
         RealBounds.Height = 0
       end
-      object RLDBText2: TRLDBText
-        Left = 8
+      object lbltotal: TRLLabel
+        Left = 348
         Height = 16
-        Top = 3
-        Width = 49
-        DataField = 'especie'
-        DataSource = modulo_consulta.dsptotalporespecie
+        Top = 5
+        Width = 42
+        Alignment = taRightJustify
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0

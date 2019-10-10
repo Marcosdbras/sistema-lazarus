@@ -57,7 +57,6 @@
         <ComponentName Value="modulo_conexaodb"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="22"/>
         <TopLine Value="74"/>
         <CursorPos X="60" Y="84"/>
@@ -152,8 +151,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="24"/>
-        <TopLine Value="157"/>
-        <CursorPos X="52" Y="168"/>
+        <TopLine Value="298"/>
+        <CursorPos Y="308"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -423,9 +422,10 @@
         <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="18"/>
-        <TopLine Value="369"/>
-        <CursorPos X="13" Y="387"/>
+        <TopLine Value="325"/>
+        <CursorPos X="10" Y="334"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -450,8 +450,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="14"/>
-        <TopLine Value="61"/>
-        <CursorPos X="143" Y="72"/>
+        <TopLine Value="86"/>
+        <CursorPos X="198" Y="96"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -463,8 +463,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="16"/>
-        <TopLine Value="191"/>
-        <CursorPos X="3" Y="202"/>
+        <TopLine Value="164"/>
+        <CursorPos X="72" Y="175"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -509,8 +509,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="15"/>
-        <TopLine Value="233"/>
-        <CursorPos X="73" Y="244"/>
+        <TopLine Value="793"/>
+        <CursorPos Y="812"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -558,9 +558,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="19"/>
-        <TopLine Value="46"/>
-        <CursorPos X="33" Y="65"/>
-        <UsageCount Value="196"/>
+        <TopLine Value="161"/>
+        <CursorPos X="55" Y="180"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit45>
@@ -591,7 +591,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="20"/>
-        <UsageCount Value="178"/>
+        <UsageCount Value="182"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit47>
@@ -604,7 +604,7 @@
         <EditorIndex Value="6"/>
         <TopLine Value="80"/>
         <CursorPos X="10" Y="94"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit48>
@@ -616,7 +616,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="7"/>
         <TopLine Value="299"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit49>
@@ -628,7 +628,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="13"/>
         <CursorPos X="61" Y="9"/>
-        <UsageCount Value="37"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit50>
@@ -703,124 +703,124 @@
     </OtherDefines>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="ufuncao_geral.pas"/>
-        <Caret Line="511" Column="47" TopLine="495"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Column="25"/>
       </Position1>
       <Position2>
-        <Filename Value="ufuncao_geral.pas"/>
-        <Caret Line="2922" Column="47" TopLine="2906"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="901" Column="17" TopLine="894"/>
       </Position2>
       <Position3>
-        <Filename Value="ufuncao_geral.pas"/>
-        <Caret Line="3260" Column="48" TopLine="3244"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="902" Column="17" TopLine="894"/>
       </Position3>
       <Position4>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="153" Column="26"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="903" Column="17" TopLine="894"/>
       </Position4>
       <Position5>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="154" Column="26" TopLine="135"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Column="24"/>
       </Position5>
       <Position6>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="153" Column="26" TopLine="134"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="98" Column="81" TopLine="81"/>
       </Position6>
       <Position7>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="165" Column="85" TopLine="149"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="380" Column="172" TopLine="364"/>
       </Position7>
       <Position8>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="166" Column="57" TopLine="155"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="381" Column="177" TopLine="365"/>
       </Position8>
       <Position9>
-        <Filename Value="ucaixa_impressao.pas"/>
-        <Caret Line="89" Column="52" TopLine="62"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="2" Column="36"/>
       </Position9>
       <Position10>
-        <Filename Value="ucaixa_impressao.pas"/>
-        <Caret Line="60" Column="53" TopLine="45"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Column="25"/>
       </Position10>
       <Position11>
-        <Filename Value="ucaixa_impressao.pas"/>
-        <Caret Line="43" Column="31" TopLine="26"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="2" Column="26"/>
       </Position11>
       <Position12>
-        <Filename Value="utela_principal.pas"/>
-        <Caret Line="191" Column="32" TopLine="188"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="406" Column="114" TopLine="390"/>
       </Position12>
       <Position13>
-        <Filename Value="ucaixa_impressao.pas"/>
-        <Caret Line="104" Column="35" TopLine="95"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="420" Column="109" TopLine="404"/>
       </Position13>
       <Position14>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="150" Column="9" TopLine="142"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="431" Column="109" TopLine="415"/>
       </Position14>
       <Position15>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="151" Column="9" TopLine="143"/>
+        <Filename Value="ucadastro_parcelafinanceiro.pas"/>
+        <Caret Line="164" TopLine="148"/>
       </Position15>
       <Position16>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="150" Column="9" TopLine="142"/>
+        <Filename Value="ucaixa_impressao.pas"/>
+        <Caret Line="62" Column="10" TopLine="70"/>
       </Position16>
       <Position17>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="151" Column="9" TopLine="143"/>
+        <Filename Value="ucaixa_impressao.pas"/>
+        <Caret Line="40" Column="87" TopLine="29"/>
       </Position17>
       <Position18>
         <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="152" Column="9" TopLine="144"/>
+        <Caret Line="88" TopLine="83"/>
       </Position18>
       <Position19>
         <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="151" Column="9" TopLine="143"/>
+        <Caret Line="87" TopLine="82"/>
       </Position19>
       <Position20>
         <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="150" Column="9" TopLine="142"/>
+        <Caret Line="86" TopLine="81"/>
       </Position20>
       <Position21>
         <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="149" Column="9" TopLine="141"/>
+        <Caret Line="87" TopLine="82"/>
       </Position21>
       <Position22>
         <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="148" Column="9" TopLine="140"/>
+        <Caret Line="88" TopLine="83"/>
       </Position22>
       <Position23>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="147" Column="9" TopLine="139"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="387" Column="13" TopLine="369"/>
       </Position23>
       <Position24>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="146" Column="9" TopLine="138"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="308" TopLine="298"/>
       </Position24>
       <Position25>
-        <Filename Value="ucaixa_impressao.pas"/>
-        <Caret Line="72" Column="142" TopLine="60"/>
+        <Filename Value="upedidovenda_pesquisa.pas"/>
+        <Caret Line="168" Column="52" TopLine="157"/>
       </Position25>
       <Position26>
-        <Filename Value="uimpcaixa.pas"/>
-        <Caret Line="202" Column="3" TopLine="191"/>
+        <Filename Value="upedidovenda_pesquisa.pas"/>
+        <Caret Line="285" Column="35" TopLine="271"/>
       </Position26>
       <Position27>
-        <Filename Value="ucaixa_impressao.pas"/>
-        <Caret Line="67" Column="26" TopLine="61"/>
+        <Filename Value="upedidovenda_pesquisa.pas"/>
+        <Caret Line="271" Column="7" TopLine="260"/>
       </Position27>
       <Position28>
-        <Filename Value="ucaixa_impressao.pas"/>
-        <Caret Line="74" Column="13" TopLine="61"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="296" Column="10" TopLine="287"/>
       </Position28>
       <Position29>
-        <Filename Value="ucaixa_impressao.pas"/>
-        <Caret Line="72" Column="153" TopLine="61"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="327" Column="3" TopLine="325"/>
       </Position29>
       <Position30>
-        <Filename Value="umodulo_consulta.pas"/>
-        <Caret Line="9" Column="61"/>
+        <Filename Value="uorcamento_pesquisa.pas"/>
+        <Caret Line="317" Column="36" TopLine="305"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

@@ -34,16 +34,16 @@ type
     RLBand1: TRLBand;
     RLBand2: TRLBand;
     RLBand4: TRLBand;
-    RLDBText1: TRLDBText;
-    RLDBText2: TRLDBText;
     RLDraw1: TRLDraw;
     RLDraw2: TRLDraw;
     RLDraw8: TRLDraw;
     RLDraw9: TRLDraw;
     RLImage1: TRLImage;
     rlimporc: TRLReport;
+    lblespecie: TRLLabel;
     RLLabel10: TRLLabel;
     rlfilter: TRLPDFFilter;
+    lbltotal: TRLLabel;
     RLLabel7: TRLLabel;
     RLLabel8: TRLLabel;
     lblcnpj: TRLLabel;
@@ -72,7 +72,7 @@ var
   frmimpcaixa: Tfrmimpcaixa;
 
 implementation
-       uses umodulo_orcamento, umodulo_geral, umodulo_conexaodb, umodulo_cliente, umodulo_consulta, ucaixa_impressao;
+       uses umodulo_orcamento, umodulo_geral, umodulo_conexaodb, umodulo_cliente, umodulo_consulta, ucaixa_impressao, umodulo_especie;
 
 {$R *.lfm}
 
@@ -167,12 +167,20 @@ end;
 procedure Tfrmimpcaixa.RLBand2BeforePrint(Sender: TObject; var PrintIt: Boolean);
 begin
 
-  with modulo_conexaodb do
-  begin
+
+    lblespecie.Caption:=modulo_especie.qrEspecie.FieldByName('especie').AsString;
+
+    if modulo_consulta.qrtotalporespecie.Locate('controle',modulo_especie.qrEspecie.FieldByName('controle').AsInteger,[])then
+       begin
+         lbltotal.Caption:=formatfloat('###,###,##0.00',modulo_consulta.qrtotalporespecie.FieldByName('totaltipopgto').Asfloat);
+       end
+    else
+       begin
+         lbltotal.Caption:='0,00';
+       end;
+    //endif
 
 
-
-  end;
 
 end;
 
