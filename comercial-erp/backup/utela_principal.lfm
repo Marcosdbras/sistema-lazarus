@@ -34,6 +34,33 @@ object frmtela_principal: Tfrmtela_principal
       OnClick = Button1Click
       TabOrder = 0
     end
+    object btnorcamento: TButton
+      Left = 152
+      Height = 65
+      Top = 8
+      Width = 136
+      Caption = 'Orçamento'
+      OnClick = btnorcamentoClick
+      TabOrder = 1
+    end
+    object btnpedidovenda: TButton
+      Left = 296
+      Height = 65
+      Top = 8
+      Width = 136
+      Caption = 'Pedido de Venda'
+      OnClick = btnpedidovendaClick
+      TabOrder = 2
+    end
+    object btnmovcaixa: TButton
+      Left = 440
+      Height = 65
+      Top = 8
+      Width = 136
+      Caption = 'Movimento de Caixa'
+      OnClick = btnmovcaixaClick
+      TabOrder = 3
+    end
   end
   object pnlsuperior1: TPanel
     Left = 0
@@ -181,6 +208,10 @@ object frmtela_principal: Tfrmtela_principal
       object MenuItem6: TMenuItem
         Caption = 'Exportar para NF-e'
         OnClick = MenuItem6Click
+      end
+      object MenuItem15: TMenuItem
+        Caption = 'Usuários'
+        OnClick = MenuItem15Click
       end
     end
     object MenuItem4: TMenuItem

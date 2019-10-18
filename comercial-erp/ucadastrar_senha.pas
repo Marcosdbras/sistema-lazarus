@@ -55,7 +55,7 @@ begin
         'insert into tmaster_usuario (controle_tusuario, senha) values (:controle, :senha)');
 
       qrexec_base.ParamByName(
-        'controle').AsInteger := icontrole;
+        'controle').AsInteger := icontrole_usuario;
       qrexec_base.ParamByName('senha').AsString := edtsenha.Text;
 
 

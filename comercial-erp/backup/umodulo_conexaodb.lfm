@@ -56,7 +56,6 @@ object modulo_conexaodb: Tmodulo_conexaodb
     top = 24
   end
   object qrconsulta_base: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'TDINHEIRO'

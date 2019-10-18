@@ -17,7 +17,8 @@ uses
   umodulo_cotacao, umodulo_pedidovenda, uorcamento_cadastro, umodulo_planoconta,
   umodulo_centrocusto, umodulo_caixa, umodulo_receber, umodulo_especie,
   ufechapedidovenda, umodulo_parcelapredefinida, umodulo_master_indice,
-  ucadastro_parcelafinanceiro, umodulo_pagar, umodulo_consulta;
+  ucadastro_parcelafinanceiro, umodulo_pagar, umodulo_consulta, umodulo_usuario,
+  uusuario_pesquisa, uususario_permissao;
 
 {$R *.res}
 
@@ -31,6 +32,8 @@ begin
 
   // 1-Realiza conexao com base de dados
   Application.CreateForm(Tmodulo_conexaodb, modulo_conexaodb);
+  Application.CreateForm(Tmodulo_usuario, modulo_usuario);
+
 
   // 3-Cria tela principal para atualizar base de dados
   Application.CreateForm(Tfrmtela_principal, frmtela_principal);
@@ -57,6 +60,8 @@ begin
   Application.CreateForm(Tmodulo_parcelapredefinida, modulo_parcelapredefinida);
   Application.CreateForm(Tmodulo_consulta, modulo_consulta);
 
+
+
   // 2-Cria módulo conexao com a tabela remota para sincronismo com base
   Application.CreateForm(Tmodulo_remoto, modulo_remoto);
 
@@ -69,6 +74,8 @@ begin
   //Application.CreateForm(Tfrmfechapedidovenda, frmfechapedidovenda);
   //Application.CreateForm(Tfrmcadastro_parcelafinanceiro, frmcadastro_parcelafinanceiro);
   //Application.CreateForm(Tfrmmostratroco, frmmostratroco);
+  //Application.CreateForm(Tfrmusuario_pesquisa, frmusuario_pesquisa);
+  //Application.CreateForm(Tfrmusuario_permissao, frmusuario_permissao);
 
   frmsplash.Hide;
   frmsplash.Free;

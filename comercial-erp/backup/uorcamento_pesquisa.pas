@@ -326,6 +326,13 @@ procedure Tfrmorcamento_pesquisa.Button4Click(Sender: TObject);
 begin
   opcao := 'C';
 
+  if modulo_orcamento.qrorcamento.RecordCount = 0 then
+     begin
+       application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
   frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
   frmorcamento_cadastro.ShowModal;
   frmorcamento_cadastro.Free;

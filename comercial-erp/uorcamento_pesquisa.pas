@@ -152,6 +152,13 @@ end;
 
 procedure Tfrmorcamento_pesquisa.btnimprimirClick(Sender: TObject);
 begin
+   if modulo_orcamento.qrorcamento.RecordCount = 0 then
+     begin
+       application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
   frmorcamento_impressao := tfrmorcamento_impressao.Create(self);
   frmorcamento_impressao.ShowModal;
   frmorcamento_impressao.free;

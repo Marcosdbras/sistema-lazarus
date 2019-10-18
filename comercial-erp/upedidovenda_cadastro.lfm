@@ -842,6 +842,7 @@ object frmpedidovenda_cadastro: Tfrmpedidovenda_cadastro
             Caption = 'Cotação'
             OnClick = btnCotacaoClick
             TabOrder = 6
+            Visible = False
           end
         end
       end

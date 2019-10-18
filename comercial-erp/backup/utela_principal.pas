@@ -15,6 +15,9 @@ type
   Tfrmtela_principal = class(TForm)
     Button1: TButton;
     Button2: TButton;
+    btnorcamento: TButton;
+    btnpedidovenda: TButton;
+    btnmovcaixa: TButton;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     lblstatus: TLabel;
@@ -25,6 +28,7 @@ type
     MenuItem12: TMenuItem;
     MenuItem13: TMenuItem;
     MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -40,6 +44,9 @@ type
     pnlsuperior2: TPanel;
     pnlsuperior3: TPanel;
     StatusBar1: TStatusBar;
+    procedure btnmovcaixaClick(Sender: TObject);
+    procedure btnorcamentoClick(Sender: TObject);
+    procedure btnpedidovendaClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -49,6 +56,7 @@ type
     procedure MenuItem11Click(Sender: TObject);
     procedure MenuItem12Click(Sender: TObject);
     procedure MenuItem13Click(Sender: TObject);
+    procedure MenuItem15Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -79,7 +87,7 @@ implementation
          uses ufuncao_arq_ini, uconfig_banco, ufuncao_geral, ufuncao_conexaodb,
            uorcamento_pesquisa, umodulo_conexaodb, ulogin, umodulo_vendaorc, uvendaorc,
            uindice, uparametro, usincbaseremota, umodulo_tabpreco, umodulo_produto, umodulo_geral,
-           upedidovenda_pesquisa, ucaixa_impressao;
+           upedidovenda_pesquisa, ucaixa_impressao, umodulo_usuario, uusuario_pesquisa;
 {$R *.lfm}
 
 { Tfrmtela_principal }
@@ -156,12 +164,31 @@ begin
   MenuItem6Click(Sender);
 end;
 
+procedure Tfrmtela_principal.btnorcamentoClick(Sender: TObject);
+begin
+  MenuItem3Click(Sender);
+end;
+
+procedure Tfrmtela_principal.btnmovcaixaClick(Sender: TObject);
+begin
+  MenuItem13Click(Sender);
+end;
+
+procedure Tfrmtela_principal.btnpedidovendaClick(Sender: TObject);
+begin
+  MenuItem9Click(Sender);
+end;
+
 procedure Tfrmtela_principal.FormShow(Sender: TObject);
 begin
 
+   modulo_usuario.qrusuario.Close;
+   modulo_usuario.qrusuario.SQL.Clear;
+   modulo_usuario.qrusuario.SQL.Add('select * from tusuario u inner join tmaster_usuario t on u.controle=t.controle_tusuario where controle = :controle');
+   modulo_usuario.qrusuario.Params.ParamByName('controle').AsInteger:=icontrole_usuario;
+   modulo_usuario.qrusuario.Open;
+
    lblstatus.Caption:='';
-
-
 
 end;
 
@@ -187,14 +214,47 @@ end;
 
 procedure Tfrmtela_principal.MenuItem13Click(Sender: TObject);
 begin
+
+  if  modulo_usuario.qrusuario.FieldByName('caixa').AsString <> 'SIM' then
+     begin
+       application.MessageBox('Você não tem acesso a este recurso!','Atenção',mb_ok);
+       exit;
+     end;
+  //endi
+
   frmcaixa_impressao := tfrmcaixa_impressao.create(self);
   frmcaixa_impressao.showmodal;
   frmcaixa_impressao.free;
+  frmcaixa_impressao := nil;
+
+end;
+
+procedure Tfrmtela_principal.MenuItem15Click(Sender: TObject);
+begin
+
+  if  modulo_usuario.qrusuario.FieldByName('nivelacesso').AsString <> 'ADMINISTRADOR' then
+     begin
+       application.MessageBox('Você não tem acesso a este recurso!','Atenção',mb_ok);
+       exit;
+     end;
+  //endi
+
+  frmusuario_pesquisa := tfrmusuario_pesquisa.create(self);
+  frmusuario_pesquisa.showmodal;
+  frmusuario_pesquisa.free;
+
 
 end;
 
 procedure Tfrmtela_principal.MenuItem3Click(Sender: TObject);
 begin
+  if  modulo_usuario.qrusuario.FieldByName('orcamento').AsString <> 'SIM' then
+     begin
+       application.MessageBox('Você não tem acesso a este recurso!','Atenção',mb_ok);
+       exit;
+     end;
+  //endi
+
   frmorcamento_pesquisa := tfrmorcamento_pesquisa.create(self);
   frmorcamento_pesquisa.showmodal;
   frmorcamento_pesquisa.free;
@@ -953,10 +1013,18 @@ end;
 
 procedure Tfrmtela_principal.MenuItem9Click(Sender: TObject);
 begin
-  frmpedidovenda_pesquisa := tfrmpedidovenda_pesquisa.create(self);
-  frmpedidovenda_pesquisa.showmodal;
-  frmpedidovenda_pesquisa.free;
-  frmpedidovenda_pesquisa := nil;
+
+ if  modulo_usuario.qrusuario.FieldByName('pedidovenda').AsString <> 'SIM' then
+    begin
+      application.MessageBox('Você não tem acesso a este recurso!','Atenção',mb_ok);
+      exit;
+    end;
+ //endi
+
+ frmpedidovenda_pesquisa := tfrmpedidovenda_pesquisa.create(self);
+ frmpedidovenda_pesquisa.showmodal;
+ frmpedidovenda_pesquisa.free;
+ frmpedidovenda_pesquisa := nil;
 
 end;
 

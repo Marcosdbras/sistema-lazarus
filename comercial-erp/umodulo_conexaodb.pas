@@ -54,6 +54,7 @@ type
     procedure atualizaBancoRemotoFechaTransacao;
     procedure desconectarBancoRemoto;
 
+
   end;
 
 var

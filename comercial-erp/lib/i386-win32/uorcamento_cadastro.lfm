@@ -842,6 +842,7 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
             Caption = 'Cotação'
             OnClick = btnCotacaoClick
             TabOrder = 6
+            Visible = False
           end
         end
       end

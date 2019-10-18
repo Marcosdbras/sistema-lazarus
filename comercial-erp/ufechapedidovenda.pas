@@ -222,16 +222,24 @@ begin
               qrexec_base.ParamByName('controle_tpedidovenda').AsInteger:=icodigo_controle;
 
               qrexec_base.ExecSQL;
-
               atualizaBanco;
+
+              qrexec_base.Close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('select t.codespecie from tmaster_receber t left join tespecie e on t.codespecie = e.controle where (t.codpedidovenda = :codpedidovenda) and (e.tipolancamentofinanceiro = ''PARCELAR'')');
+              qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;;
+
+              //qrexec_base.ExecSQL;
+              atualizaBanco;
+
 
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
               qrexec_base.SQL.Add('update tmaster_receber set datafec = :datafec where codpedidovenda = :codpedidovenda');
               qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icodigo_controle;
               qrexec_base.Params.ParamByName('datafec').AsDate:=date;
-              qrexec_base.ExecSQL;
 
+              qrexec_base.ExecSQL;
               atualizaBanco;
 
             end;

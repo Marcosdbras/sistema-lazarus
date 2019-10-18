@@ -81,7 +81,7 @@ begin
       qrconsulta_base.Close;
       qrconsulta_base.SQL.Clear;
       qrconsulta_base.SQL.Add(
-        'select t.controle as controle, t.login as login, m.controle_tusuario, m.senha as senha from tusuario t inner join master_usuario m on t.controle = m.controle_tusuario');
+        'select t.controle as controle, t.login as login, m.controle_tusuario, m.senha as senha from tusuario t inner join tmaster_usuario m on t.controle = m.controle_tusuario');
       qrconsulta_base.SQL.Add(
         ' where (t.login = :login) and (m.senha = :senha);');
       qrconsulta_base.ParamByName('login').AsString := edtusuario.Text;
@@ -93,7 +93,7 @@ begin
         qrconsulta_base.Close;
         qrconsulta_base.SQL.Clear;
         qrconsulta_base.SQL.Add(
-          'select t.controle as controle, t.login as login, m.controle_tusuario as controle_tusuario, m.senha as senha from tusuario t left join master_usuario m on t.controle = controle_tusuario');
+          'select t.controle as controle, t.login as login, m.controle_tusuario as controle_tusuario, m.senha as senha from tusuario t left join tmaster_usuario m on t.controle = controle_tusuario');
         qrconsulta_base.SQL.Add(' where (t.login = :login);');
         qrconsulta_base.ParamByName('login').AsString := edtusuario.Text;
         qrconsulta_base.Open;
@@ -109,7 +109,7 @@ begin
         else
         begin
 
-          icontrole :=
+          icontrole_usuario :=
             qrconsulta_base.FieldByName('controle').AsInteger;
 
           susuario := qrconsulta_base.FieldByName('login').AsString;
@@ -182,7 +182,7 @@ begin
         //endi
 
         susuario := qrconsulta_base.FieldByName('login').AsString;
-        icontrole := qrconsulta_base.FieldByName('controle').AsInteger;
+        icontrole_usuario := qrconsulta_base.FieldByName('controle').AsInteger;
 
       end;
       //endi

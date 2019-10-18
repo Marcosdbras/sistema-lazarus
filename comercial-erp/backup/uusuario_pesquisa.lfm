@@ -1,0 +1,68 @@
+object frmusuario_pesquisa: Tfrmusuario_pesquisa
+  Left = 154
+  Height = 472
+  Top = 136
+  Width = 1023
+  BorderStyle = bsDialog
+  Caption = 'Pesquisa Usuário'
+  ClientHeight = 472
+  ClientWidth = 1023
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+  object pnlsuperior: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 1023
+    Align = alTop
+    TabOrder = 0
+  end
+  object pnlcentral: TPanel
+    Left = 0
+    Height = 372
+    Top = 50
+    Width = 1023
+    Align = alClient
+    ClientHeight = 372
+    ClientWidth = 1023
+    TabOrder = 1
+    object DBGrid1: TDBGrid
+      Left = 1
+      Height = 370
+      Top = 1
+      Width = 904
+      Align = alLeft
+      Color = clWindow
+      Columns = <>
+      DataSource = modulo_usuario.dsusuario_lista
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
+      TabOrder = 0
+    end
+  end
+  object pnlinferior: TPanel
+    Left = 0
+    Height = 50
+    Top = 422
+    Width = 1023
+    Align = alBottom
+    ClientHeight = 50
+    ClientWidth = 1023
+    TabOrder = 2
+    object Button5: TButton
+      Left = 920
+      Height = 40
+      Top = 7
+      Width = 91
+      Caption = 'Fechar'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      OnClick = Button5Click
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+end

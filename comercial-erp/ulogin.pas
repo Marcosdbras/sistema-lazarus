@@ -109,7 +109,7 @@ begin
         else
         begin
 
-          icontrole :=
+          icontrole_usuario :=
             qrconsulta_base.FieldByName('controle').AsInteger;
 
           susuario := qrconsulta_base.FieldByName('login').AsString;
@@ -118,7 +118,7 @@ begin
           qrconsulta_base.SQL.Clear;
           qrconsulta_base.SQL.Add(
             'select m.controle_tusuario, m.senha as senha, m.codigo from tmaster_usuario m where m.controle_tusuario = :controle');
-          qrconsulta_base.ParamByName('controle').AsInteger := icontrole;
+          qrconsulta_base.ParamByName('controle').AsInteger := icontrole_usuario;
           qrconsulta_base.Open;
           if qrconsulta_base.RecordCount = 0 then
           begin
@@ -182,7 +182,7 @@ begin
         //endi
 
         susuario := qrconsulta_base.FieldByName('login').AsString;
-        icontrole := qrconsulta_base.FieldByName('controle').AsInteger;
+        icontrole_usuario := qrconsulta_base.FieldByName('controle').AsInteger;
 
       end;
       //endi

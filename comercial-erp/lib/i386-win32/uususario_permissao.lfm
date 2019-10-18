@@ -1,0 +1,42 @@
+object frmusuario_permissao: Tfrmusuario_permissao
+  Left = 221
+  Height = 337
+  Top = 214
+  Width = 808
+  Caption = 'Permissão do Usuário'
+  ClientHeight = 337
+  ClientWidth = 808
+  LCLVersion = '1.8.4.0'
+  object Label1: TLabel
+    Left = 32
+    Height = 15
+    Top = 24
+    Width = 43
+    Caption = 'Usuário:'
+    ParentColor = False
+  end
+  object lblusuario: TLabel
+    Left = 121
+    Height = 15
+    Top = 24
+    Width = 52
+    Caption = 'lblusuario'
+    ParentColor = False
+  end
+  object btnsalvar: TButton
+    Left = 624
+    Height = 25
+    Top = 296
+    Width = 75
+    Caption = 'Salvar'
+    TabOrder = 0
+  end
+  object btncancelar: TButton
+    Left = 712
+    Height = 25
+    Top = 296
+    Width = 75
+    Caption = 'Cancelar'
+    TabOrder = 1
+  end
+end

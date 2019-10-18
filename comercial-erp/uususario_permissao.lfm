@@ -1,0 +1,111 @@
+object frmusuario_permissao: Tfrmusuario_permissao
+  Left = 221
+  Height = 337
+  Top = 214
+  Width = 808
+  Caption = 'Permissão do Usuário'
+  ClientHeight = 337
+  ClientWidth = 808
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+  object Label1: TLabel
+    Left = 32
+    Height = 15
+    Top = 24
+    Width = 43
+    Caption = 'Usuário:'
+    ParentColor = False
+  end
+  object lblusuario: TLabel
+    Left = 121
+    Height = 15
+    Top = 24
+    Width = 52
+    Caption = 'lblusuario'
+    ParentColor = False
+  end
+  object btnsalvar: TButton
+    Left = 624
+    Height = 25
+    Top = 296
+    Width = 75
+    Caption = 'Salvar'
+    TabOrder = 0
+  end
+  object btncancelar: TButton
+    Left = 712
+    Height = 25
+    Top = 296
+    Width = 75
+    Caption = 'Cancelar'
+    TabOrder = 1
+  end
+  object CheckGroup1: TCheckGroup
+    Left = 32
+    Height = 120
+    Top = 56
+    Width = 185
+    AutoFill = True
+    Caption = 'CheckGroup1'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.TopBottomSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 100
+    ClientWidth = 181
+    TabOrder = 2
+    object CheckBox1: TCheckBox
+      Left = 6
+      Height = 17
+      Top = 6
+      Width = 169
+      Caption = 'CheckBox1'
+      TabOrder = 0
+    end
+    object CheckBox2: TCheckBox
+      Left = 6
+      Height = 17
+      Top = 23
+      Width = 169
+      Caption = 'CheckBox2'
+      OnChange = CheckBox2Change
+      TabOrder = 1
+    end
+    object CheckBox3: TCheckBox
+      Left = 6
+      Height = 18
+      Top = 40
+      Width = 169
+      Caption = 'CheckBox3'
+      TabOrder = 2
+    end
+    object CheckBox4: TCheckBox
+      Left = 6
+      Height = 18
+      Top = 58
+      Width = 169
+      Caption = 'CheckBox4'
+      TabOrder = 3
+    end
+    object CheckBox5: TCheckBox
+      Left = 6
+      Height = 18
+      Top = 76
+      Width = 169
+      Caption = 'CheckBox5'
+      TabOrder = 4
+    end
+  end
+  object CheckBox6: TCheckBox
+    Left = 32
+    Height = 19
+    Top = 56
+    Width = 78
+    Caption = 'CheckBox6'
+    TabOrder = 3
+  end
+end

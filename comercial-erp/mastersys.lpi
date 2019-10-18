@@ -37,7 +37,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="51">
+    <Units Count="54">
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -381,6 +381,26 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit50>
+      <Unit51>
+        <Filename Value="umodulo_usuario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="modulo_usuario"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="uusuario_pesquisa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmusuario_pesquisa"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="uususario_permissao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmusuario_permissao"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit53>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

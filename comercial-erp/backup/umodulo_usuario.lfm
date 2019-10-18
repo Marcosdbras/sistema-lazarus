@@ -1,0 +1,21 @@
+object modulo_usuario: Tmodulo_usuario
+  OldCreateOrder = False
+  Height = 223
+  HorizontalOffset = 237
+  VerticalOffset = 152
+  Width = 217
+  PPI = 96
+  object qrusuario: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 32
+    top = 24
+  end
+  object dsusuario: TDataSource
+    DataSet = qrusuario
+    left = 135
+    top = 27
+  end
+end
