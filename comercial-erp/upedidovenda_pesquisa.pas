@@ -81,7 +81,7 @@ var
 
 implementation
      uses ufuncao_geral,  umodulo_pedidovenda, upedidovenda_cadastro, umodulo_cliente, umodulo_funcionario,
-          upedidovenda_impressao, umodulo_conexaodb, ufechapedidovenda;
+          upedidovenda_impressao, umodulo_conexaodb, ufechapedidovenda, umodulo_usuario;
 {$R *.lfm}
 
 { Tfrmpedidovenda_pesquisa }
@@ -285,6 +285,14 @@ begin
        exit;
      end;
   //endi
+
+  if  modulo_usuario.qrusuario.FieldByName('excluir_pedidovenda').AsString <> 'SIM' then
+     begin
+       application.MessageBox('Você não tem acesso a este recurso!','Atenção',mb_ok);
+       exit;
+     end;
+  //endi
+
 
   frmpedidovenda_cadastro := tfrmpedidovenda_cadastro.Create(self);
   frmpedidovenda_cadastro.ShowModal;

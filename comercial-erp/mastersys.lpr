@@ -18,7 +18,7 @@ uses
   umodulo_centrocusto, umodulo_caixa, umodulo_receber, umodulo_especie,
   ufechapedidovenda, umodulo_parcelapredefinida, umodulo_master_indice,
   ucadastro_parcelafinanceiro, umodulo_pagar, umodulo_consulta, umodulo_usuario,
-  uusuario_pesquisa, uususario_permissao;
+  uusuario_pesquisa, uusuario_permissao;
 
 {$R *.res}
 
@@ -79,7 +79,6 @@ begin
 
   frmsplash.Hide;
   frmsplash.Free;
-
   Application.Run;
 end.
 

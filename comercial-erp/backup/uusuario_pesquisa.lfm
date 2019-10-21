@@ -30,13 +30,26 @@ object frmusuario_pesquisa: Tfrmusuario_pesquisa
       Left = 1
       Height = 370
       Top = 1
-      Width = 904
+      Width = 895
       Align = alLeft
       Color = clWindow
-      Columns = <>
+      Columns = <      
+        item
+          Title.Caption = 'login'
+          FieldName = 'login'
+        end>
       DataSource = modulo_usuario.dsusuario_lista
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete, dgDisableInsert]
       TabOrder = 0
+    end
+    object btnpermissao: TButton
+      Left = 909
+      Height = 44
+      Top = 20
+      Width = 94
+      Caption = 'Permissão'
+      OnClick = btnpermissaoClick
+      TabOrder = 1
     end
   end
   object pnlinferior: TPanel
@@ -49,7 +62,7 @@ object frmusuario_pesquisa: Tfrmusuario_pesquisa
     ClientWidth = 1023
     TabOrder = 2
     object Button5: TButton
-      Left = 920
+      Left = 912
       Height = 40
       Top = 7
       Width = 91

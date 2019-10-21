@@ -3088,6 +3088,7 @@ if existe_campo('TMASTER_USUARIO','CONTROLE_TUSUARIO') = 0 then
   end;
 //endi
 
+//-----Permissao-------------------------------------------------------------------
 
 //Campo EXCLUIR_ORCAMENTO existe?
 if existe_campo('TMASTER_USUARIO','EXCLUIR_ORCAMENTO') = 0 then
@@ -3163,7 +3164,6 @@ if existe_campo('TMASTER_USUARIO','CONSULTA_ORCAMENTO') = 0 then
   end;
 //endi
 
-//Campo IMPRESSAO_ORCAMENTO existe?
 //Campo IMPRESSAO_ORCAMENTO existe?
 if existe_campo('TMASTER_USUARIO','IMPRESSAO_ORCAMENTO') = 0 then
    begin
@@ -3281,7 +3281,47 @@ if existe_campo('TMASTER_USUARIO','PESQFUNC_ORCAMENTO') = 0 then
 
 
 //Campo PESQDATAI_ORCAMENTO existe?
-if existe_campo('TMASTER_USUARIO','PESQDATAI_ORCAMENTO') = 0 then
+//if existe_campo('TMASTER_USUARIO','PESQDATAI_ORCAMENTO') = 0 then
+//   begin
+
+//         with modulo_conexaodb do
+//           begin
+
+//              Script.Script.Clear;
+//              Script.Terminator:=';';
+//              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQDATAI_ORCAMENTO VARCHAR(3) DEFAULT ''SIM'';   ');
+//              Script.Script.Add('COMMIT;');
+//              Script.Execute;
+
+//           end;
+         //endth
+//  end;
+//endi
+
+
+
+//Campo PESQDATAF_ORCAMENTO existe?
+//if existe_campo('TMASTER_USUARIO','PESQDATAF_ORCAMENTO') = 0 then
+//   begin
+
+//         with modulo_conexaodb do
+//           begin
+
+//              Script.Script.Clear;
+//              Script.Terminator:=';';
+//              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQDATAF_ORCAMENTO VARCHAR(3) DEFAULT ''SIM'';   ');
+//              Script.Script.Add('COMMIT;');
+//              Script.Execute;
+
+//           end;
+         //endth
+//  end;
+//endi
+
+
+
+//Campo PESQPERIODO_ORCAMENTO existe?
+if existe_campo('TMASTER_USUARIO','PESQPERIODO_ORCAMENTO') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -3289,7 +3329,7 @@ if existe_campo('TMASTER_USUARIO','PESQDATAI_ORCAMENTO') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQDATAI_ORCAMENTO VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQPERIODO_ORCAMENTO VARCHAR(3) DEFAULT ''SIM'';   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 
@@ -3300,8 +3340,11 @@ if existe_campo('TMASTER_USUARIO','PESQDATAI_ORCAMENTO') = 0 then
 
 
 
-//Campo PESQDATAF_ORCAMENTO existe?
-if existe_campo('TMASTER_USUARIO','PESQDATAF_ORCAMENTO') = 0 then
+//------------------------------------------------------------------
+
+
+//Campo EXCLUIR_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','EXCLUIR_PEDIDOVENDA') = 0 then
    begin
 
          with modulo_conexaodb do
@@ -3309,7 +3352,321 @@ if existe_campo('TMASTER_USUARIO','PESQDATAF_ORCAMENTO') = 0 then
 
               Script.Script.Clear;
               Script.Terminator:=';';
-              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQDATAF_ORCAMENTO VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD EXCLUIR_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo ALTERAR_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','ALTERAR_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD ALTERAR_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo INCLUIR_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','INCLUIR_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD INCLUIR_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo CONSULTA_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','CONSULTA_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD CONSULTA_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo IMPRESSAO_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','IMPRESSAO_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD IMPRESSAO_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+//Campo LIMPARFILTRO_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','LIMPARFILTRO_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD LIMPARFILTRO_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo LANCA_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','LANCA_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD LANCA_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo ESTORNA_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','ESTORNA_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD ESTORNA_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo PESQCLI_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','PESQCLI_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQCLI_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+//Campo PESQVEND_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','PESQVEND_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQVEND_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo PESQFUNC_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','PESQFUNC_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQFUNC_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//Campo PESQDATAI_PEDIDOVENDA existe?
+//if existe_campo('TMASTER_USUARIO','PESQDATAI_PEDIDOVENDA') = 0 then
+//   begin
+
+//         with modulo_conexaodb do
+//           begin
+
+//              Script.Script.Clear;
+//              Script.Terminator:=';';
+//              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQDATAI_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+//              Script.Script.Add('COMMIT;');
+//              Script.Execute;
+
+//           end;
+         //endth
+//  end;
+//endi
+
+
+
+//Campo PESQDATAF_PEDIDOVENDA existe?
+//if existe_campo('TMASTER_USUARIO','PESQDATAF_PEDIDOVENDA') = 0 then
+//   begin
+
+//         with modulo_conexaodb do
+//           begin
+
+//              Script.Script.Clear;
+//              Script.Terminator:=';';
+//              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQDATAF_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+//              Script.Script.Add('COMMIT;');
+//              Script.Execute;
+
+//           end;
+         //endth
+//  end;
+//endi
+
+
+
+//Campo PESQPERIODO_PEDIDOVENDA existe?
+if existe_campo('TMASTER_USUARIO','PESQPERIODO_PEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQPERIODO_PEDIDOVENDA VARCHAR(3) DEFAULT ''SIM'';   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+//-------------------------------------------------------------------
+
+
+//Campo PESQDATAI_MOVCAIXA existe?
+//if existe_campo('TMASTER_USUARIO','PESQDATAI_MOVCAIXA') = 0 then
+//   begin
+
+//         with modulo_conexaodb do
+//           begin
+
+//              Script.Script.Clear;
+//              Script.Terminator:=';';
+//              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQDATAI_MOVCAIXA VARCHAR(3) DEFAULT ''SIM'';   ');
+//              Script.Script.Add('COMMIT;');
+//              Script.Execute;
+
+//           end;
+         //endth
+//  end;
+//endi
+
+
+
+//Campo PESQDATAF_MOVCAIXA existe?
+//if existe_campo('TMASTER_USUARIO','PESQDATAF_MOVCAIXA') = 0 then
+//   begin
+
+//         with modulo_conexaodb do
+//           begin
+
+//              Script.Script.Clear;
+//              Script.Terminator:=';';
+//              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQDATAF_MOVCAIXA VARCHAR(3) DEFAULT ''SIM'';   ');
+//              Script.Script.Add('COMMIT;');
+//              Script.Execute;
+
+//           end;
+         //endth
+//  end;
+//endi
+
+
+
+//Campo PESQPERIODO_MOVCAIXA existe?
+if existe_campo('TMASTER_USUARIO','PESQPERIODO_MOVCAIXA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_USUARIO  ADD PESQPERIODO_MOVCAIXA VARCHAR(3) DEFAULT ''SIM'';   ');
               Script.Script.Add('COMMIT;');
               Script.Execute;
 

@@ -1,0 +1,179 @@
+object frmusuario_permissao: Tfrmusuario_permissao
+  Left = 221
+  Height = 337
+  Top = 214
+  Width = 432
+  Caption = 'Permissão do Usuário'
+  ClientHeight = 337
+  ClientWidth = 432
+  OnCreate = FormCreate
+  LCLVersion = '1.8.4.0'
+  object ckbgrupomovimentocaixa: TCheckGroup
+    Left = 32
+    Height = 48
+    Top = 200
+    Width = 185
+    AutoFill = True
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.TopBottomSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 28
+    ClientWidth = 181
+    TabOrder = 7
+    object ckbpesquisarperiodo: TCheckBox
+      Left = 6
+      Height = 16
+      Top = 6
+      Width = 169
+      Caption = 'Pesquisar Período'
+      TabOrder = 0
+    end
+  end
+  object Label1: TLabel
+    Left = 32
+    Height = 15
+    Top = 17
+    Width = 43
+    Caption = 'Usuário:'
+    ParentColor = False
+  end
+  object lblusuario: TLabel
+    Left = 144
+    Height = 15
+    Top = 17
+    Width = 52
+    Caption = 'lblusuario'
+    ParentColor = False
+  end
+  object btnsalvar: TButton
+    Left = 342
+    Height = 25
+    Top = 304
+    Width = 75
+    Caption = 'Salvar'
+    OnClick = btnsalvarClick
+    TabOrder = 5
+  end
+  object btncancelar: TButton
+    Left = 254
+    Height = 25
+    Top = 304
+    Width = 75
+    Caption = 'Cancelar'
+    OnClick = btncancelarClick
+    TabOrder = 4
+  end
+  object ckbgrupoorcamento: TCheckGroup
+    Left = 32
+    Height = 48
+    Top = 136
+    Width = 185
+    AutoFill = True
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.TopBottomSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 28
+    ClientWidth = 181
+    TabOrder = 0
+    object ckbexcluirorcamento: TCheckBox
+      Left = 6
+      Height = 16
+      Top = 6
+      Width = 169
+      Caption = 'Excluir'
+      TabOrder = 0
+    end
+  end
+  object ckborcamento: TCheckBox
+    Left = 32
+    Height = 19
+    Top = 136
+    Width = 80
+    Caption = 'Orçamento'
+    TabOrder = 1
+  end
+  object ckbgrupopedidovenda: TCheckGroup
+    Left = 232
+    Height = 48
+    Top = 136
+    Width = 185
+    AutoFill = True
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.TopBottomSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 28
+    ClientWidth = 181
+    TabOrder = 2
+    object ckbexcluirpedidovenda: TCheckBox
+      Left = 6
+      Height = 16
+      Top = 6
+      Width = 169
+      Caption = 'Excluir'
+      TabOrder = 0
+    end
+  end
+  object ckbpedidovenda: TCheckBox
+    Left = 232
+    Height = 19
+    Top = 136
+    Width = 109
+    Caption = 'Pedido de Venda'
+    TabOrder = 3
+  end
+  object ckbmovimentocaixa: TCheckBox
+    Left = 32
+    Height = 19
+    Top = 200
+    Width = 113
+    Caption = 'Movimento Caixa'
+    TabOrder = 6
+  end
+  object edtsenha: TEdit
+    Left = 144
+    Height = 23
+    Top = 48
+    Width = 159
+    TabOrder = 8
+    Text = 'edtsenha'
+  end
+  object Label2: TLabel
+    Left = 32
+    Height = 15
+    Top = 56
+    Width = 99
+    Caption = 'Senha Secundária: '
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 32
+    Height = 15
+    Top = 96
+    Width = 88
+    Caption = 'Confirma Senha:'
+    ParentColor = False
+  end
+  object edtsenha2: TEdit
+    Left = 144
+    Height = 23
+    Top = 88
+    Width = 159
+    TabOrder = 9
+    Text = 'edtsenha2'
+  end
+end

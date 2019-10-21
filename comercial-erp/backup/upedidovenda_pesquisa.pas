@@ -299,6 +299,14 @@ procedure Tfrmpedidovenda_pesquisa.btnconsultaClick(Sender: TObject);
 begin
   opcao := 'C';
 
+  if modulo_pedidovenda.qrpedidovenda.RecordCount = 0 then
+     begin
+       application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
+
   frmpedidovenda_cadastro := tfrmpedidovenda_cadastro.Create(self);
   frmpedidovenda_cadastro.ShowModal;
   frmpedidovenda_cadastro.Free;

@@ -152,6 +152,13 @@ end;
 
 procedure Tfrmorcamento_pesquisa.btnimprimirClick(Sender: TObject);
 begin
+   if modulo_orcamento.qrorcamento.RecordCount = 0 then
+     begin
+       application.MessageBox('Nenhum registro existente!','Atenção',MB_OK);
+       exit;
+     end;
+  //endi
+
   frmorcamento_impressao := tfrmorcamento_impressao.Create(self);
   frmorcamento_impressao.ShowModal;
   frmorcamento_impressao.free;
@@ -312,6 +319,17 @@ begin
        exit;
      end;
   //endi
+
+  if  modulo_usuario.qrusuario.FieldByName('excluir_orcamnto').AsString <> 'SIM' then
+     begin
+       application.MessageBox('Você não tem acesso a este recurso!','Atenção',mb_ok);
+       exit;
+     end;
+  //endi
+
+
+
+
 
   frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
   frmorcamento_cadastro.ShowModal;

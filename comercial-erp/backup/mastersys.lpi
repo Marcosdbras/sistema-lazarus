@@ -396,9 +396,10 @@
         <ResourceBaseClass Value="Form"/>
       </Unit52>
       <Unit53>
-        <Filename Value="uususario_permissao.pas"/>
+        <Filename Value="uusuario_permissao.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmusuario_permissao"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit53>
     </Units>

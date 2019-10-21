@@ -18,4 +18,17 @@ object modulo_usuario: Tmodulo_usuario
     left = 135
     top = 27
   end
+  object qrusuario_lista: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 32
+    top = 120
+  end
+  object dsusuario_lista: TDataSource
+    DataSet = qrusuario_lista
+    left = 135
+    top = 123
+  end
 end

@@ -77,7 +77,7 @@ var
   frmorcamento_pesquisa: Tfrmorcamento_pesquisa;
 
 implementation
-     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uorcamento_impressao, umodulo_conexaodb;
+     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uorcamento_impressao, umodulo_conexaodb, umodulo_usuario;
 {$R *.lfm}
 
 { Tfrmorcamento_pesquisa }
@@ -319,6 +319,17 @@ begin
        exit;
      end;
   //endi
+
+  if  modulo_usuario.qrusuario.FieldByName('excluir_orcamnto').AsString <> 'SIM' then
+     begin
+       application.MessageBox('Você não tem acesso a este recurso!','Atenção',mb_ok);
+       exit;
+     end;
+  //endi
+
+
+
+
 
   frmorcamento_cadastro := tfrmorcamento_cadastro.Create(self);
   frmorcamento_cadastro.ShowModal;

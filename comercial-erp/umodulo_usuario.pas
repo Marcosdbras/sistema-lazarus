@@ -14,8 +14,10 @@ type
   Tmodulo_usuario = class(TDataModule)
     dsusuario: TDataSource;
     dsusuario_lista: TDataSource;
+    dstmaster_usuario: TDataSource;
     qrusuario: TSQLQuery;
     qrusuario_lista: TSQLQuery;
+    qrtmaster_usuario: TSQLQuery;
   private
 
   public

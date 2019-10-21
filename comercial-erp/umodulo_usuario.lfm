@@ -1,6 +1,6 @@
 object modulo_usuario: Tmodulo_usuario
   OldCreateOrder = False
-  Height = 223
+  Height = 356
   HorizontalOffset = 237
   VerticalOffset = 152
   Width = 217
@@ -30,5 +30,18 @@ object modulo_usuario: Tmodulo_usuario
     DataSet = qrusuario_lista
     left = 135
     top = 123
+  end
+  object qrtmaster_usuario: TSQLQuery
+    FieldDefs = <>
+    Database = modulo_conexaodb.conexaodb
+    Transaction = modulo_conexaodb.tzcontrole
+    Params = <>
+    left = 32
+    top = 240
+  end
+  object dstmaster_usuario: TDataSource
+    DataSet = qrtmaster_usuario
+    left = 135
+    top = 243
   end
 end

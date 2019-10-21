@@ -18,7 +18,7 @@ uses
   umodulo_centrocusto, umodulo_caixa, umodulo_receber, umodulo_especie,
   ufechapedidovenda, umodulo_parcelapredefinida, umodulo_master_indice,
   ucadastro_parcelafinanceiro, umodulo_pagar, umodulo_consulta, umodulo_usuario,
-  uusuario_pesquisa, uususario_permissao;
+  uusuario_pesquisa, uusuario_permissao, unit1;
 
 {$R *.res}
 
@@ -74,12 +74,11 @@ begin
   //Application.CreateForm(Tfrmfechapedidovenda, frmfechapedidovenda);
   //Application.CreateForm(Tfrmcadastro_parcelafinanceiro, frmcadastro_parcelafinanceiro);
   //Application.CreateForm(Tfrmmostratroco, frmmostratroco);
-  // Application.CreateForm(Tfrmusuario_pesquisa, frmusuario_pesquisa);
+  //Application.CreateForm(Tfrmusuario_pesquisa, frmusuario_pesquisa);
   //Application.CreateForm(Tfrmusuario_permissao, frmusuario_permissao);
 
   frmsplash.Hide;
   frmsplash.Free;
-
   Application.Run;
 end.
 

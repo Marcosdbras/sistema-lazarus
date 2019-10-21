@@ -35,12 +35,21 @@ object frmusuario_pesquisa: Tfrmusuario_pesquisa
       Color = clWindow
       Columns = <      
         item
-          Title.Caption = 'login'
+          Title.Caption = 'Login'
           FieldName = 'login'
         end>
       DataSource = modulo_usuario.dsusuario_lista
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete, dgDisableInsert]
       TabOrder = 0
+    end
+    object btnpermissao: TButton
+      Left = 909
+      Height = 44
+      Top = 20
+      Width = 94
+      Caption = 'Permissão'
+      OnClick = btnpermissaoClick
+      TabOrder = 1
     end
   end
   object pnlinferior: TPanel
