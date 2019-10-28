@@ -65,38 +65,22 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
     ParentColor = False
     TabOrder = 1
     OnClick = pnlinferiorClick
-    object btnsalvar: TButton
-      Left = 3
-      Height = 40
-      Top = 8
-      Width = 91
-      Caption = 'Salvar'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = clNavy
-      Font.Height = -15
-      Font.Name = 'Arial'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      OnClick = btnsalvarClick
-      ParentFont = False
-      TabOrder = 0
-    end
     object Panel1: TPanel
-      Left = 800
+      Left = 696
       Height = 50
       Top = 0
-      Width = 108
+      Width = 212
       Align = alRight
       BevelOuter = bvNone
       ClientHeight = 50
-      ClientWidth = 108
-      TabOrder = 1
+      ClientWidth = 212
+      TabOrder = 0
       object Button2: TButton
-        Left = 8
+        Left = 16
         Height = 40
         Top = 6
         Width = 91
-        Caption = 'Fechar'
+        Caption = 'Voltar'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -15
@@ -104,6 +88,22 @@ object frmorcamento_cadastro: Tfrmorcamento_cadastro
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         OnClick = Button2Click
+        ParentFont = False
+        TabOrder = 1
+      end
+      object btnsalvar: TButton
+        Left = 112
+        Height = 40
+        Top = 6
+        Width = 91
+        Caption = 'Salvar'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clNavy
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = btnsalvarClick
         ParentFont = False
         TabOrder = 0
       end

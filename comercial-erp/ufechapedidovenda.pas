@@ -152,6 +152,7 @@ end;
 procedure Tfrmfechapedidovenda.btnlancarClick(Sender: TObject);
 var
   ftotal:real;
+  iprox_codigo:integer;
 begin
   fvlrpagar := strtofloat(tirapontos(edtvlrpagar.Text));
 
@@ -223,6 +224,16 @@ begin
 
               qrexec_base.ExecSQL;
               atualizaBanco;
+
+
+              qrexec_base.Close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('select GEN_ID(GEN_TRECEBER_ID,1) as prox_codigo FROM RDB$DATABASE;');
+              qrexec_base.Open;
+
+              iprox_codigo := qrexec_base.FieldByName('prox_codigo').AsInteger;
+              atualizaBanco;
+
 
               qrexec_base.Close;
               qrexec_base.SQL.Clear;

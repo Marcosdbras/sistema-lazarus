@@ -303,7 +303,7 @@ object modulo_pedidovenda: Tmodulo_pedidovenda
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
-      'select * from tpedidovenda'
+      'select * from tpedidovenda p  inner join tmaster_pedidovenda t on p.controle = t.controle_tpedidovenda'
     )
     Params = <>
     left = 64

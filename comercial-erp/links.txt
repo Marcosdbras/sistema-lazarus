@@ -1,0 +1,1 @@
+http://docwiki.embarcadero.com/InterBase/2017/en/Running_a_SQL_Script

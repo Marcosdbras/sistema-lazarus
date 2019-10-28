@@ -77,7 +77,7 @@ var
   frmorcamento_pesquisa: Tfrmorcamento_pesquisa;
 
 implementation
-     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uorcamento_impressao, umodulo_conexaodb;
+     uses ufuncao_geral,  umodulo_orcamento, uorcamento_cadastro, umodulo_cliente, umodulo_funcionario, uorcamento_impressao, umodulo_conexaodb, umodulo_usuario;
 {$R *.lfm}
 
 { Tfrmorcamento_pesquisa }
@@ -173,7 +173,7 @@ end;
 procedure Tfrmorcamento_pesquisa.btntransfpedidoClick(Sender: TObject);
 var
   hash,numDav,aSQLText,aSQLCommand:String;
-  icontrole:integer;
+  icontrole, ictabp, iprazo, iprox_codigo:integer;
 
 begin
   if modulo_orcamento.qrorcamento.RecordCount = 0 then
@@ -186,8 +186,17 @@ begin
   if Application.MessageBox('Tem certeza que deseja transferir o orçamento selecionado?','Atenção',MB_YESNO) = 6  then
      begin
 
-        with modulo_conexaodb do
+       with modulo_conexaodb do
           begin
+
+            qrconsulta_base.Close;
+            qrconsulta_base.SQL.Clear;
+            qrconsulta_base.SQL.Add('select * from tmaster_orcamento where controle_torcamento = :controle_torcamento');
+            qrconsulta_base.Params.ParamByName('controle_torcamento').AsInteger := modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
+            qrconsulta_base.Open;
+
+            ictabp := qrconsulta_base.FieldByName('ctabp').AsInteger;
+            iprazo := qrconsulta_base.FieldByName('prazo').AsInteger;
 
             qrsequencia.Close;
             qrsequencia.SQL.Clear;
@@ -212,13 +221,12 @@ begin
 
             icontrole := qrexec_base.FieldByName('prox_codigo').AsInteger;
 
-
             qrexec_base.Close;
             qrexec_base.SQL.Clear;
             qrexec_base.SQL.Add('insert into titempedidovenda(   codpedidovenda,    datahoracadastro,    codproduto,    produto,      qtde,     un,     valorunitario,   valordesconto,                valoracrescimo,              percdesconto,                     percacrescimo,                       situacaotributaria,      aliquota,      cancelado,     decimaisqtde,          decimaisvalorunitario,                 coditem,         valordescontounitario,    valoracrescimounitario,    controleorigemmesclagem,           numerodav,    md5dav,      mesclar,     status,       qtdeconvertida,        unconvertida,        obs ) ');
-            qrexec_base.SQL.Add('              select            :codpedidovenda,  :datahoracadastro,  t.codproduto,  t.produto,    t.qtde,   t.un,   t.valorunitario,   t.valordescontounitario,            t.valoracrescimounitario,            t.percdescontounitario,                   t.percacrescimounitario,             :situacaotributaria,     :aliquota,     :cancelado,     t.decimaisqtde,        t.decimaisvalorunitario,               t.coditem,       t.valordescontounitario,   t.valoracrescimounitario,   :controleorigemmesclagem,          :numerodav,   :md5dav,     :mesclar,    :status,       :qtdeconvertida,       :unconvertida,       :obs     from titensorcamento t  where t.codorcamento = :codorcamento');
+            qrexec_base.SQL.Add('              select            :codpedidovenda,  :datahoracadastro,  t.codproduto,  t.produto,    t.qtde,   t.un,   t.valorunitario,   t.valordescontounitario,      t.valoracrescimounitario,    t.percdescontounitario,           t.percacrescimounitario,             :situacaotributaria,     :aliquota,     :cancelado,     t.decimaisqtde,        t.decimaisvalorunitario,               t.coditem,       t.valordescontounitario,   t.valoracrescimounitario,   :controleorigemmesclagem,       :numerodav,   :md5dav,     :mesclar,    :status,       :qtdeconvertida,       :unconvertida,       :obs     from titensorcamento t  where t.codorcamento = :codorcamento');
 
-            qrexec_base.Params.ParamByName('codorcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;;
+            qrexec_base.Params.ParamByName('codorcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
             qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icontrole;
             qrexec_base.Params.ParamByName('datahoracadastro').AsDateTime := now();
             qrexec_base.Params.ParamByName('numerodav').AsString:=numDav;
@@ -242,9 +250,88 @@ begin
             //Analisar no SGBr como esta informação é persistida
             qrexec_base.Params.ParamByName('qtdeconvertida').Asfloat := 1; //fatorconversao;  //valorconversao;
 
-            qrexec_base.ExecSQL;
+            //qrexec_base.ExecSQL;
+
+            //atualizabanco;
+
+
+            //---------------------------------------------
+
+            qrconsulta_base.Close;
+            qrconsulta_base.SQL.Clear;
+            qrconsulta_base.SQL.Add('SELECT * FROM TITENSORCAMENTO I LEFT JOIN TMASTER_ITENSORCAMENTO T ON I.CONTROLE = T.CONTROLE_TITENSORCAMENTO where CODORCAMENTO = :CODORCAMENTO');
+            qrconsulta_base.ParamByName('CODORCAMENTO').AsInteger := modulo_orcamento.qrorcamento.FieldByName('CONTROLE').AsInteger;
+            qrconsulta_base.Open;
+            while not  qrconsulta_base.EOF do
+               begin
+
+                 qrexec_base.Close;
+                 qrexec_base.SQL.Clear;
+                 qrexec_base.SQL.Add('select GEN_ID(GEN_titempedidovenda_ID,1) as prox_codigo FROM RDB$DATABASE;');
+                 qrexec_base.Open;
+
+                 iprox_codigo := qrexec_base.FieldByName('prox_codigo').AsInteger;
+
+                 qrexec_base.Close;
+                 qrexec_base.SQL.Clear;
+                 qrexec_base.SQL.Add('INSERT INTO TITEMPEDIDOVENDA(controle, codpedidovenda,    datahoracadastro,    codproduto,    produto,           qtde,     un,     valorunitario,   valordesconto,                valoracrescimo,              percdesconto,                     percacrescimo,                       situacaotributaria,              aliquota,      cancelado,     decimaisqtde,          decimaisvalorunitario,                 coditem,         valordescontounitario,    valoracrescimounitario,          controleorigemmesclagem,           numerodav,    md5dav,      mesclar,     status,            qtdeconvertida,        unconvertida )');
+                 qrexec_base.SQL.Add('                      values(:controle, :codpedidovenda,  :datahoracadastro,    :codproduto,   :produto,          :qtde,   :un,   :valorunitario,   :valordescontounitario,      :valoracrescimounitario,    :percdescontounitario,           :percacrescimounitario,                 :situacaotributaria,              :aliquota,     :cancelado,     :decimaisqtde,        :decimaisvalorunitario,               :coditem,        :valordescontounitario,   :valoracrescimounitario,         :controleorigemmesclagem,           :numerodav,   :md5dav,     :mesclar,    :status,          :qtdeconvertida,       :unconvertida)');
+
+                 qrexec_base.Params.ParamByName('controle').AsInteger := iprox_codigo;
+                 qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icontrole;
+                 qrexec_base.Params.ParamByName('datahoracadastro').AsDateTime := now();
+                 qrexec_base.Params.ParamByName('codproduto').AsInteger :=qrconsulta_base.FieldByName('codproduto').AsInteger;
+                 qrexec_base.Params.ParamByName('produto').AsString:=qrconsulta_base.FieldByName('produto').AsString;
+                 qrexec_base.Params.ParamByName('qtde').AsFloat:=qrconsulta_base.FieldByName('qtde').AsFloat;
+                 qrexec_base.Params.ParamByName('un').AsString:=qrconsulta_base.FieldByName('un').AsString;
+                 qrexec_base.Params.ParamByName('valorunitario').AsFloat:=qrconsulta_base.FieldByName('valorunitario').AsFloat;
+                 qrexec_base.Params.ParamByName('valordescontounitario').AsFloat:=qrconsulta_base.FieldByName('valordescontounitario').AsFloat;
+                 qrexec_base.Params.ParamByName('valoracrescimounitario').AsFloat:=qrconsulta_base.FieldByName('valoracrescimounitario').AsFloat;
+                 qrexec_base.Params.ParamByName('percdescontounitario').AsFloat:=qrconsulta_base.FieldByName('percdescontounitario').AsFloat;
+                 qrexec_base.Params.ParamByName('percacrescimounitario').AsFloat:=qrconsulta_base.FieldByName('percacrescimounitario').AsFloat;
+                 qrexec_base.Params.ParamByName('situacaotributaria').AsString:= 'F';
+                 qrexec_base.Params.ParamByName('aliquota').Asfloat:= 0;
+                 qrexec_base.Params.ParamByName('cancelado').AsString:= 'N';
+                 qrexec_base.Params.ParamByName('decimaisqtde').AsFloat :=qrconsulta_base.FieldByName('decimaisqtde').AsFloat;
+                 qrexec_base.Params.ParamByName('decimaisvalorunitario').AsFloat  :=qrconsulta_base.FieldByName('decimaisvalorunitario').AsFloat;
+                 qrexec_base.Params.ParamByName('numerodav').AsString:=numDav;
+                 qrexec_base.Params.ParamByName('md5dav').AsString:=hash;
+                 //Analisar no SGBr como esta informação é persistida
+                 qrexec_base.Params.ParamByName('qtdeconvertida').Asfloat := 1; //fatorconversao;  //valorconversao;
+
+                 qrexec_base.Params.ParamByName('coditem').AsInteger :=  qrconsulta_base.FieldByName('coditem').AsInteger;
+                 qrexec_base.Params.ParamByName('valordescontounitario').Asfloat :=  qrconsulta_base.FieldByName('valordescontounitario').AsFloat;
+                 qrexec_base.Params.ParamByName('valoracrescimounitario').AsFloat :=  qrconsulta_base.FieldByName('valoracrescimounitario').AsFloat;
+                 qrexec_base.Params.ParamByName('controleorigemmesclagem').AsString :=   qrconsulta_base.FieldByName('controleorigemmesclagem').AsString;
+
+                 qrexec_base.Params.ParamByName('mesclar').AsString :=  qrconsulta_base.FieldByName('mesclar').AsString;
+                 qrexec_base.Params.ParamByName('status').AsString :=  qrconsulta_base.FieldByName('status').AsString;
+                 qrexec_base.Params.ParamByName('unconvertida').AsString :=  qrconsulta_base.FieldByName('unconvertida').AsString;
+
+
+
+                 qrexec_base.ExecSQL;
+
+                 atualizabanco;
+
+
+                 qrexec_base.Close;
+                 qrexec_base.SQL.Clear;
+                 qrexec_base.SQL.Add('INSERT INTO TMASTER_ITEMPEDIDOVENDA(CONTROLE_TITEMPEDIDOVENDA, CTABP) values (:CONTROLE_TITEMPEDIDOVENDA, :CTABP)');
+                 qrexec_base.Params.ParamByName('CONTROLE_TITEMPEDIDOVENDA').AsInteger:=  iprox_codigo;
+                   qrexec_base.Params.ParamByName('CTABP').AsInteger := qrconsulta_base.FieldByName('CTABP').AsInteger;
+                 qrexec_base.ExecSQL;
+
+                 atualizabanco;
+
+                 qrconsulta_base.Next;
+               end;
+            //endi
 
             atualizabanco;
+
+            //---------------------------------------------
+
 
             qrexec_base.Close;                                                                                                                                                      //tipodesconto,   ,  cancelado,  status, condicaopagamento
             qrexec_base.SQL.Clear;
@@ -257,6 +344,16 @@ begin
             qrexec_base.ExecSQL;
 
             atualizabanco;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_pedidovenda(controle_tpedidovenda,ctabp,prazo) values (:controle_tpedidovenda, :ctabp, :prazo);');
+            qrexec_base.Params.ParamByName('controle_tpedidovenda').AsInteger := icontrole;
+            qrexec_base.Params.ParamByName('ctabp').AsInteger := ictabp;
+            qrexec_base.Params.ParamByName('prazo').AsInteger := iprazo;
+            qrexec_base.ExecSQL;
+
+            atualizaBanco;
 
             aSQLText:= 'execute procedure sptotalizapedidovenda(%d)';
             aSQLCommand:= Format(aSQLText, [icontrole]);
@@ -513,21 +610,21 @@ begin
 
   if modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger  > 0 then
      begin
-       filtro := filtro +' and (codcliente = ' +  inttostr(modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger)  +')';
+       filtro := filtro +' and (o.codcliente = ' +  inttostr(modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger)  +')';
      end;
   //endi
 
 
   if modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger > 0 then
      begin
-       filtro := filtro + ' and (codfuncionario = '+ inttostr(modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger ) +')';
+       filtro := filtro + ' and (o.codfuncionario = '+ inttostr(modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger ) +')';
      end;
   //endi
 
 
   if modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger > 0 then
      begin
-       filtro := filtro + ' and (codvendedor = '+ inttostr(modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger ) +')';
+       filtro := filtro + ' and (o.codvendedor = '+ inttostr(modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger ) +')';
      end;
   //endi
 
@@ -538,7 +635,7 @@ begin
 
       qrorcamento.Active:= false;
       qrorcamento.SQL.Clear;
-      qrorcamento.SQL.Add('select * from torcamento where (data >= :dti and data <= :dtf) ' +filtro);
+      qrorcamento.SQL.Add('select * from torcamento o inner join  tmaster_orcamento t on o.controle = t.controle_torcamento where (o.data >= :dti and o.data <= :dtf) ' +filtro);
       qrorcamento.ParamByName('dti').AsDate:= edtdatainicio.date;
       qrorcamento.ParamByName('dtf').AsDate:= edtdatafim.Date;
       qrorcamento.Active:=true;

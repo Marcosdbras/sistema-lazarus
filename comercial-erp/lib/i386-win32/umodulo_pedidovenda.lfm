@@ -7,6 +7,7 @@ object modulo_pedidovenda: Tmodulo_pedidovenda
   Width = 332
   PPI = 96
   object qrpedidovenda: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -298,12 +299,96 @@ object modulo_pedidovenda: Tmodulo_pedidovenda
         DataType = ftBCD
         Precision = 18
         Size = 2
+      end    
+      item
+        Name = 'CODIGO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CONTROLE_TPEDIDOVENDA'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'PRAZO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CTABP'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CPARC_PRED'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DESCRICAO_PARC_PRED'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'TOTALPRODUTO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'PERCDESCONTO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'VLRDESCONTO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'VLRPAGAR'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'VLRRECEBIDO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'NPARC'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'STATUSPEDIDO'
+        DataType = ftString
+        Precision = -1
+        Size = 1
+      end    
+      item
+        Name = 'VLRTROCO'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end    
+      item
+        Name = 'DATAFEC'
+        DataType = ftDate
+        Precision = -1
       end>
+    Active = True
     AfterScroll = qrpedidovendaAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
-      'select * from tpedidovenda'
+      'select * from tpedidovenda p  inner join tmaster_pedidovenda t on p.controle = t.controle_tpedidovenda'
     )
     Params = <>
     left = 64

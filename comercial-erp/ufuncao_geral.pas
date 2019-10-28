@@ -280,6 +280,52 @@ if existe_tabela('TMASTER_RECEBER') = 0 then
 //endif
 
 
+
+
+//Tabela TMASTER_EXT_RECEBER existe?
+if existe_tabela('TMASTER_EXT_RECEBER') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE TMASTER_EXT_RECEBER(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_EXT_RECEBER_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE TMASTER_EXT_RECEBER ADD CONSTRAINT PK_TMASTER_EXT_RECEBER  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger tmaster_ext_receber_bi for tmaster_ext_receber');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_ext_receber_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
+
+
+
+
+
+
 //Tabela TMASTER_COTACAO_ITEM existe?
 if existe_tabela('TMASTER_COTACAO_ITEM') = 0 then
    begin
@@ -1188,6 +1234,49 @@ if existe_campo('TMASTER_CAIXA','CODFORNECEDOR') = 0 then
          //endth
   end;
 //endi
+
+
+
+//Campo CONTROLE_TRECEBER existe?
+if existe_campo('TMASTER_EXT_RECEBER','CONTROLE_TRECEBER') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_EXT_RECEBER  ADD  CONTROLE_TRECEBER  INTEGER;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
+
+
+
+//Campo CODPEDIDOVENDA existe?
+if existe_campo('TMASTER_EXT_RECEBER','CODPEDIDOVENDA') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_EXT_RECEBER  ADD  CODPEDIDOVENDA  INTEGER;   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
 
 
 

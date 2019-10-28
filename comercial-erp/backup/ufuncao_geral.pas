@@ -3595,7 +3595,7 @@ if existe_campo('TMASTER_USUARIO','PESQFUNC_PEDIDOVENDA') = 0 then
 
 
 //Campo PESQPERIODO_PEDIDOVENDA existe?
-if existe_campo('TMASTER_USUARIO','PESQPRIODO_PEDIDOVENDA') = 0 then
+if existe_campo('TMASTER_USUARIO','PESQPERIODO_PEDIDOVENDA') = 0 then
    begin
 
          with modulo_conexaodb do

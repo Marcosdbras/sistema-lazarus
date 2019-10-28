@@ -473,21 +473,21 @@ begin
 
   if modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger  > 0 then
      begin
-       filtro := filtro +' and (codcliente = ' +  inttostr(modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger)  +')';
+       filtro := filtro +' and (p.codcliente = ' +  inttostr(modulo_cliente.qrtempCliente.FieldByName('ccli').AsInteger)  +')';
      end;
   //endi
 
 
   if modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger > 0 then
      begin
-       filtro := filtro + ' and (codfuncionario = '+ inttostr(modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger ) +')';
+       filtro := filtro + ' and (p.codfuncionario = '+ inttostr(modulo_funcionario.qrtempFuncionario.FieldByName('cfun').AsInteger ) +')';
      end;
   //endi
 
 
   if modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger > 0 then
      begin
-       filtro := filtro + ' and (codvendedor = '+ inttostr(modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger ) +')';
+       filtro := filtro + ' and (p.codvendedor = '+ inttostr(modulo_funcionario.qrtempVendedor.FieldByName('cven').AsInteger ) +')';
      end;
   //endi
 
@@ -498,7 +498,10 @@ begin
 
       qrpedidovenda.Close;
       qrpedidovenda.SQL.Clear;
-      qrpedidovenda.SQL.Add('select * from tpedidovenda where (cast(datahoracadastro as date) >= :dti and cast(datahoracadastro as date) <= :dtf) ' +filtro);
+      //qrpedidovenda.SQL.Add('select * from tpedidovenda p  inner join tmaster_pedidovenda t on p.controle = t.controle_tpedidovenda    where (cast(p.datahoracadastro as date) >= :dti and cast(p.datahoracadastro as date) <= :dtf) ' +filtro);
+      qrpedidovenda.SQL.Add('select * from tpedidovenda p where (cast(p.datahoracadastro as date) >= :dti and cast(p.datahoracadastro as date) <= :dtf) ' +filtro);
+
+
       qrpedidovenda.ParamByName('dti').AsDateTime:= edtdatainicio.Date;
       qrpedidovenda.ParamByName('dtf').AsDateTime:= edtdatafim.Date;
       qrpedidovenda.open;
