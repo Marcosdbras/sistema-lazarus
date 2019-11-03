@@ -234,16 +234,6 @@ begin
               iprox_codigo := qrexec_base.FieldByName('prox_codigo').AsInteger;
               atualizaBanco;
 
-
-              qrexec_base.Close;
-              qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('select t.codespecie from tmaster_receber t left join tespecie e on t.codespecie = e.controle where (t.codpedidovenda = :codpedidovenda) and (e.tipolancamentofinanceiro = ''PARCELAR'')');
-              qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;;
-
-              //qrexec_base.ExecSQL;
-              atualizaBanco;
-
-
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
               qrexec_base.SQL.Add('update tmaster_receber set datafec = :datafec where codpedidovenda = :codpedidovenda');
@@ -252,6 +242,40 @@ begin
 
               qrexec_base.ExecSQL;
               atualizaBanco;
+
+
+              qrexec_base.Close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('insert into treceber (descricaolancamento, qtdeparcela)');
+              qrexec_base.SQL.Add('              select  t.descricaolancamento, t.qtdeparcela                 t.codespecie from tmaster_receber t left join tespecie e on t.codespecie = e.controle where (t.codpedidovenda = :codpedidovenda) and (e.tipolancamentofinanceiro = ''PARCELAR'')');
+              qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;;
+
+              //qrexec_base.ExecSQL;
+              atualizaBanco;
+
+
+
+
+
+              //if application.MessageBox('Exportar para NF-E?','Atenção',MB_YESNO) = 6 then
+              //   begin
+
+                   //
+
+
+              //   end
+              //else
+              //   begin
+
+
+
+              //   end;
+              //endi
+
+
+
+
+
 
             end;
 

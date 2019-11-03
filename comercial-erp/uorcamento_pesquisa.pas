@@ -307,9 +307,6 @@ begin
                  qrexec_base.Params.ParamByName('mesclar').AsString :=  qrconsulta_base.FieldByName('mesclar').AsString;
                  qrexec_base.Params.ParamByName('status').AsString :=  qrconsulta_base.FieldByName('status').AsString;
                  qrexec_base.Params.ParamByName('unconvertida').AsString :=  qrconsulta_base.FieldByName('unconvertida').AsString;
-
-
-
                  qrexec_base.ExecSQL;
 
                  atualizabanco;
@@ -319,7 +316,7 @@ begin
                  qrexec_base.SQL.Clear;
                  qrexec_base.SQL.Add('INSERT INTO TMASTER_ITEMPEDIDOVENDA(CONTROLE_TITEMPEDIDOVENDA, CTABP) values (:CONTROLE_TITEMPEDIDOVENDA, :CTABP)');
                  qrexec_base.Params.ParamByName('CONTROLE_TITEMPEDIDOVENDA').AsInteger:=  iprox_codigo;
-                   qrexec_base.Params.ParamByName('CTABP').AsInteger := qrconsulta_base.FieldByName('CTABP').AsInteger;
+                 qrexec_base.Params.ParamByName('CTABP').AsInteger := qrconsulta_base.FieldByName('CTABP').AsInteger;
                  qrexec_base.ExecSQL;
 
                  atualizabanco;

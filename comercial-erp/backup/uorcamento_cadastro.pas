@@ -1066,8 +1066,15 @@ begin
                   if reglocalizado = 0 then
                      begin
 
-                        Application.MessageBox('Informação não localizada!','Atenção',MB_OK);
-                        edtdescricao.SetFocus;
+                        if strtoint(lblcontroleprod.caption) = 0 then
+                           begin
+
+                             Application.MessageBox('Informação não localizada!','Atenção',MB_OK);
+                             edtdescricao.SetFocus;
+
+
+                           end;
+                        //endi
 
                      end
                   else
@@ -1725,6 +1732,7 @@ begin
   edtqtde.Value:=0;
   edtvlrunitario.Value:=0;
   edtvlrsubtotal.Value:=0;
+  lblcontroleprod.caption := 0;
 
   modulo_orcamento.qrtempUnidade.FieldByName('cund').AsInteger:=0;
 

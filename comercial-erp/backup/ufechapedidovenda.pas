@@ -234,8 +234,18 @@ begin
               iprox_codigo := qrexec_base.FieldByName('prox_codigo').AsInteger;
               atualizaBanco;
 
+              qrexec_base.Close;
+              qrexec_base.SQL.Clear;
+              qrexec_base.SQL.Add('update tmaster_receber set datafec = :datafec where codpedidovenda = :codpedidovenda');
+              qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icodigo_controle;
+              qrexec_base.Params.ParamByName('datafec').AsDate:=date;
+
+              qrexec_base.ExecSQL;
+              atualizaBanco;
 
 
+              //if application.MessageBox('Deseja emitir NF-e','Atenção',MB_YESNO) <> 6 then
+              //   begin
 
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
@@ -246,14 +256,14 @@ begin
               atualizaBanco;
 
 
-              qrexec_base.Close;
-              qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('update tmaster_receber set datafec = :datafec where codpedidovenda = :codpedidovenda');
-              qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=icodigo_controle;
-              qrexec_base.Params.ParamByName('datafec').AsDate:=date;
 
-              qrexec_base.ExecSQL;
-              atualizaBanco;
+              //   end;
+              //endi
+
+
+
+
+
 
             end;
 

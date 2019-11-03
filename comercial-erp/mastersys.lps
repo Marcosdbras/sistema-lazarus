@@ -21,8 +21,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="23"/>
-        <TopLine Value="1535"/>
-        <CursorPos Y="1543"/>
+        <TopLine Value="430"/>
+        <CursorPos X="13" Y="435"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -155,7 +155,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="29"/>
         <TopLine Value="493"/>
-        <CursorPos X="9" Y="501"/>
+        <CursorPos X="184" Y="502"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -425,10 +425,9 @@
         <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="19"/>
-        <TopLine Value="297"/>
-        <CursorPos X="155" Y="305"/>
+        <TopLine Value="219"/>
+        <CursorPos X="3" Y="179"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -440,8 +439,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="22"/>
-        <TopLine Value="327"/>
-        <CursorPos X="91" Y="340"/>
+        <TopLine Value="1726"/>
+        <CursorPos X="30" Y="1731"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -511,9 +510,10 @@
         <ComponentName Value="frmfechapedidovenda"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="17"/>
-        <TopLine Value="221"/>
-        <CursorPos X="30" Y="235"/>
+        <TopLine Value="246"/>
+        <CursorPos X="62" Y="260"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -606,7 +606,7 @@
         <EditorIndex Value="6"/>
         <TopLine Value="80"/>
         <CursorPos X="10" Y="94"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="171"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit48>
@@ -618,7 +618,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="7"/>
         <TopLine Value="299"/>
-        <UsageCount Value="150"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit49>
@@ -630,7 +630,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="15"/>
         <CursorPos X="61" Y="9"/>
-        <UsageCount Value="139"/>
+        <UsageCount Value="156"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit50>
@@ -642,7 +642,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="25"/>
         <CursorPos X="44" Y="8"/>
-        <UsageCount Value="113"/>
+        <UsageCount Value="130"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit51>
@@ -655,7 +655,7 @@
         <EditorIndex Value="26"/>
         <TopLine Value="45"/>
         <CursorPos X="30" Y="59"/>
-        <UsageCount Value="87"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit52>
@@ -668,7 +668,7 @@
         <EditorIndex Value="28"/>
         <TopLine Value="224"/>
         <CursorPos X="82" Y="228"/>
-        <UsageCount Value="83"/>
+        <UsageCount Value="100"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit53>
@@ -680,7 +680,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="82"/>
         <CursorPos X="76" Y="83"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="39"/>
       </Unit54>
       <Unit55>
         <Filename Value="umodulo_caixa.pas"/>
@@ -696,7 +696,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3351"/>
         <CursorPos Y="3361"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="2"/>
       </Unit56>
       <Unit57>
         <Filename Value="C:\lazarus\lcl\lresources.pp"/>
@@ -704,14 +704,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3149"/>
         <CursorPos Y="3156"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="2"/>
       </Unit57>
       <Unit58>
         <Filename Value="C:\lazarus\lcl\include\dblookup.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="411"/>
         <CursorPos Y="419"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="4"/>
       </Unit58>
       <Unit59>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>
@@ -719,7 +719,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="7767"/>
         <CursorPos Y="7780"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="2"/>
       </Unit59>
       <Unit60>
         <Filename Value="umostratroco.pas"/>
@@ -728,35 +728,35 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="24"/>
         <CursorPos X="142" Y="45"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="1"/>
       </Unit60>
       <Unit61>
         <Filename Value="C:\lazarus\lcl\include\control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2245"/>
         <CursorPos Y="2253"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="6"/>
       </Unit61>
       <Unit62>
         <Filename Value="C:\lazarus\lcl\include\buttoncontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="6"/>
       </Unit62>
       <Unit63>
         <Filename Value="C:\lazarus\lcl\include\buttons.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="162"/>
         <CursorPos Y="170"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="6"/>
       </Unit63>
       <Unit64>
         <Filename Value="C:\lazarus\lcl\include\wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="5390"/>
         <CursorPos Y="5398"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="6"/>
       </Unit64>
       <Unit65>
         <Filename Value="C:\lazarus\lcl\lclmessageglue.pas"/>
@@ -764,7 +764,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="111"/>
         <CursorPos Y="122"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="6"/>
       </Unit65>
     </Units>
     <OtherDefines Count="1">
@@ -772,124 +772,124 @@
     </OtherDefines>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="252" TopLine="238"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="749" Column="50" TopLine="735"/>
       </Position1>
       <Position2>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="253" TopLine="239"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1599" Column="95" TopLine="1585"/>
       </Position2>
       <Position3>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="254" TopLine="240"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1607" Column="57" TopLine="1593"/>
       </Position3>
       <Position4>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="255" TopLine="241"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1614" Column="51" TopLine="1600"/>
       </Position4>
       <Position5>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="256" TopLine="242"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1643" Column="46" TopLine="1629"/>
       </Position5>
       <Position6>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="257" TopLine="243"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1690" Column="125" TopLine="1686"/>
       </Position6>
       <Position7>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="259" TopLine="245"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1691" Column="63" TopLine="1686"/>
       </Position7>
       <Position8>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="261" TopLine="247"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1698" Column="131" TopLine="1686"/>
       </Position8>
       <Position9>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="262" TopLine="248"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1699" Column="64" TopLine="1686"/>
       </Position9>
       <Position10>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="263" TopLine="249"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1709" Column="141" TopLine="1695"/>
       </Position10>
       <Position11>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="265" TopLine="251"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1710" Column="64" TopLine="1696"/>
       </Position11>
       <Position12>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="272" TopLine="264"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Column="29"/>
       </Position12>
       <Position13>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="280" TopLine="266"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="340" Column="91" TopLine="327"/>
       </Position13>
       <Position14>
-        <Filename Value="upedidovenda_pesquisa.pas"/>
-        <Caret Line="501" Column="216" TopLine="491"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="1078" TopLine="1062"/>
       </Position14>
       <Position15>
         <Filename Value="upedidovenda_cadastro.pas"/>
-        <Caret Line="342" Column="81" TopLine="400"/>
+        <Caret Line="1066" Column="51" TopLine="1058"/>
       </Position15>
       <Position16>
-        <Filename Value="upedidovenda_cadastro.pas"/>
-        <Caret Column="30"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Column="29"/>
       </Position16>
       <Position17>
-        <Filename Value="upedidovenda_cadastro.pas"/>
-        <Caret Line="144" Column="29" TopLine="130"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="85" Column="24" TopLine="71"/>
       </Position17>
       <Position18>
-        <Filename Value="upedidovenda_cadastro.pas"/>
-        <Caret Line="539" Column="22" TopLine="525"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="145" Column="21" TopLine="131"/>
       </Position18>
       <Position19>
-        <Filename Value="upedidovenda_cadastro.pas"/>
-        <Caret Line="557" Column="17" TopLine="543"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="148" Column="21" TopLine="134"/>
       </Position19>
       <Position20>
-        <Filename Value="upedidovenda_cadastro.pas"/>
-        <Caret Line="644" Column="23" TopLine="630"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="417" Column="20" TopLine="403"/>
       </Position20>
       <Position21>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="280" TopLine="266"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="519" Column="16" TopLine="504"/>
       </Position21>
       <Position22>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="266" Column="67" TopLine="259"/>
+        <Filename Value="uorcamento_cadastro.pas"/>
+        <Caret Line="562" Column="16" TopLine="548"/>
       </Position22>
       <Position23>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="280" TopLine="293"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Column="33"/>
       </Position23>
       <Position24>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="297" Column="71" TopLine="287"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="145" Column="28" TopLine="131"/>
       </Position24>
       <Position25>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="308" Column="68" TopLine="300"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="414" Column="16" TopLine="400"/>
       </Position25>
       <Position26>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="323" Column="113" TopLine="315"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="516" Column="16" TopLine="501"/>
       </Position26>
       <Position27>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="281" TopLine="219"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="559" Column="16" TopLine="545"/>
       </Position27>
       <Position28>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="277" Column="654" TopLine="269"/>
+        <Filename Value="upedidovenda_cadastro.pas"/>
+        <Caret Line="1783" Column="36" TopLine="1774"/>
       </Position28>
       <Position29>
-        <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="310" TopLine="302"/>
+        <Filename Value="ufechapedidovenda.pas"/>
+        <Caret Line="247" Column="72" TopLine="243"/>
       </Position29>
       <Position30>
         <Filename Value="uorcamento_pesquisa.pas"/>
-        <Caret Line="311" Column="101" TopLine="279"/>
+        <Caret Line="312" Column="32" TopLine="310"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

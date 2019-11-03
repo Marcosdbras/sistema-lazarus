@@ -498,10 +498,8 @@ begin
 
       qrpedidovenda.Close;
       qrpedidovenda.SQL.Clear;
-      qrpedidovenda.SQL.Add('select * from tpedidovenda p  inner join tmaster_pedidovenda t on p.controle = t.controle_tpedidovenda    where (cast(p.datahoracadastro as date) >= :dti and cast(p.datahoracadastro as date) <= :dtf) ' +filtro);
+      qrpedidovenda.SQL.Add('select * from tpedidovenda p left join tmaster_pedidovenda t on p.controle = t.controle_tpedidovenda    where (cast(p.datahoracadastro as date) >= :dti and cast(p.datahoracadastro as date) <= :dtf) ' +filtro);
       //qrpedidovenda.SQL.Add('select * from tpedidovenda p where (cast(p.datahoracadastro as date) >= :dti and cast(p.datahoracadastro as date) <= :dtf) ' +filtro);
-
-
       qrpedidovenda.ParamByName('dti').AsDateTime:= edtdatainicio.Date;
       qrpedidovenda.ParamByName('dtf').AsDateTime:= edtdatafim.Date;
       qrpedidovenda.open;

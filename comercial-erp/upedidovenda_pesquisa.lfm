@@ -290,7 +290,7 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
       object Button5: TButton
         Left = 8
         Height = 40
-        Top = 8
+        Top = 7
         Width = 91
         Caption = 'Fechar'
         Font.CharSet = ANSI_CHARSET
@@ -323,7 +323,7 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
     object btnfecharpedido1: TButton
       Left = 792
       Height = 40
-      Top = 8
+      Top = 7
       Width = 139
       Caption = 'Cancelar Pedido'
       Font.CharSet = ANSI_CHARSET
@@ -339,7 +339,7 @@ object frmpedidovenda_pesquisa: Tfrmpedidovenda_pesquisa
     object btnimpressao: TButton
       Left = 520
       Height = 40
-      Top = 8
+      Top = 7
       Width = 139
       Caption = 'Impressão'
       Font.CharSet = ANSI_CHARSET

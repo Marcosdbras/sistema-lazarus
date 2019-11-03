@@ -302,14 +302,11 @@ begin
                  qrexec_base.Params.ParamByName('coditem').AsInteger :=  qrconsulta_base.FieldByName('coditem').AsInteger;
                  qrexec_base.Params.ParamByName('valordescontounitario').Asfloat :=  qrconsulta_base.FieldByName('valordescontounitario').AsFloat;
                  qrexec_base.Params.ParamByName('valoracrescimounitario').AsFloat :=  qrconsulta_base.FieldByName('valoracrescimounitario').AsFloat;
-                 qrexec_base.Params.ParamByName('controleorigemmesclagem').AsString :=   qrconsulta_base.FieldByName('controleorigemmesclagem').AsString;
+                 qrexec_base.Params.ParamByName('controleorigemmesclagem').AsInteger :=   qrconsulta_base.FieldByName('controleorigemmesclagem').AsInteger;
 
                  qrexec_base.Params.ParamByName('mesclar').AsString :=  qrconsulta_base.FieldByName('mesclar').AsString;
                  qrexec_base.Params.ParamByName('status').AsString :=  qrconsulta_base.FieldByName('status').AsString;
                  qrexec_base.Params.ParamByName('unconvertida').AsString :=  qrconsulta_base.FieldByName('unconvertida').AsString;
-
-
-
                  qrexec_base.ExecSQL;
 
                  atualizabanco;
