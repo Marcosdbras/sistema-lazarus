@@ -225,14 +225,86 @@ begin
               qrexec_base.ExecSQL;
               atualizaBanco;
 
+              //----------------------------------
 
-              qrexec_base.Close;
-              qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('select GEN_ID(GEN_TRECEBER_ID,1) as prox_codigo FROM RDB$DATABASE;');
-              qrexec_base.Open;
+              qrconsulta_base.Close;
+              qrconsulta_base.SQL.Clear;
+              qrconsulta_base.SQL.Add('select  * from tmaster_receber t left join tespecie e on t.codespecie = e.controle where (t.codpedidovenda = :codpedidovenda) and (e.tipolancamentofinanceiro = ''PARCELAR'')');
+              qrconsulta_base.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
+              qrconsulta_base.Open;
 
-              iprox_codigo := qrexec_base.FieldByName('prox_codigo').AsInteger;
-              atualizaBanco;
+              while not qrconsulta_base.EOF do
+                  begin
+
+                    qrexec_base.Close;
+                    qrexec_base.SQL.Clear;
+                    qrexec_base.SQL.Add('select GEN_ID(GEN_TRECEBER_ID,1) as prox_codigo FROM RDB$DATABASE;');
+                    qrexec_base.Open;
+
+                    iprox_codigo := qrexec_base.FieldByName('prox_codigo').AsInteger;
+                    atualizaBanco;
+
+
+                    qrexec_base.Close;
+                    qrexec_base.SQL.Clear;
+                    qrexec_base.SQL.Add('insert into treceber(CONTROLE, DESCRICAOLANCAMENTO, QTDEPARCELA, NPARCELA, CODCLIENTE,         CLIENTE, CODESPECIE,      ESPECIE,     DATAHORACADASTRO,         DATAVENCIMENTO, CODPLANOCONTA, PLANOCONTA, DOCUMENTO,          ORIGEM, VALORORIGINAL,         OBS, CODFUNCIONARIO,     FUNCIONARIO,      CODVENDEDOR,      VENDEDOR,        CODBARRA, REPLICADA, STATUS,             CODCENTROCUSTO,       CENTROCUSTO)');
+                    qrexec_base.SQL.Add('              values(:CONTROLE, :DESCRICAOLANCAMENTO, :QTDEPARCELA, :NPARCELA, :CODCLIENTE,       :CLIENTE, :CODESPECIE,   :ESPECIE,    :DATAHORACADASTRO,         :DATAVENCIMENTO, :CODPLANOCONTA, :PLANOCONTA, :DOCUMENTO,     :ORIGEM, :VALORORIGINAL,       :OBS, :CODFUNCIONARIO,     :FUNCIONARIO,     :CODVENDEDOR,    :VENDEDOR,       :CODBARRA, :REPLICADA, :STATUS,          :CODCENTROCUSTO,       :CENTROCUSTO)');
+
+
+                    qrexec_base.Params.ParamByName('CONTROLE').AsInteger := iprox_codigo;
+                    qrexec_base.Params.ParamByName('DESCRICAOLANCAMENTO').AsString := qrconsulta_base.FieldByName('DESCRICAOLANCAMENTO').AsString;
+                    qrexec_base.Params.ParamByName('QTDEPARCELA').AsInteger := qrconsulta_base.FieldByName('QTDEPARCELA').Asinteger;
+                    qrexec_base.Params.ParamByName('NPARCELA').AsInteger := qrconsulta_base.FieldByName('NPARCELA').AsInteger;
+
+                    qrexec_base.Params.ParamByName('CODCLIENTE').AsInteger :=  qrconsulta_base.FieldByName('CODCLIENTE').AsInteger;
+                    qrexec_base.Params.ParamByName('CLIENTE').AsString := qrconsulta_base.FieldByName('CLIENTE').AsString;
+
+                    qrexec_base.Params.ParamByName('CODESPECIE').AsInteger := qrconsulta_base.FieldByName('CODESPECIE').AsInteger;
+                    qrexec_base.Params.ParamByName('ESPECIE').AsString  :=  qrconsulta_base.FieldByName('ESPECIE').AsString;
+
+                    qrexec_base.Params.ParamByName('CODPLANOCONTA').AsInteger :=  qrconsulta_base.FieldByName('CODPLANOCONTA').AsInteger;
+                    qrexec_base.Params.ParamByName('PLANOCONTA').AsString     :=  qrconsulta_base.FieldByName('PLANOCONTA').AsString;
+
+                    qrexec_base.Params.ParamByName('CODCENTROCUSTO').AsInteger :=  qrconsulta_base.FieldByName('CODCENTROCUSTO').AsInteger;
+                    qrexec_base.Params.ParamByName('CENTROCUSTO').AsString     :=  qrconsulta_base.FieldByName('CENTROCUSTO').AsString;
+
+                    qrexec_base.Params.ParamByName('CODFUNCIONARIO').AsInteger := qrconsulta_base.FieldByName('CODFUNCIONARIO').AsInteger;
+                    qrexec_base.Params.ParamByName('FUNCIONARIO').AsString := qrconsulta_base.FieldByName('FUNCIONARIO').AsString;
+                    qrexec_base.Params.ParamByName('CODVENDEDOR').AsInteger := qrconsulta_base.FieldByName('CODVENDEDOR').AsInteger;
+                    qrexec_base.Params.ParamByName('VENDEDOR').AsString  := qrconsulta_base.FieldByName('VENDEDOR').AsString;
+
+                    qrexec_base.Params.ParamByName('DATAHORACADASTRO').AsDatetime := qrconsulta_base.FieldByName('DATAHORACADASTRO').AsDatetime;
+                    qrexec_base.Params.ParamByName('DATAVENCIMENTO').AsDatetime := qrconsulta_base.FieldByName('DATAVENCIMENTO').AsDatetime;
+                    qrexec_base.Params.ParamByName('DOCUMENTO').AsString := qrconsulta_base.FieldByName('DOCUMENTO').AsString;
+                    qrexec_base.Params.ParamByName('ORIGEM').AsString := qrconsulta_base.FieldByName('ORIGEM').AsString;
+                    qrexec_base.Params.ParamByName('VALORORIGINAL').Asfloat := qrconsulta_base.FieldByName('VALORORIGINAL').Asfloat;
+
+                    qrexec_base.Params.ParamByName('REPLICADA').AsString  := qrconsulta_base.FieldByName('REPLICADA').AsString;
+                    qrexec_base.Params.ParamByName('STATUS').AsString  := qrconsulta_base.FieldByName('STATUS').AsString;
+
+                    qrexec_base.ExecSQL;
+
+                    atualizaBanco;
+
+
+                    qrexec_base.Close;
+                    qrexec_base.SQL.Clear;
+                    qrexec_base.SQL.Add('insert into tmaster_ext_receber(codpedidovenda, controle_treceber)');
+                    qrexec_base.SQL.Add('                             values(:codpedidovenda, :controle_treceber)');
+                    qrexec_base.ParamByName('codpedidovenda').AsInteger:=qrconsulta_base.FieldByName('codpedidovenda').AsInteger;;
+                    qrexec_base.ParamByName('controle_treceber').AsInteger:=iprox_codigo;
+                    qrexec_base.ExecSQL;
+
+                    atualizaBanco;
+
+
+                    qrconsulta_base.Next;
+                  end;
+              //endi
+
+
+
+              //------------------------------------
 
               qrexec_base.Close;
               qrexec_base.SQL.Clear;
@@ -244,14 +316,14 @@ begin
               atualizaBanco;
 
 
-              qrexec_base.Close;
-              qrexec_base.SQL.Clear;
-              qrexec_base.SQL.Add('insert into treceber (descricaolancamento, qtdeparcela)');
-              qrexec_base.SQL.Add('              select  t.descricaolancamento, t.qtdeparcela                 t.codespecie from tmaster_receber t left join tespecie e on t.codespecie = e.controle where (t.codpedidovenda = :codpedidovenda) and (e.tipolancamentofinanceiro = ''PARCELAR'')');
-              qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;;
+              //qrexec_base.Close;
+              //qrexec_base.SQL.Clear;
+              //qrexec_base.SQL.Add('insert into treceber (descricaolancamento, qtdeparcela)');
+              //qrexec_base.SQL.Add('              select  t.descricaolancamento, t.qtdeparcela                 t.codespecie from tmaster_receber t left join tespecie e on t.codespecie = e.controle where (t.codpedidovenda = :codpedidovenda) and (e.tipolancamentofinanceiro = ''PARCELAR'')');
+              //qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;;
 
               //qrexec_base.ExecSQL;
-              atualizaBanco;
+              //atualizaBanco;
 
 
 
@@ -994,6 +1066,38 @@ begin
        qrexec_base.SQL.Clear;
        qrexec_base.SQL.Add('delete from tmaster_receber where codpedidovenda = :codpedidovenda');
        qrexec_base.Params.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
+       qrexec_base.ExecSQL;
+
+       atualizaBanco;
+
+
+       qrconsulta_base.Close;
+       qrconsulta_base.SQL.Clear;
+       qrconsulta_base.SQL.Add('select * from tmaster_ext_receber where codpedidovenda = :codpedidovenda');
+       qrconsulta_base.ParamByName('codpedidovenda').AsInteger := modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
+       qrconsulta_base.Open;
+       while not qrconsulta_base.EOF do
+          begin
+
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('delete from treceber where controle = :controle');
+            qrexec_base.ParamByName('controle').AsInteger:=qrconsulta_base.FieldByName('controle_treceber').AsInteger;
+            qrexec_base.ExecSQL;
+
+            atualizaBanco;
+
+            qrconsulta_base.Next;
+
+
+          end;
+       //endth
+
+       qrexec_base.Close;
+       qrexec_base.SQL.Clear;
+       qrexec_base.SQL.Add('delete from tmaster_ext_receber where codpedidovenda = :codpedidovenda');
+       qrexec_base.ParamByName('codpedidovenda').AsInteger := modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;
        qrexec_base.ExecSQL;
 
        atualizaBanco;
