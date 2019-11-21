@@ -149,6 +149,8 @@ object frmusuario_permissao: Tfrmusuario_permissao
     Height = 23
     Top = 48
     Width = 159
+    EchoMode = emPassword
+    PasswordChar = '*'
     TabOrder = 8
     Text = 'edtsenha'
   end
@@ -156,8 +158,8 @@ object frmusuario_permissao: Tfrmusuario_permissao
     Left = 32
     Height = 15
     Top = 56
-    Width = 99
-    Caption = 'Senha Secundária: '
+    Width = 38
+    Caption = 'Senha: '
     ParentColor = False
   end
   object Label3: TLabel
@@ -173,6 +175,8 @@ object frmusuario_permissao: Tfrmusuario_permissao
     Height = 23
     Top = 88
     Width = 159
+    EchoMode = emPassword
+    PasswordChar = '*'
     TabOrder = 9
     Text = 'edtsenha2'
   end

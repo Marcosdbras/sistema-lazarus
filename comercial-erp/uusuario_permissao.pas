@@ -29,6 +29,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    Label4: TLabel;
     lblusuario: TLabel;
     procedure btncancelarClick(Sender: TObject);
     procedure btnsalvarClick(Sender: TObject);

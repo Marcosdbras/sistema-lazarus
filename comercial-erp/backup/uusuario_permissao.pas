@@ -198,7 +198,7 @@ begin
 
         qrexec_base.Close;
         qrexec_base.SQL.Clear;
-        qrexec_base.SQL.Add('update tmaster_usuario set excluir_orcamento = :excluir_orcamento, excluir_pedidovenda = :excluir_pedidovenda, pesqperiodo_caixa = :pesqperiodo_caixa where controle_tusuario = :controle_tusuario');
+        qrexec_base.SQL.Add('update tmaster_usuario set excluir_orcamento = :excluir_orcamento, excluir_pedidovenda = :excluir_pedidovenda, pesqperiodo_movcaixa = :pesqperiodo_movcaixa where controle_tusuario = :controle_tusuario');
         qrexec_base.ParamByName('controle_tusuario').AsInteger:=modulo_usuario.qrusuario_lista.FieldByName('controle').AsInteger;
         if ckborcamento.Checked then
            begin

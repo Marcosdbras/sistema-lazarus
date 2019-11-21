@@ -232,7 +232,7 @@ end;
 procedure Tfrmtela_principal.MenuItem15Click(Sender: TObject);
 begin
 
-  if  modulo_usuario.qrusuario.FieldByName('nivelacesso').AsString <> 'ADMINISTRADOR' then
+  if  modulo_usuario.qrusuario.FieldByName('usuario').AsString <> 'SIM' then
      begin
        application.MessageBox('Você não tem acesso a este recurso!','Atenção',mb_ok);
        exit;
@@ -387,6 +387,258 @@ begin
           end;
        //endi
 
+       lblstatus.Caption:='Abrindo tabelas';
+
+
+       //Fornecedores-----------------------------------------------------
+
+              modulo_conexaodb.qrconsulta_base.Close;
+              modulo_conexaodb.qrconsulta_base.SQL.Clear;
+              modulo_conexaodb.qrconsulta_base.SQL.Add('select * from tfornecedor');
+              modulo_conexaodb.qrconsulta_base.Open;
+
+              modulo_vendaorc.qrfornecedores.Close;
+              modulo_vendaorc.qrfornecedores.SQL.Clear;
+              modulo_vendaorc.qrfornecedores.SQL.Add('select * from fornecedores');
+              modulo_vendaorc.qrfornecedores.Open;
+              while not modulo_vendaorc.qrfornecedores.EOF do
+                    begin
+
+
+
+                                         if  not modulo_conexaodb.qrconsulta_base.Locate('controle',modulo_vendaorc.qrfornecedores.FieldByName('codigo').AsInteger,[]) then
+                                             begin
+
+                                              try
+
+                                               modulo_conexaodb.qrexec_base.Close;
+                                               modulo_conexaodb.qrexec_base.SQL.Clear;
+                                               modulo_conexaodb.qrexec_base.SQL.Add('insert into tfornecedor ( controle,  razaosocial,  datahoracadastro,     nomefantasia,    ativo,  endereco,  complemento,  bairro,  codcidade,  cidade,  uf,  pais,  cep,  naturalidade,     rg,  cpf,  cnpj,  ie,   im,   telefone,  celular,   email,     obs,    numero,     codigocidadeibge,      codemitente,    codigopais ) values');
+                                               modulo_conexaodb.qrexec_base.SQL.Add('                     (:controle, :razaosocial, :datahoracadastro,     :nomefantasia,    :ativo, :endereco, :complemento, :bairro, :codcidade, :cidade, :uf, :pais, :cep, :naturalidade,   :rg, :cpf, :cnpj, :ie,  :im,   :telefone, :celular,  :email,   :obs,    :numero,   :codigocidadeibge,     :codemitente,     :codigopais )');
+                                               modulo_conexaodb.qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrfornecedores.FieldByName('codigo').AsInteger;
+                                               modulo_conexaodb.qrexec_base.ParamByName('razaosocial').AsString:=modulo_vendaorc.qrfornecedores.FieldByName('nome').AsString;
+                                               modulo_conexaodb.qrexec_base.ParamByName('nomefantasia').AsString:= modulo_vendaorc.qrfornecedores.FieldByName('fantasia').AsString;
+
+                                               modulo_conexaodb.qrexec_base.ParamByName('endereco').AsString:= modulo_vendaorc.qrfornecedores.FieldByName('endereco').AsString;
+                                               modulo_conexaodb.qrexec_base.ParamByName('complemento').AsString:=modulo_vendaorc.qrfornecedores.FieldByName('complement').AsString;
+                                               modulo_conexaodb.qrexec_base.ParamByName('bairro').AsString:=modulo_vendaorc.qrfornecedores.FieldByName('bairro').AsString;
+                                               modulo_conexaodb.qrexec_base.ParamByName('numero').AsString:=modulo_vendaorc.qrfornecedores.FieldByName('nro').AsString;
+
+                                               //modulo_conexaodb.qrexec_base.ParamByName('codvendedor').AsInteger:=FieldByName('cfunc').AsInteger;
+                                               //modulo_conexaodb.qrexec_base.ParamByName('vendedor').AsString:=FieldByName('nfunc').AsString;
+
+                                               // Consulta Código IBGE
+                                               //try
+
+                                               //  modulo_conexaodb.qrconsulta_base.Close;
+                                               //  modulo_conexaodb.qrconsulta_base.SQL.Clear;
+                                               //  modulo_conexaodb.qrconsulta_base.SQL.Add('select * from tcidadeibge where municipio = :municipio');
+                                               //  modulo_conexaodb.qrconsulta_base.ParamByName('municipio').AsString:= modulo_vendaorc.qrfornecedores.FieldByName('cidade').AsString;
+                                               //  modulo_conexaodb.qrconsulta_base.Open;
+
+                                               //  modulo_conexaodb.qrexec_base.ParamByName('codigocidadeibge').AsString :=    modulo_conexaodb.qrconsulta_base.FieldByName('codigomunicipio').AsString;
+
+                                              // except
+
+                                               //end;
+
+                                               modulo_conexaodb.qrexec_base.ParamByName('cidade').AsString:=modulo_vendaorc.qrfornecedores.FieldByName('cidade').AsString;
+                                               modulo_conexaodb.qrexec_base.ParamByName('uf').AsString:=modulo_vendaorc.qrfornecedores.FieldByName('estado').AsString;
+                                               modulo_conexaodb.qrexec_base.ParamByName('cep').AsString:=modulo_vendaorc.qrfornecedores.FieldByName('cep').AsString;
+
+                                               modulo_conexaodb.qrexec_base.ParamByName('telefone').AsString:= copy(modulo_vendaorc.qrfornecedores.FieldByName('telefones').AsString,1,9);
+
+                                               if length(scpf) = 11 then
+                                                  begin
+
+
+                                                    modulo_conexaodb.qrexec_base.ParamByName('cpf').AsString:=  formatacpf(scpf);
+
+                                                    if  sie <> '' then
+                                                        modulo_conexaodb.qrexec_base.ParamByName('rg').AsString:=sie
+                                                    else
+                                                       modulo_conexaodb.qrexec_base.ParamByName('rg').AsString:='ISENTO';
+                                                    //endif
+
+
+                                                  end
+                                               else
+                                                  begin
+
+
+                                                    modulo_conexaodb.qrexec_base.ParamByName('cnpj').AsString:=  formatacnpj(scpf);
+
+                                                    if  sie <> '' then
+                                                        modulo_conexaodb.qrexec_base.ParamByName('ie').AsString:= sie
+                                                    else
+                                                        modulo_conexaodb.qrexec_base.ParamByName('ie').AsString:='ISENTO';
+                                                    //endif
+
+                                                  end;
+                                               //endi
+
+                                               modulo_conexaodb.qrexec_base.ParamByName('codigopais').AsString:='1058';
+                                               modulo_conexaodb.qrexec_base.ParamByName('pais').AsString:='BRASIL';
+                                               modulo_conexaodb.qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
+                                               modulo_conexaodb.qrexec_base.ParamByName('ativo').AsString:='SIM';
+                                               modulo_conexaodb.qrexec_base.ParamByName('codemitente').AsInteger:=1;
+
+
+
+
+                                               modulo_conexaodb.qrexec_base.ExecSQL;
+
+                                               modulo_conexaodb.atualizaBanco;
+
+                                               lblstatus.Caption:='Fornecedor> Lendo código '+modulo_vendaorc.qrfornecedores.fieldbyname('codigo').asstring;
+                                               frmtela_principal.Update;
+
+
+
+                                               except
+                                               end;
+
+
+
+
+
+
+
+
+                                             end;
+                                         //endi
+
+
+
+
+                           modulo_vendaorc.qrfornecedores.Next;
+                end;
+              //endth
+
+
+
+       //Clientes------------------------------------------------
+
+       modulo_conexaodb.qrconsulta_base.Close;
+       modulo_conexaodb.qrconsulta_base.SQL.Clear;
+       modulo_conexaodb.qrconsulta_base.SQL.Add('select * from tcliente');
+       modulo_conexaodb.qrconsulta_base.Open;
+
+       modulo_vendaorc.qrclientes.Close;
+       modulo_vendaorc.qrclientes.SQL.Clear;
+       modulo_vendaorc.qrclientes.SQL.Add('select * from clientes');
+       modulo_vendaorc.qrclientes.Open;
+       while not modulo_vendaorc.qrclientes.EOF do
+             begin
+
+
+
+                           if  not modulo_conexaodb.qrconsulta_base.Locate('controle',modulo_vendaorc.qrclientes.FieldByName('codigo').AsInteger,[]) then
+                               begin
+
+                                try
+
+                                 modulo_conexaodb.qrexec_base.Close;
+                                 modulo_conexaodb.qrexec_base.SQL.Clear;
+                                 modulo_conexaodb.qrexec_base.SQL.Add('insert into tcliente ( controle,  cliente,  datahoracadastro,  ativo,  endereco,  complemento,  bairro,  codcidade,  cidade,  uf,  pais,  cep,  naturalidade,  tipocliente,   rg,  cpf,  cnpj,  ie,   im,  datanascimento,  pai,  mae,  telefone,  celular,   email,   estadocivil,  fantasia,  obs,  limitecredito,  numero,  codigocidadeibge,  codemitente,  status,  tributacao,  codvendedor,  vendedor,  codigopais,   codigocstorigem  ) values');
+                                 modulo_conexaodb.qrexec_base.SQL.Add('                     (:controle, :cliente, :datahoracadastro, :ativo, :endereco, :complemento, :bairro, :codcidade, :cidade, :uf, :pais, :cep, :naturalidade, :tipocliente,  :rg, :cpf, :cnpj, :ie,  :im, :datanascimento, :pai, :mae, :telefone, :celular,  :email,  :estadocivil, :fantasia, :obs, :limitecredito, :numero, :codigocidadeibge, :codemitente, :status, :tributacao, :codvendedor, :vendedor, :codigopais,  :codigocstorigem  )');
+                                 modulo_conexaodb.qrexec_base.ParamByName('controle').AsInteger:=modulo_vendaorc.qrclientes.FieldByName('codigo').AsInteger;
+                                 modulo_conexaodb.qrexec_base.ParamByName('cliente').AsString:=modulo_vendaorc.qrclientes.FieldByName('nome').AsString;
+                                 modulo_conexaodb.qrexec_base.ParamByName('fantasia').AsString:= modulo_vendaorc.qrclientes.FieldByName('fantasia').AsString;
+
+                                 modulo_conexaodb.qrexec_base.ParamByName('endereco').AsString:= modulo_vendaorc.qrclientes.FieldByName('endent').AsString;
+                                 modulo_conexaodb.qrexec_base.ParamByName('complemento').AsString:=modulo_vendaorc.qrclientes.FieldByName('complent').AsString;
+                                 modulo_conexaodb.qrexec_base.ParamByName('bairro').AsString:=modulo_vendaorc.qrclientes.FieldByName('bairroent').AsString;
+                                 modulo_conexaodb.qrexec_base.ParamByName('numero').AsString:=modulo_vendaorc.qrclientes.FieldByName('nroent').AsString;
+
+                                 //modulo_conexaodb.qrexec_base.ParamByName('codvendedor').AsInteger:=FieldByName('cfunc').AsInteger;
+                                 //modulo_conexaodb.qrexec_base.ParamByName('vendedor').AsString:=FieldByName('nfunc').AsString;
+
+                                 // Consulta Código IBGE
+                                 modulo_conexaodb.qrconsulta_base.Close;
+                                 modulo_conexaodb.qrconsulta_base.SQL.Clear;
+                                 modulo_conexaodb.qrconsulta_base.SQL.Add('select * from tcidadeibge where municipio = :municipio');
+                                 modulo_conexaodb.qrconsulta_base.ParamByName('municipio').AsString:= modulo_vendaorc.qrclientes.FieldByName('cidadeent').AsString;
+                                 modulo_conexaodb.qrconsulta_base.Open;
+
+                                 modulo_conexaodb.qrexec_base.ParamByName('codigocidadeibge').AsString :=    modulo_conexaodb.qrconsulta_base.FieldByName('codigomunicipio').AsString;
+
+                                 modulo_conexaodb.qrexec_base.ParamByName('cidade').AsString:=modulo_vendaorc.qrclientes.FieldByName('cidadeent').AsString;
+                                 modulo_conexaodb.qrexec_base.ParamByName('uf').AsString:=modulo_vendaorc.qrclientes.FieldByName('estadoent').AsString;
+                                 modulo_conexaodb.qrexec_base.ParamByName('cep').AsString:=modulo_vendaorc.qrclientes.FieldByName('cepent').AsString;
+
+                                 if modulo_vendaorc.qrclientes.FieldByName('telefoneent').AsString <> '' then
+                                    modulo_conexaodb.qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddent) +')'+copy(modulo_vendaorc.qrclientes.FieldByName('telefoneent').AsString,1,9)
+                                 else
+                                    modulo_conexaodb.qrexec_base.ParamByName('telefone').AsString:='('+  inttostr(idddfs) +')'+copy(modulo_vendaorc.qrclientes.FieldByName('telefones').AsString,1,9);
+                                 //endi
+
+                                 if length(scpf) = 11 then
+                                    begin
+
+                                      modulo_conexaodb.qrexec_base.ParamByName('tipocliente').AsString:= 'FÍSICA';
+                                      modulo_conexaodb.qrexec_base.ParamByName('cpf').AsString:=  formatacpf(scpf);
+
+                                      if  sie <> '' then
+                                          modulo_conexaodb.qrexec_base.ParamByName('rg').AsString:=sie
+                                      else
+                                         modulo_conexaodb.qrexec_base.ParamByName('rg').AsString:='ISENTO';
+                                      //endif
+
+
+                                    end
+                                 else
+                                    begin
+
+                                      modulo_conexaodb.qrexec_base.ParamByName('tipocliente').AsString:= 'JURÍDICA';
+                                      modulo_conexaodb.qrexec_base.ParamByName('cnpj').AsString:=  formatacnpj(scpf);
+
+                                      if  sie <> '' then
+                                          modulo_conexaodb.qrexec_base.ParamByName('ie').AsString:= sie
+                                      else
+                                          modulo_conexaodb.qrexec_base.ParamByName('ie').AsString:='ISENTO';
+                                      //endif
+
+                                    end;
+                                 //endi
+
+                                 modulo_conexaodb.qrexec_base.ParamByName('codigopais').AsString:='1058';
+                                 modulo_conexaodb.qrexec_base.ParamByName('pais').AsString:='BRASIL';
+                                 modulo_conexaodb.qrexec_base.ParamByName('datahoracadastro').AsDateTime := now();
+                                 modulo_conexaodb.qrexec_base.ParamByName('ativo').AsString:='SIM';
+                                 modulo_conexaodb.qrexec_base.ParamByName('codemitente').AsInteger:=1;
+                                 modulo_conexaodb.qrexec_base.ParamByName('codigocstorigem').AsInteger:=1;
+
+                                 modulo_conexaodb.qrexec_base.ParamByName('tributacao').AsString:='NORMAL';
+
+                                 modulo_conexaodb.qrexec_base.ExecSQL;
+
+                                 modulo_conexaodb.atualizaBanco;
+
+                                 lblstatus.Caption:='Cliente> Lendo código '+modulo_vendaorc.qrclientes.fieldbyname('codigo').asstring;
+                                 frmtela_principal.Update;
+
+
+
+                                 except
+                                 end;
+
+
+
+
+
+
+
+
+                               end;
+                           //endi
+
+
+
+
+             modulo_vendaorc.qrclientes.Next;
+         end;
+       //endth
 
 
 
@@ -395,7 +647,8 @@ begin
        with modulo_vendaorc do
            begin
 
-             lblstatus.Caption:='Abrindo tabela diferenciada de preço';
+
+
 
              qrprodutos.close;
              qrprodutos.SQL.Clear;

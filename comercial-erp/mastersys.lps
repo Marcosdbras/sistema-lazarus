@@ -8,7 +8,7 @@
       <Unit0>
         <Filename Value="mastersys.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="34"/>
+        <EditorIndex Value="37"/>
         <TopLine Value="12"/>
         <CursorPos X="42" Y="21"/>
         <UsageCount Value="202"/>
@@ -20,7 +20,7 @@
         <ComponentName Value="frmpedidovenda_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="23"/>
+        <EditorIndex Value="27"/>
         <TopLine Value="430"/>
         <CursorPos X="13" Y="435"/>
         <ExtraEditorCount Value="1"/>
@@ -39,7 +39,7 @@
         <ComponentName Value="modulo_pedidovenda"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="31"/>
+        <EditorIndex Value="34"/>
         <TopLine Value="223"/>
         <CursorPos X="41" Y="215"/>
         <ExtraEditorCount Value="1"/>
@@ -57,7 +57,7 @@
         <ComponentName Value="modulo_conexaodb"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="24"/>
+        <EditorIndex Value="28"/>
         <TopLine Value="46"/>
         <CursorPos X="5" Y="56"/>
         <UsageCount Value="201"/>
@@ -88,9 +88,9 @@
         <ComponentName Value="frmtela_principal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="9"/>
-        <TopLine Value="215"/>
-        <CursorPos X="12" Y="225"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="438"/>
+        <CursorPos Y="446"/>
         <UsageCount Value="205"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -106,9 +106,9 @@
       <Unit8>
         <Filename Value="ufuncao_geral.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="13"/>
-        <TopLine Value="1238"/>
-        <CursorPos X="71" Y="1241"/>
+        <EditorIndex Value="17"/>
+        <TopLine Value="4270"/>
+        <CursorPos X="41" Y="4276"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit8>
@@ -128,7 +128,7 @@
         <ComponentName Value="frmlogin"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="14"/>
         <TopLine Value="175"/>
         <CursorPos X="81" Y="121"/>
         <UsageCount Value="200"/>
@@ -141,7 +141,7 @@
         <ComponentName Value="frmcadastrar_senha"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="18"/>
         <TopLine Value="48"/>
         <CursorPos X="51" Y="58"/>
         <UsageCount Value="282"/>
@@ -153,7 +153,7 @@
         <ComponentName Value="frmpedidovenda_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="29"/>
+        <EditorIndex Value="33"/>
         <TopLine Value="493"/>
         <CursorPos X="184" Y="502"/>
         <ExtraEditorCount Value="1"/>
@@ -171,7 +171,7 @@
         <ComponentName Value="modulo_especie"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="33"/>
         <CursorPos X="41" Y="40"/>
         <UsageCount Value="258"/>
@@ -227,7 +227,7 @@
         <ComponentName Value="frmimppedvenda"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="9"/>
         <TopLine Value="258"/>
         <CursorPos X="14" Y="263"/>
         <ExtraEditorCount Value="1"/>
@@ -246,9 +246,9 @@
         <ComponentName Value="modulo_vendaorc"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="30"/>
-        <TopLine Value="93"/>
-        <CursorPos X="6" Y="114"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="103"/>
+        <CursorPos X="16" Y="107"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -259,10 +259,11 @@
         <ComponentName Value="frmvendaorc"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="832"/>
-        <CursorPos X="67" Y="842"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="235"/>
+        <CursorPos X="25" Y="313"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit20>
       <Unit21>
         <Filename Value="uparametro.pas"/>
@@ -270,7 +271,7 @@
         <ComponentName Value="frmparametro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="15"/>
         <TopLine Value="417"/>
         <CursorPos X="59" Y="417"/>
         <UsageCount Value="207"/>
@@ -283,7 +284,7 @@
         <ComponentName Value="modulo_temp"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="16"/>
         <TopLine Value="195"/>
         <CursorPos X="32" Y="209"/>
         <UsageCount Value="204"/>
@@ -296,7 +297,7 @@
         <ComponentName Value="modulo_geral"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="36"/>
+        <EditorIndex Value="39"/>
         <CursorPos X="98" Y="15"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
@@ -307,7 +308,7 @@
         <ComponentName Value="frmpedidovenda_impressao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="27"/>
+        <EditorIndex Value="31"/>
         <TopLine Value="66"/>
         <CursorPos X="4" Y="45"/>
         <ExtraEditorCount Value="1"/>
@@ -414,6 +415,7 @@
         <ComponentName Value="modulo_orcamento"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="4"/>
         <CursorPos X="93" Y="4"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -425,7 +427,7 @@
         <ComponentName Value="frmorcamento_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="23"/>
         <TopLine Value="219"/>
         <CursorPos X="3" Y="179"/>
         <UsageCount Value="201"/>
@@ -438,7 +440,7 @@
         <ComponentName Value="frmorcamento_cadastro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="22"/>
+        <EditorIndex Value="26"/>
         <TopLine Value="1726"/>
         <CursorPos X="30" Y="1731"/>
         <UsageCount Value="200"/>
@@ -451,7 +453,7 @@
         <ComponentName Value="frmcaixa_impressao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="20"/>
         <TopLine Value="86"/>
         <CursorPos X="198" Y="96"/>
         <UsageCount Value="200"/>
@@ -464,7 +466,7 @@
         <ComponentName Value="frmimpcaixa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="22"/>
         <TopLine Value="164"/>
         <CursorPos X="72" Y="175"/>
         <UsageCount Value="200"/>
@@ -476,7 +478,7 @@
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_cliente"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="33"/>
+        <EditorIndex Value="36"/>
         <TopLine Value="35"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -498,7 +500,7 @@
         <ComponentName Value="modulo_centrocusto"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="7"/>
         <CursorPos X="77" Y="4"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
@@ -510,10 +512,9 @@
         <ComponentName Value="frmfechapedidovenda"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="21"/>
         <TopLine Value="1087"/>
-        <CursorPos X="40" Y="1099"/>
+        <CursorPos X="27" Y="1097"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -523,7 +524,7 @@
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_planoconta"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="13"/>
         <CursorPos X="27"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
@@ -534,7 +535,7 @@
         <ComponentName Value="modulo_receber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="95"/>
         <CursorPos X="85" Y="110"/>
         <UsageCount Value="201"/>
@@ -547,7 +548,7 @@
         <ComponentName Value="modulo_master_indice"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="32"/>
+        <EditorIndex Value="35"/>
         <TopLine Value="15"/>
         <CursorPos X="3" Y="37"/>
         <UsageCount Value="201"/>
@@ -560,7 +561,7 @@
         <ComponentName Value="frmcadastro_parcelafinanceiro"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="24"/>
         <TopLine Value="161"/>
         <CursorPos X="85" Y="172"/>
         <UsageCount Value="200"/>
@@ -573,7 +574,7 @@
         <ComponentName Value="modulo_parcelapredefinida"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="10"/>
         <TopLine Value="71"/>
         <CursorPos X="57" Y="76"/>
         <ExtraEditorCount Value="1"/>
@@ -592,7 +593,7 @@
         <ComponentName Value="modulo_pagar"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="21"/>
+        <EditorIndex Value="25"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -603,10 +604,10 @@
         <ComponentName Value="frmorcamento_impressao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="80"/>
         <CursorPos X="10" Y="94"/>
-        <UsageCount Value="178"/>
+        <UsageCount Value="196"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit48>
@@ -616,9 +617,9 @@
         <ComponentName Value="frmimporc"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="299"/>
-        <UsageCount Value="174"/>
+        <UsageCount Value="192"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit49>
@@ -628,9 +629,9 @@
         <ComponentName Value="modulo_consulta"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="19"/>
         <CursorPos X="61" Y="9"/>
-        <UsageCount Value="163"/>
+        <UsageCount Value="181"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit50>
@@ -640,9 +641,9 @@
         <ComponentName Value="modulo_usuario"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="25"/>
+        <EditorIndex Value="29"/>
         <CursorPos X="44" Y="8"/>
-        <UsageCount Value="137"/>
+        <UsageCount Value="155"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit51>
@@ -652,10 +653,10 @@
         <ComponentName Value="frmusuario_pesquisa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="26"/>
+        <EditorIndex Value="30"/>
         <TopLine Value="45"/>
         <CursorPos X="30" Y="59"/>
-        <UsageCount Value="111"/>
+        <UsageCount Value="129"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit52>
@@ -665,10 +666,10 @@
         <ComponentName Value="frmusuario_permissao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="28"/>
-        <TopLine Value="224"/>
-        <CursorPos X="82" Y="228"/>
-        <UsageCount Value="107"/>
+        <EditorIndex Value="32"/>
+        <TopLine Value="225"/>
+        <CursorPos X="82" Y="229"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit53>
@@ -680,11 +681,11 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="82"/>
         <CursorPos X="76" Y="83"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="37"/>
       </Unit54>
       <Unit55>
         <Filename Value="umodulo_caixa.pas"/>
-        <EditorIndex Value="35"/>
+        <EditorIndex Value="38"/>
         <TopLine Value="34"/>
         <CursorPos X="53" Y="42"/>
         <UsageCount Value="100"/>
@@ -693,10 +694,11 @@
       <Unit56>
         <Filename Value="C:\lazarus\lcl\dbgrids.pas"/>
         <UnitName Value="DBGrids"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="3351"/>
-        <CursorPos Y="3361"/>
-        <UsageCount Value="2"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="3450"/>
+        <CursorPos Y="3458"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit56>
       <Unit57>
         <Filename Value="C:\lazarus\lcl\lresources.pp"/>
@@ -704,14 +706,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3149"/>
         <CursorPos Y="3156"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="10"/>
       </Unit57>
       <Unit58>
         <Filename Value="C:\lazarus\lcl\include\dblookup.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="411"/>
         <CursorPos Y="419"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="2"/>
       </Unit58>
       <Unit59>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>
@@ -719,52 +721,51 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="7767"/>
         <CursorPos Y="7780"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="10"/>
       </Unit59>
       <Unit60>
-        <Filename Value="umostratroco.pas"/>
-        <ComponentName Value="frmmostratroco"/>
-        <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="24"/>
-        <CursorPos X="142" Y="45"/>
-        <UsageCount Value="1"/>
-      </Unit60>
-      <Unit61>
         <Filename Value="C:\lazarus\lcl\include\control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2245"/>
         <CursorPos Y="2253"/>
-        <UsageCount Value="6"/>
-      </Unit61>
-      <Unit62>
+        <UsageCount Value="4"/>
+      </Unit60>
+      <Unit61>
         <Filename Value="C:\lazarus\lcl\include\buttoncontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="6"/>
-      </Unit62>
-      <Unit63>
+        <UsageCount Value="4"/>
+      </Unit61>
+      <Unit62>
         <Filename Value="C:\lazarus\lcl\include\buttons.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="162"/>
         <CursorPos Y="170"/>
-        <UsageCount Value="6"/>
-      </Unit63>
-      <Unit64>
+        <UsageCount Value="4"/>
+      </Unit62>
+      <Unit63>
         <Filename Value="C:\lazarus\lcl\include\wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="5390"/>
         <CursorPos Y="5398"/>
-        <UsageCount Value="6"/>
-      </Unit64>
-      <Unit65>
+        <UsageCount Value="4"/>
+      </Unit63>
+      <Unit64>
         <Filename Value="C:\lazarus\lcl\lclmessageglue.pas"/>
         <UnitName Value="LCLMessageGlue"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="111"/>
         <CursorPos Y="122"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="4"/>
+      </Unit64>
+      <Unit65>
+        <Filename Value="C:\lazarus\lcl\interfaces\win32\win32winapi.inc"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="2869"/>
+        <CursorPos Y="2878"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit65>
     </Units>
     <OtherDefines Count="1">
@@ -772,125 +773,143 @@
     </OtherDefines>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1085" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="402" TopLine="388"/>
       </Position1>
       <Position2>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1086" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="403" TopLine="389"/>
       </Position2>
       <Position3>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1088" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="404" TopLine="390"/>
       </Position3>
       <Position4>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1082" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="409" TopLine="401"/>
       </Position4>
       <Position5>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1083" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="412" TopLine="401"/>
       </Position5>
       <Position6>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1084" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="414" TopLine="401"/>
       </Position6>
       <Position7>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1085" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="415" TopLine="401"/>
       </Position7>
       <Position8>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1086" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="416" TopLine="402"/>
       </Position8>
       <Position9>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1088" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="417" TopLine="403"/>
       </Position9>
       <Position10>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1082" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="418" TopLine="404"/>
       </Position10>
       <Position11>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1083" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="419" TopLine="405"/>
       </Position11>
       <Position12>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1084" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="420" TopLine="406"/>
       </Position12>
       <Position13>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1085" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="422" TopLine="408"/>
       </Position13>
       <Position14>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1086" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="423" TopLine="409"/>
       </Position14>
       <Position15>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1088" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="424" TopLine="410"/>
       </Position15>
       <Position16>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1082" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="425" TopLine="411"/>
       </Position16>
       <Position17>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1083" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="445" TopLine="437"/>
       </Position17>
       <Position18>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1084" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="446" TopLine="437"/>
       </Position18>
       <Position19>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1085" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="447" TopLine="437"/>
       </Position19>
       <Position20>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1086" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="449" TopLine="437"/>
       </Position20>
       <Position21>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1088" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="451" TopLine="437"/>
       </Position21>
       <Position22>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1082" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="469" TopLine="461"/>
       </Position22>
       <Position23>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1083" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="471" TopLine="461"/>
       </Position23>
       <Position24>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1084" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="474" TopLine="461"/>
       </Position24>
       <Position25>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1085" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="480" TopLine="472"/>
       </Position25>
       <Position26>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1086" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="481" TopLine="472"/>
       </Position26>
       <Position27>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1088" TopLine="1074"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="482" TopLine="472"/>
       </Position27>
       <Position28>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1092" TopLine="1084"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="483" TopLine="472"/>
       </Position28>
       <Position29>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1097" TopLine="1084"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="484" TopLine="472"/>
       </Position29>
       <Position30>
-        <Filename Value="ufechapedidovenda.pas"/>
-        <Caret Line="1100" TopLine="1086"/>
+        <Filename Value="utela_principal.pas"/>
+        <Caret Line="417" Column="263" TopLine="409"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
+  <Debugging>
+    <BreakPoints Count="2">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="utela_principal.pas"/>
+        <Line Value="395"/>
+      </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="utela_principal.pas"/>
+        <Line Value="446"/>
+      </Item2>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>

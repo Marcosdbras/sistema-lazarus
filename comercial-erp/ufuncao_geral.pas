@@ -200,6 +200,48 @@ begin
 try
 
 
+
+//Tabela TMASTER_ATU existe?
+if existe_tabela('TMASTER_ATU') = 0 then
+   begin
+
+     with modulo_conexaodb do
+     begin
+
+       Script.Terminator:=';';
+
+       Script.Script.Clear;
+       Script.Script.Add('CREATE TABLE TMASTER_ATU(CODIGO INTEGER NOT NULL);');
+       Script.Script.Add('CREATE SEQUENCE GEN_TMASTER_ATU_ID;');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Script.Add('ALTER TABLE TMASTER_ATU ADD CONSTRAINT PK_TMASTER_ATU  PRIMARY KEY (CODIGO);');
+       Script.Script.Add('COMMIT;');
+       Script.Execute;
+
+       Script.Script.Clear;
+       Script.Terminator:='^';
+       Script.Script.Add('create trigger tmaster_ATU_bi for tmaster_ATU');
+       Script.Script.Add('active before insert position 0');
+       Script.Script.Add('as');
+       Script.Script.Add('begin');
+       Script.Script.Add('if (new.codigo is null) then');
+       Script.Script.Add('    new.codigo = gen_id(gen_tmaster_ATU_id,1);');
+       Script.Script.Add('end^');
+       Script.Script.Add('COMMIT^');
+
+       Script.Execute;
+
+
+     end;
+
+   end;
+//endif
+
+
+
 //Tabela TMASTER_CAIXA existe?
 if existe_tabela('TMASTER_CAIXA') = 0 then
    begin
@@ -593,6 +635,27 @@ if existe_tabela('TMASTER_INDICE') = 0 then
 
    end;
 //endif
+
+
+//Campo ATUALIZABASE existe?
+if existe_campo('TMASTER_ATU','ATUALIZABASE') = 0 then
+   begin
+
+         with modulo_conexaodb do
+           begin
+
+              Script.Script.Clear;
+              Script.Terminator:=';';
+              Script.Script.Add('ALTER TABLE TMASTER_ATU  ADD  ATUALIZABASE  VARCHAR(100);   ');
+              Script.Script.Add('COMMIT;');
+              Script.Execute;
+
+           end;
+         //endth
+  end;
+//endi
+
+
 
 
 //Campo CODPEDIDOVENDA existe?
@@ -3893,136 +3956,350 @@ with modulo_conexaodb do
           end;
        //endi
 
+       qrconsulta_base.Close;
+       qrconsulta_base.SQL.Clear;
+       qrconsulta_base.SQL.Add('select atualizabase from tmaster_atu;');
+       qrconsulta_base.Open;
+
+       if not qrconsulta_base.Locate('atualizabase','sparetucest',[])then
+          begin
+
+            Script.Script.Clear;
+            Script.Script.Add('/*Retorna dados*/');
+            Script.Terminator:='^';
+            Script.Script.Add('CREATE OR ALTER procedure sparetucest (ncm varchar(8)) returns (cest varchar(10)) ');
+            Script.Script.Add(' as ');
+            Script.Script.Add('begin');
+            Script.Script.Add('  for');
+            Script.Script.Add('    select tcest.ncm,  tcest.cest from tcest where tcest.ncm = :ncm into :ncm, :cest');
+            Script.Script.Add('  do');
+            Script.Script.Add('  begin');
+            Script.Script.Add('     suspend;');
+            Script.Script.Add('  end');
+            Script.Script.Add('end^');
+            Script.Script.Add('');
+            Script.Script.Add('COMMIT^');
+            Script.Execute;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''sparetucest'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
+       if not qrconsulta_base.Locate('atualizabase','sparetucest',[])then
+          begin
+
+            Script.Script.Clear;
+            Script.Script.Add('/*Retorna dados*/');
+            Script.Terminator:='^';
+            Script.Script.Add('CREATE OR ALTER procedure sparetucest (ncm varchar(8)) returns (cest varchar(10)) ');
+            Script.Script.Add(' as ');
+            Script.Script.Add('begin');
+            Script.Script.Add('  for');
+            Script.Script.Add('    select tcest.ncm,  tcest.cest from tcest where tcest.ncm = :ncm into :ncm, :cest');
+            Script.Script.Add('  do');
+            Script.Script.Add('  begin');
+            Script.Script.Add('     suspend;');
+            Script.Script.Add('  end');
+            Script.Script.Add('end^');
+            Script.Script.Add('');
+            Script.Script.Add('COMMIT^');
+            Script.Execute;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''sparetucest'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
+
+
+
+
+       if not qrconsulta_base.Locate('atualizabase','spatualizacest',[])then
+          begin
+
+
+            Script.Script.Clear;
+            Script.Terminator:='^';
+            Script.Script.Add('/*Atualiza  dados*/');
+            Script.Script.Add('CREATE OR ALTER procedure spatualizacest (');
+            Script.Script.Add('    codnfe integer)');
+            Script.Script.Add('as');
+            Script.Script.Add('declare variable codproduto integer;');
+            Script.Script.Add('declare variable cest varchar(10);');
+            Script.Script.Add('declare variable controle integer;');
+            Script.Script.Add('declare variable ncm varchar(8);');
+            Script.Script.Add('declare variable codbarra varchar(60);');
+            Script.Script.Add('declare variable codigo_barra varchar(60);');
+            Script.Script.Add('begin');
+            Script.Script.Add('  for');
+            Script.Script.Add('    select titensvendanfe.controle, titensvendanfe.ncm, titensvendanfe.codproduto, titensvendanfe.codbarra  from titensvendanfe where titensvendanfe.codnfe = :codnfe  into :controle, :ncm, :codproduto, :codigo_barra');
+            Script.Script.Add('  do');
+            Script.Script.Add('  begin');
+            Script.Script.Add('    if (:codigo_barra is null) then');
+            Script.Script.Add('      begin');
+            Script.Script.Add('        select testoque.codbarras from testoque where testoque.controle = :codproduto  into :codbarra;');
+            Script.Script.Add('        update titensvendanfe set titensvendanfe.codbarra = :codbarra where  titensvendanfe.controle = :controle;');
+            Script.Script.Add('      end');
+            Script.Script.Add('    execute procedure sparetucest(:ncm) returning_values :cest;');
+            Script.Script.Add('    update titensvendanfe set titensvendanfe.cest = :cest where  titensvendanfe.controle = :controle;');
+            Script.Script.Add('  end');
+            Script.Script.Add('  suspend;');
+            Script.Script.Add('end^');
+            Script.Script.Add('COMMIT^');
+            Script.Execute;
+
+
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''spatualizacest'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
+
+
+       if not qrconsulta_base.Locate('atualizabase','tvendanfe_au1',[])then
+          begin
+
+
+            Script.Script.Clear;
+            Script.Terminator:='^';
+            Script.Script.Add('/*Atualiza dados*/');
+            Script.Script.Add('CREATE OR ALTER trigger tvendanfe_au1 for tvendanfe');
+            Script.Script.Add('active after update position 1');
+            Script.Script.Add('AS');
+            Script.Script.Add('begin');
+            Script.Script.Add('  execute procedure spatualizacest(old.controle);');
+            Script.Script.Add('end^');
+            Script.Script.Add('');
+            Script.Script.Add('');
+            Script.Script.Add('');
+            Script.Script.Add('COMMIT^');
+            Script.Execute;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''tvendanfe_au1'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
+
+       if not qrconsulta_base.Locate('atualizabase','spcaixatdinheiro',[])then
+          begin
+
+
+            Script.Script.Clear;
+            Script.Script.Add('/*Caixa Dinheiro*/');
+            Script.Terminator:='^';
+            Script.Script.Add('create or alter procedure spcaixatdinheiro (');
+            Script.Script.Add('   datainicio date,');
+            Script.Script.Add('   datafinal date)');
+            Script.Script.Add('returns (');
+            Script.Script.Add('   tdinheiro decimal(15,2))');
+            Script.Script.Add('as');
+            Script.Script.Add('   declare variable vlrpagar decimal(15,2);');
+            Script.Script.Add('   declare variable vlrrecebido decimal(15,2);');
+            Script.Script.Add('   declare variable datafec date;');
+            Script.Script.Add('   declare variable controle integer;');
+            Script.Script.Add('   declare variable statuspedido varchar(10);');
+            Script.Script.Add('begin');
+            Script.Script.Add('   tdinheiro = 0;');
+            Script.Script.Add('for select p.controle, m.datafec, coalesce(m.vlrrecebido,0), coalesce(m.vlrpagar,0), m.statuspedido from tpedidovenda p inner join tmaster_pedidovenda m on  p.controle = m.controle_tpedidovenda where (m.datafec >= :datainicio) and  (m.datafec <= :datafinal) and (m.statuspedido ='+quotedstr('F')+ ')   into :controle,  :datafec, :vlrrecebido, :vlrpagar, :statuspedido do');
+            Script.Script.Add('   begin');
+            Script.Script.Add('     if (vlrrecebido > vlrpagar) then');
+            Script.Script.Add('     begin');
+            Script.Script.Add('       tdinheiro = tdinheiro + vlrpagar;');
+            Script.Script.Add('     end');
+            Script.Script.Add('     else');
+            Script.Script.Add('     begin');
+            Script.Script.Add('       tdinheiro = tdinheiro + vlrrecebido;');
+            Script.Script.Add('     end');
+            Script.Script.Add('   end');
+            Script.Script.Add('   suspend;');
+            Script.Script.Add('end^');
+            Script.Script.Add('COMMIT^');
+            Script.Execute;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''spcaixatdinheiro'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
+
+       if not qrconsulta_base.Locate('atualizabase','TOTALPORESPECIE',[])then
+          begin
+
+            Script.Script.Clear;
+            Script.Terminator:=';';
+            Script.Script.Add('CREATE OR ALTER VIEW TOTALPORESPECIE(');
+            Script.Script.Add('CONTROLE,');
+            Script.Script.Add('ESPECIE, ');
+            Script.Script.Add(' DATAFEC,');
+            Script.Script.Add('STATUSPEDIDO,');
+            Script.Script.Add('CODEPECIE,');
+            Script.Script.Add('TOTALTIPOPGTO)');
+            Script.Script.Add('AS');
+            Script.Script.Add('select e.controle, e.especie, r.datafec,   p.statuspedido ,   r.codespecie, sum( r.valororiginal ) as totaltipopgto  from   tmaster_receber r  right join tespecie e on r.codespecie = e.controle left join tmaster_pedidovenda p on p.controle_tpedidovenda = r.codpedidovenda group by p.statuspedido, r.datafec, e.controle, r.codespecie, e.especie;');
+            Script.Script.Add('/*Fim*/');
+            Script.Execute;
+
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''TOTALPORESPECIE'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
+
+       if not qrconsulta_base.Locate('atualizabase','spvlrtotalportipopagto',[])then
+          begin
+
+
+            Script.Script.Clear;
+            Script.Script.Add('/*Valor total tipo pagto*/');
+            Script.Terminator:='^';
+            Script.Script.Add('create or alter procedure spvlrtotalportipopagto (');
+            Script.Script.Add('   datainicio date,');
+            Script.Script.Add('   datafinal date)');
+            Script.Script.Add('returns (');
+            Script.Script.Add('   tipopgto varchar(100),');
+            Script.Script.Add('   vlrtotaltipopagto decimal(15,2))');
+            Script.Script.Add('as');
+            Script.Script.Add('   declare variable datahoracadastro timestamp;');
+            Script.Script.Add('   declare variable controle integer;');
+            Script.Script.Add('begin');
+            Script.Script.Add('   suspend;');
+            Script.Script.Add('end^');
+            Script.Script.Add('COMMIT^');
+            Script.Execute;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''spvlrtotalportipopagto'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
+
+       if not qrconsulta_base.Locate('atualizabase','spexcluirrec1',[])then
+          begin
+
+            Script.Script.Clear;
+            Script.Script.Add('/*Excluir receber apos emitir nota fiscal*/');
+            Script.Terminator:='^';
+            Script.Script.Add('create or alter procedure spexcluirrec1 (');
+            Script.Script.Add('    stpedvendanovo varchar(40),');
+            Script.Script.Add('    cpedvenda integer,');
+            Script.Script.Add('    stpedvendaantigo varchar(40))');
+            Script.Script.Add('as');
+            Script.Script.Add('  declare variable codigo integer;');
+            Script.Script.Add('  declare variable controle_treceber integer;');
+            Script.Script.Add('  declare variable codpedidovenda integer;');
+            Script.Script.Add('begin');
+            Script.Script.Add('  if ((stpedvendaantigo = ''IMPORTADO'')  and (stpedvendanovo = ''NF-E EMITIDA'')) then');
+            Script.Script.Add('       begin');
+            Script.Script.Add('          for select t.codigo, t.controle_treceber, t.codpedidovenda from tmaster_ext_receber t where t.codpedidovenda = :cpedvenda into :codigo, :controle_treceber, :codpedidovenda do ');
+            Script.Script.Add('              begin');
+            Script.Script.Add('                delete from treceber r where r.controle = :controle_treceber;');
+            Script.Script.Add('              end');
+            Script.Script.Add('          delete from tmaster_ext_receber r where r.codpedidovenda = :cpedvenda;');
+            Script.Script.Add('       end');
+            Script.Script.Add('end^');
+            Script.Script.Add('COMMIT^');
+            Script.Execute;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''spexcluirrec1'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
+
+
+
+
+
+
+       if not qrconsulta_base.Locate('atualizabase','TPEDIDOVENDA_BI1',[])then
+          begin
+
+
+            Script.Script.Clear;
+            Script.Script.Add('/*Gatilho excluir receber apos emitir nota fiscal*/');
+            Script.Terminator:='^';
+            Script.Script.Add('CREATE OR ALTER TRIGGER TPEDIDOVENDA_BI1 FOR TPEDIDOVENDA');
+            Script.Script.Add('  ACTIVE AFTER UPDATE POSITION 0');
+            Script.Script.Add('  AS');
+            Script.Script.Add('begin');
+            Script.Script.Add('   execute procedure spexcluirrec1(new.status,new.controle,old.status);');
+            Script.Script.Add('end^');
+            Script.Script.Add('COMMIT^');
+            Script.Execute;
+
+            qrexec_base.Close;
+            qrexec_base.SQL.Clear;
+            qrexec_base.SQL.Add('insert into tmaster_atu(atualizabase) values (''TPEDIDOVENDA_BI1'')');
+            qrexec_base.ExecSQL;
+
+            atualizabanco;
+          end;
+       //endif
+
        Script.Script.Clear;
-       Script.Script.Add('/*Retorna dados*/');
+       Script.Script.Add('/*     */');
        Script.Terminator:='^';
-       Script.Script.Add('CREATE OR ALTER procedure sparetucest (ncm varchar(8)) returns (cest varchar(10)) ');
-       Script.Script.Add(' as ');
-       Script.Script.Add('begin');
-       Script.Script.Add('  for');
-       Script.Script.Add('    select tcest.ncm,  tcest.cest from tcest where tcest.ncm = :ncm into :ncm, :cest');
-       Script.Script.Add('  do');
-       Script.Script.Add('  begin');
-       Script.Script.Add('     suspend;');
-       Script.Script.Add('  end');
-       Script.Script.Add('end^');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
+       Script.Script.Add('');
        Script.Script.Add('');
        Script.Script.Add('COMMIT^');
-       Script.Execute;
-
-
-       Script.Script.Clear;
-       Script.Terminator:='^';
-       Script.Script.Add('/*Atualiza  dados*/');
-       Script.Script.Add('CREATE OR ALTER procedure spatualizacest (');
-       Script.Script.Add('    codnfe integer)');
-       Script.Script.Add('as');
-       Script.Script.Add('declare variable codproduto integer;');
-       Script.Script.Add('declare variable cest varchar(10);');
-       Script.Script.Add('declare variable controle integer;');
-       Script.Script.Add('declare variable ncm varchar(8);');
-       Script.Script.Add('declare variable codbarra varchar(60);');
-       Script.Script.Add('declare variable codigo_barra varchar(60);');
-       Script.Script.Add('begin');
-       Script.Script.Add('  for');
-       Script.Script.Add('    select titensvendanfe.controle, titensvendanfe.ncm, titensvendanfe.codproduto, titensvendanfe.codbarra  from titensvendanfe where titensvendanfe.codnfe = :codnfe  into :controle, :ncm, :codproduto, :codigo_barra');
-       Script.Script.Add('  do');
-       Script.Script.Add('  begin');
-       Script.Script.Add('    if (:codigo_barra is null) then');
-       Script.Script.Add('      begin');
-       Script.Script.Add('        select testoque.codbarras from testoque where testoque.controle = :codproduto  into :codbarra;');
-       Script.Script.Add('        update titensvendanfe set titensvendanfe.codbarra = :codbarra where  titensvendanfe.controle = :controle;');
-       Script.Script.Add('      end');
-       Script.Script.Add('    execute procedure sparetucest(:ncm) returning_values :cest;');
-       Script.Script.Add('    update titensvendanfe set titensvendanfe.cest = :cest where  titensvendanfe.controle = :controle;');
-       Script.Script.Add('  end');
-       Script.Script.Add('  suspend;');
-       Script.Script.Add('end^');
-       Script.Script.Add('COMMIT^');
-       Script.Execute;
-
-
-
-       Script.Script.Clear;
-
-       Script.Terminator:='^';
-       Script.Script.Add('/*Atualiza dados*/');
-       Script.Script.Add('CREATE OR ALTER trigger tvendanfe_au1 for tvendanfe');
-       Script.Script.Add('active after update position 1');
-       Script.Script.Add('AS');
-       Script.Script.Add('begin');
-       Script.Script.Add('  execute procedure spatualizacest(old.controle);');
-       Script.Script.Add('end^');
-       Script.Script.Add('');
-       Script.Script.Add('');
-       Script.Script.Add('');
-       Script.Script.Add('COMMIT^');
-       Script.Execute;
-
-
-       Script.Script.Clear;
-       Script.Script.Add('/*Caixa Dinheiro*/');
-       Script.Terminator:='^';
-       Script.Script.Add('create or alter procedure spcaixatdinheiro (');
-       Script.Script.Add('   datainicio date,');
-       Script.Script.Add('   datafinal date)');
-       Script.Script.Add('returns (');
-       Script.Script.Add('   tdinheiro decimal(15,2))');
-       Script.Script.Add('as');
-       Script.Script.Add('   declare variable vlrpagar decimal(15,2);');
-       Script.Script.Add('   declare variable vlrrecebido decimal(15,2);');
-       Script.Script.Add('   declare variable datafec date;');
-       Script.Script.Add('   declare variable controle integer;');
-       Script.Script.Add('   declare variable statuspedido varchar(10);');
-       Script.Script.Add('begin');
-       Script.Script.Add('   tdinheiro = 0;');
-       Script.Script.Add('for select p.controle, m.datafec, coalesce(m.vlrrecebido,0), coalesce(m.vlrpagar,0), m.statuspedido from tpedidovenda p inner join tmaster_pedidovenda m on  p.controle = m.controle_tpedidovenda where (m.datafec >= :datainicio) and  (m.datafec <= :datafinal) and (m.statuspedido ='+quotedstr('F')+ ')   into :controle,  :datafec, :vlrrecebido, :vlrpagar, :statuspedido do');
-       Script.Script.Add('   begin');
-       Script.Script.Add('     if (vlrrecebido > vlrpagar) then');
-       Script.Script.Add('     begin');
-       Script.Script.Add('       tdinheiro = tdinheiro + vlrpagar;');
-       Script.Script.Add('     end');
-       Script.Script.Add('     else');
-       Script.Script.Add('     begin');
-       Script.Script.Add('       tdinheiro = tdinheiro + vlrrecebido;');
-       Script.Script.Add('     end');
-       Script.Script.Add('   end');
-       Script.Script.Add('   suspend;');
-       Script.Script.Add('end^');
-       Script.Script.Add('COMMIT^');
-       Script.Execute;
-
-       Script.Script.Clear;
-       Script.Terminator:=';';
-       Script.Script.Add('CREATE OR ALTER VIEW TOTALPORESPECIE(');
-       Script.Script.Add('CONTROLE,');
-       Script.Script.Add('ESPECIE, ');
-       Script.Script.Add(' DATAFEC,');
-       Script.Script.Add('STATUSPEDIDO,');
-       Script.Script.Add('CODEPECIE,');
-       Script.Script.Add('TOTALTIPOPGTO)');
-       Script.Script.Add('AS');
-       Script.Script.Add('select e.controle, e.especie, r.datafec,   p.statuspedido ,   r.codespecie, sum( r.valororiginal ) as totaltipopgto  from   tmaster_receber r  right join tespecie e on r.codespecie = e.controle left join tmaster_pedidovenda p on p.controle_tpedidovenda = r.codpedidovenda group by p.statuspedido, r.datafec, e.controle, r.codespecie, e.especie;');
-       Script.Script.Add('/*Fim*/');
-       Script.Execute;
-
-       Script.Script.Clear;
-       Script.Script.Add('/*Valor total tipo pagto*/');
-       Script.Terminator:='^';
-       Script.Script.Add('create or alter procedure spvlrtotalportipopagto (');
-       Script.Script.Add('   datainicio date,');
-       Script.Script.Add('   datafinal date)');
-       Script.Script.Add('returns (');
-       Script.Script.Add('   tipopgto varchar(100),');
-       Script.Script.Add('   vlrtotaltipopagto decimal(15,2))');
-       Script.Script.Add('as');
-       Script.Script.Add('   declare variable datahoracadastro timestamp;');
-       Script.Script.Add('   declare variable controle integer;');
-       Script.Script.Add('begin');
-       Script.Script.Add('   suspend;');
-       Script.Script.Add('end^');
-       Script.Script.Add('COMMIT^');
-       Script.Execute;
+       //Script.Execute;
 
      end;
 //endth
