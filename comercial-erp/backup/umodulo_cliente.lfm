@@ -6,7 +6,7 @@ object modulo_cliente: Tmodulo_cliente
   VerticalOffset = 301
   Width = 323
   PPI = 96
-  object qrtcliente: TSQLQuery
+  object qrcliente: TSQLQuery
     FieldDefs = <    
       item
         Name = 'CONTROLE'
@@ -504,7 +504,7 @@ object modulo_cliente: Tmodulo_cliente
         Precision = -1
         Size = 100
       end>
-    AfterScroll = qrtclienteAfterScroll
+    AfterScroll = qrclienteAfterScroll
     Database = modulo_conexaodb.conexaodb
     Transaction = modulo_conexaodb.tzcontrole
     SQL.Strings = (
@@ -514,8 +514,8 @@ object modulo_cliente: Tmodulo_cliente
     left = 37
     top = 19
   end
-  object dstcliente: TDataSource
-    DataSet = qrtcliente
+  object dscliente: TDataSource
+    DataSet = qrcliente
     left = 144
     top = 19
   end

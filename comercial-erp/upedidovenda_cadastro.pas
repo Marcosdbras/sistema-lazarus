@@ -1969,7 +1969,16 @@ procedure Tfrmpedidovenda_cadastro.carregaCampoProd;
           modulo_conexaodb.qrconsulta_base.Params.ParamByName('codtabelapreco').AsInteger:=modulo_tabpreco.qrtempTabPreco.FieldByName('ctabp').AsInteger ;
           modulo_conexaodb.qrconsulta_base.Open;
 
-          edtvlrunitario.Value:=  modulo_conexaodb.qrconsulta_base.FieldByName('precovendatabelado').AsFloat;
+          if  modulo_conexaodb.qrconsulta_base.FieldByName('precovendatabelado').AsFloat > 0 then
+              begin
+                edtvlrunitario.Value:=  modulo_conexaodb.qrconsulta_base.FieldByName('precovendatabelado').AsFloat;
+              end
+          else
+             begin
+               showmessage('O preço da tabela do cliente está zerado ou não existe,'+chr(31)+'portanto será inserido o preço normal do produto.');
+               edtvlrunitario.Value:=modulo_produto.qrproduto.FieldByName('precovenda').AsFloat;
+             end;
+          //endif
         end
      else
         begin

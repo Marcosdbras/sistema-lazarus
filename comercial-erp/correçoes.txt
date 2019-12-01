@@ -1,0 +1,4 @@
+- Cliente não está sendo vinculo a sua prórpria tabela durante a exportação
+- Em pedido quando seleciona cliente a tabela especial de preço não está sendo puxada 
+já no orçamento funciona normalmente
+- Algumas tabelas especiais não estão sendo exportadas

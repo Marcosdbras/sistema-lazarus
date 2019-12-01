@@ -296,6 +296,7 @@
         <Filename Value="umodulo_cliente.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="modulo_cliente"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit38>
       <Unit39>

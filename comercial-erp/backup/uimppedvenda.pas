@@ -49,6 +49,7 @@ type
     lblnped: TRLLabel;
     lblnorc1: TRLLabel;
     lbltelefoneemi: TRLLabel;
+    memo2: TRLMemo;
     RLBand1: TRLBand;
     RLBand2: TRLBand;
     RLBand3: TRLBand;
@@ -81,7 +82,7 @@ type
     RLLabel8: TRLLabel;
     lblcnpj: TRLLabel;
     RLLabel9: TRLLabel;
-    memocodgeral: TRLMemo;
+    memoobs: TRLMemo;
     memo1: TRLMemo;
     rlpreview: TRLPreviewSetup;
     RLSystemInfo1: TRLSystemInfo;
@@ -115,7 +116,7 @@ implementation
        procedure Tfrmimppedvenda.FormCreate(Sender: TObject);
 
        //var cnpjcli,iecli, cpfcli, rgcli:string;
-
+       var sreceber:string;
        begin
 
 
@@ -242,21 +243,11 @@ implementation
          qrpedidovenda_itemproduto.Open;
 
 
-         //memocodgeral.Lines.Clear;
-         //memocodgeral.Lines.Add(qrpedidovenda.FieldByName('condicaopagamento').AsString);
+         memoobs.Lines.Clear;
+         memoobs.Lines.Add('- Observação: '+qrpedidovenda.FieldByName('observacao').AsString);
+
 
        end;
-
-       with modulo_receber do
-          begin
-
-
-
-
-
-          end;
-       //endth
-
 
        with modulo_pedidovenda do
           begin
@@ -270,23 +261,63 @@ implementation
           end;
        //endif
 
-
-       memocodgeral.Lines.Clear;
-
-
        memo1.Lines.Clear;
+       memo2.Lines.Clear;
        if modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat > 0 then
           begin
-            memo1.Lines.Add('Desconto: '+ formatfloat('0.00',modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat)+'%   R$ '+formatfloat('###,###,##0.00', modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrdesconto').AsFloat));
+            memo2.Lines.Add('Desconto: ');
+            memo1.Lines.Add(formatfloat('0.00',modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat)+'%   R$ '+formatfloat('###,###,##0.00', modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrdesconto').AsFloat));
           end;
        //endif
 
        if modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrpagar').AsFloat > 0 then
           begin
-            memo1.Lines.Add('Valor Pago:    R$'+ formatfloat('###,##0.00',modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrpagar').AsFloat));
+            memo2.Lines.Add('Valor Pago:    R$');
+            memo1.Lines.Add(formatfloat('###,##0.00',modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrpagar').AsFloat));
           end;
        //endif
 
+       sreceber := '';
+       if modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrrecebido').AsFloat > 0 then
+          begin
+            sreceber := '(À VISTA: R$'+ formatfloat('###,###,##0.00',  modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('vlrrecebido').Asfloat)+ ') ';
+          end;
+       //endif
+
+       with modulo_receber do
+          begin
+
+             qrMasterReceber.Close;
+             qrMasterReceber.SQL.Clear;
+             qrMasterReceber.SQL.Add('select * from tmaster_receber where codpedidovenda = :codpedidovenda');
+             qrMasterReceber.ParamByName('codpedidovenda').AsInteger:=modulo_pedidovenda.qrpedidovenda.FieldByName('controle').AsInteger;;
+             qrMasterReceber.Open;
+
+             if qrMasterReceber.RecordCount > 0 then
+                begin
+
+
+                  while not qrMasterReceber.EOF do
+                     begin
+
+                        sreceber := sreceber +'('+  qrMasterReceber.FieldByName('especie').AsString+'  '+qrMasterReceber.FieldByName('datavencimento').AsString+' R$ '+formatfloat('###,###,##0.00',qrMasterReceber.FieldByName('valororiginal').Asfloat)+') ';
+
+                        qrMasterReceber.Next;
+                     end;
+                  //endw
+
+
+
+
+                end;
+             //endi
+
+
+          end;
+       //endth
+
+
+       memoobs.Lines.Add('Forma de Pagamento: '+sreceber);
 
 
 

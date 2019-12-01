@@ -29,7 +29,7 @@ var
   modulo_cliente: Tmodulo_cliente;
 
 implementation
-      uses umodulo_conexaodb, uorcamento_cadastro,umodulo_tabpreco;
+      uses umodulo_conexaodb, uorcamento_cadastro,umodulo_tabpreco, upedidovenda_cadastro;
 {$R *.lfm}
 
       { Tmodulo_cliente }
@@ -74,11 +74,6 @@ begin
 
              end;
           //endi
-
-          {
-
-
-          }
 
         end;
     //endi

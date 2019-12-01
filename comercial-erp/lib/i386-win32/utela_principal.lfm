@@ -26,7 +26,7 @@ object frmtela_principal: Tfrmtela_principal
     ParentColor = False
     TabOrder = 0
     object Button1: TButton
-      Left = 8
+      Left = 440
       Height = 65
       Top = 8
       Width = 136
@@ -35,7 +35,7 @@ object frmtela_principal: Tfrmtela_principal
       TabOrder = 0
     end
     object btnorcamento: TButton
-      Left = 152
+      Left = 8
       Height = 65
       Top = 8
       Width = 136
@@ -44,7 +44,7 @@ object frmtela_principal: Tfrmtela_principal
       TabOrder = 1
     end
     object btnpedidovenda: TButton
-      Left = 296
+      Left = 152
       Height = 65
       Top = 8
       Width = 136
@@ -53,7 +53,7 @@ object frmtela_principal: Tfrmtela_principal
       TabOrder = 2
     end
     object btnmovcaixa: TButton
-      Left = 440
+      Left = 296
       Height = 65
       Top = 8
       Width = 136

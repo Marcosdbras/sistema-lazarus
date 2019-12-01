@@ -1079,7 +1079,7 @@ object frmimppedvenda: Tfrmimppedvenda
       RealBounds.Top = 0
       RealBounds.Width = 0
       RealBounds.Height = 0
-      object memocodgeral: TRLMemo
+      object memoobs: TRLMemo
         Left = 0
         Height = 16
         Top = 5
@@ -1129,11 +1129,22 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
       end
       object memo1: TRLMemo
-        Left = 530
+        Left = 640
         Height = 16
         Top = 21
-        Width = 181
+        Width = 71
         Alignment = taRightJustify
+        Behavior = [beSiteExpander]
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object memo2: TRLMemo
+        Left = 528
+        Height = 16
+        Top = 21
+        Width = 104
         Behavior = [beSiteExpander]
         RealBounds.Left = 0
         RealBounds.Top = 0
