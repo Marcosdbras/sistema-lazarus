@@ -23,7 +23,7 @@ object frmimppedvenda: Tfrmimppedvenda
     RealBounds.Height = 0
     object RLBand1: TRLBand
       Left = 38
-      Height = 220
+      Height = 264
       Top = 38
       Width = 718
       BandType = btHeader
@@ -35,7 +35,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLDraw6: TRLDraw
         Left = 1
         Height = 93
-        Top = 104
+        Top = 142
         Width = 714
         Angle = 0
         RealBounds.Left = 0
@@ -57,7 +57,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLLabel1: TRLLabel
         Left = 40
         Height = 16
-        Top = 200
+        Top = 239
         Width = 77
         Caption = 'PRODUTOS'
         Font.CharSet = ANSI_CHARSET
@@ -76,7 +76,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLLabel2: TRLLabel
         Left = 444
         Height = 16
-        Top = 200
+        Top = 239
         Width = 39
         Caption = 'QTDE'
         Font.CharSet = ANSI_CHARSET
@@ -95,7 +95,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLLabel3: TRLLabel
         Left = 488
         Height = 16
-        Top = 200
+        Top = 239
         Width = 26
         Caption = 'UN.'
         Font.CharSet = ANSI_CHARSET
@@ -115,7 +115,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLLabel4: TRLLabel
         Left = 535
         Height = 16
-        Top = 200
+        Top = 239
         Width = 72
         Caption = 'VLR. UNIT.'
         Font.CharSet = ANSI_CHARSET
@@ -135,7 +135,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLLabel5: TRLLabel
         Left = 630
         Height = 16
-        Top = 200
+        Top = 239
         Width = 81
         Caption = 'VLR. TOTAL'
         Font.CharSet = ANSI_CHARSET
@@ -155,7 +155,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLLabel6: TRLLabel
         Left = 19
         Height = 16
-        Top = 200
+        Top = 239
         Width = 11
         Caption = '#'
         Font.CharSet = ANSI_CHARSET
@@ -172,50 +172,10 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
         AfterPrint = RLLabel4AfterPrint
       end
-      object RLSystemInfo1: TRLSystemInfo
-        Left = 416
-        Height = 16
-        Top = 87
-        Width = 63
-        Alignment = taRightJustify
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentFont = False
-        RealBounds.Left = 0
-        RealBounds.Top = 0
-        RealBounds.Width = 0
-        RealBounds.Height = 0
-        AfterPrint = RLSystemInfo1AfterPrint
-      end
-      object RLLabel8: TRLLabel
-        Left = 369
-        Height = 16
-        Top = 87
-        Width = 43
-        Caption = 'DATA:'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentFont = False
-        RealBounds.Left = 0
-        RealBounds.Top = 0
-        RealBounds.Width = 0
-        RealBounds.Height = 0
-        AfterPrint = RLLabel7AfterPrint
-      end
       object lblnomecli: TRLLabel
         Left = 110
         Height = 16
-        Top = 107
+        Top = 146
         Width = 402
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -235,7 +195,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblenderecocli: TRLLabel
         Left = 110
         Height = 16
-        Top = 126
+        Top = 165
         Width = 601
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -267,7 +227,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLDraw4: TRLDraw
         Left = 1
         Height = 8
-        Top = 216
+        Top = 255
         Width = 714
         Angle = 0
         DrawKind = dkLine
@@ -279,7 +239,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcnpj: TRLLabel
         Left = 110
         Height = 16
-        Top = 87
+        Top = 121
         Width = 38
         Caption = 'CNPJ'
         Font.CharSet = ANSI_CHARSET
@@ -297,15 +257,15 @@ object frmimppedvenda: Tfrmimppedvenda
         AfterPrint = RLLabel7AfterPrint
       end
       object lblnped: TRLLabel
-        Left = 659
-        Height = 16
-        Top = 87
-        Width = 52
+        Left = 117
+        Height = 22
+        Top = 72
+        Width = 65
         Alignment = taRightJustify
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Arial'
+        Font.Height = -15
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -317,15 +277,15 @@ object frmimppedvenda: Tfrmimppedvenda
         AfterPrint = RLLabel7AfterPrint
       end
       object lblnorc1: TRLLabel
-        Left = 500
-        Height = 16
-        Top = 87
-        Width = 87
-        Caption = 'PED./DAV Nº:'
+        Left = 3
+        Height = 22
+        Top = 72
+        Width = 99
+        Caption = 'PEDIDO Nº:'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Arial'
+        Font.Height = -15
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -339,7 +299,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lbltelefonecli: TRLLabel
         Left = 510
         Height = 16
-        Top = 158
+        Top = 197
         Width = 200
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -359,7 +319,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLLabel9: TRLLabel
         Left = 352
         Height = 16
-        Top = 200
+        Top = 239
         Width = 33
         Caption = 'NCM'
         Font.CharSet = ANSI_CHARSET
@@ -376,9 +336,9 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
       end
       object lblie: TRLLabel
-        Left = 262
+        Left = 399
         Height = 16
-        Top = 87
+        Top = 121
         Width = 16
         Caption = 'IE'
         Font.CharSet = ANSI_CHARSET
@@ -398,7 +358,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcnpjcli: TRLLabel
         Left = 568
         Height = 16
-        Top = 107
+        Top = 146
         Width = 143
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -418,7 +378,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lbliecli: TRLLabel
         Left = 568
         Height = 16
-        Top = 141
+        Top = 180
         Width = 142
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -438,7 +398,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcepcli: TRLLabel
         Left = 307
         Height = 16
-        Top = 158
+        Top = 197
         Width = 101
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -458,7 +418,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcnpj1: TRLLabel
         Left = 1
         Height = 16
-        Top = 87
+        Top = 121
         Width = 42
         Caption = 'CNPJ:'
         Font.CharSet = ANSI_CHARSET
@@ -476,9 +436,9 @@ object frmimppedvenda: Tfrmimppedvenda
         AfterPrint = RLLabel7AfterPrint
       end
       object lblie1: TRLLabel
-        Left = 240
+        Left = 377
         Height = 16
-        Top = 87
+        Top = 121
         Width = 20
         Caption = 'IE:'
         Font.CharSet = ANSI_CHARSET
@@ -498,7 +458,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblnomecli1: TRLLabel
         Left = 1
         Height = 16
-        Top = 107
+        Top = 146
         Width = 62
         Caption = 'CLIENTE:'
         Font.CharSet = ANSI_CHARSET
@@ -518,7 +478,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcnpjcli1: TRLLabel
         Left = 520
         Height = 16
-        Top = 107
+        Top = 146
         Width = 42
         Caption = 'CNPJ:'
         Font.CharSet = ANSI_CHARSET
@@ -538,7 +498,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblenderecocli1: TRLLabel
         Left = 1
         Height = 16
-        Top = 126
+        Top = 165
         Width = 78
         Caption = 'ENDEREÇO:'
         Font.CharSet = ANSI_CHARSET
@@ -558,7 +518,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lbltelefonecli1: TRLLabel
         Left = 414
         Height = 16
-        Top = 158
+        Top = 197
         Width = 92
         Caption = 'TELEFONE(S):'
         Font.CharSet = ANSI_CHARSET
@@ -578,7 +538,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lbliecli1: TRLLabel
         Left = 520
         Height = 16
-        Top = 141
+        Top = 180
         Width = 20
         Caption = 'IE:'
         Font.CharSet = ANSI_CHARSET
@@ -598,7 +558,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcepemi2: TRLLabel
         Left = 240
         Height = 16
-        Top = 158
+        Top = 197
         Width = 34
         Caption = 'CEP:'
         Font.CharSet = ANSI_CHARSET
@@ -618,7 +578,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lbltelefonecli2: TRLLabel
         Left = 240
         Height = 16
-        Top = 141
+        Top = 180
         Width = 56
         Caption = 'CIDADE:'
         Font.CharSet = ANSI_CHARSET
@@ -638,7 +598,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcidadecli: TRLLabel
         Left = 304
         Height = 16
-        Top = 141
+        Top = 180
         Width = 208
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -658,7 +618,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lbltelefonecli3: TRLLabel
         Left = 2
         Height = 16
-        Top = 158
+        Top = 197
         Width = 61
         Caption = 'ESTADO:'
         Font.CharSet = ANSI_CHARSET
@@ -678,7 +638,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblestadocli: TRLLabel
         Left = 112
         Height = 16
-        Top = 158
+        Top = 197
         Width = 120
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -698,7 +658,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lbltelefonecli4: TRLLabel
         Left = 2
         Height = 16
-        Top = 176
+        Top = 215
         Width = 48
         Caption = 'EMAIL:'
         Font.CharSet = ANSI_CHARSET
@@ -718,7 +678,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblemailcli: TRLLabel
         Left = 110
         Height = 16
-        Top = 176
+        Top = 215
         Width = 600
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -738,7 +698,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblenderecocli2: TRLLabel
         Left = 2
         Height = 16
-        Top = 141
+        Top = 180
         Width = 58
         Caption = 'BAIRRO:'
         Font.CharSet = ANSI_CHARSET
@@ -758,7 +718,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblbairrocli: TRLLabel
         Left = 112
         Height = 16
-        Top = 141
+        Top = 180
         Width = 120
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -776,15 +736,15 @@ object frmimppedvenda: Tfrmimppedvenda
         AfterPrint = RLLabel7AfterPrint
       end
       object RLLabel7: TRLLabel
-        Left = 670
-        Height = 16
-        Top = 69
+        Left = 665
+        Height = 18
+        Top = 77
         Width = 8
         Caption = '/'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
-        Font.Name = 'Arial'
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -796,14 +756,14 @@ object frmimppedvenda: Tfrmimppedvenda
         AfterPrint = RLLabel7AfterPrint
       end
       object RLSystemInfo3: TRLSystemInfo
-        Left = 677
-        Height = 16
-        Top = 69
+        Left = 674
+        Height = 18
+        Top = 77
         Width = 33
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
-        Font.Name = 'Arial'
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -815,15 +775,15 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
       end
       object RLSystemInfo2: TRLSystemInfo
-        Left = 622
-        Height = 16
-        Top = 69
-        Width = 51
+        Left = 626
+        Height = 18
+        Top = 75
+        Width = 35
         Alignment = taRightJustify
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
-        Font.Name = 'Arial'
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -835,15 +795,15 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
       end
       object RLLabel10: TRLLabel
-        Left = 500
-        Height = 16
-        Top = 69
-        Width = 75
+        Left = 538
+        Height = 18
+        Top = 75
+        Width = 83
         Caption = 'PÁGINA(S):'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
-        Font.Name = 'Arial'
+        Font.Name = 'Arial Black'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         Font.Style = [fsBold]
@@ -857,8 +817,8 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblnomeemi: TRLLabel
         Left = 110
         Height = 16
-        Top = 69
-        Width = 386
+        Top = 103
+        Width = 600
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -876,7 +836,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblnomeemi1: TRLLabel
         Left = 1
         Height = 16
-        Top = 69
+        Top = 103
         Width = 105
         Caption = 'RAZÃO SOCIAL:'
         Font.CharSet = ANSI_CHARSET
@@ -955,11 +915,62 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
         AfterPrint = RLLabel7AfterPrint
       end
+      object RLLabel8: TRLLabel
+        Left = 238
+        Height = 18
+        Top = 75
+        Width = 175
+        Caption = 'DATA DE FECHAMENTO:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object lbldatafec: TRLLabel
+        Left = 420
+        Height = 18
+        Top = 75
+        Width = 77
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object RLDraw5: TRLDraw
+        Left = -2
+        Height = 8
+        Top = 93
+        Width = 714
+        Angle = 0
+        DrawKind = dkLine
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
     end
     object RLBand2: TRLBand
       Left = 38
       Height = 19
-      Top = 258
+      Top = 302
       Width = 718
       Color = clWhite
       ParentColor = False
@@ -1071,8 +1082,8 @@ object frmimppedvenda: Tfrmimppedvenda
     end
     object RLBand3: TRLBand
       Left = 38
-      Height = 50
-      Top = 277
+      Height = 101
+      Top = 321
       Width = 718
       BandType = btFooter
       RealBounds.Left = 0
@@ -1081,10 +1092,18 @@ object frmimppedvenda: Tfrmimppedvenda
       RealBounds.Height = 0
       object memoobs: TRLMemo
         Left = 0
-        Height = 16
+        Height = 13
         Top = 5
         Width = 520
         Behavior = [beSiteExpander]
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
@@ -1154,8 +1173,8 @@ object frmimppedvenda: Tfrmimppedvenda
     end
     object RLBand4: TRLBand
       Left = 38
-      Height = 56
-      Top = 327
+      Height = 88
+      Top = 422
       Width = 718
       BandType = btFooter
       RealBounds.Left = 0
@@ -1163,9 +1182,9 @@ object frmimppedvenda: Tfrmimppedvenda
       RealBounds.Width = 0
       RealBounds.Height = 0
       object lblslogan: TRLLabel
-        Left = 334
+        Left = 352
         Height = 18
-        Top = 32
+        Top = 56
         Width = 68
         Alignment = taCenter
         Font.CharSet = ANSI_CHARSET
@@ -1184,7 +1203,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLDraw8: TRLDraw
         Left = 0
         Height = 8
-        Top = 0
+        Top = 20
         Width = 714
         Angle = 0
         DrawKind = dkLine
@@ -1196,7 +1215,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblenderecoemi: TRLLabel
         Left = 0
         Height = 16
-        Top = 8
+        Top = 28
         Width = 304
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1216,7 +1235,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblbairroemi: TRLLabel
         Left = 310
         Height = 16
-        Top = 8
+        Top = 28
         Width = 112
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1236,7 +1255,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcidadeemi: TRLLabel
         Left = 425
         Height = 16
-        Top = 8
+        Top = 28
         Width = 93
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1256,7 +1275,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblestadoemi: TRLLabel
         Left = 525
         Height = 16
-        Top = 8
+        Top = 25
         Width = 86
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1276,7 +1295,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcepemi: TRLLabel
         Left = 616
         Height = 16
-        Top = 8
+        Top = 28
         Width = 82
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1296,7 +1315,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object RLDraw9: TRLDraw
         Left = 2
         Height = 8
-        Top = 24
+        Top = 44
         Width = 714
         Angle = 0
         DrawKind = dkLine
@@ -1304,6 +1323,97 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Top = 0
         RealBounds.Width = 0
         RealBounds.Height = 0
+      end
+      object RLDraw10: TRLDraw
+        Left = 3
+        Height = 8
+        Top = 0
+        Width = 714
+        Angle = 0
+        DrawKind = dkLine
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
+      object RLLabel11: TRLLabel
+        Left = 480
+        Height = 13
+        Top = 6
+        Width = 124
+        Caption = 'DATA DE IMPRESSÃO:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object RLSystemInfo4: TRLSystemInfo
+        Left = 667
+        Height = 13
+        Top = 6
+        Width = 35
+        Alignment = taRightJustify
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLSystemInfo1AfterPrint
+      end
+      object lblnorc2: TRLLabel
+        Left = 3
+        Height = 13
+        Top = 5
+        Width = 46
+        Caption = 'DAV Nº:'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
+      end
+      object lbldav: TRLLabel
+        Left = 56
+        Height = 13
+        Top = 6
+        Width = 34
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Times New Roman'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+        AfterPrint = RLLabel7AfterPrint
       end
     end
   end

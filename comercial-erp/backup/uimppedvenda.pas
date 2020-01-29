@@ -28,6 +28,7 @@ type
     lblenderecocli1: TRLLabel;
     lblestadoemi: TRLLabel;
     lblie1: TRLLabel;
+    lbldatafec: TRLLabel;
     lbliecli: TRLLabel;
     lblie: TRLLabel;
     lblcnpjcli: TRLLabel;
@@ -36,6 +37,8 @@ type
     lblnomecli1: TRLLabel;
     lblnomeemi: TRLLabel;
     lblnomeemi1: TRLLabel;
+    lblnorc2: TRLLabel;
+    lbldav: TRLLabel;
     lblsiteemi: TRLLabel;
     lblslogan: TRLLabel;
     lbltelefonecli1: TRLLabel;
@@ -61,7 +64,9 @@ type
     RLDBText5: TRLDBText;
     RLDBText6: TRLDBText;
     RLDraw1: TRLDraw;
+    RLDraw10: TRLDraw;
     RLDraw4: TRLDraw;
+    RLDraw5: TRLDraw;
     RLDraw6: TRLDraw;
     RLDraw8: TRLDraw;
     RLDraw9: TRLDraw;
@@ -72,6 +77,7 @@ type
     lbltotal: TRLLabel;
     RLLabel10: TRLLabel;
     lblncm: TRLLabel;
+    RLLabel11: TRLLabel;
     RLLabel2: TRLLabel;
     RLLabel3: TRLLabel;
     RLLabel4: TRLLabel;
@@ -79,15 +85,15 @@ type
     RLLabel6: TRLLabel;
     rlfilter: TRLPDFFilter;
     RLLabel7: TRLLabel;
-    RLLabel8: TRLLabel;
     lblcnpj: TRLLabel;
+    RLLabel8: TRLLabel;
     RLLabel9: TRLLabel;
     memoobs: TRLMemo;
     memo1: TRLMemo;
     rlpreview: TRLPreviewSetup;
-    RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
     RLSystemInfo3: TRLSystemInfo;
+    RLSystemInfo4: TRLSystemInfo;
     procedure FormCreate(Sender: TObject);
     procedure RLBand1AfterPrint(Sender: TObject);
     procedure RLBand2AfterPrint(Sender: TObject);
@@ -233,8 +239,8 @@ implementation
          //lblnped.Caption := qrpedidovenda.FieldByName('controlevarchar').asString;
 
 
-         lblnped.Caption:=  formatfloat('00000',qrpedidovenda.FieldByName('controle').asfloat)+' / '+formatfloat('00000',qrpedidovenda.FieldByName('controlevarchar').asfloat)  ;
-
+         lblnped.Caption:=  formatfloat('00000',qrpedidovenda.FieldByName('controle').asfloat);
+         lbldav.Caption:=formatfloat('00000',qrpedidovenda.FieldByName('controlevarchar').asfloat);
 
          qrpedidovenda_itemproduto.Close;
          qrpedidovenda_itemproduto.SQL.Clear;
@@ -261,8 +267,28 @@ implementation
           end;
        //endif
 
+
+       if modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('datafec').AsString <> '' then
+          begin
+             lbldatafec.Caption := modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('datafec').AsString;
+          end
+       else
+          begin
+            lbldatafec.Caption := 'EM ABERTO';
+          end;
+       //endif
+
+
+
+
+
        memo1.Lines.Clear;
        memo2.Lines.Clear;
+
+
+
+
+
        if modulo_pedidovenda.qrmaster_pedidovenda.FieldByName('percdesconto').AsFloat > 0 then
           begin
             memo2.Lines.Add('Desconto: ');
@@ -317,7 +343,7 @@ implementation
        //endth
 
 
-       memoobs.Lines.Add('Forma de Pagamento: '+sreceber);
+       memoobs.Lines.Add('- Forma de Pagamento: '+sreceber);
 
 
 
