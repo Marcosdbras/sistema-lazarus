@@ -44,14 +44,15 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
       end
       object RLImage1: TRLImage
-        Left = 1
-        Height = 48
+        Left = 608
+        Height = 41
         Top = 0
-        Width = 714
+        Width = 107
         RealBounds.Left = 0
         RealBounds.Top = 0
         RealBounds.Width = 0
         RealBounds.Height = 0
+        Stretch = True
         AfterPrint = RLImage1AfterPrint
       end
       object RLLabel1: TRLLabel
@@ -336,10 +337,11 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
       end
       object lblie: TRLLabel
-        Left = 399
+        Left = 563
         Height = 16
         Top = 121
-        Width = 16
+        Width = 147
+        Alignment = taRightJustify
         Caption = 'IE'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
@@ -436,9 +438,9 @@ object frmimppedvenda: Tfrmimppedvenda
         AfterPrint = RLLabel7AfterPrint
       end
       object lblie1: TRLLabel
-        Left = 377
+        Left = 538
         Height = 16
-        Top = 121
+        Top = 120
         Width = 20
         Caption = 'IE:'
         Font.CharSet = ANSI_CHARSET
@@ -966,6 +968,25 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Width = 0
         RealBounds.Height = 0
       end
+      object lbltitulo: TRLLabel
+        Left = 3
+        Height = 36
+        Top = 3
+        Width = 598
+        AutoSize = False
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -24
+        Font.Name = 'Arial Black'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+        RealBounds.Left = 0
+        RealBounds.Top = 0
+        RealBounds.Width = 0
+        RealBounds.Height = 0
+      end
     end
     object RLBand2: TRLBand
       Left = 38
@@ -1215,7 +1236,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblenderecoemi: TRLLabel
         Left = 0
         Height = 16
-        Top = 28
+        Top = 27
         Width = 304
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1235,7 +1256,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblbairroemi: TRLLabel
         Left = 310
         Height = 16
-        Top = 28
+        Top = 27
         Width = 112
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1255,7 +1276,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcidadeemi: TRLLabel
         Left = 425
         Height = 16
-        Top = 28
+        Top = 27
         Width = 93
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1275,7 +1296,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblestadoemi: TRLLabel
         Left = 525
         Height = 16
-        Top = 25
+        Top = 27
         Width = 86
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1295,7 +1316,7 @@ object frmimppedvenda: Tfrmimppedvenda
       object lblcepemi: TRLLabel
         Left = 616
         Height = 16
-        Top = 28
+        Top = 27
         Width = 82
         AutoSize = False
         Font.CharSet = ANSI_CHARSET
@@ -1337,7 +1358,7 @@ object frmimppedvenda: Tfrmimppedvenda
         RealBounds.Height = 0
       end
       object RLLabel11: TRLLabel
-        Left = 496
+        Left = 480
         Height = 13
         Top = 6
         Width = 124
@@ -1397,11 +1418,10 @@ object frmimppedvenda: Tfrmimppedvenda
         AfterPrint = RLLabel7AfterPrint
       end
       object lbldav: TRLLabel
-        Left = 180
+        Left = 56
         Height = 13
-        Top = 5
+        Top = 6
         Width = 34
-        Alignment = taRightJustify
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -11

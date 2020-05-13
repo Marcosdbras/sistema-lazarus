@@ -78,6 +78,7 @@ type
     RLLabel10: TRLLabel;
     lblncm: TRLLabel;
     RLLabel11: TRLLabel;
+    lbltitulo: TRLLabel;
     RLLabel2: TRLLabel;
     RLLabel3: TRLLabel;
     RLLabel4: TRLLabel;
@@ -209,6 +210,7 @@ implementation
           //endi
 
           lblnomeemi.Caption:= qrconsulta_base.FieldByName('razaosocial').AsString;
+          lbltitulo.Caption:= qrconsulta_base.FieldByName('nomefantasia').AsString;
           lbltelefoneemi.Caption:=qrconsulta_base.FieldByName('telefone').AsString;
           lblenderecoemi.Caption:=qrconsulta_base.FieldByName('endereco').AsString+
                                   ' N.o: '+qrconsulta_base.FieldByName('numero').AsString;

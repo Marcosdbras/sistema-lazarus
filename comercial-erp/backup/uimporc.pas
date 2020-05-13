@@ -16,6 +16,7 @@ type
     lblbairroemi: TRLLabel;
     lblcepemi: TRLLabel;
     lblcidadeemi: TRLLabel;
+    lbldav: TRLLabel;
     lblemailemi: TRLLabel;
     lblenderecoemi: TRLLabel;
     lblestadocli: TRLLabel;
@@ -36,6 +37,9 @@ type
     lblnomecli1: TRLLabel;
     lblnomeemi: TRLLabel;
     lblnomeemi1: TRLLabel;
+    lblnorc: TRLLabel;
+    lblnorc1: TRLLabel;
+    lblnorc2: TRLLabel;
     lblsiteemi: TRLLabel;
     lblslogan: TRLLabel;
     lbltelefonecli1: TRLLabel;
@@ -46,9 +50,8 @@ type
     lbltelefonecli: TRLLabel;
     lblnomecli: TRLLabel;
     lblenderecocli: TRLLabel;
-    lblnorc: TRLLabel;
-    lblnorc1: TRLLabel;
     lbltelefoneemi: TRLLabel;
+    lbltitulo: TRLLabel;
     RLBand1: TRLBand;
     RLBand2: TRLBand;
     RLBand3: TRLBand;
@@ -60,6 +63,8 @@ type
     RLDBText5: TRLDBText;
     RLDBText6: TRLDBText;
     RLDraw1: TRLDraw;
+    RLDraw10: TRLDraw;
+    RLDraw2: TRLDraw;
     RLDraw4: TRLDraw;
     RLDraw6: TRLDraw;
     RLDraw8: TRLDraw;
@@ -71,6 +76,7 @@ type
     lbltotal: TRLLabel;
     RLLabel10: TRLLabel;
     lblncm: TRLLabel;
+    RLLabel11: TRLLabel;
     RLLabel2: TRLLabel;
     RLLabel3: TRLLabel;
     RLLabel4: TRLLabel;
@@ -78,14 +84,13 @@ type
     RLLabel6: TRLLabel;
     rlfilter: TRLPDFFilter;
     RLLabel7: TRLLabel;
-    RLLabel8: TRLLabel;
     lblcnpj: TRLLabel;
     RLLabel9: TRLLabel;
     memocodgeral: TRLMemo;
     rlpreview: TRLPreviewSetup;
-    RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
     RLSystemInfo3: TRLSystemInfo;
+    RLSystemInfo4: TRLSystemInfo;
     procedure FormCreate(Sender: TObject);
     procedure RLBand1AfterPrint(Sender: TObject);
     procedure RLBand2AfterPrint(Sender: TObject);
@@ -201,6 +206,8 @@ implementation
           //endi
 
           lblnomeemi.Caption:= qrconsulta_base.FieldByName('razaosocial').AsString;
+          lbltitulo.Caption:= qrconsulta_base.FieldByName('nomefantasia').AsString;
+
           lbltelefoneemi.Caption:=qrconsulta_base.FieldByName('telefone').AsString;
           lblenderecoemi.Caption:=qrconsulta_base.FieldByName('endereco').AsString+
                                   ' N.o: '+qrconsulta_base.FieldByName('numero').AsString;
@@ -220,7 +227,7 @@ implementation
           qrconsulta_base.params.ParamByName('codorcamento').AsInteger:=modulo_orcamento.qrorcamento.FieldByName('controle').AsInteger;
           qrconsulta_base.Open;
 
-          lbltotal.Caption:=formatfloat('0.00',qrconsulta_base.FieldByName('total').AsFloat);
+          lbltotal.Caption:='R$ '+formatfloat('0.00',qrconsulta_base.FieldByName('total').AsFloat);
 
 
 
@@ -234,7 +241,9 @@ implementation
 
          //lblnorc.Caption := qrorcamento.FieldByName('controlevarchar').asString;
 
-         lblnorc.Caption:=  formatfloat('00000',qrorcamento.FieldByName('controle').asfloat)+' / '+formatfloat('00000',qrorcamento.FieldByName('controlevarchar').asfloat) ;
+         lblnorc.Caption:=  formatfloat('00000',qrorcamento.FieldByName('controle').asfloat);
+         lbldav.Caption := formatfloat('00000',qrorcamento.FieldByName('controlevarchar').asfloat);
+
 
          qrorcamento_itemproduto.Close;
          qrorcamento_itemproduto.SQL.Clear;

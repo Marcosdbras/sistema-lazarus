@@ -72,6 +72,7 @@ begin
        else
           begin
 
+
             frmfechapedidovenda.edtnparc.Value := 0;
             frmfechapedidovenda.edtnparc.Enabled:=true;
             frmfechapedidovenda.edtnparc.Enabled:= true;
