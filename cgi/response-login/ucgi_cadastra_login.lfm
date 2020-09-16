@@ -1,0 +1,96 @@
+object FPWebModule1: TFPWebModule1
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  OldCreateOrder = False
+  Actions = <  
+    item
+      Name = 'cadlogin'
+      Default = True
+      OnRequest = cadloginRequest
+      Template.AllowTagParams = False
+    end>
+  CreateSession = False
+  Height = 222
+  HorizontalOffset = 241
+  VerticalOffset = 253
+  Width = 267
+  PPI = 96
+  object IBConnection1: TIBConnection
+    Connected = False
+    LoginPrompt = False
+    AfterConnect = IBConnection1AfterConnect
+    DatabaseName = 'C:\cardapio\db\DBCARDAPIO.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = SQLTransaction1
+    UserName = 'SYSDBA'
+    CheckTransactionParams = False
+    left = 40
+    top = 16
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Action = caCommit
+    Database = IBConnection1
+    left = 51
+    top = 77
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CODIGO'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NOMEUSUARIO'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'EMAIL'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'TELEFONE'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'TIPOUSUARIO'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'SENHA'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'CELULAR'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'FOTO'
+        DataType = ftBlob
+        Precision = -1
+        Size = 8
+      end>
+    Database = IBConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from usuarios'
+    )
+    Params = <>
+    left = 48
+    top = 152
+  end
+end
